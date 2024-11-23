@@ -9,8 +9,8 @@
 
 <channel>
 	<title>3.2 &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/3-2/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Fri, 22 Jan 2016 09:41:58 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Analyzing Data in Microsoft Excel with the MongoDB Connector for BI</title>
-		<link>/mongodb/analyzing-data-in-microsoft-excel-with-the-mongodb-connector-for-bi</link>
-					<comments>/mongodb/analyzing-data-in-microsoft-excel-with-the-mongodb-connector-for-bi#respond</comments>
+		<link>./../../mongodb/analyzing-data-in-microsoft-excel-with-the-mongodb-connector-for-bi/index.html</link>
+					<comments>./../../mongodb/analyzing-data-in-microsoft-excel-with-the-mongodb-connector-for-bi/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 22 Jan 2016 09:41:58 +0000</pubDate>
@@ -34,7 +34,7 @@
 		<category><![CDATA[ODBC]]></category>
 		<category><![CDATA[sql]]></category>
 		<category><![CDATA[Windows]]></category>
-		<guid isPermaLink="false">/?p=4155</guid>
+		<guid isPermaLink="false">./../../index.html?p=4155</guid>
 
 					<description><![CDATA[There are many great BI tools out there that enable powerful analytics and data visualization but sometimes the right tool for the job is the one you already have sitting on your laptop. MongoDB 3.2 introduced the MongoDB Connector for BI which presents an SQL API to allow BI tools to read data from your]]></description>
 										<content:encoded><![CDATA[<p>There are many great BI tools out there that enable powerful analytics and data visualization but sometimes the right tool for the job is the one you already have sitting on your laptop.</p>
@@ -49,7 +49,7 @@
 <p>More information on the BI connector as well as other MongoDB 3.2 features can be found in <a href="https://www.mongodb.com/collateral/mongodb-3-2-whats-new">MongoDB 3.2: What’s New</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/analyzing-data-in-microsoft-excel-with-the-mongodb-connector-for-bi/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/analyzing-data-in-microsoft-excel-with-the-mongodb-connector-for-bi/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		<enclosure url="http://clusterdb.com/upload/BI_Connector_with_Excel.mp4" length="231116948" type="video/mp4" />
@@ -57,8 +57,8 @@
 			</item>
 		<item>
 		<title>Free Webinar: Document Validation in MongoDB 3.2</title>
-		<link>/mongodb/free-webinar-document-validation-in-mongodb-3-2</link>
-					<comments>/mongodb/free-webinar-document-validation-in-mongodb-3-2#respond</comments>
+		<link>./../../mongodb/free-webinar-document-validation-in-mongodb-3-2/index.html</link>
+					<comments>./../../mongodb/free-webinar-document-validation-in-mongodb-3-2/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 26 Oct 2015 22:27:01 +0000</pubDate>
@@ -67,10 +67,10 @@
 		<category><![CDATA[Document Validation]]></category>
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB 3.2]]></category>
-		<guid isPermaLink="false">/?p=4120</guid>
+		<guid isPermaLink="false">./../../index.html?p=4120</guid>
 
 					<description><![CDATA[I’ll be presenting a free webinar on Thursday29th Octover – the new Document Validation feature coming in MongoDB 3.2. Thursday, October 29, 2015 9am PDT &#124; 12pm EDT &#124; 4pm GMT One of MongoDB’s primary attractions for developers is that it gives them the ability to start application development without needing to define a formal, up-front]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2015/09/Document_Validation_rule.png"><img decoding="async" src="/wp-content/uploads/2015/09/Document_Validation_rule-300x114.png" alt="Defining MongoDB Document Validation Rules" width="300" height="114" class="alignright size-medium wp-image-4110" srcset="/wp-content/uploads/2015/09/Document_Validation_rule-300x114.png 300w, /wp-content/uploads/2015/09/Document_Validation_rule-1024x390.png 1024w, /wp-content/uploads/2015/09/Document_Validation_rule-900x343.png 900w" sizes="(max-width: 300px) 100vw, 300px" /></a>I’ll be presenting a free webinar on Thursday29th Octover – the new Document Validation feature coming in MongoDB 3.2. </p>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2015/09/Document_Validation_rule.png"><img decoding="async" src="./../../wp-content/uploads/2015/09/Document_Validation_rule-300x114.png" alt="Defining MongoDB Document Validation Rules" width="300" height="114" class="alignright size-medium wp-image-4110" srcset="./../../wp-content/uploads/2015/09/Document_Validation_rule-300x114.png 300w, ./../../wp-content/uploads/2015/09/Document_Validation_rule-1024x390.png 1024w, ./../../wp-content/uploads/2015/09/Document_Validation_rule-900x343.png 900w" sizes="(max-width: 300px) 100vw, 300px" /></a>I’ll be presenting a free webinar on Thursday29th Octover – the new Document Validation feature coming in MongoDB 3.2. </p>
 <p>Thursday, October 29, 2015<br />
 9am PDT | 12pm EDT | 4pm GMT</p>
 <p>One of MongoDB’s primary attractions for developers is that it gives them the ability to start application development without needing to define a formal, up-front schema. Operations teams appreciate the fact that they don&#8217;t need to perform a time-consuming schema upgrade operation every time the developers need to store a different attribute.</p>
@@ -80,15 +80,15 @@
 <p>The webinar is free but you need to <a href="https://www.mongodb.com/webinar/document-validation-in-mongodb-3-2">register in advance here</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/free-webinar-document-validation-in-mongodb-3-2/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/free-webinar-document-validation-in-mongodb-3-2/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>MongoDB Document Validation &#8211; London MUG charts</title>
-		<link>/mongodb/mongodb-document-validation-london-mug-charts</link>
-					<comments>/mongodb/mongodb-document-validation-london-mug-charts#respond</comments>
+		<link>./../../mongodb/mongodb-document-validation-london-mug-charts/index.html</link>
+					<comments>./../../mongodb/mongodb-document-validation-london-mug-charts/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 16 Sep 2015 15:37:48 +0000</pubDate>
@@ -98,7 +98,7 @@
 		<category><![CDATA[document]]></category>
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB 3.2]]></category>
-		<guid isPermaLink="false">/?p=4109</guid>
+		<guid isPermaLink="false">./../../index.html?p=4109</guid>
 
 					<description><![CDATA[Last night I preented on the MongoDB 3.2 Documentation Validation feature at the London MongoDB User Group meetup; the charts are shared here. Unfortunately, I didn&#8217;t record the demo and so you&#8217;ll have to grab me at a future MUG if you&#8217;d like to see that! Abstract One of MongoDB’s primary appeals to developers is]]></description>
 										<content:encoded><![CDATA[<p>Last night I preented on the MongoDB 3.2 Documentation Validation feature at the <a href="http://www.meetup.com/London-MongoDB-User-Group/events/224606434/" target="_blank">London MongoDB User Group meetup</a>; the charts are shared here. Unfortunately, I didn&#8217;t record the demo and so you&#8217;ll have to grab me at a future MUG if you&#8217;d like to see that!</p>
@@ -112,7 +112,7 @@
 <p>Please feel free to ask any questions through comments on this post.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/mongodb-document-validation-london-mug-charts/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/mongodb-document-validation-london-mug-charts/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

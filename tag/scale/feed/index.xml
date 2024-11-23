@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Scale &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/scale/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Fri, 20 Feb 2015 14:49:01 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Choosing the right MySQL High Availability Solution – webinar replay</title>
-		<link>/mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay</link>
-					<comments>/mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay#respond</comments>
+		<link>./../../mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/index.html</link>
+					<comments>./../../mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 20 Feb 2015 14:49:01 +0000</pubDate>
@@ -35,10 +35,10 @@
 		<category><![CDATA[MySQL Cluster]]></category>
 		<category><![CDATA[Replication]]></category>
 		<category><![CDATA[Scale]]></category>
-		<guid isPermaLink="false">/?p=4038</guid>
+		<guid isPermaLink="false">./../../index.html?p=4038</guid>
 
 					<description><![CDATA[Earlier this week, I presented a webinar on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application. The replay of this webinar can now be viewed here or if you just want to look at the charts then scroll down. At the end]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png"><img fetchpriority="high" decoding="async" class="aligncenter size-full wp-image-2970" src="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png" alt="MySQL-HA-Logo1.png" width="950" height="100" srcset="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png 950w, /wp-content/uploads/2013/10/MySQL-HA-Logo1-300x31.png 300w" sizes="(max-width: 950px) 100vw, 950px" /></a>Earlier this week, I presented a webinar on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application.</p>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/10/MySQL-HA-Logo1.png"><img fetchpriority="high" decoding="async" class="aligncenter size-full wp-image-2970" src="./../../wp-content/uploads/2013/10/MySQL-HA-Logo1.png" alt="MySQL-HA-Logo1.png" width="950" height="100" srcset="./../../wp-content/uploads/2013/10/MySQL-HA-Logo1.png 950w, ./../../wp-content/uploads/2013/10/MySQL-HA-Logo1-300x31.png 300w" sizes="(max-width: 950px) 100vw, 950px" /></a>Earlier this week, I presented a webinar on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application.</p>
 <p>The <a title="Achieving MySQL High Availability, Learn to Select Your Best Option - webinar replay" href="https://event.on24.com/eventRegistration/EventLobbyServlet?target=reg20.jsp&amp;eventid=930247&amp;sessionid=1&amp;key=FF21049401BAD50579B6733B15BC9D36&amp;sourcepage=register" target="_blank">replay of this webinar can now be viewed here</a> or if you just want to look at the charts then scroll down. At the end of this post, I include a summary of the Q&amp;A from the webinar.</p>
 <p><span style="color: #333399;">How important is your data? Can you afford to lose it? What about just some of it? What would be the impact if you couldn&#8217;t access it for a minute, an hour, a day or a week?</span></p>
 <p><span style="color: #333399;">Different applications can have very different requirements for High Availability. Some need 100% data reliability with 24x7x365 read &amp; write access while many others are better served by a simpler approach with more modest HA ambitions.</span></p>
@@ -76,19 +76,19 @@
 <li><strong>In MySQL cluster is all the data replicated to all of the data nodes?</strong> Data is synchrously replicated between the 2 data nodes forming a node group. Different node groups are responsible for different shards for any given table</li>
 <li><strong>What&#8217;s the maximum number of data nodes in MySQL Cluster?</strong> 48</li>
 <li><strong>Which it best inter-connect method between MySQL Cluster data nodes for highest performance?</strong> Infiniband and GB Ethernet have both shown great results. If you&#8217;re able to configure the behaviour then low latency will help get the best performance</li>
-<li><strong>Can I colocate MySQL Cluster data nodes with MySQL Servers in order use all posible resources?</strong> Yes, you can co-locate data nodes and MySQL Servers. Note that the management node (ndb_mgmd) should not run on the same machine as any of the data nodes &#8211; <a title="read this post for details on how to deploy MySQL Cluster nodes for High Availability" href="/mysql-cluster/mysql-cluster-fault-tolerance-impact-of-deployment-decisions" target="_blank">read this post for details on how to deploy MySQL Cluster nodes for High Availability</a></li>
+<li><strong>Can I colocate MySQL Cluster data nodes with MySQL Servers in order use all posible resources?</strong> Yes, you can co-locate data nodes and MySQL Servers. Note that the management node (ndb_mgmd) should not run on the same machine as any of the data nodes &#8211; <a title="read this post for details on how to deploy MySQL Cluster nodes for High Availability" href="./../../mysql-cluster/mysql-cluster-fault-tolerance-impact-of-deployment-decisions/index.html" target="_blank">read this post for details on how to deploy MySQL Cluster nodes for High Availability</a></li>
 </ul>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Sharding &#038; HA &#8211; MySQL Fabric Webinar</title>
-		<link>/mysql-fabric/sharding-ha-mysql-fabric-webinar</link>
-					<comments>/mysql-fabric/sharding-ha-mysql-fabric-webinar#respond</comments>
+		<link>./../../mysql-fabric/sharding-ha-mysql-fabric-webinar/index.html</link>
+					<comments>./../../mysql-fabric/sharding-ha-mysql-fabric-webinar/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 16 Jun 2014 16:32:17 +0000</pubDate>
@@ -99,10 +99,10 @@
 		<category><![CDATA[mysql fabric]]></category>
 		<category><![CDATA[Scale]]></category>
 		<category><![CDATA[sharding]]></category>
-		<guid isPermaLink="false">/?p=3906</guid>
+		<guid isPermaLink="false">./../../index.html?p=3906</guid>
 
 					<description><![CDATA[On Thursday (19th June), Mats Kindahl and I will be presenting a free webinar on why and how you should be using MySQL Fabric to add Sharding (scaling out reads &#038; writes) and High Availability to MySQL. This product has only recently gone GA and so this is a good chance to discover it&#8217;s for]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2014/06/b12-mysql-fabric-no-button.png"><img decoding="async" src="/wp-content/uploads/2014/06/b12-mysql-fabric-no-button-1024x352.png" alt="MySQL Fabric - Sharding and High Availability" width="480" height="165" class="aligncenter size-large wp-image-3907" srcset="/wp-content/uploads/2014/06/b12-mysql-fabric-no-button-1024x352.png 1024w, /wp-content/uploads/2014/06/b12-mysql-fabric-no-button-300x103.png 300w, /wp-content/uploads/2014/06/b12-mysql-fabric-no-button-900x309.png 900w, /wp-content/uploads/2014/06/b12-mysql-fabric-no-button.png 1280w" sizes="(max-width: 480px) 100vw, 480px" /></a></p>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2014/06/b12-mysql-fabric-no-button.png"><img decoding="async" src="./../../wp-content/uploads/2014/06/b12-mysql-fabric-no-button-1024x352.png" alt="MySQL Fabric - Sharding and High Availability" width="480" height="165" class="aligncenter size-large wp-image-3907" srcset="./../../wp-content/uploads/2014/06/b12-mysql-fabric-no-button-1024x352.png 1024w, ./../../wp-content/uploads/2014/06/b12-mysql-fabric-no-button-300x103.png 300w, ./../../wp-content/uploads/2014/06/b12-mysql-fabric-no-button-900x309.png 900w, ./../../wp-content/uploads/2014/06/b12-mysql-fabric-no-button.png 1280w" sizes="(max-width: 480px) 100vw, 480px" /></a></p>
 <p>On Thursday (19th June), Mats Kindahl and I will be presenting a free webinar on why and how you should be using MySQL Fabric to add Sharding (scaling out reads &#038; writes) and High Availability to MySQL. This product has only recently gone GA and so this is a good chance to discover it&#8217;s for you and to get your questions answered by the people who wrote the software! All you need to do is <a href="http://www.mysql.com/news-and-events/web-seminars/mysql-fabric-high-availability-automated-sharding-for-mysql/" title="MySQL Fabric - High Availability &#038; Automated Sharding for MySQL" target="_blank">register for the MySQL Fabric webinar here</a>.</p>
 <h3>Abstract</h3>
 <p>MySQL Fabric is built around an extensible and open source framework for managing farms of MySQL Servers. Currently two features have been implemented &#8211; High Availability (built on top of MySQL Replication) and scaling out using data sharding. These features can be used in isolation or in combination. MySQL Fabric aware connectors allow transactions and queries to be routed to the correct servers without the need for a proxy node, so operations run as quickly as ever. In this webinar you will learn what MySQL Fabric is, what it can achieve and how it is used &#8211; by DBAs, Dev-Ops and developers. You&#8217;ll also be exposed to what is happening under the covers. In addition to the presentation, there will be live on-line Q&#038;A with the engineering team. This is a great opportunity to learn about the latest developments directly from the people building them.</p>
@@ -125,15 +125,15 @@
 </ul>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-fabric/sharding-ha-mysql-fabric-webinar/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-fabric/sharding-ha-mysql-fabric-webinar/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>MySQL Fabric &#8211; adding Scaling to MySQL</title>
-		<link>/mysql-fabric/mysql-fabric-add-scaling-to-mysql</link>
-					<comments>/mysql-fabric/mysql-fabric-add-scaling-to-mysql#comments</comments>
+		<link>./../../mysql-fabric/mysql-fabric-add-scaling-to-mysql/index.html</link>
+					<comments>./../../mysql-fabric/mysql-fabric-add-scaling-to-mysql/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 24 Mar 2014 16:23:27 +0000</pubDate>
@@ -143,15 +143,15 @@
 		<category><![CDATA[mysql fabric]]></category>
 		<category><![CDATA[Scale]]></category>
 		<category><![CDATA[sharding]]></category>
-		<guid isPermaLink="false">/?p=3821</guid>
+		<guid isPermaLink="false">./../../index.html?p=3821</guid>
 
 					<description><![CDATA[MySQL Fabric is a new framework that adds High Availability (HA) and/or scaling-out for MySQL. This is the second in a series of posts on the new MySQL Fabric framework; the first article (MySQL Fabric – adding High Availability to MySQL) explained how MySQL Fabric can deliver HA and then stepped through all of the]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2014/03/fabric3.png"><img loading="lazy" decoding="async" class="aligncenter size-full wp-image-3800" alt="MySQL Fabric - High Availability and Scalability for MySQL" src="/wp-content/uploads/2014/03/fabric3.png" width="725" height="352" srcset="/wp-content/uploads/2014/03/fabric3.png 725w, /wp-content/uploads/2014/03/fabric3-300x145.png 300w" sizes="auto, (max-width: 725px) 100vw, 725px" /></a></p>
-<p>MySQL Fabric is a new framework that adds High Availability (HA) and/or scaling-out for MySQL. This is the second in a series of posts on the new MySQL Fabric framework; the first article (<a title="MySQL Fabric – adding High Availability to MySQL" href="/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql">MySQL Fabric – adding High Availability to MySQL</a>) explained how MySQL Fabric can deliver HA and then stepped through all of the steps to configure and use it.</p>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2014/03/fabric3.png"><img loading="lazy" decoding="async" class="aligncenter size-full wp-image-3800" alt="MySQL Fabric - High Availability and Scalability for MySQL" src="./../../wp-content/uploads/2014/03/fabric3.png" width="725" height="352" srcset="./../../wp-content/uploads/2014/03/fabric3.png 725w, ./../../wp-content/uploads/2014/03/fabric3-300x145.png 300w" sizes="auto, (max-width: 725px) 100vw, 725px" /></a></p>
+<p>MySQL Fabric is a new framework that adds High Availability (HA) and/or scaling-out for MySQL. This is the second in a series of posts on the new MySQL Fabric framework; the first article (<a title="MySQL Fabric – adding High Availability to MySQL" href="./../../mysql-fabric/mysql-fabric-adding-high-availability-to-mysql/index.html">MySQL Fabric – adding High Availability to MySQL</a>) explained how MySQL Fabric can deliver HA and then stepped through all of the steps to configure and use it.</p>
 <p>This post focuses on using MySQL Fabric to scale out both reads and writes across multiple MySQL Servers. It starts with an introduction to scaling out (by partitioning/sharding data) and how MySQL Fabric achieves it before going on to work through a full example of configuring sharding across a farm of MySQL Servers together with the code that the application developer needs to write in order to exploit it. Note that at the time of writing, MySQL Fabric is not yet GA but is available as a public alpha.</p>
 <h3><a class="anchor" href="#scaling-out---sharding" name="scaling-out---sharding"></a>Scaling Out &#8211; Sharding</h3>
-<p>When nearing the capacity or write performance limit of a single MySQL Server (or <a title="MySQL Fabric – adding High Availability to MySQL" href="/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql">HA group</a>), MySQL Fabric can be used to scale-out the database servers by partitioning the data across multiple MySQL Server &#8220;groups&#8221;. Note that a group could contain a single MySQL Server or it could be a HA group.</p>
-<p><a href="/wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-08.55.22.png"><img loading="lazy" decoding="async" class="aligncenter size-full wp-image-3825" alt="MySQL Fabric cluster" src="/wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-08.55.22.png" width="606" height="554" srcset="/wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-08.55.22.png 606w, /wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-08.55.22-300x274.png 300w" sizes="auto, (max-width: 606px) 100vw, 606px" /></a></p>
+<p>When nearing the capacity or write performance limit of a single MySQL Server (or <a title="MySQL Fabric – adding High Availability to MySQL" href="./../../mysql-fabric/mysql-fabric-adding-high-availability-to-mysql/index.html">HA group</a>), MySQL Fabric can be used to scale-out the database servers by partitioning the data across multiple MySQL Server &#8220;groups&#8221;. Note that a group could contain a single MySQL Server or it could be a HA group.</p>
+<p><a href="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-08.55.22.png"><img loading="lazy" decoding="async" class="aligncenter size-full wp-image-3825" alt="MySQL Fabric cluster" src="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-08.55.22.png" width="606" height="554" srcset="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-08.55.22.png 606w, ./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-08.55.22-300x274.png 300w" sizes="auto, (max-width: 606px) 100vw, 606px" /></a></p>
 <p>The administrator defines how data should be partitioned/sharded between these servers; this is done by creating shard mappings. A shard mapping applies to a set of tables and for each table the administrator specifies which column from those tables should be used as a shard key (the shard key will subsequently be used by MySQL Fabric to calculate which shard a specific row from one of those tables should be part of). Because all of these tables use the same shard key and mapping, the use of the same column value in those tables will result in those rows being in the same shard &#8211; allowing a single transaction to access all of them. For example, if using the subscriber-id column from multiple tables then all of the data for a specific subscriber will be in the same shard. The administrator then defines how that shard key should be used to calculate the shard number:</p>
 <ul>
 <li><strong>HASH</strong>: A hash function is run on the shard key to generate the shard number. If values held in the column used as the sharding key don&#8217;t tend to have too many repeated values then this should result in an even partitioning of rows across the shards.</li>
@@ -164,7 +164,7 @@
 <h2><a class="anchor" href="#worked-example" name="worked-example"></a>Worked Example</h2>
 <p>The following steps set up the sharded MySQL configuration shown here before running some (Python) code against &#8211; with queries and transactions routed to the correct MySQL Server.</p>
 <h3><a class="anchor" href="#building-the-sharded-mysql-server-farm" name="building-the-sharded-mysql-server-farm"></a>Building the Sharded MySQL Server Farm</h3>
-<p><a href="/wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-12.19.22.png"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-3835" alt="Sharding using MySQL Fabric" src="/wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-12.19.22-289x300.png" width="289" height="300" srcset="/wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-12.19.22-289x300.png 289w, /wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-12.19.22.png 800w" sizes="auto, (max-width: 289px) 100vw, 289px" /></a></p>
+<p><a href="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-12.19.22.png"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-3835" alt="Sharding using MySQL Fabric" src="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-12.19.22-289x300.png" width="289" height="300" srcset="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-12.19.22-289x300.png 289w, ./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-12.19.22.png 800w" sizes="auto, (max-width: 289px) 100vw, 289px" /></a></p>
 <p>The machines being used already have MySQL 5.6 installed (though in a custom location) and so the only software pre-requisite is to install the MySQL connector for Python from the &#8220;Development Releases&#8221; tab from the <a title="MySQL Connector/Python download page" href="http://dev.mysql.com/downloads/connector/python/">connector download page</a> and MySQL Fabric (part of MySQL Utilities) from the &#8220;Development Releases&#8221; tab on the <a title="MySQL Utilities - Including MySQL Fabric - download page" href="http://dev.mysql.com/downloads/tools/utilities/">MySQL Utilities download page</a>:</p>
 <pre>[root@fab1 mysql ~]# rpm -i mysql-connector-python-1.2.0-1.el6.noarch.rpm
 [root@fab1 mysql ~]# rpm -i mysql-utilities-1.4.1-1.el6.noarch.rpm</pre>
@@ -676,7 +676,7 @@ cur.execute(
     )</pre>
 <p>The code can then be executed:</p>
 <pre>[mysql@fab1 myfab]$ python setup_table_shards.py</pre>
-<p>The next piece of application code adds some records to the <code>test.subscribers</code> table. To ensure that the connector can route the transactions to the correct group, the following properties are set for the connection: <code>scope</code> is set to <code>fabric.SCOPE_LOCAL</code> (i.e. not global); <code>tables</code> is set to <code>"test.subscribers"</code> which allows the connector to select the correct mapping and <code>key</code> is set to the value of the <code>sub_no</code> being used for the row in the current transaction so that the connector can perform a range test on it to find the correct shard. The <code>mode</code> property is also set to <code>fabric.MODE_READWRITE</code> (if [HA groups]:(<a href="/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql">/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql</a> &#8220;MySQL Fabric – adding High Availability to MySQL&#8221;) were being used then this would tell the connector to send the transaction to the primary).</p>
+<p>The next piece of application code adds some records to the <code>test.subscribers</code> table. To ensure that the connector can route the transactions to the correct group, the following properties are set for the connection: <code>scope</code> is set to <code>fabric.SCOPE_LOCAL</code> (i.e. not global); <code>tables</code> is set to <code>"test.subscribers"</code> which allows the connector to select the correct mapping and <code>key</code> is set to the value of the <code>sub_no</code> being used for the row in the current transaction so that the connector can perform a range test on it to find the correct shard. The <code>mode</code> property is also set to <code>fabric.MODE_READWRITE</code> (if [HA groups]:(<a href="./../../mysql-fabric/mysql-fabric-adding-high-availability-to-mysql/index.html">./../../mysql-fabric/mysql-fabric-adding-high-availability-to-mysql/index.html</a> &#8220;MySQL Fabric – adding High Availability to MySQL&#8221;) were being used then this would tell the connector to send the transaction to the primary).</p>
 <pre>[mysql@fab1 myfab]$ cat add_subs_shards.py
 import mysql.connector
 from mysql.connector import fabric
@@ -726,7 +726,7 @@ add_subscriber(conn, 17542, "Bobby", "Ball")</pre>
 |  15000 | Jimmy      | White     |
 |  17542 | Bobby      | Ball      |
 +--------+------------+-----------+</pre>
-<p>The final piece of application code reads back the rows. Note that in this case the connection&#8217;s <code>mode</code> property is set to <code>fabric.READONLY</code> which tells the connector that if [HA groups]:(<a href="/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql">/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql</a> &#8220;MySQL Fabric – adding High Availability to MySQL&#8221;) were being used then the queries could be sent to any of the Secondaries.</p>
+<p>The final piece of application code reads back the rows. Note that in this case the connection&#8217;s <code>mode</code> property is set to <code>fabric.READONLY</code> which tells the connector that if [HA groups]:(<a href="./../../mysql-fabric/mysql-fabric-adding-high-availability-to-mysql/index.html">./../../mysql-fabric/mysql-fabric-adding-high-availability-to-mysql/index.html</a> &#8220;MySQL Fabric – adding High Availability to MySQL&#8221;) were being used then the queries could be sent to any of the Secondaries.</p>
 <pre>[mysql@fab1 myfab]$ cat read_table_shards.py
 import mysql.connector
 from mysql.connector import fabric
@@ -764,12 +764,12 @@ find_subscriber(conn, 17542)</pre>
 <h2><a class="anchor" href="#mysql-fabric-architecture--extensibility" name="mysql-fabric-architecture--extensibility"></a>MySQL Fabric Architecture &amp; Extensibility</h2>
 <p>MySQL Fabric has been architected for extensibility at a number of levels. For example, in the first release the only option for implementing HA is based on MySQL Replication but in future releases we hope to add further options (for example, MySQL Cluster). We also hope to see completely new applications around the managing of farms of MySQL Servers &#8211; both from Oracle and the wider MySQL community.</p>
 <p>The following diagram illustrates how new applications and protocols can be added using the pluggable framework.</p>
-<p><a href="/wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03-1024x501.png" alt="MySQL Fabric - Extensible Architecture" width="480" height="234" class="aligncenter size-large wp-image-3818" srcset="/wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03-1024x501.png 1024w, /wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03-300x146.png 300w, /wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03-900x440.png 900w, /wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03.png 1254w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a></p>
+<p><a href="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03.png"><img loading="lazy" decoding="async" src="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03-1024x501.png" alt="MySQL Fabric - Extensible Architecture" width="480" height="234" class="aligncenter size-large wp-image-3818" srcset="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03-1024x501.png 1024w, ./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03-300x146.png 300w, ./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03-900x440.png 900w, ./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03.png 1254w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a></p>
 <h2><a class="anchor" href="#next-steps" name="next-steps"></a>Next Steps</h2>
 <p>We really hope that people try out MySQL Fabric and let us know how you get on; one way is to comment on this post, another is to post to the <a title="MySQL Forums :: Fabric, Sharding, HA, Utilities" href="http://forums.mysql.com/list.php?144">MySQL Fabric forum</a> or if you think you&#8217;ve found a bug then <a title="MySQL bugs database" href="http://bugs.mysql.com/">raise a bug report</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-fabric/mysql-fabric-add-scaling-to-mysql/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-fabric/mysql-fabric-add-scaling-to-mysql/feed/index.html</wfw:commentRss>
 			<slash:comments>2</slash:comments>
 		
 		

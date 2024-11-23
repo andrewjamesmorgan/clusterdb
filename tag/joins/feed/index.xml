@@ -9,8 +9,8 @@
 
 <channel>
 	<title>joins &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/joins/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Thu, 29 Apr 2010 15:03:25 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Trying out MySQL Push-Down-Join (SPJ) preview</title>
-		<link>/mysql-cluster/trying-out-mysql-push-down-join-spj-preview</link>
-					<comments>/mysql-cluster/trying-out-mysql-push-down-join-spj-preview#respond</comments>
+		<link>./../../mysql-cluster/trying-out-mysql-push-down-join-spj-preview/index.html</link>
+					<comments>./../../mysql-cluster/trying-out-mysql-push-down-join-spj-preview/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 29 Apr 2010 15:03:25 +0000</pubDate>
@@ -31,7 +31,7 @@
 		<category><![CDATA[MySQL]]></category>
 		<category><![CDATA[push down join]]></category>
 		<category><![CDATA[spj]]></category>
-		<guid isPermaLink="false">/?p=1045</guid>
+		<guid isPermaLink="false">./../../index.html?p=1045</guid>
 
 					<description><![CDATA[At the 2010 MySQL User Conference, Jonas Oreland presented on the work he&#8217;s been doing on improving the performance of joins when using MySQL Cluster &#8211; the slides are available for download. While not ready for production systems, a preview version is available for you to try out. The purpose of this blog is to]]></description>
 										<content:encoded><![CDATA[<p>At the 2010 MySQL User Conference, <a href="http://jonasoreland.blogspot.com/" target="_blank">Jonas Oreland </a>presented on the work he&#8217;s been doing on improving the performance of joins when using MySQL Cluster &#8211; <a href="http://assets.en.oreilly.com/1/event/36/MySQL%20Cluster%20and%20Pushdown-joins%20_In%20Pursuit%20of%20the%20Holy%20Grail_%20Presentation.pdf" target="_blank">the slides are available for download</a>. While <strong>not</strong> ready for production systems, a preview version is available for you to try out. The purpose of this blog is to step through  testing an example query as well as presenting the results (<strong>SPOILER:</strong> In one configuration, I got a 50x speedup!).</p>
@@ -40,7 +40,7 @@
 <p>Joins in MySQL Cluster are implemented as nested-loop joins within the MySQL Server; this can be inefficient as it results in many trips to the data nodes to fetch the required data. SPJ works by pushing the join (actually a spec of the needed data) down into the data nodes where the data can be collected and sent back up to the MySQL Server much more efficiently.</p>
 <p>For my tests, I used 2 different configurations. In both cases there are 2 data nodes running on 2 physical hosts. In the first configuration the MySQL Server resides on one of those 2 hosts. In the second configuration, the MySQL Server is moved to a virtual machine running on a 3rd host.</p>
 <h3>Setting up the Cluster</h3>
-<p>On each of the 3 hosts, I downloaded the software from <a href="ftp://ftp.mysql.com/pub/mysql/download/cluster_telco/mysql-5.1.44-ndb-7.1.3-spj-preview/" target="_blank">ftp://ftp.mysql.com/pub/mysql/download/cluster_telco/mysql-5.1.44-ndb-7.1.3-spj-preview/</a> and then compiled and installed it. If you&#8217;re not comfortable with that then you can find instructions in this <a href="/mysql-cluster/mysql-cluster-7-0-7-source-released/" target="_blank">earlier blog</a> or if you&#8217;re used to using the tools from severalnines then check out the SPJ instructions on <a href="http://johanandersson.blogspot.com/2010/04/mysql-cluster-spj-preview-feedback_27.html" target="_blank">Johan&#8217;s blog</a>.</p>
+<p>On each of the 3 hosts, I downloaded the software from <a href="ftp://ftp.mysql.com/pub/mysql/download/cluster_telco/mysql-5.1.44-ndb-7.1.3-spj-preview/" target="_blank">ftp://ftp.mysql.com/pub/mysql/download/cluster_telco/mysql-5.1.44-ndb-7.1.3-spj-preview/</a> and then compiled and installed it. If you&#8217;re not comfortable with that then you can find instructions in this <a href="./../../mysql-cluster/mysql-cluster-7-0-7-source-released/index.html" target="_blank">earlier blog</a> or if you&#8217;re used to using the tools from severalnines then check out the SPJ instructions on <a href="http://johanandersson.blogspot.com/2010/04/mysql-cluster-spj-preview-feedback_27.html" target="_blank">Johan&#8217;s blog</a>.</p>
 <h3>Create the schema</h3>
 <p>The 3 tables I used can be created with these commands from the mysql client:</p>
 <pre style="padding-left: 30px;"><!-- BODY { FONT-FAMILY:Tahoma; FONT-SIZE:10pt } P { FONT-FAMILY:Tahoma; FONT-SIZE:10pt } DIV { FONT-FAMILY:Tahoma; FONT-SIZE:10pt } TD { FONT-FAMILY:Tahoma; FONT-SIZE:10pt } --><span style="color: #800000;">mysql&gt; create database clusterdb; use clusterdb;
@@ -50,7 +50,7 @@ mysql&gt; create table department (id int not null primary key,
 name int) engine=ndb;
 mysql&gt; create table roles (dept int not null primary key,
 role varchar (30)) engine=ndb;</span></pre>
-<p>Each of these tables is then populated with 100,000 rows (<a href="/wp-content/uploads/2010/04/data.zip" target="_blank">the files can be downloaded from here</a>).</p>
+<p>Each of these tables is then populated with 100,000 rows (<a href="./../../wp-content/uploads/2010/04/data.zip" target="_blank">the files can be downloaded from here</a>).</p>
 <p>Once extracted, the data should be loaded into the database:</p>
 <pre style="padding-left: 30px;"><span style="color: #800000;">mysql&gt; use clusterdb;</span></pre>
 <pre style="padding-left: 30px;"><span style="color: #800000;">mysql&gt; load data local infile "/home/billy/Dropbox/LINUX/projects/SPJ/subs.csv"
@@ -181,7 +181,7 @@ mysql&gt; SELECT count(*) FROM subs, department, roles WHERE subs.country=44 AND
 1 row in set (<span style="color: #ff6600;"><strong>3 min 57.76 sec</strong></span>)</span></pre>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/trying-out-mysql-push-down-join-spj-preview/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/trying-out-mysql-push-down-join-spj-preview/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

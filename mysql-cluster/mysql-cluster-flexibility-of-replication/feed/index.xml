@@ -8,8 +8,8 @@
 <channel>
 	<title>
 	Comments on: MySQL Cluster &#8211; flexibility of replication	</title>
-	<atom:link href="/mysql-cluster/mysql-cluster-flexibility-of-replication/feed" rel="self" type="application/rss+xml" />
-	<link>/mysql-cluster/mysql-cluster-flexibility-of-replication</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../mysql-cluster-flexibility-of-replication/index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Thu, 07 Mar 2013 09:51:09 +0000</lastBuildDate>
 	<sy:updatePeriod>
@@ -20,20 +20,20 @@
 	<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/mysql-cluster-flexibility-of-replication#comment-12</link>
+		<link>./../mysql-cluster-flexibility-of-replication/index.html#comment-12</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 07 Mar 2013 09:51:09 +0000</pubDate>
-		<guid isPermaLink="false">/?p=120#comment-12</guid>
+		<guid isPermaLink="false">./../../index.html?p=120#comment-12</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-flexibility-of-replication#comment-11&quot;&gt;Nils&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-flexibility-of-replication/index.html#comment-11&quot;&gt;Nils&lt;/a&gt;.
 
 Hi Nilesh,
 
  unless you&#039;re using MySQL Cluster, each MySQL Server can only have a single master. If you need to simulate multiple masters then you can write a script which over time switches from one master to another (using CHANGE MASTER command).
 
 Regards, Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-flexibility-of-replication#comment-11">Nils</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-flexibility-of-replication/index.html#comment-11">Nils</a>.</p>
 <p>Hi Nilesh,</p>
 <p> unless you&#8217;re using MySQL Cluster, each MySQL Server can only have a single master. If you need to simulate multiple masters then you can write a script which over time switches from one master to another (using CHANGE MASTER command).</p>
 <p>Regards, Andrew.</p>
@@ -43,11 +43,11 @@ Regards, Andrew.]]></description>
 		<item>
 		<title>
 		By: Nils		</title>
-		<link>/mysql-cluster/mysql-cluster-flexibility-of-replication#comment-11</link>
+		<link>./../mysql-cluster-flexibility-of-replication/index.html#comment-11</link>
 
 		<dc:creator><![CDATA[Nils]]></dc:creator>
 		<pubDate>Wed, 06 Mar 2013 04:33:03 +0000</pubDate>
-		<guid isPermaLink="false">/?p=120#comment-11</guid>
+		<guid isPermaLink="false">./../../index.html?p=120#comment-11</guid>
 
 					<description><![CDATA[Hello Andrew,
 
@@ -78,13 +78,13 @@ Thanks in Advance.]]></description>
 		<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/mysql-cluster-flexibility-of-replication#comment-10</link>
+		<link>./../mysql-cluster-flexibility-of-replication/index.html#comment-10</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 05 Mar 2013 15:21:12 +0000</pubDate>
-		<guid isPermaLink="false">/?p=120#comment-10</guid>
+		<guid isPermaLink="false">./../../index.html?p=120#comment-10</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-flexibility-of-replication#comment-9&quot;&gt;Nils&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-flexibility-of-replication/index.html#comment-9&quot;&gt;Nils&lt;/a&gt;.
 
 Hi Nils,
 
@@ -93,7 +93,7 @@ Hi Nils,
  In either case it should be pretty straight-forward as there is no issue with a single master having multiple slaves. Just have the tills connect as slaves to the local branch master.
 
 Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-flexibility-of-replication#comment-9">Nils</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-flexibility-of-replication/index.html#comment-9">Nils</a>.</p>
 <p>Hi Nils,</p>
 <p> Firstly &#8211; is this using MySQL Cluster or &#8216;regular&#8217; MySQL Servers?</p>
 <p> In either case it should be pretty straight-forward as there is no issue with a single master having multiple slaves. Just have the tills connect as slaves to the local branch master.</p>
@@ -104,11 +104,11 @@ Andrew.]]></description>
 		<item>
 		<title>
 		By: Nils		</title>
-		<link>/mysql-cluster/mysql-cluster-flexibility-of-replication#comment-9</link>
+		<link>./../mysql-cluster-flexibility-of-replication/index.html#comment-9</link>
 
 		<dc:creator><![CDATA[Nils]]></dc:creator>
 		<pubDate>Tue, 05 Mar 2013 13:53:21 +0000</pubDate>
-		<guid isPermaLink="false">/?p=120#comment-9</guid>
+		<guid isPermaLink="false">./../../index.html?p=120#comment-9</guid>
 
 					<description><![CDATA[Hello Andrew,
 
@@ -159,20 +159,20 @@ So for example: I have 3 Tills at Branch B1 than Brnach and Head Office should w
 		<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/mysql-cluster-flexibility-of-replication#comment-8</link>
+		<link>./../mysql-cluster-flexibility-of-replication/index.html#comment-8</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 22 Jun 2012 06:56:34 +0000</pubDate>
-		<guid isPermaLink="false">/?p=120#comment-8</guid>
+		<guid isPermaLink="false">./../../index.html?p=120#comment-8</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-flexibility-of-replication#comment-7&quot;&gt;Jacky.Huang&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-flexibility-of-replication/index.html#comment-7&quot;&gt;Jacky.Huang&lt;/a&gt;.
 
 Hi Jacky,
 
  you can always post specific questions on the MySQL Cluster forum at http://forums.mysql.com/list.php?25 or here.
 
 Regards, Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-flexibility-of-replication#comment-7">Jacky.Huang</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-flexibility-of-replication/index.html#comment-7">Jacky.Huang</a>.</p>
 <p>Hi Jacky,</p>
 <p> you can always post specific questions on the MySQL Cluster forum at <a href="http://forums.mysql.com/list.php?25" rel="nofollow ugc">http://forums.mysql.com/list.php?25</a> or here.</p>
 <p>Regards, Andrew.</p>
@@ -182,11 +182,11 @@ Regards, Andrew.]]></description>
 		<item>
 		<title>
 		By: Jacky.Huang		</title>
-		<link>/mysql-cluster/mysql-cluster-flexibility-of-replication#comment-7</link>
+		<link>./../mysql-cluster-flexibility-of-replication/index.html#comment-7</link>
 
 		<dc:creator><![CDATA[Jacky.Huang]]></dc:creator>
 		<pubDate>Wed, 20 Jun 2012 07:09:59 +0000</pubDate>
-		<guid isPermaLink="false">/?p=120#comment-7</guid>
+		<guid isPermaLink="false">./../../index.html?p=120#comment-7</guid>
 
 					<description><![CDATA[I&#039;m the first time look at your blog, that is very great!
 I am interested in MySQL NDB API, but I encountered many trouble, that made me so difficult. I&#039;d like to write somthing to support the one which have experienced it - like you! But I don&#039;t know how to ask your some questiones, but now just write this.]]></description>
@@ -198,11 +198,11 @@ I am interested in MySQL NDB API, but I encountered many trouble, that made me s
 		<item>
 		<title>
 		By: Setting up MySQL Asynchronous Replication for High Availability @ Andrew Morgan&#8217;s MySQL Cluster Database Blog		</title>
-		<link>/mysql-cluster/mysql-cluster-flexibility-of-replication#comment-6</link>
+		<link>./../mysql-cluster-flexibility-of-replication/index.html#comment-6</link>
 
 		<dc:creator><![CDATA[Setting up MySQL Asynchronous Replication for High Availability @ Andrew Morgan&#8217;s MySQL Cluster Database Blog]]></dc:creator>
 		<pubDate>Mon, 03 Aug 2009 17:04:45 +0000</pubDate>
-		<guid isPermaLink="false">/?p=120#comment-6</guid>
+		<guid isPermaLink="false">./../../index.html?p=120#comment-6</guid>
 
 					<description><![CDATA[[...] storage engine (MyISAM) but it&#8217;s possible to mix and match (for example, take a look at  MySQL Cluster – flexibility of replication). As this is intended as a simple introduction to replication, I&#8217;m keeping life simple by [...]]]></description>
 			<content:encoded><![CDATA[<p>[&#8230;] storage engine (MyISAM) but it&#8217;s possible to mix and match (for example, take a look at  MySQL Cluster – flexibility of replication). As this is intended as a simple introduction to replication, I&#8217;m keeping life simple by [&#8230;]</p>
@@ -212,11 +212,11 @@ I am interested in MySQL NDB API, but I encountered many trouble, that made me s
 		<item>
 		<title>
 		By: Twitted by merv		</title>
-		<link>/mysql-cluster/mysql-cluster-flexibility-of-replication#comment-5</link>
+		<link>./../mysql-cluster-flexibility-of-replication/index.html#comment-5</link>
 
 		<dc:creator><![CDATA[Twitted by merv]]></dc:creator>
 		<pubDate>Thu, 28 May 2009 04:11:48 +0000</pubDate>
-		<guid isPermaLink="false">/?p=120#comment-5</guid>
+		<guid isPermaLink="false">./../../index.html?p=120#comment-5</guid>
 
 					<description><![CDATA[[...] This post was Twitted by merv - Real-url.org [...]]]></description>
 			<content:encoded><![CDATA[<p>[&#8230;] This post was Twitted by merv &#8211; Real-url.org [&#8230;]</p>
@@ -226,11 +226,11 @@ I am interested in MySQL NDB API, but I encountered many trouble, that made me s
 		<item>
 		<title>
 		By: Twitted by dbmoore		</title>
-		<link>/mysql-cluster/mysql-cluster-flexibility-of-replication#comment-4</link>
+		<link>./../mysql-cluster-flexibility-of-replication/index.html#comment-4</link>
 
 		<dc:creator><![CDATA[Twitted by dbmoore]]></dc:creator>
 		<pubDate>Thu, 28 May 2009 01:24:26 +0000</pubDate>
-		<guid isPermaLink="false">/?p=120#comment-4</guid>
+		<guid isPermaLink="false">./../../index.html?p=120#comment-4</guid>
 
 					<description><![CDATA[[...] This post was Twitted by dbmoore - Real-url.org [...]]]></description>
 			<content:encoded><![CDATA[<p>[&#8230;] This post was Twitted by dbmoore &#8211; Real-url.org [&#8230;]</p>

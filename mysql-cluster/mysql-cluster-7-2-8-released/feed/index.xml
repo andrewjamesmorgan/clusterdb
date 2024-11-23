@@ -8,8 +8,8 @@
 <channel>
 	<title>
 	Comments on: MySQL Cluster 7.2.8 Released	</title>
-	<atom:link href="/mysql-cluster/mysql-cluster-7-2-8-released/feed" rel="self" type="application/rss+xml" />
-	<link>/mysql-cluster/mysql-cluster-7-2-8-released</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../mysql-cluster-7-2-8-released/index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Thu, 01 Nov 2012 10:36:41 +0000</lastBuildDate>
 	<sy:updatePeriod>
@@ -20,13 +20,13 @@
 	<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/mysql-cluster-7-2-8-released#comment-636</link>
+		<link>./../mysql-cluster-7-2-8-released/index.html#comment-636</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 01 Nov 2012 10:36:41 +0000</pubDate>
-		<guid isPermaLink="false">/?p=2506#comment-636</guid>
+		<guid isPermaLink="false">./../../index.html?p=2506#comment-636</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-2-8-released#comment-635&quot;&gt;Al&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-2-8-released/index.html#comment-635&quot;&gt;Al&lt;/a&gt;.
 
 Hi Al,
 
@@ -36,7 +36,7 @@ Hi Al,
 2) Extract the jars from the 7.2.8 Linux package (they should work just as well on Windows).
 
 Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-2-8-released#comment-635">Al</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-2-8-released/index.html#comment-635">Al</a>.</p>
 <p>Hi Al,</p>
 <p> there is an issue with the 7.2.8 Windows package in that it doesn&#8217;t contain the ClusterJ jars! You&#8217;ve a couple of options:</p>
 <p>1) Wait for 7.2.9<br />
@@ -48,11 +48,11 @@ Andrew.]]></description>
 		<item>
 		<title>
 		By: Al		</title>
-		<link>/mysql-cluster/mysql-cluster-7-2-8-released#comment-635</link>
+		<link>./../mysql-cluster-7-2-8-released/index.html#comment-635</link>
 
 		<dc:creator><![CDATA[Al]]></dc:creator>
 		<pubDate>Thu, 01 Nov 2012 08:32:13 +0000</pubDate>
-		<guid isPermaLink="false">/?p=2506#comment-635</guid>
+		<guid isPermaLink="false">./../../index.html?p=2506#comment-635</guid>
 
 					<description><![CDATA[Hi! I&#039;m doing a school project on fault tolerance and have setup a small database cluster using MySQL Cluster 7.2.8, by following the guide provided on the mysql website: http://downloads.mysql.com/tutorials/cluster/GetMySQLClusterRunning-Windows.pdf
 
@@ -74,18 +74,18 @@ Thank you very much. Apologies for all the inconvenience caused.]]></description
 		<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/mysql-cluster-7-2-8-released#comment-634</link>
+		<link>./../mysql-cluster-7-2-8-released/index.html#comment-634</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 23 Oct 2012 08:55:52 +0000</pubDate>
-		<guid isPermaLink="false">/?p=2506#comment-634</guid>
+		<guid isPermaLink="false">./../../index.html?p=2506#comment-634</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-2-8-released#comment-633&quot;&gt;dpk&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-2-8-released/index.html#comment-633&quot;&gt;dpk&lt;/a&gt;.
 
 Upgrades isn&#039;t the most documented process for MySQL Cluster but it&#039;s fairly straight-forward. Simply stop each process and then restart it using the new binary. By restarting one process at a time, the database stays up through the whole process. You should upgrade the management nodes first,  data nodes second and then finally the MySQL Servers. 
 
 Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-2-8-released#comment-633">dpk</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-2-8-released/index.html#comment-633">dpk</a>.</p>
 <p>Upgrades isn&#8217;t the most documented process for MySQL Cluster but it&#8217;s fairly straight-forward. Simply stop each process and then restart it using the new binary. By restarting one process at a time, the database stays up through the whole process. You should upgrade the management nodes first,  data nodes second and then finally the MySQL Servers. </p>
 <p>Andrew.</p>
 ]]></content:encoded>
@@ -94,11 +94,11 @@ Andrew.]]></description>
 		<item>
 		<title>
 		By: dpk		</title>
-		<link>/mysql-cluster/mysql-cluster-7-2-8-released#comment-633</link>
+		<link>./../mysql-cluster-7-2-8-released/index.html#comment-633</link>
 
 		<dc:creator><![CDATA[dpk]]></dc:creator>
 		<pubDate>Mon, 22 Oct 2012 21:07:51 +0000</pubDate>
-		<guid isPermaLink="false">/?p=2506#comment-633</guid>
+		<guid isPermaLink="false">./../../index.html?p=2506#comment-633</guid>
 
 					<description><![CDATA[Do you know of a MySQL Cluster upgrade guide? Specifically, a guide to upgrading to a new minor release (7.2.6 to 7.2.8)? I think we may be affected by a bug fixed in 7.2.8.]]></description>
 			<content:encoded><![CDATA[<p>Do you know of a MySQL Cluster upgrade guide? Specifically, a guide to upgrading to a new minor release (7.2.6 to 7.2.8)? I think we may be affected by a bug fixed in 7.2.8.</p>

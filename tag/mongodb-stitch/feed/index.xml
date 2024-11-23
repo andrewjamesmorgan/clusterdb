@@ -9,8 +9,8 @@
 
 <channel>
 	<title>MongoDB Stitch &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/mongodb-stitch/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Thu, 28 Mar 2019 09:54:35 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>How to create Dynamic Custom Roles with MongoDB Stitch</title>
-		<link>/mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch</link>
-					<comments>/mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch#respond</comments>
+		<link>./../../mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch/index.html</link>
+					<comments>./../../mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 28 Mar 2019 09:54:35 +0000</pubDate>
@@ -30,7 +30,7 @@
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
 		<category><![CDATA[serverless]]></category>
-		<guid isPermaLink="false">/?p=4566</guid>
+		<guid isPermaLink="false">./../../index.html?p=4566</guid>
 
 					<description><![CDATA[None of us want to write lots of code to control what data each user can access. In most cases, you can set up your data access controls in seconds by using Stitch&#8217;s built-in templates, e.g., &#8220;Users can read and write their own data&#8221; or &#8220;Users can read and write their own data. Users that]]></description>
 										<content:encoded><![CDATA[<p>None of us want to write lots of code to control what data each user can access. In most cases, you can set up your data access controls in seconds by using <a href="https://docs.mongodb.com/stitch/mongodb/define-roles-and-permissions/#select-a-collection-rule-template" title="Stitch includes templates to control what data a user can access">Stitch&#8217;s built-in templates</a>, e.g., &#8220;Users can read and write their own data&#8221; or &#8220;Users can read and write their own data. Users that belong to a sharing list can read that data&#8221;. Stitch also lets you create <a href="https://docs.mongodb.com/stitch/mongodb/define-roles-and-permissions/#define-the-role-s-apply-when-condition" title="Define your own criteria to identify a MongoDB Stitch role">custom roles</a> that you tailor to your application and schema – this post creates such a rule, querying a second collection when deciding whether to allow a user to insert a document.</p>
@@ -116,15 +116,15 @@ WriteResult({ "nInserted" : 1 })
 <p>I recently had someone ask me how to implement &#8220;traditional database roles&#8221; using Stitch, i.e. an administrator explicitly defines which user ids belong to a specific role, and then use that role to determine whether they can access a collection. You can use this same approach for that use case – have a collection that assigns users to roles and then find the user id in that collection from a Stitch function that&#8217;s used in roles for the collections you want to protect. You could then optimize the rules by including the users&#8217; roles as an attribute in their authentication token – but I&#8217;ll save that for a future post!</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Replace tedious coding with MongoDB Stitch and public APIs</title>
-		<link>/mongodb/replace-tedious-coding-with-mongodb-stitch-and-public-apis</link>
-					<comments>/mongodb/replace-tedious-coding-with-mongodb-stitch-and-public-apis#respond</comments>
+		<link>./../../mongodb/replace-tedious-coding-with-mongodb-stitch-and-public-apis/index.html</link>
+					<comments>./../../mongodb/replace-tedious-coding-with-mongodb-stitch-and-public-apis/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 14 Jan 2019 13:37:07 +0000</pubDate>
@@ -132,7 +132,7 @@ WriteResult({ "nInserted" : 1 })
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
 		<category><![CDATA[rest api]]></category>
-		<guid isPermaLink="false">/?p=4561</guid>
+		<guid isPermaLink="false">./../../index.html?p=4561</guid>
 
 					<description><![CDATA[Most apps and websites contain much functionality that&#8217;s tedious to implement and has been done thousands of times before. MongoDB Stitch takes care of a lot of these chores – for example, making it simple to interact with third-party APIs. This post explains how I used Stitch to do just that that this week. I]]></description>
 										<content:encoded><![CDATA[<p>Most apps and websites contain much functionality that&#8217;s tedious to implement and has been done thousands of times before. <a href="https://docs.mongodb.com/stitch/" title="MongoDB Stitch serverless platform">MongoDB Stitch</a> takes care of a lot of these <a href="https://www.mongodb.com/blog/post/mongodb-stitch--saving-developers-from-chores?jmp=blog" title="MongoDB Stitch – saving developers from chores">chores</a> – for example, making it simple to interact with third-party APIs. This post explains how I used Stitch to do just that that this week.</p>
@@ -216,22 +216,22 @@ WriteResult({ "nInserted" : 1 })
 <p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform?jmp=blog" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/replace-tedious-coding-with-mongodb-stitch-and-public-apis/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/replace-tedious-coding-with-mongodb-stitch-and-public-apis/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>From Legacy Website to Serverless with MongoDB Stitch Hosting</title>
-		<link>/mongodb/from-legacy-website-to-serverless-with-mongodb-stitch-hosting</link>
-					<comments>/mongodb/from-legacy-website-to-serverless-with-mongodb-stitch-hosting#respond</comments>
+		<link>./../../mongodb/from-legacy-website-to-serverless-with-mongodb-stitch-hosting/index.html</link>
+					<comments>./../../mongodb/from-legacy-website-to-serverless-with-mongodb-stitch-hosting/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 07 Jan 2019 12:12:22 +0000</pubDate>
 				<category><![CDATA[MongoDB]]></category>
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
-		<guid isPermaLink="false">/?p=4558</guid>
+		<guid isPermaLink="false">./../../index.html?p=4558</guid>
 
 					<description><![CDATA[From the start, Stitch has been great at serving up dynamic content and interacting with backend services. There was just one piece missing that meant that you still needed an app server or hosting service – storing and serving up your static assets (index.html, style.css, logo.png, etc.). The recent addition of Stitch Hosting, currently in]]></description>
 										<content:encoded><![CDATA[<p>From the start, <a href="https://docs.mongodb.com/stitch/" title="MongoDB Stitch serverless platform">Stitch</a> has been great at serving up dynamic content and interacting with backend services. There was just one piece missing that meant that you still needed an app server or hosting service – storing and serving up your static assets (<code>index.html</code>, <code>style.css</code>, <code>logo.png</code>, etc.). The recent addition of <a href="https://docs.mongodb.com/stitch/hosting/" title="MongoDB Stitch static file hosting">Stitch Hosting</a>, currently in beta, fixes that!</p>
@@ -279,15 +279,15 @@ WriteResult({ "nInserted" : 1 })
 <p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/from-legacy-website-to-serverless-with-mongodb-stitch-hosting/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/from-legacy-website-to-serverless-with-mongodb-stitch-hosting/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>MongoDB Stitch Triggers &#038; Amazon Kinesis – The AWS re:Invent Stitch Rover Demo</title>
-		<link>/mongodb/mongodb-stitch-triggers-amazon-kinesis-the-aws-reinvent-stitch-rover-demo</link>
-					<comments>/mongodb/mongodb-stitch-triggers-amazon-kinesis-the-aws-reinvent-stitch-rover-demo#respond</comments>
+		<link>./../../mongodb/mongodb-stitch-triggers-amazon-kinesis-the-aws-reinvent-stitch-rover-demo/index.html</link>
+					<comments>./../../mongodb/mongodb-stitch-triggers-amazon-kinesis-the-aws-reinvent-stitch-rover-demo/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 18 Dec 2018 15:21:26 +0000</pubDate>
@@ -296,7 +296,7 @@ WriteResult({ "nInserted" : 1 })
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB Mobile]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
-		<guid isPermaLink="false">/?p=4555</guid>
+		<guid isPermaLink="false">./../../index.html?p=4555</guid>
 
 					<description><![CDATA[This post delves into using MongoDB Stitch Triggers and the Stitch AWS service to push MongoDB database changes to Amazon Kinesis. This is the fifth and final article in a series of blog posts examining how the MongoDB Mobile/Stitch-controlled rover was put together for our AWS re:Invent demo. Stitch has simple, built-in integration with AWS]]></description>
 										<content:encoded><![CDATA[<p>This post delves into using <a href="https://docs.mongodb.com/stitch/triggers/" title="MongoDB Stitch database triggers">MongoDB Stitch Triggers</a> and the <a href="https://docs.mongodb.com/stitch/services/aws/" title="Using AWS services such as Kinesis through MongoDB Stitch">Stitch AWS service</a> to push MongoDB database changes to <a href="https://aws.amazon.com/kinesis/" title="Amazon Kinesis – Easily collect, process, and analyze video and data streams in real time">Amazon Kinesis</a>. This is the fifth and final article in a <a href="https://www.mongodb.com/blog/post/mongodb-stitchmobile-mars-rover-lands-at-aws-reinvent" title="MongoDB Mobile, MongoDB Stitch, and AWS Kinesis-powered MongoDB rover debuted at AWS re:Invent">series of blog posts</a> examining how the <a href="https://docs.mongodb.com/stitch/mongodb/mobile-overview/" title="MongoDB Mobile embedded database">MongoDB Mobile</a>/<a href="https://docs.mongodb.com/stitch/" title="MongoDB Stitch serverless platform">Stitch</a>-controlled rover was put together for our AWS re:Invent demo.</p>
@@ -338,15 +338,15 @@ WriteResult({ "nInserted" : 1 })
 <p>Why not <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch Tutorials">try Stitch out for yourself</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/mongodb-stitch-triggers-amazon-kinesis-the-aws-reinvent-stitch-rover-demo/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/mongodb-stitch-triggers-amazon-kinesis-the-aws-reinvent-stitch-rover-demo/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>MongoDB Stitch Functions – The AWS re:Invent Stitch Rover Demo</title>
-		<link>/mongodb/mongodb-stitch-functions-the-aws-reinvent-stitch-rover-demo</link>
-					<comments>/mongodb/mongodb-stitch-functions-the-aws-reinvent-stitch-rover-demo#respond</comments>
+		<link>./../../mongodb/mongodb-stitch-functions-the-aws-reinvent-stitch-rover-demo/index.html</link>
+					<comments>./../../mongodb/mongodb-stitch-functions-the-aws-reinvent-stitch-rover-demo/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 17 Dec 2018 15:35:32 +0000</pubDate>
@@ -355,7 +355,7 @@ WriteResult({ "nInserted" : 1 })
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB Mobile]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
-		<guid isPermaLink="false">/?p=4553</guid>
+		<guid isPermaLink="false">./../../index.html?p=4553</guid>
 
 					<description><![CDATA[This is the fourth in a series of blog posts examining how the MongoDB Mobile/Stitch-controlled rover was put together for our re:Invent demo. This post focuses on how a Stitch Function is used to provide aggregated sensor data such as the average temperature for the last 5 minutes. A common question we were asked at]]></description>
 										<content:encoded><![CDATA[<p>This is the fourth in a <a href="https://www.mongodb.com/blog/post/mongodb-stitchmobile-mars-rover-lands-at-aws-reinvent" title="MongoDB Mobile, MongoDB Stitch, and AWS Kinesis-powered MongoDB rover debuted at AWS re:Invent">series of blog posts</a> examining how the  <a href="https://docs.mongodb.com/stitch/mongodb/mobile-overview/" title="MongoDB Mobile embedded database">MongoDB Mobile</a>/<a href="https://docs.mongodb.com/stitch/" title="MongoDB Stitch serverless platform">Stitch</a>-controlled rover was put together for our re:Invent demo. This post focuses on how a <a href="https://docs.mongodb.com/stitch/functions/" title="MongoDB Stitch serverless functions">Stitch Function</a> is used to provide aggregated sensor data such as the average temperature for the last 5 minutes.</p>
@@ -385,15 +385,15 @@ WriteResult({ "nInserted" : 1 })
 <p>If you can&#8217;t wait then you can find all of the code in the <a href="https://github.com/drewdipalma/stitch-car" title="Powered by MongoDB Mobile, MongoDB Stitch, and AWS Kinesis – the MongoDB Rover ">Stitch Rover GitHub repo</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/mongodb-stitch-functions-the-aws-reinvent-stitch-rover-demo/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/mongodb-stitch-functions-the-aws-reinvent-stitch-rover-demo/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>MongoDB Stitch Mobile Sync – The AWS re:Invent Stitch Rover Demo</title>
-		<link>/mongodb/mongodb-stitch-mobile-sync-the-aws-reinvent-stitch-rover-demo-2</link>
-					<comments>/mongodb/mongodb-stitch-mobile-sync-the-aws-reinvent-stitch-rover-demo-2#respond</comments>
+		<link>./../../mongodb/mongodb-stitch-mobile-sync-the-aws-reinvent-stitch-rover-demo-2/index.html</link>
+					<comments>./../../mongodb/mongodb-stitch-mobile-sync-the-aws-reinvent-stitch-rover-demo-2/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 13 Dec 2018 14:03:39 +0000</pubDate>
@@ -401,7 +401,7 @@ WriteResult({ "nInserted" : 1 })
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB Mobile]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
-		<guid isPermaLink="false">/?p=4551</guid>
+		<guid isPermaLink="false">./../../index.html?p=4551</guid>
 
 					<description><![CDATA[At AWS re:Invent, we demonstrated how MongoDB Mobile, MongoDB Stitch, and AWS services could be used to build a cloud-controlled Mars rover – read the overview post for the setup. This post focuses on how Stitch Mobile Sync synchronizes the user commands written to MongoDB Atlas by the Mission Control app with the MongoDB Mobile]]></description>
 										<content:encoded><![CDATA[<p>At AWS re:Invent, we demonstrated how <a href="https://docs.mongodb.com/stitch/mongodb/mobile-overview/" title="MongoDB Mobile embedded database">MongoDB Mobile</a>, <a href="https://docs.mongodb.com/stitch/" title="MongoDB Stitch serverless platform">MongoDB Stitch</a>, and AWS services could be used to build a cloud-controlled Mars rover – read the <a href="https://www.mongodb.com/blog/post/mongodb-stitchmobile-mars-rover-lands-at-aws-reinvent" title="Powered by MongoDB Mobile, MongoDB Stitch, and AWS Kinesis, the MongoDB Rover ">overview post</a> for the setup. This post focuses on how <a href="https://docs.mongodb.com/stitch/mongodb/mobile/build-sync/" title="MongoDB Stitch Mobile Sync">Stitch Mobile Sync</a> synchronizes the user commands <a href="https://www.mongodb.com/blog/post/mongodb-stitch-mobile-sync--the-aws-reinvent-stitch-rover-demo">written to MongoDB Atlas by the Mission Control app</a> with the MongoDB Mobile database embedded in the rover (and how it syncs the data back to Atlas when it&#8217;s updated in MongoDB Mobile).</p>
@@ -496,15 +496,15 @@ rovers.sync().updateOne(getRoverFilter(), update).addOnCompleteListener(task -&g
 <p>If you can&#8217;t wait then you can find all of the code in the <a href="https://github.com/drewdipalma/stitch-car" title="Powered by MongoDB Mobile, MongoDB Stitch, and AWS Kinesis – the MongoDB Rover ">Stitch Rover GitHub repo</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/mongodb-stitch-mobile-sync-the-aws-reinvent-stitch-rover-demo-2/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/mongodb-stitch-mobile-sync-the-aws-reinvent-stitch-rover-demo-2/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>MongoDB Stitch Mobile Sync – The AWS re:Invent Stitch Rover Demo</title>
-		<link>/mongodb/mongodb-stitch-mobile-sync-the-aws-reinvent-stitch-rover-demo</link>
-					<comments>/mongodb/mongodb-stitch-mobile-sync-the-aws-reinvent-stitch-rover-demo#respond</comments>
+		<link>./../../mongodb/mongodb-stitch-mobile-sync-the-aws-reinvent-stitch-rover-demo/index.html</link>
+					<comments>./../../mongodb/mongodb-stitch-mobile-sync-the-aws-reinvent-stitch-rover-demo/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 12 Dec 2018 12:49:46 +0000</pubDate>
@@ -512,7 +512,7 @@ rovers.sync().updateOne(getRoverFilter(), update).addOnCompleteListener(task -&g
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB Mobile]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
-		<guid isPermaLink="false">/?p=4549</guid>
+		<guid isPermaLink="false">./../../index.html?p=4549</guid>
 
 					<description><![CDATA[At AWS re:Invent, we demonstrated how MongoDB Mobile, MongoDB Stitch, and AWS services could be used to build a cloud-controlled Mars rover – read the overview post for the setup. This post focuses on how the mission control app records the user commands in MongoDB Atlas. Mission Control is a simple web application that we]]></description>
 										<content:encoded><![CDATA[<p>At AWS re:Invent, we demonstrated how <a href="https://docs.mongodb.com/stitch/mongodb/mobile-overview/" title="MongoDB Mobile embedded database">MongoDB Mobile</a>, <a href="https://docs.mongodb.com/stitch/" title="MongoDB Stitch serverless platform">MongoDB Stitch</a>, and AWS services could be used to build a cloud-controlled Mars rover – read the <a href="https://www.mongodb.com/blog/post/mongodb-stitchmobile-mars-rover-lands-at-aws-reinvent" title="Powered by MongoDB Mobile, MongoDB Stitch, and AWS Kinesis, the MongoDB Rover ">overview post</a> for the setup. This post focuses on how the mission control app records the user commands in <a href="https://docs.mongodb.com/stitch/mongodb/atlas-overview/" title="MongoDB Atlas – fully hosted MongoDB as a service in the cloud">MongoDB Atlas</a>.</p>
@@ -574,22 +574,22 @@ rovers.sync().updateOne(getRoverFilter(), update).addOnCompleteListener(task -&g
 <p>If you can&#8217;t wait then you can find all of the code in the <a href="https://github.com/drewdipalma/stitch-car" title="Powered by MongoDB Mobile, MongoDB Stitch, and AWS Kinesis – the MongoDB Rover ">Stitch Rover GitHub repo</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/mongodb-stitch-mobile-sync-the-aws-reinvent-stitch-rover-demo/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/mongodb-stitch-mobile-sync-the-aws-reinvent-stitch-rover-demo/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>MongoDB Stitch/Mobile Mars Rover Lands at AWS re:Invent</title>
-		<link>/mongodb/mongodb-stitch-mobile-mars-rover-lands-at-aws-reinvent</link>
-					<comments>/mongodb/mongodb-stitch-mobile-mars-rover-lands-at-aws-reinvent#respond</comments>
+		<link>./../../mongodb/mongodb-stitch-mobile-mars-rover-lands-at-aws-reinvent/index.html</link>
+					<comments>./../../mongodb/mongodb-stitch-mobile-mars-rover-lands-at-aws-reinvent/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 11 Dec 2018 14:11:45 +0000</pubDate>
 				<category><![CDATA[MongoDB]]></category>
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
-		<guid isPermaLink="false">/?p=4546</guid>
+		<guid isPermaLink="false">./../../index.html?p=4546</guid>
 
 					<description><![CDATA[Powered by MongoDB Mobile, MongoDB Stitch, and AWS Kinesis, the MongoDB rover debuted at AWS re:Invent. More than a thousand people stopped by our demo to see if they could navigate the rover around a treacherous alien landscape. One of the challenges in controlling a rover on the other side of the Solar System is]]></description>
 										<content:encoded><![CDATA[<p>Powered by <a href="https://docs.mongodb.com/stitch/mongodb/mobile-overview/">MongoDB Mobile</a>, <a href="https://docs.mongodb.com/stitch/">MongoDB Stitch</a>, and <a href="https://aws.amazon.com/kinesis/">AWS Kinesis</a>, the MongoDB rover debuted at AWS re:Invent.  More than a thousand people stopped by our demo to see if they could navigate the rover around a treacherous alien landscape.</p>
@@ -603,15 +603,15 @@ rovers.sync().updateOne(getRoverFilter(), update).addOnCompleteListener(task -&g
 <p>This post is the first in a series delving into the components of this interactive demo, and if you can’t wait for more details, then you can <a href="https://github.com/drewdipalma/stitch-car">find all of the code in GitHub</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/mongodb-stitch-mobile-mars-rover-lands-at-aws-reinvent/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/mongodb-stitch-mobile-mars-rover-lands-at-aws-reinvent/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Stitch &#038; Mobile Webinar Questions &#038; Replay</title>
-		<link>/mongodb/stitch-mobile-webinar-questions-replay</link>
-					<comments>/mongodb/stitch-mobile-webinar-questions-replay#respond</comments>
+		<link>./../../mongodb/stitch-mobile-webinar-questions-replay/index.html</link>
+					<comments>./../../mongodb/stitch-mobile-webinar-questions-replay/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 22 Nov 2018 12:22:32 +0000</pubDate>
@@ -621,7 +621,7 @@ rovers.sync().updateOne(getRoverFilter(), update).addOnCompleteListener(task -&g
 		<category><![CDATA[MongoDB Mobile]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
 		<category><![CDATA[serverless]]></category>
-		<guid isPermaLink="false">/?p=4541</guid>
+		<guid isPermaLink="false">./../../index.html?p=4541</guid>
 
 					<description><![CDATA[How do you test MongoDB Stitch functions, how do you store Stitch triggers, and what services can you integrate Stitch with? These were some of the great questions that were asked and answered in my recent webinar. You can watch the replay of &#8220;MongoDB Mobile and MongoDB Stitch – Introduction and Latest Developments&#8221; here, or]]></description>
 										<content:encoded><![CDATA[<p>How do you test MongoDB <a href="https://docs.mongodb.com/stitch/functions/" title="MongoDB Stitch serverless functions">Stitch functions</a>, how do you store <a href="https://docs.mongodb.com/stitch/triggers/database-triggers/" title="MongoDB database triggers using MongoDB Stitch"> Stitch triggers</a>, and what services can you integrate Stitch with? These were some of the great questions that were asked and answered in my recent webinar. You can watch the replay of <a href="https://www.mongodb.com/presentations/mongodb-mobile-and-mongodb-stitch-introduction" title="Building mobile and IoT apps with MongoDB, MongoDB Stitch, and MongoDB Mobile">&#8220;MongoDB Mobile and MongoDB Stitch – Introduction and Latest Developments&#8221; here</a>, or read on as I share the answers to those questions here.</p>
@@ -678,22 +678,22 @@ rovers.sync().updateOne(getRoverFilter(), update).addOnCompleteListener(task -&g
 <p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/stitch-mobile-webinar-questions-replay/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/stitch-mobile-webinar-questions-replay/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Working with MongoDB Stitch Through Existing Drivers – Python &#038; PyMongo</title>
-		<link>/mongodb/working-with-mongodb-stitch-through-existing-drivers-python-pymongo</link>
-					<comments>/mongodb/working-with-mongodb-stitch-through-existing-drivers-python-pymongo#respond</comments>
+		<link>./../../mongodb/working-with-mongodb-stitch-through-existing-drivers-python-pymongo/index.html</link>
+					<comments>./../../mongodb/working-with-mongodb-stitch-through-existing-drivers-python-pymongo/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 12 Oct 2018 15:48:35 +0000</pubDate>
 				<category><![CDATA[MongoDB]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
 		<category><![CDATA[Python]]></category>
-		<guid isPermaLink="false">/?p=4532</guid>
+		<guid isPermaLink="false">./../../index.html?p=4532</guid>
 
 					<description><![CDATA[If you are developing an app using Java, Swift, or JavaScript then the Stitch SDK is the best way to access MongoDB Stitch from your frontend application code – getting to your data and accessing your Stitch Services and Functions becomes child&#8217;s play. But, what if you are developing in another language &#8211; perhaps running]]></description>
 										<content:encoded><![CDATA[<p>If you are developing an app using Java, Swift, or JavaScript then the <a href="https://docs.mongodb.com/stitch/client-sdks/" title="MongoDB Stitch client SDK">Stitch SDK</a> is the best way to access <a href="https://docs.mongodb.com/stitch/" title="MongoDB Stitch serverless platform">MongoDB Stitch</a> from your frontend application code – getting to your data and accessing your Stitch Services and Functions becomes child&#8217;s play.</p>
@@ -729,7 +729,7 @@ u'ok': 1, u'response': {u'message': u'Good Morning Billy from andrewxxxxxxorgan@
 <p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/working-with-mongodb-stitch-through-existing-drivers-python-pymongo/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/working-with-mongodb-stitch-through-existing-drivers-python-pymongo/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

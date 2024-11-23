@@ -9,8 +9,8 @@
 
 <channel>
 	<title>restart &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/restart/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Thu, 12 Nov 2009 16:41:00 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,19 +21,19 @@
 	
 	<item>
 		<title>MySQL Cluster Restarts Get Faster</title>
-		<link>/mysql-cluster/mysql-cluster-restarts-get-faster</link>
-					<comments>/mysql-cluster/mysql-cluster-restarts-get-faster#comments</comments>
+		<link>./../../mysql-cluster/mysql-cluster-restarts-get-faster/index.html</link>
+					<comments>./../../mysql-cluster/mysql-cluster-restarts-get-faster/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 12 Nov 2009 16:41:00 +0000</pubDate>
 				<category><![CDATA[MySQL Cluster]]></category>
 		<category><![CDATA[MySQL]]></category>
 		<category><![CDATA[restart]]></category>
-		<guid isPermaLink="false">/?p=664</guid>
+		<guid isPermaLink="false">./../../index.html?p=664</guid>
 
 					<description><![CDATA[MySQL Cluster 6.3.28b and 7.0.9b contain optmizations which can greatly reduce the time taken for data nodes to restart &#8211; this includes restarting a single node, performing a rolling restart or a full system restart. The benefits you see will depend on many factors including including the size of your database and the frequency, size]]></description>
 										<content:encoded><![CDATA[<div class="mceTemp">MySQL Cluster 6.3.28b and 7.0.9b contain optmizations which can greatly reduce the time taken for data nodes to restart &#8211; this includes restarting a single node, performing a rolling restart or a full system restart.</div>
-<p>The benefits you see will depend on many factors including including the size of your database and the frequency, size and complexity of your transactions. As an experiment, I re-ran some data node restart timings from an earlier post (<a href="/mysql-cluster/mysql-cluster-data-node-restart-times/">/mysql-cluster/mysql-cluster-data-node-restart-times/</a>)</p>
+<p>The benefits you see will depend on many factors including including the size of your database and the frequency, size and complexity of your transactions. As an experiment, I re-ran some data node restart timings from an earlier post (<a href="./../../mysql-cluster/mysql-cluster-data-node-restart-times/index.html">./../../mysql-cluster/mysql-cluster-data-node-restart-times/index.html</a>)</p>
 <p>The headline figure from my results is that for a 6 Gbyte database, with modest traffic I saw a <strong>2.2x</strong> improvement. This is using very simple transactions and so you may get a much better improvement &#8211; <strong>70x</strong> is being seen by some!!! The best news is that the slower your current restarts, the higher the benefit you can expect to see from the optimizations.</p>
 <p>What follows is a reworking of that original post.</p>
 <h3>MySQL Cluster Data Node restart times</h3>
@@ -60,9 +60,9 @@
 </ul>
 <p>The optimizations introduced in MySQL Cluster 6.3.28a and 7.0.9a have reduced these times &#8211; especially when write transactions are running before, during and after the node restart is triggered.</p>
 <p>Here are the observed results:</p>
-<div id="attachment_667" style="width: 632px" class="wp-caption alignnone"><a href="/wp-content/uploads/2009/11/improved_restart_times.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-667" class="size-full wp-image-667" title="Improved Data Node Restart Times" src="/wp-content/uploads/2009/11/improved_restart_times.jpg" alt="Improved Data Node Restart Times" width="622" height="156" srcset="/wp-content/uploads/2009/11/improved_restart_times.jpg 622w, /wp-content/uploads/2009/11/improved_restart_times-300x75.jpg 300w" sizes="(max-width: 622px) 100vw, 622px" /></a><p id="caption-attachment-667" class="wp-caption-text">Improved Data Node Restart Times</p></div>
+<div id="attachment_667" style="width: 632px" class="wp-caption alignnone"><a href="./../../wp-content/uploads/2009/11/improved_restart_times.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-667" class="size-full wp-image-667" title="Improved Data Node Restart Times" src="./../../wp-content/uploads/2009/11/improved_restart_times.jpg" alt="Improved Data Node Restart Times" width="622" height="156" srcset="./../../wp-content/uploads/2009/11/improved_restart_times.jpg 622w, ./../../wp-content/uploads/2009/11/improved_restart_times-300x75.jpg 300w" sizes="(max-width: 622px) 100vw, 622px" /></a><p id="caption-attachment-667" class="wp-caption-text">Improved Data Node Restart Times</p></div>
 <p>For comparrison purposes, these are the results before the optimizations were introduced:</p>
-<div id="attachment_369" style="width: 597px" class="wp-caption alignnone"><a href="/wp-content/uploads/2009/07/restart_times.jpg"><img decoding="async" aria-describedby="caption-attachment-369" class="size-full wp-image-369 " title="Old Data Node restart times" src="/wp-content/uploads/2009/07/restart_times.jpg" alt="Data Node restart times" width="587" height="168" srcset="/wp-content/uploads/2009/07/restart_times.jpg 587w, /wp-content/uploads/2009/07/restart_times-300x85.jpg 300w" sizes="(max-width: 587px) 100vw, 587px" /></a><p id="caption-attachment-369" class="wp-caption-text">Old Data Node restart times</p></div>
+<div id="attachment_369" style="width: 597px" class="wp-caption alignnone"><a href="./../../wp-content/uploads/2009/07/restart_times.jpg"><img decoding="async" aria-describedby="caption-attachment-369" class="size-full wp-image-369 " title="Old Data Node restart times" src="./../../wp-content/uploads/2009/07/restart_times.jpg" alt="Data Node restart times" width="587" height="168" srcset="./../../wp-content/uploads/2009/07/restart_times.jpg 587w, ./../../wp-content/uploads/2009/07/restart_times-300x85.jpg 300w" sizes="(max-width: 587px) 100vw, 587px" /></a><p id="caption-attachment-369" class="wp-caption-text">Old Data Node restart times</p></div>
 <p>There are a couple of things to note from these results:</p>
 <ul>
 <li>The optmizations greatly improve the results when update traffic is running</li>
@@ -72,15 +72,15 @@
 <p>There is another recovery/restart scenario. The measurements shown above assumed that the file system on the data node&#8217;s host was intact and could be used to recover the in-memory copy &#8211; if that were not the case (or the data nodes were restarted with the &#8220;initial&#8221; option) then all of the data would have to be recovered from the surviving data node(s) in the same node group. As a comparison restarting a 6 Gbyte data node with the &#8220;initial&#8221; option took 20 minutes compared to 8.5 minutes without it (ndbmtd, over Gbit n/w).</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/mysql-cluster-restarts-get-faster/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/mysql-cluster-restarts-get-faster/feed/index.html</wfw:commentRss>
 			<slash:comments>1</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>MySQL Cluster Data Node restart times</title>
-		<link>/mysql-cluster/mysql-cluster-data-node-restart-times</link>
-					<comments>/mysql-cluster/mysql-cluster-data-node-restart-times#comments</comments>
+		<link>./../../mysql-cluster/mysql-cluster-data-node-restart-times/index.html</link>
+					<comments>./../../mysql-cluster/mysql-cluster-data-node-restart-times/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 30 Jul 2009 12:46:00 +0000</pubDate>
@@ -93,10 +93,10 @@
 		<category><![CDATA[MySQL Cluster CGE]]></category>
 		<category><![CDATA[recovery]]></category>
 		<category><![CDATA[restart]]></category>
-		<guid isPermaLink="false">/?p=365</guid>
+		<guid isPermaLink="false">./../../index.html?p=365</guid>
 
-					<description><![CDATA[Restart times have been reduced in MySQL Cluster 6.3.28a &#38; 7.0.9a &#8211; refer to that article for the new timings: /mysql-cluster/mysql-cluster-restarts-get-faster/ Restarts are required for certain, infrequent maintenance activities. Note that there is no loss of service while a single node restarts. When a data node restarts, it first attempts to load the data into memory]]></description>
-										<content:encoded><![CDATA[<p><strong>Restart times have been reduced in MySQL Cluster 6.3.28a &amp; 7.0.9a &#8211; refer to that article for the new timings:</strong> <a href="/mysql-cluster/mysql-cluster-restarts-get-faster/" target="_self">/mysql-cluster/mysql-cluster-restarts-get-faster/</a></p>
+					<description><![CDATA[Restart times have been reduced in MySQL Cluster 6.3.28a &#38; 7.0.9a &#8211; refer to that article for the new timings: ./../../mysql-cluster/mysql-cluster-restarts-get-faster/index.html Restarts are required for certain, infrequent maintenance activities. Note that there is no loss of service while a single node restarts. When a data node restarts, it first attempts to load the data into memory]]></description>
+										<content:encoded><![CDATA[<p><strong>Restart times have been reduced in MySQL Cluster 6.3.28a &amp; 7.0.9a &#8211; refer to that article for the new timings:</strong> <a href="./../../mysql-cluster/mysql-cluster-restarts-get-faster/index.html" target="_self">./../../mysql-cluster/mysql-cluster-restarts-get-faster/index.html</a></p>
 <p>Restarts are required for certain, infrequent maintenance activities. Note that there is no loss of service while a single node restarts.</p>
 <p>When a data node restarts, it first attempts to load the data into memory from the local log files and then it will catch up with any subsequent changes by retrieveing them from the surviving node(s) in its node group.</p>
 <p> Based on this, you would expect the time taken to restart a data node to be influenced by:</p>
@@ -119,7 +119,7 @@
 <li>MaxNoOfExecutionThreads=4</li>
 </ul>
 <p>Here are the observed results:</p>
-<div id="attachment_369" style="width: 597px" class="wp-caption alignnone"><a href="/wp-content/uploads/2009/07/restart_times.jpg"><img decoding="async" aria-describedby="caption-attachment-369" class="size-full wp-image-369" title="Data Node restart times" src="/wp-content/uploads/2009/07/restart_times.jpg" alt="Data Node restart times" width="587" height="168" srcset="/wp-content/uploads/2009/07/restart_times.jpg 587w, /wp-content/uploads/2009/07/restart_times-300x85.jpg 300w" sizes="(max-width: 587px) 100vw, 587px" /></a><p id="caption-attachment-369" class="wp-caption-text">Data Node restart times</p></div>
+<div id="attachment_369" style="width: 597px" class="wp-caption alignnone"><a href="./../../wp-content/uploads/2009/07/restart_times.jpg"><img decoding="async" aria-describedby="caption-attachment-369" class="size-full wp-image-369" title="Data Node restart times" src="./../../wp-content/uploads/2009/07/restart_times.jpg" alt="Data Node restart times" width="587" height="168" srcset="./../../wp-content/uploads/2009/07/restart_times.jpg 587w, ./../../wp-content/uploads/2009/07/restart_times-300x85.jpg 300w" sizes="(max-width: 587px) 100vw, 587px" /></a><p id="caption-attachment-369" class="wp-caption-text">Data Node restart times</p></div>
 <p>There are a couple of things to note from these results:</p>
 <ul>
 <li>Using the multi-threaded data node (ndbmtd) greatly improves the restart time (in this case, 4 threads were available, improvements could be even greater on an 8 core/thread system)</li>
@@ -128,7 +128,7 @@
 <p>There is another recovery/restart scenario. The measurements shown above assumed that the file system on the data node&#8217;s host was intact and could be used to recover the in-memory copy &#8211; if that were not the case (or the data nodes were restarted with the &#8220;initial&#8221; option) then all of the data would have to be recovered from the surviving data node(s) in the same node group. As a comparison restarting a 6 Gbyte data node with the &#8220;initial&#8221; option took 20 minutes compared to 8 minutes without it (ndbmtd, over Gbit n/w).</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/mysql-cluster-data-node-restart-times/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/mysql-cluster-data-node-restart-times/feed/index.html</wfw:commentRss>
 			<slash:comments>12</slash:comments>
 		
 		

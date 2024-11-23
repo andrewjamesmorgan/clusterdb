@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Swift &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/swift/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Mon, 14 Mar 2022 16:30:15 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Building a collaborative iOS Minesweeper game with Realm</title>
-		<link>/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm</link>
-					<comments>/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm#respond</comments>
+		<link>./../../mongodb/building-a-collaborative-ios-minesweeper-game-with-realm/index.html</link>
+					<comments>./../../mongodb/building-a-collaborative-ios-minesweeper-game-with-realm/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 14 Mar 2022 16:30:15 +0000</pubDate>
@@ -33,10 +33,10 @@
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[Swift]]></category>
 		<category><![CDATA[SwiftUI]]></category>
-		<guid isPermaLink="false">/?p=4668</guid>
+		<guid isPermaLink="false">./../../index.html?p=4668</guid>
 
 					<description><![CDATA[I wanted to build an app that we could use at events to demonstrate Realm Sync. It needed to be fun to interact with, and so a multiplayer game made sense. Tic-tac-toe is too simple to get excited about. I&#8217;m not a game developer and so Call Of Duty wasn&#8217;t an option. Then I remembered]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2022/03/ATF-720x720-1.png"><img fetchpriority="high" decoding="async" src="/wp-content/uploads/2022/03/ATF-720x720-1-300x300.png" alt="Realm-Sweeper. Writing a multiplayer iOS Minesweeper game using SwiftUI and Realm" width="300" height="300" class="alignright size-medium wp-image-4669" srcset="/wp-content/uploads/2022/03/ATF-720x720-1-300x300.png 300w, /wp-content/uploads/2022/03/ATF-720x720-1-150x150.png 150w, /wp-content/uploads/2022/03/ATF-720x720-1-144x144.png 144w, /wp-content/uploads/2022/03/ATF-720x720-1.png 720w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2022/03/ATF-720x720-1.png"><img fetchpriority="high" decoding="async" src="./../../wp-content/uploads/2022/03/ATF-720x720-1-300x300.png" alt="Realm-Sweeper. Writing a multiplayer iOS Minesweeper game using SwiftUI and Realm" width="300" height="300" class="alignright size-medium wp-image-4669" srcset="./../../wp-content/uploads/2022/03/ATF-720x720-1-300x300.png 300w, ./../../wp-content/uploads/2022/03/ATF-720x720-1-150x150.png 150w, ./../../wp-content/uploads/2022/03/ATF-720x720-1-144x144.png 144w, ./../../wp-content/uploads/2022/03/ATF-720x720-1.png 720w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
 <p>I wanted to build an app that we could use at events to demonstrate <a href="https://www.mongodb.com/realm/mobile/sync">Realm Sync</a>. It needed to be fun to interact with, and so a multiplayer game made sense. Tic-tac-toe is too simple to get excited about. I&#8217;m not a game developer and so <em>Call Of Duty</em> wasn&#8217;t an option. Then I remembered Microsoft&#8217;s <a href="https://en.wikipedia.org/wiki/Minesweeper">Minesweeper</a>.</p>
 <p>Minesweeper was a Windows fixture from 1990 until Windows 8 relegated it to the app store in 2012. It was a single-player game, but it struck me as something that could be a lot of fun to play with others. Some family beta-testing of my first version while waiting for a ferry proved that it did get people to interact with each other (even if most interactions involved shouting, &#8220;Which of you muppets clicked on that mine?!&#8221;).</p>
 <p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/IMG_1301_81fa444116.jpeg" alt="Family sat around a table, all playing the Realm-Sweeper game on their iPhones" /></p>
@@ -267,15 +267,15 @@ class Cell: EmbeddedObject, ObjectKeyIdentifiable {
 <p>Got questions? Ask them in our <a href="https://www.mongodb.com/community/forums/c/realm/realm-sync/111">Community forum</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/building-a-collaborative-ios-minesweeper-game-with-realm/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Realm-Swift Type Projections</title>
-		<link>/mongodb/realm-swift-type-projections</link>
-					<comments>/mongodb/realm-swift-type-projections#respond</comments>
+		<link>./../../mongodb/realm-swift-type-projections/index.html</link>
+					<comments>./../../mongodb/realm-swift-type-projections/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 26 Jan 2022 16:39:56 +0000</pubDate>
@@ -284,7 +284,7 @@ class Cell: EmbeddedObject, ObjectKeyIdentifiable {
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[Swift]]></category>
 		<category><![CDATA[SwiftUI]]></category>
-		<guid isPermaLink="false">/?p=4659</guid>
+		<guid isPermaLink="false">./../../index.html?p=4659</guid>
 
 					<description><![CDATA[Introduction Realm natively provides a broad set of data types, including Bool, Int, Float, Double, String, Date, ObjectID, List, Mutable Set, enum, Map, … But, there are other data types that many of your iOS apps are likely to use. As an example, if you&#8217;re using Core Graphics, then it&#8217;s hard to get away without]]></description>
 										<content:encoded><![CDATA[<h2>Introduction</h2>
@@ -437,15 +437,15 @@ protocol FailableCustomPersistable {
 <p>Please provide feedback and ask any questions in the <a href="https://www.mongodb.com/community/forums/c/realm-sdks/58">Realm Community Forum</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/realm-swift-type-projections/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/realm-swift-type-projections/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</title>
-		<link>/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync</link>
-					<comments>/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync#respond</comments>
+		<link>./../../mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/index.html</link>
+					<comments>./../../mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 26 Jan 2022 10:30:57 +0000</pubDate>
@@ -457,7 +457,7 @@ protocol FailableCustomPersistable {
 		<category><![CDATA[javascript]]></category>
 		<category><![CDATA[kotlin]]></category>
 		<category><![CDATA[Swift]]></category>
-		<guid isPermaLink="false">/?p=4651</guid>
+		<guid isPermaLink="false">./../../index.html?p=4651</guid>
 
 					<description><![CDATA[We are excited to announce the public preview of our next version of Realm Sync: Flexible Sync. This new method of syncing puts the power into the hands of the developer. Now, developers can get more granular control over the data synced to user applications with intuitive language-native queries and hierarchical permissions. Introduction Prior to]]></description>
 										<content:encoded><![CDATA[<p>We are excited to announce the public preview of our next version of Realm Sync: Flexible Sync. This new method of syncing puts the power into the hands of the developer. Now, developers can get more granular control over the data synced to user applications with intuitive language-native queries and hierarchical permissions.</p>
@@ -708,15 +708,15 @@ homes = realm.objects(ListingSchema.name).length;
 <p>The Realm Sync team is planning to bring you more query operators and permissions integrations over the course of 2022. Up next we are looking to expose array operators and enable querying on embedded documents, but really, we look to you, our users, to help us drive the roadmap. Submit your ideas and feature requests to our <a href="https://feedback.mongodb.com/forums/923521-realm">feedback portal</a> and ask questions in our <a href="https://www.mongodb.com/community/forums/c/realm/realm-sync/111">Community forum</a>. Happy building!</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Goodbye NSPredicate, hello Realm Swift Query API</title>
-		<link>/mongodb/goodbye-nspredicate-hello-realm-swift-query-api</link>
-					<comments>/mongodb/goodbye-nspredicate-hello-realm-swift-query-api#respond</comments>
+		<link>./../../mongodb/goodbye-nspredicate-hello-realm-swift-query-api/index.html</link>
+					<comments>./../../mongodb/goodbye-nspredicate-hello-realm-swift-query-api/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 17 Dec 2021 17:21:40 +0000</pubDate>
@@ -725,7 +725,7 @@ homes = realm.objects(ListingSchema.name).length;
 		<category><![CDATA[ios]]></category>
 		<category><![CDATA[mobile]]></category>
 		<category><![CDATA[Swift]]></category>
-		<guid isPermaLink="false">/?p=4647</guid>
+		<guid isPermaLink="false">./../../index.html?p=4647</guid>
 
 					<description><![CDATA[Introduction I&#8217;m not a fan of writing code using pseudo-English text strings. It&#8217;s a major context switch when you&#8217;ve been writing &#8220;native&#8221; code. Compilers don&#8217;t detect errors in the strings, whether syntax errors or mismatched types, leaving you to learn of your mistakes when your app crashes. I spent more than seven years working at]]></description>
 										<content:encoded><![CDATA[<h2>Introduction</h2>
@@ -905,15 +905,15 @@ let decisions = unfilteredDecisions.filter(predicate)
 <p>Please provide feedback and ask any questions in the <a href="https://www.mongodb.com/community/forums/c/realm-sdks/58">Realm Community Forum</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/goodbye-nspredicate-hello-realm-swift-query-api/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/goodbye-nspredicate-hello-realm-swift-query-api/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Making SwiftUI Previews Work For You</title>
-		<link>/mongodb/making-swiftui-previews-work-for-you</link>
-					<comments>/mongodb/making-swiftui-previews-work-for-you#respond</comments>
+		<link>./../../mongodb/making-swiftui-previews-work-for-you/index.html</link>
+					<comments>./../../mongodb/making-swiftui-previews-work-for-you/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 04 Nov 2021 16:26:11 +0000</pubDate>
@@ -921,7 +921,7 @@ let decisions = unfilteredDecisions.filter(predicate)
 		<category><![CDATA[Realm]]></category>
 		<category><![CDATA[Swift]]></category>
 		<category><![CDATA[SwiftUI]]></category>
-		<guid isPermaLink="false">/?p=4643</guid>
+		<guid isPermaLink="false">./../../index.html?p=4643</guid>
 
 					<description><![CDATA[Introduction Canvas previews are an in-your-face feature of SwiftUI. When you create a new view, half of the boilerplate code is for the preview. A third of your Xcode real estate is taken up by the preview. Despite the prominence of the feature, many developers simply delete the preview code from their views and rely]]></description>
 										<content:encoded><![CDATA[<h2>Introduction</h2>
@@ -1455,15 +1455,15 @@ let decisions = unfilteredDecisions.filter(predicate)
 <p>Please provide feedback and ask any questions in the <a href="https://www.mongodb.com/community/forums/c/realm-sdks/58">Realm Community Forum</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/making-swiftui-previews-work-for-you/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/making-swiftui-previews-work-for-you/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Most Useful iOS 15 SwiftUI Features</title>
-		<link>/mongodb/realm/most-useful-ios-15-swiftui-features</link>
-					<comments>/mongodb/realm/most-useful-ios-15-swiftui-features#respond</comments>
+		<link>./../../mongodb/realm/most-useful-ios-15-swiftui-features/index.html</link>
+					<comments>./../../mongodb/realm/most-useful-ios-15-swiftui-features/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 30 Sep 2021 12:10:36 +0000</pubDate>
@@ -1471,7 +1471,7 @@ let decisions = unfilteredDecisions.filter(predicate)
 		<category><![CDATA[ios]]></category>
 		<category><![CDATA[Swift]]></category>
 		<category><![CDATA[SwiftUI]]></category>
-		<guid isPermaLink="false">/?p=4639</guid>
+		<guid isPermaLink="false">./../../index.html?p=4639</guid>
 
 					<description><![CDATA[Introduction I&#8217;m all-in on using SwiftUI to build iOS apps. I find it so much simpler than wrangling with storyboards and UIKit. Unfortunately, there are still occasions when SwiftUI doesn&#8217;t let you do what you need—forcing you to break out into UIKit. That&#8217;s why I always focus on Apple&#8217;s SwiftUI enhancements at each year&#8217;s WWDC.]]></description>
 										<content:encoded><![CDATA[<h2>Introduction</h2>
@@ -1967,22 +1967,22 @@ SecureField("password", text: $password)
 <p>If you have any questions or comments on this post (or anything else Realm-related), then please raise them on our <a href="https://www.mongodb.com/community/forums/c/realm-sdks/58">community forum</a>. To keep up with the latest Realm news, follow <a href="https://twitter.com/realm">@realm</a> on Twitter and join the <a href="https://live.mongodb.com/realm-global-community/">Realm global community</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/realm/most-useful-ios-15-swiftui-features/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/realm/most-useful-ios-15-swiftui-features/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Build Offline-First Mobile Apps by Caching API Results in Realm</title>
-		<link>/mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm</link>
-					<comments>/mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm#respond</comments>
+		<link>./../../mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm/index.html</link>
+					<comments>./../../mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 14 Sep 2021 10:31:51 +0000</pubDate>
 				<category><![CDATA[Realm]]></category>
 		<category><![CDATA[Swift]]></category>
 		<category><![CDATA[SwiftUI]]></category>
-		<guid isPermaLink="false">/?p=4633</guid>
+		<guid isPermaLink="false">./../../index.html?p=4633</guid>
 
 					<description><![CDATA[Note that this post was originally published at Build Offline-First Mobile Apps by Caching API Results in Realm. Introduction When building a mobile app, there&#8217;s a good chance that you want it to pull in data from a cloud service—whether from your own or from a third party. While other technologies are growing (e.g., GraphQL]]></description>
 										<content:encoded><![CDATA[<p>Note that this post was originally published at <a href="https://www.mongodb.com/developer/how-to/realm-api-cache/">Build Offline-First Mobile Apps by Caching API Results in Realm</a>.</p>
@@ -2355,15 +2355,15 @@ TextField("Amount", text: $amount)
 <p>If you have any questions or comments on this post (or anything else Realm-related), then please raise them on our <a href="https://www.mongodb.com/community/forums/c/realm-sdks/58">community forum</a>. To keep up with the latest Realm news, follow <a href="https://twitter.com/realm">@realm</a> on Twitter and join the <a href="https://live.mongodb.com/realm-global-community/">Realm global community</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Migrating Your iOS App&#8217;s Synced Realm Schema in Production</title>
-		<link>/mongodb/migrating-your-ios-apps-synced-realm-schema-in-production</link>
-					<comments>/mongodb/migrating-your-ios-apps-synced-realm-schema-in-production#respond</comments>
+		<link>./../../mongodb/migrating-your-ios-apps-synced-realm-schema-in-production/index.html</link>
+					<comments>./../../mongodb/migrating-your-ios-apps-synced-realm-schema-in-production/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 02 Sep 2021 08:25:39 +0000</pubDate>
@@ -2372,7 +2372,7 @@ TextField("Amount", text: $amount)
 		<category><![CDATA[ios]]></category>
 		<category><![CDATA[Swift]]></category>
 		<category><![CDATA[SwiftUI]]></category>
-		<guid isPermaLink="false">/?p=4626</guid>
+		<guid isPermaLink="false">./../../index.html?p=4626</guid>
 
 					<description><![CDATA[Introduction In the previous post in this series, we saw how to migrate your Realm data when you upgraded your iOS app with a new schema. But, that only handled the data in your local, standalone Realm database. What if you&#8217;re using MongoDB Realm Sync to replicate your local Realm data with other instances of]]></description>
 										<content:encoded><![CDATA[<h2>Introduction</h2>
@@ -2693,15 +2693,15 @@ TextField("Amount", text: $amount)
 <p>If you have any questions or comments on this post (or anything else Realm-related), then please raise them on our <a href="https://www.mongodb.com/community/forums/c/realm-sdks/58">community forum</a>. To keep up with the latest Realm news, follow <a href="https://twitter.com/realm">@realm</a> on Twitter and join the <a href="https://live.mongodb.com/realm-global-community/">Realm global community</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/migrating-your-ios-apps-synced-realm-schema-in-production/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/migrating-your-ios-apps-synced-realm-schema-in-production/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Migrating Your iOS App&#8217;s Realm Schema in Production</title>
-		<link>/mongodb/migrating-your-ios-apps-realm-schema-in-production</link>
-					<comments>/mongodb/migrating-your-ios-apps-realm-schema-in-production#respond</comments>
+		<link>./../../mongodb/migrating-your-ios-apps-realm-schema-in-production/index.html</link>
+					<comments>./../../mongodb/migrating-your-ios-apps-realm-schema-in-production/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 27 Aug 2021 08:26:22 +0000</pubDate>
@@ -2710,7 +2710,7 @@ TextField("Amount", text: $amount)
 		<category><![CDATA[ios]]></category>
 		<category><![CDATA[Swift]]></category>
 		<category><![CDATA[SwiftUI]]></category>
-		<guid isPermaLink="false">/?p=4623</guid>
+		<guid isPermaLink="false">./../../index.html?p=4623</guid>
 
 					<description><![CDATA[Introduction Murphy&#8217;s law dictates that as soon as your mobile app goes live, you&#8217;ll receive a request to add a new feature. Then another. Then another. This is fine if these features don&#8217;t require any changes to your data schema. But, that isn&#8217;t always the case. Fortunately, Realm has built-in functionality to make schema migration]]></description>
 										<content:encoded><![CDATA[<h2>Introduction</h2>
@@ -2872,15 +2872,15 @@ struct ScrumdingerApp: SwiftUI.App {
 <p>If you&#8217;ve any questions about schema migration, or anything else related to Realm, then please post them to our <a href="https://www.mongodb.com/community/forums/c/realm-sdks/58">community forum</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/migrating-your-ios-apps-realm-schema-in-production/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/migrating-your-ios-apps-realm-schema-in-production/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>New article on migrating Apple&#8217;s Scrumdinger tutorial app to Realm</title>
-		<link>/mongodb/realm/new-article-on-migrating-apples-scrumdinger-tutorial-app-to-realm</link>
-					<comments>/mongodb/realm/new-article-on-migrating-apples-scrumdinger-tutorial-app-to-realm#respond</comments>
+		<link>./../../mongodb/realm/new-article-on-migrating-apples-scrumdinger-tutorial-app-to-realm/index.html</link>
+					<comments>./../../mongodb/realm/new-article-on-migrating-apples-scrumdinger-tutorial-app-to-realm/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 12 Apr 2021 08:53:15 +0000</pubDate>
@@ -2889,7 +2889,7 @@ struct ScrumdingerApp: SwiftUI.App {
 		<category><![CDATA[mobile]]></category>
 		<category><![CDATA[Swift]]></category>
 		<category><![CDATA[SwiftUI]]></category>
-		<guid isPermaLink="false">/?p=4604</guid>
+		<guid isPermaLink="false">./../../index.html?p=4604</guid>
 
 					<description><![CDATA[Apple published a great tutorial to teach developers how to create iOS apps using Swift and SwiftUI. I particularly like it because it doesn&#8217;t make any assumptions about existing UIKit experience, making it ideal for developers new to iOS. That tutorial is built around an app named &#8220;Scrumdinger,&#8221; which is designed to facilitate daily scrum]]></description>
 										<content:encoded><![CDATA[
@@ -2926,7 +2926,7 @@ An immediate benefit of the move is that changes are now persisted immediately, 
 
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/realm/new-article-on-migrating-apples-scrumdinger-tutorial-app-to-realm/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/realm/new-article-on-migrating-apples-scrumdinger-tutorial-app-to-realm/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

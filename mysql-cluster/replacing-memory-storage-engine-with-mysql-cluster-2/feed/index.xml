@@ -8,8 +8,8 @@
 <channel>
 	<title>
 	Comments on: Replacing MEMORY storage engine with MySQL Cluster	</title>
-	<atom:link href="/mysql-cluster/replacing-memory-storage-engine-with-mysql-cluster-2/feed" rel="self" type="application/rss+xml" />
-	<link>/mysql-cluster/replacing-memory-storage-engine-with-mysql-cluster-2</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../replacing-memory-storage-engine-with-mysql-cluster-2/index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Mon, 13 Jun 2011 12:03:36 +0000</lastBuildDate>
 	<sy:updatePeriod>
@@ -20,20 +20,20 @@
 	<item>
 		<title>
 		By: admin		</title>
-		<link>/mysql-cluster/replacing-memory-storage-engine-with-mysql-cluster-2#comment-418</link>
+		<link>./../replacing-memory-storage-engine-with-mysql-cluster-2/index.html#comment-418</link>
 
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Mon, 13 Jun 2011 12:03:36 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1187#comment-418</guid>
+		<guid isPermaLink="false">./../../index.html?p=1187#comment-418</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/replacing-memory-storage-engine-with-mysql-cluster-2#comment-417&quot;&gt;bhaskar&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../replacing-memory-storage-engine-with-mysql-cluster-2/index.html#comment-417&quot;&gt;bhaskar&lt;/a&gt;.
 
 Bhaskar - absolutely.
 
 By default, all MySQL Cluster data is stored in memory *but* you can optionally store any columns other than indexes on disk. In fact you can select exactly which columns should be stored on disk rather than in memory.
 
 You can see the details in the &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.1/en/mysql-cluster-disk-data.html&quot; rel=&quot;nofollow&quot;&gt;disk-data section of the MySQL Cluster documentation&lt;/a&gt;.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/replacing-memory-storage-engine-with-mysql-cluster-2#comment-417">bhaskar</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../replacing-memory-storage-engine-with-mysql-cluster-2/index.html#comment-417">bhaskar</a>.</p>
 <p>Bhaskar &#8211; absolutely.</p>
 <p>By default, all MySQL Cluster data is stored in memory *but* you can optionally store any columns other than indexes on disk. In fact you can select exactly which columns should be stored on disk rather than in memory.</p>
 <p>You can see the details in the <a href="http://dev.mysql.com/doc/refman/5.1/en/mysql-cluster-disk-data.html" rel="nofollow">disk-data section of the MySQL Cluster documentation</a>.</p>
@@ -43,11 +43,11 @@ You can see the details in the &lt;a href=&quot;http://dev.mysql.com/doc/refman/
 		<item>
 		<title>
 		By: bhaskar		</title>
-		<link>/mysql-cluster/replacing-memory-storage-engine-with-mysql-cluster-2#comment-417</link>
+		<link>./../replacing-memory-storage-engine-with-mysql-cluster-2/index.html#comment-417</link>
 
 		<dc:creator><![CDATA[bhaskar]]></dc:creator>
 		<pubDate>Mon, 13 Jun 2011 10:20:34 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1187#comment-417</guid>
+		<guid isPermaLink="false">./../../index.html?p=1187#comment-417</guid>
 
 					<description><![CDATA[We have configured a mysql 7.1 cluster with 2 nodes and a management server. but whole db is residing on ram and takes up huge amount of memory. I dont want this in memory database feature what to do ?
 
@@ -60,13 +60,13 @@ Also. is there anything which is equivalent to tablespaces in mysql as in oracle
 		<item>
 		<title>
 		By: admin		</title>
-		<link>/mysql-cluster/replacing-memory-storage-engine-with-mysql-cluster-2#comment-416</link>
+		<link>./../replacing-memory-storage-engine-with-mysql-cluster-2/index.html#comment-416</link>
 
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Wed, 23 Feb 2011 09:39:30 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1187#comment-416</guid>
+		<guid isPermaLink="false">./../../index.html?p=1187#comment-416</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/replacing-memory-storage-engine-with-mysql-cluster-2#comment-415&quot;&gt;Rajnish&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../replacing-memory-storage-engine-with-mysql-cluster-2/index.html#comment-415&quot;&gt;Rajnish&lt;/a&gt;.
 
 Hi Rajnish,
 
@@ -75,7 +75,7 @@ Hi Rajnish,
  A common error that can empty the databases is starting the data nodes (ndbd process) with the --initial option, you should *only* do that when you first create the database or else all of your data will be lost.
 
 Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/replacing-memory-storage-engine-with-mysql-cluster-2#comment-415">Rajnish</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../replacing-memory-storage-engine-with-mysql-cluster-2/index.html#comment-415">Rajnish</a>.</p>
 <p>Hi Rajnish,</p>
 <p> if  ndb_table_no_logging was turned on when your tables was created then the contents of the tables will not be persisted to disk; if off then they will.</p>
 <p> A common error that can empty the databases is starting the data nodes (ndbd process) with the &#8211;initial option, you should *only* do that when you first create the database or else all of your data will be lost.</p>
@@ -86,11 +86,11 @@ Andrew.]]></description>
 		<item>
 		<title>
 		By: Rajnish		</title>
-		<link>/mysql-cluster/replacing-memory-storage-engine-with-mysql-cluster-2#comment-415</link>
+		<link>./../replacing-memory-storage-engine-with-mysql-cluster-2/index.html#comment-415</link>
 
 		<dc:creator><![CDATA[Rajnish]]></dc:creator>
 		<pubDate>Tue, 22 Feb 2011 19:57:20 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1187#comment-415</guid>
+		<guid isPermaLink="false">./../../index.html?p=1187#comment-415</guid>
 
 					<description><![CDATA[hi Team,
 i have configured single host mysql clustering as refer in the docs . but when i restart the mysql cluster all data vanish ,i also enable the ndb_table_no_logging parameter , but still all data vanished .

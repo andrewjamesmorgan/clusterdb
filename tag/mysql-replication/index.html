@@ -3,16 +3,16 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="pingback" href="/xmlrpc.php">
+	<link rel="pingback" href="./../xmlrpc.php">
 	
 	<title>MySQL Replication | Andrew Morgan on Databases</title>
 
 <meta name="robots" content="max-image-preview:large">
 	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
-<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="/feed">
-<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="/comments/feed">
-<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; MySQL Replication Tag Feed" href="/tag/mysql-replication/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="./../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="./../comments/feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; MySQL Replication Tag Feed" href="./feed/index.html">
 		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
 		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
 					<!-- No tracking code set -->
@@ -35,24 +35,24 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 		background: none !important;
 		padding: 0 !important;
 	}</style>
-<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="./../wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
 <style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
 .wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
 <style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
 :where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
 :where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
 :root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
-<link rel="stylesheet" id="plyr-css-css" href="/wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
-<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="/wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
-<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="/wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="plyr-css-css" href="./../wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="./../wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="./../wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
 <link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
-<script type="text/javascript" src="/wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
-<script type="text/javascript" src="/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
-<script type="text/javascript" src="/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
-<script type="text/javascript" src="/wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
-<link rel="https://api.w.org/" href="/wp-json/">
-<link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/tags/149">
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<script type="text/javascript" src="./../wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="./../wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="./../wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="./../wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="./../wp-json/index.html">
+<link rel="alternate" title="JSON" type="application/json" href="./../wp-json/wp/v2/tags/149/index.html">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../xmlrpc.php?rsd">
 
 <style data-context="foundation-flickity-css">/*! Flickity v2.0.2
 http://flickity.metafizzy.co
@@ -82,11 +82,11 @@ http://flickity.metafizzy.co
 
 		<div id="head">
 			<div id="logo">
-									<a href="/"><h1>Andrew Morgan on Databases</h1></a>
-                                        <!-- <a href="/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+									<a href="./../index.html"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href=".//"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
 							</div>
 			<div id="socialmedia_icons">
-				<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+				<a href="http://twitter.com/andrewmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -94,7 +94,7 @@ http://flickity.metafizzy.co
 		<div id="navi_container">
 			<div id="navi">
 				<ul id="nav" class="menu">
-<li class="page_item page-item-1011"><a href="/about">About</a></li>
+<li class="page_item page-item-1011"><a href="./../about/index.html">About</a></li>
 </ul>			</div>
 		</div>
 		<div class="clear"></div>
@@ -103,7 +103,7 @@ http://flickity.metafizzy.co
 	<div id="container">
 	
 			<div id="custom_header">
-			<img src="/wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+			<img src="./../wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
 		</div>
 	
 	<div id="wrap">
@@ -114,18 +114,18 @@ http://flickity.metafizzy.co
 					<div id="post-4035" class="post-4035 post type-post status-publish format-standard hentry category-mysql-cluster tag-ha tag-high-availability tag-mysql tag-mysql-cluster tag-mysql-fabric-2 tag-mysql-replication tag-secondary">
 				
 				<div class="postmeta">	<div class="postmeta_links">
-		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
-		<a href="/mysql-cluster/choosing-the-right-mysql-ha-solution-free-webinar">February 18, 2015</a>
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mysql-cluster/choosing-the-right-mysql-ha-solution-free-webinar/index.html">February 18, 2015</a>
 			</div>
 	<div class="postcomments">
-		<a href="/mysql-cluster/choosing-the-right-mysql-ha-solution-free-webinar#respond">No comments</a>	</div>
+		<a href="./../mysql-cluster/choosing-the-right-mysql-ha-solution-free-webinar/index.html#respond">No comments</a>	</div>
 	<div class="clear"></div>
 </div>
 
-				<h2 class="post-title"><a href="/mysql-cluster/choosing-the-right-mysql-ha-solution-free-webinar" rel="bookmark">Choosing the right MySQL HA Solution &#8211; free webinar</a></h2>
+				<h2 class="post-title"><a href="./../mysql-cluster/choosing-the-right-mysql-ha-solution-free-webinar/index.html" rel="bookmark">Choosing the right MySQL HA Solution &#8211; free webinar</a></h2>
 				
 				<div class="entry">
-										<p><a href="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png"><img fetchpriority="high" decoding="async" class="aligncenter size-full wp-image-2970" src="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png" alt="MySQL-HA-Logo1.png" width="950" height="100" srcset="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png 950w, /wp-content/uploads/2013/10/MySQL-HA-Logo1-300x31.png 300w" sizes="(max-width: 950px) 100vw, 950px"></a>I&#8217;ll be presenting a webinar tomorrow (Thursday 19th February) on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application.</p>
+										<p><a href="./../wp-content/uploads/2013/10/MySQL-HA-Logo1.png"><img fetchpriority="high" decoding="async" class="aligncenter size-full wp-image-2970" src="./../wp-content/uploads/2013/10/MySQL-HA-Logo1.png" alt="MySQL-HA-Logo1.png" width="950" height="100" srcset="./../wp-content/uploads/2013/10/MySQL-HA-Logo1.png 950w, ./../wp-content/uploads/2013/10/MySQL-HA-Logo1-300x31.png 300w" sizes="(max-width: 950px) 100vw, 950px"></a>I&#8217;ll be presenting a webinar tomorrow (Thursday 19th February) on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application.</p>
 <p>As always, the webinar is free but you should <a title="Register for free webinar - Achieving MySQL High Availability, Learn to Select Your Best Option" href="http://www.mysql.com/news-and-events/web-seminars/achieving-mysql-ha-learn-to-select-best-option/" target="_blank">register here</a>. Even if you can&#8217;t attend, it&#8217;s worth registering as you&#8217;ll be sent a link to the replay as soon as it&#8217;s available.</p>
 <p><span style="color: #333399;">How important is your data? Can you afford to lose it? What about just some of it? What would be the impact if you couldn&#8217;t access it for a minute, an hour, a day or a week?</span></p>
 <p><span style="color: #333399;">Different applications can have very different requirements for High Availability. Some need 100% data reliability with 24x7x365 read &amp; write access while many others are better served by a simpler approach with more modest HA ambitions.</span></p>
@@ -152,9 +152,9 @@ http://flickity.metafizzy.co
 									</div>
 		<br>
 		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/choosing-the-right-mysql-ha-solution-free-webinar" data-via="wpbeginner" data-text="Choosing the right MySQL HA Solution &#8211; free webinar" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url=".//mysql-cluster/choosing-the-right-mysql-ha-solution-free-webinar" data-via="wpbeginner" data-text="Choosing the right MySQL HA Solution &#8211; free webinar" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
 		<br>
-		<!-- <g:plusone size="medium" href="/mysql-cluster/choosing-the-right-mysql-ha-solution-free-webinar"></g:plusone> -->
+		<!-- <g:plusone size="medium" href=".//mysql-cluster/choosing-the-right-mysql-ha-solution-free-webinar"></g:plusone> -->
 		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
 		<!-- Place this tag after the last +1 button tag. -->
 		<script type="text/javascript">(function() {
@@ -163,31 +163,31 @@ http://flickity.metafizzy.co
     				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   			})();</script>
 		<br>
-		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/choosing-the-right-mysql-ha-solution-free-webinar" data-counter="right"></script>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url=".//mysql-cluster/choosing-the-right-mysql-ha-solution-free-webinar" data-counter="right"></script>
 		<br>
-		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fchoosing-the-right-mysql-ha-solution-free-webinar&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-cluster%2Fchoosing-the-right-mysql-ha-solution-free-webinar&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
 		</iframe>
 
 <!-- ZXZX -->
-				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
-Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="tag">High Availability</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-fabric-2" rel="tag">mysql fabric</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>, <a href="/tag/secondary" rel="tag">secondary</a>
+				<div class="postinfo">Category: <a href="./../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="./ha/index.html" rel="tag">HA</a>, <a href="./high-availability/index.html" rel="tag">High Availability</a>, <a href="./mysql/index.html" rel="tag">MySQL</a>, <a href="./mysql-cluster/index.html" rel="tag">MySQL Cluster</a>, <a href="./mysql-fabric-2/index.html" rel="tag">mysql fabric</a>, <a href="./mysql-replication/index.html" rel="tag">MySQL Replication</a>, <a href="./secondary/index.html" rel="tag">secondary</a>
 </div>
 
 			</div>			<div id="post-3990" class="post-3990 post type-post status-publish format-standard hentry category-mysql-cluster tag-ha tag-mysql tag-mysql-cluster tag-mysql-cluster-7-4 tag-mysql-replication tag-performance">
 				
 				<div class="postmeta">	<div class="postmeta_links">
-		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
-		<a href="/mysql-cluster/mysql-cluster-7-4-3-release-candidate-now-available">January 22, 2015</a>
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mysql-cluster/mysql-cluster-7-4-3-release-candidate-now-available/index.html">January 22, 2015</a>
 			</div>
 	<div class="postcomments">
-		<a href="/mysql-cluster/mysql-cluster-7-4-3-release-candidate-now-available#comments">2 comments</a>	</div>
+		<a href="./../mysql-cluster/mysql-cluster-7-4-3-release-candidate-now-available/index.html#comments">2 comments</a>	</div>
 	<div class="clear"></div>
 </div>
 
-				<h2 class="post-title"><a href="/mysql-cluster/mysql-cluster-7-4-3-release-candidate-now-available" rel="bookmark">MySQL Cluster 7.4.3 RELEASE CANDIDATE now available</a></h2>
+				<h2 class="post-title"><a href="./../mysql-cluster/mysql-cluster-7-4-3-release-candidate-now-available/index.html" rel="bookmark">MySQL Cluster 7.4.3 RELEASE CANDIDATE now available</a></h2>
 				
 				<div class="entry">
-										<p><a href="/wp-content/uploads/2014/07/MySQL_Cluster_400.png"><img decoding="async" src="/wp-content/uploads/2014/07/MySQL_Cluster_400.png" alt="MySQL Cluster Logo" width="400" height="168" class="alignright size-full wp-image-3934" srcset="/wp-content/uploads/2014/07/MySQL_Cluster_400.png 400w, /wp-content/uploads/2014/07/MySQL_Cluster_400-300x126.png 300w" sizes="(max-width: 400px) 100vw, 400px"></a></p>
+										<p><a href="./../wp-content/uploads/2014/07/MySQL_Cluster_400.png"><img decoding="async" src="./../wp-content/uploads/2014/07/MySQL_Cluster_400.png" alt="MySQL Cluster Logo" width="400" height="168" class="alignright size-full wp-image-3934" srcset="./../wp-content/uploads/2014/07/MySQL_Cluster_400.png 400w, ./../wp-content/uploads/2014/07/MySQL_Cluster_400-300x126.png 300w" sizes="(max-width: 400px) 100vw, 400px"></a></p>
 <p>Oracle have just made availble the <strong>Release Candidate</strong> for MySQL Cluster 7.4 (MySQL Cluster 7.4.3) &#8211; it can be <a href="http://dev.mysql.com/downloads/cluster/" title="download the MySQL Cluster 7.4.3 Release Candidate" target="_blank">downloaded from the development release tab here</a>. Note that this is not a GA release and so we wouldn&#8217;t recommend using it in production.</p>
 <p>The delta between this RC and the 7.4.2 DMR can be viewed in the <a href="http://dev.mysql.com/doc/relnotes/mysql-cluster/7.4/en/mysql-cluster-news-5-6-22-ndb-7-4-3.html" title="MySQL Cluster 7.4.3 Release Notes" target="_blank">MySQL Cluster 7.4.3 Release Notes</a></p>
 <p>There are three main focus areas for this RC and the purpose of this post is to briefly introduce them:</p>
@@ -238,13 +238,13 @@ Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="
 </ol>
 <p>The following animation illustrates how MySQL Cluster 7.2 detects that an inconsistency has been introduced by the asynchronous, active-active replication:</p>
 <div id="attachment_2149" style="width: 610px" class="wp-caption alignnone">
-<a href="/wp-content/uploads/2011/11/ReflectingGCI1.gif"><img decoding="async" aria-describedby="caption-attachment-2149" class="size-full wp-image-2149" title="ReflectingGCI" src="/wp-content/uploads/2011/11/ReflectingGCI1.gif" alt="" width="600" height="463"></a><p id="caption-attachment-2149" class="wp-caption-text">Detecting conflicts</p>
+<a href="./../wp-content/uploads/2011/11/ReflectingGCI1.gif"><img decoding="async" aria-describedby="caption-attachment-2149" class="size-full wp-image-2149" title="ReflectingGCI" src="./../wp-content/uploads/2011/11/ReflectingGCI1.gif" alt="" width="600" height="463"></a><p id="caption-attachment-2149" class="wp-caption-text">Detecting conflicts</p>
 </div>
 <p>While we typically consider the 2 clusters in an active-active replication configuration to be peers, in this case we designate one to be the primary and the other the secondary. Reads and writes can still be sent to either cluster but it is the responsibility of the primary to identify that a conflict has arisen and then remove the inconsistency.</p>
 <p>A logical clock is used to identify (in relative terms) when a change is made on the primary &#8211; for those who know something of the MySQL Cluster internals, we use the index of the Global Checkpoint that the update is contained in. For all tables that have this feature turned on, an extra, hidden column is automatically added on the primary &#8211; this represents the value of the logical clock when the change was made.</p>
 <p>Once the change has been applied on the primary, there is a &#8220;window of conflict&#8221; for the effected row(s) during which if a different change is made to the same row(s) on the secondary then there will be an inconsistency. Once the slave on the secondary has applied the change from the primary, it will send a replication event back to the slave on the primary, containing the primary&#8217;s clock value associated with the changes that have just been applied on the secondary. (Remember that the clock is actually the Global Checkpoint Index and so this feature is sometimes referred to as Reflected GCI). Once the slave on the primary has received this event, it knows that all changes tagged with a clock value no later than the reflected GCI are now safe &#8211; the window of conflict has closed.</p>
 <p>If an application modifies this same row on the secondary before the replication event from the primary was applied then it will send an associated replication event to the slave on the primary <strong>before</strong> it reflects the new GCI. The slave on the primary will process this replication event and compare the clock value recorded with the effected rows with the latest reflected GCI; as the clock value for the conflicting row is higher the primary recognises that a conflict has occured and will launch the algorithm to resolve the inconsistency.</p>
-<p><a href="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-300x109.png" alt="Options for MySQL Cluster replication conflict detection/resolution" width="300" height="109" class="alignright size-medium wp-image-3950" srcset="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-300x109.png 300w, /wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-1024x372.png 1024w, /wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-900x327.png 900w, /wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15.png 1728w" sizes="auto, (max-width: 300px) 100vw, 300px"></a></p>
+<p><a href="./../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15.png"><img loading="lazy" decoding="async" src="./../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-300x109.png" alt="Options for MySQL Cluster replication conflict detection/resolution" width="300" height="109" class="alignright size-medium wp-image-3950" srcset="./../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-300x109.png 300w, ./../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-1024x372.png 1024w, ./../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-900x327.png 900w, ./../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15.png 1728w" sizes="auto, (max-width: 300px) 100vw, 300px"></a></p>
 <p>After a conflict has been detected, you have the option of having the database simply report the conflict to the application or have it roll back just the conflicting row or the entire transaction and all subsequent transactions that were dependent on it.</p>
 <p>So &#8211; what&#8217;s new in 7.4?</p>
 <ul>
@@ -253,9 +253,9 @@ Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="
 <li>All conflicts are handled before switching primary &#8211; avoiding potential race conditions</li>
 </ul>
 <h3>Performance</h3>
-<p><a href="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23-300x197.png" alt="MySQL CLuster Read-Write Performance" width="300" height="197" class="alignright size-medium wp-image-3952" srcset="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23-300x197.png 300w, /wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23.png 864w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><br>
+<p><a href="./../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23.png"><img loading="lazy" decoding="async" src="./../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23-300x197.png" alt="MySQL CLuster Read-Write Performance" width="300" height="197" class="alignright size-medium wp-image-3952" srcset="./../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23-300x197.png 300w, ./../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23.png 864w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><br>
 Being a scaled-out, in-memory, real-time database, MySQL Cluster performance has always been great but we continue to work on making it faster each release. In particular, we want to keep pace with the trend of having more and more cores rather than faster ones. 7.4 continues along the path of better exploiting multiple cores &#8211; as can be seen from these benchmark results.<br>
-<a href="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15-300x199.png" alt="MySQL CLuster 7.4 Read Performance" width="300" height="199" class="alignright size-medium wp-image-3951" srcset="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15-300x199.png 300w, /wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15.png 842w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><br>
+<a href="./../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15.png"><img loading="lazy" decoding="async" src="./../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15-300x199.png" alt="MySQL CLuster 7.4 Read Performance" width="300" height="199" class="alignright size-medium wp-image-3951" srcset="./../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15-300x199.png 300w, ./../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15.png 842w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><br>
 Just make sure that you&#8217;re using the multi-threaded data node (ndbmtd rather than ndbd) and have <a href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-programs-ndbmtd.html" title="MySQL Cluster - configuring multi-threaded datanodes" target="_blank">configured how many threads it should use</a>.</p>
 <h3>Faster Restarts</h3>
 <p>You can restart MySQL Cluster processes (nodes) without losing database service (for example if adding extra memory to a server) and so on the face of it, the speed of the restarts isn&#8217;t that important. Having said that, while the node is restarting you&#8217;ve lost some of your high-availability which for super-critical applications can make you nervous. Additionally, faster restarts mean that you can complete maintenance activities faster &#8211; for example, a software upgrade requires a rolling restart of all of the nodes &#8211; if you have 48 data nodes then you want each of the data nodes to restart as quickly as possible.</p>
@@ -357,9 +357,9 @@ mysql> SELECT node_id AS node, fragment_num AS frag, \
 									</div>
 		<br>
 		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/mysql-cluster-7-4-3-release-candidate-now-available" data-via="wpbeginner" data-text="MySQL Cluster 7.4.3 RELEASE CANDIDATE now available" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url=".//mysql-cluster/mysql-cluster-7-4-3-release-candidate-now-available" data-via="wpbeginner" data-text="MySQL Cluster 7.4.3 RELEASE CANDIDATE now available" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
 		<br>
-		<!-- <g:plusone size="medium" href="/mysql-cluster/mysql-cluster-7-4-3-release-candidate-now-available"></g:plusone> -->
+		<!-- <g:plusone size="medium" href=".//mysql-cluster/mysql-cluster-7-4-3-release-candidate-now-available"></g:plusone> -->
 		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
 		<!-- Place this tag after the last +1 button tag. -->
 		<script type="text/javascript">(function() {
@@ -368,31 +368,31 @@ mysql> SELECT node_id AS node, fragment_num AS frag, \
     				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   			})();</script>
 		<br>
-		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/mysql-cluster-7-4-3-release-candidate-now-available" data-counter="right"></script>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url=".//mysql-cluster/mysql-cluster-7-4-3-release-candidate-now-available" data-counter="right"></script>
 		<br>
-		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fmysql-cluster-7-4-3-release-candidate-now-available&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-cluster%2Fmysql-cluster-7-4-3-release-candidate-now-available&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
 		</iframe>
 
 <!-- ZXZX -->
-				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
-Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-7-4" rel="tag">MySQL Cluster 7.4</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>, <a href="/tag/performance" rel="tag">Performance</a>
+				<div class="postinfo">Category: <a href="./../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="./ha/index.html" rel="tag">HA</a>, <a href="./mysql/index.html" rel="tag">MySQL</a>, <a href="./mysql-cluster/index.html" rel="tag">MySQL Cluster</a>, <a href="./mysql-cluster-7-4/index.html" rel="tag">MySQL Cluster 7.4</a>, <a href="./mysql-replication/index.html" rel="tag">MySQL Replication</a>, <a href="./performance/index.html" rel="tag">Performance</a>
 </div>
 
 			</div>			<div id="post-3980" class="post-3980 post type-post status-publish format-standard hentry category-mysql-replication tag-ha tag-high-availability tag-mysql tag-mysql-replication tag-replication tag-secondary">
 				
 				<div class="postmeta">	<div class="postmeta_links">
-		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
-		<a href="/mysql-replication/mysql-replication-whats-new-in-mysql-5-7-and-beyond-webinar-replay">December 1, 2014</a>
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mysql-replication/mysql-replication-whats-new-in-mysql-5-7-and-beyond-webinar-replay/index.html">December 1, 2014</a>
 			</div>
 	<div class="postcomments">
-		<a href="/mysql-replication/mysql-replication-whats-new-in-mysql-5-7-and-beyond-webinar-replay#respond">No comments</a>	</div>
+		<a href="./../mysql-replication/mysql-replication-whats-new-in-mysql-5-7-and-beyond-webinar-replay/index.html#respond">No comments</a>	</div>
 	<div class="clear"></div>
 </div>
 
-				<h2 class="post-title"><a href="/mysql-replication/mysql-replication-whats-new-in-mysql-5-7-and-beyond-webinar-replay" rel="bookmark">MySQL Replication: What’s New in MySQL 5.7 and Beyond &#8211; webinar replay</a></h2>
+				<h2 class="post-title"><a href="./../mysql-replication/mysql-replication-whats-new-in-mysql-5-7-and-beyond-webinar-replay/index.html" rel="bookmark">MySQL Replication: What’s New in MySQL 5.7 and Beyond &#8211; webinar replay</a></h2>
 				
 				<div class="entry">
-										<p><a href="/wp-content/uploads/2014/03/MySQL_Replication.png"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-3803" src="/wp-content/uploads/2014/03/MySQL_Replication-300x101.png" alt="MySQL Replication Logo" width="300" height="101" srcset="/wp-content/uploads/2014/03/MySQL_Replication-300x101.png 300w, /wp-content/uploads/2014/03/MySQL_Replication-1024x347.png 1024w, /wp-content/uploads/2014/03/MySQL_Replication-900x305.png 900w, /wp-content/uploads/2014/03/MySQL_Replication.png 1240w" sizes="auto, (max-width: 300px) 100vw, 300px"></a>Luís Soares and I recently hosted a webinar which explained the latest developments in MySQL Replication.</p>
+										<p><a href="./../wp-content/uploads/2014/03/MySQL_Replication.png"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-3803" src="./../wp-content/uploads/2014/03/MySQL_Replication-300x101.png" alt="MySQL Replication Logo" width="300" height="101" srcset="./../wp-content/uploads/2014/03/MySQL_Replication-300x101.png 300w, ./../wp-content/uploads/2014/03/MySQL_Replication-1024x347.png 1024w, ./../wp-content/uploads/2014/03/MySQL_Replication-900x305.png 900w, ./../wp-content/uploads/2014/03/MySQL_Replication.png 1240w" sizes="auto, (max-width: 300px) 100vw, 300px"></a>Luís Soares and I recently hosted a webinar which explained the latest developments in MySQL Replication.</p>
 <p>The webinar replay is now <a title="MySQL 5.7 latest developments" href="http://event.on24.com/eventRegistration/EventLobbyServlet?target=lobby.jsp&amp;eventid=880903&amp;sessionid=1&amp;key=C7FC018C0640492A4A758F6DCE77C87F&amp;eventuserid=109013173" target="_blank">available to download from here</a>.</p>
 <p><iframe loading="lazy" src="//www.slideshare.net/slideshow/embed_code/42205145" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></p>
 <h3>Details:</h3>
@@ -402,9 +402,9 @@ Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/mysql" rel="tag">MySQL</
 									</div>
 		<br>
 		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-replication/mysql-replication-whats-new-in-mysql-5-7-and-beyond-webinar-replay" data-via="wpbeginner" data-text="MySQL Replication: What’s New in MySQL 5.7 and Beyond &#8211; webinar replay" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url=".//mysql-replication/mysql-replication-whats-new-in-mysql-5-7-and-beyond-webinar-replay" data-via="wpbeginner" data-text="MySQL Replication: What’s New in MySQL 5.7 and Beyond &#8211; webinar replay" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
 		<br>
-		<!-- <g:plusone size="medium" href="/mysql-replication/mysql-replication-whats-new-in-mysql-5-7-and-beyond-webinar-replay"></g:plusone> -->
+		<!-- <g:plusone size="medium" href=".//mysql-replication/mysql-replication-whats-new-in-mysql-5-7-and-beyond-webinar-replay"></g:plusone> -->
 		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
 		<!-- Place this tag after the last +1 button tag. -->
 		<script type="text/javascript">(function() {
@@ -413,31 +413,31 @@ Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/mysql" rel="tag">MySQL</
     				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   			})();</script>
 		<br>
-		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-replication/mysql-replication-whats-new-in-mysql-5-7-and-beyond-webinar-replay" data-counter="right"></script>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url=".//mysql-replication/mysql-replication-whats-new-in-mysql-5-7-and-beyond-webinar-replay" data-counter="right"></script>
 		<br>
-		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-replication%2Fmysql-replication-whats-new-in-mysql-5-7-and-beyond-webinar-replay&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-replication%2Fmysql-replication-whats-new-in-mysql-5-7-and-beyond-webinar-replay&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
 		</iframe>
 
 <!-- ZXZX -->
-				<div class="postinfo">Category: <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
-Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="tag">High Availability</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>, <a href="/tag/replication" rel="tag">Replication</a>, <a href="/tag/secondary" rel="tag">secondary</a>
+				<div class="postinfo">Category: <a href="./../category/mysql-replication/index.html" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="./ha/index.html" rel="tag">HA</a>, <a href="./high-availability/index.html" rel="tag">High Availability</a>, <a href="./mysql/index.html" rel="tag">MySQL</a>, <a href="./mysql-replication/index.html" rel="tag">MySQL Replication</a>, <a href="./replication/index.html" rel="tag">Replication</a>, <a href="./secondary/index.html" rel="tag">secondary</a>
 </div>
 
 			</div>			<div id="post-3972" class="post-3972 post type-post status-publish format-standard hentry category-mysql-replication tag-ha tag-high-availability tag-mysql tag-mysql-replication tag-replication tag-secondary">
 				
 				<div class="postmeta">	<div class="postmeta_links">
-		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
-		<a href="/mysql-replication/upcoming-webinar-mysql-replication-whats-new-in-mysql-5-7-and-beyond">November 24, 2014</a>
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mysql-replication/upcoming-webinar-mysql-replication-whats-new-in-mysql-5-7-and-beyond/index.html">November 24, 2014</a>
 			</div>
 	<div class="postcomments">
-		<a href="/mysql-replication/upcoming-webinar-mysql-replication-whats-new-in-mysql-5-7-and-beyond#respond">No comments</a>	</div>
+		<a href="./../mysql-replication/upcoming-webinar-mysql-replication-whats-new-in-mysql-5-7-and-beyond/index.html#respond">No comments</a>	</div>
 	<div class="clear"></div>
 </div>
 
-				<h2 class="post-title"><a href="/mysql-replication/upcoming-webinar-mysql-replication-whats-new-in-mysql-5-7-and-beyond" rel="bookmark">Upcoming Webinar &#8211; MySQL Replication: What’s New in MySQL 5.7 and Beyond</a></h2>
+				<h2 class="post-title"><a href="./../mysql-replication/upcoming-webinar-mysql-replication-whats-new-in-mysql-5-7-and-beyond/index.html" rel="bookmark">Upcoming Webinar &#8211; MySQL Replication: What’s New in MySQL 5.7 and Beyond</a></h2>
 				
 				<div class="entry">
-										<p><a href="/wp-content/uploads/2014/03/MySQL_Replication.png"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-3803" src="/wp-content/uploads/2014/03/MySQL_Replication-300x101.png" alt="MySQL Replication Logo" width="300" height="101" srcset="/wp-content/uploads/2014/03/MySQL_Replication-300x101.png 300w, /wp-content/uploads/2014/03/MySQL_Replication-1024x347.png 1024w, /wp-content/uploads/2014/03/MySQL_Replication-900x305.png 900w, /wp-content/uploads/2014/03/MySQL_Replication.png 1240w" sizes="auto, (max-width: 300px) 100vw, 300px"></a>On Tuesday 25th November, Luís Soares and I will be hosting a webinar which explains the latest developments in MySQL Replication. As always the webinar is free but please <a href="http://www.mysql.com/news-and-events/web-seminars/mysql-replication-whats-new-in-mysql-5-7-and-beyond/" title="MySQL Replication: What’s New in MySQL 5.7 and Beyond" target="_blank">register here</a>.</p>
+										<p><a href="./../wp-content/uploads/2014/03/MySQL_Replication.png"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-3803" src="./../wp-content/uploads/2014/03/MySQL_Replication-300x101.png" alt="MySQL Replication Logo" width="300" height="101" srcset="./../wp-content/uploads/2014/03/MySQL_Replication-300x101.png 300w, ./../wp-content/uploads/2014/03/MySQL_Replication-1024x347.png 1024w, ./../wp-content/uploads/2014/03/MySQL_Replication-900x305.png 900w, ./../wp-content/uploads/2014/03/MySQL_Replication.png 1240w" sizes="auto, (max-width: 300px) 100vw, 300px"></a>On Tuesday 25th November, Luís Soares and I will be hosting a webinar which explains the latest developments in MySQL Replication. As always the webinar is free but please <a href="http://www.mysql.com/news-and-events/web-seminars/mysql-replication-whats-new-in-mysql-5-7-and-beyond/" title="MySQL Replication: What’s New in MySQL 5.7 and Beyond" target="_blank">register here</a>.</p>
 <h3>Details:</h3>
 <p>Continuing in the footsteps of its predecessor, MySQL 5.7 is set to be a groundbreaking release. In this webinar, the engineers behind the product provide insights into what’s new for MySQL replication in the latest 5.7 Development Milestone Release and review the early access features available via labs.mysql.com. The next generation of replication features cover several technical areas such as better semi-synchronous replication, an enhanced multithreaded slave (per-transaction parallelism), improved monitoring with performance schema tables, online configuration changes, options for fine-tuning replication performance, support for more-advanced topologies with multisource replication, and much more. This is also a great chance to learn about MySQL Group Replication &#8211; the next generation of active-active, update-anywhere replication for MySQL.</p>
 <p>Seize the opportunity to learn how you will be able to leverage MySQL 5.7 replication to grow your business.</p>
@@ -463,9 +463,9 @@ Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="
 									</div>
 		<br>
 		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-replication/upcoming-webinar-mysql-replication-whats-new-in-mysql-5-7-and-beyond" data-via="wpbeginner" data-text="Upcoming Webinar &#8211; MySQL Replication: What’s New in MySQL 5.7 and Beyond" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url=".//mysql-replication/upcoming-webinar-mysql-replication-whats-new-in-mysql-5-7-and-beyond" data-via="wpbeginner" data-text="Upcoming Webinar &#8211; MySQL Replication: What’s New in MySQL 5.7 and Beyond" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
 		<br>
-		<!-- <g:plusone size="medium" href="/mysql-replication/upcoming-webinar-mysql-replication-whats-new-in-mysql-5-7-and-beyond"></g:plusone> -->
+		<!-- <g:plusone size="medium" href=".//mysql-replication/upcoming-webinar-mysql-replication-whats-new-in-mysql-5-7-and-beyond"></g:plusone> -->
 		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
 		<!-- Place this tag after the last +1 button tag. -->
 		<script type="text/javascript">(function() {
@@ -474,44 +474,44 @@ Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="
     				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   			})();</script>
 		<br>
-		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-replication/upcoming-webinar-mysql-replication-whats-new-in-mysql-5-7-and-beyond" data-counter="right"></script>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url=".//mysql-replication/upcoming-webinar-mysql-replication-whats-new-in-mysql-5-7-and-beyond" data-counter="right"></script>
 		<br>
-		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-replication%2Fupcoming-webinar-mysql-replication-whats-new-in-mysql-5-7-and-beyond&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-replication%2Fupcoming-webinar-mysql-replication-whats-new-in-mysql-5-7-and-beyond&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
 		</iframe>
 
 <!-- ZXZX -->
-				<div class="postinfo">Category: <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
-Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="tag">High Availability</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>, <a href="/tag/replication" rel="tag">Replication</a>, <a href="/tag/secondary" rel="tag">secondary</a>
+				<div class="postinfo">Category: <a href="./../category/mysql-replication/index.html" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="./ha/index.html" rel="tag">HA</a>, <a href="./high-availability/index.html" rel="tag">High Availability</a>, <a href="./mysql/index.html" rel="tag">MySQL</a>, <a href="./mysql-replication/index.html" rel="tag">MySQL Replication</a>, <a href="./replication/index.html" rel="tag">Replication</a>, <a href="./secondary/index.html" rel="tag">secondary</a>
 </div>
 
 			</div>			<div id="post-3874" class="post-3874 post type-post status-publish format-standard hentry category-mysql-replication tag-mysql tag-mysql-5-7 tag-mysql-replication">
 				
 				<div class="postmeta">	<div class="postmeta_links">
-		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
-		<a href="/mysql-replication/mysql-replication-multi-threaded-slave-just-got-a-whole-lot-faster">April 2, 2014</a>
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mysql-replication/mysql-replication-multi-threaded-slave-just-got-a-whole-lot-faster/index.html">April 2, 2014</a>
 			</div>
 	<div class="postcomments">
-		<a href="/mysql-replication/mysql-replication-multi-threaded-slave-just-got-a-whole-lot-faster#comments">One comment</a>	</div>
+		<a href="./../mysql-replication/mysql-replication-multi-threaded-slave-just-got-a-whole-lot-faster/index.html#comments">One comment</a>	</div>
 	<div class="clear"></div>
 </div>
 
-				<h2 class="post-title"><a href="/mysql-replication/mysql-replication-multi-threaded-slave-just-got-a-whole-lot-faster" rel="bookmark">MySQL Replication &#8211; Multi-Threaded Slave just got a whole lot faster</a></h2>
+				<h2 class="post-title"><a href="./../mysql-replication/mysql-replication-multi-threaded-slave-just-got-a-whole-lot-faster/index.html" rel="bookmark">MySQL Replication &#8211; Multi-Threaded Slave just got a whole lot faster</a></h2>
 				
 				<div class="entry">
-										<p><a href="/wp-content/uploads/2014/03/MySQL_Replication.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2014/03/MySQL_Replication-300x101.png" alt="MySQL Replication Logo" width="300" height="101" class="alignright size-medium wp-image-3803" srcset="/wp-content/uploads/2014/03/MySQL_Replication-300x101.png 300w, /wp-content/uploads/2014/03/MySQL_Replication-1024x347.png 1024w, /wp-content/uploads/2014/03/MySQL_Replication-900x305.png 900w, /wp-content/uploads/2014/03/MySQL_Replication.png 1240w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><br>
-A new MySQL <a href="/tag/labs.mysql.com" title="MySQL 5.7 Multi-threaded slave labs load" target="blank">MySQL 5.7 Multi-threaded slave labs load</a> has now been published on <a href="/tag/labs.mysql.com" title="MySQL Labs" target="blank">MySQL Labs</a>. This represents a signifficant step in the process of speeding up the processing of replication events on the slave &#8211; letting it keep up with the master.</p>
-<p>The original implementation of MTS made a simple assumption about what events could safely be applied in parallel (with no dependency on the ordering). That assumption was that different schemas had no dependencies on each other and so if you had 5 schemas then one event from each schema could be applied in parallel (this is described in <a href="/mysql-replication/mysql-5-6-ga-replication-enhancements" title="MySQL 5.6 GA – Replication Enhancements" target="blank">MySQL 5.6 GA – Replication Enhancements</a>). This approach delivered a much higher throughput on the slave but only if you were using multiple schemas &#8211; perfect for many deployments (such as multi-tenant systems) but if you only had a single database then it didn&#8217;t help.</p>
+										<p><a href="./../wp-content/uploads/2014/03/MySQL_Replication.png"><img loading="lazy" decoding="async" src="./../wp-content/uploads/2014/03/MySQL_Replication-300x101.png" alt="MySQL Replication Logo" width="300" height="101" class="alignright size-medium wp-image-3803" srcset="./../wp-content/uploads/2014/03/MySQL_Replication-300x101.png 300w, ./../wp-content/uploads/2014/03/MySQL_Replication-1024x347.png 1024w, ./../wp-content/uploads/2014/03/MySQL_Replication-900x305.png 900w, ./../wp-content/uploads/2014/03/MySQL_Replication.png 1240w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><br>
+A new MySQL <a href="./labs.mysql.com" title="MySQL 5.7 Multi-threaded slave labs load" target="blank">MySQL 5.7 Multi-threaded slave labs load</a> has now been published on <a href="./labs.mysql.com" title="MySQL Labs" target="blank">MySQL Labs</a>. This represents a signifficant step in the process of speeding up the processing of replication events on the slave &#8211; letting it keep up with the master.</p>
+<p>The original implementation of MTS made a simple assumption about what events could safely be applied in parallel (with no dependency on the ordering). That assumption was that different schemas had no dependencies on each other and so if you had 5 schemas then one event from each schema could be applied in parallel (this is described in <a href="./../mysql-replication/mysql-5-6-ga-replication-enhancements/index.html" title="MySQL 5.6 GA – Replication Enhancements" target="blank">MySQL 5.6 GA – Replication Enhancements</a>). This approach delivered a much higher throughput on the slave but only if you were using multiple schemas &#8211; perfect for many deployments (such as multi-tenant systems) but if you only had a single database then it didn&#8217;t help.</p>
 <p>Last year we released a new version which removed that dependency on multiple schemas &#8211; allowing events to be applied to the same schema in parallel. For this implementation the new assumption was that if a set of transactions were part of the same binlog group commit on the master then the locking on the master has already determined that they&#8217;re indepent of each other and so that same set of events can be applied in parallel on the slave.</p>
 <p>The latest enhancement is to allow the user to tune how many transactions are likely to be in each of those BGC buckets. This is done at the expense of delaying commits on the master and can be controlled by specifying the longest time that the system should wait (<code>binlog-group-commit-delay</code>) and the maximum number of transactions that should be committed together (<code>binlog-group-commit-count</code>). Initial benchmark results are very possitive &#8211; a 6X throughput (if willing to tolerate a small impact to the latency on the master) or 3X with no impact to the master.</p>
-<p><a href="/wp-content/uploads/2014/04/Screen-Shot-2014-04-02-at-10.03.58.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2014/04/Screen-Shot-2014-04-02-at-10.03.58.png" alt="Multi-Threaded slave performance gains" width="1480" height="930" class="aligncenter size-full wp-image-3875" srcset="/wp-content/uploads/2014/04/Screen-Shot-2014-04-02-at-10.03.58.png 1480w, /wp-content/uploads/2014/04/Screen-Shot-2014-04-02-at-10.03.58-300x188.png 300w, /wp-content/uploads/2014/04/Screen-Shot-2014-04-02-at-10.03.58-1024x643.png 1024w, /wp-content/uploads/2014/04/Screen-Shot-2014-04-02-at-10.03.58-900x565.png 900w" sizes="auto, (max-width: 1480px) 100vw, 1480px"></a><br>
+<p><a href="./../wp-content/uploads/2014/04/Screen-Shot-2014-04-02-at-10.03.58.png"><img loading="lazy" decoding="async" src="./../wp-content/uploads/2014/04/Screen-Shot-2014-04-02-at-10.03.58.png" alt="Multi-Threaded slave performance gains" width="1480" height="930" class="aligncenter size-full wp-image-3875" srcset="./../wp-content/uploads/2014/04/Screen-Shot-2014-04-02-at-10.03.58.png 1480w, ./../wp-content/uploads/2014/04/Screen-Shot-2014-04-02-at-10.03.58-300x188.png 300w, ./../wp-content/uploads/2014/04/Screen-Shot-2014-04-02-at-10.03.58-1024x643.png 1024w, ./../wp-content/uploads/2014/04/Screen-Shot-2014-04-02-at-10.03.58-900x565.png 900w" sizes="auto, (max-width: 1480px) 100vw, 1480px"></a><br>
 This is a feature where the mileage will definitely vary depending on your application and how you tune these two new parameters and so I&#8217;d certainly recommend that you try it out for yourselves. As always we&#8217;re anxious to get your feedback &#8211; for example through comments on this post or on the <a href="http://forums.mysql.com/list.php?26" title="MySQL Replication forum" target="blank">MySQL Replication forum</a>.</p>
 					<div class="clear"></div>
 									</div>
 		<br>
 		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-replication/mysql-replication-multi-threaded-slave-just-got-a-whole-lot-faster" data-via="wpbeginner" data-text="MySQL Replication &#8211; Multi-Threaded Slave just got a whole lot faster" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url=".//mysql-replication/mysql-replication-multi-threaded-slave-just-got-a-whole-lot-faster" data-via="wpbeginner" data-text="MySQL Replication &#8211; Multi-Threaded Slave just got a whole lot faster" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
 		<br>
-		<!-- <g:plusone size="medium" href="/mysql-replication/mysql-replication-multi-threaded-slave-just-got-a-whole-lot-faster"></g:plusone> -->
+		<!-- <g:plusone size="medium" href=".//mysql-replication/mysql-replication-multi-threaded-slave-just-got-a-whole-lot-faster"></g:plusone> -->
 		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
 		<!-- Place this tag after the last +1 button tag. -->
 		<script type="text/javascript">(function() {
@@ -520,31 +520,31 @@ This is a feature where the mileage will definitely vary depending on your appli
     				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   			})();</script>
 		<br>
-		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-replication/mysql-replication-multi-threaded-slave-just-got-a-whole-lot-faster" data-counter="right"></script>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url=".//mysql-replication/mysql-replication-multi-threaded-slave-just-got-a-whole-lot-faster" data-counter="right"></script>
 		<br>
-		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-replication%2Fmysql-replication-multi-threaded-slave-just-got-a-whole-lot-faster&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-replication%2Fmysql-replication-multi-threaded-slave-just-got-a-whole-lot-faster&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
 		</iframe>
 
 <!-- ZXZX -->
-				<div class="postinfo">Category: <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
-Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-5-7" rel="tag">MySQL 5.7</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>
+				<div class="postinfo">Category: <a href="./../category/mysql-replication/index.html" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="./mysql/index.html" rel="tag">MySQL</a>, <a href="./mysql-5-7/index.html" rel="tag">MySQL 5.7</a>, <a href="./mysql-replication/index.html" rel="tag">MySQL Replication</a>
 </div>
 
 			</div>			<div id="post-3864" class="post-3864 post type-post status-publish format-standard hentry category-mysql-replication tag-ha tag-high-availability tag-mysql tag-mysql-replication">
 				
 				<div class="postmeta">	<div class="postmeta_links">
-		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
-		<a href="/mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-on-demand-webinar-qa">March 27, 2014</a>
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-on-demand-webinar-qa/index.html">March 27, 2014</a>
 			</div>
 	<div class="postcomments">
-		<a href="/mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-on-demand-webinar-qa#respond">No comments</a>	</div>
+		<a href="./../mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-on-demand-webinar-qa/index.html#respond">No comments</a>	</div>
 	<div class="clear"></div>
 </div>
 
-				<h2 class="post-title"><a href="/mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-on-demand-webinar-qa" rel="bookmark">Advanced MySQL Replication Architectures and Latest Developments &#8211; On-Demand webinar + Q&#038;A</a></h2>
+				<h2 class="post-title"><a href="./../mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-on-demand-webinar-qa/index.html" rel="bookmark">Advanced MySQL Replication Architectures and Latest Developments &#8211; On-Demand webinar + Q&#038;A</a></h2>
 				
 				<div class="entry">
-										<p><a href="/wp-content/uploads/2014/03/MySQL_Replication.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2014/03/MySQL_Replication-300x101.png" alt="MySQL Replication Logo" width="300" height="101" class="alignright size-medium wp-image-3803" srcset="/wp-content/uploads/2014/03/MySQL_Replication-300x101.png 300w, /wp-content/uploads/2014/03/MySQL_Replication-1024x347.png 1024w, /wp-content/uploads/2014/03/MySQL_Replication-900x305.png 900w, /wp-content/uploads/2014/03/MySQL_Replication.png 1240w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><br>
+										<p><a href="./../wp-content/uploads/2014/03/MySQL_Replication.png"><img loading="lazy" decoding="async" src="./../wp-content/uploads/2014/03/MySQL_Replication-300x101.png" alt="MySQL Replication Logo" width="300" height="101" class="alignright size-medium wp-image-3803" srcset="./../wp-content/uploads/2014/03/MySQL_Replication-300x101.png 300w, ./../wp-content/uploads/2014/03/MySQL_Replication-1024x347.png 1024w, ./../wp-content/uploads/2014/03/MySQL_Replication-900x305.png 900w, ./../wp-content/uploads/2014/03/MySQL_Replication.png 1240w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><br>
 We recently hosted a live webinar covering advanced MySQL Replication topics as well as the latest developments. <a href="http://www.mysql.com/news-and-events/web-seminars/advanced-mysql-replication-architectures-and-latest-developments/" title="Advanced MySQL Replication Architectures and Latest Developments - on-demand webinar" target="blank">The webinar charts and replay are now available here</a>. Below, you&#8217;ll find the questions raised by the audience together with the responses given.</p>
 <p>More details on what was covered&#8230;</p>
 <p>The biggest Web sites in the world rely on MySQL Replication to scale-out and provide High Availability for their data. Extend your knowledge of how MySQL Replication works and what you can achieve with it; join us for this technical webinar to explore some of the more advanced replication architectures as well as some of the latest product developments:</p>
@@ -601,9 +601,9 @@ We recently hosted a live webinar covering advanced MySQL Replication topics as 
 									</div>
 		<br>
 		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-on-demand-webinar-qa" data-via="wpbeginner" data-text="Advanced MySQL Replication Architectures and Latest Developments &#8211; On-Demand webinar + Q&#038;A" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url=".//mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-on-demand-webinar-qa" data-via="wpbeginner" data-text="Advanced MySQL Replication Architectures and Latest Developments &#8211; On-Demand webinar + Q&#038;A" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
 		<br>
-		<!-- <g:plusone size="medium" href="/mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-on-demand-webinar-qa"></g:plusone> -->
+		<!-- <g:plusone size="medium" href=".//mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-on-demand-webinar-qa"></g:plusone> -->
 		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
 		<!-- Place this tag after the last +1 button tag. -->
 		<script type="text/javascript">(function() {
@@ -612,31 +612,31 @@ We recently hosted a live webinar covering advanced MySQL Replication topics as 
     				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   			})();</script>
 		<br>
-		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-on-demand-webinar-qa" data-counter="right"></script>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url=".//mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-on-demand-webinar-qa" data-counter="right"></script>
 		<br>
-		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-replication%2Fadvanced-mysql-replication-architectures-and-latest-developments-on-demand-webinar-qa&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-replication%2Fadvanced-mysql-replication-architectures-and-latest-developments-on-demand-webinar-qa&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
 		</iframe>
 
 <!-- ZXZX -->
-				<div class="postinfo">Category: <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
-Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="tag">High Availability</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>
+				<div class="postinfo">Category: <a href="./../category/mysql-replication/index.html" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="./ha/index.html" rel="tag">HA</a>, <a href="./high-availability/index.html" rel="tag">High Availability</a>, <a href="./mysql/index.html" rel="tag">MySQL</a>, <a href="./mysql-replication/index.html" rel="tag">MySQL Replication</a>
 </div>
 
 			</div>			<div id="post-3805" class="post-3805 post type-post status-publish format-standard hentry category-mysql-replication tag-ha tag-high-availability tag-mysql tag-mysql-replication tag-replication">
 				
 				<div class="postmeta">	<div class="postmeta_links">
-		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
-		<a href="/mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-free-webinar-2">March 18, 2014</a>
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-free-webinar-2/index.html">March 18, 2014</a>
 			</div>
 	<div class="postcomments">
-		<a href="/mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-free-webinar-2#respond">No comments</a>	</div>
+		<a href="./../mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-free-webinar-2/index.html#respond">No comments</a>	</div>
 	<div class="clear"></div>
 </div>
 
-				<h2 class="post-title"><a href="/mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-free-webinar-2" rel="bookmark">Advanced MySQL Replication Architectures and Latest Developments &#8211; free webinar</a></h2>
+				<h2 class="post-title"><a href="./../mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-free-webinar-2/index.html" rel="bookmark">Advanced MySQL Replication Architectures and Latest Developments &#8211; free webinar</a></h2>
 				
 				<div class="entry">
-										<p><a href="/wp-content/uploads/2014/03/MySQL_Replication.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2014/03/MySQL_Replication-300x101.png" alt="MySQL Replication Logo" width="300" height="101" class="alignright size-medium wp-image-3803" srcset="/wp-content/uploads/2014/03/MySQL_Replication-300x101.png 300w, /wp-content/uploads/2014/03/MySQL_Replication-1024x347.png 1024w, /wp-content/uploads/2014/03/MySQL_Replication-900x305.png 900w, /wp-content/uploads/2014/03/MySQL_Replication.png 1240w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><br>
+										<p><a href="./../wp-content/uploads/2014/03/MySQL_Replication.png"><img loading="lazy" decoding="async" src="./../wp-content/uploads/2014/03/MySQL_Replication-300x101.png" alt="MySQL Replication Logo" width="300" height="101" class="alignright size-medium wp-image-3803" srcset="./../wp-content/uploads/2014/03/MySQL_Replication-300x101.png 300w, ./../wp-content/uploads/2014/03/MySQL_Replication-1024x347.png 1024w, ./../wp-content/uploads/2014/03/MySQL_Replication-900x305.png 900w, ./../wp-content/uploads/2014/03/MySQL_Replication.png 1240w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><br>
 This Thursday (20th March 2014) we&#8217;ll be hosted a free webinar covering advanced MySQL Replication topics as well as the latest developments. As always, the webinar is free but you need to <a href="http://www.mysql.com/news-and-events/web-seminars/advanced-mysql-replication-architectures-and-latest-developments/" title="Advanced MySQL Replication Architectures and Latest Developments - free webinar" target="_blank">register here</a> &#8211; even if you can&#8217;t join live, you&#8217;ll then be sent a link to the replay.</p>
 <p>More details on what to expect&#8230;</p>
 <p>The biggest Web sites in the world rely on MySQL Replication to scale-out and provide High Availability for their data. Extend your knowledge of how MySQL Replication works and what you can achieve with it; join us for this technical webinar to explore some of the more advanced replication architectures as well as some of the latest product developments:</p>
@@ -674,9 +674,9 @@ This Thursday (20th March 2014) we&#8217;ll be hosted a free webinar covering ad
 									</div>
 		<br>
 		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-free-webinar-2" data-via="wpbeginner" data-text="Advanced MySQL Replication Architectures and Latest Developments &#8211; free webinar" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url=".//mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-free-webinar-2" data-via="wpbeginner" data-text="Advanced MySQL Replication Architectures and Latest Developments &#8211; free webinar" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
 		<br>
-		<!-- <g:plusone size="medium" href="/mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-free-webinar-2"></g:plusone> -->
+		<!-- <g:plusone size="medium" href=".//mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-free-webinar-2"></g:plusone> -->
 		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
 		<!-- Place this tag after the last +1 button tag. -->
 		<script type="text/javascript">(function() {
@@ -685,31 +685,31 @@ This Thursday (20th March 2014) we&#8217;ll be hosted a free webinar covering ad
     				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   			})();</script>
 		<br>
-		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-free-webinar-2" data-counter="right"></script>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url=".//mysql-replication/advanced-mysql-replication-architectures-and-latest-developments-free-webinar-2" data-counter="right"></script>
 		<br>
-		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-replication%2Fadvanced-mysql-replication-architectures-and-latest-developments-free-webinar-2&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-replication%2Fadvanced-mysql-replication-architectures-and-latest-developments-free-webinar-2&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
 		</iframe>
 
 <!-- ZXZX -->
-				<div class="postinfo">Category: <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
-Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="tag">High Availability</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>, <a href="/tag/replication" rel="tag">Replication</a>
+				<div class="postinfo">Category: <a href="./../category/mysql-replication/index.html" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="./ha/index.html" rel="tag">HA</a>, <a href="./high-availability/index.html" rel="tag">High Availability</a>, <a href="./mysql/index.html" rel="tag">MySQL</a>, <a href="./mysql-replication/index.html" rel="tag">MySQL Replication</a>, <a href="./replication/index.html" rel="tag">Replication</a>
 </div>
 
 			</div>			<div id="post-2973" class="post-2973 post type-post status-publish format-standard hentry category-mysql-replication tag-ha tag-mysql tag-mysql-5-7 tag-mysql-replication">
 				
 				<div class="postmeta">	<div class="postmeta_links">
-		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
-		<a href="/mysql-replication/webinar-whats-new-in-mysql-replication">December 6, 2013</a>
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mysql-replication/webinar-whats-new-in-mysql-replication/index.html">December 6, 2013</a>
 			</div>
 	<div class="postcomments">
-		<a href="/mysql-replication/webinar-whats-new-in-mysql-replication#respond">No comments</a>	</div>
+		<a href="./../mysql-replication/webinar-whats-new-in-mysql-replication/index.html#respond">No comments</a>	</div>
 	<div class="clear"></div>
 </div>
 
-				<h2 class="post-title"><a href="/mysql-replication/webinar-whats-new-in-mysql-replication" rel="bookmark">Webinar &#8211; What&#8217;s New in MySQL Replication</a></h2>
+				<h2 class="post-title"><a href="./../mysql-replication/webinar-whats-new-in-mysql-replication/index.html" rel="bookmark">Webinar &#8211; What&#8217;s New in MySQL Replication</a></h2>
 				
 				<div class="entry">
-										<p><a href="/wp-content/uploads/2013/11/MySQL_Replication_and_HA.png"><img loading="lazy" decoding="async" class="size-medium wp-image-2976 alignright" alt="MySQL Replication logo" src="/wp-content/uploads/2013/11/MySQL_Replication_and_HA-300x101.png" width="300" height="101" srcset="/wp-content/uploads/2013/11/MySQL_Replication_and_HA-300x101.png 300w, /wp-content/uploads/2013/11/MySQL_Replication_and_HA-1024x347.png 1024w, /wp-content/uploads/2013/11/MySQL_Replication_and_HA.png 1240w" sizes="auto, (max-width: 300px) 100vw, 300px"></a>On Friday (22/11/2013), we hosted webinar covering the new replication features in the MySQL 5.7 DMR as well as in MySQL Labs. You can now <a href="http://www.mysql.com/news-and-events/web-seminars/mysql-replication-discover-whats-new/" title="MySQL 5.7 Replication enhancements - webinar" target="_blank">view the webinar replay here</a>. </p>
+										<p><a href="./../wp-content/uploads/2013/11/MySQL_Replication_and_HA.png"><img loading="lazy" decoding="async" class="size-medium wp-image-2976 alignright" alt="MySQL Replication logo" src="./../wp-content/uploads/2013/11/MySQL_Replication_and_HA-300x101.png" width="300" height="101" srcset="./../wp-content/uploads/2013/11/MySQL_Replication_and_HA-300x101.png 300w, ./../wp-content/uploads/2013/11/MySQL_Replication_and_HA-1024x347.png 1024w, ./../wp-content/uploads/2013/11/MySQL_Replication_and_HA.png 1240w" sizes="auto, (max-width: 300px) 100vw, 300px"></a>On Friday (22/11/2013), we hosted webinar covering the new replication features in the MySQL 5.7 DMR as well as in MySQL Labs. You can now <a href="http://www.mysql.com/news-and-events/web-seminars/mysql-replication-discover-whats-new/" title="MySQL 5.7 Replication enhancements - webinar" target="_blank">view the webinar replay here</a>. </p>
 <p>It’s a very exciting time for MySQL Replication! MySQL 5.6 contains numerous new replication features and Oracle recently announced&#8230;</p>
 <ul>
 <li>The second Development Milestone Release of MySQL 5.7, introducing yet again new replication features and enhancements including optimized multi-threaded slave, better consistency with semi-synchronous replication, and improved monitoring with new Performance Schema tables.</li>
@@ -741,7 +741,7 @@ Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="
 <li>
 <strong>Are you working with an easier way to create a replication setup &#8211; like automatically copying the master database to the slave (something like you had for MyISAM before)?</strong> Take a look at <a href="http://dev.mysql.com/doc/workbench/en/utils-manuals.html" title="MySQL Utilities" target="_blank">MySQL Utilities</a> as there are lots of new tools in there 2 help setup, monitor and manage replication.</li>
 <li>
-<strong>You guys have multiple blogs and it is a shame to not present this information in a common place.</strong> That&#8217;s been something that we&#8217;ve been discussing as well. Of course they get aggregated through planet.mysql.com and there is also a <a href="/mysql-replication/mysql-5-7-2-dmr-and-labs-new-replication-features" title="MySQL 5.7 replication enhancements" target="_blank">summary blog</a> pointing to the others.</li>
+<strong>You guys have multiple blogs and it is a shame to not present this information in a common place.</strong> That&#8217;s been something that we&#8217;ve been discussing as well. Of course they get aggregated through planet.mysql.com and there is also a <a href="./../mysql-replication/mysql-5-7-2-dmr-and-labs-new-replication-features/index.html" title="MySQL 5.7 replication enhancements" target="_blank">summary blog</a> pointing to the others.</li>
 <li>
 <strong>In Loss-Less Semi-Sync replication, what happens if the slave dies, before it receives the change in the relay. Is there a timeout which then commits and ack the data to the master?</strong> Yes, there is a timeout. After the timeout, it commits and falls back to normal asynchronous replication. The timeout is specified by the variable <a href="http://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html#sysvar_rpl_semi_sync_master_timeout" target="_blank">rpl_semi_sync_master_timeout</a>. Currently you cannot turn off this behavior, but you can set the timeout very very high. For more information, see the <a href="http://dev.mysql.com/doc/refman/5.6/en/replication-semisync-installation.html" target="_blank" title="MySQL Semisynchronous Replication Installation and Configuration">configuration guide</a>.</li>
 					<div class="clear"></div>
@@ -749,9 +749,9 @@ Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="
 </div>
 		<br>
 		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-replication/webinar-whats-new-in-mysql-replication" data-via="wpbeginner" data-text="Webinar &#8211; What&#8217;s New in MySQL Replication" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url=".//mysql-replication/webinar-whats-new-in-mysql-replication" data-via="wpbeginner" data-text="Webinar &#8211; What&#8217;s New in MySQL Replication" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
 		<br>
-		<!-- <g:plusone size="medium" href="/mysql-replication/webinar-whats-new-in-mysql-replication"></g:plusone> -->
+		<!-- <g:plusone size="medium" href=".//mysql-replication/webinar-whats-new-in-mysql-replication"></g:plusone> -->
 		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
 		<!-- Place this tag after the last +1 button tag. -->
 		<script type="text/javascript">(function() {
@@ -760,40 +760,40 @@ Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="
     				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   			})();</script>
 		<br>
-		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-replication/webinar-whats-new-in-mysql-replication" data-counter="right"></script>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url=".//mysql-replication/webinar-whats-new-in-mysql-replication" data-counter="right"></script>
 		<br>
-		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-replication%2Fwebinar-whats-new-in-mysql-replication&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-replication%2Fwebinar-whats-new-in-mysql-replication&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
 		</iframe>
 
 <!-- ZXZX -->
-				<div class="postinfo">Category: <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
-Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-5-7" rel="tag">MySQL 5.7</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>
+				<div class="postinfo">Category: <a href="./../category/mysql-replication/index.html" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="./ha/index.html" rel="tag">HA</a>, <a href="./mysql/index.html" rel="tag">MySQL</a>, <a href="./mysql-5-7/index.html" rel="tag">MySQL 5.7</a>, <a href="./mysql-replication/index.html" rel="tag">MySQL Replication</a>
 </div>
 
 			</div>			<div id="post-2953" class="post-2953 post type-post status-publish format-standard has-post-thumbnail hentry category-mysql-replication tag-ha tag-high-avail tag-mysql tag-mysql-5-7 tag-mysql-replication">
 				
 				<div class="postmeta">	<div class="postmeta_links">
-		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
-		<a href="/mysql-replication/mysql-5-7-2-dmr-and-labs-new-replication-features">September 21, 2013</a>
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mysql-replication/mysql-5-7-2-dmr-and-labs-new-replication-features/index.html">September 21, 2013</a>
 			</div>
 	<div class="postcomments">
-		<a href="/mysql-replication/mysql-5-7-2-dmr-and-labs-new-replication-features#respond">No comments</a>	</div>
+		<a href="./../mysql-replication/mysql-5-7-2-dmr-and-labs-new-replication-features/index.html#respond">No comments</a>	</div>
 	<div class="clear"></div>
 </div>
 
-				<h2 class="post-title"><a href="/mysql-replication/mysql-5-7-2-dmr-and-labs-new-replication-features" rel="bookmark">MySQL 5.7.2 DMR and Labs &#8211; new replication features</a></h2>
+				<h2 class="post-title"><a href="./../mysql-replication/mysql-5-7-2-dmr-and-labs-new-replication-features/index.html" rel="bookmark">MySQL 5.7.2 DMR and Labs &#8211; new replication features</a></h2>
 				
 				<div class="entry">
-										<p>With today&#8217;s <a href="http://www.oracle.com/us/corporate/press/2020378">announcement of the second MySQL 5.7 Development Milestone Release</a> and a <a href="http://labs.mysql.com/" title="Download Multi-Source replication from MySQL Labs">new labs release</a> it&#8217;s a very exciting time for MySQL Replication. <a href="/mysql-replication/mysql-5-6-ga-replication-enhancements/">MySQL 5.6</a> contained a lot of new content to make replication faster, easier to use and more reliable (Global Transaction Identifiers, Multi-Threaded Slaves, Binary Log Group Commit, Optimized Row Based Replication, Crash Safe Replication, Replication Event Checksums, Time Delayed Replication &amp; Informational Logs) and now we want to improve things even further.</p>
+										<p>With today&#8217;s <a href="http://www.oracle.com/us/corporate/press/2020378">announcement of the second MySQL 5.7 Development Milestone Release</a> and a <a href="http://labs.mysql.com/" title="Download Multi-Source replication from MySQL Labs">new labs release</a> it&#8217;s a very exciting time for MySQL Replication. <a href="./../mysql-replication/mysql-5-6-ga-replication-enhancements/index.html">MySQL 5.6</a> contained a lot of new content to make replication faster, easier to use and more reliable (Global Transaction Identifiers, Multi-Threaded Slaves, Binary Log Group Commit, Optimized Row Based Replication, Crash Safe Replication, Replication Event Checksums, Time Delayed Replication &amp; Informational Logs) and now we want to improve things even further.</p>
 <p>The new DMR has something for everyone. </p>
 <p>With the improvements to Semi-Synchronous Replication, the application developer can be confident that when a transaction has been commited, the changes have been safely copied to one or more slaves and so whatever happens, that change will not be lost. Further, we now prevent other application threads seeing those changes until they&#8217;ve been received by the slave and so the application cannot start acting on the new data until it&#8217;s known to be safe. This is an important improvement in consistency which moves more of the onus from the application developer onto the database.</p>
-<p>DBAs want replication to be fast &#8211; in particular for the slave(s) not to fall behind the master. <a href="/mysql-replication/mysql-5-6-ga-replication-enhancements/">MySQL 5.6</a> made some massive improvements in this area &#8211; both on the master and the slave. A number of users though were unable to exploit the Multi-Threaded Slave (MTS) feature as relied on the use of multiple schemas (databases) to get changes applied in parallel. In the new MySQL 5.7 DMR we&#8217;ve included a new option for MTS where changes can be applied in parallel &#8211; <strong>even within the same schema</strong>. A second performance feature improves throughput on the master &#8211; where the dump thread no longer needs to lock the binary log &#8211; refer to this engineering Blog on <a href="http://my-replication-life.blogspot.com/2013/09/dump-thread-enhancement.html" title="Dump Thread Enhancement on MySQL 5.7.2 - engineering Blog">Dump Thread Enhancement in MySQL 5.7.2</a> for more details.</p>
+<p>DBAs want replication to be fast &#8211; in particular for the slave(s) not to fall behind the master. <a href="./../mysql-replication/mysql-5-6-ga-replication-enhancements/index.html">MySQL 5.6</a> made some massive improvements in this area &#8211; both on the master and the slave. A number of users though were unable to exploit the Multi-Threaded Slave (MTS) feature as relied on the use of multiple schemas (databases) to get changes applied in parallel. In the new MySQL 5.7 DMR we&#8217;ve included a new option for MTS where changes can be applied in parallel &#8211; <strong>even within the same schema</strong>. A second performance feature improves throughput on the master &#8211; where the dump thread no longer needs to lock the binary log &#8211; refer to this engineering Blog on <a href="http://my-replication-life.blogspot.com/2013/09/dump-thread-enhancement.html" title="Dump Thread Enhancement on MySQL 5.7.2 - engineering Blog">Dump Thread Enhancement in MySQL 5.7.2</a> for more details.</p>
 <p>DBAs also want to monitor the status of replication and for years have relied on the <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">SHOW SLAVE STATUS</span> command. As replication has evolved, <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">SHOW SLAVE STATUS</span> has become less suitable &#8211; we needed a solution that could properly model the more sophisticated replication architectures (including GTIDs and MTS) now possible. The approach we&#8217;ve taken is to provide this information through the <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">performance_schema</span>. </p>
 <p>Note that the earlier MySQL 5.7 DMR added non-blocking <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">SHOW SLAVE STATUS</span>, idempotent and <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">&#8211;rewrite-db</span> options for <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysqlbinlog</span> &#8211; these are still available in the new DMR.</p>
 <p>The new features are described in a little more detail in the following sections (together with links to more technical content from the MySQL Engineeing team).</p>
 <h2 id="loss-less-semi-synchronous-replication">Loss-less Semi-Synchronous Replication</h2>
 <div id="attachment_2957" style="width: 234px" class="wp-caption alignright">
-<a href="/wp-content/uploads/2013/09/Intra-Schema-Semi-sync-replication.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2957" class="size-medium wp-image-2957" alt="Intra-Schema Semi-Synchronous Replication" src="/wp-content/uploads/2013/09/Intra-Schema-Semi-sync-replication-224x300.png" width="224" height="300"></a><p id="caption-attachment-2957" class="wp-caption-text">Intra-Schema Semi-Synchronous Replication</p>
+<a href="./../wp-content/uploads/2013/09/Intra-Schema-Semi-sync-replication.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2957" class="size-medium wp-image-2957" alt="Intra-Schema Semi-Synchronous Replication" src="./../wp-content/uploads/2013/09/Intra-Schema-Semi-sync-replication-224x300.png" width="224" height="300"></a><p id="caption-attachment-2957" class="wp-caption-text">Intra-Schema Semi-Synchronous Replication</p>
 </div>
 <p>When using semi-synchronous replication in previous releases, the processing of the transaction on the master would wait for the slave&#8217;s acknowledgement <em>after</em> the change had been written to the storage engine but before the commit was acknowledged to the client. This satisfied the requirement that the application could be confident that if a transaction has been commited (and an acknowledgement received for the commit) then the update would not be lost. It did however leave a window where a user on another connection could read the new data from the master (because it has been written to the storage engine and the locks have been released) before the change had been received by the slave and safely stored in its relay log &#8211; that user could then start acting on that data but if the master failed at that point then that original update could still be lost and so the user would be acting on what is now inaccurate data.</p>
 <p>This feature removes the above race condition by making the master wait for the update to be received by the slave <em>before</em> writing it to the storage engine and releasing the locks.</p>
@@ -802,8 +802,8 @@ Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/mysql" rel="tag">MySQL</
 <h2 id="intra-schema-multi-threaded-slaves">Intra-Schema Multi-Threaded Slaves</h2>
 <p>DBAs want replication to be fast &#8211; in particular for the slave(s) not to fall behind the master. If there is a short but heavy burst of writes on the master then the slave falls behind (and there is a risk of lost data if the master fails during this period) but if the write-rate is sustained then the slave would fall further and further behind indefinitely. The ongoing challenge has been that the master gets faster and faster as more cores and clients are added but applying these changes asynchronously on the slave is more complex as you need to maintain some form of ordering in order to always have a consistent data set. </p>
 <p>The earliest solution to maintaining ordering/consistency was for the slave to apply all of the changes serially, in a single thread &#8211; this ensured that changes were applied in the same order as on the master and so guaranteed the slave always contained a consistent view. Unfortunately this meant that the slave applier thread could only exploit a single core which is very wasteful in modern systems.</p>
-<p><a href="/mysql-replication/mysql-5-6-ga-replication-enhancements/">MySQL 5.6</a> made some massive improvements for many use cases by allowing the slave to apply updates in parallel using multiple threads. The assumption made was that data was held in multiple schemas (databases) and that there were no dependencies between the data in those different schemas. In this way all of the updates for a schema would be applied in order by a single thread (ensuring consistency) but updates to other schemas could be handled by additional threads. This allowed the slave to work many times faster but was limited to those use cases that met the assumptions.</p>
-<p>In the second MySQL 5.7 DMR we introduce a new option that enables the slave to safely apply updates in parallel &#8211; even when all of the data is held within a single schema and no assumptions can be made about the independence between any rows from any tables. To avoid conflicts/divergence from the master, the slave must ensure that any transactions that are applied in parallel don&#8217;t read or write any overlapping rows. The good news is that this grouping on non-overlapping transactions is already being figured out on the master as part of the binary log group commit functionality (introduced in <a href="/mysql-replication/mysql-5-6-ga-replication-enhancements/">MySQL 5.6</a>) as row level locking means that overlapping transactions cannot be part of the same group commit. </p>
+<p><a href="./../mysql-replication/mysql-5-6-ga-replication-enhancements/index.html">MySQL 5.6</a> made some massive improvements for many use cases by allowing the slave to apply updates in parallel using multiple threads. The assumption made was that data was held in multiple schemas (databases) and that there were no dependencies between the data in those different schemas. In this way all of the updates for a schema would be applied in order by a single thread (ensuring consistency) but updates to other schemas could be handled by additional threads. This allowed the slave to work many times faster but was limited to those use cases that met the assumptions.</p>
+<p>In the second MySQL 5.7 DMR we introduce a new option that enables the slave to safely apply updates in parallel &#8211; even when all of the data is held within a single schema and no assumptions can be made about the independence between any rows from any tables. To avoid conflicts/divergence from the master, the slave must ensure that any transactions that are applied in parallel don&#8217;t read or write any overlapping rows. The good news is that this grouping on non-overlapping transactions is already being figured out on the master as part of the binary log group commit functionality (introduced in <a href="./../mysql-replication/mysql-5-6-ga-replication-enhancements/index.html">MySQL 5.6</a>) as row level locking means that overlapping transactions cannot be part of the same group commit. </p>
 <p>MySQL 5.7 adds a logical clock/counter to the master which is used to tag transactions that are part of the same group commit&#8217;s prepare phase. The slave can then use that information &#8211; knowing that it is safe to apply all of the transactions with the same logical clock value in any order (and so can use multiple threads). </p>
 <p>Activating the functionality is very straight-forward and the key step is to set <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">slave-parallel-type = LOGICAL_CLOCK</span> but see this blog from the MySQL engineering team: <a href="http://binlogtorelaylog.blogspot.com/2013/09/enhancedMTS-configuration.html" title="MySQL 5.7 Enhanced MTS: configuring slave for Intra-database parallelization">using the intra-schema MTS functionality</a> for more detailed instructions. Note that there is another blog in the series &#8211; that <a href="http://binlogtorelaylog.blogspot.com/2013/09/enhancedMTS-deepdive.html" title="MySQL 5.7: MySQL 5.7: Enhanced Multi-threaded slaves">blog provides a detailed view of how the intra-schema MTS is implemented</a>.</p>
 <h2 id="replication-performance-schema">Replication Performance Schema</h2>
@@ -813,7 +813,7 @@ Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/mysql" rel="tag">MySQL</
 <h2 id="multi-source-replication-labs">Multi-Source Replication &#8211; <em>LABS</em>
 </h2>
 <div id="attachment_2956" style="width: 310px" class="wp-caption alignright">
-<a href="/wp-content/uploads/2013/09/Multi-Source-Replication.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2956" src="/wp-content/uploads/2013/09/Multi-Source-Replication-300x261.png" alt="Multi-Source Replication" width="300" height="261" class="size-medium wp-image-2956"></a><p id="caption-attachment-2956" class="wp-caption-text">Multi-Source Replication</p>
+<a href="./../wp-content/uploads/2013/09/Multi-Source-Replication.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2956" src="./../wp-content/uploads/2013/09/Multi-Source-Replication-300x261.png" alt="Multi-Source Replication" width="300" height="261" class="size-medium wp-image-2956"></a><p id="caption-attachment-2956" class="wp-caption-text">Multi-Source Replication</p>
 </div>
 <p>MySQL replication is very flexible in the way that networks of masters and slaves that can be built up; a master can replicate to multiple slaves, a master can itself be a slave of another master, you can create a replication ring&#8230;. The one caveat to this has always been that a slave server can only have a single master (MySQL Cluster is an exception to this rule).</p>
 <p>Why might you want to do this? There are a few use cases around consolidating data from multiple MySQL Servers into one:<br>
@@ -835,9 +835,9 @@ Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/mysql" rel="tag">MySQL</
 									</div>
 		<br>
 		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-replication/mysql-5-7-2-dmr-and-labs-new-replication-features" data-via="wpbeginner" data-text="MySQL 5.7.2 DMR and Labs &#8211; new replication features" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url=".//mysql-replication/mysql-5-7-2-dmr-and-labs-new-replication-features" data-via="wpbeginner" data-text="MySQL 5.7.2 DMR and Labs &#8211; new replication features" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
 		<br>
-		<!-- <g:plusone size="medium" href="/mysql-replication/mysql-5-7-2-dmr-and-labs-new-replication-features"></g:plusone> -->
+		<!-- <g:plusone size="medium" href=".//mysql-replication/mysql-5-7-2-dmr-and-labs-new-replication-features"></g:plusone> -->
 		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
 		<!-- Place this tag after the last +1 button tag. -->
 		<script type="text/javascript">(function() {
@@ -846,48 +846,48 @@ Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/mysql" rel="tag">MySQL</
     				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   			})();</script>
 		<br>
-		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-replication/mysql-5-7-2-dmr-and-labs-new-replication-features" data-counter="right"></script>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url=".//mysql-replication/mysql-5-7-2-dmr-and-labs-new-replication-features" data-counter="right"></script>
 		<br>
-		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-replication%2Fmysql-5-7-2-dmr-and-labs-new-replication-features&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-replication%2Fmysql-5-7-2-dmr-and-labs-new-replication-features&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
 		</iframe>
 
 <!-- ZXZX -->
-				<div class="postinfo">Category: <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
-Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-avail" rel="tag">High Avail</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-5-7" rel="tag">MySQL 5.7</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>
+				<div class="postinfo">Category: <a href="./../category/mysql-replication/index.html" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="./ha/index.html" rel="tag">HA</a>, <a href="./high-avail/index.html" rel="tag">High Avail</a>, <a href="./mysql/index.html" rel="tag">MySQL</a>, <a href="./mysql-5-7/index.html" rel="tag">MySQL 5.7</a>, <a href="./mysql-replication/index.html" rel="tag">MySQL Replication</a>
 </div>
 
 			</div>			<div id="post-387" class="post-387 post type-post status-publish format-standard has-post-thumbnail hentry category-mysql-cluster category-mysql-replication tag-ha tag-high-availability tag-mysql tag-mysql-cluster tag-mysql-cluster-cge tag-mysql-replication tag-replication">
 				
 				<div class="postmeta">	<div class="postmeta_links">
-		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
-		<a href="/mysql-cluster/mysql-cluster-asynchronous-replication-conflict-detection-resolution1">September 11, 2013</a>
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mysql-cluster/mysql-cluster-asynchronous-replication-conflict-detection-resolution1/index.html">September 11, 2013</a>
 			</div>
 	<div class="postcomments">
-		<a href="/mysql-cluster/mysql-cluster-asynchronous-replication-conflict-detection-resolution1#respond">No comments</a>	</div>
+		<a href="./../mysql-cluster/mysql-cluster-asynchronous-replication-conflict-detection-resolution1/index.html#respond">No comments</a>	</div>
 	<div class="clear"></div>
 </div>
 
-				<h2 class="post-title"><a href="/mysql-cluster/mysql-cluster-asynchronous-replication-conflict-detection-resolution1" rel="bookmark">MySQL Cluster Asynchronous Replication &#8211; conflict detection &#038; resolution</a></h2>
+				<h2 class="post-title"><a href="./../mysql-cluster/mysql-cluster-asynchronous-replication-conflict-detection-resolution1/index.html" rel="bookmark">MySQL Cluster Asynchronous Replication &#8211; conflict detection &#038; resolution</a></h2>
 				
 				<div class="entry">
-					<img width="150" height="150" src="/wp-content/uploads/2009/08/Replication_Conflict-150x150.jpg" class="alignleft wp-post-image" alt="" decoding="async" loading="lazy">					<p>I was rooting through past blog entries and I stumbled accross a draft post on setting up multi-master (update anywhere) asynchronous replication for MySQL Cluster. The post never quite got finished and published and while the material is now 4 years old it may still be helpfull to some and so I&#8217;m posting it now. Note that a lot has happened with MySQL Cluster in the last 4 years and in this area, the most notable change has been the <a target="_blank" title="Enhanced conflict resolution with MySQL Cluster active-active replication" alt="Enhanced conflict resolution with MySQL Cluster active-active replication">Enhanced conflict resolution with MySQL Cluster active-active replication</a> feature introduced in MySQL Cluster 7.2 and if you&#8217;re only dealing with a pair of Clusters, that&#8217;s your best option as it removed the need for you to maintain the timestamp columns and backs out entire transactions rather than just the conflicting rows. So when would you use this &#8220;legacy&#8221; method? The main use case is when you want conflict detection/resolution among a ring of more than 2 Clusters. Note also that MySQL 5.6 (and so MySQL Cluster 7.3) added microsecond precision to timestamps and so you may not need the custom plugin that this post referred to.</p>
+					<img width="150" height="150" src="./../wp-content/uploads/2009/08/Replication_Conflict-150x150.jpg" class="alignleft wp-post-image" alt="" decoding="async" loading="lazy">					<p>I was rooting through past blog entries and I stumbled accross a draft post on setting up multi-master (update anywhere) asynchronous replication for MySQL Cluster. The post never quite got finished and published and while the material is now 4 years old it may still be helpfull to some and so I&#8217;m posting it now. Note that a lot has happened with MySQL Cluster in the last 4 years and in this area, the most notable change has been the <a target="_blank" title="Enhanced conflict resolution with MySQL Cluster active-active replication" alt="Enhanced conflict resolution with MySQL Cluster active-active replication">Enhanced conflict resolution with MySQL Cluster active-active replication</a> feature introduced in MySQL Cluster 7.2 and if you&#8217;re only dealing with a pair of Clusters, that&#8217;s your best option as it removed the need for you to maintain the timestamp columns and backs out entire transactions rather than just the conflicting rows. So when would you use this &#8220;legacy&#8221; method? The main use case is when you want conflict detection/resolution among a ring of more than 2 Clusters. Note also that MySQL 5.6 (and so MySQL Cluster 7.3) added microsecond precision to timestamps and so you may not need the custom plugin that this post referred to.</p>
 <p>Anyway, here&#8217;s the original post&#8230;</p>
 <p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;<br>
 MySQL Cluster asynchronous replication allows you to run in a multi-master mode with the application making changes to both sites (or more than 2 sites using a replication ring). As the replication is asynchronous, if the application(s) modified the same row on both sites at &#8216;about the same time&#8217; then there is a potential for a collision. Left to their own devices, each site would store (and provide to the application) different data indefinitely. This article explains how to use MySQL Cluster collision detection and resolution to cope with this.</p>
 <div id="attachment_437" style="width: 310px" class="wp-caption alignright">
-<a href="/wp-content/uploads/2009/08/Replication_Conflict.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-437" class="size-medium wp-image-437" title="Multi-master replication leading to inconsistencies" alt="Fig. 1 Multi-master replication leading to inconsistencies" src="/wp-content/uploads/2009/08/Replication_Conflict-300x178.jpg" width="300" height="178" srcset="/wp-content/uploads/2009/08/Replication_Conflict-300x178.jpg 300w, /wp-content/uploads/2009/08/Replication_Conflict.jpg 590w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><p id="caption-attachment-437" class="wp-caption-text">Fig. 1 Multi-master replication leading to inconsistencies</p>
+<a href="./../wp-content/uploads/2009/08/Replication_Conflict.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-437" class="size-medium wp-image-437" title="Multi-master replication leading to inconsistencies" alt="Fig. 1 Multi-master replication leading to inconsistencies" src="./../wp-content/uploads/2009/08/Replication_Conflict-300x178.jpg" width="300" height="178" srcset="./../wp-content/uploads/2009/08/Replication_Conflict-300x178.jpg 300w, ./../wp-content/uploads/2009/08/Replication_Conflict.jpg 590w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><p id="caption-attachment-437" class="wp-caption-text">Fig. 1 Multi-master replication leading to inconsistencies</p>
 </div>
 <p>Fig. 1 shows the timeline that can result in a conflict. The same or two different applications make a change to the same row in the table but to the 2 different instances of MySQL Cluster. Each cluster synchronously replicates the data amongst its local data node in order to provide local High Availability (everything there is safe!). At some point later (normally a fraction of a second), the changes are replicated to the remote site asynchronously &#8211; this delay opens a window for a conflict where Cluster 2 is updated by the application just before it receives the earlier update from Cluster 1. Cluster 2 will overwrite it&#8217;s row with the value (5) it has received but only after its earlier change (directly from the application) is written to the binary log ready for replication to Cluster 1 which in turn will cause that value (15) to be stored by Cluster 1. Each Cluster instance replicates what it believes to be the correct data to the other site &#8211; overwriting what that site had previously stored. In our example, that leaves one database holding the value 15 for key &#8216;A&#8217; while the other stores 5.</p>
 <p>It&#8217;s often the case that the application will tend to go to the same site during a particular time when accessing the same data and so the chances of a conflict are reduced but the application may still want to guard against (even rare) race conditions. If replication slows down (for example due to a backlog of updates to be applied) or stops temporarily (for example due to network failure to the geographically remote site) then the chances of a collision greatly increase.</p>
-<p>For information on setting up multi-master asynchronous replication with MySQL Cluster, please take a look at <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/" target="_blank">Setting up MySQL Asynchronous Replication for High Availability</a>.</p>
+<p>For information on setting up multi-master asynchronous replication with MySQL Cluster, please take a look at <a href="./../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html" target="_blank">Setting up MySQL Asynchronous Replication for High Availability</a>.</p>
 <h3>Conflict Detection &amp; Resolution using MySQL Cluster</h3>
 <p>MySQL Cluster provides two different schemes to handle these collisions/conflicts. The first scheme (referred to as &#8220;greatest timestamp wins&#8221;) detects that a conflict occurs and automatically resolves it (the change most recently received from the application is stored on both Clusters). The second scheme (referred to as &#8220;same value wins&#8221;) detects that a conflict has occurred but <strong>does not fix it</strong> &#8211; instead the conflict is recorded in such a way that the application (or user) can figure out how best to resolve it based on a full understanding of the schema, what the data means and how it&#8217;s used. It is up to the developer which approach they use (if any) &#8211; it is selected on a per-table basis.</p>
 <h3>Common prerequisite steps</h3>
 <p>These steps should be followed regardless of whether you want to use conflict resolution or conflict detection (where the application decides how to resolve it).</p>
 <ol>
-<li>Set up multi-master replication as described in <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/" target="_blank">Setting up MySQL Asynchronous Replication for High Availability</a>
+<li>Set up multi-master replication as described in <a href="./../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html" target="_blank">Setting up MySQL Asynchronous Replication for High Availability</a>
 </li>
-<li>Create the function &#8220;inttime&#8221; for use in the stored procedures as described in <a href="/mysql/creating-a-mysql-plugin-to-produce-an-interger-timestamp/" target="_blank">Creating a MySQL plugin to produce an integer timestamp</a> <strong>Note that you will need to install inttime.so on each host</strong>
+<li>Create the function &#8220;inttime&#8221; for use in the stored procedures as described in <a href="./../mysql/creating-a-mysql-plugin-to-produce-an-interger-timestamp/index.html" target="_blank">Creating a MySQL plugin to produce an integer timestamp</a> <strong>Note that you will need to install inttime.so on each host</strong>
 </li>
 </ol>
 <h3>Setting up Automatic Conflict Resolution (Greatest timestamp wins)</h3>
@@ -1049,9 +1049,9 @@ cluster2 mysql&gt; slave stop;
 									</div>
 		<br>
 		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/mysql-cluster-asynchronous-replication-conflict-detection-resolution1" data-via="wpbeginner" data-text="MySQL Cluster Asynchronous Replication &#8211; conflict detection &#038; resolution" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url=".//mysql-cluster/mysql-cluster-asynchronous-replication-conflict-detection-resolution1" data-via="wpbeginner" data-text="MySQL Cluster Asynchronous Replication &#8211; conflict detection &#038; resolution" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
 		<br>
-		<!-- <g:plusone size="medium" href="/mysql-cluster/mysql-cluster-asynchronous-replication-conflict-detection-resolution1"></g:plusone> -->
+		<!-- <g:plusone size="medium" href=".//mysql-cluster/mysql-cluster-asynchronous-replication-conflict-detection-resolution1"></g:plusone> -->
 		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
 		<!-- Place this tag after the last +1 button tag. -->
 		<script type="text/javascript">(function() {
@@ -1060,19 +1060,19 @@ cluster2 mysql&gt; slave stop;
     				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   			})();</script>
 		<br>
-		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/mysql-cluster-asynchronous-replication-conflict-detection-resolution1" data-counter="right"></script>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url=".//mysql-cluster/mysql-cluster-asynchronous-replication-conflict-detection-resolution1" data-counter="right"></script>
 		<br>
-		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fmysql-cluster-asynchronous-replication-conflict-detection-resolution1&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-cluster%2Fmysql-cluster-asynchronous-replication-conflict-detection-resolution1&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
 		</iframe>
 
 <!-- ZXZX -->
-				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a>, <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
-Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="tag">High Availability</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-cge" rel="tag">MySQL Cluster CGE</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>, <a href="/tag/replication" rel="tag">Replication</a>
+				<div class="postinfo">Category: <a href="./../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a>, <a href="./../category/mysql-replication/index.html" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="./ha/index.html" rel="tag">HA</a>, <a href="./high-availability/index.html" rel="tag">High Availability</a>, <a href="./mysql/index.html" rel="tag">MySQL</a>, <a href="./mysql-cluster/index.html" rel="tag">MySQL Cluster</a>, <a href="./mysql-cluster-cge/index.html" rel="tag">MySQL Cluster CGE</a>, <a href="./mysql-replication/index.html" rel="tag">MySQL Replication</a>, <a href="./replication/index.html" rel="tag">Replication</a>
 </div>
 
 			</div>      
 							<div class="more_posts">
-					<span class="post_links"><a href="/tag/mysql-replication/page/2">&laquo; Older Entries</a> &nbsp; </span>
+					<span class="post_links"><a href="./page/2/index.html">&laquo; Older Entries</a> &nbsp; </span>
 				</div>
 						
 
@@ -1083,7 +1083,7 @@ Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="
 <div id="sidebar">
 	<ul>
 
-<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="/">
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action=".//">
 				<div>
 					<label class="screen-reader-text" for="s">Search for:</label>
 					<input type="text" value="" name="s" id="s">
@@ -1096,19 +1096,19 @@ Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="
 
 		<ul>
 											<li>
-					<a href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm">Building a collaborative iOS Minesweeper game with Realm</a>
+					<a href="./../mongodb/building-a-collaborative-ios-minesweeper-game-with-realm/index.html">Building a collaborative iOS Minesweeper game with Realm</a>
 									</li>
 											<li>
-					<a href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+					<a href="./../mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial/index.html">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
 									</li>
 											<li>
-					<a href="/mongodb/realm-swift-type-projections">Realm-Swift Type Projections</a>
+					<a href="./../mongodb/realm-swift-type-projections/index.html">Realm-Swift Type Projections</a>
 									</li>
 											<li>
-					<a href="/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+					<a href="./../mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/index.html">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
 									</li>
 											<li>
-					<a href="/mongodb/goodbye-nspredicate-hello-realm-swift-query-api">Goodbye NSPredicate, hello Realm Swift Query API</a>
+					<a href="./../mongodb/goodbye-nspredicate-hello-realm-swift-query-api/index.html">Goodbye NSPredicate, hello Realm Swift Query API</a>
 									</li>
 					</ul>
 
@@ -1128,19 +1128,19 @@ google_ad_height =600;
 <h2 class="widgettitle">Recent Comments</h2>
 <ul id="recentcomments">
 <li class="recentcomments">
-<span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-787242">MySQL Cluster running on Raspberry Pi</a>
+<span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="./../mysql-cluster/mysql-cluster-running-on-raspberry-pi/index.html#comment-787242">MySQL Cluster running on Raspberry Pi</a>
 </li>
 <li class="recentcomments">
-<span class="comment-author-link">andrew</span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a>
+<span class="comment-author-link">andrew</span> on <a href="./../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a>
 </li>
 <li class="recentcomments">
-<span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a>
+<span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="./../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a>
 </li>
 <li class="recentcomments">
-<span class="comment-author-link">Sai Krishnan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-661143">Get MySQL Replication up and running in 5 minutes</a>
+<span class="comment-author-link">Sai Krishnan</span> on <a href="./../mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-661143">Get MySQL Replication up and running in 5 minutes</a>
 </li>
 <li class="recentcomments">
-<span class="comment-author-link">Nayan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-660628">Get MySQL Replication up and running in 5 minutes</a>
+<span class="comment-author-link">Nayan</span> on <a href="./../mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-660628">Get MySQL Replication up and running in 5 minutes</a>
 </li>
 </ul>
 </li>
@@ -1149,28 +1149,28 @@ google_ad_height =600;
 
 			<ul>
 					<li class="cat-item cat-item-2">
-<a href="/category/me">Me</a>
+<a href="./../category/me/index.html">Me</a>
 </li>
 	<li class="cat-item cat-item-146">
-<a href="/category/mongodb">MongoDB</a>
+<a href="./../category/mongodb/index.html">MongoDB</a>
 </li>
 	<li class="cat-item cat-item-3">
-<a href="/category/mysql">MySQL</a>
+<a href="./../category/mysql/index.html">MySQL</a>
 </li>
 	<li class="cat-item cat-item-4">
-<a href="/category/mysql-cluster">MySQL Cluster</a>
+<a href="./../category/mysql-cluster/index.html">MySQL Cluster</a>
 </li>
 	<li class="cat-item cat-item-131">
-<a href="/category/mysql-fabric">MySQL Fabric</a>
+<a href="./../category/mysql-fabric/index.html">MySQL Fabric</a>
 </li>
 	<li class="cat-item cat-item-5">
-<a href="/category/mysql-replication">MySQL Replication</a>
+<a href="./../category/mysql-replication/index.html">MySQL Replication</a>
 </li>
 	<li class="cat-item cat-item-214">
-<a href="/category/mongodb/realm">Realm</a>
+<a href="./../category/mongodb/realm/index.html">Realm</a>
 </li>
 	<li class="cat-item cat-item-1">
-<a href="/category/uncategorized">Uncategorized</a>
+<a href="./../category/uncategorized/index.html">Uncategorized</a>
 </li>
 			</ul>
 
@@ -1178,161 +1178,161 @@ google_ad_height =600;
 <li id="tag_cloud-2" class="widget widget_tag_cloud">
 <h2 class="widgettitle">Tags</h2>
 <div class="tagcloud">
-<a href="/tag/7-4" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
-<a href="/tag/apache-kafka" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
-<a href="/tag/cluster" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
-<a href="/tag/ha" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
-<a href="/tag/high-availability" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
-<a href="/tag/ios" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
-<a href="/tag/java" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
-<a href="/tag/javascript" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
-<a href="/tag/mcm" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
-<a href="/tag/mean" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
-<a href="/tag/memcached" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
-<a href="/tag/mobile" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
-<a href="/tag/mongodb" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
-<a href="/tag/mongodb-3-2" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
-<a href="/tag/mongodb-atlas" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
-<a href="/tag/mongodb-mobile" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
-<a href="/tag/mongodb-stitch" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
-<a href="/tag/mysql" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
-<a href="/tag/mysql-5-6" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
-<a href="/tag/mysql-cluster" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
-<a href="/tag/mysql-cluster-70" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
-<a href="/tag/mysql-cluster-7-1" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
-<a href="/tag/mysql-cluster-7-2" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
-<a href="/tag/mysql-cluster-7-3" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
-<a href="/tag/mysql-cluster-7-4" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
-<a href="/tag/mysql-cluster-cge" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
-<a href="/tag/mysql-cluster-manager" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
-<a href="/tag/mysql-enterprise-monitor" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
-<a href="/tag/mysql-fabric-2" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
-<a href="/tag/mysql-replication" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
-<a href="/tag/mysql-utilities" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
-<a href="/tag/ndb-api" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
-<a href="/tag/node-js" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
-<a href="/tag/nosql" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
-<a href="/tag/performance" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
-<a href="/tag/realm" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
-<a href="/tag/replication" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
-<a href="/tag/secondary" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
-<a href="/tag/serverless" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
-<a href="/tag/sharding" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
-<a href="/tag/swift" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
-<a href="/tag/swiftui" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
-<a href="/tag/webcast" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
-<a href="/tag/webinar" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
-<a href="/tag/windows" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a>
+<a href="./7-4/index.html" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="./apache-kafka/index.html" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="./cluster/index.html" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="./ha/index.html" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="./high-availability/index.html" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="./ios/index.html" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="./java/index.html" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="./javascript/index.html" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="./mcm/index.html" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="./mean/index.html" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="./memcached/index.html" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="./mobile/index.html" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="./mongodb/index.html" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="./mongodb-3-2/index.html" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="./mongodb-atlas/index.html" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="./mongodb-mobile/index.html" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="./mongodb-stitch/index.html" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="./mysql/index.html" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="./mysql-5-6/index.html" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="./mysql-cluster/index.html" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="./mysql-cluster-70/index.html" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="./mysql-cluster-7-1/index.html" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="./mysql-cluster-7-2/index.html" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="./mysql-cluster-7-3/index.html" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="./mysql-cluster-7-4/index.html" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="./mysql-cluster-cge/index.html" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="./mysql-cluster-manager/index.html" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="./mysql-enterprise-monitor/index.html" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="./mysql-fabric-2/index.html" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="./mysql-replication/index.html" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="./mysql-utilities/index.html" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="./ndb-api/index.html" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="./node-js/index.html" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="./nosql/index.html" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="./performance/index.html" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="./realm/index.html" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="./replication/index.html" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="./secondary/index.html" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="./serverless/index.html" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="./sharding/index.html" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="./swift/index.html" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="./swiftui/index.html" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="./webcast/index.html" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="./webinar/index.html" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="./windows/index.html" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a>
 </div>
 </li>
 <li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
 				
-			<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+			<a href="http://twitter.com/andrewmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
 		</li>
 <li id="archives-2" class="widget widget_archive">
 <h2 class="widgettitle">Archives</h2>
 
 			<ul>
-					<li><a href="/2022/03">March 2022</a></li>
-	<li><a href="/2022/02">February 2022</a></li>
-	<li><a href="/2022/01">January 2022</a></li>
-	<li><a href="/2021/12">December 2021</a></li>
-	<li><a href="/2021/11">November 2021</a></li>
-	<li><a href="/2021/09">September 2021</a></li>
-	<li><a href="/2021/08">August 2021</a></li>
-	<li><a href="/2021/07">July 2021</a></li>
-	<li><a href="/2021/06">June 2021</a></li>
-	<li><a href="/2021/05">May 2021</a></li>
-	<li><a href="/2021/04">April 2021</a></li>
-	<li><a href="/2021/02">February 2021</a></li>
-	<li><a href="/2021/01">January 2021</a></li>
-	<li><a href="/2020/12">December 2020</a></li>
-	<li><a href="/2019/03">March 2019</a></li>
-	<li><a href="/2019/01">January 2019</a></li>
-	<li><a href="/2018/12">December 2018</a></li>
-	<li><a href="/2018/11">November 2018</a></li>
-	<li><a href="/2018/10">October 2018</a></li>
-	<li><a href="/2018/09">September 2018</a></li>
-	<li><a href="/2017/09">September 2017</a></li>
-	<li><a href="/2017/03">March 2017</a></li>
-	<li><a href="/2017/02">February 2017</a></li>
-	<li><a href="/2017/01">January 2017</a></li>
-	<li><a href="/2016/12">December 2016</a></li>
-	<li><a href="/2016/11">November 2016</a></li>
-	<li><a href="/2016/09">September 2016</a></li>
-	<li><a href="/2016/01">January 2016</a></li>
-	<li><a href="/2015/11">November 2015</a></li>
-	<li><a href="/2015/10">October 2015</a></li>
-	<li><a href="/2015/09">September 2015</a></li>
-	<li><a href="/2015/06">June 2015</a></li>
-	<li><a href="/2015/04">April 2015</a></li>
-	<li><a href="/2015/03">March 2015</a></li>
-	<li><a href="/2015/02">February 2015</a></li>
-	<li><a href="/2015/01">January 2015</a></li>
-	<li><a href="/2014/12">December 2014</a></li>
-	<li><a href="/2014/11">November 2014</a></li>
-	<li><a href="/2014/10">October 2014</a></li>
-	<li><a href="/2014/09">September 2014</a></li>
-	<li><a href="/2014/08">August 2014</a></li>
-	<li><a href="/2014/07">July 2014</a></li>
-	<li><a href="/2014/06">June 2014</a></li>
-	<li><a href="/2014/05">May 2014</a></li>
-	<li><a href="/2014/04">April 2014</a></li>
-	<li><a href="/2014/03">March 2014</a></li>
-	<li><a href="/2014/02">February 2014</a></li>
-	<li><a href="/2014/01">January 2014</a></li>
-	<li><a href="/2013/12">December 2013</a></li>
-	<li><a href="/2013/11">November 2013</a></li>
-	<li><a href="/2013/09">September 2013</a></li>
-	<li><a href="/2013/08">August 2013</a></li>
-	<li><a href="/2013/07">July 2013</a></li>
-	<li><a href="/2013/06">June 2013</a></li>
-	<li><a href="/2013/05">May 2013</a></li>
-	<li><a href="/2013/03">March 2013</a></li>
-	<li><a href="/2013/02">February 2013</a></li>
-	<li><a href="/2013/01">January 2013</a></li>
-	<li><a href="/2012/12">December 2012</a></li>
-	<li><a href="/2012/11">November 2012</a></li>
-	<li><a href="/2012/09">September 2012</a></li>
-	<li><a href="/2012/07">July 2012</a></li>
-	<li><a href="/2012/06">June 2012</a></li>
-	<li><a href="/2012/05">May 2012</a></li>
-	<li><a href="/2012/04">April 2012</a></li>
-	<li><a href="/2012/03">March 2012</a></li>
-	<li><a href="/2012/02">February 2012</a></li>
-	<li><a href="/2012/01">January 2012</a></li>
-	<li><a href="/2011/12">December 2011</a></li>
-	<li><a href="/2011/11">November 2011</a></li>
-	<li><a href="/2011/10">October 2011</a></li>
-	<li><a href="/2011/09">September 2011</a></li>
-	<li><a href="/2011/07">July 2011</a></li>
-	<li><a href="/2011/06">June 2011</a></li>
-	<li><a href="/2011/05">May 2011</a></li>
-	<li><a href="/2011/04">April 2011</a></li>
-	<li><a href="/2011/03">March 2011</a></li>
-	<li><a href="/2011/02">February 2011</a></li>
-	<li><a href="/2011/01">January 2011</a></li>
-	<li><a href="/2010/12">December 2010</a></li>
-	<li><a href="/2010/11">November 2010</a></li>
-	<li><a href="/2010/10">October 2010</a></li>
-	<li><a href="/2010/09">September 2010</a></li>
-	<li><a href="/2010/08">August 2010</a></li>
-	<li><a href="/2010/07">July 2010</a></li>
-	<li><a href="/2010/06">June 2010</a></li>
-	<li><a href="/2010/05">May 2010</a></li>
-	<li><a href="/2010/04">April 2010</a></li>
-	<li><a href="/2010/03">March 2010</a></li>
-	<li><a href="/2010/02">February 2010</a></li>
-	<li><a href="/2010/01">January 2010</a></li>
-	<li><a href="/2009/12">December 2009</a></li>
-	<li><a href="/2009/11">November 2009</a></li>
-	<li><a href="/2009/10">October 2009</a></li>
-	<li><a href="/2009/09">September 2009</a></li>
-	<li><a href="/2009/08">August 2009</a></li>
-	<li><a href="/2009/07">July 2009</a></li>
-	<li><a href="/2009/06">June 2009</a></li>
-	<li><a href="/2009/05">May 2009</a></li>
-	<li><a href="/2009/04">April 2009</a></li>
+					<li><a href="./../2022/03/index.html">March 2022</a></li>
+	<li><a href="./../2022/02/index.html">February 2022</a></li>
+	<li><a href="./../2022/01/index.html">January 2022</a></li>
+	<li><a href="./../2021/12/index.html">December 2021</a></li>
+	<li><a href="./../2021/11/index.html">November 2021</a></li>
+	<li><a href="./../2021/09/index.html">September 2021</a></li>
+	<li><a href="./../2021/08/index.html">August 2021</a></li>
+	<li><a href="./../2021/07/index.html">July 2021</a></li>
+	<li><a href="./../2021/06/index.html">June 2021</a></li>
+	<li><a href="./../2021/05/index.html">May 2021</a></li>
+	<li><a href="./../2021/04/index.html">April 2021</a></li>
+	<li><a href="./../2021/02/index.html">February 2021</a></li>
+	<li><a href="./../2021/01/index.html">January 2021</a></li>
+	<li><a href="./../2020/12/index.html">December 2020</a></li>
+	<li><a href="./../2019/03/index.html">March 2019</a></li>
+	<li><a href="./../2019/01/index.html">January 2019</a></li>
+	<li><a href="./../2018/12/index.html">December 2018</a></li>
+	<li><a href="./../2018/11/index.html">November 2018</a></li>
+	<li><a href="./../2018/10/index.html">October 2018</a></li>
+	<li><a href="./../2018/09/index.html">September 2018</a></li>
+	<li><a href="./../2017/09/index.html">September 2017</a></li>
+	<li><a href="./../2017/03/index.html">March 2017</a></li>
+	<li><a href="./../2017/02/index.html">February 2017</a></li>
+	<li><a href="./../2017/01/index.html">January 2017</a></li>
+	<li><a href="./../2016/12/index.html">December 2016</a></li>
+	<li><a href="./../2016/11/index.html">November 2016</a></li>
+	<li><a href="./../2016/09/index.html">September 2016</a></li>
+	<li><a href="./../2016/01/index.html">January 2016</a></li>
+	<li><a href="./../2015/11/index.html">November 2015</a></li>
+	<li><a href="./../2015/10/index.html">October 2015</a></li>
+	<li><a href="./../2015/09/index.html">September 2015</a></li>
+	<li><a href="./../2015/06/index.html">June 2015</a></li>
+	<li><a href="./../2015/04/index.html">April 2015</a></li>
+	<li><a href="./../2015/03/index.html">March 2015</a></li>
+	<li><a href="./../2015/02/index.html">February 2015</a></li>
+	<li><a href="./../2015/01/index.html">January 2015</a></li>
+	<li><a href="./../2014/12/index.html">December 2014</a></li>
+	<li><a href="./../2014/11/index.html">November 2014</a></li>
+	<li><a href="./../2014/10/index.html">October 2014</a></li>
+	<li><a href="./../2014/09/index.html">September 2014</a></li>
+	<li><a href="./../2014/08/index.html">August 2014</a></li>
+	<li><a href="./../2014/07/index.html">July 2014</a></li>
+	<li><a href="./../2014/06/index.html">June 2014</a></li>
+	<li><a href="./../2014/05/index.html">May 2014</a></li>
+	<li><a href="./../2014/04/index.html">April 2014</a></li>
+	<li><a href="./../2014/03/index.html">March 2014</a></li>
+	<li><a href="./../2014/02/index.html">February 2014</a></li>
+	<li><a href="./../2014/01/index.html">January 2014</a></li>
+	<li><a href="./../2013/12/index.html">December 2013</a></li>
+	<li><a href="./../2013/11/index.html">November 2013</a></li>
+	<li><a href="./../2013/09/index.html">September 2013</a></li>
+	<li><a href="./../2013/08/index.html">August 2013</a></li>
+	<li><a href="./../2013/07/index.html">July 2013</a></li>
+	<li><a href="./../2013/06/index.html">June 2013</a></li>
+	<li><a href="./../2013/05/index.html">May 2013</a></li>
+	<li><a href="./../2013/03/index.html">March 2013</a></li>
+	<li><a href="./../2013/02/index.html">February 2013</a></li>
+	<li><a href="./../2013/01/index.html">January 2013</a></li>
+	<li><a href="./../2012/12/index.html">December 2012</a></li>
+	<li><a href="./../2012/11/index.html">November 2012</a></li>
+	<li><a href="./../2012/09/index.html">September 2012</a></li>
+	<li><a href="./../2012/07/index.html">July 2012</a></li>
+	<li><a href="./../2012/06/index.html">June 2012</a></li>
+	<li><a href="./../2012/05/index.html">May 2012</a></li>
+	<li><a href="./../2012/04/index.html">April 2012</a></li>
+	<li><a href="./../2012/03/index.html">March 2012</a></li>
+	<li><a href="./../2012/02/index.html">February 2012</a></li>
+	<li><a href="./../2012/01/index.html">January 2012</a></li>
+	<li><a href="./../2011/12/index.html">December 2011</a></li>
+	<li><a href="./../2011/11/index.html">November 2011</a></li>
+	<li><a href="./../2011/10/index.html">October 2011</a></li>
+	<li><a href="./../2011/09/index.html">September 2011</a></li>
+	<li><a href="./../2011/07/index.html">July 2011</a></li>
+	<li><a href="./../2011/06/index.html">June 2011</a></li>
+	<li><a href="./../2011/05/index.html">May 2011</a></li>
+	<li><a href="./../2011/04/index.html">April 2011</a></li>
+	<li><a href="./../2011/03/index.html">March 2011</a></li>
+	<li><a href="./../2011/02/index.html">February 2011</a></li>
+	<li><a href="./../2011/01/index.html">January 2011</a></li>
+	<li><a href="./../2010/12/index.html">December 2010</a></li>
+	<li><a href="./../2010/11/index.html">November 2010</a></li>
+	<li><a href="./../2010/10/index.html">October 2010</a></li>
+	<li><a href="./../2010/09/index.html">September 2010</a></li>
+	<li><a href="./../2010/08/index.html">August 2010</a></li>
+	<li><a href="./../2010/07/index.html">July 2010</a></li>
+	<li><a href="./../2010/06/index.html">June 2010</a></li>
+	<li><a href="./../2010/05/index.html">May 2010</a></li>
+	<li><a href="./../2010/04/index.html">April 2010</a></li>
+	<li><a href="./../2010/03/index.html">March 2010</a></li>
+	<li><a href="./../2010/02/index.html">February 2010</a></li>
+	<li><a href="./../2010/01/index.html">January 2010</a></li>
+	<li><a href="./../2009/12/index.html">December 2009</a></li>
+	<li><a href="./../2009/11/index.html">November 2009</a></li>
+	<li><a href="./../2009/10/index.html">October 2009</a></li>
+	<li><a href="./../2009/09/index.html">September 2009</a></li>
+	<li><a href="./../2009/08/index.html">August 2009</a></li>
+	<li><a href="./../2009/07/index.html">July 2009</a></li>
+	<li><a href="./../2009/06/index.html">June 2009</a></li>
+	<li><a href="./../2009/05/index.html">May 2009</a></li>
+	<li><a href="./../2009/04/index.html">April 2009</a></li>
 			</ul>
 
 			</li>

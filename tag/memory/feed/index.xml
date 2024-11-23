@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Memory &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/memory/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Fri, 07 Nov 2014 17:01:53 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Active-Active Replication, Performance Improvements &#038; Operational Enhancements &#8211; some of what&#8217;s available in the new MySQL Cluster 7.4.2 DMR</title>
-		<link>/mysql-cluster/active-active-replication-performance-improvements-operational-enhancements-some-of-whats-available-in-the-new-mysql-cluster-7-4-2-dmr</link>
-					<comments>/mysql-cluster/active-active-replication-performance-improvements-operational-enhancements-some-of-whats-available-in-the-new-mysql-cluster-7-4-2-dmr#respond</comments>
+		<link>./../../mysql-cluster/active-active-replication-performance-improvements-operational-enhancements-some-of-whats-available-in-the-new-mysql-cluster-7-4-2-dmr/index.html</link>
+					<comments>./../../mysql-cluster/active-active-replication-performance-improvements-operational-enhancements-some-of-whats-available-in-the-new-mysql-cluster-7-4-2-dmr/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 07 Nov 2014 17:01:53 +0000</pubDate>
@@ -32,10 +32,10 @@
 		<category><![CDATA[MySQL]]></category>
 		<category><![CDATA[MySQL Cluster 7.4]]></category>
 		<category><![CDATA[Replication]]></category>
-		<guid isPermaLink="false">/?p=3969</guid>
+		<guid isPermaLink="false">./../../index.html?p=3969</guid>
 
 					<description><![CDATA[Oracle have just made availble the new MySQL Cluster 7.4.2 Development Milestone Release &#8211; it can be downloaded from the development release tab here. Note that this is not a GA release and so we wouldn&#8217;t recommend using it in production. This is the second DMR for MySQL 7.4; the delta between this DMR and]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2014/07/MySQL_Cluster_400.png"><img fetchpriority="high" decoding="async" src="/wp-content/uploads/2014/07/MySQL_Cluster_400.png" alt="MySQL Cluster Logo" width="400" height="168" class="alignright size-full wp-image-3934" srcset="/wp-content/uploads/2014/07/MySQL_Cluster_400.png 400w, /wp-content/uploads/2014/07/MySQL_Cluster_400-300x126.png 300w" sizes="(max-width: 400px) 100vw, 400px" /></a></p>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2014/07/MySQL_Cluster_400.png"><img fetchpriority="high" decoding="async" src="./../../wp-content/uploads/2014/07/MySQL_Cluster_400.png" alt="MySQL Cluster Logo" width="400" height="168" class="alignright size-full wp-image-3934" srcset="./../../wp-content/uploads/2014/07/MySQL_Cluster_400.png 400w, ./../../wp-content/uploads/2014/07/MySQL_Cluster_400-300x126.png 300w" sizes="(max-width: 400px) 100vw, 400px" /></a></p>
 <p>Oracle have just made availble the new MySQL Cluster 7.4.2 Development Milestone Release &#8211; it can be <a href="http://dev.mysql.com/downloads/cluster/" title="download the MySQL Cluster 7.4.2 Development Milestone Release" target="_blank">downloaded from the development release tab here</a>. Note that this is not a GA release and so we wouldn&#8217;t recommend using it in production.</p>
 <p>This is the second DMR for MySQL 7.4; the delta between this DMR and 7.4.1 can be viewed in the <a href="http://dev.mysql.com/doc/relnotes/mysql-cluster/7.4/en/mysql-cluster-news-5-6-21-ndb-7-4-2.html" title="MySQL Cluster 7.4.2 Release Notes" target="_blank">MySQL Cluster 7.4.2 Release Notes</a></p>
 <p>There are three main focus areas for this DMR and the purpose of this post is to briefly introduce them:</p>
@@ -85,12 +85,12 @@
 <li>Resolve the inconsistency</li>
 </ol>
 <p>The following animation illustrates how MySQL Cluster 7.2 detects that an inconsistency has been introduced by the asynchronous, active-active replication:</p>
-<div id="attachment_2149" style="width: 610px" class="wp-caption alignnone"><a href="/wp-content/uploads/2011/11/ReflectingGCI1.gif"><img decoding="async" aria-describedby="caption-attachment-2149" class="size-full wp-image-2149" title="ReflectingGCI" src="/wp-content/uploads/2011/11/ReflectingGCI1.gif" alt="" width="600" height="463" /></a><p id="caption-attachment-2149" class="wp-caption-text">Detecting conflicts</p></div>
+<div id="attachment_2149" style="width: 610px" class="wp-caption alignnone"><a href="./../../wp-content/uploads/2011/11/ReflectingGCI1.gif"><img decoding="async" aria-describedby="caption-attachment-2149" class="size-full wp-image-2149" title="ReflectingGCI" src="./../../wp-content/uploads/2011/11/ReflectingGCI1.gif" alt="" width="600" height="463" /></a><p id="caption-attachment-2149" class="wp-caption-text">Detecting conflicts</p></div>
 <p>While we typically consider the 2 clusters in an active-active replication configuration to be peers, in this case we designate one to be the primary and the other the secondary. Reads and writes can still be sent to either cluster but it is the responsibility of the primary to identify that a conflict has arisen and then remove the inconsistency.</p>
 <p>A logical clock is used to identify (in relative terms) when a change is made on the primary &#8211; for those who know something of the MySQL Cluster internals, we use the index of the Global Checkpoint that the update is contained in. For all tables that have this feature turned on, an extra, hidden column is automatically added on the primary &#8211; this represents the value of the logical clock when the change was made.</p>
 <p>Once the change has been applied on the primary, there is a &#8220;window of conflict&#8221; for the effected row(s) during which if a different change is made to the same row(s) on the secondary then there will be an inconsistency. Once the slave on the secondary has applied the change from the primary, it will send a replication event back to the slave on the primary, containing the primary&#8217;s clock value associated with the changes that have just been applied on the secondary. (Remember that the clock is actually the Global Checkpoint Index and so this feature is sometimes referred to as Reflected GCI). Once the slave on the primary has received this event, it knows that all changes tagged with a clock value no later than the reflected GCI are now safe &#8211; the window of conflict has closed.</p>
 <p>If an application modifies this same row on the secondary before the replication event from the primary was applied then it will send an associated replication event to the slave on the primary <strong>before</strong> it reflects the new GCI. The slave on the primary will process this replication event and compare the clock value recorded with the effected rows with the latest reflected GCI; as the clock value for the conflicting row is higher the primary recognises that a conflict has occured and will launch the algorithm to resolve the inconsistency.</p>
-<p><a href="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15.png"><img decoding="async" src="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-300x109.png" alt="Options for MySQL Cluster replication conflict detection/resolution" width="300" height="109" class="alignright size-medium wp-image-3950" srcset="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-300x109.png 300w, /wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-1024x372.png 1024w, /wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-900x327.png 900w, /wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15.png 1728w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+<p><a href="./../../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15.png"><img decoding="async" src="./../../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-300x109.png" alt="Options for MySQL Cluster replication conflict detection/resolution" width="300" height="109" class="alignright size-medium wp-image-3950" srcset="./../../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-300x109.png 300w, ./../../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-1024x372.png 1024w, ./../../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-900x327.png 900w, ./../../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15.png 1728w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
 <p>After a conflict has been detected, you have the option of having the database simply report the conflict to the application or have it roll back just the conflicting row or the entire transaction and all subsequent transactions that were dependent on it.</p>
 <p>So &#8211; what&#8217;s new in 7.4.1?</p>
 <ul>
@@ -104,9 +104,9 @@
 <li>Roll back transactions that have <strong>read</strong> a row that had been rolled back due to a conflict</li>
 </ul>
 <h3>Performance</h3>
-<p><a href="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23-300x197.png" alt="MySQL CLuster 7.4.1 Read-Write Performance" width="300" height="197" class="alignright size-medium wp-image-3952" srcset="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23-300x197.png 300w, /wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23.png 864w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><br />
+<p><a href="./../../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23.png"><img loading="lazy" decoding="async" src="./../../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23-300x197.png" alt="MySQL CLuster 7.4.1 Read-Write Performance" width="300" height="197" class="alignright size-medium wp-image-3952" srcset="./../../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23-300x197.png 300w, ./../../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23.png 864w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><br />
 Being a scaled-out, in-memory, real-time database, MySQL Cluster performance has always been great but we continue to work on making it faster each release. In particular, we want to keep pace with the trend of having more and more cores rather than faster ones. 7.4 continues along the path of better exploiting multiple cores &#8211; as can be seen from these benchmark results.<br />
-<a href="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15-300x199.png" alt="MySQL CLuster 7.4.1 Read Performance" width="300" height="199" class="alignright size-medium wp-image-3951" srcset="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15-300x199.png 300w, /wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15.png 842w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><br />
+<a href="./../../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15.png"><img loading="lazy" decoding="async" src="./../../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15-300x199.png" alt="MySQL CLuster 7.4.1 Read Performance" width="300" height="199" class="alignright size-medium wp-image-3951" srcset="./../../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15-300x199.png 300w, ./../../wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15.png 842w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><br />
 Just make sure that you&#8217;re using the multi-threaded data node (ndbmtd rather than ndbd) and have <a href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-programs-ndbmtd.html" title="MySQL Cluster - configuring multi-threaded datanodes" target="_blank">configured how many threads it should use</a>.</p>
 <h3>Faster Restarts</h3>
 <p>You can restart MySQL Cluster processes (nodes) without losing database service (for example if adding extra memory to a server) and so on the face of it, the speed of the restarts isn&#8217;t that important. Having said that, while the node is restarting you&#8217;ve lost some of your high-availability which for super-critical applications can make you nervous. Additionally, faster restarts mean that you can complete maintenance activities faster &#8211; for example, a software upgrade requires a rolling restart of all of the nodes &#8211; if you have 48 data nodes then you want each of the data nodes to restart as quickly as possible.</p>
@@ -206,25 +206,25 @@ mysql> SELECT node_id AS node, fragment_num AS frag, \
 <p>If you get chance to try out this new release then please let us know how you get on &#8211; either through a comment on this blog, a <a href="http://bugs.mysql.com/" title="MySQL bug report" target="_blank">MySQL bug report</a> or a post to the <a href="http://forums.mysql.com/list.php?25" title="MySQL Cluster Forum" target="_blank">MySQL Cluster Forum</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/active-active-replication-performance-improvements-operational-enhancements-some-of-whats-available-in-the-new-mysql-cluster-7-4-2-dmr/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/active-active-replication-performance-improvements-operational-enhancements-some-of-whats-available-in-the-new-mysql-cluster-7-4-2-dmr/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Replacing MEMORY storage engine with MySQL Cluster</title>
-		<link>/mysql-cluster/replacing-memory-storage-engine-with-mysql-cluster-2</link>
-					<comments>/mysql-cluster/replacing-memory-storage-engine-with-mysql-cluster-2#comments</comments>
+		<link>./../../mysql-cluster/replacing-memory-storage-engine-with-mysql-cluster-2/index.html</link>
+					<comments>./../../mysql-cluster/replacing-memory-storage-engine-with-mysql-cluster-2/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 13 Jul 2010 15:33:00 +0000</pubDate>
 				<category><![CDATA[MySQL Cluster]]></category>
 		<category><![CDATA[Memory]]></category>
 		<category><![CDATA[MySQL]]></category>
-		<guid isPermaLink="false">/?p=1187</guid>
+		<guid isPermaLink="false">./../../index.html?p=1187</guid>
 
 					<description><![CDATA[Many people use the MySQL MEMORY storage engine for applications where they don&#8217;t need their data to be highly available or even survive restarts. Where this works best is for applications that are dominated by reads and (obviously) where the data doesn&#8217;t need to survive any kinds of problems (or where it can be recovered]]></description>
-										<content:encoded><![CDATA[<p>Many people use the MySQL MEMORY storage engine for applications where they don&#8217;t need their data to be highly available or even survive restarts. Where this works best is for applications that are dominated by reads and (obviously) where the data doesn&#8217;t need to survive any kinds of problems (or where it can be recovered from another source). Typical applications are :<a href="/wp-content/uploads/2010/07/Cluster-and-MEMORY-performance.jpg"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-1184" title="Cluster and MEMORY performance" src="/wp-content/uploads/2010/07/Cluster-and-MEMORY-performance-300x180.jpg" alt="" width="300" height="180" /></a></p>
+										<content:encoded><![CDATA[<p>Many people use the MySQL MEMORY storage engine for applications where they don&#8217;t need their data to be highly available or even survive restarts. Where this works best is for applications that are dominated by reads and (obviously) where the data doesn&#8217;t need to survive any kinds of problems (or where it can be recovered from another source). Typical applications are :<a href="./../../wp-content/uploads/2010/07/Cluster-and-MEMORY-performance.jpg"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-1184" title="Cluster and MEMORY performance" src="./../../wp-content/uploads/2010/07/Cluster-and-MEMORY-performance-300x180.jpg" alt="" width="300" height="180" /></a></p>
 <div id="_mcePaste">
 <ul>
 <li>Caching of small tables to reduce the latency of database look-ups.</li>
@@ -233,7 +233,7 @@ mysql> SELECT node_id AS node, fragment_num AS frag, \
 </ul>
 </div>
 <p>While great for some applications (at least initially), as the application requirements start to grow (need for transactions, data persistence/durability, increasing number of write operations, need to scale) then either you need to migrate away from MEMORY or implement more and more data management functionality needs in your application.</p>
-<p>Why not consider using MySQL Cluster instead? While the headline Cluster configurations may scale out horizontally and provide 99.999+% availability, it is simple to configure out those features to provide a pure-memory, single host database as described in &#8220;<a href="/mysql-cluster/how-can-a-database-be-in-memory-and-durable-at-the-same-time/" target="_blank">How can a database be in-memory and durable at the same time?</a>&#8220;. What&#8217;s more if/when you need to add extra capabilities such as ACID transactions, scalability and high availability then those features are all available to you.</p>
+<p>Why not consider using MySQL Cluster instead? While the headline Cluster configurations may scale out horizontally and provide 99.999+% availability, it is simple to configure out those features to provide a pure-memory, single host database as described in &#8220;<a href="./../../mysql-cluster/how-can-a-database-be-in-memory-and-durable-at-the-same-time/index.html" target="_blank">How can a database be in-memory and durable at the same time?</a>&#8220;. What&#8217;s more if/when you need to add extra capabilities such as ACID transactions, scalability and high availability then those features are all available to you.</p>
 <p>If you&#8217;re constrained to a single server and your application only reads data then there is a performance impact in using MySQL Cluster (in benchmarks, throughput was 3x higher for MEMORY) <strong>but</strong> remember that you can scale out MySQL Cluster to increase performance and for models with modest write rates MySQL Cluster provides a massive performance boost even when constrained to 1 server (as shown in the graph at the head of this post, Cluster delivers a 30x improvement performance improvement when running a Sysbench benchmark &#8211; together with a 3x reduction in latency). The biggest single reason for the massive performance difference is that MySQL Cluster has row-based locks whereas MEMORY uses table-level locks.</p>
 <p>For a more detailed comparison, take a look at the new &#8220;<a href="http://www.mysql.com/why-mysql/white-papers/mysql-wp_cluster-7.0_Cluster_MEMORY.php" target="_blank">Scaling Web Services with MySQL Cluster: An Alternative to the MySQL Memory Storage Engine</a>&#8221; white paper and/or listen to the associated <a href="http://www.mysql.com/news-and-events/web-seminars/display-551.html" target="_blank">webinar</a>.</p>
 <h3>Migrating Data from The Memory Storage Engine to MySQL Cluster</h3>
@@ -296,7 +296,7 @@ mysql> SELECT node_id AS node, fragment_num AS frag, \
 <p>In many cases, the migration would not be from a single MySQL Server to a single-server MySQL Cluster deployment, but instead from a pool of independent MySQL Servers (where the application shards data across them) to a multi-server MySQL deployment. This allows the application to stop sharding the data as all mysqld instances in the Cluster have visibility of all of the data. In this scenario, if the data from the original MySQL Servers needs to be maintained then a mysqldump would be performed on each of those Servers (for all tables) and the data loaded into any of the MySQL Servers in the MySQL Cluster deployment.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/replacing-memory-storage-engine-with-mysql-cluster-2/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/replacing-memory-storage-engine-with-mysql-cluster-2/feed/index.html</wfw:commentRss>
 			<slash:comments>4</slash:comments>
 		
 		

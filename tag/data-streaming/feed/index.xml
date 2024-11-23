@@ -9,8 +9,8 @@
 
 <channel>
 	<title>data streaming &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/data-streaming/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Fri, 16 Sep 2016 08:27:25 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>MongoDB &#038; Data Streaming – Implementing a MongoDB Kafka Consumer</title>
-		<link>/mongodb/mongodb-data-streaming-implementing-a-mongodb-kafka-consumer</link>
-					<comments>/mongodb/mongodb-data-streaming-implementing-a-mongodb-kafka-consumer#respond</comments>
+		<link>./../../mongodb/mongodb-data-streaming-implementing-a-mongodb-kafka-consumer/index.html</link>
+					<comments>./../../mongodb/mongodb-data-streaming-implementing-a-mongodb-kafka-consumer/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 16 Sep 2016 08:27:25 +0000</pubDate>
@@ -31,7 +31,7 @@
 		<category><![CDATA[data streaming]]></category>
 		<category><![CDATA[Kafka]]></category>
 		<category><![CDATA[mongodb]]></category>
-		<guid isPermaLink="false">/?p=4230</guid>
+		<guid isPermaLink="false">./../../index.html?p=4230</guid>
 
 					<description><![CDATA[Data Streaming In today&#8217;s data landscape, no single system can provide all of the required perspectives to deliver real insight. Deriving the full meaning from data requires mixing huge volumes of information from many sources. At the same time, we&#8217;re impatient to get answers instantly; if the time to insight exceeds 10s of milliseconds then]]></description>
 										<content:encoded><![CDATA[<h1>Data Streaming</h1>
@@ -48,7 +48,7 @@
 </ul>
 <p>Streams of Kafka events are organized into <strong>topics</strong>. A producer chooses a topic to send a given event to, and consumers select which topics they pull events from. For example, a financial application could pull NYSE stock trades from one topic, and company financial announcements from another in order to look for trading opportunities.</p>
 <p>In Kafka, topics are further divided into <strong>partitions</strong> to support scale out. Each Kafka node (<strong>broker</strong>) is responsible for receiving, storing, and passing on all of the events from one or more partitions for a given topic. In this way, the processing and storage for a topic can be linearly scaled across many brokers. Similarly, an application may scale out by using many consumers for a given topic, with each pulling events from a discrete set of partitions.</p>
-<div id="attachment_4231" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2016/09/Kafka_topic.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-4231" src="/wp-content/uploads/2016/09/Kafka_topic-1024x720.png" alt="Kafka Producers, Consumers, Topics, and Partitions" width="480" height="338" class="size-large wp-image-4231" srcset="/wp-content/uploads/2016/09/Kafka_topic-1024x720.png 1024w, /wp-content/uploads/2016/09/Kafka_topic-300x211.png 300w, /wp-content/uploads/2016/09/Kafka_topic-768x540.png 768w, /wp-content/uploads/2016/09/Kafka_topic.png 1464w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4231" class="wp-caption-text">Figure 1: Kafka Producers, Consumers, Topics, and Partitions</p></div>
+<div id="attachment_4231" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/Kafka_topic.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-4231" src="./../../wp-content/uploads/2016/09/Kafka_topic-1024x720.png" alt="Kafka Producers, Consumers, Topics, and Partitions" width="480" height="338" class="size-large wp-image-4231" srcset="./../../wp-content/uploads/2016/09/Kafka_topic-1024x720.png 1024w, ./../../wp-content/uploads/2016/09/Kafka_topic-300x211.png 300w, ./../../wp-content/uploads/2016/09/Kafka_topic-768x540.png 768w, ./../../wp-content/uploads/2016/09/Kafka_topic.png 1464w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4231" class="wp-caption-text">Figure 1: Kafka Producers, Consumers, Topics, and Partitions</p></div>
 <h1>MongoDB As A Kafka Consumer – A Java Example</h1>
 <p>In order to use MongoDB as a Kafka consumer, the received events must be converted into BSON documents before they are stored in the database. In this example, the events are strings representing JSON documents. The strings are converted to Java objects so that they are easy for Java developers to work with; those objects are then transformed into BSON documents.</p>
 <p>Complete source code, Maven configuration, and test data can be found further down, but here are some of the highlights; starting with the main loop for receiving and processing event messages from the Kafka topic:</p>
@@ -73,7 +73,7 @@
 <p>To learn much more about data streaming and how MongoDB fits in (including Apache Kafka and competing and complementary technologies) read the <a href="https://www.mongodb.com/collateral/data-streaming-with-apache-kafka-and-mongodb" title="Data Streaming with Kafka &amp; MongoDB">Data Streaming with Kafka &amp; MongoDB</a> white paper and watch the <a href="https://www.mongodb.com/presentations/webinar-data-streaming-with-apache-kafka-and-mongodb">webinar replay</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/mongodb-data-streaming-implementing-a-mongodb-kafka-consumer/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/mongodb-data-streaming-implementing-a-mongodb-kafka-consumer/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

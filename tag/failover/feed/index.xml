@@ -9,8 +9,8 @@
 
 <channel>
 	<title>failover &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/failover/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Mon, 24 Sep 2012 14:08:00 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Replication and auto-failover made easy with MySQL Utilities</title>
-		<link>/mysql/replication-and-auto-failover-made-easy-with-mysql-utilities</link>
-					<comments>/mysql/replication-and-auto-failover-made-easy-with-mysql-utilities#comments</comments>
+		<link>./../../mysql/replication-and-auto-failover-made-easy-with-mysql-utilities/index.html</link>
+					<comments>./../../mysql/replication-and-auto-failover-made-easy-with-mysql-utilities/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 24 Sep 2012 14:08:00 +0000</pubDate>
@@ -33,10 +33,10 @@
 		<category><![CDATA[MySQL 5.6]]></category>
 		<category><![CDATA[MySQL Replication]]></category>
 		<category><![CDATA[utilities]]></category>
-		<guid isPermaLink="false">/?p=2472</guid>
+		<guid isPermaLink="false">./../../index.html?p=2472</guid>
 
 					<description><![CDATA[If you&#8217;re a user of MySQL Workbench then you may have noticed a pocket knife icon appear in the top right hand corner &#8211; click on that and a terminal opens which gives you access to the MySQL utilities. In this post I&#8217;m focussing on the replication utilities but you can also refer to the]]></description>
-										<content:encoded><![CDATA[<div id="attachment_2474" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2012/08/WorkBench.jpg"><img decoding="async" aria-describedby="caption-attachment-2474" class="size-medium wp-image-2474" title="MySQL utilities in Workbench" alt="MySQL utilities in Workbench" src="/wp-content/uploads/2012/08/WorkBench-300x164.jpg" width="300" height="164" /></a><p id="caption-attachment-2474" class="wp-caption-text">Utilities in MySQL Workbench</p></div>
+										<content:encoded><![CDATA[<div id="attachment_2474" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2012/08/WorkBench.jpg"><img decoding="async" aria-describedby="caption-attachment-2474" class="size-medium wp-image-2474" title="MySQL utilities in Workbench" alt="MySQL utilities in Workbench" src="./../../wp-content/uploads/2012/08/WorkBench-300x164.jpg" width="300" height="164" /></a><p id="caption-attachment-2474" class="wp-caption-text">Utilities in MySQL Workbench</p></div>
 <p>If you&#8217;re a user of MySQL Workbench then you may have noticed a pocket knife icon appear in the top right hand corner &#8211; click on that and a terminal opens which gives you access to the MySQL utilities. In this post I&#8217;m focussing on the replication utilities but you can also refer to the full <a title="MySQL Utilities documentation" href="http://dev.mysql.com/doc/workbench/en/mysql-utilities.html" target="_blank">MySQL Utilities documentation</a>.</p>
 <p>What I&#8217;ll step through is how to uses these utilities to:</p>
 <ul>
@@ -325,7 +325,7 @@ Q-quit R-refresh H-health G-GTID Lists U-UUIDs</pre>
 <p>As always, we&#8217;d really appreciate people trying this out and giving us feedback!</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql/replication-and-auto-failover-made-easy-with-mysql-utilities/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql/replication-and-auto-failover-made-easy-with-mysql-utilities/feed/index.html</wfw:commentRss>
 			<slash:comments>115</slash:comments>
 		
 		

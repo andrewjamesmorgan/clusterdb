@@ -8,8 +8,8 @@
 <channel>
 	<title>
 	Comments on: MySQL Cluster 7.4 is GA!	</title>
-	<atom:link href="/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/feed" rel="self" type="application/rss+xml" />
-	<link>/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Tue, 12 May 2015 13:03:09 +0000</lastBuildDate>
 	<sy:updatePeriod>
@@ -20,18 +20,18 @@
 	<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-476635</link>
+		<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476635</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 22 Apr 2015 15:38:11 +0000</pubDate>
-		<guid isPermaLink="false">/?p=4005#comment-476635</guid>
+		<guid isPermaLink="false">./../../index.html?p=4005#comment-476635</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-476034&quot;&gt;Odis&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476034&quot;&gt;Odis&lt;/a&gt;.
 
 The PRIMARY server is the one that &#039;wins&#039; in the event of a conflict. This form of conflict detection is only supported for pairs of Clusters.
 
 Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-476034">Odis</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476034">Odis</a>.</p>
 <p>The PRIMARY server is the one that &#8216;wins&#8217; in the event of a conflict. This form of conflict detection is only supported for pairs of Clusters.</p>
 <p>Andrew.</p>
 ]]></content:encoded>
@@ -40,20 +40,20 @@ Andrew.]]></description>
 		<item>
 		<title>
 		By: Odis		</title>
-		<link>/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-476050</link>
+		<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476050</link>
 
 		<dc:creator><![CDATA[Odis]]></dc:creator>
 		<pubDate>Tue, 21 Apr 2015 16:13:06 +0000</pubDate>
-		<guid isPermaLink="false">/?p=4005#comment-476050</guid>
+		<guid isPermaLink="false">./../../index.html?p=4005#comment-476050</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-476040&quot;&gt;Odis&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476040&quot;&gt;Odis&lt;/a&gt;.
 
 of course, i have exec 
 stop slave
 reset slave
 reset master
 and reinstalled replication]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-476040">Odis</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476040">Odis</a>.</p>
 <p>of course, i have exec<br />
 stop slave<br />
 reset slave<br />
@@ -65,13 +65,13 @@ and reinstalled replication</p>
 		<item>
 		<title>
 		By: Odis		</title>
-		<link>/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-476040</link>
+		<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476040</link>
 
 		<dc:creator><![CDATA[Odis]]></dc:creator>
 		<pubDate>Tue, 21 Apr 2015 15:32:05 +0000</pubDate>
-		<guid isPermaLink="false">/?p=4005#comment-476040</guid>
+		<guid isPermaLink="false">./../../index.html?p=4005#comment-476040</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-476034&quot;&gt;Odis&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476034&quot;&gt;Odis&lt;/a&gt;.
 
 It seems to me that i still have some errors. 
 orig_server_id is 0 in both servers in ndb_binlog_index 
@@ -83,7 +83,7 @@ mysql-infr&#062; select distinct orig_server_id from mysql.ndb_binlog_index;
 &#124;              0 &#124;
 +----------------+
 1 row in set (0,00 sec)]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-476034">Odis</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476034">Odis</a>.</p>
 <p>It seems to me that i still have some errors.<br />
 orig_server_id is 0 in both servers in ndb_binlog_index </p>
 <p>mysql-infr&gt; select distinct orig_server_id from mysql.ndb_binlog_index;<br />
@@ -99,13 +99,13 @@ orig_server_id is 0 in both servers in ndb_binlog_index </p>
 		<item>
 		<title>
 		By: Odis		</title>
-		<link>/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-476034</link>
+		<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476034</link>
 
 		<dc:creator><![CDATA[Odis]]></dc:creator>
 		<pubDate>Tue, 21 Apr 2015 15:13:17 +0000</pubDate>
-		<guid isPermaLink="false">/?p=4005#comment-476034</guid>
+		<guid isPermaLink="false">./../../index.html?p=4005#comment-476034</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-475362&quot;&gt;andrew&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-475362&quot;&gt;andrew&lt;/a&gt;.
 
 Hello. Thanks for answer!
 It seems that error was due to replicate-wild-do-table.
@@ -123,7 +123,7 @@ mysql-infr&#062; select * from mysql.ndb_apply_status;
 But what exactly PRIMARY and SECONDARY values? How to set up this values in case circular replication with 3 and more servers?
 
 Thanks.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-475362">andrew</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-475362">andrew</a>.</p>
 <p>Hello. Thanks for answer!<br />
 It seems that error was due to replicate-wild-do-table.<br />
 I have added replicate-wild-do-table=mysql.ndb_apply_status and now i can see epochs.</p>
@@ -143,20 +143,20 @@ I have added replicate-wild-do-table=mysql.ndb_apply_status and now i can see ep
 		<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-475362</link>
+		<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-475362</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 20 Apr 2015 11:57:21 +0000</pubDate>
-		<guid isPermaLink="false">/?p=4005#comment-475362</guid>
+		<guid isPermaLink="false">./../../index.html?p=4005#comment-475362</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-467292&quot;&gt;Odis&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-467292&quot;&gt;Odis&lt;/a&gt;.
 
 &lt;blockquote&gt;But all rows in ndb_apply_status contain only epoch with value 0:&lt;/blockquote&gt;
 
 That suggests that the replication setup is wrong in some way - need to fix that before moving on.  Best to step back and create a dummy table for testing that changes are binlogged as expected and result in ndb_apply_status writes etc...  You should also check that you&#039;re checking the right servers.
 
 Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-467292">Odis</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-467292">Odis</a>.</p>
 <blockquote><p>But all rows in ndb_apply_status contain only epoch with value 0:</p></blockquote>
 <p>That suggests that the replication setup is wrong in some way &#8211; need to fix that before moving on.  Best to step back and create a dummy table for testing that changes are binlogged as expected and result in ndb_apply_status writes etc&#8230;  You should also check that you&#8217;re checking the right servers.</p>
 <p>Andrew.</p>
@@ -166,13 +166,13 @@ Andrew.]]></description>
 		<item>
 		<title>
 		By: Odis		</title>
-		<link>/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-467294</link>
+		<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-467294</link>
 
 		<dc:creator><![CDATA[Odis]]></dc:creator>
 		<pubDate>Wed, 01 Apr 2015 14:23:39 +0000</pubDate>
-		<guid isPermaLink="false">/?p=4005#comment-467294</guid>
+		<guid isPermaLink="false">./../../index.html?p=4005#comment-467294</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-467292&quot;&gt;Odis&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-467292&quot;&gt;Odis&lt;/a&gt;.
 
 I have used FLUSH TABLES WITH READ LOCK on both servers (PRIMARY and SECONDARY) to be clear:
 
@@ -182,7 +182,7 @@ I have used FLUSH TABLES WITH READ LOCK on both servers (PRIMARY and SECONDARY) 
 2nd server: FLUSH TABLES WITH READ LOCK; SHOW MASTER STATUS;
 1st server: CHANGE MASTER TO ... (with values from master status); START SLAVE;
 2nd server: release lock]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-467292">Odis</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-467292">Odis</a>.</p>
 <p>I have used FLUSH TABLES WITH READ LOCK on both servers (PRIMARY and SECONDARY) to be clear:</p>
 <p>1st server: FLUSH TABLES WITH READ LOCK; SHOW MASTER STATUS;<br />
 2nd server: CHANGE MASTER TO &#8230; (with values from master status); START SLAVE;<br />
@@ -196,11 +196,11 @@ I have used FLUSH TABLES WITH READ LOCK on both servers (PRIMARY and SECONDARY) 
 		<item>
 		<title>
 		By: Odis		</title>
-		<link>/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-467292</link>
+		<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-467292</link>
 
 		<dc:creator><![CDATA[Odis]]></dc:creator>
 		<pubDate>Wed, 01 Apr 2015 14:18:06 +0000</pubDate>
-		<guid isPermaLink="false">/?p=4005#comment-467292</guid>
+		<guid isPermaLink="false">./../../index.html?p=4005#comment-467292</guid>
 
 					<description><![CDATA[Hello. 
 I try to make new active-active replication work. For now I have 2 clusters: one with 2 sql, 2 management and 2 datanodes and one with 1 sql, 1 management and 1 datanode. I try to make first Cluster PRIMARY and second - SECONDARY. So, replication works, data is changed on both sides when i modify it somewhere, but I can&#039;t understand how there may be failover. 
@@ -323,11 +323,11 @@ and after that removed lock. Is it right algorithm?</p>
 		<item>
 		<title>
 		By: Daniël van Eeden		</title>
-		<link>/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comment-450223</link>
+		<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-450223</link>
 
 		<dc:creator><![CDATA[Daniël van Eeden]]></dc:creator>
 		<pubDate>Fri, 27 Feb 2015 10:28:15 +0000</pubDate>
-		<guid isPermaLink="false">/?p=4005#comment-450223</guid>
+		<guid isPermaLink="false">./../../index.html?p=4005#comment-450223</guid>
 
 					<description><![CDATA[Congratulations on the release!
 

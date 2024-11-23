@@ -71,7 +71,7 @@ input, textarea {
 }
 #header {
 	padding: 0;
-	background: url(/wp-content/themes/zeesynergie/images/head.png) repeat-x #333;
+	background: url(./images/head.png) repeat-x #333;
 }
 #custom_header {
 	margin: 0 auto;
@@ -127,7 +127,7 @@ input, textarea {
 	margin-top: 5px;
 }
 #sidebar ul li ul {
-	list-style: url(/wp-content/themes/zeesynergie/images/sidebar_arrow.png) inside;
+	list-style: url(./images/sidebar_arrow.png) inside;
 }
 #sidebar a, #sidebar ul {
 	font-size: 1.0em;
@@ -231,7 +231,7 @@ input, textarea {
 	width: 980px;
 	margin: 0;
 	padding: 0;
-	background: url(/wp-content/themes/zeesynergie/images/navi.png) repeat;
+	background: url(./images/navi.png) repeat;
 	list-style-type: none;
 }
 #nav, #nav ul{
@@ -416,7 +416,7 @@ input, textarea {
 .postinfo {
 	padding: 5px 8px;
 	color: #333;
-	background: url(/wp-content/themes/zeesynergie/images/postmeta_bg.png) repeat-x #fff;
+	background: url(./images/postmeta_bg.png) repeat-x #fff;
 	border-top: 1px solid #ccc;
 }
 .postinfo a:link, .postinfo a:visited {
@@ -873,13 +873,13 @@ blockquote:after{
 /*============================ FOOT ============================*/
 #footer {
 	clear: both;
-	background: url(/wp-content/themes/zeesynergie/images/foot.png) repeat #333;
+	background: url(./images/foot.png) repeat #333;
 	padding-bottom: 80px;
 }
 #foot {
 	margin: 0 auto;
 	width: 960px;
-	background: url(/wp-content/themes/zeesynergie/images/navi.png) repeat;
+	background: url(./images/navi.png) repeat;
 	color: #fff;
 	padding: 15px 10px;
 }

@@ -9,8 +9,8 @@
 
 <channel>
 	<title>DRBD &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/drbd/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Fri, 20 Feb 2015 14:49:01 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Choosing the right MySQL High Availability Solution – webinar replay</title>
-		<link>/mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay</link>
-					<comments>/mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay#respond</comments>
+		<link>./../../mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/index.html</link>
+					<comments>./../../mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 20 Feb 2015 14:49:01 +0000</pubDate>
@@ -35,10 +35,10 @@
 		<category><![CDATA[MySQL Cluster]]></category>
 		<category><![CDATA[Replication]]></category>
 		<category><![CDATA[Scale]]></category>
-		<guid isPermaLink="false">/?p=4038</guid>
+		<guid isPermaLink="false">./../../index.html?p=4038</guid>
 
 					<description><![CDATA[Earlier this week, I presented a webinar on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application. The replay of this webinar can now be viewed here or if you just want to look at the charts then scroll down. At the end]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png"><img fetchpriority="high" decoding="async" class="aligncenter size-full wp-image-2970" src="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png" alt="MySQL-HA-Logo1.png" width="950" height="100" srcset="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png 950w, /wp-content/uploads/2013/10/MySQL-HA-Logo1-300x31.png 300w" sizes="(max-width: 950px) 100vw, 950px" /></a>Earlier this week, I presented a webinar on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application.</p>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/10/MySQL-HA-Logo1.png"><img fetchpriority="high" decoding="async" class="aligncenter size-full wp-image-2970" src="./../../wp-content/uploads/2013/10/MySQL-HA-Logo1.png" alt="MySQL-HA-Logo1.png" width="950" height="100" srcset="./../../wp-content/uploads/2013/10/MySQL-HA-Logo1.png 950w, ./../../wp-content/uploads/2013/10/MySQL-HA-Logo1-300x31.png 300w" sizes="(max-width: 950px) 100vw, 950px" /></a>Earlier this week, I presented a webinar on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application.</p>
 <p>The <a title="Achieving MySQL High Availability, Learn to Select Your Best Option - webinar replay" href="https://event.on24.com/eventRegistration/EventLobbyServlet?target=reg20.jsp&amp;eventid=930247&amp;sessionid=1&amp;key=FF21049401BAD50579B6733B15BC9D36&amp;sourcepage=register" target="_blank">replay of this webinar can now be viewed here</a> or if you just want to look at the charts then scroll down. At the end of this post, I include a summary of the Q&amp;A from the webinar.</p>
 <p><span style="color: #333399;">How important is your data? Can you afford to lose it? What about just some of it? What would be the impact if you couldn&#8217;t access it for a minute, an hour, a day or a week?</span></p>
 <p><span style="color: #333399;">Different applications can have very different requirements for High Availability. Some need 100% data reliability with 24x7x365 read &amp; write access while many others are better served by a simpler approach with more modest HA ambitions.</span></p>
@@ -76,19 +76,19 @@
 <li><strong>In MySQL cluster is all the data replicated to all of the data nodes?</strong> Data is synchrously replicated between the 2 data nodes forming a node group. Different node groups are responsible for different shards for any given table</li>
 <li><strong>What&#8217;s the maximum number of data nodes in MySQL Cluster?</strong> 48</li>
 <li><strong>Which it best inter-connect method between MySQL Cluster data nodes for highest performance?</strong> Infiniband and GB Ethernet have both shown great results. If you&#8217;re able to configure the behaviour then low latency will help get the best performance</li>
-<li><strong>Can I colocate MySQL Cluster data nodes with MySQL Servers in order use all posible resources?</strong> Yes, you can co-locate data nodes and MySQL Servers. Note that the management node (ndb_mgmd) should not run on the same machine as any of the data nodes &#8211; <a title="read this post for details on how to deploy MySQL Cluster nodes for High Availability" href="/mysql-cluster/mysql-cluster-fault-tolerance-impact-of-deployment-decisions" target="_blank">read this post for details on how to deploy MySQL Cluster nodes for High Availability</a></li>
+<li><strong>Can I colocate MySQL Cluster data nodes with MySQL Servers in order use all posible resources?</strong> Yes, you can co-locate data nodes and MySQL Servers. Note that the management node (ndb_mgmd) should not run on the same machine as any of the data nodes &#8211; <a title="read this post for details on how to deploy MySQL Cluster nodes for High Availability" href="./../../mysql-cluster/mysql-cluster-fault-tolerance-impact-of-deployment-decisions/index.html" target="_blank">read this post for details on how to deploy MySQL Cluster nodes for High Availability</a></li>
 </ul>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Holding MySQL HA workshop in Oxford</title>
-		<link>/mysql/holding-mysql-ha-workshop-in-oxford</link>
-					<comments>/mysql/holding-mysql-ha-workshop-in-oxford#respond</comments>
+		<link>./../../mysql/holding-mysql-ha-workshop-in-oxford/index.html</link>
+					<comments>./../../mysql/holding-mysql-ha-workshop-in-oxford/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 03 Sep 2013 14:40:45 +0000</pubDate>
@@ -100,10 +100,10 @@
 		<category><![CDATA[MySQL Cluster Manager]]></category>
 		<category><![CDATA[MySQL Replication]]></category>
 		<category><![CDATA[Windows]]></category>
-		<guid isPermaLink="false">/?p=2941</guid>
+		<guid isPermaLink="false">./../../index.html?p=2941</guid>
 
 					<description><![CDATA[On 17th October I&#8217;ll be running a hands-on workshop on the various technologies available to provide High Availability using MySQL. The workshop is being held on 17th October (the day before the All Your Base conference) in Oxford (UK). The cost is £250 + VAT and you can register here. This workshop provides an introduction]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/09/All-Your-Base-logo1.png"><img decoding="async" class="alignright size-full wp-image-2943" alt="All Your Base Conference - MySQL HA Workshop" src="/wp-content/uploads/2013/09/All-Your-Base-logo1.png" width="202" height="258" /></a>On 17th October I&#8217;ll be running a hands-on workshop on the various technologies available to provide High Availability using MySQL. The workshop is being held on 17th October (the day before the All Your Base conference) in Oxford (UK). The cost is £250 + VAT and you can <a title="MySQL HA workshop at All Your Base conference" href="http://allyourbaseconf.com/workshops.html#mysql" target="_blank">register here</a>.</p>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/09/All-Your-Base-logo1.png"><img decoding="async" class="alignright size-full wp-image-2943" alt="All Your Base Conference - MySQL HA Workshop" src="./../../wp-content/uploads/2013/09/All-Your-Base-logo1.png" width="202" height="258" /></a>On 17th October I&#8217;ll be running a hands-on workshop on the various technologies available to provide High Availability using MySQL. The workshop is being held on 17th October (the day before the All Your Base conference) in Oxford (UK). The cost is £250 + VAT and you can <a title="MySQL HA workshop at All Your Base conference" href="http://allyourbaseconf.com/workshops.html#mysql" target="_blank">register here</a>.</p>
 <p>This workshop provides an introduction to what High Availability (HA) is; what technology options are available to achieve it with MySQL and how to actually implement your own HA solutions. The session will be a mixture of presentations, demonstrations and (most importantly) hands-on tutorials.</p>
 <p>We&#8217;ll start with an overview of High Availability &#8211; in general and in the context of MySQL and then a survey of the technologies to choose from:</p>
 <ul>
@@ -128,15 +128,15 @@
 <p>The plan is to get everyone up and running with multiple VMs on their laptops so that they can experiment and test with MySQL Cluster and MySQL Replication over multiple (virtual) hosts. As a stretch, we&#8217;ll try creating a Cluster running over everyone&#8217;s machine at the same time &#8211; though that might be stretching the logisitics! I&#8217;ve got a supply of 30 USB sticks and hope to have 2-3 unique virtual appliances on each &#8211; what could go wrong?</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql/holding-mysql-ha-workshop-in-oxford/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql/holding-mysql-ha-workshop-in-oxford/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>MySQL now provides support for DRBD</title>
-		<link>/mysql-cluster/mysql-now-provides-support-for-drbd</link>
-					<comments>/mysql-cluster/mysql-now-provides-support-for-drbd#comments</comments>
+		<link>./../../mysql-cluster/mysql-now-provides-support-for-drbd/index.html</link>
+					<comments>./../../mysql-cluster/mysql-now-provides-support-for-drbd/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Sat, 29 Sep 2012 16:12:38 +0000</pubDate>
@@ -145,7 +145,7 @@
 		<category><![CDATA[HA]]></category>
 		<category><![CDATA[High Availability]]></category>
 		<category><![CDATA[MySQL]]></category>
-		<guid isPermaLink="false">/?p=2437</guid>
+		<guid isPermaLink="false">./../../index.html?p=2437</guid>
 
 					<description><![CDATA[Oracle has announced that it now provides support for DRBD with MySQL &#8211; this means a single point of support for the entire MySQL/DRBD/Pacemaker/Corosync/Linux stack! As part of this, we&#8217;ve released a new white paper which steps you through everything you need to do to configure this High Availability stack. The white paper provides a]]></description>
 										<content:encoded><![CDATA[<p>Oracle has announced that it now provides support for DRBD with MySQL &#8211; this means a single point of support for the entire MySQL/DRBD/Pacemaker/Corosync/Linux stack! As part of this, we&#8217;ve released a <a href="http://www.mysql.com/why-mysql/white-papers/mysql_wp_drbd.php">new white paper which steps you through everything you need to do to configure this High Availability stack</a>. The white paper provides a step-by-step guide to installing, configuring, provisioning and testing the complete MySQL and DRBD stack, including:</p>
@@ -157,24 +157,24 @@
 </ul>
 <p>DRBD is an extremely popular way of adding a layer of High Availability to a MySQL deployment &#8211; especially when the 99.999% availability levels delivered by MySQL Cluster isn&#8217;t needed. It can be implemented without the shared storage required for typical clustering solutions (not required by MySQL Cluster either) and so it can be a very cost effective solution for Linux environments.</p>
 <h3>Introduction to MySQL on DRBD/Pacemaker/Corosync/Oracle Linux </h3>
-<p><div id="attachment_2449" style="width: 270px" class="wp-caption alignright"><a href="/wp-content/uploads/2012/08/MySQL-DRBD-Stack.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2449" src="/wp-content/uploads/2012/08/MySQL-DRBD-Stack-260x300.png" alt="" title="MySQL-DRBD Stack" width="260" height="300" class="size-medium wp-image-2449" /></a><p id="caption-attachment-2449" class="wp-caption-text">Fig 1 &#8211; MySQL-DRBD Stack</p></div>Figure 1 illustrates the stack that can be used to deliver a level of High Availability for the MySQL service. </p>
+<p><div id="attachment_2449" style="width: 270px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2012/08/MySQL-DRBD-Stack.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2449" src="./../../wp-content/uploads/2012/08/MySQL-DRBD-Stack-260x300.png" alt="" title="MySQL-DRBD Stack" width="260" height="300" class="size-medium wp-image-2449" /></a><p id="caption-attachment-2449" class="wp-caption-text">Fig 1 &#8211; MySQL-DRBD Stack</p></div>Figure 1 illustrates the stack that can be used to deliver a level of High Availability for the MySQL service. </p>
 <p>At the lowest level, 2 hosts are required in order to provide physical redundancy; if using a virtual environment, those 2 hosts should be on different physical machines. It is an important feature that no shared storage is required. At any point in time, the services will be active on one host and in standby mode on the other.</p>
 <p>Pacemaker and Corosync combine to provide the clustering layer that sits between the services and the underlying hosts and operating systems. Pacemaker is responsible for starting and stopping services – ensuring that they’re running on exactly one host, delivering high availability and avoiding data corruption. Corosync provides the underlying messaging infrastructure between the nodes that enables Pacemaker to do its job; it also handles the nodes membership within the cluster and informs Pacemaker of any changes.</p>
 <p>The core Pacemaker process does not have built in knowledge of the specific services to be managed; instead agents are used which provide a wrapper for the service-specific actions. For example, in this solution we use agents for Virtual IP Addresses, MySQL and DRBD – these are all existing agents and come packaged with Pacemaker. This white paper will demonstrate how to configure Pacemaker to use these agents to provide a High Availability stack for MySQL.</p>
 <p>The essential services managed by Pacemaker in this configuration are DRBD, MySQL and the Virtual IP Address that applications use to connect to the active MySQL service.</p>
 <p>DRBD synchronizes data at the block device (typically a spinning or solid state disk) – transparent to the application, database and even the file system. DRBD requires the use of a journaling file system such as ext3 or ext4. For this solution it acts in an active-standby mode – this means that at any point in time the directories being managed by DRBD are accessible for reads and writes on exactly one of the two hosts and inaccessible (even for reads) on the other. Any changes made on the active host are synchronously replicated to the standby host by DRBD.</p>
 <h3>Setting up MySQL with DRBD/Pacemaker/Corosync/Oracle Linux </h3>
-<p><div id="attachment_2456" style="width: 220px" class="wp-caption alignright"><a href="/wp-content/uploads/2012/08/MySQL-DRBD-Target-Config.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2456" src="/wp-content/uploads/2012/08/MySQL-DRBD-Target-Config-210x300.png" alt="" title="MySQL DRBD Target Config" width="210" height="300" class="size-medium wp-image-2456" /></a><p id="caption-attachment-2456" class="wp-caption-text">Fig 2 &#8211; Target network config</p></div>Figure 2 shows the network configuration used in this paper – note that for simplicity a single network connection is used but for maximum availability in a production environment you should consider redundant network connections.</p>
+<p><div id="attachment_2456" style="width: 220px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2012/08/MySQL-DRBD-Target-Config.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2456" src="./../../wp-content/uploads/2012/08/MySQL-DRBD-Target-Config-210x300.png" alt="" title="MySQL DRBD Target Config" width="210" height="300" class="size-medium wp-image-2456" /></a><p id="caption-attachment-2456" class="wp-caption-text">Fig 2 &#8211; Target network config</p></div>Figure 2 shows the network configuration used in this paper – note that for simplicity a single network connection is used but for maximum availability in a production environment you should consider redundant network connections.</p>
 <p>A single Virtual IP (VIP) is shown in the figure (<span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">192.168.5.102</span>) and this is the address that the application will connect to when accessing the MySQL database. Pacemaker will be responsible for migrating this between the 2 physical IP addresses. </p>
 <p>One of the final steps in configuring Pacemaker is to add network connectivity monitoring in order to attempt to have an isolated host stop its MySQL service to avoid a “split-brain” scenario. This is achieved by having each host ping an external (not one part of the cluster) IP addresses – in this case the network router (<span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">192.168.5.1</span>).</p>
 <p><code><br /></code><br />
-<div id="attachment_2458" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2012/08/File-Locations.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2458" src="/wp-content/uploads/2012/08/File-Locations-300x222.png" alt="" title="File Locations" width="300" height="222" class="size-medium wp-image-2458" /></a><p id="caption-attachment-2458" class="wp-caption-text">Fig 3 &#8211; Locations of files</p></div>Figure 3 shows where the MySQL files will be stored. The MySQL binaries as well as the socket (<span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysql.sock</span>) and process-id (<span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysql.pid</span>) files are stored in a regular partition – independent on each host (under <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">/var/lib/mysql/</span>). The MySQL Server configuration file (<span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">my.cnf</span>) and the database files (<span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">data/*</span>) are stored in a DRBD controlled file system that at any point in time is only available on one of the two hosts – this file system is controlled by DRBD and mounted under <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">/var/lib/mysql_drbd/</span>.<br />
+<div id="attachment_2458" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2012/08/File-Locations.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2458" src="./../../wp-content/uploads/2012/08/File-Locations-300x222.png" alt="" title="File Locations" width="300" height="222" class="size-medium wp-image-2458" /></a><p id="caption-attachment-2458" class="wp-caption-text">Fig 3 &#8211; Locations of files</p></div>Figure 3 shows where the MySQL files will be stored. The MySQL binaries as well as the socket (<span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysql.sock</span>) and process-id (<span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysql.pid</span>) files are stored in a regular partition – independent on each host (under <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">/var/lib/mysql/</span>). The MySQL Server configuration file (<span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">my.cnf</span>) and the database files (<span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">data/*</span>) are stored in a DRBD controlled file system that at any point in time is only available on one of the two hosts – this file system is controlled by DRBD and mounted under <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">/var/lib/mysql_drbd/</span>.<br />
 <code><br /></code><br />
 <code><br /></code><br />
-<div id="attachment_2465" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2012/08/Required-clustered-resources-and-relationships.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2465" src="/wp-content/uploads/2012/08/Required-clustered-resources-and-relationships-300x251.png" alt="" title="Required clustered resources and relationships" width="300" height="251" class="size-medium wp-image-2465" /></a><p id="caption-attachment-2465" class="wp-caption-text">Fig 4 &#8211; Clustered resources</p></div>The white paper steps through setting all of this up as well as the resources in Pacemaker/Corosync that allow detection of a problem and the failover of the storage (DRBD), database (MySQL) and the Virtual IP address used by the application to access the database &#8211; all in a coordinated way of course. As you&#8217;ll notice in Figure 4 this involves setting up quite a few entities and relationships &#8211; the paper goes through each one.</p>
+<div id="attachment_2465" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2012/08/Required-clustered-resources-and-relationships.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2465" src="./../../wp-content/uploads/2012/08/Required-clustered-resources-and-relationships-300x251.png" alt="" title="Required clustered resources and relationships" width="300" height="251" class="size-medium wp-image-2465" /></a><p id="caption-attachment-2465" class="wp-caption-text">Fig 4 &#8211; Clustered resources</p></div>The white paper steps through setting all of this up as well as the resources in Pacemaker/Corosync that allow detection of a problem and the failover of the storage (DRBD), database (MySQL) and the Virtual IP address used by the application to access the database &#8211; all in a coordinated way of course. As you&#8217;ll notice in Figure 4 this involves setting up quite a few entities and relationships &#8211; the paper goes through each one.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/mysql-now-provides-support-for-drbd/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/mysql-now-provides-support-for-drbd/feed/index.html</wfw:commentRss>
 			<slash:comments>2</slash:comments>
 		
 		

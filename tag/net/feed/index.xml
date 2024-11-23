@@ -9,8 +9,8 @@
 
 <channel>
 	<title>.net &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/net/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Wed, 26 Jan 2022 10:30:57 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</title>
-		<link>/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync</link>
-					<comments>/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync#respond</comments>
+		<link>./../../mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/index.html</link>
+					<comments>./../../mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 26 Jan 2022 10:30:57 +0000</pubDate>
@@ -34,7 +34,7 @@
 		<category><![CDATA[javascript]]></category>
 		<category><![CDATA[kotlin]]></category>
 		<category><![CDATA[Swift]]></category>
-		<guid isPermaLink="false">/?p=4651</guid>
+		<guid isPermaLink="false">./../../index.html?p=4651</guid>
 
 					<description><![CDATA[We are excited to announce the public preview of our next version of Realm Sync: Flexible Sync. This new method of syncing puts the power into the hands of the developer. Now, developers can get more granular control over the data synced to user applications with intuitive language-native queries and hierarchical permissions. Introduction Prior to]]></description>
 										<content:encoded><![CDATA[<p>We are excited to announce the public preview of our next version of Realm Sync: Flexible Sync. This new method of syncing puts the power into the hands of the developer. Now, developers can get more granular control over the data synced to user applications with intuitive language-native queries and hierarchical permissions.</p>
@@ -285,7 +285,7 @@ homes = realm.objects(ListingSchema.name).length;
 <p>The Realm Sync team is planning to bring you more query operators and permissions integrations over the course of 2022. Up next we are looking to expose array operators and enable querying on embedded documents, but really, we look to you, our users, to help us drive the roadmap. Submit your ideas and feature requests to our <a href="https://feedback.mongodb.com/forums/923521-realm">feedback portal</a> and ask questions in our <a href="https://www.mongodb.com/community/forums/c/realm/realm-sync/111">Community forum</a>. Happy building!</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

@@ -8,8 +8,8 @@
 <channel>
 	<title>
 	Comments on: My first Cluster running on Windows	</title>
-	<atom:link href="/mysql-cluster/my-first-cluster-running-on-windows/feed" rel="self" type="application/rss+xml" />
-	<link>/mysql-cluster/my-first-cluster-running-on-windows</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../my-first-cluster-running-on-windows/index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Wed, 15 Feb 2017 06:01:48 +0000</lastBuildDate>
 	<sy:updatePeriod>
@@ -20,11 +20,11 @@
 	<item>
 		<title>
 		By: Kailas Gorane		</title>
-		<link>/mysql-cluster/my-first-cluster-running-on-windows#comment-659221</link>
+		<link>./../my-first-cluster-running-on-windows/index.html#comment-659221</link>
 
 		<dc:creator><![CDATA[Kailas Gorane]]></dc:creator>
 		<pubDate>Wed, 15 Feb 2017 06:01:48 +0000</pubDate>
-		<guid isPermaLink="false">/?p=153#comment-659221</guid>
+		<guid isPermaLink="false">./../../index.html?p=153#comment-659221</guid>
 
 					<description><![CDATA[Hi Andrew,
 I am referring to this tutorial to setup mySql cluster. But, sqlserver node is not coming up. Below is output from mgmt console -
@@ -113,28 +113,28 @@ server-id=3306</p>
 		<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/my-first-cluster-running-on-windows#comment-23786</link>
+		<link>./../my-first-cluster-running-on-windows/index.html#comment-23786</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 05 Dec 2013 14:34:53 +0000</pubDate>
-		<guid isPermaLink="false">/?p=153#comment-23786</guid>
+		<guid isPermaLink="false">./../../index.html?p=153#comment-23786</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/my-first-cluster-running-on-windows#comment-23210&quot;&gt;saor&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../my-first-cluster-running-on-windows/index.html#comment-23210&quot;&gt;saor&lt;/a&gt;.
 
-The best way to setup MySQL Cluster on Windows these days is to use the auto-installer - see &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-3-auto-installer&quot; title=&quot;MySQL Clusrer Auto-Installer&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;MySQL Cluster 7.3 GA – Includes MySQL Cluster Auto-Installer&lt;/a&gt;.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/my-first-cluster-running-on-windows#comment-23210">saor</a>.</p>
-<p>The best way to setup MySQL Cluster on Windows these days is to use the auto-installer &#8211; see <a href="/mysql-cluster/mysql-cluster-7-3-auto-installer" title="MySQL Clusrer Auto-Installer" target="_blank" rel="nofollow">MySQL Cluster 7.3 GA – Includes MySQL Cluster Auto-Installer</a>.</p>
+The best way to setup MySQL Cluster on Windows these days is to use the auto-installer - see &lt;a href=&quot;./../mysql-cluster-7-3-auto-installer&quot;/index.html title=&quot;MySQL Clusrer Auto-Installer&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;MySQL Cluster 7.3 GA – Includes MySQL Cluster Auto-Installer&lt;/a&gt;.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../my-first-cluster-running-on-windows/index.html#comment-23210">saor</a>.</p>
+<p>The best way to setup MySQL Cluster on Windows these days is to use the auto-installer &#8211; see <a href="./../mysql-cluster-7-3-auto-installer/index.html" title="MySQL Clusrer Auto-Installer" target="_blank" rel="nofollow">MySQL Cluster 7.3 GA – Includes MySQL Cluster Auto-Installer</a>.</p>
 ]]></content:encoded>
 		
 			</item>
 		<item>
 		<title>
 		By: saor		</title>
-		<link>/mysql-cluster/my-first-cluster-running-on-windows#comment-23210</link>
+		<link>./../my-first-cluster-running-on-windows/index.html#comment-23210</link>
 
 		<dc:creator><![CDATA[saor]]></dc:creator>
 		<pubDate>Wed, 04 Dec 2013 19:39:32 +0000</pubDate>
-		<guid isPermaLink="false">/?p=153#comment-23210</guid>
+		<guid isPermaLink="false">./../../index.html?p=153#comment-23210</guid>
 
 					<description><![CDATA[why i can still cant find this directory from my instalation even i have folder alredy visible ??
 
@@ -153,20 +153,20 @@ thx for helping me.]]></description>
 		<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/my-first-cluster-running-on-windows#comment-21487</link>
+		<link>./../my-first-cluster-running-on-windows/index.html#comment-21487</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 02 Dec 2013 14:15:41 +0000</pubDate>
-		<guid isPermaLink="false">/?p=153#comment-21487</guid>
+		<guid isPermaLink="false">./../../index.html?p=153#comment-21487</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/my-first-cluster-running-on-windows#comment-20678&quot;&gt;Gaurav&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../my-first-cluster-running-on-windows/index.html#comment-20678&quot;&gt;Gaurav&lt;/a&gt;.
 
 Gaurav,
 
  double check that the mysqld you&#039;re using is one that came as part of a MySQL Cluster package - this error suggests that you&#039;re using a &quot;reguar&quot; mysqld instead.
 
 Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/my-first-cluster-running-on-windows#comment-20678">Gaurav</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../my-first-cluster-running-on-windows/index.html#comment-20678">Gaurav</a>.</p>
 <p>Gaurav,</p>
 <p> double check that the mysqld you&#8217;re using is one that came as part of a MySQL Cluster package &#8211; this error suggests that you&#8217;re using a &#8220;reguar&#8221; mysqld instead.</p>
 <p>Andrew.</p>
@@ -176,11 +176,11 @@ Andrew.]]></description>
 		<item>
 		<title>
 		By: Gaurav		</title>
-		<link>/mysql-cluster/my-first-cluster-running-on-windows#comment-21205</link>
+		<link>./../my-first-cluster-running-on-windows/index.html#comment-21205</link>
 
 		<dc:creator><![CDATA[Gaurav]]></dc:creator>
 		<pubDate>Mon, 02 Dec 2013 07:46:33 +0000</pubDate>
-		<guid isPermaLink="false">/?p=153#comment-21205</guid>
+		<guid isPermaLink="false">./../../index.html?p=153#comment-21205</guid>
 
 					<description><![CDATA[Hi Andrew
 
@@ -200,11 +200,11 @@ Gaurav</p>
 		<item>
 		<title>
 		By: Gaurav		</title>
-		<link>/mysql-cluster/my-first-cluster-running-on-windows#comment-20678</link>
+		<link>./../my-first-cluster-running-on-windows/index.html#comment-20678</link>
 
 		<dc:creator><![CDATA[Gaurav]]></dc:creator>
 		<pubDate>Sun, 01 Dec 2013 09:47:48 +0000</pubDate>
-		<guid isPermaLink="false">/?p=153#comment-20678</guid>
+		<guid isPermaLink="false">./../../index.html?p=153#comment-20678</guid>
 
 					<description><![CDATA[Hi Andrew
 I tried to create cluster but I am facing issue to run api node
@@ -258,20 +258,20 @@ id=6 (not connected, accepting connect from localhost)</p>
 		<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/my-first-cluster-running-on-windows#comment-83</link>
+		<link>./../my-first-cluster-running-on-windows/index.html#comment-83</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 04 Feb 2013 23:25:50 +0000</pubDate>
-		<guid isPermaLink="false">/?p=153#comment-83</guid>
+		<guid isPermaLink="false">./../../index.html?p=153#comment-83</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/my-first-cluster-running-on-windows#comment-82&quot;&gt;Karen&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../my-first-cluster-running-on-windows/index.html#comment-82&quot;&gt;Karen&lt;/a&gt;.
 
 Hi Karen,
 
  at present, there is no MSI available and so you&#039;ll have to use the zip. 
 
 Best Regards, Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/my-first-cluster-running-on-windows#comment-82">Karen</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../my-first-cluster-running-on-windows/index.html#comment-82">Karen</a>.</p>
 <p>Hi Karen,</p>
 <p> at present, there is no MSI available and so you&#8217;ll have to use the zip. </p>
 <p>Best Regards, Andrew.</p>
@@ -281,11 +281,11 @@ Best Regards, Andrew.]]></description>
 		<item>
 		<title>
 		By: Karen		</title>
-		<link>/mysql-cluster/my-first-cluster-running-on-windows#comment-82</link>
+		<link>./../my-first-cluster-running-on-windows/index.html#comment-82</link>
 
 		<dc:creator><![CDATA[Karen]]></dc:creator>
 		<pubDate>Mon, 04 Feb 2013 22:01:27 +0000</pubDate>
-		<guid isPermaLink="false">/?p=153#comment-82</guid>
+		<guid isPermaLink="false">./../../index.html?p=153#comment-82</guid>
 
 					<description><![CDATA[There is no .MSI file in the installation pacakge. just a zip package.
 
@@ -298,11 +298,11 @@ Is there a way to install it using the MSI? I am just wondering if the MSI is mi
 		<item>
 		<title>
 		By: Omar		</title>
-		<link>/mysql-cluster/my-first-cluster-running-on-windows#comment-81</link>
+		<link>./../my-first-cluster-running-on-windows/index.html#comment-81</link>
 
 		<dc:creator><![CDATA[Omar]]></dc:creator>
 		<pubDate>Tue, 27 Nov 2012 22:15:21 +0000</pubDate>
-		<guid isPermaLink="false">/?p=153#comment-81</guid>
+		<guid isPermaLink="false">./../../index.html?p=153#comment-81</guid>
 
 					<description><![CDATA[sorry correction: the output of the last &quot;show&quot; command is:
 id=6 @192.x.x.x (…, starting,nodegroup:0)
@@ -316,11 +316,11 @@ id=25 (not connected, accepting connect from 192.x.x.x)</p>
 		<item>
 		<title>
 		By: Omar		</title>
-		<link>/mysql-cluster/my-first-cluster-running-on-windows#comment-80</link>
+		<link>./../my-first-cluster-running-on-windows/index.html#comment-80</link>
 
 		<dc:creator><![CDATA[Omar]]></dc:creator>
 		<pubDate>Tue, 27 Nov 2012 22:12:54 +0000</pubDate>
-		<guid isPermaLink="false">/?p=153#comment-80</guid>
+		<guid isPermaLink="false">./../../index.html?p=153#comment-80</guid>
 
 					<description><![CDATA[Thank you very much for your support!! highly appreciated, the problem has been solved, but another problem arised. I have two data nodes first one with nodeid=6 and the other one with nodeid=25, when I first started I typed the command &quot;ndbd --initial&quot; and the angle was connected and allocated correctly, then I typed the &quot;show&quot; command on the Managment node and the results where:
 id=6 @192.x.x.x (..., starting,nodegroup:0)

@@ -9,8 +9,8 @@
 
 <channel>
 	<title>serverless &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/serverless/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Thu, 28 Mar 2019 09:54:35 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>How to create Dynamic Custom Roles with MongoDB Stitch</title>
-		<link>/mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch</link>
-					<comments>/mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch#respond</comments>
+		<link>./../../mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch/index.html</link>
+					<comments>./../../mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 28 Mar 2019 09:54:35 +0000</pubDate>
@@ -30,7 +30,7 @@
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
 		<category><![CDATA[serverless]]></category>
-		<guid isPermaLink="false">/?p=4566</guid>
+		<guid isPermaLink="false">./../../index.html?p=4566</guid>
 
 					<description><![CDATA[None of us want to write lots of code to control what data each user can access. In most cases, you can set up your data access controls in seconds by using Stitch&#8217;s built-in templates, e.g., &#8220;Users can read and write their own data&#8221; or &#8220;Users can read and write their own data. Users that]]></description>
 										<content:encoded><![CDATA[<p>None of us want to write lots of code to control what data each user can access. In most cases, you can set up your data access controls in seconds by using <a href="https://docs.mongodb.com/stitch/mongodb/define-roles-and-permissions/#select-a-collection-rule-template" title="Stitch includes templates to control what data a user can access">Stitch&#8217;s built-in templates</a>, e.g., &#8220;Users can read and write their own data&#8221; or &#8220;Users can read and write their own data. Users that belong to a sharing list can read that data&#8221;. Stitch also lets you create <a href="https://docs.mongodb.com/stitch/mongodb/define-roles-and-permissions/#define-the-role-s-apply-when-condition" title="Define your own criteria to identify a MongoDB Stitch role">custom roles</a> that you tailor to your application and schema – this post creates such a rule, querying a second collection when deciding whether to allow a user to insert a document.</p>
@@ -116,15 +116,15 @@ WriteResult({ "nInserted" : 1 })
 <p>I recently had someone ask me how to implement &#8220;traditional database roles&#8221; using Stitch, i.e. an administrator explicitly defines which user ids belong to a specific role, and then use that role to determine whether they can access a collection. You can use this same approach for that use case – have a collection that assigns users to roles and then find the user id in that collection from a Stitch function that&#8217;s used in roles for the collections you want to protect. You could then optimize the rules by including the users&#8217; roles as an attribute in their authentication token – but I&#8217;ll save that for a future post!</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Stitch &#038; Mobile Webinar Questions &#038; Replay</title>
-		<link>/mongodb/stitch-mobile-webinar-questions-replay</link>
-					<comments>/mongodb/stitch-mobile-webinar-questions-replay#respond</comments>
+		<link>./../../mongodb/stitch-mobile-webinar-questions-replay/index.html</link>
+					<comments>./../../mongodb/stitch-mobile-webinar-questions-replay/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 22 Nov 2018 12:22:32 +0000</pubDate>
@@ -134,7 +134,7 @@ WriteResult({ "nInserted" : 1 })
 		<category><![CDATA[MongoDB Mobile]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
 		<category><![CDATA[serverless]]></category>
-		<guid isPermaLink="false">/?p=4541</guid>
+		<guid isPermaLink="false">./../../index.html?p=4541</guid>
 
 					<description><![CDATA[How do you test MongoDB Stitch functions, how do you store Stitch triggers, and what services can you integrate Stitch with? These were some of the great questions that were asked and answered in my recent webinar. You can watch the replay of &#8220;MongoDB Mobile and MongoDB Stitch – Introduction and Latest Developments&#8221; here, or]]></description>
 										<content:encoded><![CDATA[<p>How do you test MongoDB <a href="https://docs.mongodb.com/stitch/functions/" title="MongoDB Stitch serverless functions">Stitch functions</a>, how do you store <a href="https://docs.mongodb.com/stitch/triggers/database-triggers/" title="MongoDB database triggers using MongoDB Stitch"> Stitch triggers</a>, and what services can you integrate Stitch with? These were some of the great questions that were asked and answered in my recent webinar. You can watch the replay of <a href="https://www.mongodb.com/presentations/mongodb-mobile-and-mongodb-stitch-introduction" title="Building mobile and IoT apps with MongoDB, MongoDB Stitch, and MongoDB Mobile">&#8220;MongoDB Mobile and MongoDB Stitch – Introduction and Latest Developments&#8221; here</a>, or read on as I share the answers to those questions here.</p>
@@ -191,15 +191,15 @@ WriteResult({ "nInserted" : 1 })
 <p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/stitch-mobile-webinar-questions-replay/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/stitch-mobile-webinar-questions-replay/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Working with MongoDB Stitch Through the mongo Shell – MongoDB Wire Protocol Support</title>
-		<link>/mongodb/working-with-mongodb-stitch-through-the-mongo-shell-mongodb-wire-protocol-support</link>
-					<comments>/mongodb/working-with-mongodb-stitch-through-the-mongo-shell-mongodb-wire-protocol-support#respond</comments>
+		<link>./../../mongodb/working-with-mongodb-stitch-through-the-mongo-shell-mongodb-wire-protocol-support/index.html</link>
+					<comments>./../../mongodb/working-with-mongodb-stitch-through-the-mongo-shell-mongodb-wire-protocol-support/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 03 Oct 2018 09:41:01 +0000</pubDate>
@@ -207,7 +207,7 @@ WriteResult({ "nInserted" : 1 })
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
 		<category><![CDATA[serverless]]></category>
-		<guid isPermaLink="false">/?p=4529</guid>
+		<guid isPermaLink="false">./../../index.html?p=4529</guid>
 
 					<description><![CDATA[The Stitch SDK is the best way to access MongoDB Stitch from your frontend application code – getting to your data and accessing your Stitch Services and Functions becomes child&#8217;s&#8217; play. However, those already using MongoDB may have existing backend code and tools that work with MongoDB. MongoDB Stitch now supports the MongoDB wire protocol]]></description>
 										<content:encoded><![CDATA[<p>The <a href="https://docs.mongodb.com/stitch/client-sdks/" title="MongoDB Stitch client SDK">Stitch SDK</a> is the best way to access <a href="https://docs.mongodb.com/stitch/" title="MongoDB Stitch serverless platform">MongoDB Stitch</a> from your frontend application code – getting to your data and accessing your Stitch Services and Functions becomes child&#8217;s&#8217; play.</p>
@@ -244,15 +244,15 @@ WriteResult({ "nInserted" : 1 })
 <p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/working-with-mongodb-stitch-through-the-mongo-shell-mongodb-wire-protocol-support/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/working-with-mongodb-stitch-through-the-mongo-shell-mongodb-wire-protocol-support/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Sending Text Messages with MongoDB Stitch &#038; Twilio</title>
-		<link>/mongodb/sending-text-messages-with-mongodb-stitch-twilio</link>
-					<comments>/mongodb/sending-text-messages-with-mongodb-stitch-twilio#respond</comments>
+		<link>./../../mongodb/sending-text-messages-with-mongodb-stitch-twilio/index.html</link>
+					<comments>./../../mongodb/sending-text-messages-with-mongodb-stitch-twilio/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 26 Sep 2018 12:05:16 +0000</pubDate>
@@ -261,7 +261,7 @@ WriteResult({ "nInserted" : 1 })
 		<category><![CDATA[MongoDB Stitch]]></category>
 		<category><![CDATA[serverless]]></category>
 		<category><![CDATA[twilio]]></category>
-		<guid isPermaLink="false">/?p=4524</guid>
+		<guid isPermaLink="false">./../../index.html?p=4524</guid>
 
 					<description><![CDATA[When creating a well-rounded app, there are lots of table stakes features that make the app more useful but have already been implemented thousands of times before. Having the application backend send a text message informing your customer of an event is a classic example of such a “commodity” feature. Think about using a website]]></description>
 										<content:encoded><![CDATA[<p>When creating a well-rounded app, there are lots of table stakes features that make the app more useful but have already been implemented thousands of times before. Having the application backend send a text message informing your customer of an event is a classic example of such a “commodity” feature.</p>
@@ -288,15 +288,15 @@ WriteResult({ "nInserted" : 1 })
 <p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/sending-text-messages-with-mongodb-stitch-twilio/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/sending-text-messages-with-mongodb-stitch-twilio/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Testing &#038; Debugging MongoDB Stitch Functions</title>
-		<link>/mongodb/testing-debugging-mongodb-stitch-functions</link>
-					<comments>/mongodb/testing-debugging-mongodb-stitch-functions#respond</comments>
+		<link>./../../mongodb/testing-debugging-mongodb-stitch-functions/index.html</link>
+					<comments>./../../mongodb/testing-debugging-mongodb-stitch-functions/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 25 Sep 2018 14:07:03 +0000</pubDate>
@@ -304,7 +304,7 @@ WriteResult({ "nInserted" : 1 })
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
 		<category><![CDATA[serverless]]></category>
-		<guid isPermaLink="false">/?p=4522</guid>
+		<guid isPermaLink="false">./../../index.html?p=4522</guid>
 
 					<description><![CDATA[When discussing serverless computing (Functions as a Service) with developers, a common concern that arises is the complexity of testing and debugging your functions. Fortunately, the MongoDB Stitch UI makes this simple. It&#8217;s a bit old school, but if you want to display debug info from your functions, then it&#8217;s as simple as adding console.log()]]></description>
 										<content:encoded><![CDATA[<p>When discussing serverless computing (Functions as a Service) with developers, a common concern that arises is the complexity of testing and debugging your functions. Fortunately, the <a href="https://docs.mongodb.com/stitch/functions/#debug-console" title="Documentation from the MongoDB Stitch debug console">MongoDB Stitch UI</a> makes this simple.</p>
@@ -317,15 +317,15 @@ WriteResult({ "nInserted" : 1 })
 <p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/testing-debugging-mongodb-stitch-functions/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/testing-debugging-mongodb-stitch-functions/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Recording sensor data with MongoDB Stitch &#038; Electric Imp</title>
-		<link>/mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp</link>
-					<comments>/mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp#respond</comments>
+		<link>./../../mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp/index.html</link>
+					<comments>./../../mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 18 Sep 2018 10:31:31 +0000</pubDate>
@@ -334,7 +334,7 @@ WriteResult({ "nInserted" : 1 })
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
 		<category><![CDATA[serverless]]></category>
-		<guid isPermaLink="false">/?p=4517</guid>
+		<guid isPermaLink="false">./../../index.html?p=4517</guid>
 
 					<description><![CDATA[My early experiments with IoT involved standalone sensors, breakout boards, Arduinos, Raspberry Pis, and a soldering iron. It was a lot of fun, but it took ages to build even the simplest of projects. Therefore, I was super excited when I discovered that Electric Imp had a self-contained IoT hardware developer kit and a library]]></description>
 										<content:encoded><![CDATA[<p>My early experiments with IoT involved standalone sensors, breakout boards, Arduinos, Raspberry Pis, and a soldering iron. It was a lot of fun, but it took ages to build even the simplest of projects.</p>
@@ -416,7 +416,7 @@ device.on("reading.sent", log);
 <p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">MongoDB Stitch white paper</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

@@ -9,8 +9,8 @@
 
 <channel>
 	<title>partition &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/partition/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Mon, 06 Jul 2009 15:36:25 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Intelligent user-controlled partitioning and writing distribution-aware NDB API Applications</title>
-		<link>/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications</link>
-					<comments>/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comments</comments>
+		<link>./../../mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html</link>
+					<comments>./../../mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 06 Jul 2009 15:36:25 +0000</pubDate>
@@ -32,11 +32,11 @@
 		<category><![CDATA[MySQL Cluster CGE]]></category>
 		<category><![CDATA[NDB API]]></category>
 		<category><![CDATA[partition]]></category>
-		<guid isPermaLink="false">/?p=248</guid>
+		<guid isPermaLink="false">./../../index.html?p=248</guid>
 
 					<description><![CDATA[Default partitioning When adding rows to a table that&#8217;s using MySQL Cluster as the storage engine, each row is assigned to a partition where that partition is mastered by a particular data node in the Cluster. The best performance comes when all of the data required to satisfy a transaction is held within a single]]></description>
 										<content:encoded><![CDATA[<h3>Default partitioning</h3>
-<div id="attachment_246" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/07/poor_partitioning.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-246" class="size-medium wp-image-246" title="Default partitioning" src="/wp-content/uploads/2009/07/poor_partitioning-300x174.jpg" alt="By default, Cluster will partition based on primary key" width="300" height="174" srcset="/wp-content/uploads/2009/07/poor_partitioning-300x174.jpg 300w, /wp-content/uploads/2009/07/poor_partitioning.jpg 800w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-246" class="wp-caption-text">By default, Cluster will partition based on primary key</p></div>
+<div id="attachment_246" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2009/07/poor_partitioning.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-246" class="size-medium wp-image-246" title="Default partitioning" src="./../../wp-content/uploads/2009/07/poor_partitioning-300x174.jpg" alt="By default, Cluster will partition based on primary key" width="300" height="174" srcset="./../../wp-content/uploads/2009/07/poor_partitioning-300x174.jpg 300w, ./../../wp-content/uploads/2009/07/poor_partitioning.jpg 800w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-246" class="wp-caption-text">By default, Cluster will partition based on primary key</p></div>
 <p>When adding rows to a table that&#8217;s using MySQL Cluster as the storage engine, each row is assigned to a partition where that partition is mastered by a particular data node in the Cluster. The best performance comes when all of the data required to satisfy a transaction is held within a single partition so that it can be satisfied within  a single data node rather than being bounced back and forth between multiple nodes where  extra latency will be introduced.</p>
 <p>By default, Cluster partions the data by hashing the primary key. This is not always optimal.</p>
 <p>For example, if we have 2 tables, the first using a single-column primary key (sub_id) and the second using a composite key (sub_id, service_name)&#8230;</p>
@@ -93,7 +93,7 @@ mysql&gt; explain partitions select * from services where sub_id=1;
 <p>Now all of the rows for sub_id=1 from the services table are now held within a single partition (p3) which is the same as that holding the row for the same sub_id in the names table. Note that it wasn&#8217;t necessary to drop, recreate and re-provision the services table, the following command would have had the same effect:</p>
 <pre style="padding-left: 30px; font-size: 11px;color: #993300;">mysql&gt; alter table services partition by key (sub_id);</pre>
 <h3>Writing a distribution-aware application using the NDB API</h3>
-<div id="attachment_247" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/07/distribution_aware.jpg"><img decoding="async" aria-describedby="caption-attachment-247" class="size-medium wp-image-247" title="Distribution unaware application" src="/wp-content/uploads/2009/07/distribution_aware-300x169.jpg" alt="Distribution unaware NDB API application" width="300" height="169" srcset="/wp-content/uploads/2009/07/distribution_aware-300x169.jpg 300w, /wp-content/uploads/2009/07/distribution_aware.jpg 461w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-247" class="wp-caption-text">Distribution unaware NDB API application</p></div>
+<div id="attachment_247" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2009/07/distribution_aware.jpg"><img decoding="async" aria-describedby="caption-attachment-247" class="size-medium wp-image-247" title="Distribution unaware application" src="./../../wp-content/uploads/2009/07/distribution_aware-300x169.jpg" alt="Distribution unaware NDB API application" width="300" height="169" srcset="./../../wp-content/uploads/2009/07/distribution_aware-300x169.jpg 300w, ./../../wp-content/uploads/2009/07/distribution_aware.jpg 461w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-247" class="wp-caption-text">Distribution unaware NDB API application</p></div>
 <p>In our example, the data is nicely partitioned for optimum performance when accessing all of the subscriber&#8217;s data &#8211; a single data node holding all of their data. However, there is another step to take to get the best out of your NDB-API based application. By default, the NDB API will use the Transaction Coordinator (TC) on a &#8216;random&#8217; data node to handle the transaction &#8211; we could get lucky and the guess is correct but it&#8217;s more likely that it will be sent to the wrong data node which with then have to proxy it to the correct data node. The probability of getting it right first time reduces as the number of node groups increases and so can prevent linear scaling.</p>
 <p>It&#8217;s very simple to modify this behaviour so that the best data node/TC is hit first time, every time. When creating the transaction, the application can include parameters telling the NDB API one of the tables to be accessed and for what key(s). The NDB API will then use that information to identify the best TC to use&#8230;</p>
 <pre style="padding-left: 30px; font-size: 11px;color: #993300;">
@@ -139,10 +139,10 @@ sub_id, myRecAttr-&gt;aRef());
 
 myNdb.closeTransaction(myTransaction);
 </pre>
-<p>Note that as the services table has been configured to use the same field (sub_id) for partitioning as the names table, the startTransaction method only needs to know about the namesTable as the TC that the NDB API selects will serve just as well for this subscriber&#8217;s data from the services table. The rest of the code can be found in <a href='/wp-content/uploads/2009/07/distaware.cpp'>distaware</a>.</p>
+<p>Note that as the services table has been configured to use the same field (sub_id) for partitioning as the names table, the startTransaction method only needs to know about the namesTable as the TC that the NDB API selects will serve just as well for this subscriber&#8217;s data from the services table. The rest of the code can be found in <a href='./../../wp-content/uploads/2009/07/distaware.cpp'>distaware</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/feed/index.html</wfw:commentRss>
 			<slash:comments>8</slash:comments>
 		
 		

@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Cluster 7.0 &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/cluster-70/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Thu, 30 Jul 2009 12:46:00 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>MySQL Cluster Data Node restart times</title>
-		<link>/mysql-cluster/mysql-cluster-data-node-restart-times</link>
-					<comments>/mysql-cluster/mysql-cluster-data-node-restart-times#comments</comments>
+		<link>./../../mysql-cluster/mysql-cluster-data-node-restart-times/index.html</link>
+					<comments>./../../mysql-cluster/mysql-cluster-data-node-restart-times/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 30 Jul 2009 12:46:00 +0000</pubDate>
@@ -35,10 +35,10 @@
 		<category><![CDATA[MySQL Cluster CGE]]></category>
 		<category><![CDATA[recovery]]></category>
 		<category><![CDATA[restart]]></category>
-		<guid isPermaLink="false">/?p=365</guid>
+		<guid isPermaLink="false">./../../index.html?p=365</guid>
 
-					<description><![CDATA[Restart times have been reduced in MySQL Cluster 6.3.28a &#38; 7.0.9a &#8211; refer to that article for the new timings: /mysql-cluster/mysql-cluster-restarts-get-faster/ Restarts are required for certain, infrequent maintenance activities. Note that there is no loss of service while a single node restarts. When a data node restarts, it first attempts to load the data into memory]]></description>
-										<content:encoded><![CDATA[<p><strong>Restart times have been reduced in MySQL Cluster 6.3.28a &amp; 7.0.9a &#8211; refer to that article for the new timings:</strong> <a href="/mysql-cluster/mysql-cluster-restarts-get-faster/" target="_self">/mysql-cluster/mysql-cluster-restarts-get-faster/</a></p>
+					<description><![CDATA[Restart times have been reduced in MySQL Cluster 6.3.28a &#38; 7.0.9a &#8211; refer to that article for the new timings: ./../../mysql-cluster/mysql-cluster-restarts-get-faster/index.html Restarts are required for certain, infrequent maintenance activities. Note that there is no loss of service while a single node restarts. When a data node restarts, it first attempts to load the data into memory]]></description>
+										<content:encoded><![CDATA[<p><strong>Restart times have been reduced in MySQL Cluster 6.3.28a &amp; 7.0.9a &#8211; refer to that article for the new timings:</strong> <a href="./../../mysql-cluster/mysql-cluster-restarts-get-faster/index.html" target="_self">./../../mysql-cluster/mysql-cluster-restarts-get-faster/index.html</a></p>
 <p>Restarts are required for certain, infrequent maintenance activities. Note that there is no loss of service while a single node restarts.</p>
 <p>When a data node restarts, it first attempts to load the data into memory from the local log files and then it will catch up with any subsequent changes by retrieveing them from the surviving node(s) in its node group.</p>
 <p> Based on this, you would expect the time taken to restart a data node to be influenced by:</p>
@@ -61,7 +61,7 @@
 <li>MaxNoOfExecutionThreads=4</li>
 </ul>
 <p>Here are the observed results:</p>
-<div id="attachment_369" style="width: 597px" class="wp-caption alignnone"><a href="/wp-content/uploads/2009/07/restart_times.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-369" class="size-full wp-image-369" title="Data Node restart times" src="/wp-content/uploads/2009/07/restart_times.jpg" alt="Data Node restart times" width="587" height="168" srcset="/wp-content/uploads/2009/07/restart_times.jpg 587w, /wp-content/uploads/2009/07/restart_times-300x85.jpg 300w" sizes="(max-width: 587px) 100vw, 587px" /></a><p id="caption-attachment-369" class="wp-caption-text">Data Node restart times</p></div>
+<div id="attachment_369" style="width: 597px" class="wp-caption alignnone"><a href="./../../wp-content/uploads/2009/07/restart_times.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-369" class="size-full wp-image-369" title="Data Node restart times" src="./../../wp-content/uploads/2009/07/restart_times.jpg" alt="Data Node restart times" width="587" height="168" srcset="./../../wp-content/uploads/2009/07/restart_times.jpg 587w, ./../../wp-content/uploads/2009/07/restart_times-300x85.jpg 300w" sizes="(max-width: 587px) 100vw, 587px" /></a><p id="caption-attachment-369" class="wp-caption-text">Data Node restart times</p></div>
 <p>There are a couple of things to note from these results:</p>
 <ul>
 <li>Using the multi-threaded data node (ndbmtd) greatly improves the restart time (in this case, 4 threads were available, improvements could be even greater on an 8 core/thread system)</li>
@@ -70,15 +70,15 @@
 <p>There is another recovery/restart scenario. The measurements shown above assumed that the file system on the data node&#8217;s host was intact and could be used to recover the in-memory copy &#8211; if that were not the case (or the data nodes were restarted with the &#8220;initial&#8221; option) then all of the data would have to be recovered from the surviving data node(s) in the same node group. As a comparison restarting a 6 Gbyte data node with the &#8220;initial&#8221; option took 20 minutes compared to 8 minutes without it (ndbmtd, over Gbit n/w).</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/mysql-cluster-data-node-restart-times/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/mysql-cluster-data-node-restart-times/feed/index.html</wfw:commentRss>
 			<slash:comments>12</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>New MySQL Cluster maintenance release: 7.0.6</title>
-		<link>/mysql-cluster/new-mysql-cluster-maintenance-release-706</link>
-					<comments>/mysql-cluster/new-mysql-cluster-maintenance-release-706#respond</comments>
+		<link>./../../mysql-cluster/new-mysql-cluster-maintenance-release-706/index.html</link>
+					<comments>./../../mysql-cluster/new-mysql-cluster-maintenance-release-706/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 09 Jun 2009 19:04:26 +0000</pubDate>
@@ -87,7 +87,7 @@
 		<category><![CDATA[Cluster 7.0]]></category>
 		<category><![CDATA[Maintenance Release]]></category>
 		<category><![CDATA[MySQL Cluster 7.0]]></category>
-		<guid isPermaLink="false">/?p=145</guid>
+		<guid isPermaLink="false">./../../index.html?p=145</guid>
 
 					<description><![CDATA[MySQL Cluster version 7.0.6 has been released. MySQL Cluster 7.0.6 is available in source and binary form for a number of platforms from our download pages. The release in source form can in addition be downloaded from the MySQL FTP server. MySQL Cluster version 7.0.6 is using MySQL Server version 5.1.34 and contains all bug]]></description>
 										<content:encoded><![CDATA[<p>MySQL Cluster version 7.0.6 has been released. MySQL Cluster 7.0.6 is available in source and binary form for a number of platforms from our <a href="http://dev.mysql.com/downloads/cluster/7.0.html" target="_blank">download pages</a>.<a href="http://dev.mysql.com/downloads/cluster/7.0.html" target="_blank"><br />
@@ -106,7 +106,7 @@ Following changes were made in MySQL Cluster 7.0.6 since the previous release 7.
 </a></p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/new-mysql-cluster-maintenance-release-706/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/new-mysql-cluster-maintenance-release-706/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

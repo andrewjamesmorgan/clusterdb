@@ -8,8 +8,8 @@
 <channel>
 	<title>
 	Comments on: MySQL with Windows Server 2008 R2 Failover Clustering	</title>
-	<atom:link href="/mysql/mysql-with-windows-server-2008-r2-failover-clustering/feed" rel="self" type="application/rss+xml" />
-	<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../mysql-with-windows-server-2008-r2-failover-clustering/index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Wed, 09 Mar 2016 16:23:25 +0000</lastBuildDate>
 	<sy:updatePeriod>
@@ -20,11 +20,11 @@
 	<item>
 		<title>
 		By: jason		</title>
-		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-619342</link>
+		<link>./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-619342</link>
 
 		<dc:creator><![CDATA[jason]]></dc:creator>
 		<pubDate>Wed, 09 Mar 2016 16:23:25 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1939#comment-619342</guid>
+		<guid isPermaLink="false">./../../index.html?p=1939#comment-619342</guid>
 
 					<description><![CDATA[Does anyone know if a similiar guide is available for windows 2012?]]></description>
 			<content:encoded><![CDATA[<p>Does anyone know if a similiar guide is available for windows 2012?</p>
@@ -34,18 +34,18 @@
 		<item>
 		<title>
 		By: melissa		</title>
-		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-374372</link>
+		<link>./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-374372</link>
 
 		<dc:creator><![CDATA[melissa]]></dc:creator>
 		<pubDate>Wed, 03 Dec 2014 16:14:27 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1939#comment-374372</guid>
+		<guid isPermaLink="false">./../../index.html?p=1939#comment-374372</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-80426&quot;&gt;andrew&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-80426&quot;&gt;andrew&lt;/a&gt;.
 
 hi I have the same issue as Sunil, and is true that the my.ini file is in ProgramData which is is initially hidden. And the my-default.ini is in the Program Files/Mysql.. and these two files are different, so I cannot change the datadir in the my.ini. If you anything I can do because my failover cluster is up and everything running and my virtual disks are healthy, but when I create one database in one machine it does not replicate in the other one. It is really strange because my my-default.ini are pointing to my virtualdisk.
 
 Thank you for reading, hope if you can help me.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-80426">andrew</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-80426">andrew</a>.</p>
 <p>hi I have the same issue as Sunil, and is true that the my.ini file is in ProgramData which is is initially hidden. And the my-default.ini is in the Program Files/Mysql.. and these two files are different, so I cannot change the datadir in the my.ini. If you anything I can do because my failover cluster is up and everything running and my virtual disks are healthy, but when I create one database in one machine it does not replicate in the other one. It is really strange because my my-default.ini are pointing to my virtualdisk.</p>
 <p>Thank you for reading, hope if you can help me.</p>
 ]]></content:encoded>
@@ -54,16 +54,16 @@ Thank you for reading, hope if you can help me.]]></description>
 		<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-80426</link>
+		<link>./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-80426</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 26 Feb 2014 19:07:59 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1939#comment-80426</guid>
+		<guid isPermaLink="false">./../../index.html?p=1939#comment-80426</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-80360&quot;&gt;Sunil Newa&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-80360&quot;&gt;Sunil Newa&lt;/a&gt;.
 
 Have you tried either copying the .ini file or specifying its location using the --defaults-file option?]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-80360">Sunil Newa</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-80360">Sunil Newa</a>.</p>
 <p>Have you tried either copying the .ini file or specifying its location using the &#8211;defaults-file option?</p>
 ]]></content:encoded>
 		
@@ -71,18 +71,18 @@ Have you tried either copying the .ini file or specifying its location using the
 		<item>
 		<title>
 		By: Sunil Newa		</title>
-		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-80360</link>
+		<link>./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-80360</link>
 
 		<dc:creator><![CDATA[Sunil Newa]]></dc:creator>
 		<pubDate>Wed, 26 Feb 2014 17:01:06 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1939#comment-80360</guid>
+		<guid isPermaLink="false">./../../index.html?p=1939#comment-80360</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-547&quot;&gt;andrew&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-547&quot;&gt;andrew&lt;/a&gt;.
 
 Hi Andrew,
 I am unable to configure MySQL 5.6 on windows cluster. I found my.ini file is inside the progaramdata folder instead of program files folder (5.5). Please help me if you know how to configure Mysql 5.6 on windows failover clustering.
 Thanks]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-547">andrew</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-547">andrew</a>.</p>
 <p>Hi Andrew,<br />
 I am unable to configure MySQL 5.6 on windows cluster. I found my.ini file is inside the progaramdata folder instead of program files folder (5.5). Please help me if you know how to configure Mysql 5.6 on windows failover clustering.<br />
 Thanks</p>
@@ -92,18 +92,18 @@ Thanks</p>
 		<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-547</link>
+		<link>./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-547</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 14 Aug 2013 07:37:57 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1939#comment-547</guid>
+		<guid isPermaLink="false">./../../index.html?p=1939#comment-547</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-546&quot;&gt;Ryan&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-546&quot;&gt;Ryan&lt;/a&gt;.
 
 The advantage of using binaries on the shared storage is that you can be confident that the exact same version of the MySQL software will be used, if you were using local copies then you&#039;d need to ensure that each had the same version of MySQL. The referenced white paper does describe how to update the service. Note that the paper is based on MySQL 5.5 but as far as I&#039;m aware it should translate easily enough to MySQL 5.6.
 
 Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-546">Ryan</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-546">Ryan</a>.</p>
 <p>The advantage of using binaries on the shared storage is that you can be confident that the exact same version of the MySQL software will be used, if you were using local copies then you&#8217;d need to ensure that each had the same version of MySQL. The referenced white paper does describe how to update the service. Note that the paper is based on MySQL 5.5 but as far as I&#8217;m aware it should translate easily enough to MySQL 5.6.</p>
 <p>Andrew.</p>
 ]]></content:encoded>
@@ -112,11 +112,11 @@ Andrew.]]></description>
 		<item>
 		<title>
 		By: Ryan		</title>
-		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-546</link>
+		<link>./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-546</link>
 
 		<dc:creator><![CDATA[Ryan]]></dc:creator>
 		<pubDate>Wed, 14 Aug 2013 00:21:26 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1939#comment-546</guid>
+		<guid isPermaLink="false">./../../index.html?p=1939#comment-546</guid>
 
 					<description><![CDATA[What is the point of copying and updating the basedir to &quot;basedir=”F:/MySQL Server 5.5”&quot; ?  
 
@@ -135,18 +135,18 @@ The service has the hardcoded path below.  If I set the basedir to my iscsi path
 		<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-545</link>
+		<link>./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-545</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 25 Jun 2013 10:30:42 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1939#comment-545</guid>
+		<guid isPermaLink="false">./../../index.html?p=1939#comment-545</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-544&quot;&gt;kalyan&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-544&quot;&gt;kalyan&lt;/a&gt;.
 
 It looks like you&#039;re trying to connect from a user/host combination that isn&#039;t allowed - try this (substituting your username and host IP)...
 
 mysql&gt; grant all on *.* to &#039;username&#039;@&#039;192.168.1.23&#039;;]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-544">kalyan</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-544">kalyan</a>.</p>
 <p>It looks like you&#8217;re trying to connect from a user/host combination that isn&#8217;t allowed &#8211; try this (substituting your username and host IP)&#8230;</p>
 <p>mysql> grant all on *.* to &#8216;username&#8217;@&#8217;192.168.1.23&#8217;;</p>
 ]]></content:encoded>
@@ -155,11 +155,11 @@ mysql&gt; grant all on *.* to &#039;username&#039;@&#039;192.168.1.23&#039;;]]><
 		<item>
 		<title>
 		By: kalyan		</title>
-		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-544</link>
+		<link>./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-544</link>
 
 		<dc:creator><![CDATA[kalyan]]></dc:creator>
 		<pubDate>Tue, 25 Jun 2013 09:14:40 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1939#comment-544</guid>
+		<guid isPermaLink="false">./../../index.html?p=1939#comment-544</guid>
 
 					<description><![CDATA[Error 1130 has occurred while connecting to mysql using virtual ip
 
@@ -172,11 +172,11 @@ Could you please let me know the solution]]></description>
 		<item>
 		<title>
 		By: Thu Ya		</title>
-		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-543</link>
+		<link>./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-543</link>
 
 		<dc:creator><![CDATA[Thu Ya]]></dc:creator>
 		<pubDate>Mon, 13 Feb 2012 11:35:16 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1939#comment-543</guid>
+		<guid isPermaLink="false">./../../index.html?p=1939#comment-543</guid>
 
 					<description><![CDATA[Hi,
 
@@ -196,11 +196,11 @@ Thu Ya</p>
 		<item>
 		<title>
 		By: Thu Ya		</title>
-		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-542</link>
+		<link>./../mysql-with-windows-server-2008-r2-failover-clustering/index.html#comment-542</link>
 
 		<dc:creator><![CDATA[Thu Ya]]></dc:creator>
 		<pubDate>Sat, 11 Feb 2012 16:43:52 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1939#comment-542</guid>
+		<guid isPermaLink="false">./../../index.html?p=1939#comment-542</guid>
 
 					<description><![CDATA[dear Admin,
 very helpful and very clear document.

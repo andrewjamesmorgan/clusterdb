@@ -9,8 +9,8 @@
 
 <channel>
 	<title>NDB API &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/ndb-api/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Fri, 06 Feb 2015 15:56:29 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>FOSDEM 2015 &#8211; SQL &#038; NoSQL Presentation</title>
-		<link>/mysql-cluster/fosdem-2015-sql-nosql-presentation</link>
-					<comments>/mysql-cluster/fosdem-2015-sql-nosql-presentation#respond</comments>
+		<link>./../../mysql-cluster/fosdem-2015-sql-nosql-presentation/index.html</link>
+					<comments>./../../mysql-cluster/fosdem-2015-sql-nosql-presentation/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 06 Feb 2015 15:56:29 +0000</pubDate>
@@ -36,26 +36,26 @@
 		<category><![CDATA[NDB API]]></category>
 		<category><![CDATA[NoSQL]]></category>
 		<category><![CDATA[t]]></category>
-		<guid isPermaLink="false">/?p=4000</guid>
+		<guid isPermaLink="false">./../../index.html?p=4000</guid>
 
 					<description><![CDATA[Last weekend I got to present to the MySQL Developers Room at FOSDEM in Brussels. The subject of my presentation was NoSQL and SQL the best of both worlds&#8230; There’s a lot of excitement around NoSQL Data Stores with the promise of simple access patterns, flexible schemas, scalability and High Availability. The downside comes in]]></description>
 										<content:encoded><![CDATA[<p>Last weekend I got to present to the MySQL Developers Room at FOSDEM in Brussels.<br />
-<a href="/wp-content/uploads/2015/02/FOSDEM-2015.jpg"><img decoding="async" src="/wp-content/uploads/2015/02/FOSDEM-2015.jpg" alt="FOSDEM-2015" width="184" height="176" class="alignright size-full wp-image-4001" /></a><br />
+<a href="./../../wp-content/uploads/2015/02/FOSDEM-2015.jpg"><img decoding="async" src="./../../wp-content/uploads/2015/02/FOSDEM-2015.jpg" alt="FOSDEM-2015" width="184" height="176" class="alignright size-full wp-image-4001" /></a><br />
 The subject of my presentation was <strong>NoSQL and SQL the best of both worlds</strong>&#8230;</p>
 <p>There’s a lot of excitement around NoSQL Data Stores with the promise of simple access patterns, flexible schemas, scalability and High Availability. The downside comes in the form of losing ACID transactions, consistency, flexible queries and data integrity checks. What if you could have the best of both worlds? This session shows how MySQL Cluster provides simultaneous SQL and native NoSQL access to your data – whether a simple key-value API (Memcached), REST, JavaScript, Java or C++. You will hear how the MySQL Cluster architecture delivers in-memory real-time performance, 99.999% availability, on-line maintenance and linear, horizontal scalability through transparent auto-sharding.</p>
 <p><iframe src="//www.slideshare.net/slideshow/embed_code/44350713" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> </p>
 <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/andrewjamesmorgan/fosdem-2015-nosql-and-sql-the-best-of-both-worlds" title="FOSDEM 2015 - NoSQL and SQL the best of both worlds" target="_blank">FOSDEM 2015 &#8211; NoSQL and SQL the best of both worlds</a> </strong> from <strong><a href="//www.slideshare.net/andrewjamesmorgan" target="_blank">Andrew Morgan</a></strong> </div>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/fosdem-2015-sql-nosql-presentation/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/fosdem-2015-sql-nosql-presentation/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Scalable, persistent, HA NoSQL Memcache storage using MySQL Cluster</title>
-		<link>/mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster</link>
-					<comments>/mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster#comments</comments>
+		<link>./../../mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html</link>
+					<comments>./../../mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 15 Feb 2012 13:20:01 +0000</pubDate>
@@ -64,15 +64,15 @@ The subject of my presentation was <strong>NoSQL and SQL the best of both worlds
 		<category><![CDATA[MySQL Cluster 7.2]]></category>
 		<category><![CDATA[NDB API]]></category>
 		<category><![CDATA[NoSQL]]></category>
-		<guid isPermaLink="false">/?p=1616</guid>
+		<guid isPermaLink="false">./../../index.html?p=1616</guid>
 
 					<description><![CDATA[The native Memcached API for MySQL Cluster is now GA as part of MySQL Cluster 7.2 This post was first published in April 2011 when the first trial version of the Memcached API for MySQL Cluster was released; it was then up-versioned for the second MySQL Cluster 7.2 Development Milestone Release in October 2011. I&#8217;ve]]></description>
-										<content:encoded><![CDATA[<div id="attachment_1689" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/04/Memcached_with_Cluster.jpg"><img decoding="async" aria-describedby="caption-attachment-1689" class="size-medium wp-image-1689" title="Memcached_with_Cluster" src="/wp-content/uploads/2011/04/Memcached_with_Cluster-300x140.jpg" alt="" width="300" height="140" /></a><p id="caption-attachment-1689" class="wp-caption-text">Memcached API with Cluster Data Nodes</p></div>
+										<content:encoded><![CDATA[<div id="attachment_1689" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/04/Memcached_with_Cluster.jpg"><img decoding="async" aria-describedby="caption-attachment-1689" class="size-medium wp-image-1689" title="Memcached_with_Cluster" src="./../../wp-content/uploads/2011/04/Memcached_with_Cluster-300x140.jpg" alt="" width="300" height="140" /></a><p id="caption-attachment-1689" class="wp-caption-text">Memcached API with Cluster Data Nodes</p></div>
 <p><strong>The native Memcached API for MySQL Cluster is now GA as part of MySQL Cluster 7.2</strong></p>
 <p><em>This post was first published in April 2011 when the first trial version of the Memcached API for MySQL Cluster was released; it was then up-versioned for the second MySQL Cluster 7.2 Development Milestone Release in October 2011. I&#8217;ve now refreshed the post based on the GA of MySQL Cluster 7.2 which includes the completed Memcache API.</em></p>
 <p>There are a number of attributes of MySQL Cluster that make it ideal for lots of applications that are considering NoSQL data stores. Scaling out capacity and performance on commodity hardware, in-memory real-time performance (especially for simple access patterns), flexible schemas&#8230; sound familiar? In addition, MySQL Cluster adds transactional consistency and durability. In case that&#8217;s not enough, you can also simultaneously combine various NoSQL APIs with full-featured SQL &#8211; all working on the same data set. This post focuses on a new Memcached API that is now available to download, try out and deploy. This post steps through setting up Cluster with the Memcached API and then demonstrates how to read and write the same data through both Memcached and SQL (including for existing MySQL Cluster tables). </p>
 <p>Download the <a href="http://www.mysql.com/downloads/cluster/" title="Download community version of MySQL Cluster 7.2 - including Memcached API" target="_new">community version from mysql.com</a>  or the commercial version from <a href="https://edelivery.oracle.com/" title="Download commercial version of MySQL Cluster 7.2 - including Memcached API" target="_new">Oracle&#8217;s Software Delivery Cloud</a><em> (note that there is not currently a Windows version)</em>.</p>
-<div id="attachment_1690" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/04/Memcached_traditional.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1690" class="size-medium wp-image-1690" title="Memcached_traditional" src="/wp-content/uploads/2011/04/Memcached_traditional-300x272.jpg" alt="" width="300" height="272" /></a><p id="caption-attachment-1690" class="wp-caption-text">Traditional use of Memcached</p></div>
+<div id="attachment_1690" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/04/Memcached_traditional.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1690" class="size-medium wp-image-1690" title="Memcached_traditional" src="./../../wp-content/uploads/2011/04/Memcached_traditional-300x272.jpg" alt="" width="300" height="272" /></a><p id="caption-attachment-1690" class="wp-caption-text">Traditional use of Memcached</p></div>
 <p>  First of all a bit of background about Memcached. It has typically been used as a cache when the performance of the database of record (the persistent database) cannot keep up with application demand. When changing data, the application will push the change to the database, when reading data, the application first checks the Memached cache, if it is not there then the data is read from the database and copied into Memcached. If a Memcached instance fails or is restarted for maintenance reasons, the contents are lost and the application will need to start reading from the database again. Of course the database layer probably needs to be scaled as well so you send writes to the master and reads to the replication slaves.</p>
 <p>  This has become a classic architecture for web and other applications and the simple Memcached attribute-value API has become extremely popular amongst developers.</p>
 <p>  As an illustration of the simplicity of this API, the following example stores and then retrieves the string &#8220;Maidenhead&#8221; against the key &#8220;Test&#8221;:
@@ -89,29 +89,29 @@ END</pre>
 <pre style="padding-left: 30px; font-size: 11px;">get <span style="color: #008000;">Test</span>
 END</pre>
 <h3>New options for using Memcached API with MySQL Cluster</h3>
-<div id="attachment_1806" style="width: 242px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/04/Memcached_NDB.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1806" class="size-medium wp-image-1806" title="Memcached_NDB" src="/wp-content/uploads/2011/04/Memcached_NDB-e1302604846341-232x300.jpg" alt="" width="232" height="300" /></a><p id="caption-attachment-1806" class="wp-caption-text">Architecture for Memcached NDB API</p></div>
+<div id="attachment_1806" style="width: 242px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/04/Memcached_NDB.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1806" class="size-medium wp-image-1806" title="Memcached_NDB" src="./../../wp-content/uploads/2011/04/Memcached_NDB-e1302604846341-232x300.jpg" alt="" width="232" height="300" /></a><p id="caption-attachment-1806" class="wp-caption-text">Architecture for Memcached NDB API</p></div>
 <p>What we&#8217;re doing with MySQL Cluster is to offer a bunch of new ways of using this API but with the benefits of MySQL Cluster. The solution has been designed to be very flexible, allowing the application architect to find a configuration that best fits their needs.</p>
 <p>A quick diversion on how this is implemented. The application sends reads and writes to the memcached process (using the standard Memcached API). This in turn invokes the Memcached Driver for NDB (which is part of the same process) which in turn calls the NDB API for very quick access to the data held in MySQL Cluster&#8217;s data nodes (it&#8217;s the fastest way of accessing MySQL Cluster).</p>
 <p>Because the data is now stored in MySQL Cluster, it is persistent and you can transparently scale out by adding more data nodes (this is an on-line operation).</p>
 <p>Another important point is that the NDB API is already a commonly used, fully functional access method that the Memcached API can exploit. For example, if you make a change to a piece of data then the change will automatically be written to any MySQL Server that has its binary logging enabled which in turn means that the change can be replicated to a second site.</p>
-<div id="attachment_1689" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/04/Memcached_with_Cluster.jpg"><img decoding="async" aria-describedby="caption-attachment-1689" class="size-medium wp-image-1689" title="Memcached_with_Cluster" src="/wp-content/uploads/2011/04/Memcached_with_Cluster-300x140.jpg" alt="" width="300" height="140" /></a><p id="caption-attachment-1689" class="wp-caption-text">Memcached API with Cluster Data Nodes</p></div>
+<div id="attachment_1689" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/04/Memcached_with_Cluster.jpg"><img decoding="async" aria-describedby="caption-attachment-1689" class="size-medium wp-image-1689" title="Memcached_with_Cluster" src="./../../wp-content/uploads/2011/04/Memcached_with_Cluster-300x140.jpg" alt="" width="300" height="140" /></a><p id="caption-attachment-1689" class="wp-caption-text">Memcached API with Cluster Data Nodes</p></div>
 <p>So the first (and probably simplest) architecture is to co-locate the Memcached API with the data nodes. </p>
 <p>The applications can connect to any of the memcached API nodes &#8211; if one should fail just switch to another as it can access the exact same data instantly. As you add more data nodes you also add more memcached servers and so the data access/storage layer can scale out (until you hit the 48 data node limit).</p>
-<div id="attachment_1688" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/04/Memcached_with_app.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1688" class="size-medium wp-image-1688" title="Memcached_with_app" src="/wp-content/uploads/2011/04/Memcached_with_app-300x136.jpg" alt="" width="300" height="136" /></a><p id="caption-attachment-1688" class="wp-caption-text">Memcached server with the Application</p></div>
+<div id="attachment_1688" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/04/Memcached_with_app.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1688" class="size-medium wp-image-1688" title="Memcached_with_app" src="./../../wp-content/uploads/2011/04/Memcached_with_app-300x136.jpg" alt="" width="300" height="136" /></a><p id="caption-attachment-1688" class="wp-caption-text">Memcached server with the Application</p></div>
 <p>Another simple option is to co-locate the Memcached API with the application. In this way, as you add more application nodes you also get more Memcached throughput. If you need more data storage capacity you can independently scale MySQL Cluster by adding more data nodes. One nice feature of this approach is that failures are handled very simply &#8211; if one App/Memcached machine should fail, all of the other applications just continue accessing their local Memcached API.</p>
-<div id="attachment_1704" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/04/Memcached_layer1.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1704" class="size-medium wp-image-1704" title="Memcached_layer" src="/wp-content/uploads/2011/04/Memcached_layer1-300x224.jpg" alt="" width="300" height="224" /></a><p id="caption-attachment-1704" class="wp-caption-text">Separate Memcached layer</p></div>
+<div id="attachment_1704" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/04/Memcached_layer1.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1704" class="size-medium wp-image-1704" title="Memcached_layer" src="./../../wp-content/uploads/2011/04/Memcached_layer1-300x224.jpg" alt="" width="300" height="224" /></a><p id="caption-attachment-1704" class="wp-caption-text">Separate Memcached layer</p></div>
 <p>For maximum flexibility, you can have a separate Memcached layer so that the application, the Memcached API &amp; MySQL Cluster can all be scaled independently.</p>
 <p>In all of the examples so far, there has been a single source for the data (it&#8217;s all held in MySQL Cluster).<br />
 <code><br /></code><br />
 <code><br /></code><br />
 <code><br /></code><br />
-<div id="attachment_1703" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/04/Memcached_with_cache1.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1703" class="size-medium wp-image-1703" title="Memcached_with_cache" src="/wp-content/uploads/2011/04/Memcached_with_cache1-300x229.jpg" alt="" width="300" height="229" /></a><p id="caption-attachment-1703" class="wp-caption-text">Local Cache in Memcached</p></div></p>
+<div id="attachment_1703" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/04/Memcached_with_cache1.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1703" class="size-medium wp-image-1703" title="Memcached_with_cache" src="./../../wp-content/uploads/2011/04/Memcached_with_cache1-300x229.jpg" alt="" width="300" height="229" /></a><p id="caption-attachment-1703" class="wp-caption-text">Local Cache in Memcached</p></div></p>
 <p>If you choose, you can still have all or some of the data cached within the memcached server (and specify whether that data should also be persisted in MySQL Cluster) &#8211; you choose how to treat different pieces of your data. If for example, you had some data that is written to and read from frequently then store it just in MySQL Cluster, if you have data that is written to rarely but read very often then you might choose to cache it in Memcached as well and if you have data that has a short lifetime and wouldn&#8217;t benefit from being stored in MySQL Cluster then only hold it in Memcached. The beauty is that you get to configure this on a per-key-prefix basis (through tables in MySQL Cluster) and that the application doesn&#8217;t have to care &#8211; it just uses the Memcached API and relies on the software to store data in the right place(s) and to keep everything in sync.</p>
 <p>Of course if you want to access the same data through SQL then you&#8217;d make sure that it was configured to be stored in MySQL Cluster.</p>
 <p>Enough of the theory, how to try it out&#8230;</p>
 <h3>Installing &amp; configuarying the software</h3>
 <p>As this post is focused on API access to the data rather than testing High Availability, performance or scalability the Cluster can be kept extremely simple with all of the processes (nodes) running on a single server. The only thing to be careful of when you create your Cluster is to make sure that you define at least 5 API sections (e.g. [mysqld]) in your configuration file so you can access using SQL and 2 Memcached servers (each uses 2 connections) at the same time.</p>
-<p>For further information on how to set up a single-host Cluster, refer to <a title="Download, install, configure, run and test MySQL Cluster in under 15 minutes" href="/mysql/download-install-configure-run-and-test-mysql-cluster-in-under-15-minutes/" target="_blank">this post</a> or just follow the next few steps.</p>
+<p>For further information on how to set up a single-host Cluster, refer to <a title="Download, install, configure, run and test MySQL Cluster in under 15 minutes" href="./../../mysql/download-install-configure-run-and-test-mysql-cluster-in-under-15-minutes/index.html" target="_blank">this post</a> or just follow the next few steps.</p>
 <p>Create a config.ini file for the Cluster configuration:</p>
 <pre style="padding-left: 30px; font-size: 11px; color: #800000;">[ndb_mgmd]
 hostname=localhost
@@ -283,20 +283,20 @@ get twn_pr:Marlow </span>
 <span style="color: #004400;">VALUE twn_pr:Marlow 0 3
 SL7 
 END</span></pre>
-<div id="attachment_1754" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/04/Memcached_with_other_APIs1.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1754" class="size-medium wp-image-1754" title="Memcached_with_other_APIs" src="/wp-content/uploads/2011/04/Memcached_with_other_APIs1-300x123.jpg" alt="" width="300" height="123" /></a><p id="caption-attachment-1754" class="wp-caption-text">Memcached alongside NoSQL &amp; SQL APIs</p></div>
+<div id="attachment_1754" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/04/Memcached_with_other_APIs1.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1754" class="size-medium wp-image-1754" title="Memcached_with_other_APIs" src="./../../wp-content/uploads/2011/04/Memcached_with_other_APIs1-300x123.jpg" alt="" width="300" height="123" /></a><p id="caption-attachment-1754" class="wp-caption-text">Memcached alongside NoSQL &amp; SQL APIs</p></div>
 <p>As mentioned before, there&#8217;s a wide range of ways of accessing the data in MySQL Cluster &#8211; both SQL and NoSQL. You&#8217;re free to mix and match these technologies &#8211; for example, a mission critical business application using SQL, a high-running web app using the Memcached API and a real-time application using the NDB API. And the best part is that they can all share the exact same data and they all provide the same HA infrastructure (for example synchronous replication and automatic failover within the Cluster and geographic replication to other clusters).</p>
 <p>Finally, a reminder &#8211; please try this out and let us know what you think (or if you don&#8217;t have time to try it then let us now what you think anyway) by adding a comment to this post.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/feed/index.html</wfw:commentRss>
 			<slash:comments>50</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Using ClusterJ (part of MySQL Cluster Connector for Java) &#8211; a tutorial</title>
-		<link>/mysql-cluster/using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial</link>
-					<comments>/mysql-cluster/using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial#comments</comments>
+		<link>./../../mysql-cluster/using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial/index.html</link>
+					<comments>./../../mysql-cluster/using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 30 Mar 2010 12:40:27 +0000</pubDate>
@@ -305,10 +305,10 @@ END</span></pre>
 		<category><![CDATA[JPA]]></category>
 		<category><![CDATA[MySQL Cluster 7.1]]></category>
 		<category><![CDATA[NDB API]]></category>
-		<guid isPermaLink="false">/?p=1008</guid>
+		<guid isPermaLink="false">./../../index.html?p=1008</guid>
 
 					<description><![CDATA[ClusterJ is part of the MySQL Cluster Connector for Java which is currently in beta as part of MySQL Cluster 7.1. It is designed to provide a high performance method for Java applications to store and access data in a MySQL Cluster database. It is also designed to be easy for Java developers to use]]></description>
-										<content:encoded><![CDATA[<div id="attachment_1010" style="width: 234px" class="wp-caption alignright"><a href="/wp-content/uploads/2010/03/ClusterJ_Stack.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1010" class="size-medium wp-image-1010" title="Java access to MySQL Cluster" src="/wp-content/uploads/2010/03/ClusterJ_Stack-224x300.jpg" alt="" width="224" height="300" srcset="/wp-content/uploads/2010/03/ClusterJ_Stack-224x300.jpg 224w, /wp-content/uploads/2010/03/ClusterJ_Stack.jpg 342w" sizes="auto, (max-width: 224px) 100vw, 224px" /></a><p id="caption-attachment-1010" class="wp-caption-text">Fig. 1 Java access to MySQL Cluster</p></div>
+										<content:encoded><![CDATA[<div id="attachment_1010" style="width: 234px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2010/03/ClusterJ_Stack.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1010" class="size-medium wp-image-1010" title="Java access to MySQL Cluster" src="./../../wp-content/uploads/2010/03/ClusterJ_Stack-224x300.jpg" alt="" width="224" height="300" srcset="./../../wp-content/uploads/2010/03/ClusterJ_Stack-224x300.jpg 224w, ./../../wp-content/uploads/2010/03/ClusterJ_Stack.jpg 342w" sizes="auto, (max-width: 224px) 100vw, 224px" /></a><p id="caption-attachment-1010" class="wp-caption-text">Fig. 1 Java access to MySQL Cluster</p></div>
 <p>ClusterJ is part of the MySQL Cluster Connector for Java which is currently in beta as part of MySQL Cluster 7.1. It is designed to provide a high performance method for Java applications to store and access data in a MySQL Cluster database. It is also designed to be easy for Java developers to use and is “in the style of” Hibernate/Java Data Objects (JDO) and JPA. It uses the Domain Object Model DataMapper pattern:</p>
 <ul>
 <li>Data is represented as domain objects</li>
@@ -316,13 +316,13 @@ END</span></pre>
 <li>Domain objects are mapped to database tables</li>
 </ul>
 <p>The purpose of ClusterJ is to provide a mapping from the table-oriented view of the data stored in MySQL Cluster to the Java objects used by the application. This is achieved by annotating interfaces representing the Java objects; where each persistent interface is mapped to a table and each property in that interface to a column. By default, the table name will match the interface name and the column names match the property names but this can be overridden using annotations.</p>
-<div id="attachment_1011" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2010/03/ClusterJ_Annotations.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1011" class="size-medium wp-image-1011" title="ClusterJ_Annotations" src="/wp-content/uploads/2010/03/ClusterJ_Annotations-300x159.jpg" alt="" width="300" height="159" /></a><p id="caption-attachment-1011" class="wp-caption-text">Fig. 2 ClusterJ Interface Annotations</p></div>
+<div id="attachment_1011" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2010/03/ClusterJ_Annotations.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1011" class="size-medium wp-image-1011" title="ClusterJ_Annotations" src="./../../wp-content/uploads/2010/03/ClusterJ_Annotations-300x159.jpg" alt="" width="300" height="159" /></a><p id="caption-attachment-1011" class="wp-caption-text">Fig. 2 ClusterJ Interface Annotations</p></div>
 <p>If the table does not already exist (for example, this is a brand new application with new data) then the table must be created manually &#8211; unlike OpenJPA, ClusterJ will not create the table automatically.</p>
 <p>Figure 2 shows an example of an interface that has been created in order to represent the data held in the ‘employee’ table.</p>
 <p>ClusterJ uses the following concepts:</p>
 <ul>
 <li>
-<div id="attachment_1013" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2010/03/ClusterJ_concepts.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1013" class="size-medium wp-image-1013" title="ClusterJ_concepts" src="/wp-content/uploads/2010/03/ClusterJ_concepts-300x300.jpg" alt="" width="300" height="300" /></a><p id="caption-attachment-1013" class="wp-caption-text">Fig. 3 ClusterJ Terminology</p></div>
+<div id="attachment_1013" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2010/03/ClusterJ_concepts.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1013" class="size-medium wp-image-1013" title="ClusterJ_concepts" src="./../../wp-content/uploads/2010/03/ClusterJ_concepts-300x300.jpg" alt="" width="300" height="300" /></a><p id="caption-attachment-1013" class="wp-caption-text">Fig. 3 ClusterJ Terminology</p></div>
 <p><strong>SessionFactory</strong>: There is one instance per MySQL Cluster instance for each Java Virtual Machine (JVM). The SessionFactory object is used by the application to get hold of sessions. The configuration details for the ClusterJ instance are defined in the Configuration properties which is an artifact associated with the SessionFactory.</li>
 <li><strong>Session</strong>: There is one instance per user (per Cluster, per JVM) and represents a Cluster connection</li>
 <li><strong>Domain Object</strong>: Objects representing the data from a table. The domain objects (and their relationships to the Cluster tables) are defined by annotated interfaces (as shown in the right-hand side of Figure 2.</li>
@@ -369,7 +369,7 @@ hostname=localhost</span></pre>
 ndbcluster
 datadir=/home/billy/mysql/my_cluster/data
 basedir=/usr/local/mysql</span></pre>
-<p>This tutorial focuses on ClusterJ rather than on running MySQL Cluster; if you are new to MySQL Cluster then refer to <a href="/mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host/" target="_blank">running a simple Cluster</a> before trying this tutorial.</p>
+<p>This tutorial focuses on ClusterJ rather than on running MySQL Cluster; if you are new to MySQL Cluster then refer to <a href="./../../mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host/index.html" target="_blank">running a simple Cluster</a> before trying this tutorial.</p>
 <p>ClusterJ needs to be told how to connect to our MySQL Cluster database; including the connect string (the address/port for the management node), the database to use, the user to login as and attributes for the connection such as the timeout values. If these parameters aren’t defined then ClusterJ will fail with run-time exceptions. This information represents the “configuration properties” shown in Figure 3.  These parameters can be hard coded in the application code but it is more maintainable to create a clusterj.properties file that will be imported by the application. This file should be stored in the same directory as your application source code.</p>
 <p><strong>clusterj.properties:</strong></p>
 <pre style="padding-left: 30px;"><span style="color: #3366ff;">com.mysql.clusterj.connectstring=localhost:1186
@@ -578,18 +578,18 @@ Empty set (0.00 sec)</span></pre>
 <pre style="padding-left: 30px;"><span style="color: #800000;">javac -classpath /usr/local/mysql/share/mysql/java/clusterj-api.jar:. Main.java Employee.java</span></pre>
 <pre style="padding-left: 30px;"><span style="color: #800000;">java -classpath /usr/local/mysql/share/mysql/java/clusterj.jar:. -Djava.library.path=/usr/local/mysql/lib Main
 </span><span style="color: #800000;"> </span></pre>
-<p><a href="/ClusterJ_Examples.tar.gz" target="_blank">Download the source code for this tutorial from here </a>(together with the code for the up-coming ClusterJPA tutorial).</p>
+<p><a href="./../../ClusterJ_Examples.tar.gz" target="_blank">Download the source code for this tutorial from here </a>(together with the code for the up-coming ClusterJPA tutorial).</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial/feed/index.html</wfw:commentRss>
 			<slash:comments>7</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>MySQL Cluster Connector for Java &#8211; replay available for part 1 of the webinar</title>
-		<link>/mysql-cluster/mysql-cluster-connector-for-java-replay-available-for-part-1-of-the-webinar</link>
-					<comments>/mysql-cluster/mysql-cluster-connector-for-java-replay-available-for-part-1-of-the-webinar#respond</comments>
+		<link>./../../mysql-cluster/mysql-cluster-connector-for-java-replay-available-for-part-1-of-the-webinar/index.html</link>
+					<comments>./../../mysql-cluster/mysql-cluster-connector-for-java-replay-available-for-part-1-of-the-webinar/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 19 Feb 2010 13:12:57 +0000</pubDate>
@@ -598,12 +598,12 @@ Empty set (0.00 sec)</span></pre>
 		<category><![CDATA[MySQL]]></category>
 		<category><![CDATA[MySQL Cluster 7.1]]></category>
 		<category><![CDATA[NDB API]]></category>
-		<guid isPermaLink="false">/?p=953</guid>
+		<guid isPermaLink="false">./../../index.html?p=953</guid>
 
 					<description><![CDATA[The replay of the two webinars can now be accesed from mysql.com Remember that the second part of the webinar will be on March 3rd (details below). MySQL have been working on a new way of accessing MySQL Cluster using Java. Designed for Java developers, the MySQL Cluster Connector for Java implements an easy-to-use and]]></description>
 										<content:encoded><![CDATA[<p>The replay of the two webinars can now be accesed from <a href="http://www.mysql.com/news-and-events/on-demand-webinars/display-od-487.html">mysql.com</a></p>
 <p>Remember that the second part of the webinar will be on March 3rd (details below).</p>
-<div id="attachment_785" style="width: 330px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/12/clusterj-architecture.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-785" class="size-full wp-image-785" title="clusterj-architecture" src="/wp-content/uploads/2009/12/clusterj-architecture.png" alt="ClusterJ Architecture" width="320" height="183" srcset="/wp-content/uploads/2009/12/clusterj-architecture.png 320w, /wp-content/uploads/2009/12/clusterj-architecture-300x171.png 300w" sizes="auto, (max-width: 320px) 100vw, 320px" /></a><p id="caption-attachment-785" class="wp-caption-text">ClusterJ Architecture</p></div>
+<div id="attachment_785" style="width: 330px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2009/12/clusterj-architecture.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-785" class="size-full wp-image-785" title="clusterj-architecture" src="./../../wp-content/uploads/2009/12/clusterj-architecture.png" alt="ClusterJ Architecture" width="320" height="183" srcset="./../../wp-content/uploads/2009/12/clusterj-architecture.png 320w, ./../../wp-content/uploads/2009/12/clusterj-architecture-300x171.png 300w" sizes="auto, (max-width: 320px) 100vw, 320px" /></a><p id="caption-attachment-785" class="wp-caption-text">ClusterJ Architecture</p></div>
 <p>MySQL have been working on a new way of accessing MySQL Cluster using Java. Designed for Java developers, the MySQL Cluster Connector for Java implements an easy-to-use and high performance native Java interface and OpenJPA plug-in that maps Java classes to tables stored in the high availability, real-time MySQL Cluster database.</p>
 <p>There is a series of 2 webinars coming up, as always these are free to attend &#8211; you just need to register in advance:</p>
 <p><strong>Part 1: Tuesday, February 16, 2010: 10:00 Pacific time</strong></p>
@@ -646,15 +646,15 @@ Wed, Mar 03: <span style="white-space: pre;"> </span>20:00 Eastern European time
 <p>If you want to see for yourself then take a look at the <a href="http://ocklin.blogspot.com/2009/12/java-and-openjpa-for-mysql-cluster.html" target="_blank">Blog entry from Bernhard Ocklin</a> &#8211; the engineering manager responsible for this work.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/mysql-cluster-connector-for-java-replay-available-for-part-1-of-the-webinar/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/mysql-cluster-connector-for-java-replay-available-for-part-1-of-the-webinar/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>New white paper: Guide to Optimizing Performance of the MySQL Cluster Database</title>
-		<link>/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database</link>
-					<comments>/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database#comments</comments>
+		<link>./../../mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database/index.html</link>
+					<comments>./../../mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 07 Dec 2009 19:21:43 +0000</pubDate>
@@ -666,24 +666,24 @@ Wed, Mar 03: <span style="white-space: pre;"> </span>20:00 Eastern European time
 		<category><![CDATA[Replication]]></category>
 		<category><![CDATA[Stored Procedures]]></category>
 		<category><![CDATA[White Paper]]></category>
-		<guid isPermaLink="false">/?p=779</guid>
+		<guid isPermaLink="false">./../../index.html?p=779</guid>
 
 					<description><![CDATA[This guide explores how to tune and optimize the MySQL Cluster database to handle diverse workload requirements. It discusses data access patterns and how to build distribution awareness into applications, before exploring schema and query optimization, tuning of parameters and how to get the best out of the latest innovations in hardware design. The Guide]]></description>
-										<content:encoded><![CDATA[<div id="attachment_780" style="width: 215px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/12/connection_pooling.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-780" class="size-full wp-image-780" title="Connection Pooling" src="/wp-content/uploads/2009/12/connection_pooling.jpg" alt="MySQL Cluster Connection Pooling" width="205" height="302" srcset="/wp-content/uploads/2009/12/connection_pooling.jpg 205w, /wp-content/uploads/2009/12/connection_pooling-203x300.jpg 203w" sizes="auto, (max-width: 205px) 100vw, 205px" /></a><p id="caption-attachment-780" class="wp-caption-text">MySQL Cluster Connection Pooling</p></div>
+										<content:encoded><![CDATA[<div id="attachment_780" style="width: 215px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2009/12/connection_pooling.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-780" class="size-full wp-image-780" title="Connection Pooling" src="./../../wp-content/uploads/2009/12/connection_pooling.jpg" alt="MySQL Cluster Connection Pooling" width="205" height="302" srcset="./../../wp-content/uploads/2009/12/connection_pooling.jpg 205w, ./../../wp-content/uploads/2009/12/connection_pooling-203x300.jpg 203w" sizes="auto, (max-width: 205px) 100vw, 205px" /></a><p id="caption-attachment-780" class="wp-caption-text">MySQL Cluster Connection Pooling</p></div>
 <p>This guide explores how to tune and optimize the MySQL Cluster database to handle diverse workload requirements. It discusses data access patterns and how to build distribution awareness into applications, before exploring schema and query optimization, tuning of parameters and how to get the best out of the latest innovations in hardware design.</p>
 <p>The Guide concludes with recent performance benchmarks conducted with the MySQL Cluster database, an overview of how MySQL Cluster can be integrated with other MySQL storage engines, before summarizing additional resources that will enable you to optimize MySQL Cluster performance with your applications.</p>
 <p>Download the white paper (as always, for free) from:<a href="http://www.mysql.com/why-mysql/white-papers/mysql_wp_cluster_perfomance.php" target="_blank"> http://www.mysql.com/why-mysql/white-papers/mysql_wp_cluster_perfomance.php</a></p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database/feed/index.html</wfw:commentRss>
 			<slash:comments>2</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Using NDB API Events to mask/hide colum data when replicating</title>
-		<link>/mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating</link>
-					<comments>/mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating#respond</comments>
+		<link>./../../mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating/index.html</link>
+					<comments>./../../mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 13 Aug 2009 13:10:15 +0000</pubDate>
@@ -691,11 +691,11 @@ Wed, Mar 03: <span style="white-space: pre;"> </span>20:00 Eastern European time
 		<category><![CDATA[MySQL Replication]]></category>
 		<category><![CDATA[MySQL]]></category>
 		<category><![CDATA[NDB API]]></category>
-		<guid isPermaLink="false">/?p=479</guid>
+		<guid isPermaLink="false">./../../index.html?p=479</guid>
 
 					<description><![CDATA[If you  have asynchronous replication where the slave database is using MySQL Cluster then you can use the NDB API events functionality to mask/overwrite data. You might do this for example if the replica is to be used for generating reports where some of the data is sensitive and not relevant to those reports. Unlike]]></description>
 										<content:encoded><![CDATA[<p>If you  have asynchronous replication where the slave database is using MySQL Cluster then you can use the NDB API events functionality to mask/overwrite data. You might do this for example if the replica is to be used for generating reports where some of the data is sensitive and not relevant to those reports. Unlike stored procedures, NDB API events will be triggered on the slave.</p>
-<p>The first step is to set up replication (master-&gt;slave rather than multi-master) as described in <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/" target="_blank">Setting up MySQL Asynchronous Replication for High Availability</a>).</p>
+<p>The first step is to set up replication (master-&gt;slave rather than multi-master) as described in <a href="./../../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html" target="_blank">Setting up MySQL Asynchronous Replication for High Availability</a>).</p>
 <p>In this example, the following table definition is used:</p>
 <pre style="padding-left: 30px;color: #993300;font-size: 11px">mysql&gt; use clusterdb;
 mysql&gt; create table ASSETS (CODE int not null primary key, VALUE int) engine=ndb;</pre>
@@ -894,15 +894,15 @@ shell&gt; slave_filter 127.0.0.1:1186</pre>
 <p>How this works&#8230;. The table data is replicated as normal and the real values are stored in the slave. The &#8220;slave_filter&#8221; process has registered against insert operations on this table and when it&#8217;s triggered it sets the VALUE field to 0. The event is processes asynchronously from the replication and so there will be some very narrow window during which the true values would be stored in the slave.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Doxygen output for MySQL Cluster NDB API &#038; MGM API</title>
-		<link>/mysql-cluster/doxygen-output-for-mysql-cluster-ndb-api-mgm-api</link>
-					<comments>/mysql-cluster/doxygen-output-for-mysql-cluster-ndb-api-mgm-api#respond</comments>
+		<link>./../../mysql-cluster/doxygen-output-for-mysql-cluster-ndb-api-mgm-api/index.html</link>
+					<comments>./../../mysql-cluster/doxygen-output-for-mysql-cluster-ndb-api-mgm-api/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 20 Jul 2009 09:37:32 +0000</pubDate>
@@ -911,24 +911,24 @@ shell&gt; slave_filter 127.0.0.1:1186</pre>
 		<category><![CDATA[MySQL]]></category>
 		<category><![CDATA[MySQL Cluster 7.0]]></category>
 		<category><![CDATA[NDB API]]></category>
-		<guid isPermaLink="false">/?p=303</guid>
+		<guid isPermaLink="false">./../../index.html?p=303</guid>
 
 					<description><![CDATA[A new page has been added to this site: NDB API Docs which presents the information from the header files for both the NDB API and the NDB Management API. The material has been generated using doxygen and will be refreshed shortly after any new major, minor or maintenance release is made generally available (starting]]></description>
-										<content:encoded><![CDATA[<p><div id="attachment_302" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/07/NDB_API_Doc.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-302" class="size-medium wp-image-302" title="NDB API Header Documentation" src="/wp-content/uploads/2009/07/NDB_API_Doc-300x199.jpg" alt="NDB API Documentation" width="300" height="199" srcset="/wp-content/uploads/2009/07/NDB_API_Doc-300x199.jpg 300w, /wp-content/uploads/2009/07/NDB_API_Doc.jpg 692w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-302" class="wp-caption-text">NDB API Documentation</p></div><br />
-A new page has been added to this site: <a href="/mysql-cluster-ndb-api-and-management-api/" target="_blank">NDB API Docs</a> which presents the information from the header files for both the NDB API and the NDB Management API.<br />
+										<content:encoded><![CDATA[<p><div id="attachment_302" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2009/07/NDB_API_Doc.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-302" class="size-medium wp-image-302" title="NDB API Header Documentation" src="./../../wp-content/uploads/2009/07/NDB_API_Doc-300x199.jpg" alt="NDB API Documentation" width="300" height="199" srcset="./../../wp-content/uploads/2009/07/NDB_API_Doc-300x199.jpg 300w, ./../../wp-content/uploads/2009/07/NDB_API_Doc.jpg 692w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-302" class="wp-caption-text">NDB API Documentation</p></div><br />
+A new page has been added to this site: <a href="./../../mysql-cluster-ndb-api-and-management-api/index.html" target="_blank">NDB API Docs</a> which presents the information from the header files for both the NDB API and the NDB Management API.<br />
 <br />
 The material has been generated using doxygen and will be refreshed shortly after any new major, minor or maintenance release is made generally available (starting from MySQL Cluster 7.0.6).</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/doxygen-output-for-mysql-cluster-ndb-api-mgm-api/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/doxygen-output-for-mysql-cluster-ndb-api-mgm-api/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Intelligent user-controlled partitioning and writing distribution-aware NDB API Applications</title>
-		<link>/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications</link>
-					<comments>/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comments</comments>
+		<link>./../../mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html</link>
+					<comments>./../../mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 06 Jul 2009 15:36:25 +0000</pubDate>
@@ -938,11 +938,11 @@ The material has been generated using doxygen and will be refreshed shortly afte
 		<category><![CDATA[MySQL Cluster CGE]]></category>
 		<category><![CDATA[NDB API]]></category>
 		<category><![CDATA[partition]]></category>
-		<guid isPermaLink="false">/?p=248</guid>
+		<guid isPermaLink="false">./../../index.html?p=248</guid>
 
 					<description><![CDATA[Default partitioning When adding rows to a table that&#8217;s using MySQL Cluster as the storage engine, each row is assigned to a partition where that partition is mastered by a particular data node in the Cluster. The best performance comes when all of the data required to satisfy a transaction is held within a single]]></description>
 										<content:encoded><![CDATA[<h3>Default partitioning</h3>
-<div id="attachment_246" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/07/poor_partitioning.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-246" class="size-medium wp-image-246" title="Default partitioning" src="/wp-content/uploads/2009/07/poor_partitioning-300x174.jpg" alt="By default, Cluster will partition based on primary key" width="300" height="174" srcset="/wp-content/uploads/2009/07/poor_partitioning-300x174.jpg 300w, /wp-content/uploads/2009/07/poor_partitioning.jpg 800w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-246" class="wp-caption-text">By default, Cluster will partition based on primary key</p></div>
+<div id="attachment_246" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2009/07/poor_partitioning.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-246" class="size-medium wp-image-246" title="Default partitioning" src="./../../wp-content/uploads/2009/07/poor_partitioning-300x174.jpg" alt="By default, Cluster will partition based on primary key" width="300" height="174" srcset="./../../wp-content/uploads/2009/07/poor_partitioning-300x174.jpg 300w, ./../../wp-content/uploads/2009/07/poor_partitioning.jpg 800w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-246" class="wp-caption-text">By default, Cluster will partition based on primary key</p></div>
 <p>When adding rows to a table that&#8217;s using MySQL Cluster as the storage engine, each row is assigned to a partition where that partition is mastered by a particular data node in the Cluster. The best performance comes when all of the data required to satisfy a transaction is held within a single partition so that it can be satisfied within  a single data node rather than being bounced back and forth between multiple nodes where  extra latency will be introduced.</p>
 <p>By default, Cluster partions the data by hashing the primary key. This is not always optimal.</p>
 <p>For example, if we have 2 tables, the first using a single-column primary key (sub_id) and the second using a composite key (sub_id, service_name)&#8230;</p>
@@ -999,7 +999,7 @@ mysql&gt; explain partitions select * from services where sub_id=1;
 <p>Now all of the rows for sub_id=1 from the services table are now held within a single partition (p3) which is the same as that holding the row for the same sub_id in the names table. Note that it wasn&#8217;t necessary to drop, recreate and re-provision the services table, the following command would have had the same effect:</p>
 <pre style="padding-left: 30px; font-size: 11px;color: #993300;">mysql&gt; alter table services partition by key (sub_id);</pre>
 <h3>Writing a distribution-aware application using the NDB API</h3>
-<div id="attachment_247" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/07/distribution_aware.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-247" class="size-medium wp-image-247" title="Distribution unaware application" src="/wp-content/uploads/2009/07/distribution_aware-300x169.jpg" alt="Distribution unaware NDB API application" width="300" height="169" srcset="/wp-content/uploads/2009/07/distribution_aware-300x169.jpg 300w, /wp-content/uploads/2009/07/distribution_aware.jpg 461w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-247" class="wp-caption-text">Distribution unaware NDB API application</p></div>
+<div id="attachment_247" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2009/07/distribution_aware.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-247" class="size-medium wp-image-247" title="Distribution unaware application" src="./../../wp-content/uploads/2009/07/distribution_aware-300x169.jpg" alt="Distribution unaware NDB API application" width="300" height="169" srcset="./../../wp-content/uploads/2009/07/distribution_aware-300x169.jpg 300w, ./../../wp-content/uploads/2009/07/distribution_aware.jpg 461w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-247" class="wp-caption-text">Distribution unaware NDB API application</p></div>
 <p>In our example, the data is nicely partitioned for optimum performance when accessing all of the subscriber&#8217;s data &#8211; a single data node holding all of their data. However, there is another step to take to get the best out of your NDB-API based application. By default, the NDB API will use the Transaction Coordinator (TC) on a &#8216;random&#8217; data node to handle the transaction &#8211; we could get lucky and the guess is correct but it&#8217;s more likely that it will be sent to the wrong data node which with then have to proxy it to the correct data node. The probability of getting it right first time reduces as the number of node groups increases and so can prevent linear scaling.</p>
 <p>It&#8217;s very simple to modify this behaviour so that the best data node/TC is hit first time, every time. When creating the transaction, the application can include parameters telling the NDB API one of the tables to be accessed and for what key(s). The NDB API will then use that information to identify the best TC to use&#8230;</p>
 <pre style="padding-left: 30px; font-size: 11px;color: #993300;">
@@ -1045,18 +1045,18 @@ sub_id, myRecAttr-&gt;aRef());
 
 myNdb.closeTransaction(myTransaction);
 </pre>
-<p>Note that as the services table has been configured to use the same field (sub_id) for partitioning as the names table, the startTransaction method only needs to know about the namesTable as the TC that the NDB API selects will serve just as well for this subscriber&#8217;s data from the services table. The rest of the code can be found in <a href='/wp-content/uploads/2009/07/distaware.cpp'>distaware</a>.</p>
+<p>Note that as the services table has been configured to use the same field (sub_id) for partitioning as the names table, the startTransaction method only needs to know about the namesTable as the TC that the NDB API selects will serve just as well for this subscriber&#8217;s data from the services table. The rest of the code can be found in <a href='./../../wp-content/uploads/2009/07/distaware.cpp'>distaware</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/feed/index.html</wfw:commentRss>
 			<slash:comments>8</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Batching &#8211; improving MySQL Cluster performance when using the NDB API</title>
-		<link>/mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api</link>
-					<comments>/mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api#comments</comments>
+		<link>./../../mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api/index.html</link>
+					<comments>./../../mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 29 Jun 2009 11:18:41 +0000</pubDate>
@@ -1065,16 +1065,16 @@ myNdb.closeTransaction(myTransaction);
 		<category><![CDATA[MySQL]]></category>
 		<category><![CDATA[MySQL Cluster CGE]]></category>
 		<category><![CDATA[NDB API]]></category>
-		<guid isPermaLink="false">/?p=207</guid>
+		<guid isPermaLink="false">./../../index.html?p=207</guid>
 
 					<description><![CDATA[As many people are aware, the best performance can be achieved from MySQL Cluster by using the native (C++) NDB API (rather than using SQL via a MySQL Server). What&#8217;s less well known is that you can improve the performance of your NDB-API enabled application even further by &#8216;batching&#8217;. This article attempts to explain why]]></description>
 										<content:encoded><![CDATA[<p>As many people are aware, the best performance can be achieved from MySQL Cluster by using the native (C++) NDB API (rather than using SQL via a MySQL Server). What&#8217;s less well known is that you can improve the performance of your NDB-API enabled application even further by &#8216;batching&#8217;. This article attempts to explain why batching helps and how to do it.</p>
 <h3>What is batching and why does it help?</h3>
-<div id="attachment_209" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/06/batching.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-209" class="size-medium wp-image-209" title="NDB API Without batching" src="/wp-content/uploads/2009/06/batching-300x147.jpg" alt="NDB API accessing data from the Cluster without batching" width="300" height="147" srcset="/wp-content/uploads/2009/06/batching-300x147.jpg 300w, /wp-content/uploads/2009/06/batching.jpg 614w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-209" class="wp-caption-text">NDB API accessing data from the Cluster without batching</p></div>
+<div id="attachment_209" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2009/06/batching.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-209" class="size-medium wp-image-209" title="NDB API Without batching" src="./../../wp-content/uploads/2009/06/batching-300x147.jpg" alt="NDB API accessing data from the Cluster without batching" width="300" height="147" srcset="./../../wp-content/uploads/2009/06/batching-300x147.jpg 300w, ./../../wp-content/uploads/2009/06/batching.jpg 614w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-209" class="wp-caption-text">NDB API accessing data from the Cluster without batching</p></div>
 <p>Batching involves sending multiple operations from the application to the Cluster in one group rather than individually; the Cluster then processes these operations and sends back the results. Without batching, each of these operations incurs the latency of crossing the network as well as consuming CPU time on both the application and data node hosts.</p>
 <p>By batching together multiple operations, all of the requests can be sent in one message and all of the replies received in another &#8211; thus reducing the number of messages and hence the latency and CPU time consumed.</p>
 <h3>How to use batching with the MySQL Cluster NDB API</h3>
-<div id="attachment_213" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/06/batched_operations.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-213" class="size-medium wp-image-213" title="Batched NDB API Operations" src="/wp-content/uploads/2009/06/batched_operations-300x210.jpg" alt="Batched NDB API Operations" width="300" height="210" srcset="/wp-content/uploads/2009/06/batched_operations-300x210.jpg 300w, /wp-content/uploads/2009/06/batched_operations.jpg 896w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-213" class="wp-caption-text">Batched NDB API Operations</p></div>
+<div id="attachment_213" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2009/06/batched_operations.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-213" class="size-medium wp-image-213" title="Batched NDB API Operations" src="./../../wp-content/uploads/2009/06/batched_operations-300x210.jpg" alt="Batched NDB API Operations" width="300" height="210" srcset="./../../wp-content/uploads/2009/06/batched_operations-300x210.jpg 300w, ./../../wp-content/uploads/2009/06/batched_operations.jpg 896w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-213" class="wp-caption-text">Batched NDB API Operations</p></div>
 <p>The principle is that you batch together as many operations as you can, execute them together and then interpret the results. After interpretting the results, the application may then decide to send in another batch of operations.</p>
 <p>An NDB API transaction consists of one or more operations where each operation (currently) acts on a single table and could be a simple primary key read or write or a complex table scan.</p>
 <p>The operation is not sent to the Cluster at the point that it&#8217;s defined. Instead, the application must explicitly request that all operations defined within the transaction up to that point be executed &#8211; at which point, the NDB API can send the batch of operations to the data nodes to be processed. The application may request that the transaction be committed at that point or it may ask for the transaction to be held open so that it can analyse the results from the first set of operations and then use that information within a subsequent series of operations and then commit the transaction after executing that second batch of operations.</p>
@@ -1119,15 +1119,15 @@ myNdb.closeTransaction(myTransaction);
 </span></pre>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api/feed/index.html</wfw:commentRss>
 			<slash:comments>1</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Are Stored Procedures available with MySQL Cluster?</title>
-		<link>/mysql-cluster/are-stored-procedures-available-with-mysql-cluster</link>
-					<comments>/mysql-cluster/are-stored-procedures-available-with-mysql-cluster#respond</comments>
+		<link>./../../mysql-cluster/are-stored-procedures-available-with-mysql-cluster/index.html</link>
+					<comments>./../../mysql-cluster/are-stored-procedures-available-with-mysql-cluster/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 01 May 2009 15:34:45 +0000</pubDate>
@@ -1136,7 +1136,7 @@ myNdb.closeTransaction(myTransaction);
 		<category><![CDATA[NDB API]]></category>
 		<category><![CDATA[Stored Procedures]]></category>
 		<category><![CDATA[Triggers]]></category>
-		<guid isPermaLink="false">/?p=72</guid>
+		<guid isPermaLink="false">./../../index.html?p=72</guid>
 
 					<description><![CDATA[The answer is yes – kind of. Stored procedures are implemented in a MySQL Server and can be used regardless of the storage engine being used for a specific table. One inference from this is that they won’t work when accessing the Cluster database directly through the NDB API. This leads to the question of]]></description>
 										<content:encoded><![CDATA[<p>The answer is yes – kind of.</p>
@@ -1521,7 +1521,7 @@ mysql&gt; select * from ASSETS;
 <p>Stored procedures are fully supported for users or applications which access a Cluster database through a MySQL Server (whether directly using SQL or through any of the numerous connectors that are available). Applications which access the database through the NDB API have the full flexibility of C++ to implement functionality that can achieve the same results. Triggers are available whichever method is used to access the database – albeit with different implementations and slightly different functionality.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/are-stored-procedures-available-with-mysql-cluster/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/are-stored-procedures-available-with-mysql-cluster/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

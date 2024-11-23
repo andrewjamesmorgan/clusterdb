@@ -9,8 +9,8 @@
 
 <channel>
 	<title>IoT &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/iot/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Tue, 18 Sep 2018 10:31:31 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Recording sensor data with MongoDB Stitch &#038; Electric Imp</title>
-		<link>/mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp</link>
-					<comments>/mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp#respond</comments>
+		<link>./../../mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp/index.html</link>
+					<comments>./../../mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 18 Sep 2018 10:31:31 +0000</pubDate>
@@ -31,7 +31,7 @@
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
 		<category><![CDATA[serverless]]></category>
-		<guid isPermaLink="false">/?p=4517</guid>
+		<guid isPermaLink="false">./../../index.html?p=4517</guid>
 
 					<description><![CDATA[My early experiments with IoT involved standalone sensors, breakout boards, Arduinos, Raspberry Pis, and a soldering iron. It was a lot of fun, but it took ages to build even the simplest of projects. Therefore, I was super excited when I discovered that Electric Imp had a self-contained IoT hardware developer kit and a library]]></description>
 										<content:encoded><![CDATA[<p>My early experiments with IoT involved standalone sensors, breakout boards, Arduinos, Raspberry Pis, and a soldering iron. It was a lot of fun, but it took ages to build even the simplest of projects.</p>
@@ -113,15 +113,15 @@ device.on("reading.sent", log);
 <p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">MongoDB Stitch white paper</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Controlling humidity with a MongoDB Stitch HTTP service and IFTTT</title>
-		<link>/mongodb/controlling-humidity-with-a-mongodb-stitch-http-service-and-ifttt</link>
-					<comments>/mongodb/controlling-humidity-with-a-mongodb-stitch-http-service-and-ifttt#respond</comments>
+		<link>./../../mongodb/controlling-humidity-with-a-mongodb-stitch-http-service-and-ifttt/index.html</link>
+					<comments>./../../mongodb/controlling-humidity-with-a-mongodb-stitch-http-service-and-ifttt/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 17 Sep 2018 11:58:23 +0000</pubDate>
@@ -130,7 +130,7 @@ device.on("reading.sent", log);
 		<category><![CDATA[IoT]]></category>
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
-		<guid isPermaLink="false">/?p=4511</guid>
+		<guid isPermaLink="false">./../../index.html?p=4511</guid>
 
 					<description><![CDATA[I&#8217;ve long been a fan of using IFTTT as a quick and easy way to automate my home/life by connecting cloud and IoT services. My IFTTT Applets are what make my study lights flash when my Amazon Alexa timer expires in the kitchen; they&#8217;re what add my FourSquare check-ins to my Google calendar and MongoDB]]></description>
 										<content:encoded><![CDATA[<p>I&#8217;ve long been a fan of using <a href="https://ifttt.com/">IFTTT</a> as a quick and easy way to automate my home/life by connecting cloud and IoT services. My IFTTT Applets are what make my study lights flash when my Amazon Alexa timer expires in the kitchen; they&#8217;re what add my FourSquare check-ins to my Google calendar and MongoDB database.</p>
@@ -166,7 +166,7 @@ device.on("reading.sent", log);
 <p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/controlling-humidity-with-a-mongodb-stitch-http-service-and-ifttt/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/controlling-humidity-with-a-mongodb-stitch-http-service-and-ifttt/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

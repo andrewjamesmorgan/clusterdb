@@ -8,8 +8,8 @@
 <channel>
 	<title>
 	Comments on: Intelligent user-controlled partitioning and writing distribution-aware NDB API Applications	</title>
-	<atom:link href="/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/feed" rel="self" type="application/rss+xml" />
-	<link>/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Fri, 22 Mar 2013 09:57:38 +0000</lastBuildDate>
 	<sy:updatePeriod>
@@ -20,20 +20,20 @@
 	<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comment-104</link>
+		<link>./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comment-104</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 22 Mar 2013 09:57:38 +0000</pubDate>
-		<guid isPermaLink="false">/?p=248#comment-104</guid>
+		<guid isPermaLink="false">./../../index.html?p=248#comment-104</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comment-103&quot;&gt;Song Yi&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comment-103&quot;&gt;Song Yi&lt;/a&gt;.
 
 Song Yi,
 
  I&#039;m afraid you&#039;re exhaustin my knowledge on using the NDB API directly - might be time for you to open a Service Request so that the support team can look into it for you.
 
 Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comment-103">Song Yi</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comment-103">Song Yi</a>.</p>
 <p>Song Yi,</p>
 <p> I&#8217;m afraid you&#8217;re exhaustin my knowledge on using the NDB API directly &#8211; might be time for you to open a Service Request so that the support team can look into it for you.</p>
 <p>Andrew.</p>
@@ -43,11 +43,11 @@ Andrew.]]></description>
 		<item>
 		<title>
 		By: Song Yi		</title>
-		<link>/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comment-103</link>
+		<link>./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comment-103</link>
 
 		<dc:creator><![CDATA[Song Yi]]></dc:creator>
 		<pubDate>Fri, 22 Mar 2013 09:05:50 +0000</pubDate>
-		<guid isPermaLink="false">/?p=248#comment-103</guid>
+		<guid isPermaLink="false">./../../index.html?p=248#comment-103</guid>
 
 					<description><![CDATA[Andrew,
 
@@ -80,13 +80,13 @@ The RANGE_SCANS counter always increase on only ONE node, I guess it is the TC n
 		<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comment-102</link>
+		<link>./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comment-102</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 15 Mar 2013 11:01:17 +0000</pubDate>
-		<guid isPermaLink="false">/?p=248#comment-102</guid>
+		<guid isPermaLink="false">./../../index.html?p=248#comment-102</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comment-101&quot;&gt;Song Yi&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comment-101&quot;&gt;Song Yi&lt;/a&gt;.
 
 Hi Song Yi,
 
@@ -95,7 +95,7 @@ Hi Song Yi,
  To find out which data nodes are involved then you could look how the values change for each node using the ndbinfo.counters table http://dev.mysql.com/doc/refman/5.5/en/mysql-cluster-ndbinfo-counters.html
 
 Regards, Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comment-101">Song Yi</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comment-101">Song Yi</a>.</p>
 <p>Hi Song Yi,</p>
 <p> note that you can still make the system distribution-aware if the sharding key is *part* of the primary key for each of your tables by specifying that column with PARTITION BY KEY. Is this possible in you case?</p>
 <p> To find out which data nodes are involved then you could look how the values change for each node using the ndbinfo.counters table <a href="http://dev.mysql.com/doc/refman/5.5/en/mysql-cluster-ndbinfo-counters.html" rel="nofollow ugc">http://dev.mysql.com/doc/refman/5.5/en/mysql-cluster-ndbinfo-counters.html</a></p>
@@ -106,11 +106,11 @@ Regards, Andrew.]]></description>
 		<item>
 		<title>
 		By: Song Yi		</title>
-		<link>/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comment-101</link>
+		<link>./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comment-101</link>
 
 		<dc:creator><![CDATA[Song Yi]]></dc:creator>
 		<pubDate>Fri, 08 Mar 2013 08:40:40 +0000</pubDate>
-		<guid isPermaLink="false">/?p=248#comment-101</guid>
+		<guid isPermaLink="false">./../../index.html?p=248#comment-101</guid>
 
 					<description><![CDATA[Hi Andrew,
 
@@ -145,17 +145,17 @@ Or, ndb index scan still do the scan on all nodes? This will waste many nodes re
 		<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comment-100</link>
+		<link>./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comment-100</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 10 Sep 2012 14:06:31 +0000</pubDate>
-		<guid isPermaLink="false">/?p=248#comment-100</guid>
+		<guid isPermaLink="false">./../../index.html?p=248#comment-100</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comment-99&quot;&gt;Jude&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comment-99&quot;&gt;Jude&lt;/a&gt;.
 
 Hi Jude,
 
- partitioning is a little different with MySQL Cluster as it defines how tables should be partitioned between node groups which can in turn have a big impact on latency and throughput. &lt;a href=&quot;/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/&quot; title=&quot;Optimize MySQL Cluster performance with partitioning&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;This post&lt;/a&gt; helps explain how to optimize your schema/application to exploit this.
+ partitioning is a little different with MySQL Cluster as it defines how tables should be partitioned between node groups which can in turn have a big impact on latency and throughput. &lt;a href=&quot;./&quot;/index.html title=&quot;Optimize MySQL Cluster performance with partitioning&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;This post&lt;/a&gt; helps explain how to optimize your schema/application to exploit this.
 
  By default, the Primary Key is the partition key and is hashed to identify the partition. You can override this to indicate that only a subset of the columns from a multi-column PK should be used as the partition key. You can do this when creating the table or later using ALTER TABLE. Wherever you define it, it takes effect no matter how you access the database (i.e. all mysqld, the NDB API or other native APIs (that all call the NDB API).
 
@@ -164,9 +164,9 @@ Hi Jude,
  I&#039;m not certain how the persistent annotation is used within ClusterJ but it can&#039;t hurt to set it to match what you&#039;ve defined in your schema as it may help performance.
 
 Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comment-99">Jude</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comment-99">Jude</a>.</p>
 <p>Hi Jude,</p>
-<p> partitioning is a little different with MySQL Cluster as it defines how tables should be partitioned between node groups which can in turn have a big impact on latency and throughput. <a href="/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/" title="Optimize MySQL Cluster performance with partitioning" target="_blank" rel="nofollow">This post</a> helps explain how to optimize your schema/application to exploit this.</p>
+<p> partitioning is a little different with MySQL Cluster as it defines how tables should be partitioned between node groups which can in turn have a big impact on latency and throughput. <a href="./index.html" title="Optimize MySQL Cluster performance with partitioning" target="_blank" rel="nofollow">This post</a> helps explain how to optimize your schema/application to exploit this.</p>
 <p> By default, the Primary Key is the partition key and is hashed to identify the partition. You can override this to indicate that only a subset of the columns from a multi-column PK should be used as the partition key. You can do this when creating the table or later using ALTER TABLE. Wherever you define it, it takes effect no matter how you access the database (i.e. all mysqld, the NDB API or other native APIs (that all call the NDB API).</p>
 <p> In other words, you can pre-create the table and override the default partitioning key through any mysqld.</p>
 <p> I&#8217;m not certain how the persistent annotation is used within ClusterJ but it can&#8217;t hurt to set it to match what you&#8217;ve defined in your schema as it may help performance.</p>
@@ -177,11 +177,11 @@ Andrew.]]></description>
 		<item>
 		<title>
 		By: Jude		</title>
-		<link>/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comment-99</link>
+		<link>./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comment-99</link>
 
 		<dc:creator><![CDATA[Jude]]></dc:creator>
 		<pubDate>Sat, 01 Sep 2012 15:10:07 +0000</pubDate>
-		<guid isPermaLink="false">/?p=248#comment-99</guid>
+		<guid isPermaLink="false">./../../index.html?p=248#comment-99</guid>
 
 					<description><![CDATA[Hi Andrew,
 
@@ -203,13 +203,13 @@ Would you happen to have an example of how to partition using ClusterJ? I&#039;m
 		<item>
 		<title>
 		By: admin		</title>
-		<link>/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comment-98</link>
+		<link>./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comment-98</link>
 
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Tue, 06 Oct 2009 09:36:22 +0000</pubDate>
-		<guid isPermaLink="false">/?p=248#comment-98</guid>
+		<guid isPermaLink="false">./../../index.html?p=248#comment-98</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comment-97&quot;&gt;Mike van Lammeren&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comment-97&quot;&gt;Mike van Lammeren&lt;/a&gt;.
 
 Hi Mike,
 
@@ -220,7 +220,7 @@ Hi Mike,
 The good news is that it&#039;s extremely simple to change the partitioning for an existing database and so the best answer is to try it for yourself with your schema and application :)
 
 Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comment-97">Mike van Lammeren</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comment-97">Mike van Lammeren</a>.</p>
 <p>Hi Mike,</p>
 <p> in general, MySQL Cluster performs best when an individual transaction can be handled by a single data node. As all of the data is in memory, it is extremely fast for the data node to work on that data. Where it gets slower is when there needs to be lots of messaging between nodes.</p>
 <p> There are some cases where the MySQL Server node can be smart and break up the work between data nodes and so get the benefits of adding parallelism and if the application is only processing one transaction at a time then that might improve performance. It&#8217;s more typical with Cluster though that the applications would be working on multiple sub_ids at the same time and so that is where you leverage the power of multiple, shared-nothing data nodes.</p>
@@ -232,11 +232,11 @@ Andrew.]]></description>
 		<item>
 		<title>
 		By: Mike van Lammeren		</title>
-		<link>/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comment-97</link>
+		<link>./../intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications/index.html#comment-97</link>
 
 		<dc:creator><![CDATA[Mike van Lammeren]]></dc:creator>
 		<pubDate>Wed, 30 Sep 2009 21:43:50 +0000</pubDate>
-		<guid isPermaLink="false">/?p=248#comment-97</guid>
+		<guid isPermaLink="false">./../../index.html?p=248#comment-97</guid>
 
 					<description><![CDATA[I am trying to understand the ramifications of setting &quot;partition by key&quot; on the &quot;services&quot; table. By storing all the &quot;services&quot; records with the associated &quot;names&quot; record, aren&#039;t we preventing the ndbd nodes from working on a query in parallel?
 

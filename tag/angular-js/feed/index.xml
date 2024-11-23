@@ -9,8 +9,8 @@
 
 <channel>
 	<title>angular.js &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/angular-js/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Tue, 05 Sep 2017 13:16:52 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>The Modern Application Stack – Part 4: Building a Client UI Using Angular 2 (formerly AngularJS) &#038; TypeScript</title>
-		<link>/mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript</link>
-					<comments>/mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript#respond</comments>
+		<link>./../../mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript/index.html</link>
+					<comments>./../../mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 17 Feb 2017 08:58:40 +0000</pubDate>
@@ -36,23 +36,23 @@
 		<category><![CDATA[mongopop]]></category>
 		<category><![CDATA[observables]]></category>
 		<category><![CDATA[typescript]]></category>
-		<guid isPermaLink="false">/?p=4387</guid>
+		<guid isPermaLink="false">./../../index.html?p=4387</guid>
 
 					<description><![CDATA[Introduction This is the fourth in a series of blog posts examining technologies such as Angular that are driving the development of modern web and mobile applications. &#8220;Modern Application Stack – Part 1: Introducing The MEAN Stack&#8221; introduced the technologies making up the MEAN (MongoDB, Express, Angular, Node.js) and MERN (MongoDB, Express, React, Node.js) Stacks,]]></description>
 										<content:encoded><![CDATA[<h2>Introduction</h2>
 <p>This is the fourth in a series of blog posts examining technologies such as Angular that are driving the development of modern web and mobile applications.</p>
-<p><a href="/mongodb/modern-application-stack-part-1-introducing-the-mean-stack" title="The MEAN Stack - with MongoDB">&#8220;Modern Application Stack – Part 1: Introducing The MEAN Stack&#8221;</a> introduced the technologies making up the <strong>MEAN</strong> (<strong>M</strong>ongoDB, <strong>E</strong>xpress, <strong>A</strong>ngular, <strong>N</strong>ode.js) and <strong>MERN</strong> (<strong>M</strong>ongoDB, <strong>E</strong>xpress, <strong>R</strong>eact, <strong>N</strong>ode.js) Stacks, why you might want to use them, and how to combine them to build your web application (or your native mobile or desktop app).</p>
-<p>The remainder of the series is focussed on working through the end to end steps of building a real (albeit simple) application. – <em>MongoPop</em>. <a href="/mongodb/mean_stack_2_mongodb_node_js" title="MEAN Stack MERN Stack - Node.js &amp; MongoDB"><em>Part 2: Using MongoDB With Node.js</em></a> created an environment where we could work with a MongoDB database from Node.js; it also created a simplified interface to the MongoDB Node.js Driver. <a href="/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a> built on Part 2 by using Express.js to add a REST API which will be used by the clients that we implement in the final posts.</p>
+<p><a href="./../../mongodb/modern-application-stack-part-1-introducing-the-mean-stack/index.html" title="The MEAN Stack - with MongoDB">&#8220;Modern Application Stack – Part 1: Introducing The MEAN Stack&#8221;</a> introduced the technologies making up the <strong>MEAN</strong> (<strong>M</strong>ongoDB, <strong>E</strong>xpress, <strong>A</strong>ngular, <strong>N</strong>ode.js) and <strong>MERN</strong> (<strong>M</strong>ongoDB, <strong>E</strong>xpress, <strong>R</strong>eact, <strong>N</strong>ode.js) Stacks, why you might want to use them, and how to combine them to build your web application (or your native mobile or desktop app).</p>
+<p>The remainder of the series is focussed on working through the end to end steps of building a real (albeit simple) application. – <em>MongoPop</em>. <a href="./../../mongodb/mean_stack_2_mongodb_node_js/index.html" title="MEAN Stack MERN Stack - Node.js &amp; MongoDB"><em>Part 2: Using MongoDB With Node.js</em></a> created an environment where we could work with a MongoDB database from Node.js; it also created a simplified interface to the MongoDB Node.js Driver. <a href="./../../mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js/index.html" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a> built on Part 2 by using Express.js to add a REST API which will be used by the clients that we implement in the final posts.</p>
 <p>This post demonstrates how to use Angular 2 (the evolution of Angular.js) to implement a remote web-app client for the <em>Mongopop</em> application.</p>
 <h2>Angular 2 (recap)</h2>
 <p><strong>Angular</strong>, originally created and maintained by Google, runs your JavaScript code within the user&#8217;s web browsers to implement a <em>reactive</em> user interface (UI). A reactive UI gives the user immediate feedback as they give their input (in contrast to static web forms where you enter all of your data, hit &#8220;Submit&#8221; and wait.</p>
-<p><center><img decoding="async" src="/wp-content/uploads/2017/02/Reactive_MongoDB_URI.gif" alt="Reactive Angular 2 application" title="Reactive Angular 2 application" /></center></p>
+<p><center><img decoding="async" src="./../../wp-content/uploads/2017/02/Reactive_MongoDB_URI.gif" alt="Reactive Angular 2 application" title="Reactive Angular 2 application" /></center></p>
 <p>Version 1 of Angular was called AngularJS but it was shortened to Angular in Angular 2 after it was completely rewritten in <a href="https://www.typescriptlang.org/">Typescript</a> (a superset of JavaScript) – Typescript is now also the recommended language for Angular apps to use.</p>
 <p>You implement your application front-end as a set of <em>components</em> – each of which consists of your JavaScript (Typescript) code and an HTML template that includes hooks to execute and use the results from your Typescript functions. Complex application front-ends can be crafted from many simple (optionally nested) components.</p>
 <p>Angular application code can also be executed on the back-end server rather than in a browser, or as a native desktop or mobile application.</p>
-<p><img decoding="async" src="/wp-content/uploads/2017/02/MEAN_Stack.png" alt="MEAN Stack Architecture" title="MEAN Stack Architecture" /></p>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/02/MEAN_Stack.png" alt="MEAN Stack Architecture" title="MEAN Stack Architecture" /></p>
 <h2>Downloading, running, and using the Mongopop application</h2>
-<p>The Angular client code is included as part if the Mongopop package installed in <a href="/mongodb/mean_stack_2_mongodb_node_js" title="Using MongoDB With Node.js">Part 2: Using MongoDB With Node.js</a>.</p>
+<p>The Angular client code is included as part if the Mongopop package installed in <a href="./../../mongodb/mean_stack_2_mongodb_node_js/index.html" title="Using MongoDB With Node.js">Part 2: Using MongoDB With Node.js</a>.</p>
 <p>The back-end application should be run in the same way as in parts 2 &amp; 3. The client software needs to be <em>transpiled</em> from Typescript to JavaScript – the client software running in a remote browser can then download the JavaScript files and execute them.</p>
 <p>The existing <code>package.json</code> file includes a script for transpiling the Angular 2 code:</p>
 <pre><code class="js">  "scripts": {
@@ -74,7 +74,7 @@
 </code></pre>
 <h2>Component architecture of the Mongopop Angular UI</h2>
 <p>Angular applications (both AngularJS and Angular2) are built from one or more, nested components – Mongopop is no exception:</p>
-<p><img decoding="async" src="/wp-content/uploads/2017/02/AngularComponents.png" alt="Mongopop Angular2 Components" title="MEAN Stack Angular Components" /></p>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/02/AngularComponents.png" alt="Mongopop Angular2 Components" title="MEAN Stack Angular Components" /></p>
 <p>The main component (<code>AppComponent)</code>contains the HTML and logic for connecting to the database and orchestrating its sub-components. Part of the definition of <code>AppComponent</code> is meta data/decoration to indicate that it should be loaded at the point that a <code>my-app</code> element (<code>&lt;my-app&gt;&lt;/my-app&gt;</code>) appears in the <code>index.html</code> file (once the component is running, its output replaces whatever holding content sits between <code>&lt;my-app&gt;</code> and <code>&lt;/my-app&gt;</code>). <code>AppComponent</code> is implemented by:</p>
 <ul>
 <li>A Typescript file containing the <code>AppComponent</code> class (including the data members, initialization code, and member functions</li>
@@ -204,7 +204,7 @@
 <h2>&#8220;Boilerplate&#8221; files and how they get invoked</h2>
 <p>This is an imposing number of new files and this is one of the reasons that Angular is often viewed as the more complex layer in the application stack. One of the frustrations for many developers, is the number of files that need to be created and edited on the client side before your first line of component/application code is executed. The good news is that there is a consistent pattern and so it&#8217;s reasonable to fork you app from an existing project – the <a href="https://github.com/am-MongoDB/MongoDB-Mongopop">Mongopop app can be cloned from GitHub</a> or, the <a href="https://angular.io/docs/ts/latest/cli-quickstart.html">Angular QuickStart</a> can be used as your starting point.</p>
 <p>As a reminder, here is the relationship between these common files (and our application-specific components):</p>
-<p><img decoding="async" src="/wp-content/uploads/2017/02/Angular-file-links.png" alt="Angular2 boilerplate files" title="Angular2 boilerplate files" /></p>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/02/Angular-file-links.png" alt="Angular2 boilerplate files" title="Angular2 boilerplate files" /></p>
 <h2>Contents of the &#8220;boilerplate&#8221; files</h2>
 <p>This section includes the contents for each of the non-component files and then remarks on some of the key points.</p>
 <p><em><code>public/package.json</code></em></p>
@@ -235,7 +235,7 @@
 <p>The <code>import</code> commands also bring in the (<code>.js</code>) files for each of the components as well as the data service.</p>
 <p>Following the imports, the <code>@NgModule</code> <em>decorator function</em> takes a JSON object that tells Angular how to run the code for this module (<code>AppModule</code>) – including the list of imported modules, components, and services as well as the module/component needed to bootstrap the actual application (<code>AppComponent</code>).</p>
 <h2>Typescript &amp; Observables (before getting into component code)</h2>
-<p>As a reminder from <a href="/mongodb/modern-application-stack-part-1-introducing-the-mean-stack" title="MEAN stack, MERN stack">Part 1: Introducing The MEAN Stack (and the young MERN upstart)</a>; the most recent, widely supported version is ECMAScript 6 – normally referred to as <a href="http://es6-features.org/#Constants">/ES6/</a>. ES6 is supported by recent versions of Chrome, Opera, Safari, and Node.js). Some platforms (e.g. Firefox and Microsoft Edge) do not yet support all features of ES6. These are some of the key features added in ES6:</p>
+<p>As a reminder from <a href="./../../mongodb/modern-application-stack-part-1-introducing-the-mean-stack/index.html" title="MEAN stack, MERN stack">Part 1: Introducing The MEAN Stack (and the young MERN upstart)</a>; the most recent, widely supported version is ECMAScript 6 – normally referred to as <a href="http://es6-features.org/#Constants">/ES6/</a>. ES6 is supported by recent versions of Chrome, Opera, Safari, and Node.js). Some platforms (e.g. Firefox and Microsoft Edge) do not yet support all features of ES6. These are some of the key features added in ES6:</p>
 <ul>
 <li>Classes &amp; modules</li>
 <li>Promises – a more convenient way to handle completion or failure of synchronous function calls (compared to callbacks)</li>
@@ -262,7 +262,7 @@
 <p>By adding the <code>@Injectable</code> decorator to the class definition, any member variables defined in the arguments to the class constructor function will be automatically instantiated (i.e. there is no need to explicitly request a <code>new Http</code> object):</p>
 <p><script src="https://gist.github.com/am-MongoDB/bdd1585280e0334ab7f7b08655600c31.js"></script></p>
 <p>After the constructor has been called, methods within the class can safely make use of the <code>http</code> data member.</p>
-<p>As a reminder from <a href="/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a>, this is the REST API we have to interact with:</p>
+<p>As a reminder from <a href="./../../mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js/index.html" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a>, this is the REST API we have to interact with:</p>
 <table class='table table-bordered' summary="Express route paths implemented for the Mongopop REST API">
 <caption><strong>Express routes implemented for the Mongopop REST API</strong></caption>
 <thead>
@@ -458,7 +458,7 @@ error: string;
 <p>Recall that the application consists of five components: the top-level application which contains each of the add, count, update, and sample components.</p>
 <p>When building a new application, you would typically start by designing the the top-level container and then work downwards. As the top-level container is the most complex one to understand, we&#8217;ll start at the bottom and then work up.</p>
 <p>A simple sub-component to start with is the count component:</p>
-<p><img decoding="async" src="/wp-content/uploads/2017/02/Count_Component.png" alt="Mongopop Angular2 component" title="Mongopop Angular2 component" /><br />
+<p><img decoding="async" src="./../../wp-content/uploads/2017/02/Count_Component.png" alt="Mongopop Angular2 component" title="Mongopop Angular2 component" /><br />
 <code>public/app/count.component.html</code> defines the elements that define what&#8217;s rendered for this component:</p>
 <p><script src="https://gist.github.com/am-MongoDB/ed99c1a5d8e96d0882e0d023b325589d.js"></script></p>
 <p>You&#8217;ll recognise most of this as standard HTML code.</p>
@@ -466,8 +466,8 @@ error: string;
 <p>When the button is clicked, <code>countDocs</code> (a method of the component&#8217;s class) is invoked with <code>CountCollName.value</code> (the current contents of the input field) passed as a parameter.</p>
 <p>Below the button, the class data members of <code>DocumentCount</code> and <code>CountDocError</code> are displayed – nothing is actually rendered unless one of these has been given a non-empty value. Note that these are placed below the button in the code, but they would still display the resulting values if they were moved higher up – position within the HTML file doesn&#8217;t impact logic flow. Each of those messages is given a class so that they can be styled differently within the component&#8217;s CSS file:</p>
 <p><script src="https://gist.github.com/am-MongoDB/d22b7725f9dc764b1445771f3d32d116.js"></script></p>
-<p><img decoding="async" src="/wp-content/uploads/2017/02/Count_Success.png" alt="Angular 2 success message" title="Angular 2 success message" /></p>
-<p><img decoding="async" src="/wp-content/uploads/2017/02/Count_Error.png" alt="Angular 2 error message" title="Angular 2 error message" /></p>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/02/Count_Success.png" alt="Angular 2 success message" title="Angular 2 success message" /></p>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/02/Count_Error.png" alt="Angular 2 error message" title="Angular 2 error message" /></p>
 <p>The data and processing behind the component is defined in <code>public/app/count.component.ts</code>:</p>
 <p><script src="https://gist.github.com/am-MongoDB/0f679598352ae900d193d14d7d2ea38e.js"></script></p>
 <p>Starting with the <code>@component</code> decoration for the class:</p>
@@ -556,7 +556,7 @@ this.CountDocError = "";
 <p>Returning to <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/public/app/app.component.html"><code>app.component.html</code></a>; there is some content there in addition to the sub-components:</p>
 <p><script src="https://gist.github.com/am-MongoDB/3b54145980126d6b62680c344bfce3aa.js"></script></p>
 <p>Most of this code is there to allow a full MongoDB URI/connection string to be built based on some user-provided attributes. Within the input elements, two event types (<code>keyup</code> &amp; <code>change</code>) make immediate changes to other values (without the need for a page refresh or pressing a button):</p>
-<p><img decoding="async" src="/wp-content/uploads/2017/02/Reactive_MongoDB_URI.gif" alt="Reactive Angular 2 Component" title="Reactive Angular 2 Component" /></p>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/02/Reactive_MongoDB_URI.gif" alt="Reactive Angular 2 Component" title="Reactive Angular 2 Component" /></p>
 <p>The actions attached to each of these events call methods from the AppComponent class to set the data members – for example the <code>setDBName</code> method (from <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/public/app/add.component.ts"><code>app.component.ts</code></a>):</p>
 <p><script src="https://gist.github.com/am-MongoDB/e8c47296fb7bc7497d56e604ddcf375b.js"></script></p>
 <p>In addition to setting the <code>dBInputs.MongoDBDatabaseName</code> value, it also invokes the data service method <code>calculateMongoDBURI</code> (taken from <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/public/app/app.component.ts"><code>data.service.ts</code></a> ):</p>
@@ -573,37 +573,37 @@ this.CountDocError = "";
 <p>Now that the full MEAN stack application has been implemented, you can test it from within your browser:</p>
 <p><iframe width="560" height="315" src="https://www.youtube.com/embed/z7IE1NHh6FE?rel=0" frameborder="0" allowfullscreen></iframe></p>
 <p>Debugging the Angular 2 client is straightforward using the <a href="https://developer.chrome.com/devtools">Google Chrome Developer Tools</a> which are built into the Chrome browser. Despite the browser executing the transpiled JavaScript the Dev Tools allows you to browse and set breakpoints in your Typescript code:</p>
-<p><img decoding="async" src="/wp-content/uploads/2017/02/Debugging_Angular2_Typescript_withGoogle_Chrom_DevTools.png" alt="" title="Debugging Angular2 and Typescript with Chrome Developer Tools" /></p>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/02/Debugging_Angular2_Typescript_withGoogle_Chrom_DevTools.png" alt="" title="Debugging Angular2 and Typescript with Chrome Developer Tools" /></p>
 <h2>Summary &amp; what&#8217;s next in the series</h2>
 <p>Previous posts stepped through building the Mongopop application back-end. This post describes how to build a front-end client using Angular 2. At this point, we have a complete, working, MEAN stack application.</p>
-<p>The coupling between the front and back-end is loose; the client simply makes remote, HTTP requests to the back-end service – using the interface created in <a href="/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a>.</p>
+<p>The coupling between the front and back-end is loose; the client simply makes remote, HTTP requests to the back-end service – using the interface created in <a href="./../../mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js/index.html" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a>.</p>
 <p>This series will finish out by demonstrating alternate methods to implement front-ends; using ReactJS for another browser-based UI (completing the <strong>MERN stack</strong>) and then more alternative methods.</p>
 <p>Continue following this blog series to step through building the remaining stages of the <a href="https://github.com/am-MongoDB/MongoDB-Mongopop">Mongopop</a> application:</p>
 <ul>
-<li><a href="/mongodb/modern-application-stack-part-1-introducing-the-mean-stack" title="MEAN stack, MERN stack">Part 1: Introducing The MEAN Stack (and the young MERN upstart)</a></li>
-<li><a href="/mongodb/mean_stack_2_mongodb_node_js" title="Using MongoDB With Node.js">Part 2: Using MongoDB With Node.js</a></li>
-<li><a href="/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a></li>
-<li><a href="/mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript" title="Completing the MEAN stack – Mongopop Angular2 client">Part 4: Building a Client UI Using Angular 2 (formerly AngularJS) &amp; TypeScript</a></li>
-<li><a href="/mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern" title="Building an application front-end with ReactJS and ES6">Part 5: Using ReactJS, ES6 &amp; JSX to Build a UI (the rise of MERN)</a></li>
-<li><a href="/mongodb/rest-mobile-app-amazon-alexa-cloud-services" title="Using REST APIs from mobile applications and Amazon Alexa">Part 6: Browsers Aren&#8217;t the Only UI – Mobile Apps, Amazon Alexa, Cloud Services&#8230;</a></li>
+<li><a href="./../../mongodb/modern-application-stack-part-1-introducing-the-mean-stack/index.html" title="MEAN stack, MERN stack">Part 1: Introducing The MEAN Stack (and the young MERN upstart)</a></li>
+<li><a href="./../../mongodb/mean_stack_2_mongodb_node_js/index.html" title="Using MongoDB With Node.js">Part 2: Using MongoDB With Node.js</a></li>
+<li><a href="./../../mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js/index.html" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a></li>
+<li><a href="./../../mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript/index.html" title="Completing the MEAN stack – Mongopop Angular2 client">Part 4: Building a Client UI Using Angular 2 (formerly AngularJS) &amp; TypeScript</a></li>
+<li><a href="./../../mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern/index.html" title="Building an application front-end with ReactJS and ES6">Part 5: Using ReactJS, ES6 &amp; JSX to Build a UI (the rise of MERN)</a></li>
+<li><a href="./../../mongodb/rest-mobile-app-amazon-alexa-cloud-services/index.html" title="Using REST APIs from mobile applications and Amazon Alexa">Part 6: Browsers Aren&#8217;t the Only UI – Mobile Apps, Amazon Alexa, Cloud Services&#8230;</a></li>
 </ul>
 <h2>A simpler way to build your app – MongoDB Stitch, Backend as a Service</h2>
 <p><a href="https://www.mongodb.com/cloud/stitch">MongoDB Stitch</a> is a backend as a service (BaaS), giving developers a REST-like API to MongoDB, and composability with other services, backed by a robust system for configuring fine-grained data access controls. Stitch provides native SDKs for JavaScript, iOS, and Android.</p>
 <p>Built-in integrations give your application frontend access to your favorite third party services: Twilio, AWS S3, Slack, Mailgun, PubNub, Google, and more. For ultimate flexibility, you can add custom integrations using MongoDB Stitch&#8217;s HTTP service.</p>
 <p>MongoDB Stitch allows you to compose multi-stage pipelines that orchestrate data across multiple services; where each stage acts on the data before passing its results on to the next.</p>
 <p>Unlike other BaaS offerings, MongoDB Stitch works with your existing as well as new MongoDB clusters, giving you access to the full power and scalability of the database. By defining appropriate data access rules, you can selectively expose your existing MongoDB data to other applications through MongoDB Stitch&#8217;s API.</p>
-<p>If you&#8217;d like to try it out, <a href="/mongodb/mongodb-stitch-the-latest-and-best-way-to-build-your-app" title="MongoDB Stitch - the latest, and best way to build your app">step through building an application with MongoDB Stitch</a>.</p>
+<p>If you&#8217;d like to try it out, <a href="./../../mongodb/mongodb-stitch-the-latest-and-best-way-to-build-your-app/index.html" title="MongoDB Stitch - the latest, and best way to build your app">step through building an application with MongoDB Stitch</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>The Modern Application Stack – Part 2: Using MongoDB With Node.js</title>
-		<link>/mongodb/mean_stack_2_mongodb_node_js</link>
-					<comments>/mongodb/mean_stack_2_mongodb_node_js#respond</comments>
+		<link>./../../mongodb/mean_stack_2_mongodb_node_js/index.html</link>
+					<comments>./../../mongodb/mean_stack_2_mongodb_node_js/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 02 Feb 2017 07:51:00 +0000</pubDate>
@@ -614,12 +614,12 @@ this.CountDocError = "";
 		<category><![CDATA[mean stack]]></category>
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[typescript]]></category>
-		<guid isPermaLink="false">/?p=4355</guid>
+		<guid isPermaLink="false">./../../index.html?p=4355</guid>
 
 					<description><![CDATA[Introduction This is the second in a series of blog posts examining the technologies that are driving the development of modern web and mobile applications. &#8220;Modern Application Stack – Part 1: Introducing The MEAN Stack&#8221; introduced the technologies making up the MEAN (MongoDB, Express, Angular, Node.js) and MERN (MongoDB, Express, React, Node.js) Stacks, why you]]></description>
 										<content:encoded><![CDATA[<h2>Introduction</h2>
 <p>This is the second in a series of blog posts examining the technologies that are driving the development of modern web and mobile applications.</p>
-<p><a href="/mongodb/modern-application-stack-part-1-introducing-the-mean-stack" title="The Modern Application Stack – Introducing The MEAN Stack">&#8220;Modern Application Stack – Part 1: Introducing The MEAN Stack&#8221;</a> introduced the technologies making up the <strong>MEAN</strong> (<strong>M</strong>ongoDB, <strong>E</strong>xpress, <strong>A</strong>ngular, <strong>N</strong>ode.js) and <strong>MERN</strong> (<strong>M</strong>ongoDB, <strong>E</strong>xpress, <strong>R</strong>eact, <strong>N</strong>ode.js) Stacks, why you might want to use them, and how to combine them to build your web application (or your native mobile or desktop app).</p>
+<p><a href="./../../mongodb/modern-application-stack-part-1-introducing-the-mean-stack/index.html" title="The Modern Application Stack – Introducing The MEAN Stack">&#8220;Modern Application Stack – Part 1: Introducing The MEAN Stack&#8221;</a> introduced the technologies making up the <strong>MEAN</strong> (<strong>M</strong>ongoDB, <strong>E</strong>xpress, <strong>A</strong>ngular, <strong>N</strong>ode.js) and <strong>MERN</strong> (<strong>M</strong>ongoDB, <strong>E</strong>xpress, <strong>R</strong>eact, <strong>N</strong>ode.js) Stacks, why you might want to use them, and how to combine them to build your web application (or your native mobile or desktop app).</p>
 <p>The remainder of the series is focussed on working through the end to end steps of building a real (albeit simple) application – <em>MongoPop</em>.</p>
 <p>This post demonstrates how to use MongoDB from Node.js.</p>
 <h2>MongoDB (recap)</h2>
@@ -642,10 +642,10 @@ this.CountDocError = "";
 <li>Read sample documents</li>
 <li>Apply bulk changes to selected documents</li>
 </ul>
-<p><center><img decoding="async" src="/wp-content/uploads/2017/02/Mongopop_demo.gif" alt="Mongopop Demo" title="Mongopop Demo" /> </center></p>
+<p><center><img decoding="async" src="./../../wp-content/uploads/2017/02/Mongopop_demo.gif" alt="Mongopop Demo" title="Mongopop Demo" /> </center></p>
 <h2>Downloading, running, and using the Mongopop application</h2>
 <p>Rather than installing and running MongoDB ourselves, it&#8217;s simpler to spin one up in <a href="https://cloud.mongodb.com/" title="MongoDB Atlas Cloud Database Service">MongoDB Atlas</a>:</p>
-<p><img decoding="async" src="/wp-content/uploads/2017/02/Create_MongoDB_Atlas_Cluster.gif" alt="Create MongoDB Atlas Cluster" title="Create MongoDB Atlas Cluster" /></p>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/02/Create_MongoDB_Atlas_Cluster.gif" alt="Create MongoDB Atlas Cluster" title="Create MongoDB Atlas Cluster" /></p>
 <p>To get the application code, either <a href="https://github.com/am-MongoDB/Mongopop/archive/master.zip" title="Mongopop - populating MongoDB databases">download and extract the zip file</a> or use <code>git</code> to clone the Mongopop repo:</p>
 <pre><code>git clone git@github.com:am-MongoDB/MongoDB-Mongopop.git
 cd MongoDB-Mongopop
@@ -672,7 +672,7 @@ cd MongoDB-Mongopop
 </ul>
 <p>The rest of the files and directories can be ignored for now – they will be covered in later posts in this series.</p>
 <h2>Architecture</h2>
-<p><img decoding="async" src="/wp-content/uploads/2017/02/MongoDB_NodeJS_Driver.png" alt="Using the JavaScript MongoDB Node.js Driver" title="Using the JavaScript MongoDB Node.js Driver" /></p>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/02/MongoDB_NodeJS_Driver.png" alt="Using the JavaScript MongoDB Node.js Driver" title="Using the JavaScript MongoDB Node.js Driver" /></p>
 <p>The MongoDB Node.js Driver provides a JavaScript API which implements the network protocol required to read and write from a local or remote MongoDB database. If using a <a href="https://docs.mongodb.com/manual/replication/" title="MongoDB Replica Sets">replica set</a> (and you should for production) then the driver also decides which MongoDB instance to send each request to. If using a sharded MongoDB cluster then the driver connects to the <a href="https://docs.mongodb.com/manual/reference/program/mongos/" title="mongos – the MongoDB query router"><code>mongos</code> query router</a>, which in turn picks the correct shard(s) to direct each request to.</p>
 <p>We implement a shallow wrapper for the driver (<code>javascripts/db.js</code>) which simplifies the database interface that the application code (coming in the next post) is exposed to.</p>
 <h4>Code highlights</h4>
@@ -727,22 +727,22 @@ cd MongoDB-Mongopop
 <p>The next part of this series adds the Express framework and uses it to implement a REST API to allow clients to make requests of the MongoDB database. That REST API will subsequently be used by the client application (using Angular in Part 4 or React in Part 5).</p>
 <p>Continue following this blog series to step through building the remaining stages of the <a href="https://github.com/am-MongoDB/MongoDB-Mongopop">MongoPop</a> application:</p>
 <ul>
-<li><a href="/mongodb/modern-application-stack-part-1-introducing-the-mean-stack" title="MEAN stack, MERN stack">Part 1: Introducing The MEAN Stack (and the young MERN upstart)</a></li>
-<li><a href="/mongodb/mean_stack_2_mongodb_node_js" title="Using MongoDB With Node.js">Part 2: Using MongoDB With Node.js</a></li>
-<li><a href="/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a></li>
-<li><a href="/mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript" title="Completing the MEAN stack – Mongopop Angular2 client">Part 4: Building a Client UI Using Angular 2 (formerly AngularJS) &amp; TypeScript</a></li>
-<li><a href="/mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern" title="Building an application front-end with ReactJS and ES6">Part 5: Using ReactJS, ES6 &amp; JSX to Build a UI (the rise of MERN)</a></li>
-<li><a href="/mongodb/rest-mobile-app-amazon-alexa-cloud-services" title="Using REST APIs from mobile applications and Amazon Alexa">Part 6: Browsers Aren&#8217;t the Only UI – Mobile Apps, Amazon Alexa, Cloud Services&#8230;</a></li>
+<li><a href="./../../mongodb/modern-application-stack-part-1-introducing-the-mean-stack/index.html" title="MEAN stack, MERN stack">Part 1: Introducing The MEAN Stack (and the young MERN upstart)</a></li>
+<li><a href="./../../mongodb/mean_stack_2_mongodb_node_js/index.html" title="Using MongoDB With Node.js">Part 2: Using MongoDB With Node.js</a></li>
+<li><a href="./../../mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js/index.html" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a></li>
+<li><a href="./../../mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript/index.html" title="Completing the MEAN stack – Mongopop Angular2 client">Part 4: Building a Client UI Using Angular 2 (formerly AngularJS) &amp; TypeScript</a></li>
+<li><a href="./../../mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern/index.html" title="Building an application front-end with ReactJS and ES6">Part 5: Using ReactJS, ES6 &amp; JSX to Build a UI (the rise of MERN)</a></li>
+<li><a href="./../../mongodb/rest-mobile-app-amazon-alexa-cloud-services/index.html" title="Using REST APIs from mobile applications and Amazon Alexa">Part 6: Browsers Aren&#8217;t the Only UI – Mobile Apps, Amazon Alexa, Cloud Services&#8230;</a></li>
 </ul>
 <h4>A simpler way to build your app – MongoDB Stitch, Backend as a Service</h4>
 <p><a href="https://www.mongodb.com/cloud/stitch">MongoDB Stitch</a> is a backend as a service (BaaS), giving developers a REST-like API to MongoDB, and composability with other services, backed by a robust system for configuring fine-grained data access controls. Stitch provides native SDKs for JavaScript, iOS, and Android.</p>
 <p>Built-in integrations give your application frontend access to your favorite third party services: Twilio, AWS S3, Slack, Mailgun, PubNub, Google, and more. For ultimate flexibility, you can add custom integrations using MongoDB Stitch&#8217;s HTTP service.</p>
 <p>MongoDB Stitch allows you to compose multi-stage pipelines that orchestrate data across multiple services; where each stage acts on the data before passing its results on to the next.</p>
 <p>Unlike other BaaS offerings, MongoDB Stitch works with your existing as well as new MongoDB clusters, giving you access to the full power and scalability of the database. By defining appropriate data access rules, you can selectively expose your existing MongoDB data to other applications through MongoDB Stitch&#8217;s API.</p>
-<p>If you&#8217;d like to try it out, <a href="/mongodb/mongodb-stitch-the-latest-and-best-way-to-build-your-app" title="MongoDB Stitch - the latest, and best way to build your app">step through building an application with MongoDB Stitch</a>.</p>
+<p>If you&#8217;d like to try it out, <a href="./../../mongodb/mongodb-stitch-the-latest-and-best-way-to-build-your-app/index.html" title="MongoDB Stitch - the latest, and best way to build your app">step through building an application with MongoDB Stitch</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/mean_stack_2_mongodb_node_js/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/mean_stack_2_mongodb_node_js/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

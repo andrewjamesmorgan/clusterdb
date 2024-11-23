@@ -9,8 +9,8 @@
 
 <channel>
 	<title>LDAP &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/ldap/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Sun, 11 Apr 2010 00:44:31 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Charts from LDAP Con on LDAP access to MySQL Cluster</title>
-		<link>/mysql-cluster/charts-from-ldap-con-on-ldap-access-to-mysql-cluster</link>
-					<comments>/mysql-cluster/charts-from-ldap-con-on-ldap-access-to-mysql-cluster#respond</comments>
+		<link>./../../mysql-cluster/charts-from-ldap-con-on-ldap-access-to-mysql-cluster/index.html</link>
+					<comments>./../../mysql-cluster/charts-from-ldap-con-on-ldap-access-to-mysql-cluster/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Sun, 11 Apr 2010 00:44:31 +0000</pubDate>
@@ -30,22 +30,22 @@
 		<category><![CDATA[LDAP]]></category>
 		<category><![CDATA[MySQL]]></category>
 		<category><![CDATA[OpenLDAP]]></category>
-		<guid isPermaLink="false">/?p=1031</guid>
+		<guid isPermaLink="false">./../../index.html?p=1031</guid>
 
 					<description><![CDATA[At last year&#8217;s LDAP-Con event, Ludo from OpenDS and Howard from OpenLDAP presented on the work that they&#8217;d done on using MySQL Cluster as the scalable, real-time data store for LDAP directories (going directly to the NDB API rather than using SQL). Symas now provide their implementation (back-ndb) for OpenLDAP. You can view the charts]]></description>
 										<content:encoded><![CDATA[<p>At last year&#8217;s LDAP-Con event, Ludo from OpenDS and Howard from OpenLDAP presented on the work that they&#8217;d done on using MySQL Cluster as the scalable, real-time data store for LDAP directories (going directly to the NDB API rather than using SQL). Symas now provide their implementation (back-ndb) for OpenLDAP.</p>
 <p>You can view the charts at <a href="http://www.mysql.com/customers/view/?id=1041" target="_blank">http://www.mysql.com/customers/view/?id=1041</a></p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/charts-from-ldap-con-on-ldap-access-to-mysql-cluster/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/charts-from-ldap-con-on-ldap-access-to-mysql-cluster/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Accessing the same data through LDAP and SQL</title>
-		<link>/mysql-cluster/accessing-the-same-data-through-ldap-and-sql</link>
-					<comments>/mysql-cluster/accessing-the-same-data-through-ldap-and-sql#respond</comments>
+		<link>./../../mysql-cluster/accessing-the-same-data-through-ldap-and-sql/index.html</link>
+					<comments>./../../mysql-cluster/accessing-the-same-data-through-ldap-and-sql/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 09 Oct 2009 13:25:41 +0000</pubDate>
@@ -54,16 +54,16 @@
 		<category><![CDATA[MySQL]]></category>
 		<category><![CDATA[MySQL Cluster CGE]]></category>
 		<category><![CDATA[OpenLDAP]]></category>
-		<guid isPermaLink="false">/?p=581</guid>
+		<guid isPermaLink="false">./../../index.html?p=581</guid>
 
 					<description><![CDATA[OpenLDAP includes a driver that allows it to store and access data held in MySQL Cluster. It uses the NDB-API to access the database and so the performance is extremely good. One of the great things about the solution is that it lets you simultaneously access the same data through both LDAP and SQL (or]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2009/10/LDAP-and-SQL-access-to-Cluster.jpg"><img fetchpriority="high" decoding="async" class="alignright size-medium wp-image-595" title="LDAP and SQL access to Cluster" src="/wp-content/uploads/2009/10/LDAP-and-SQL-access-to-Cluster-300x266.jpg" alt="LDAP and SQL access to Cluster" width="300" height="266" srcset="/wp-content/uploads/2009/10/LDAP-and-SQL-access-to-Cluster-300x266.jpg 300w, /wp-content/uploads/2009/10/LDAP-and-SQL-access-to-Cluster.jpg 567w" sizes="(max-width: 300px) 100vw, 300px" /></a>OpenLDAP includes a driver that allows it to store and access data held in MySQL Cluster. It uses the NDB-API to access the database and so the performance is extremely good. One of the great things about the solution is that it lets you simultaneously access the same data through both LDAP and SQL (or the NDB-API or any of the MySQL connectors). This article gives an example of how this can be done. </p>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2009/10/LDAP-and-SQL-access-to-Cluster.jpg"><img fetchpriority="high" decoding="async" class="alignright size-medium wp-image-595" title="LDAP and SQL access to Cluster" src="./../../wp-content/uploads/2009/10/LDAP-and-SQL-access-to-Cluster-300x266.jpg" alt="LDAP and SQL access to Cluster" width="300" height="266" srcset="./../../wp-content/uploads/2009/10/LDAP-and-SQL-access-to-Cluster-300x266.jpg 300w, ./../../wp-content/uploads/2009/10/LDAP-and-SQL-access-to-Cluster.jpg 567w" sizes="(max-width: 300px) 100vw, 300px" /></a>OpenLDAP includes a driver that allows it to store and access data held in MySQL Cluster. It uses the NDB-API to access the database and so the performance is extremely good. One of the great things about the solution is that it lets you simultaneously access the same data through both LDAP and SQL (or the NDB-API or any of the MySQL connectors). This article gives an example of how this can be done. </p>
 <h3>Prerequisites:</h3>
-<p>This article assumes that you&#8217;ve already installed MySQL Cluster  &#8211; if that isn&#8217;t the case then please first refer to &#8220;<a href="/mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host/" target="_blank">Creating a simple Cluster on a single LINUX host</a>&#8221; or &#8220;<a href="/mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/" target="_blank">Deploying MySQL Cluster over multiple hosts</a>&#8220;.</p>
+<p>This article assumes that you&#8217;ve already installed MySQL Cluster  &#8211; if that isn&#8217;t the case then please first refer to &#8220;<a href="./../../mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host/index.html" target="_blank">Creating a simple Cluster on a single LINUX host</a>&#8221; or &#8220;<a href="./../../mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/index.html" target="_blank">Deploying MySQL Cluster over multiple hosts</a>&#8220;.</p>
 <p>Once MySQL Cluster has been installed, you need to build and configure OpenLDAP to use MySQL Cluster (alternatively, you can engage Symas to provide you pre-built binaries); Johan provides a good walkthrough of this in his Blog &#8220;<a href="http://www.severalnines.com/blog/openldap.php" target="_blank">OpenLDAP for MySQL Cluster</a>&#8220;. One extra note is that slapd must be run as root due to the ports it accesses. That Blog entry also explains how to test that everything is working &#8211; do that before proceeding to the next step.</p>
 <h3>Example 1 Extending the LDAP Data Schema and reading/writing the data through LDAP and SQL:</h3>
 <p>The standard schemas that come with OpenLDAP will be suitable for lots of scenarios that have typically used directories. In this article, we&#8217;re interested in other applications where we need to store and access additional attributes.</p>
-<p>We create a new schema file &#8220;<a href="/wp-content/uploads/2009/10/x-clusterdb-hlr.schema">x-clusterdb-hlr.schema</a>&#8221; that represents some of the data that would be needed for an HLR application:</p>
+<p>We create a new schema file &#8220;<a href="./../../wp-content/uploads/2009/10/x-clusterdb-hlr.schema">x-clusterdb-hlr.schema</a>&#8221; that represents some of the data that would be needed for an HLR application:</p>
 <pre style="padding-left: 30px;color: #993300;font-size: 11px">attributetype ( 1.3.6.1.4.1.33913.1.0 NAME 'clusterdbsubid'
 DESC 'Represents the internal subscriber identifier'
 EQUALITY integerMatch
@@ -127,7 +127,7 @@ DESC 'The HLR data record for a subscriber'
 MUST (clusterdbsubid $ clusterdbimsi)
 MAY (clusterdbmsisdn $ clusterdbvlrnumber $ clusterdbsmscnumber $ clusterdbsmscount $ clusterdbcfu $ clusterdbcfnryt))</pre>
 <p>One thing to note is that the identifier for each objectclass or attributetype has to be globally unique and you should apply for a unique prefix for your organization from the <a href="http://pen.iana.org/pen/PenApplication.page" target="_blank">Internet Assigned Numbers Authority</a> &#8211; the enterprise ID for clusterdb.com is  33913 and so any identifier starting with 1.3.6.1.4.1.33913 has been defined by clusterdb.com. This article does not attempt to explain exactly how to define your own schema; you can use this example as a starting point and then refer to the <a href="http://www.openldap.org/doc/admin24/schema.html#Extending%20Schema" target="_blank">OpenLDAP chapter on extending schemas</a>.</p>
-<p>To use this schema, you need to copy the schema file to the &#8216;schema&#8217; directory in the OpenLDAP installation directory &#8211; for example &#8220;/usr/local/openldap/etc/openldap/schema&#8221;. The &#8220;<a href="/wp-content/uploads/2009/10/slapd.conf">slapd.conf</a>&#8221; file also needs updating/replacing to include the new schema (and in our case, change the domain and database name to clusterdb):</p>
+<p>To use this schema, you need to copy the schema file to the &#8216;schema&#8217; directory in the OpenLDAP installation directory &#8211; for example &#8220;/usr/local/openldap/etc/openldap/schema&#8221;. The &#8220;<a href="./../../wp-content/uploads/2009/10/slapd.conf">slapd.conf</a>&#8221; file also needs updating/replacing to include the new schema (and in our case, change the domain and database name to clusterdb):</p>
 <pre style="padding-left: 30px;color: #993300;font-size: 11px">include      /usr/local/openldap/etc/openldap/schema/core.schema
 include     /usr/local/openldap/etc/openldap/schema/cosine.schema
 include     /usr/local/openldap/etc/openldap/schema/inetorgperson.schema
@@ -150,7 +150,7 @@ dbpass ""
 dbconnections 2
 attrset billy clusterdbreleasemaj,clusterdbreleasemin</pre>
 <p>For this to take effect, you now need to stop and restart the slapd process.</p>
-<p>To test that everything is working as intended, we need some test data covering the new schema &#8211; create a file called &#8220;<a href="/wp-content/uploads/2009/10/add_clusterdb_hlr.txt">add_clusterdb_hlr.txt</a>&#8220;:</p>
+<p>To test that everything is working as intended, we need some test data covering the new schema &#8211; create a file called &#8220;<a href="./../../wp-content/uploads/2009/10/add_clusterdb_hlr.txt">add_clusterdb_hlr.txt</a>&#8220;:</p>
 <pre style="padding-left: 30px;color: #993300;font-size: 11px">dn: dc=clusterdb,dc=com
 dc: clusterdb
 objectClass: dcObject
@@ -393,15 +393,15 @@ result: 0 Success
 <p>If you want to hide this extra step from the application then you can of course use stored procedures to automatically add the extra row to OL_dn2id.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/accessing-the-same-data-through-ldap-and-sql/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/accessing-the-same-data-through-ldap-and-sql/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Upcoming Webinar: Guide to Scaling OpenLDAP: MySQL Cluster as Data Store for OpenLDAP Directories</title>
-		<link>/mysql-cluster/upcoming-webinar-guide-to-scaling-openldap-mysql-cluster-as-data-store-for-openldap-directories</link>
-					<comments>/mysql-cluster/upcoming-webinar-guide-to-scaling-openldap-mysql-cluster-as-data-store-for-openldap-directories#respond</comments>
+		<link>./../../mysql-cluster/upcoming-webinar-guide-to-scaling-openldap-mysql-cluster-as-data-store-for-openldap-directories/index.html</link>
+					<comments>./../../mysql-cluster/upcoming-webinar-guide-to-scaling-openldap-mysql-cluster-as-data-store-for-openldap-directories/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 19 Jun 2009 10:27:17 +0000</pubDate>
@@ -411,10 +411,10 @@ result: 0 Success
 		<category><![CDATA[MySQL]]></category>
 		<category><![CDATA[OpenLDAP]]></category>
 		<category><![CDATA[Symas]]></category>
-		<guid isPermaLink="false">/?p=199</guid>
+		<guid isPermaLink="false">./../../index.html?p=199</guid>
 
 					<description><![CDATA[From MySQL Cluster 7.0, it&#8217;s possible to use Cluster as the Data Store for the OpenLDAP Directory Server &#8211; this has 2 very signifficant implications: All of the advantages of MySQL Cluster (scalability, high availability and cost) can now be applied to your directory server deployment The same data held in a MySQL Cluster database]]></description>
-										<content:encoded><![CDATA[<div id="attachment_201" style="width: 234px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/06/howardchumysql.jpg"><img decoding="async" aria-describedby="caption-attachment-201" class="size-medium wp-image-201" title="Howard Chu with Johan at MySQL UC 2009" src="/wp-content/uploads/2009/06/howardchumysql-224x300.jpg" alt="Howard Chu with Johan Andersson at MySQL User Conference 2009" width="224" height="300" srcset="/wp-content/uploads/2009/06/howardchumysql-224x300.jpg 224w, /wp-content/uploads/2009/06/howardchumysql.jpg 448w" sizes="(max-width: 224px) 100vw, 224px" /></a><p id="caption-attachment-201" class="wp-caption-text">Howard Chu with Johan Andersson at MySQL User Conference 2009</p></div>
+										<content:encoded><![CDATA[<div id="attachment_201" style="width: 234px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2009/06/howardchumysql.jpg"><img decoding="async" aria-describedby="caption-attachment-201" class="size-medium wp-image-201" title="Howard Chu with Johan at MySQL UC 2009" src="./../../wp-content/uploads/2009/06/howardchumysql-224x300.jpg" alt="Howard Chu with Johan Andersson at MySQL User Conference 2009" width="224" height="300" srcset="./../../wp-content/uploads/2009/06/howardchumysql-224x300.jpg 224w, ./../../wp-content/uploads/2009/06/howardchumysql.jpg 448w" sizes="(max-width: 224px) 100vw, 224px" /></a><p id="caption-attachment-201" class="wp-caption-text">Howard Chu with Johan Andersson at MySQL User Conference 2009</p></div>
 <p>From MySQL Cluster 7.0, it&#8217;s possible to use Cluster as the Data Store for the OpenLDAP Directory Server &#8211; this has 2 very signifficant implications:</p>
 <ol>
 <li>All of the advantages of MySQL Cluster (scalability, high availability and cost) can now be applied to your directory server deployment</li>
@@ -440,7 +440,7 @@ Wed, Jun 24:     20:00 Eastern European time</p>
 <p>The presentation will be approximately 45 minutes long followed by Q&amp;A.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/upcoming-webinar-guide-to-scaling-openldap-mysql-cluster-as-data-store-for-openldap-directories/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/upcoming-webinar-guide-to-scaling-openldap-mysql-cluster-as-data-store-for-openldap-directories/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

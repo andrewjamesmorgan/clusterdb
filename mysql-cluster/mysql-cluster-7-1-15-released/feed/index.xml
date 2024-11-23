@@ -8,8 +8,8 @@
 <channel>
 	<title>
 	Comments on: MySQL Cluster 7.1.15 released	</title>
-	<atom:link href="/mysql-cluster/mysql-cluster-7-1-15-released/feed" rel="self" type="application/rss+xml" />
-	<link>/mysql-cluster/mysql-cluster-7-1-15-released</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../mysql-cluster-7-1-15-released/index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Thu, 22 Sep 2011 07:18:30 +0000</lastBuildDate>
 	<sy:updatePeriod>
@@ -20,20 +20,20 @@
 	<item>
 		<title>
 		By: admin		</title>
-		<link>/mysql-cluster/mysql-cluster-7-1-15-released#comment-491</link>
+		<link>./../mysql-cluster-7-1-15-released/index.html#comment-491</link>
 
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Thu, 22 Sep 2011 07:18:30 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1908#comment-491</guid>
+		<guid isPermaLink="false">./../../index.html?p=1908#comment-491</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-1-15-released#comment-490&quot;&gt;Ram&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-1-15-released/index.html#comment-490&quot;&gt;Ram&lt;/a&gt;.
 
 Hi Ram,
 
  note that as you have set noofreplicas to 2, every row in a cluster table will be stored twice (once on each of 2 data nodes) and so your 4 Gbyte table will actually require 8 GBytes - if you have 2 servers than that means 4 GBytes on each. If you need to store that table on those servers (and can&#039;t add more memory) then consider storing at least some of the columns on disk rather than in memory... &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.1/en/mysql-cluster-disk-data.html&quot; rel=&quot;nofollow&quot;&gt;http://dev.mysql.com/doc/refman/5.1/en/mysql-cluster-disk-data.html&lt;/a&gt;
 
 Regards, Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-1-15-released#comment-490">Ram</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-1-15-released/index.html#comment-490">Ram</a>.</p>
 <p>Hi Ram,</p>
 <p> note that as you have set noofreplicas to 2, every row in a cluster table will be stored twice (once on each of 2 data nodes) and so your 4 Gbyte table will actually require 8 GBytes &#8211; if you have 2 servers than that means 4 GBytes on each. If you need to store that table on those servers (and can&#8217;t add more memory) then consider storing at least some of the columns on disk rather than in memory&#8230; <a href="http://dev.mysql.com/doc/refman/5.1/en/mysql-cluster-disk-data.html" rel="nofollow">http://dev.mysql.com/doc/refman/5.1/en/mysql-cluster-disk-data.html</a></p>
 <p>Regards, Andrew.</p>
@@ -43,11 +43,11 @@ Regards, Andrew.]]></description>
 		<item>
 		<title>
 		By: Ram		</title>
-		<link>/mysql-cluster/mysql-cluster-7-1-15-released#comment-490</link>
+		<link>./../mysql-cluster-7-1-15-released/index.html#comment-490</link>
 
 		<dc:creator><![CDATA[Ram]]></dc:creator>
 		<pubDate>Thu, 22 Sep 2011 04:56:17 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1908#comment-490</guid>
+		<guid isPermaLink="false">./../../index.html?p=1908#comment-490</guid>
 
 					<description><![CDATA[I have two systems, 2GB RAM, i configured ndbd defualt with following values.
 [ndbd default]
@@ -83,20 +83,20 @@ IndexMemory= 256M</p>
 		<item>
 		<title>
 		By: admin		</title>
-		<link>/mysql-cluster/mysql-cluster-7-1-15-released#comment-489</link>
+		<link>./../mysql-cluster-7-1-15-released/index.html#comment-489</link>
 
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Wed, 21 Sep 2011 08:04:25 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1908#comment-489</guid>
+		<guid isPermaLink="false">./../../index.html?p=1908#comment-489</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-1-15-released#comment-488&quot;&gt;Ram&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-1-15-released/index.html#comment-488&quot;&gt;Ram&lt;/a&gt;.
 
 Hi Ram,
 
  you don&#039;t mention what errors your seeing but it could well be that you haven&#039;t configured enough memory for your data nodes. MySQL Cluster doesn&#039;t allocate memory dynamically - when the data nodes start up the total amount of memory is allocated and then you eat into that as rows are added. You configure the amount of memory allocated by setting the DataMemory and IndexMemory parameters in the [ndbd default] section of your config.ini file.
 
 Regards, Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-1-15-released#comment-488">Ram</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-1-15-released/index.html#comment-488">Ram</a>.</p>
 <p>Hi Ram,</p>
 <p> you don&#8217;t mention what errors your seeing but it could well be that you haven&#8217;t configured enough memory for your data nodes. MySQL Cluster doesn&#8217;t allocate memory dynamically &#8211; when the data nodes start up the total amount of memory is allocated and then you eat into that as rows are added. You configure the amount of memory allocated by setting the DataMemory and IndexMemory parameters in the [ndbd default] section of your config.ini file.</p>
 <p>Regards, Andrew.</p>
@@ -106,11 +106,11 @@ Regards, Andrew.]]></description>
 		<item>
 		<title>
 		By: Ram		</title>
-		<link>/mysql-cluster/mysql-cluster-7-1-15-released#comment-488</link>
+		<link>./../mysql-cluster-7-1-15-released/index.html#comment-488</link>
 
 		<dc:creator><![CDATA[Ram]]></dc:creator>
 		<pubDate>Wed, 21 Sep 2011 05:24:02 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1908#comment-488</guid>
+		<guid isPermaLink="false">./../../index.html?p=1908#comment-488</guid>
 
 					<description><![CDATA[Hi the above problem was solved. but now i want to load 4GB of data, but it is breaking. how n where should i mention those memory related stuff?]]></description>
 			<content:encoded><![CDATA[<p>Hi the above problem was solved. but now i want to load 4GB of data, but it is breaking. how n where should i mention those memory related stuff?</p>
@@ -120,11 +120,11 @@ Regards, Andrew.]]></description>
 		<item>
 		<title>
 		By: Ram		</title>
-		<link>/mysql-cluster/mysql-cluster-7-1-15-released#comment-487</link>
+		<link>./../mysql-cluster-7-1-15-released/index.html#comment-487</link>
 
 		<dc:creator><![CDATA[Ram]]></dc:creator>
 		<pubDate>Tue, 20 Sep 2011 11:30:28 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1908#comment-487</guid>
+		<guid isPermaLink="false">./../../index.html?p=1908#comment-487</guid>
 
 					<description><![CDATA[Hi, i&#039;m doing this in two window boxs.
 workstation 1(172.20.1.82) config file:
@@ -227,28 +227,28 @@ ndb-connectstring=&#8217;host=172.20.1.82&#8242;</p>
 		<item>
 		<title>
 		By: admin		</title>
-		<link>/mysql-cluster/mysql-cluster-7-1-15-released#comment-486</link>
+		<link>./../mysql-cluster-7-1-15-released/index.html#comment-486</link>
 
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Mon, 19 Sep 2011 10:02:27 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1908#comment-486</guid>
+		<guid isPermaLink="false">./../../index.html?p=1908#comment-486</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-1-15-released#comment-485&quot;&gt;Ram&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-1-15-released/index.html#comment-485&quot;&gt;Ram&lt;/a&gt;.
 
-A good place to start for deploying a cluster over multiple Linux hosts is /mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-1-15-released#comment-485">Ram</a>.</p>
-<p>A good place to start for deploying a cluster over multiple Linux hosts is <a href="/mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/" rel="ugc">/mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/</a></p>
+A good place to start for deploying a cluster over multiple Linux hosts is ./../deploying-mysql-cluster-over-multiple-hosts/]]>/index.html</description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-1-15-released/index.html#comment-485">Ram</a>.</p>
+<p>A good place to start for deploying a cluster over multiple Linux hosts is <a href="./../deploying-mysql-cluster-over-multiple-hosts/index.html" rel="ugc">./../deploying-mysql-cluster-over-multiple-hosts/index.html</a></p>
 ]]></content:encoded>
 		
 			</item>
 		<item>
 		<title>
 		By: Ram		</title>
-		<link>/mysql-cluster/mysql-cluster-7-1-15-released#comment-485</link>
+		<link>./../mysql-cluster-7-1-15-released/index.html#comment-485</link>
 
 		<dc:creator><![CDATA[Ram]]></dc:creator>
 		<pubDate>Mon, 19 Sep 2011 09:31:12 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1908#comment-485</guid>
+		<guid isPermaLink="false">./../../index.html?p=1908#comment-485</guid>
 
 					<description><![CDATA[Can you please send me some doc/url guide to install data nodes and cluster mgmt setup in Linux redhad systems. I have 4systems, i want to put data nodes across all the machines and retrieve. how to retrieve also please send me doc.]]></description>
 			<content:encoded><![CDATA[<p>Can you please send me some doc/url guide to install data nodes and cluster mgmt setup in Linux redhad systems. I have 4systems, i want to put data nodes across all the machines and retrieve. how to retrieve also please send me doc.</p>
@@ -258,13 +258,13 @@ A good place to start for deploying a cluster over multiple Linux hosts is /mysq
 		<item>
 		<title>
 		By: admin		</title>
-		<link>/mysql-cluster/mysql-cluster-7-1-15-released#comment-484</link>
+		<link>./../mysql-cluster-7-1-15-released/index.html#comment-484</link>
 
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Wed, 14 Sep 2011 09:54:24 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1908#comment-484</guid>
+		<guid isPermaLink="false">./../../index.html?p=1908#comment-484</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-1-15-released#comment-483&quot;&gt;Ram&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-1-15-released/index.html#comment-483&quot;&gt;Ram&lt;/a&gt;.
 
 The table data is automatically horizontally partitioned across all of the data nodes. You don&#039;t get to choose that you want a particular table to be stored on a particular data node.
 
@@ -273,7 +273,7 @@ The MySQL Server chooses a data node to send the query to and that data node wil
 You can perform complex queries including cross-table joins.
 
 Regards, Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-1-15-released#comment-483">Ram</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-1-15-released/index.html#comment-483">Ram</a>.</p>
 <p>The table data is automatically horizontally partitioned across all of the data nodes. You don&#8217;t get to choose that you want a particular table to be stored on a particular data node.</p>
 <p>The MySQL Server chooses a data node to send the query to and that data node will co-ordinate with the other data nodes if necessary to provide the response back to the MySQL Server. You can send a query (read or write) to any MySQL Server as they all have access to all data nodes.</p>
 <p>You can perform complex queries including cross-table joins.</p>
@@ -284,11 +284,11 @@ Regards, Andrew.]]></description>
 		<item>
 		<title>
 		By: Ram		</title>
-		<link>/mysql-cluster/mysql-cluster-7-1-15-released#comment-483</link>
+		<link>./../mysql-cluster-7-1-15-released/index.html#comment-483</link>
 
 		<dc:creator><![CDATA[Ram]]></dc:creator>
 		<pubDate>Tue, 13 Sep 2011 11:03:04 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1908#comment-483</guid>
+		<guid isPermaLink="false">./../../index.html?p=1908#comment-483</guid>
 
 					<description><![CDATA[I have small query. In mysql cluster can we do the following scenarios?
 Let us assume we have 4 data nodes. Each data node has different tables. 

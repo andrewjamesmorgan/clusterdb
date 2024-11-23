@@ -9,8 +9,8 @@
 
 <channel>
 	<title>BKA &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/bka/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Wed, 01 Jul 2009 20:12:26 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>MySQL Cluster Multi-Range Read using NDB API</title>
-		<link>/mysql-cluster/mysql-cluster-multi-range-read-using-ndb-api</link>
-					<comments>/mysql-cluster/mysql-cluster-multi-range-read-using-ndb-api#respond</comments>
+		<link>./../../mysql-cluster/mysql-cluster-multi-range-read-using-ndb-api/index.html</link>
+					<comments>./../../mysql-cluster/mysql-cluster-multi-range-read-using-ndb-api/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 01 Jul 2009 20:12:26 +0000</pubDate>
@@ -33,13 +33,13 @@
 		<category><![CDATA[Multi-Range Read]]></category>
 		<category><![CDATA[MySQL]]></category>
 		<category><![CDATA[MySQL Cluster CGE]]></category>
-		<guid isPermaLink="false">/?p=227</guid>
+		<guid isPermaLink="false">./../../index.html?p=227</guid>
 
 					<description><![CDATA[As described in &#8220;Batching &#8211; improving MySQL Cluster performance when using the NDB API&#8220;, reducing the number of times the application node has to access the data nodes can greatly improve performance and reduce latency. That article focussed on setting up multiple operatations (as part of a single transaction) and then executing them as a]]></description>
-										<content:encoded><![CDATA[<p>As described in &#8220;<a href="/mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api/" target="_blank">Batching &#8211; improving MySQL Cluster performance when using the NDB API</a>&#8220;, reducing the number of times the application node has to access the data nodes can greatly improve performance and reduce latency. That article focussed on setting up multiple operatations (as part of a single transaction) and then executing them as a single batch sent by the NDB API library to the data nodes.</p>
+										<content:encoded><![CDATA[<p>As described in &#8220;<a href="./../../mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api/index.html" target="_blank">Batching &#8211; improving MySQL Cluster performance when using the NDB API</a>&#8220;, reducing the number of times the application node has to access the data nodes can greatly improve performance and reduce latency. That article focussed on setting up multiple operatations (as part of a single transaction) and then executing them as a single batch sent by the NDB API library to the data nodes.</p>
 <p>The purpose of this entry is to show how a single NDB API operation can access multiple rows from a table with a single index lookup. It goes on to explain the signifficance of this both now and in the future (much faster joins using SQL for MySQL Cluster tables).</p>
 <p>There are several operation types to cover table scans and index lookups (refer to the &#8220;<a href="http://dev.mysql.com/doc/ndbapi/en/index.html" target="_blank">MySQL Cluster API Developer Guide</a>&#8221; for detals). For this example, I use an NdbIndexScanOperation.</p>
-<p>The code sample assumes that the following table structure and data has been set up for table &#8220;COUNTRY&#8221; in database &#8220;TEST_DB_1&#8221; using the NDB storage engine (Note that the <a href="/wp-content/uploads/2009/07/mrr_example.cpp" target="_blank">full example application </a>sets this up automatically):</p>
+<p>The code sample assumes that the following table structure and data has been set up for table &#8220;COUNTRY&#8221; in database &#8220;TEST_DB_1&#8221; using the NDB storage engine (Note that the <a href="./../../wp-content/uploads/2009/07/mrr_example.cpp" target="_blank">full example application </a>sets this up automatically):</p>
 <pre style="padding-left: 30px; font-size: 11px;color: #993300;">+--------------+------------------+------+-----+---------+-------+
 | Field        | Type             | Null | Key | Default | Extra |
 +--------------+------------------+------+-----+---------+-------+
@@ -62,7 +62,7 @@
 |      1 |           44 |
 |      8 |            1 |
 +--------+--------------+</pre>
-<p>The following code causes the NDB API library to send a single request from the application to the data nodes to read the rows where the primary key &#8220;SUB_ID&#8221; falls into the ranges (2&lt;= SUB_ID &lt;4); (5 &lt; SUB_ID &lt;=9) or (SUB_ID == 13). Note that this is just a fragment of the code and the error checking has been removed for clarity (refer to  <a href="/wp-content/uploads/2009/07/mrr_example.cpp" target="_blank">full example application </a>to see the rest of the code, including the error handling).</p>
+<p>The following code causes the NDB API library to send a single request from the application to the data nodes to read the rows where the primary key &#8220;SUB_ID&#8221; falls into the ranges (2&lt;= SUB_ID &lt;4); (5 &lt; SUB_ID &lt;=9) or (SUB_ID == 13). Note that this is just a fragment of the code and the error checking has been removed for clarity (refer to  <a href="./../../wp-content/uploads/2009/07/mrr_example.cpp" target="_blank">full example application </a>to see the rest of the code, including the error handling).</p>
 <pre style="padding-left: 30px; font-size: 11px;color: #993300;">NdbIndexScanOperation *psop;
 
 /* RecAttrs for NdbRecAttr Api */
@@ -152,7 +152,7 @@ psop-&gt;close();</pre>
 Of course, it&#8217;s simple to get the same results using SQL&#8230;<code>SELECT birthday.name, birthday.day, birthday.month FROM friends, birthday WHERE friend.name='Andrew' AND friends.friend=birthday.name;</code><strong>However</strong>, if the tables are very large and I have a lot of friends then performing this join using SQL can be expensive as it requires a separate trip to the data nodes to fetch each birthday. In the future, Batched Key Access (BKA) will optimise these joins by performing one of these NDB API Multi-Range Reads (MRR) to fetch all of the birthdays in one go!  Until then, using the NDB API directly can deliver signifficantly faster results.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/mysql-cluster-multi-range-read-using-ndb-api/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/mysql-cluster-multi-range-read-using-ndb-api/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

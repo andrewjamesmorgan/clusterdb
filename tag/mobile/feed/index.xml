@@ -9,8 +9,8 @@
 
 <channel>
 	<title>mobile &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/mobile/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Fri, 17 Dec 2021 17:21:40 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Goodbye NSPredicate, hello Realm Swift Query API</title>
-		<link>/mongodb/goodbye-nspredicate-hello-realm-swift-query-api</link>
-					<comments>/mongodb/goodbye-nspredicate-hello-realm-swift-query-api#respond</comments>
+		<link>./../../mongodb/goodbye-nspredicate-hello-realm-swift-query-api/index.html</link>
+					<comments>./../../mongodb/goodbye-nspredicate-hello-realm-swift-query-api/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 17 Dec 2021 17:21:40 +0000</pubDate>
@@ -31,7 +31,7 @@
 		<category><![CDATA[ios]]></category>
 		<category><![CDATA[mobile]]></category>
 		<category><![CDATA[Swift]]></category>
-		<guid isPermaLink="false">/?p=4647</guid>
+		<guid isPermaLink="false">./../../index.html?p=4647</guid>
 
 					<description><![CDATA[Introduction I&#8217;m not a fan of writing code using pseudo-English text strings. It&#8217;s a major context switch when you&#8217;ve been writing &#8220;native&#8221; code. Compilers don&#8217;t detect errors in the strings, whether syntax errors or mismatched types, leaving you to learn of your mistakes when your app crashes. I spent more than seven years working at]]></description>
 										<content:encoded><![CDATA[<h2>Introduction</h2>
@@ -211,15 +211,15 @@ let decisions = unfilteredDecisions.filter(predicate)
 <p>Please provide feedback and ask any questions in the <a href="https://www.mongodb.com/community/forums/c/realm-sdks/58">Realm Community Forum</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/goodbye-nspredicate-hello-realm-swift-query-api/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/goodbye-nspredicate-hello-realm-swift-query-api/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Using Maps and Location Data in Your SwiftUI (+Realm) App</title>
-		<link>/mongodb/realm/maps</link>
-					<comments>/mongodb/realm/maps#respond</comments>
+		<link>./../../mongodb/realm/maps/index.html</link>
+					<comments>./../../mongodb/realm/maps/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 12 Jul 2021 12:46:04 +0000</pubDate>
@@ -228,7 +228,7 @@ let decisions = unfilteredDecisions.filter(predicate)
 		<category><![CDATA[mobile]]></category>
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[SwiftUI]]></category>
-		<guid isPermaLink="false">/?p=4620</guid>
+		<guid isPermaLink="false">./../../index.html?p=4620</guid>
 
 					<description><![CDATA[Introduction Embedding Apple Maps and location functionality in SwiftUI apps used to be a bit of a pain. It required writing your own SwiftUI wrapper around UIKit code—see these examples from the O-FISH app: Location helper Map views If you only need to support iOS14 and later, then you can forget most of that messy]]></description>
 										<content:encoded><![CDATA[<h2>Introduction</h2>
@@ -498,15 +498,15 @@ self.location = [location.longitude, location.latitude]
 <p>If you have questions, please head to our <a href="https://community.mongodb.com/">developer community website</a> where the MongoDB engineers and the MongoDB community will help you build your next big idea with MongoDB.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/realm/maps/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/realm/maps/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>New article on migrating Apple&#8217;s Scrumdinger tutorial app to Realm</title>
-		<link>/mongodb/realm/new-article-on-migrating-apples-scrumdinger-tutorial-app-to-realm</link>
-					<comments>/mongodb/realm/new-article-on-migrating-apples-scrumdinger-tutorial-app-to-realm#respond</comments>
+		<link>./../../mongodb/realm/new-article-on-migrating-apples-scrumdinger-tutorial-app-to-realm/index.html</link>
+					<comments>./../../mongodb/realm/new-article-on-migrating-apples-scrumdinger-tutorial-app-to-realm/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 12 Apr 2021 08:53:15 +0000</pubDate>
@@ -515,7 +515,7 @@ self.location = [location.longitude, location.latitude]
 		<category><![CDATA[mobile]]></category>
 		<category><![CDATA[Swift]]></category>
 		<category><![CDATA[SwiftUI]]></category>
-		<guid isPermaLink="false">/?p=4604</guid>
+		<guid isPermaLink="false">./../../index.html?p=4604</guid>
 
 					<description><![CDATA[Apple published a great tutorial to teach developers how to create iOS apps using Swift and SwiftUI. I particularly like it because it doesn&#8217;t make any assumptions about existing UIKit experience, making it ideal for developers new to iOS. That tutorial is built around an app named &#8220;Scrumdinger,&#8221; which is designed to facilitate daily scrum]]></description>
 										<content:encoded><![CDATA[
@@ -552,15 +552,15 @@ An immediate benefit of the move is that changes are now persisted immediately, 
 
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/realm/new-article-on-migrating-apples-scrumdinger-tutorial-app-to-realm/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/realm/new-article-on-migrating-apples-scrumdinger-tutorial-app-to-realm/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Building a Mobile Chat App Using Realm – Data Architecture</title>
-		<link>/uncategorized/building-a-mobile-chat-app-using-realm-data-architecture</link>
-					<comments>/uncategorized/building-a-mobile-chat-app-using-realm-data-architecture#respond</comments>
+		<link>./../../uncategorized/building-a-mobile-chat-app-using-realm-data-architecture/index.html</link>
+					<comments>./../../uncategorized/building-a-mobile-chat-app-using-realm-data-architecture/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 07 Jan 2021 08:09:00 +0000</pubDate>
@@ -571,7 +571,7 @@ An immediate benefit of the move is that changes are now persisted immediately, 
 		<category><![CDATA[ios]]></category>
 		<category><![CDATA[mobile]]></category>
 		<category><![CDATA[mongodb]]></category>
-		<guid isPermaLink="false">/?p=4580</guid>
+		<guid isPermaLink="false">./../../index.html?p=4580</guid>
 
 					<description><![CDATA[I&#8217;ve just built an iOS chat app using SwiftUI, Realm, and Realm Sync. I decided on a chat app as it makes an interesting case study for designing a data model and controlling who can access what data: A chat message needs to be viewable by all members of a chat room and no one else.]]></description>
 										<content:encoded><![CDATA[<p>I&#8217;ve just built an <a href="https://github.com/ClusterDB/RChat" target="_blank" rel="noopener">iOS chat app</a> using SwiftUI, Realm, and Realm Sync. I decided on a chat app as it makes an interesting case study for designing a data model and controlling who can access what data:</p>
@@ -587,15 +587,15 @@ An immediate benefit of the move is that changes are now persisted immediately, 
 <p>Checkout <a href="https://developer.mongodb.com/how-to/realm-swiftui-ios-chat-app">Building a Mobile Chat App Using Realm – Data Architecture</a> for all of the details.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/uncategorized/building-a-mobile-chat-app-using-realm-data-architecture/feed</wfw:commentRss>
+					<wfw:commentRss>./../../uncategorized/building-a-mobile-chat-app-using-realm-data-architecture/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Stitch &#038; Mobile Webinar Questions &#038; Replay</title>
-		<link>/mongodb/stitch-mobile-webinar-questions-replay</link>
-					<comments>/mongodb/stitch-mobile-webinar-questions-replay#respond</comments>
+		<link>./../../mongodb/stitch-mobile-webinar-questions-replay/index.html</link>
+					<comments>./../../mongodb/stitch-mobile-webinar-questions-replay/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 22 Nov 2018 12:22:32 +0000</pubDate>
@@ -605,7 +605,7 @@ An immediate benefit of the move is that changes are now persisted immediately, 
 		<category><![CDATA[MongoDB Mobile]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
 		<category><![CDATA[serverless]]></category>
-		<guid isPermaLink="false">/?p=4541</guid>
+		<guid isPermaLink="false">./../../index.html?p=4541</guid>
 
 					<description><![CDATA[How do you test MongoDB Stitch functions, how do you store Stitch triggers, and what services can you integrate Stitch with? These were some of the great questions that were asked and answered in my recent webinar. You can watch the replay of &#8220;MongoDB Mobile and MongoDB Stitch – Introduction and Latest Developments&#8221; here, or]]></description>
 										<content:encoded><![CDATA[<p>How do you test MongoDB <a href="https://docs.mongodb.com/stitch/functions/" title="MongoDB Stitch serverless functions">Stitch functions</a>, how do you store <a href="https://docs.mongodb.com/stitch/triggers/database-triggers/" title="MongoDB database triggers using MongoDB Stitch"> Stitch triggers</a>, and what services can you integrate Stitch with? These were some of the great questions that were asked and answered in my recent webinar. You can watch the replay of <a href="https://www.mongodb.com/presentations/mongodb-mobile-and-mongodb-stitch-introduction" title="Building mobile and IoT apps with MongoDB, MongoDB Stitch, and MongoDB Mobile">&#8220;MongoDB Mobile and MongoDB Stitch – Introduction and Latest Developments&#8221; here</a>, or read on as I share the answers to those questions here.</p>
@@ -662,7 +662,7 @@ An immediate benefit of the move is that changes are now persisted immediately, 
 <p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/stitch-mobile-webinar-questions-replay/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/stitch-mobile-webinar-questions-replay/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

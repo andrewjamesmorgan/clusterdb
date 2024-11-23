@@ -3,16 +3,16 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="pingback" href="/xmlrpc.php">
+	<link rel="pingback" href="./../xmlrpc.php">
 	
 	<title>MySQL Fabric now Generally Available – Automating High Availability and Sharding for MySQL | Andrew Morgan on Databases</title>
 
 <meta name="robots" content="max-image-preview:large">
 	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
-<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="/feed">
-<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="/comments/feed">
-<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; MySQL Fabric now Generally Available – Automating High Availability and Sharding for MySQL Comments Feed" href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="./../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="./../comments/feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; MySQL Fabric now Generally Available – Automating High Availability and Sharding for MySQL Comments Feed" href="./feed/index.html">
 		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
 		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
 					<!-- No tracking code set -->
@@ -35,27 +35,27 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 		background: none !important;
 		padding: 0 !important;
 	}</style>
-<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="wp-block-library-css" href="./../wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
 <style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
 .wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
 <style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
 :where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
 :where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
 :root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
-<link rel="stylesheet" id="plyr-css-css" href="/wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
-<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="/wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
-<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="/wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="plyr-css-css" href="./../wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="./../wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="./../wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
 <link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
-<script type="text/javascript" src="/wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
-<script type="text/javascript" src="/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
-<script type="text/javascript" src="/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
-<script type="text/javascript" src="/wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
-<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/3837"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+<script type="text/javascript" src="./../wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="./../wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="./../wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="./../wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="./../wp-json/index.html"><link rel="alternate" title="JSON" type="application/json" href="./../wp-json/wp/v2/posts/3837/index.html"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../xmlrpc.php?rsd">
 
-<link rel="canonical" href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql">
-<link rel="shortlink" href="/?p=3837">
-<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">
-<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql#038;format=xml">
+<link rel="canonical" href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html">
+<link rel="shortlink" href="./../index.html?p=3837">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql#038;format=xml">
 <style data-context="foundation-flickity-css">/*! Flickity v2.0.2
 http://flickity.metafizzy.co
 ---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style><style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style><script type="text/javascript">//
@@ -77,18 +77,18 @@ http://flickity.metafizzy.co
 
 		<div id="head">
 			<div id="logo">
-									<a href="/"><h1>Andrew Morgan on Databases</h1></a>
-                                        <!-- <a href="/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+									<a href="./../index.html"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href=".//"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
 							</div>
 			<div id="socialmedia_icons">
-				<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+				<a href="http://twitter.com/andrewmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
 			</div>
 			<div class="clear"></div>
 		</div>
 		
 		<div id="navi_container">
 			<div id="navi">
-				<ul id="nav" class="menu"><li class="page_item page-item-1011"><a href="/about">About</a></li>
+				<ul id="nav" class="menu"><li class="page_item page-item-1011"><a href="./../about/index.html">About</a></li>
 </ul>			</div>
 		</div>
 		<div class="clear"></div>
@@ -97,7 +97,7 @@ http://flickity.metafizzy.co
 	<div id="container">
 	
 			<div id="custom_header">
-			<img src="/wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+			<img src="./../wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
 		</div>
 	
 	<div id="wrap">
@@ -106,18 +106,18 @@ http://flickity.metafizzy.co
 					<div id="post-3837" class="post-3837 post type-post status-publish format-standard hentry category-mysql-fabric tag-fabric tag-ha tag-high-availability tag-mysql tag-mysql-fabric-2 tag-sharding">
 			
 				<div class="postmeta">	<div class="postmeta_links">
-		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
-		<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql">May 27, 2014</a>
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html">May 27, 2014</a>
 			</div>
 	<div class="postcomments">
-		<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comments">24 comments</a>	</div>
+		<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comments">24 comments</a>	</div>
 	<div class="clear"></div>
 </div>
 				
 				<h2 class="post-title">MySQL Fabric now Generally Available – Automating High Availability and Sharding for MySQL</h2>
 				
 				<div class="entry">
-										<p><a href="/wp-content/uploads/2014/03/fabric3.png"><img fetchpriority="high" decoding="async" class="aligncenter size-full wp-image-3800" src="/wp-content/uploads/2014/03/fabric3.png" alt="MySQL Fabric - High Availability and Scalability for MySQL" width="725" height="352" srcset="/wp-content/uploads/2014/03/fabric3.png 725w, /wp-content/uploads/2014/03/fabric3-300x145.png 300w" sizes="(max-width: 725px) 100vw, 725px"></a><br>
+										<p><a href="./../wp-content/uploads/2014/03/fabric3.png"><img fetchpriority="high" decoding="async" class="aligncenter size-full wp-image-3800" src="./../wp-content/uploads/2014/03/fabric3.png" alt="MySQL Fabric - High Availability and Scalability for MySQL" width="725" height="352" srcset="./../wp-content/uploads/2014/03/fabric3.png 725w, ./../wp-content/uploads/2014/03/fabric3-300x145.png 300w" sizes="(max-width: 725px) 100vw, 725px"></a><br>
 MySQL Fabric is a new framework that automates High Availability (HA) and/or sharding (scaling-out) for MySQL <strong>and it has just been declared Generally Available</strong>.</p>
 <p>This post focuses on MySQL Fabric as a whole &#8211; both High Availability and scaling out (sharding). It starts with an introductions to HA and scaling out (by partitioning/sharding data) and how MySQL Fabric achieves it before going on to work through a full example of deploying HA with MySQL Fabric and then adding sharding on top.</p>
 <p><a title="Download MySQL Fabric for automated MySQL sharding and High Availability" href="http://dev.mysql.com/downloads/fabric/" target="_blank">Download and try MySQL Fabric now!</a></p>
@@ -134,7 +134,7 @@ MySQL Fabric is a new framework that automates High Availability (HA) and/or sha
 <h3><a class="anchor" href="#high-availability" name="high-availability"></a>High Availability</h3>
 <p>High Availability (HA) refers to the ability for a system to provide continuous service &#8211; a system is available while that service can be utilized. The level of availability is often expressed in terms of the &#8220;number of nines&#8221; &#8211; for example, a HA level of 99.999% means that the service can be used for 99.999% of the time, in other words, on average, the service is only unavailable for 5.25 minutes per year (and that includes all scheduled as well as unscheduled down-time).</p>
 <h4><a class="anchor" href="#different-points-of-high-availability" name="different-points-of-high-availability"></a>Different Points of High Availability</h4>
-<p><a href="/wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-13.53.05.png"><img decoding="async" class="alignright size-medium wp-image-3815" src="/wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-13.53.05-300x217.png" alt="Layers in architecture where High Availability is needed" width="300" height="217" srcset="/wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-13.53.05-300x217.png 300w, /wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-13.53.05.png 734w" sizes="(max-width: 300px) 100vw, 300px"></a></p>
+<p><a href="./../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-13.53.05.png"><img decoding="async" class="alignright size-medium wp-image-3815" src="./../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-13.53.05-300x217.png" alt="Layers in architecture where High Availability is needed" width="300" height="217" srcset="./../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-13.53.05-300x217.png 300w, ./../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-13.53.05.png 734w" sizes="(max-width: 300px) 100vw, 300px"></a></p>
 <p>The figure shows the different layers in the system that need to be available for service to be provided.</p>
 <p>At the bottom is the data that the service relies on. Obviously, if that data is lost then the service cannot function correctly and so it&#8217;s important to make sure that there is at least one extra copy of that data. This data can be duplicated at the storage layer itself but with MySQL, it&#8217;s most commonly replicated by the layer above &#8211; the MySQL Server using MySQL Replication. The MySQL Server provides access to the data &#8211; there is no point in the data being there if you can&#8217;t get at it! It&#8217;s a common misconception that having redundancy at these two levels is enough to have a HA system but you also need to look at the system from the top-down.</p>
 <p>To have a HA service, there needs to be redundancy at the application layer; in itself this is very straight-forward, just load balance all of the service requests over a pool of application servers which are all running the same application logic. If the service were something as simple as a random number generator then this would be fine but most useful applications need to access data and as soon as you move beyond a single database server (for example because it needs to be HA) then a way is needed to connect the application server to the correct data source. In a HA system, the routing isn&#8217;t a static function, if one database server should fail (or be taken down for maintenance) the application should be directed instead to an alternate database. Some HA systems implement this routing function by introducing a proxy process between the application and the database servers; others use a virtual IP address which can be migrated to the correct server. When using MySQL Fabric, this routing function is implemented within the Fabric-aware MySQL connector library that&#8217;s used by the application server processes.</p>
@@ -150,8 +150,8 @@ MySQL Fabric is a new framework that automates High Availability (HA) and/or sha
 </ul>
 </ul>
 <h3><a class="anchor" href="#scaling-out---sharding" name="scaling-out---sharding"></a>Scaling Out &#8211; Sharding</h3>
-<p>When nearing the capacity or write performance limit of a single MySQL Server (or <a title="MySQL Fabric – adding High Availability to MySQL" href="/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql">HA group</a>), MySQL Fabric can be used to scale-out the database servers by partitioning the data across multiple MySQL Server &#8220;groups&#8221;. Note that a group could contain a single MySQL Server or it could be a HA group.</p>
-<p><a href="/wp-content/uploads/2014/06/Screen-Shot-2014-06-17-at-08.04.21.png"><img decoding="async" class="aligncenter wp-image-3915 size-medium" src="/wp-content/uploads/2014/06/Screen-Shot-2014-06-17-at-08.04.21-300x250.png" alt="MySQL Fabric Architecture" width="300" height="250" srcset="/wp-content/uploads/2014/06/Screen-Shot-2014-06-17-at-08.04.21-300x250.png 300w, /wp-content/uploads/2014/06/Screen-Shot-2014-06-17-at-08.04.21.png 819w" sizes="(max-width: 300px) 100vw, 300px"></a></p>
+<p>When nearing the capacity or write performance limit of a single MySQL Server (or <a title="MySQL Fabric – adding High Availability to MySQL" href="./mysql-fabric-adding-high-availability-to-mysql/index.html">HA group</a>), MySQL Fabric can be used to scale-out the database servers by partitioning the data across multiple MySQL Server &#8220;groups&#8221;. Note that a group could contain a single MySQL Server or it could be a HA group.</p>
+<p><a href="./../wp-content/uploads/2014/06/Screen-Shot-2014-06-17-at-08.04.21.png"><img decoding="async" class="aligncenter wp-image-3915 size-medium" src="./../wp-content/uploads/2014/06/Screen-Shot-2014-06-17-at-08.04.21-300x250.png" alt="MySQL Fabric Architecture" width="300" height="250" srcset="./../wp-content/uploads/2014/06/Screen-Shot-2014-06-17-at-08.04.21-300x250.png 300w, ./../wp-content/uploads/2014/06/Screen-Shot-2014-06-17-at-08.04.21.png 819w" sizes="(max-width: 300px) 100vw, 300px"></a></p>
 <p>The administrator defines how data should be partitioned/sharded between these servers; this is done by creating shard mappings. A shard mapping applies to a set of tables and for each table the administrator specifies which column from those tables should be used as a shard key (the shard key will subsequently be used by MySQL Fabric to calculate which shard a specific row from one of those tables should be part of). Because all of these tables use the same shard key and mapping, the use of the same column value in those tables will result in those rows being in the same shard &#8211; allowing a single transaction to access all of them. For example, if using the subscriber-id column from multiple tables then all of the data for a specific subscriber will be in the same shard. The administrator then defines how that shard key should be used to calculate the shard number:</p>
 <ul>
 <ul>
@@ -427,7 +427,7 @@ Command :
 </pre>
 <h3><a class="anchor" href="#adding-mysql-servers-to-create-a-ha-farm" name="adding-mysql-servers-to-create-a-ha-farm"></a>Adding MySQL Servers to Create a HA Farm</h3>
 <p>At this point, MySQL Fabric is up and running but it has no MySQL Servers to manage. This figure shows the what the configuration will look like once MySQL Servers have been added to create a HA server farm.</p>
-<p><a href="/wp-content/uploads/2014/03/Single_shard_HA_with_MySQL_Fabric.png"><img decoding="async" class="aligncenter size-full wp-image-3857" src="/wp-content/uploads/2014/03/Single_shard_HA_with_MySQL_Fabric.png" alt="Single shard HA with MySQL Fabric" height="550" srcset="/wp-content/uploads/2014/03/Single_shard_HA_with_MySQL_Fabric.png 420w, /wp-content/uploads/2014/03/Single_shard_HA_with_MySQL_Fabric-175x300.png 175w" sizes="(max-width: 420px) 100vw, 420px"></a></p>
+<p><a href="./../wp-content/uploads/2014/03/Single_shard_HA_with_MySQL_Fabric.png"><img decoding="async" class="aligncenter size-full wp-image-3857" src="./../wp-content/uploads/2014/03/Single_shard_HA_with_MySQL_Fabric.png" alt="Single shard HA with MySQL Fabric" height="550" srcset="./../wp-content/uploads/2014/03/Single_shard_HA_with_MySQL_Fabric.png 420w, ./../wp-content/uploads/2014/03/Single_shard_HA_with_MySQL_Fabric-175x300.png 175w" sizes="(max-width: 420px) 100vw, 420px"></a></p>
 <p>Three MySQL Servers will make up the managed HA group &#8211; each running on a different machine &#8211; these are the configuration files for each (there&#8217;s no detailed commentary as this is standard MySQL stuff):</p>
 <pre></pre>
 <pre>[mysql@fab2 myfab]$ cat my2.cnf
@@ -809,7 +809,7 @@ find_subscriber(conn, 17542)
 </ul>
 </ul>
 <p>The following figure illustrates what the configuration will look like once the Global Group has been created.</p>
-<p><a href="/wp-content/uploads/2014/03/MySQL-Fabric-HA-Group-with-Global-Group.png"><img decoding="async" class="aligncenter size-full wp-image-3858" src="/wp-content/uploads/2014/03/MySQL-Fabric-HA-Group-with-Global-Group.png" alt="MySQL Fabric - HA Group with Global Group" height="550" srcset="/wp-content/uploads/2014/03/MySQL-Fabric-HA-Group-with-Global-Group.png 408w, /wp-content/uploads/2014/03/MySQL-Fabric-HA-Group-with-Global-Group-171x300.png 171w" sizes="(max-width: 408px) 100vw, 408px"></a></p>
+<p><a href="./../wp-content/uploads/2014/03/MySQL-Fabric-HA-Group-with-Global-Group.png"><img decoding="async" class="aligncenter size-full wp-image-3858" src="./../wp-content/uploads/2014/03/MySQL-Fabric-HA-Group-with-Global-Group.png" alt="MySQL Fabric - HA Group with Global Group" height="550" srcset="./../wp-content/uploads/2014/03/MySQL-Fabric-HA-Group-with-Global-Group.png 408w, ./../wp-content/uploads/2014/03/MySQL-Fabric-HA-Group-with-Global-Group-171x300.png 171w" sizes="(max-width: 408px) 100vw, 408px"></a></p>
 <p>The global group will contain three MySQL Servers running on the same host (in a product environment they would be split over multiple machines) and so the first step is to configure, bootstrap and start those servers.</p>
 <pre>[mysql@fab2 myfab]$ cat my2.1.cnf
 [mysqld]
@@ -1035,7 +1035,7 @@ Procedure :
 +----------+------------+---------+
 </pre>
 <p>At this point, the database has technically been sharded but of course it offers no scalability as there is only a single shard. The steps that follow evolve that configuration into one containing two shards as shown in the following figure.</p>
-<p><a href="/wp-content/uploads/2014/03/MySQL-Fabric-with-HA-and-sharding.png"><img loading="lazy" decoding="async" class="aligncenter size-full wp-image-3859" src="/wp-content/uploads/2014/03/MySQL-Fabric-with-HA-and-sharding.png" alt="MySQL Fabric with HA and sharding" width="828" height="720" srcset="/wp-content/uploads/2014/03/MySQL-Fabric-with-HA-and-sharding.png 828w, /wp-content/uploads/2014/03/MySQL-Fabric-with-HA-and-sharding-300x260.png 300w" sizes="auto, (max-width: 828px) 100vw, 828px"></a></p>
+<p><a href="./../wp-content/uploads/2014/03/MySQL-Fabric-with-HA-and-sharding.png"><img loading="lazy" decoding="async" class="aligncenter size-full wp-image-3859" src="./../wp-content/uploads/2014/03/MySQL-Fabric-with-HA-and-sharding.png" alt="MySQL Fabric with HA and sharding" width="828" height="720" srcset="./../wp-content/uploads/2014/03/MySQL-Fabric-with-HA-and-sharding.png 828w, ./../wp-content/uploads/2014/03/MySQL-Fabric-with-HA-and-sharding-300x260.png 300w" sizes="auto, (max-width: 828px) 100vw, 828px"></a></p>
 <p>Another HA group (<code>group_id-2</code>) is created, from three newly created MySQL Servers then one of the servers is promoted to be the Primary:</p>
 <pre>[mysql@fab5 myfab]$ cat my5.cnf
 [mysqld]
@@ -1337,24 +1337,24 @@ find_subscriber(conn, 83467)
 <h2><a class="anchor" href="#mysql-fabric-architecture--extensibility" name="mysql-fabric-architecture--extensibility"></a>MySQL Fabric Architecture &amp; Extensibility</h2>
 <p>MySQL Fabric has been architected for extensibility at a number of levels. For example, in the first release the only option for implementing HA is based on MySQL Replication but in future releases we hope to add further options (for example, MySQL Cluster). We also hope to see completely new applications around the managing of farms of MySQL Servers &#8211; both from Oracle and the wider MySQL community.</p>
 <p>The following diagram illustrates how new applications and protocols can be added using the pluggable framework.</p>
-<p><a href="/wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03.png"><img loading="lazy" decoding="async" style="max-width: 100%;" src="https://github-camo.global.ssl.fastly.net/2144549107fc4998082c17d76ce4152aa79b763f/687474703a2f2f7777772e636c757374657264622e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031342f30332f53637265656e2d53686f742d323031342d30332d31382d61742d31352e33372e30332d31303234783530312e706e67" alt="MySQL Fabric - Extensible Architecture" width="480" height="234" data-canonical-src="/wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03-1024x501.png"></a></p>
+<p><a href="./../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03.png"><img loading="lazy" decoding="async" style="max-width: 100%;" src="https://github-camo.global.ssl.fastly.net/2144549107fc4998082c17d76ce4152aa79b763f/687474703a2f2f7777772e636c757374657264622e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031342f30332f53637265656e2d53686f742d323031342d30332d31382d61742d31352e33372e30332d31303234783530312e706e67" alt="MySQL Fabric - Extensible Architecture" width="480" height="234" data-canonical-src=".//wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03-1024x501.png"></a></p>
 <h2><a class="anchor" href="#next-steps" name="next-steps"></a>Next Steps</h2>
 <p>We really hope that people try out MySQL Fabric and let us know how you get on; one way is to comment on this post, another is to post to the <a title="MySQL Forums :: Fabric, Sharding, HA, Utilities" href="http://forums.mysql.com/list.php?144">MySQL Fabric forum</a> or if you think you&#8217;ve found a bug then <a title="MySQL bugs database" href="http://bugs.mysql.com/">raise a bug report</a>.</p>
 					<div class="clear"></div>
 										<!-- <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 			xmlns:dc="http://purl.org/dc/elements/1.1/"
 			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
-		<rdf:Description rdf:about="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql"
-    dc:identifier="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql"
+		<rdf:Description rdf:about=".//mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql"
+    dc:identifier=".//mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql"
     dc:title="MySQL Fabric now Generally Available – Automating High Availability and Sharding for MySQL"
-    trackback:ping="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql/trackback" />
+    trackback:ping=".//mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql/trackback" />
 </rdf:RDF> -->			
 				</div>
 		<br>
 		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql" data-via="wpbeginner" data-text="MySQL Fabric now Generally Available – Automating High Availability and Sharding for MySQL" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url=".//mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql" data-via="wpbeginner" data-text="MySQL Fabric now Generally Available – Automating High Availability and Sharding for MySQL" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
 		<br>
-		<!-- <g:plusone size="medium" href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql"></g:plusone> -->
+		<!-- <g:plusone size="medium" href=".//mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql"></g:plusone> -->
 		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
 		<!-- Place this tag after the last +1 button tag. -->
 		<script type="text/javascript">(function() {
@@ -1363,14 +1363,14 @@ find_subscriber(conn, 83467)
     				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   			})();</script>
 		<br>
-		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql" data-counter="right"></script>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url=".//mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql" data-counter="right"></script>
 		<br>
-		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
 		</iframe>
 
 <!-- ZXZX -->
-				<div class="postinfo">Category: <a href="/category/mysql-fabric" rel="category tag">MySQL Fabric</a> | 
-Tags: <a href="/tag/fabric" rel="tag">fabric</a>, <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="tag">High Availability</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-fabric-2" rel="tag">mysql fabric</a>, <a href="/tag/sharding" rel="tag">sharding</a></div>
+				<div class="postinfo">Category: <a href="./../category/mysql-fabric/index.html" rel="category tag">MySQL Fabric</a> | 
+Tags: <a href="./../tag/fabric/index.html" rel="tag">fabric</a>, <a href="./../tag/ha/index.html" rel="tag">HA</a>, <a href="./../tag/high-availability/index.html" rel="tag">High Availability</a>, <a href="./../tag/mysql/index.html" rel="tag">MySQL</a>, <a href="./../tag/mysql-fabric-2/index.html" rel="tag">mysql fabric</a>, <a href="./../tag/sharding/index.html" rel="tag">sharding</a></div>
 
 			</div>
 			
@@ -1389,7 +1389,7 @@ Tags: <a href="/tag/fabric" rel="tag">fabric</a>, <a href="/tag/ha" rel="tag">HA
 			<img alt="" src="https://secure.gravatar.com/avatar/fbddceb05971c70b78a7195dbcf13e51?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/fbddceb05971c70b78a7195dbcf13e51?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">MWM</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-140813">May 29, 2014 at 8:33 am</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-140813">May 29, 2014 at 8:33 am</a>		</div>
 
 		<p>Hi Andrew,</p>
 <p>I installed the MySQL Fabric and Utilities. But mysqlfabric utility is not a part of it.</p>
@@ -1397,7 +1397,7 @@ Tags: <a href="/tag/fabric" rel="tag">fabric</a>, <a href="/tag/ha" rel="tag">HA
 <p>Regards<br>
 MWM</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				<ul class="children">
 		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-2" id="comment-143943">
@@ -1406,11 +1406,11 @@ MWM</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-143943">June 2, 2014 at 3:17 pm</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-143943">June 2, 2014 at 3:17 pm</a>		</div>
 
 		<p>What verion are you using and where did you download it from?</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				</li><!-- #comment-## -->
 		<li class="comment byuser comment-author-andrew bypostauthor even depth-2" id="comment-143948">
@@ -1419,11 +1419,11 @@ MWM</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-143948">June 2, 2014 at 3:27 pm</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-143948">June 2, 2014 at 3:27 pm</a>		</div>
 
 		<p>What version and from where?</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				</li><!-- #comment-## -->
 </ul><!-- .children -->
@@ -1434,7 +1434,7 @@ MWM</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/fbddceb05971c70b78a7195dbcf13e51?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/fbddceb05971c70b78a7195dbcf13e51?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">MWM</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-140948">May 29, 2014 at 12:08 pm</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-140948">May 29, 2014 at 12:08 pm</a>		</div>
 
 		<p>Dear Andrew,</p>
 <p>I am running your example on Windows 7. Using fabric utility 1.4.0; </p>
@@ -1447,7 +1447,7 @@ Usage: %fabric   [ &#8230;] arg &#8230;</p>
 <p>Regards<br>
 MWM</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				<ul class="children">
 		<li class="comment byuser comment-author-andrew bypostauthor even depth-2 parent" id="comment-143951">
@@ -1456,13 +1456,13 @@ MWM</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-143951">June 2, 2014 at 3:30 pm</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-143951">June 2, 2014 at 3:30 pm</a>		</div>
 
 		<p>As suggested elsewhere, I&#8217;d start with using 1.4.3.</p>
 <p>In that release, you can get help on a specific command using <code>mysqlfabric help [group] [command]</code> e.g. <code>mysqlfabric help group add</code>.</p>
 <p>Best Regards, Andrew.</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				<ul class="children">
 		<li class="comment odd alt depth-3 parent" id="comment-179064">
@@ -1471,7 +1471,7 @@ MWM</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/ef0cb2cb02d46eeef541e03deaeba87b?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ef0cb2cb02d46eeef541e03deaeba87b?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">jack</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-179064">July 9, 2014 at 6:53 am</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-179064">July 9, 2014 at 6:53 am</a>		</div>
 
 		<p>hello</p>
 <p>mysqlfabbric version 1.4.3</p>
@@ -1482,7 +1482,7 @@ why is group id other than the md5(min(sub_no)) ?</p>
 But the shard_ranges lower_bound is 16 length</p>
 <p>AM I Wrong?</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				<ul class="children">
 		<li class="comment byuser comment-author-andrew bypostauthor even depth-4" id="comment-187701">
@@ -1491,12 +1491,12 @@ But the shard_ranges lower_bound is 16 length</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-187701">July 18, 2014 at 4:12 pm</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-187701">July 18, 2014 at 4:12 pm</a>		</div>
 
 		<p>Hi Jack,</p>
 <p> apologies that I haven&#8217;t had chance to look into this &#8211; if you&#8217;re still seeig problems then it might make sense to raise a bug report at <a href="http://bugs.mysql.com/" title="bugs.mysql.com" target="_blank" rel="nofollow"></a></p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				</li><!-- #comment-## -->
 </ul><!-- .children -->
@@ -1507,7 +1507,7 @@ But the shard_ranges lower_bound is 16 length</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/ef0cb2cb02d46eeef541e03deaeba87b?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ef0cb2cb02d46eeef541e03deaeba87b?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">jack</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-181519">July 11, 2014 at 9:38 am</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-181519">July 11, 2014 at 9:38 am</a>		</div>
 
 		<p>Dear Andrew:<br>
 Can you help me? I have some problems when use mysqlfabric.</p>
@@ -1552,7 +1552,7 @@ Can you help me? I have some problems when use mysqlfabric.</p>
 <p>Is it a bug?<br>
 I also found that the range of md5(key) distribution is not the average.</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				</li><!-- #comment-## -->
 </ul><!-- .children -->
@@ -1565,7 +1565,7 @@ I also found that the range of md5(key) distribution is not the average.</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/fbddceb05971c70b78a7195dbcf13e51?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/fbddceb05971c70b78a7195dbcf13e51?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">MWM</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-140993">May 29, 2014 at 1:10 pm</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-140993">May 29, 2014 at 1:10 pm</a>		</div>
 
 		<p>Dear Andrew,</p>
 <p>I installed connector/python and previous issue resolved but now:</p>
@@ -1603,7 +1603,7 @@ socket.error: [Errno 10061] No connection could be made because the target machi
 <p>Regards<br>
 MWM</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				<ul class="children">
 		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-2" id="comment-143950">
@@ -1612,12 +1612,12 @@ MWM</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-143950">June 2, 2014 at 3:28 pm</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-143950">June 2, 2014 at 3:28 pm</a>		</div>
 
 		<p>Before anything else, I&#8217;d suggest using the GA version &#8211; 1.4.3.</p>
 <p>Best Regards, Andrew.</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				</li><!-- #comment-## -->
 </ul><!-- .children -->
@@ -1628,7 +1628,7 @@ MWM</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/fbddceb05971c70b78a7195dbcf13e51?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/fbddceb05971c70b78a7195dbcf13e51?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">MWM</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-145088">June 4, 2014 at 6:44 am</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-145088">June 4, 2014 at 6:44 am</a>		</div>
 
 		<p>Dear Andrew,</p>
 <p>I explain all my journey to accomplish mysql fabric server having a group of two mysql instances.</p>
@@ -1643,7 +1643,7 @@ MWM</p>
 <p>Regards<br>
 MWM</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				</li><!-- #comment-## -->
 		<li class="comment odd alt thread-even depth-1 parent" id="comment-181181">
@@ -1652,7 +1652,7 @@ MWM</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/5fb5a6c03360a0199e88d6afda589408?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/5fb5a6c03360a0199e88d6afda589408?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Stefan</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-181181">July 11, 2014 at 2:04 am</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-181181">July 11, 2014 at 2:04 am</a>		</div>
 
 		<p>&#8220;`<br>
 [mysql@fab2 ~]$ mysql -h 127.0.0.1 -P3306 -u root -e &#8220;GRANT ALL ON *.* \<br>
@@ -1673,7 +1673,7 @@ MWM</p>
 <p>2. It obfuscates the actual privileges that we need to set in order for the product to work. My survey of the internet shows that a number of people are getting hung up on permissions. We get strange errors like &#8216;return      = ServerError: Error accessing server (mysql.example.org:3306).,&#8221; and the reason seems to be related to permissions. How do we fix this? What privileges should we actually be setting?</p>
 <p>I understand this is an example and I understand that your example is aiming for simplicity, but can you please provide us with an example showing the *actual* privileges which can be used in your environment?</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				<ul class="children">
 		<li class="comment byuser comment-author-andrew bypostauthor even depth-2" id="comment-187705">
@@ -1682,11 +1682,11 @@ MWM</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-187705">July 18, 2014 at 4:15 pm</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-187705">July 18, 2014 at 4:15 pm</a>		</div>
 
 		<p>as per previous response.</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				</li><!-- #comment-## -->
 </ul><!-- .children -->
@@ -1697,11 +1697,11 @@ MWM</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/9627136511413b186bd9d9d5e2d77463?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/9627136511413b186bd9d9d5e2d77463?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Tim</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-215793">August 11, 2014 at 2:58 pm</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-215793">August 11, 2014 at 2:58 pm</a>		</div>
 
 		<p>Do the nodes managed by Fabric (i.e. fab2, fab3 &amp; fab4) need &#8220;ALL&#8221; privileges? Will it not be unsafe? What are the minimum privileges required by Fabric manage node (i.e. fab1)?</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				<ul class="children">
 		<li class="comment byuser comment-author-andrew bypostauthor even depth-2" id="comment-263373">
@@ -1710,13 +1710,13 @@ MWM</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-263373">September 17, 2014 at 4:47 pm</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-263373">September 17, 2014 at 4:47 pm</a>		</div>
 
 		<p>Hi Tim, </p>
 <p> The Fabric user needs permission to control replication and to read/write to the fabric database.</p>
 <p>Andrew.</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				</li><!-- #comment-## -->
 </ul><!-- .children -->
@@ -1727,7 +1727,7 @@ MWM</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/ed6113f178a7764acdc99f933e17c868?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ed6113f178a7764acdc99f933e17c868?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn"><a href="http://9-steps/" class="url" rel="ugc external nofollow">Elena K</a></cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-234468">August 26, 2014 at 12:23 am</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-234468">August 26, 2014 at 12:23 am</a>		</div>
 
 		<p>Dear Andrew,<br>
 I am testing the Sharding , and using the naming conventions for the groups as in your example.<br>
@@ -1761,7 +1761,7 @@ mysql&gt; select * from servers;<br>
 <p>Should I &#8220;shut down&#8221; the &#8216;group_id-1&#8217; prior working on the global-group ?<br>
 Thank you.</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				</li><!-- #comment-## -->
 		<li class="comment even thread-odd thread-alt depth-1" id="comment-234793">
@@ -1770,7 +1770,7 @@ Thank you.</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/f0e263adf8eb0d002ea6d3ad0eaf406c?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/f0e263adf8eb0d002ea6d3ad0eaf406c?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">tuzhu</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-234793">August 26, 2014 at 7:42 am</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-234793">August 26, 2014 at 7:42 am</a>		</div>
 
 		<p>Hi Andrew,<br>
 I installed the MySQL Fabric and Utilities. I created 3 groups, global-group, group_id-1 and group_id-2, then buit a shard. Till now, everything is OK. But when i split the shard with a new group named group_id-3, there is an error occurred. The message is as follows:<br>
@@ -1787,7 +1787,7 @@ I run the &#8220;reset master&#8221; command first, but the error is still there
 <p>Regards<br>
 Shen</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				</li><!-- #comment-## -->
 		<li class="comment odd alt thread-even depth-1" id="comment-488634">
@@ -1796,13 +1796,13 @@ Shen</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/6f1090dd42e593eec1c9e4f301aa5412?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/6f1090dd42e593eec1c9e4f301aa5412?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Aneesha KA</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-488634">May 11, 2015 at 7:01 am</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-488634">May 11, 2015 at 7:01 am</a>		</div>
 
 		<p>Hi Andrew,</p>
 <p>Do we need to install fabric on another server other than master and slave? I have one master and one slave server.</p>
 <p>Please help me</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				</li><!-- #comment-## -->
 		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-495539">
@@ -1811,14 +1811,14 @@ Shen</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/eb834760340abeb20f5613c603d8609e?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/eb834760340abeb20f5613c603d8609e?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Pavan Kumar Mekala</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-495539">May 21, 2015 at 9:14 am</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-495539">May 21, 2015 at 9:14 am</a>		</div>
 
 		<p>Hi Andrew,</p>
 <p>I am evaluating Fabric at my office lab environment which is behind the firewall and would like to know the Firewall ports for Connector, fabric, Global group and Shard group machines. Will you be able to provide this info?</p>
 <p>Regards,<br>
 Pavan Kumar Mekala</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				<ul class="children">
 		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-2" id="comment-495664">
@@ -1827,12 +1827,12 @@ Pavan Kumar Mekala</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-495664">May 21, 2015 at 1:02 pm</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-495664">May 21, 2015 at 1:02 pm</a>		</div>
 
 		<p>The ports can be configured for each MySQL Server (default to 3306) and the Fabric node (defaults to 32274).</p>
 <p>Andrew.</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				</li><!-- #comment-## -->
 </ul><!-- .children -->
@@ -1843,7 +1843,7 @@ Pavan Kumar Mekala</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/f441e4abdbaaa76fe780a246076c83a2?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/f441e4abdbaaa76fe780a246076c83a2?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn"><a href="http://psinc.log/" class="url" rel="ugc external nofollow">Doan</a></cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-496455">May 22, 2015 at 10:22 am</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-496455">May 22, 2015 at 10:22 am</a>		</div>
 
 		<p>Hi Andrew, </p>
 <p>I&#8217;ve done every thing until this step :Adding Scale-Out with Sharding.<br>
@@ -1853,7 +1853,7 @@ DatabaseError: Command (REPLACE INTO shard_maps(type_name, global_group) VALUES(
 <p>Please kindly answer for me,<br>
 Thanks, your post is so great.</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				<ul class="children">
 		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-2" id="comment-512430">
@@ -1862,11 +1862,11 @@ Thanks, your post is so great.</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-512430">June 11, 2015 at 1:25 pm</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-512430">June 11, 2015 at 1:25 pm</a>		</div>
 
 		<p>Sorry for the delay – I’m not able to check at this point but it’s worth raising the question on the <a href="http://forums.mysql.com/list.php?144" rel="nofollow">MySQL Fabric forum</a>.</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				</li><!-- #comment-## -->
 </ul><!-- .children -->
@@ -1877,7 +1877,7 @@ Thanks, your post is so great.</p>
 			<img alt="" src="https://secure.gravatar.com/avatar/95a899249aa3a100816187af9640af1c?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/95a899249aa3a100816187af9640af1c?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">phil</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-634666">July 7, 2016 at 11:13 am</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-634666">July 7, 2016 at 11:13 am</a>		</div>
 
 		<p>hello,</p>
 <p>I installed a fabric server, I can access it with ppython and query it<br>
@@ -1886,7 +1886,7 @@ but there is nothing listening on port 8080 on the fabric server and nothing in 
 <p>can you enlight me on this ?</p>
 <p>thanks</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				</li><!-- #comment-## -->
 		<li class="comment odd alt thread-even depth-1" id="comment-637938">
@@ -1895,12 +1895,12 @@ but there is nothing listening on port 8080 on the fabric server and nothing in 
 			<img alt="" src="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">manoj</cite> <span class="says">says:</span>		</div>
 		
 		<div class="comment-meta commentmetadata">
-			<a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-637938">August 23, 2016 at 11:57 am</a>		</div>
+			<a href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#comment-637938">August 23, 2016 at 11:57 am</a>		</div>
 
 		<p>Hi Andrew, </p>
 <p>I am not able to connect to fabric on 32274 from a remote machine. Please let me know What changes do I need to make it accessible.</p>
 
-		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">Log in to Reply</a></div>
 				</div>
 				</li><!-- #comment-## -->
 	</ol>
@@ -1908,7 +1908,7 @@ but there is nothing listening on port 8080 on the fabric server and nothing in 
 	</div>
  
 		<div id="respond" class="comment-respond">
-		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#respond" style="display:none;">Cancel reply</a></small></h3><p class="must-log-in">You must be <a href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">logged in</a> to post a comment.</p>	</div><!-- #respond -->
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="./mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html#respond" style="display:none;">Cancel reply</a></small></h3><p class="must-log-in">You must be <a href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-fabric%2Fmysql-fabric-adding-high-availability-and-scaling-to-mysql">logged in</a> to post a comment.</p>	</div><!-- #respond -->
 		<div class="clear"></div>
 		
 		</div>
@@ -1917,7 +1917,7 @@ but there is nothing listening on port 8080 on the fabric server and nothing in 
 <div id="sidebar">
 	<ul>
 
-<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="/">
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action=".//">
 				<div>
 					<label class="screen-reader-text" for="s">Search for:</label>
 					<input type="text" value="" name="s" id="s">
@@ -1930,19 +1930,19 @@ but there is nothing listening on port 8080 on the fabric server and nothing in 
 
 		<ul>
 											<li>
-					<a href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm">Building a collaborative iOS Minesweeper game with Realm</a>
+					<a href="./../mongodb/building-a-collaborative-ios-minesweeper-game-with-realm/index.html">Building a collaborative iOS Minesweeper game with Realm</a>
 									</li>
 											<li>
-					<a href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+					<a href="./../mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial/index.html">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
 									</li>
 											<li>
-					<a href="/mongodb/realm-swift-type-projections">Realm-Swift Type Projections</a>
+					<a href="./../mongodb/realm-swift-type-projections/index.html">Realm-Swift Type Projections</a>
 									</li>
 											<li>
-					<a href="/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+					<a href="./../mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/index.html">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
 									</li>
 											<li>
-					<a href="/mongodb/goodbye-nspredicate-hello-realm-swift-query-api">Goodbye NSPredicate, hello Realm Swift Query API</a>
+					<a href="./../mongodb/goodbye-nspredicate-hello-realm-swift-query-api/index.html">Goodbye NSPredicate, hello Realm Swift Query API</a>
 									</li>
 					</ul>
 
@@ -1957,183 +1957,183 @@ google_ad_height =600;
 <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script></div>
 		</li>
 <li id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widgettitle">Recent Comments</h2>
-<ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-787242">MySQL Cluster running on Raspberry Pi</a></li><li class="recentcomments"><span class="comment-author-link">andrew</span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link">Sai Krishnan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-661143">Get MySQL Replication up and running in 5 minutes</a></li><li class="recentcomments"><span class="comment-author-link">Nayan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-660628">Get MySQL Replication up and running in 5 minutes</a></li></ul></li>
+<ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="./../mysql-cluster/mysql-cluster-running-on-raspberry-pi/index.html#comment-787242">MySQL Cluster running on Raspberry Pi</a></li><li class="recentcomments"><span class="comment-author-link">andrew</span> on <a href="./../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="./../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link">Sai Krishnan</span> on <a href="./../mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-661143">Get MySQL Replication up and running in 5 minutes</a></li><li class="recentcomments"><span class="comment-author-link">Nayan</span> on <a href="./../mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-660628">Get MySQL Replication up and running in 5 minutes</a></li></ul></li>
 <li id="categories-2" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
 
 			<ul>
-					<li class="cat-item cat-item-2"><a href="/category/me">Me</a>
+					<li class="cat-item cat-item-2"><a href="./../category/me/index.html">Me</a>
 </li>
-	<li class="cat-item cat-item-146"><a href="/category/mongodb">MongoDB</a>
+	<li class="cat-item cat-item-146"><a href="./../category/mongodb/index.html">MongoDB</a>
 </li>
-	<li class="cat-item cat-item-3"><a href="/category/mysql">MySQL</a>
+	<li class="cat-item cat-item-3"><a href="./../category/mysql/index.html">MySQL</a>
 </li>
-	<li class="cat-item cat-item-4"><a href="/category/mysql-cluster">MySQL Cluster</a>
+	<li class="cat-item cat-item-4"><a href="./../category/mysql-cluster/index.html">MySQL Cluster</a>
 </li>
-	<li class="cat-item cat-item-131"><a href="/category/mysql-fabric">MySQL Fabric</a>
+	<li class="cat-item cat-item-131"><a href="./../category/mysql-fabric/index.html">MySQL Fabric</a>
 </li>
-	<li class="cat-item cat-item-5"><a href="/category/mysql-replication">MySQL Replication</a>
+	<li class="cat-item cat-item-5"><a href="./../category/mysql-replication/index.html">MySQL Replication</a>
 </li>
-	<li class="cat-item cat-item-214"><a href="/category/mongodb/realm">Realm</a>
+	<li class="cat-item cat-item-214"><a href="./../category/mongodb/realm/index.html">Realm</a>
 </li>
-	<li class="cat-item cat-item-1"><a href="/category/uncategorized">Uncategorized</a>
+	<li class="cat-item cat-item-1"><a href="./../category/uncategorized/index.html">Uncategorized</a>
 </li>
 			</ul>
 
 			</li>
 <li id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
-<div class="tagcloud"><a href="/tag/7-4" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
-<a href="/tag/apache-kafka" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
-<a href="/tag/cluster" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
-<a href="/tag/ha" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
-<a href="/tag/high-availability" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
-<a href="/tag/ios" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
-<a href="/tag/java" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
-<a href="/tag/javascript" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
-<a href="/tag/mcm" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
-<a href="/tag/mean" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
-<a href="/tag/memcached" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
-<a href="/tag/mobile" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
-<a href="/tag/mongodb" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
-<a href="/tag/mongodb-3-2" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
-<a href="/tag/mongodb-atlas" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
-<a href="/tag/mongodb-mobile" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
-<a href="/tag/mongodb-stitch" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
-<a href="/tag/mysql" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
-<a href="/tag/mysql-5-6" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
-<a href="/tag/mysql-cluster" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
-<a href="/tag/mysql-cluster-70" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
-<a href="/tag/mysql-cluster-7-1" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
-<a href="/tag/mysql-cluster-7-2" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
-<a href="/tag/mysql-cluster-7-3" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
-<a href="/tag/mysql-cluster-7-4" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
-<a href="/tag/mysql-cluster-cge" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
-<a href="/tag/mysql-cluster-manager" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
-<a href="/tag/mysql-enterprise-monitor" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
-<a href="/tag/mysql-fabric-2" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
-<a href="/tag/mysql-replication" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
-<a href="/tag/mysql-utilities" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
-<a href="/tag/ndb-api" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
-<a href="/tag/node-js" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
-<a href="/tag/nosql" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
-<a href="/tag/performance" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
-<a href="/tag/realm" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
-<a href="/tag/replication" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
-<a href="/tag/secondary" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
-<a href="/tag/serverless" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
-<a href="/tag/sharding" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
-<a href="/tag/swift" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
-<a href="/tag/swiftui" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
-<a href="/tag/webcast" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
-<a href="/tag/webinar" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
-<a href="/tag/windows" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a></div>
+<div class="tagcloud"><a href="./../tag/7-4/index.html" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="./../tag/apache-kafka/index.html" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="./../tag/cluster/index.html" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="./../tag/ha/index.html" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="./../tag/high-availability/index.html" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="./../tag/ios/index.html" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="./../tag/java/index.html" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="./../tag/javascript/index.html" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="./../tag/mcm/index.html" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="./../tag/mean/index.html" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="./../tag/memcached/index.html" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="./../tag/mobile/index.html" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="./../tag/mongodb/index.html" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="./../tag/mongodb-3-2/index.html" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="./../tag/mongodb-atlas/index.html" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="./../tag/mongodb-mobile/index.html" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="./../tag/mongodb-stitch/index.html" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="./../tag/mysql/index.html" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="./../tag/mysql-5-6/index.html" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="./../tag/mysql-cluster/index.html" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="./../tag/mysql-cluster-70/index.html" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="./../tag/mysql-cluster-7-1/index.html" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="./../tag/mysql-cluster-7-2/index.html" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="./../tag/mysql-cluster-7-3/index.html" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="./../tag/mysql-cluster-7-4/index.html" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="./../tag/mysql-cluster-cge/index.html" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="./../tag/mysql-cluster-manager/index.html" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="./../tag/mysql-enterprise-monitor/index.html" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="./../tag/mysql-fabric-2/index.html" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="./../tag/mysql-replication/index.html" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="./../tag/mysql-utilities/index.html" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="./../tag/ndb-api/index.html" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="./../tag/node-js/index.html" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="./../tag/nosql/index.html" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="./../tag/performance/index.html" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="./../tag/realm/index.html" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="./../tag/replication/index.html" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="./../tag/secondary/index.html" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="./../tag/serverless/index.html" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="./../tag/sharding/index.html" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="./../tag/swift/index.html" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="./../tag/swiftui/index.html" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="./../tag/webcast/index.html" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="./../tag/webinar/index.html" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="./../tag/windows/index.html" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a></div>
 </li>
 <li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
 				
-			<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+			<a href="http://twitter.com/andrewmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
 		</li>
 <li id="archives-2" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
 
 			<ul>
-					<li><a href="/2022/03">March 2022</a></li>
-	<li><a href="/2022/02">February 2022</a></li>
-	<li><a href="/2022/01">January 2022</a></li>
-	<li><a href="/2021/12">December 2021</a></li>
-	<li><a href="/2021/11">November 2021</a></li>
-	<li><a href="/2021/09">September 2021</a></li>
-	<li><a href="/2021/08">August 2021</a></li>
-	<li><a href="/2021/07">July 2021</a></li>
-	<li><a href="/2021/06">June 2021</a></li>
-	<li><a href="/2021/05">May 2021</a></li>
-	<li><a href="/2021/04">April 2021</a></li>
-	<li><a href="/2021/02">February 2021</a></li>
-	<li><a href="/2021/01">January 2021</a></li>
-	<li><a href="/2020/12">December 2020</a></li>
-	<li><a href="/2019/03">March 2019</a></li>
-	<li><a href="/2019/01">January 2019</a></li>
-	<li><a href="/2018/12">December 2018</a></li>
-	<li><a href="/2018/11">November 2018</a></li>
-	<li><a href="/2018/10">October 2018</a></li>
-	<li><a href="/2018/09">September 2018</a></li>
-	<li><a href="/2017/09">September 2017</a></li>
-	<li><a href="/2017/03">March 2017</a></li>
-	<li><a href="/2017/02">February 2017</a></li>
-	<li><a href="/2017/01">January 2017</a></li>
-	<li><a href="/2016/12">December 2016</a></li>
-	<li><a href="/2016/11">November 2016</a></li>
-	<li><a href="/2016/09">September 2016</a></li>
-	<li><a href="/2016/01">January 2016</a></li>
-	<li><a href="/2015/11">November 2015</a></li>
-	<li><a href="/2015/10">October 2015</a></li>
-	<li><a href="/2015/09">September 2015</a></li>
-	<li><a href="/2015/06">June 2015</a></li>
-	<li><a href="/2015/04">April 2015</a></li>
-	<li><a href="/2015/03">March 2015</a></li>
-	<li><a href="/2015/02">February 2015</a></li>
-	<li><a href="/2015/01">January 2015</a></li>
-	<li><a href="/2014/12">December 2014</a></li>
-	<li><a href="/2014/11">November 2014</a></li>
-	<li><a href="/2014/10">October 2014</a></li>
-	<li><a href="/2014/09">September 2014</a></li>
-	<li><a href="/2014/08">August 2014</a></li>
-	<li><a href="/2014/07">July 2014</a></li>
-	<li><a href="/2014/06">June 2014</a></li>
-	<li><a href="/2014/05">May 2014</a></li>
-	<li><a href="/2014/04">April 2014</a></li>
-	<li><a href="/2014/03">March 2014</a></li>
-	<li><a href="/2014/02">February 2014</a></li>
-	<li><a href="/2014/01">January 2014</a></li>
-	<li><a href="/2013/12">December 2013</a></li>
-	<li><a href="/2013/11">November 2013</a></li>
-	<li><a href="/2013/09">September 2013</a></li>
-	<li><a href="/2013/08">August 2013</a></li>
-	<li><a href="/2013/07">July 2013</a></li>
-	<li><a href="/2013/06">June 2013</a></li>
-	<li><a href="/2013/05">May 2013</a></li>
-	<li><a href="/2013/03">March 2013</a></li>
-	<li><a href="/2013/02">February 2013</a></li>
-	<li><a href="/2013/01">January 2013</a></li>
-	<li><a href="/2012/12">December 2012</a></li>
-	<li><a href="/2012/11">November 2012</a></li>
-	<li><a href="/2012/09">September 2012</a></li>
-	<li><a href="/2012/07">July 2012</a></li>
-	<li><a href="/2012/06">June 2012</a></li>
-	<li><a href="/2012/05">May 2012</a></li>
-	<li><a href="/2012/04">April 2012</a></li>
-	<li><a href="/2012/03">March 2012</a></li>
-	<li><a href="/2012/02">February 2012</a></li>
-	<li><a href="/2012/01">January 2012</a></li>
-	<li><a href="/2011/12">December 2011</a></li>
-	<li><a href="/2011/11">November 2011</a></li>
-	<li><a href="/2011/10">October 2011</a></li>
-	<li><a href="/2011/09">September 2011</a></li>
-	<li><a href="/2011/07">July 2011</a></li>
-	<li><a href="/2011/06">June 2011</a></li>
-	<li><a href="/2011/05">May 2011</a></li>
-	<li><a href="/2011/04">April 2011</a></li>
-	<li><a href="/2011/03">March 2011</a></li>
-	<li><a href="/2011/02">February 2011</a></li>
-	<li><a href="/2011/01">January 2011</a></li>
-	<li><a href="/2010/12">December 2010</a></li>
-	<li><a href="/2010/11">November 2010</a></li>
-	<li><a href="/2010/10">October 2010</a></li>
-	<li><a href="/2010/09">September 2010</a></li>
-	<li><a href="/2010/08">August 2010</a></li>
-	<li><a href="/2010/07">July 2010</a></li>
-	<li><a href="/2010/06">June 2010</a></li>
-	<li><a href="/2010/05">May 2010</a></li>
-	<li><a href="/2010/04">April 2010</a></li>
-	<li><a href="/2010/03">March 2010</a></li>
-	<li><a href="/2010/02">February 2010</a></li>
-	<li><a href="/2010/01">January 2010</a></li>
-	<li><a href="/2009/12">December 2009</a></li>
-	<li><a href="/2009/11">November 2009</a></li>
-	<li><a href="/2009/10">October 2009</a></li>
-	<li><a href="/2009/09">September 2009</a></li>
-	<li><a href="/2009/08">August 2009</a></li>
-	<li><a href="/2009/07">July 2009</a></li>
-	<li><a href="/2009/06">June 2009</a></li>
-	<li><a href="/2009/05">May 2009</a></li>
-	<li><a href="/2009/04">April 2009</a></li>
+					<li><a href="./../2022/03/index.html">March 2022</a></li>
+	<li><a href="./../2022/02/index.html">February 2022</a></li>
+	<li><a href="./../2022/01/index.html">January 2022</a></li>
+	<li><a href="./../2021/12/index.html">December 2021</a></li>
+	<li><a href="./../2021/11/index.html">November 2021</a></li>
+	<li><a href="./../2021/09/index.html">September 2021</a></li>
+	<li><a href="./../2021/08/index.html">August 2021</a></li>
+	<li><a href="./../2021/07/index.html">July 2021</a></li>
+	<li><a href="./../2021/06/index.html">June 2021</a></li>
+	<li><a href="./../2021/05/index.html">May 2021</a></li>
+	<li><a href="./../2021/04/index.html">April 2021</a></li>
+	<li><a href="./../2021/02/index.html">February 2021</a></li>
+	<li><a href="./../2021/01/index.html">January 2021</a></li>
+	<li><a href="./../2020/12/index.html">December 2020</a></li>
+	<li><a href="./../2019/03/index.html">March 2019</a></li>
+	<li><a href="./../2019/01/index.html">January 2019</a></li>
+	<li><a href="./../2018/12/index.html">December 2018</a></li>
+	<li><a href="./../2018/11/index.html">November 2018</a></li>
+	<li><a href="./../2018/10/index.html">October 2018</a></li>
+	<li><a href="./../2018/09/index.html">September 2018</a></li>
+	<li><a href="./../2017/09/index.html">September 2017</a></li>
+	<li><a href="./../2017/03/index.html">March 2017</a></li>
+	<li><a href="./../2017/02/index.html">February 2017</a></li>
+	<li><a href="./../2017/01/index.html">January 2017</a></li>
+	<li><a href="./../2016/12/index.html">December 2016</a></li>
+	<li><a href="./../2016/11/index.html">November 2016</a></li>
+	<li><a href="./../2016/09/index.html">September 2016</a></li>
+	<li><a href="./../2016/01/index.html">January 2016</a></li>
+	<li><a href="./../2015/11/index.html">November 2015</a></li>
+	<li><a href="./../2015/10/index.html">October 2015</a></li>
+	<li><a href="./../2015/09/index.html">September 2015</a></li>
+	<li><a href="./../2015/06/index.html">June 2015</a></li>
+	<li><a href="./../2015/04/index.html">April 2015</a></li>
+	<li><a href="./../2015/03/index.html">March 2015</a></li>
+	<li><a href="./../2015/02/index.html">February 2015</a></li>
+	<li><a href="./../2015/01/index.html">January 2015</a></li>
+	<li><a href="./../2014/12/index.html">December 2014</a></li>
+	<li><a href="./../2014/11/index.html">November 2014</a></li>
+	<li><a href="./../2014/10/index.html">October 2014</a></li>
+	<li><a href="./../2014/09/index.html">September 2014</a></li>
+	<li><a href="./../2014/08/index.html">August 2014</a></li>
+	<li><a href="./../2014/07/index.html">July 2014</a></li>
+	<li><a href="./../2014/06/index.html">June 2014</a></li>
+	<li><a href="./../2014/05/index.html">May 2014</a></li>
+	<li><a href="./../2014/04/index.html">April 2014</a></li>
+	<li><a href="./../2014/03/index.html">March 2014</a></li>
+	<li><a href="./../2014/02/index.html">February 2014</a></li>
+	<li><a href="./../2014/01/index.html">January 2014</a></li>
+	<li><a href="./../2013/12/index.html">December 2013</a></li>
+	<li><a href="./../2013/11/index.html">November 2013</a></li>
+	<li><a href="./../2013/09/index.html">September 2013</a></li>
+	<li><a href="./../2013/08/index.html">August 2013</a></li>
+	<li><a href="./../2013/07/index.html">July 2013</a></li>
+	<li><a href="./../2013/06/index.html">June 2013</a></li>
+	<li><a href="./../2013/05/index.html">May 2013</a></li>
+	<li><a href="./../2013/03/index.html">March 2013</a></li>
+	<li><a href="./../2013/02/index.html">February 2013</a></li>
+	<li><a href="./../2013/01/index.html">January 2013</a></li>
+	<li><a href="./../2012/12/index.html">December 2012</a></li>
+	<li><a href="./../2012/11/index.html">November 2012</a></li>
+	<li><a href="./../2012/09/index.html">September 2012</a></li>
+	<li><a href="./../2012/07/index.html">July 2012</a></li>
+	<li><a href="./../2012/06/index.html">June 2012</a></li>
+	<li><a href="./../2012/05/index.html">May 2012</a></li>
+	<li><a href="./../2012/04/index.html">April 2012</a></li>
+	<li><a href="./../2012/03/index.html">March 2012</a></li>
+	<li><a href="./../2012/02/index.html">February 2012</a></li>
+	<li><a href="./../2012/01/index.html">January 2012</a></li>
+	<li><a href="./../2011/12/index.html">December 2011</a></li>
+	<li><a href="./../2011/11/index.html">November 2011</a></li>
+	<li><a href="./../2011/10/index.html">October 2011</a></li>
+	<li><a href="./../2011/09/index.html">September 2011</a></li>
+	<li><a href="./../2011/07/index.html">July 2011</a></li>
+	<li><a href="./../2011/06/index.html">June 2011</a></li>
+	<li><a href="./../2011/05/index.html">May 2011</a></li>
+	<li><a href="./../2011/04/index.html">April 2011</a></li>
+	<li><a href="./../2011/03/index.html">March 2011</a></li>
+	<li><a href="./../2011/02/index.html">February 2011</a></li>
+	<li><a href="./../2011/01/index.html">January 2011</a></li>
+	<li><a href="./../2010/12/index.html">December 2010</a></li>
+	<li><a href="./../2010/11/index.html">November 2010</a></li>
+	<li><a href="./../2010/10/index.html">October 2010</a></li>
+	<li><a href="./../2010/09/index.html">September 2010</a></li>
+	<li><a href="./../2010/08/index.html">August 2010</a></li>
+	<li><a href="./../2010/07/index.html">July 2010</a></li>
+	<li><a href="./../2010/06/index.html">June 2010</a></li>
+	<li><a href="./../2010/05/index.html">May 2010</a></li>
+	<li><a href="./../2010/04/index.html">April 2010</a></li>
+	<li><a href="./../2010/03/index.html">March 2010</a></li>
+	<li><a href="./../2010/02/index.html">February 2010</a></li>
+	<li><a href="./../2010/01/index.html">January 2010</a></li>
+	<li><a href="./../2009/12/index.html">December 2009</a></li>
+	<li><a href="./../2009/11/index.html">November 2009</a></li>
+	<li><a href="./../2009/10/index.html">October 2009</a></li>
+	<li><a href="./../2009/09/index.html">September 2009</a></li>
+	<li><a href="./../2009/08/index.html">August 2009</a></li>
+	<li><a href="./../2009/07/index.html">July 2009</a></li>
+	<li><a href="./../2009/06/index.html">June 2009</a></li>
+	<li><a href="./../2009/05/index.html">May 2009</a></li>
+	<li><a href="./../2009/04/index.html">April 2009</a></li>
 			</ul>
 
 			</li>
@@ -2150,6 +2150,6 @@ google_ad_height =600;
 		</div>
 	</div>
 </div>
-	<!-- Powered by WPtouch: 4.3.39 --><script type="text/javascript" src="/wp-includes/js/comment-reply.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
+	<!-- Powered by WPtouch: 4.3.39 --><script type="text/javascript" src="./../wp-includes/js/comment-reply.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
 </body>
 </html>

@@ -8,8 +8,8 @@
 <channel>
 	<title>
 	Comments on: MySQL Cluster Database 7: Performance Benchmark	</title>
-	<atom:link href="/mysql-cluster/mysql-cluster-database-7-performance-benchmark/feed" rel="self" type="application/rss+xml" />
-	<link>/mysql-cluster/mysql-cluster-database-7-performance-benchmark</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../mysql-cluster-database-7-performance-benchmark/index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Mon, 06 Jan 2014 14:33:28 +0000</lastBuildDate>
 	<sy:updatePeriod>
@@ -20,13 +20,13 @@
 	<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/mysql-cluster-database-7-performance-benchmark#comment-47806</link>
+		<link>./../mysql-cluster-database-7-performance-benchmark/index.html#comment-47806</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 06 Jan 2014 14:33:28 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1498#comment-47806</guid>
+		<guid isPermaLink="false">./../../index.html?p=1498#comment-47806</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-database-7-performance-benchmark#comment-38332&quot;&gt;snake&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-database-7-performance-benchmark/index.html#comment-38332&quot;&gt;snake&lt;/a&gt;.
 
 InnoDB has all of the data held within a single machine and further, all of the working data set might be cached in memory - that makes it pretty efficient to run complex queries. On the other hand, MySQL Cluster distributes the data over multiple machines and so there is messaging that has to happen between those machines to satisfy queries - if not optimised correctly then the more complex the query, the more messaging and the higher the latency. This can result in queries being slower on Cluster than on InnoDB. Note that Cluster is more focussed on being able to scale out throughput by adding extra nodes vs. the scale-up approach with InnoDB.
 
@@ -37,7 +37,7 @@ As with any storage engine, there are of course techniques to improve throughput
 &lt;/ul&gt;
 
 Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-database-7-performance-benchmark#comment-38332">snake</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-database-7-performance-benchmark/index.html#comment-38332">snake</a>.</p>
 <p>InnoDB has all of the data held within a single machine and further, all of the working data set might be cached in memory &#8211; that makes it pretty efficient to run complex queries. On the other hand, MySQL Cluster distributes the data over multiple machines and so there is messaging that has to happen between those machines to satisfy queries &#8211; if not optimised correctly then the more complex the query, the more messaging and the higher the latency. This can result in queries being slower on Cluster than on InnoDB. Note that Cluster is more focussed on being able to scale out throughput by adding extra nodes vs. the scale-up approach with InnoDB.</p>
 <p>As with any storage engine, there are of course techniques to improve throughput and latency &#8211; here are a couple of good resources to get you started&#8230; </p>
 <ul>
@@ -51,11 +51,11 @@ Andrew.]]></description>
 		<item>
 		<title>
 		By: snake		</title>
-		<link>/mysql-cluster/mysql-cluster-database-7-performance-benchmark#comment-38332</link>
+		<link>./../mysql-cluster-database-7-performance-benchmark/index.html#comment-38332</link>
 
 		<dc:creator><![CDATA[snake]]></dc:creator>
 		<pubDate>Tue, 24 Dec 2013 10:59:08 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1498#comment-38332</guid>
+		<guid isPermaLink="false">./../../index.html?p=1498#comment-38332</guid>
 
 					<description><![CDATA[When testing innodb sysbench-test shows about 800 transactions per second, ndb cluster (running on 3 nodes, 3 VM) gives about 300 transactions per second with complex queries. Why ndb cluster shows lower performance than innodb?]]></description>
 			<content:encoded><![CDATA[<p>When testing innodb sysbench-test shows about 800 transactions per second, ndb cluster (running on 3 nodes, 3 VM) gives about 300 transactions per second with complex queries. Why ndb cluster shows lower performance than innodb?</p>
@@ -65,20 +65,20 @@ Andrew.]]></description>
 		<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/mysql-cluster-database-7-performance-benchmark#comment-443</link>
+		<link>./../mysql-cluster-database-7-performance-benchmark/index.html#comment-443</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 09 Aug 2012 10:42:39 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1498#comment-443</guid>
+		<guid isPermaLink="false">./../../index.html?p=1498#comment-443</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-database-7-performance-benchmark#comment-442&quot;&gt;Jahanzaib&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-database-7-performance-benchmark/index.html#comment-442&quot;&gt;Jahanzaib&lt;/a&gt;.
 
 MySQL Cluster is very different from most clustering solutions in that it&#039;s a distributed, shared nothing architecture and so there&#039;s no need for shared storage. 
 
 While fairly easy to manage, it doesn&#039;t have a management GUI an so you have some typing to do. It is further simplified if you use MySQL Cluster Manager (available for a free 30 day trial from edlivery.oracle.com). 
 
 Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-database-7-performance-benchmark#comment-442">Jahanzaib</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-database-7-performance-benchmark/index.html#comment-442">Jahanzaib</a>.</p>
 <p>MySQL Cluster is very different from most clustering solutions in that it&#8217;s a distributed, shared nothing architecture and so there&#8217;s no need for shared storage. </p>
 <p>While fairly easy to manage, it doesn&#8217;t have a management GUI an so you have some typing to do. It is further simplified if you use MySQL Cluster Manager (available for a free 30 day trial from edlivery.oracle.com). </p>
 <p>Andrew.</p>
@@ -88,11 +88,11 @@ Andrew.]]></description>
 		<item>
 		<title>
 		By: Jahanzaib		</title>
-		<link>/mysql-cluster/mysql-cluster-database-7-performance-benchmark#comment-442</link>
+		<link>./../mysql-cluster-database-7-performance-benchmark/index.html#comment-442</link>
 
 		<dc:creator><![CDATA[Jahanzaib]]></dc:creator>
 		<pubDate>Thu, 09 Aug 2012 05:24:16 +0000</pubDate>
-		<guid isPermaLink="false">/?p=1498#comment-442</guid>
+		<guid isPermaLink="false">./../../index.html?p=1498#comment-442</guid>
 
 					<description><![CDATA[Hi Andrew,
 

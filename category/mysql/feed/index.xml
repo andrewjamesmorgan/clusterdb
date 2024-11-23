@@ -9,8 +9,8 @@
 
 <channel>
 	<title>MySQL &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/category/mysql/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Fri, 20 Feb 2015 14:49:01 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Choosing the right MySQL High Availability Solution – webinar replay</title>
-		<link>/mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay</link>
-					<comments>/mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay#respond</comments>
+		<link>./../../mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/index.html</link>
+					<comments>./../../mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 20 Feb 2015 14:49:01 +0000</pubDate>
@@ -35,10 +35,10 @@
 		<category><![CDATA[MySQL Cluster]]></category>
 		<category><![CDATA[Replication]]></category>
 		<category><![CDATA[Scale]]></category>
-		<guid isPermaLink="false">/?p=4038</guid>
+		<guid isPermaLink="false">./../../index.html?p=4038</guid>
 
 					<description><![CDATA[Earlier this week, I presented a webinar on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application. The replay of this webinar can now be viewed here or if you just want to look at the charts then scroll down. At the end]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png"><img fetchpriority="high" decoding="async" class="aligncenter size-full wp-image-2970" src="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png" alt="MySQL-HA-Logo1.png" width="950" height="100" srcset="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png 950w, /wp-content/uploads/2013/10/MySQL-HA-Logo1-300x31.png 300w" sizes="(max-width: 950px) 100vw, 950px" /></a>Earlier this week, I presented a webinar on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application.</p>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/10/MySQL-HA-Logo1.png"><img fetchpriority="high" decoding="async" class="aligncenter size-full wp-image-2970" src="./../../wp-content/uploads/2013/10/MySQL-HA-Logo1.png" alt="MySQL-HA-Logo1.png" width="950" height="100" srcset="./../../wp-content/uploads/2013/10/MySQL-HA-Logo1.png 950w, ./../../wp-content/uploads/2013/10/MySQL-HA-Logo1-300x31.png 300w" sizes="(max-width: 950px) 100vw, 950px" /></a>Earlier this week, I presented a webinar on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application.</p>
 <p>The <a title="Achieving MySQL High Availability, Learn to Select Your Best Option - webinar replay" href="https://event.on24.com/eventRegistration/EventLobbyServlet?target=reg20.jsp&amp;eventid=930247&amp;sessionid=1&amp;key=FF21049401BAD50579B6733B15BC9D36&amp;sourcepage=register" target="_blank">replay of this webinar can now be viewed here</a> or if you just want to look at the charts then scroll down. At the end of this post, I include a summary of the Q&amp;A from the webinar.</p>
 <p><span style="color: #333399;">How important is your data? Can you afford to lose it? What about just some of it? What would be the impact if you couldn&#8217;t access it for a minute, an hour, a day or a week?</span></p>
 <p><span style="color: #333399;">Different applications can have very different requirements for High Availability. Some need 100% data reliability with 24x7x365 read &amp; write access while many others are better served by a simpler approach with more modest HA ambitions.</span></p>
@@ -76,19 +76,19 @@
 <li><strong>In MySQL cluster is all the data replicated to all of the data nodes?</strong> Data is synchrously replicated between the 2 data nodes forming a node group. Different node groups are responsible for different shards for any given table</li>
 <li><strong>What&#8217;s the maximum number of data nodes in MySQL Cluster?</strong> 48</li>
 <li><strong>Which it best inter-connect method between MySQL Cluster data nodes for highest performance?</strong> Infiniband and GB Ethernet have both shown great results. If you&#8217;re able to configure the behaviour then low latency will help get the best performance</li>
-<li><strong>Can I colocate MySQL Cluster data nodes with MySQL Servers in order use all posible resources?</strong> Yes, you can co-locate data nodes and MySQL Servers. Note that the management node (ndb_mgmd) should not run on the same machine as any of the data nodes &#8211; <a title="read this post for details on how to deploy MySQL Cluster nodes for High Availability" href="/mysql-cluster/mysql-cluster-fault-tolerance-impact-of-deployment-decisions" target="_blank">read this post for details on how to deploy MySQL Cluster nodes for High Availability</a></li>
+<li><strong>Can I colocate MySQL Cluster data nodes with MySQL Servers in order use all posible resources?</strong> Yes, you can co-locate data nodes and MySQL Servers. Note that the management node (ndb_mgmd) should not run on the same machine as any of the data nodes &#8211; <a title="read this post for details on how to deploy MySQL Cluster nodes for High Availability" href="./../../mysql-cluster/mysql-cluster-fault-tolerance-impact-of-deployment-decisions/index.html" target="_blank">read this post for details on how to deploy MySQL Cluster nodes for High Availability</a></li>
 </ul>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>SQL/NoSQL and MySQL Cluster 7.4 Presentations now available</title>
-		<link>/mysql/sqlnosql-and-mysql-cluster-7-4-presentations-now-available</link>
-					<comments>/mysql/sqlnosql-and-mysql-cluster-7-4-presentations-now-available#comments</comments>
+		<link>./../../mysql/sqlnosql-and-mysql-cluster-7-4-presentations-now-available/index.html</link>
+					<comments>./../../mysql/sqlnosql-and-mysql-cluster-7-4-presentations-now-available/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 03 Oct 2014 17:18:53 +0000</pubDate>
@@ -100,7 +100,7 @@
 		<category><![CDATA[NoSQL]]></category>
 		<category><![CDATA[secondary]]></category>
 		<category><![CDATA[sql]]></category>
-		<guid isPermaLink="false">/?p=3963</guid>
+		<guid isPermaLink="false">./../../index.html?p=3963</guid>
 
 					<description><![CDATA[My 2 sessions from 2014&#8217;s MySQL Central at Oracle OpenWorld are now available: NoSQL and SQL: The Best of Both Worlds [CON2853] There’s a lot of excitement about NoSQL data stores, with the promise of simple access patterns, flexible schemas, scalability, and high availability. The downside comes in the form of losing ACID transactions, consistency,]]></description>
 										<content:encoded><![CDATA[<p>My 2 sessions from 2014&#8217;s MySQL Central at Oracle OpenWorld are now available:</p>
@@ -114,15 +114,15 @@
 <p><iframe loading="lazy" src="//www.slideshare.net/slideshow/embed_code/39848913" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql/sqlnosql-and-mysql-cluster-7-4-presentations-now-available/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql/sqlnosql-and-mysql-cluster-7-4-presentations-now-available/feed/index.html</wfw:commentRss>
 			<slash:comments>2</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>My NoSQL/SQL and MySQL Cluster sessions at Oracle OpenWorld</title>
-		<link>/mysql/my-nosqlsql-and-mysql-cluster-sessions-at-oracle-openworld</link>
-					<comments>/mysql/my-nosqlsql-and-mysql-cluster-sessions-at-oracle-openworld#respond</comments>
+		<link>./../../mysql/my-nosqlsql-and-mysql-cluster-sessions-at-oracle-openworld/index.html</link>
+					<comments>./../../mysql/my-nosqlsql-and-mysql-cluster-sessions-at-oracle-openworld/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 30 Sep 2014 18:21:04 +0000</pubDate>
@@ -131,7 +131,7 @@
 		<category><![CDATA[NoSQL]]></category>
 		<category><![CDATA[OOW]]></category>
 		<category><![CDATA[secondary]]></category>
-		<guid isPermaLink="false">/?p=3959</guid>
+		<guid isPermaLink="false">./../../index.html?p=3959</guid>
 
 					<description><![CDATA[I have 2 sessions at Oracle OpenWorld in San Francisco this Thursday (2nd October 2014); please come along if your in town and feel free to grab me after the sessions for any extra questions: NoSQL and SQL: The Best of Both Worlds [CON2853] Thursday, Oct 2, 9:30 AM &#8211; 10:15 AM &#8211; Moscone South]]></description>
 										<content:encoded><![CDATA[<p>I have 2 sessions at Oracle OpenWorld in San Francisco this Thursday (2nd October 2014); please come along if your in town and feel free to grab me after the sessions for any extra questions:</p>
@@ -144,15 +144,15 @@
 <p>MySQL Cluster does more than scale beyond a billion transactions per minute. It’s also the in-memory database at the heart of mobile phone networks and online games. Scaling for the masses. A touch of your mobile phone’s green button likely has already gotten you in contact with MySQL Cluster. Driven by these extreme use cases, this session covers how to build business-critical scalable solutions with MySQL Cluster.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql/my-nosqlsql-and-mysql-cluster-sessions-at-oracle-openworld/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql/my-nosqlsql-and-mysql-cluster-sessions-at-oracle-openworld/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>I&#8217;ll be presenting at Oracle OpenWorld next week</title>
-		<link>/mysql/oow-2014</link>
-					<comments>/mysql/oow-2014#respond</comments>
+		<link>./../../mysql/oow-2014/index.html</link>
+					<comments>./../../mysql/oow-2014/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 23 Sep 2014 14:50:13 +0000</pubDate>
@@ -160,10 +160,10 @@
 		<category><![CDATA[MySQL Cluster]]></category>
 		<category><![CDATA[MySQL Cluster 7.4]]></category>
 		<category><![CDATA[NoSQL]]></category>
-		<guid isPermaLink="false">/?p=3945</guid>
+		<guid isPermaLink="false">./../../index.html?p=3945</guid>
 
 					<description><![CDATA[I will be presenting two sessions at MySQL Central @ Oracle OpenWorld in San Francisco next Thursday (2nd Ocotber). I hope to see as many of you there as possible and I&#8217;ll be around after the session to continue answering any questions. NoSQL and SQL: The Best of Both Worlds [CON2853] There’s a lot of]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2014/09/oow-imspeaking-250x250-2225054.jpg"><img loading="lazy" decoding="async" class="alignright size-full wp-image-3946" src="/wp-content/uploads/2014/09/oow-imspeaking-250x250-2225054.jpg" alt="I'm speaking at MySQL Central @ Oracle OpenWorld 2014" width="250" height="250" srcset="/wp-content/uploads/2014/09/oow-imspeaking-250x250-2225054.jpg 250w, /wp-content/uploads/2014/09/oow-imspeaking-250x250-2225054-150x150.jpg 150w, /wp-content/uploads/2014/09/oow-imspeaking-250x250-2225054-144x144.jpg 144w" sizes="auto, (max-width: 250px) 100vw, 250px" /></a><br />
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2014/09/oow-imspeaking-250x250-2225054.jpg"><img loading="lazy" decoding="async" class="alignright size-full wp-image-3946" src="./../../wp-content/uploads/2014/09/oow-imspeaking-250x250-2225054.jpg" alt="I'm speaking at MySQL Central @ Oracle OpenWorld 2014" width="250" height="250" srcset="./../../wp-content/uploads/2014/09/oow-imspeaking-250x250-2225054.jpg 250w, ./../../wp-content/uploads/2014/09/oow-imspeaking-250x250-2225054-150x150.jpg 150w, ./../../wp-content/uploads/2014/09/oow-imspeaking-250x250-2225054-144x144.jpg 144w" sizes="auto, (max-width: 250px) 100vw, 250px" /></a><br />
 I will be presenting two sessions at MySQL Central @ Oracle OpenWorld in San Francisco next Thursday (2nd Ocotber). I hope to see as many of you there as possible and I&#8217;ll be around after the session to continue answering any questions.</p>
 <h2> NoSQL and SQL: The Best of Both Worlds [CON2853]</h2>
 <p>There’s a lot of excitement about NoSQL data stores, with the promise of simple access patterns, flexible schemas, scalability, and high availability. The downside comes in the form of losing ACID transactions, consistency, flexible queries, and data integrity checks. What if you could have the best of both worlds? This session shows how MySQL Cluster provides simultaneous SQL and native NoSQL access to your data—whether it’s in a simple key-value API (memcached) or REST, JavaScript, Java, or C++. You will hear how the MySQL Cluster architecture delivers in-memory real-time performance; 99.999 percent availability; online maintenance; and linear, horizontal scalability through transparent autosharding.</p>
@@ -181,15 +181,15 @@ I will be presenting two sessions at MySQL Central @ Oracle OpenWorld in San Fra
 </ul>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql/oow-2014/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql/oow-2014/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Webinar &#8211; Automated Sharding and High Availability with MySQL Fabric</title>
-		<link>/mysql/webinar-automated-sharding-and-high-availability-with-mysql-fabric</link>
-					<comments>/mysql/webinar-automated-sharding-and-high-availability-with-mysql-fabric#respond</comments>
+		<link>./../../mysql/webinar-automated-sharding-and-high-availability-with-mysql-fabric/index.html</link>
+					<comments>./../../mysql/webinar-automated-sharding-and-high-availability-with-mysql-fabric/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 16 Dec 2013 15:47:15 +0000</pubDate>
@@ -198,10 +198,10 @@ I will be presenting two sessions at MySQL Central @ Oracle OpenWorld in San Fra
 		<category><![CDATA[HA]]></category>
 		<category><![CDATA[High Availability]]></category>
 		<category><![CDATA[sharding]]></category>
-		<guid isPermaLink="false">/?p=3009</guid>
+		<guid isPermaLink="false">./../../index.html?p=3009</guid>
 
 					<description><![CDATA[On Tuesday 17th December, we&#8217;ll be presenting a webinar on the latest developments for MySQL Fabric (a framework for managing pools of MySQL server &#8211; together with 2 applications: automated sharding and High Availablity). As always, the webinar is free and you should register here. This is your opportunity to hear the details directly from]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/12/fabric2.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2013/12/fabric2-300x145.png" alt="MySQL Fabric" width="300" height="145" class="alignright size-medium wp-image-3006" srcset="/wp-content/uploads/2013/12/fabric2-300x145.png 300w, /wp-content/uploads/2013/12/fabric2.png 725w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><br />
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/12/fabric2.png"><img loading="lazy" decoding="async" src="./../../wp-content/uploads/2013/12/fabric2-300x145.png" alt="MySQL Fabric" width="300" height="145" class="alignright size-medium wp-image-3006" srcset="./../../wp-content/uploads/2013/12/fabric2-300x145.png 300w, ./../../wp-content/uploads/2013/12/fabric2.png 725w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><br />
 On Tuesday 17th December, we&#8217;ll be presenting a webinar on the latest developments for MySQL Fabric (a framework for managing pools of MySQL server &#8211; together with 2 applications: automated sharding and High Availablity). As always, the webinar is free and you should <a href="http://www.mysql.com/news-and-events/web-seminars/automated-sharding-and-high-availability-with-mysql-fabric/" title="Webinar - Automated Sharding and High Availability with MySQL Fabric" target="_blank">register here</a>.</p>
 <p>This is your opportunity to hear the details directly from the engineering team and put your questions to them.</p>
 <p>This session will present MySQL Fabric and help you understand how you will be able to leverage it to address your scaling needs:</p>
@@ -232,38 +232,38 @@ On Tuesday 17th December, we&#8217;ll be presenting a webinar on the latest deve
 </ul>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql/webinar-automated-sharding-and-high-availability-with-mysql-fabric/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql/webinar-automated-sharding-and-high-availability-with-mysql-fabric/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>MySQL &#038; Friends &#8211; FOSDEM 2014 CfP last chance!</title>
-		<link>/mysql/mysql-friends-fosdem-2014-cfp-last-chance</link>
-					<comments>/mysql/mysql-friends-fosdem-2014-cfp-last-chance#respond</comments>
+		<link>./../../mysql/mysql-friends-fosdem-2014-cfp-last-chance/index.html</link>
+					<comments>./../../mysql/mysql-friends-fosdem-2014-cfp-last-chance/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 02 Dec 2013 16:44:26 +0000</pubDate>
 				<category><![CDATA[MySQL]]></category>
 		<category><![CDATA[fosdem]]></category>
-		<guid isPermaLink="false">/?p=2998</guid>
+		<guid isPermaLink="false">./../../index.html?p=2998</guid>
 
 					<description><![CDATA[Heads up that Friday (6th December) is your last chance to submit a 30 minute session proposal for next year&#8217;s MySQL &#038; Friends Devroom at FOSDEM. I presented last year and I was really impressed by the number of attendees, the organisation and the positive reception (I&#8217;ll be there again next year &#8211; hopefully presenting).]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/12/FOSDEM14.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2013/12/FOSDEM14.png" alt="MySQL &amp; Friends devroom" width="185" height="142" class="alignright size-full wp-image-2997" /></a><br />
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/12/FOSDEM14.png"><img loading="lazy" decoding="async" src="./../../wp-content/uploads/2013/12/FOSDEM14.png" alt="MySQL &amp; Friends devroom" width="185" height="142" class="alignright size-full wp-image-2997" /></a><br />
 Heads up that Friday (6th December) is your last chance to submit a 30 minute session proposal for next year&#8217;s MySQL &#038; Friends Devroom at FOSDEM. I presented last year and I was really impressed by the number of attendees, the organisation and the positive reception (I&#8217;ll be there again next year &#8211; hopefully presenting). If you&#8217;ve got a MySQL-related topic that you&#8217;d like to present to an enthusiastic open-source community then this is a agreat opportunity. </p>
 <p><a href="https://penta.fosdem.org/submission/FOSDEM14" title="Submit MySQL Session for FOSDEM 2014" target="_blank">Submit your proposal(s) for a 30 minute session here</a>. </p>
 <p><a href="https://fosdem.org/2014/" title="FOSDEM 2014 " target="_blank">FOSDEM 2014</a> is free event running in Brussels over the weekend of 1st &#038; 2nd February, with the MySQL content aimed for the Saturday. This is a huge event (5,000+) and has a great, informal, developer-focused atmosphere &#8211; even if you don&#8217;t want to present, it&#8217;s worth attending if you can.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql/mysql-friends-fosdem-2014-cfp-last-chance/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql/mysql-friends-fosdem-2014-cfp-last-chance/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Holding MySQL HA workshop in Oxford</title>
-		<link>/mysql/holding-mysql-ha-workshop-in-oxford</link>
-					<comments>/mysql/holding-mysql-ha-workshop-in-oxford#respond</comments>
+		<link>./../../mysql/holding-mysql-ha-workshop-in-oxford/index.html</link>
+					<comments>./../../mysql/holding-mysql-ha-workshop-in-oxford/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 03 Sep 2013 14:40:45 +0000</pubDate>
@@ -275,10 +275,10 @@ Heads up that Friday (6th December) is your last chance to submit a 30 minute se
 		<category><![CDATA[MySQL Cluster Manager]]></category>
 		<category><![CDATA[MySQL Replication]]></category>
 		<category><![CDATA[Windows]]></category>
-		<guid isPermaLink="false">/?p=2941</guid>
+		<guid isPermaLink="false">./../../index.html?p=2941</guid>
 
 					<description><![CDATA[On 17th October I&#8217;ll be running a hands-on workshop on the various technologies available to provide High Availability using MySQL. The workshop is being held on 17th October (the day before the All Your Base conference) in Oxford (UK). The cost is £250 + VAT and you can register here. This workshop provides an introduction]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/09/All-Your-Base-logo1.png"><img loading="lazy" decoding="async" class="alignright size-full wp-image-2943" alt="All Your Base Conference - MySQL HA Workshop" src="/wp-content/uploads/2013/09/All-Your-Base-logo1.png" width="202" height="258" /></a>On 17th October I&#8217;ll be running a hands-on workshop on the various technologies available to provide High Availability using MySQL. The workshop is being held on 17th October (the day before the All Your Base conference) in Oxford (UK). The cost is £250 + VAT and you can <a title="MySQL HA workshop at All Your Base conference" href="http://allyourbaseconf.com/workshops.html#mysql" target="_blank">register here</a>.</p>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/09/All-Your-Base-logo1.png"><img loading="lazy" decoding="async" class="alignright size-full wp-image-2943" alt="All Your Base Conference - MySQL HA Workshop" src="./../../wp-content/uploads/2013/09/All-Your-Base-logo1.png" width="202" height="258" /></a>On 17th October I&#8217;ll be running a hands-on workshop on the various technologies available to provide High Availability using MySQL. The workshop is being held on 17th October (the day before the All Your Base conference) in Oxford (UK). The cost is £250 + VAT and you can <a title="MySQL HA workshop at All Your Base conference" href="http://allyourbaseconf.com/workshops.html#mysql" target="_blank">register here</a>.</p>
 <p>This workshop provides an introduction to what High Availability (HA) is; what technology options are available to achieve it with MySQL and how to actually implement your own HA solutions. The session will be a mixture of presentations, demonstrations and (most importantly) hands-on tutorials.</p>
 <p>We&#8217;ll start with an overview of High Availability &#8211; in general and in the context of MySQL and then a survey of the technologies to choose from:</p>
 <ul>
@@ -303,15 +303,15 @@ Heads up that Friday (6th December) is your last chance to submit a 30 minute se
 <p>The plan is to get everyone up and running with multiple VMs on their laptops so that they can experiment and test with MySQL Cluster and MySQL Replication over multiple (virtual) hosts. As a stretch, we&#8217;ll try creating a Cluster running over everyone&#8217;s machine at the same time &#8211; though that might be stretching the logisitics! I&#8217;ve got a supply of 30 USB sticks and hope to have 2-3 unique virtual appliances on each &#8211; what could go wrong?</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql/holding-mysql-ha-workshop-in-oxford/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql/holding-mysql-ha-workshop-in-oxford/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>New replication &#038; HA white papers</title>
-		<link>/mysql/new-replication-ha-white-papers</link>
-					<comments>/mysql/new-replication-ha-white-papers#respond</comments>
+		<link>./../../mysql/new-replication-ha-white-papers/index.html</link>
+					<comments>./../../mysql/new-replication-ha-white-papers/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 14 Aug 2013 13:19:24 +0000</pubDate>
@@ -320,10 +320,10 @@ Heads up that Friday (6th December) is your last chance to submit a 30 minute se
 		<category><![CDATA[High Availability]]></category>
 		<category><![CDATA[MySQL Replication]]></category>
 		<category><![CDATA[MySQL Utilities]]></category>
-		<guid isPermaLink="false">/?p=2931</guid>
+		<guid isPermaLink="false">./../../index.html?p=2931</guid>
 
 					<description><![CDATA[With the General Availability of the standalone MySQL Utilities it now makes sense to use these to simplify (and optionally automate) your MySQL Replication and High Availability solutions. In light of that, 4 of our MySQL white papers have been updated to reflect the new opportunities: MySQL Guide to High Availability Solutions. Data is the]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/08/MySQL_Replication_and_HA.png"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-2932" alt="MySQLReplication and High Availability logo" src="/wp-content/uploads/2013/08/MySQL_Replication_and_HA-300x101.png" width="300" height="101" /></a>With the <a title="Standalone MySQL Utilities Now GA! Includes running mysqlfailover as a daemon" href="/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon/" target="_blank">General Availability of the standalone MySQL Utilities</a> it now makes sense to use these to simplify (and optionally automate) your MySQL Replication and High Availability solutions. In light of that, 4 of our MySQL white papers have been updated to reflect the new opportunities:</p>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/08/MySQL_Replication_and_HA.png"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-2932" alt="MySQLReplication and High Availability logo" src="./../../wp-content/uploads/2013/08/MySQL_Replication_and_HA-300x101.png" width="300" height="101" /></a>With the <a title="Standalone MySQL Utilities Now GA! Includes running mysqlfailover as a daemon" href="./../../mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon/index.html" target="_blank">General Availability of the standalone MySQL Utilities</a> it now makes sense to use these to simplify (and optionally automate) your MySQL Replication and High Availability solutions. In light of that, 4 of our MySQL white papers have been updated to reflect the new opportunities:</p>
 <p><strong><a title="MySQL Guide to High Availability Solutions" href="http://www.mysql.com/why-mysql/white-papers/mysql-guide-to-high-availability-solutions/" target="_blank">MySQL Guide to High Availability Solutions</a></strong>. Data is the currency of today&#8217;s web, mobile, social, enterprise and cloud applications. Ensuring data is always available is a top priority for any organization &#8211; minutes of downtime will result in significant loss of revenue and reputation.</p>
 <p>This Guide is designed to assist Developers, Architects and DBAs in navigating the complex waters of HA. It presents:</p>
 <ul>
@@ -362,25 +362,25 @@ Heads up that Friday (6th December) is your last chance to submit a 30 minute se
 <p>The paper concludes with additional resources to tune and optimize MySQL replication for your environment.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql/new-replication-ha-white-papers/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql/new-replication-ha-white-papers/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>MySQL Utilities Webinar &#8211; Q&#038;A + replay now available</title>
-		<link>/mysql/mysql-utilities-webinar-qa-replay-now-available</link>
-					<comments>/mysql/mysql-utilities-webinar-qa-replay-now-available#respond</comments>
+		<link>./../../mysql/mysql-utilities-webinar-qa-replay-now-available/index.html</link>
+					<comments>./../../mysql/mysql-utilities-webinar-qa-replay-now-available/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 29 Jul 2013 07:46:32 +0000</pubDate>
 				<category><![CDATA[MySQL]]></category>
 		<category><![CDATA[MySQL Utilities]]></category>
 		<category><![CDATA[Replication]]></category>
-		<guid isPermaLink="false">/?p=2896</guid>
+		<guid isPermaLink="false">./../../index.html?p=2896</guid>
 
 					<description><![CDATA[Dr Charles Bell and I recently presented a webinar on MySQL Utilities; there was a heavy focus on what you can acheive with them and how you should use them. In case you couldn&#8217;t attend or want to listen to some of the details again, the replay from that webinar is available here. Abstract: MySQL]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/07/MySQL_Utilities.png"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-2875" alt="MySQL Utilities logo" src="/wp-content/uploads/2013/07/MySQL_Utilities-300x125.png" width="300" height="125" /></a>Dr Charles Bell and I recently presented a webinar on MySQL Utilities; there was a heavy focus on what you can acheive with them and how you should use them. In case you couldn&#8217;t attend or want to listen to some of the details again, the <a title="MySQL Utilities webinar replay" href="http://w.on24.com/r.htm?e=655548&amp;s=1&amp;k=EEBAC76AC407E0017ABF67F4686C7B2F" target="_blank">replay from that webinar is available here</a>.</p>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/07/MySQL_Utilities.png"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-2875" alt="MySQL Utilities logo" src="./../../wp-content/uploads/2013/07/MySQL_Utilities-300x125.png" width="300" height="125" /></a>Dr Charles Bell and I recently presented a webinar on MySQL Utilities; there was a heavy focus on what you can acheive with them and how you should use them. In case you couldn&#8217;t attend or want to listen to some of the details again, the <a title="MySQL Utilities webinar replay" href="http://w.on24.com/r.htm?e=655548&amp;s=1&amp;k=EEBAC76AC407E0017ABF67F4686C7B2F" target="_blank">replay from that webinar is available here</a>.</p>
 <h3>Abstract:</h3>
 <p>MySQL Utilities provide a collection of command-line utilities that are used for maintaining and administering MySQL databases, including:</p>
 <ul>
@@ -409,15 +409,15 @@ Heads up that Friday (6th December) is your last chance to submit a 30 minute se
 <p>&nbsp;</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql/mysql-utilities-webinar-qa-replay-now-available/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql/mysql-utilities-webinar-qa-replay-now-available/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>MySQL Virtual Developers Day</title>
-		<link>/mysql/mysql-virtual-developers-day</link>
-					<comments>/mysql/mysql-virtual-developers-day#comments</comments>
+		<link>./../../mysql/mysql-virtual-developers-day/index.html</link>
+					<comments>./../../mysql/mysql-virtual-developers-day/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 25 Jul 2013 08:38:00 +0000</pubDate>
@@ -425,15 +425,15 @@ Heads up that Friday (6th December) is your last chance to submit a 30 minute se
 		<category><![CDATA[MySQL Cluster]]></category>
 		<category><![CDATA[MySQL 5.6]]></category>
 		<category><![CDATA[MySQL Cluster 7.3]]></category>
-		<guid isPermaLink="false">/?p=2889</guid>
+		<guid isPermaLink="false">./../../index.html?p=2889</guid>
 
 					<description><![CDATA[I&#8217;ll be presenting the keynote for Wednesday&#8217;s (31st July) MySQL Virtual Developer Day. The idea behind this event is that you get half a day of on-line presentations as well as live Q&#038;A. My session focuses on what&#8217;s new in MySQL &#8211; in particular MySQL 5.6 and MySQL Cluster 7.3. As you&#8217;ll come to have]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/07/MySQL-Developers-Day.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2013/07/MySQL-Developers-Day-300x181.png" alt="MySQL Virtual Developers Day" width="300" height="181" class="alignright size-medium wp-image-2890" /></a>I&#8217;ll be presenting the keynote for Wednesday&#8217;s (31st July) <a href="https://oracle.6connex.com/portal/mysql/login?skipRedirectRegistration=true" title="MySQL Virtual Developers Day" target="_blank">MySQL Virtual Developer Day</a>. The idea behind this event is that you get half a day of on-line presentations as well as live Q&#038;A. My session focuses on what&#8217;s new in MySQL &#8211; in particular MySQL 5.6 and MySQL Cluster 7.3. As you&#8217;ll come to have expected, the event is free but you need to <a href="https://oracle.6connex.com/portal/mysql/login?skipRedirectRegistration=true" title="Register for MySQL Virtual Developers Day" target="_blank">register here</a>.<br />
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/07/MySQL-Developers-Day.png"><img loading="lazy" decoding="async" src="./../../wp-content/uploads/2013/07/MySQL-Developers-Day-300x181.png" alt="MySQL Virtual Developers Day" width="300" height="181" class="alignright size-medium wp-image-2890" /></a>I&#8217;ll be presenting the keynote for Wednesday&#8217;s (31st July) <a href="https://oracle.6connex.com/portal/mysql/login?skipRedirectRegistration=true" title="MySQL Virtual Developers Day" target="_blank">MySQL Virtual Developer Day</a>. The idea behind this event is that you get half a day of on-line presentations as well as live Q&#038;A. My session focuses on what&#8217;s new in MySQL &#8211; in particular MySQL 5.6 and MySQL Cluster 7.3. As you&#8217;ll come to have expected, the event is free but you need to <a href="https://oracle.6connex.com/portal/mysql/login?skipRedirectRegistration=true" title="Register for MySQL Virtual Developers Day" target="_blank">register here</a>.<br />
 In the following agenda, all times are local to Singapore&#8230;<br />
-<a href="/wp-content/uploads/2013/07/agenda.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2013/07/agenda.png" alt="MySQL Virtual Developers Day (APAC) Agenda" width="683" height="208" class="alignright size-full wp-image-2891" /></a></p>
+<a href="./../../wp-content/uploads/2013/07/agenda.png"><img loading="lazy" decoding="async" src="./../../wp-content/uploads/2013/07/agenda.png" alt="MySQL Virtual Developers Day (APAC) Agenda" width="683" height="208" class="alignright size-full wp-image-2891" /></a></p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql/mysql-virtual-developers-day/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql/mysql-virtual-developers-day/feed/index.html</wfw:commentRss>
 			<slash:comments>2</slash:comments>
 		
 		

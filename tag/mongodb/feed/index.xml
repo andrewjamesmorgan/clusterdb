@@ -9,8 +9,8 @@
 
 <channel>
 	<title>mongodb &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/mongodb/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Mon, 14 Mar 2022 16:30:15 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Building a collaborative iOS Minesweeper game with Realm</title>
-		<link>/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm</link>
-					<comments>/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm#respond</comments>
+		<link>./../../mongodb/building-a-collaborative-ios-minesweeper-game-with-realm/index.html</link>
+					<comments>./../../mongodb/building-a-collaborative-ios-minesweeper-game-with-realm/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 14 Mar 2022 16:30:15 +0000</pubDate>
@@ -33,10 +33,10 @@
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[Swift]]></category>
 		<category><![CDATA[SwiftUI]]></category>
-		<guid isPermaLink="false">/?p=4668</guid>
+		<guid isPermaLink="false">./../../index.html?p=4668</guid>
 
 					<description><![CDATA[I wanted to build an app that we could use at events to demonstrate Realm Sync. It needed to be fun to interact with, and so a multiplayer game made sense. Tic-tac-toe is too simple to get excited about. I&#8217;m not a game developer and so Call Of Duty wasn&#8217;t an option. Then I remembered]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2022/03/ATF-720x720-1.png"><img fetchpriority="high" decoding="async" src="/wp-content/uploads/2022/03/ATF-720x720-1-300x300.png" alt="Realm-Sweeper. Writing a multiplayer iOS Minesweeper game using SwiftUI and Realm" width="300" height="300" class="alignright size-medium wp-image-4669" srcset="/wp-content/uploads/2022/03/ATF-720x720-1-300x300.png 300w, /wp-content/uploads/2022/03/ATF-720x720-1-150x150.png 150w, /wp-content/uploads/2022/03/ATF-720x720-1-144x144.png 144w, /wp-content/uploads/2022/03/ATF-720x720-1.png 720w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2022/03/ATF-720x720-1.png"><img fetchpriority="high" decoding="async" src="./../../wp-content/uploads/2022/03/ATF-720x720-1-300x300.png" alt="Realm-Sweeper. Writing a multiplayer iOS Minesweeper game using SwiftUI and Realm" width="300" height="300" class="alignright size-medium wp-image-4669" srcset="./../../wp-content/uploads/2022/03/ATF-720x720-1-300x300.png 300w, ./../../wp-content/uploads/2022/03/ATF-720x720-1-150x150.png 150w, ./../../wp-content/uploads/2022/03/ATF-720x720-1-144x144.png 144w, ./../../wp-content/uploads/2022/03/ATF-720x720-1.png 720w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
 <p>I wanted to build an app that we could use at events to demonstrate <a href="https://www.mongodb.com/realm/mobile/sync">Realm Sync</a>. It needed to be fun to interact with, and so a multiplayer game made sense. Tic-tac-toe is too simple to get excited about. I&#8217;m not a game developer and so <em>Call Of Duty</em> wasn&#8217;t an option. Then I remembered Microsoft&#8217;s <a href="https://en.wikipedia.org/wiki/Minesweeper">Minesweeper</a>.</p>
 <p>Minesweeper was a Windows fixture from 1990 until Windows 8 relegated it to the app store in 2012. It was a single-player game, but it struck me as something that could be a lot of fun to play with others. Some family beta-testing of my first version while waiting for a ferry proved that it did get people to interact with each other (even if most interactions involved shouting, &#8220;Which of you muppets clicked on that mine?!&#8221;).</p>
 <p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/IMG_1301_81fa444116.jpeg" alt="Family sat around a table, all playing the Realm-Sweeper game on their iPhones" /></p>
@@ -267,15 +267,15 @@ class Cell: EmbeddedObject, ObjectKeyIdentifiable {
 <p>Got questions? Ask them in our <a href="https://www.mongodb.com/community/forums/c/realm/realm-sync/111">Community forum</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/building-a-collaborative-ios-minesweeper-game-with-realm/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Using Realm Flexible Sync in Your App—an iOS Tutorial</title>
-		<link>/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial</link>
-					<comments>/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial#respond</comments>
+		<link>./../../mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial/index.html</link>
+					<comments>./../../mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 25 Feb 2022 12:24:10 +0000</pubDate>
@@ -283,7 +283,7 @@ class Cell: EmbeddedObject, ObjectKeyIdentifiable {
 		<category><![CDATA[Realm]]></category>
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[SwiftUI]]></category>
-		<guid isPermaLink="false">/?p=4664</guid>
+		<guid isPermaLink="false">./../../index.html?p=4664</guid>
 
 					<description><![CDATA[Introduction We recently announced the release of the Realm Flexible Sync preview—an opportunity for developers to take it for a spin and give us feedback. That article provided an overview of the benefits of flexible sync and how it works. TL;DR: You typically don&#8217;t want to sync the entire backend database to every device—whether for]]></description>
 										<content:encoded><![CDATA[<h2>Introduction</h2>
@@ -896,15 +896,15 @@ class Photo: EmbeddedObject, ObjectKeyIdentifiable {
 <p>Got questions? Ask them in our <a href="https://www.mongodb.com/community/forums/c/realm/realm-sync/111">Community forum</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Realm-Swift Type Projections</title>
-		<link>/mongodb/realm-swift-type-projections</link>
-					<comments>/mongodb/realm-swift-type-projections#respond</comments>
+		<link>./../../mongodb/realm-swift-type-projections/index.html</link>
+					<comments>./../../mongodb/realm-swift-type-projections/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 26 Jan 2022 16:39:56 +0000</pubDate>
@@ -913,7 +913,7 @@ class Photo: EmbeddedObject, ObjectKeyIdentifiable {
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[Swift]]></category>
 		<category><![CDATA[SwiftUI]]></category>
-		<guid isPermaLink="false">/?p=4659</guid>
+		<guid isPermaLink="false">./../../index.html?p=4659</guid>
 
 					<description><![CDATA[Introduction Realm natively provides a broad set of data types, including Bool, Int, Float, Double, String, Date, ObjectID, List, Mutable Set, enum, Map, … But, there are other data types that many of your iOS apps are likely to use. As an example, if you&#8217;re using Core Graphics, then it&#8217;s hard to get away without]]></description>
 										<content:encoded><![CDATA[<h2>Introduction</h2>
@@ -1066,15 +1066,15 @@ protocol FailableCustomPersistable {
 <p>Please provide feedback and ask any questions in the <a href="https://www.mongodb.com/community/forums/c/realm-sdks/58">Realm Community Forum</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/realm-swift-type-projections/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/realm-swift-type-projections/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Using Maps and Location Data in Your SwiftUI (+Realm) App</title>
-		<link>/mongodb/realm/maps</link>
-					<comments>/mongodb/realm/maps#respond</comments>
+		<link>./../../mongodb/realm/maps/index.html</link>
+					<comments>./../../mongodb/realm/maps/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 12 Jul 2021 12:46:04 +0000</pubDate>
@@ -1083,7 +1083,7 @@ protocol FailableCustomPersistable {
 		<category><![CDATA[mobile]]></category>
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[SwiftUI]]></category>
-		<guid isPermaLink="false">/?p=4620</guid>
+		<guid isPermaLink="false">./../../index.html?p=4620</guid>
 
 					<description><![CDATA[Introduction Embedding Apple Maps and location functionality in SwiftUI apps used to be a bit of a pain. It required writing your own SwiftUI wrapper around UIKit code—see these examples from the O-FISH app: Location helper Map views If you only need to support iOS14 and later, then you can forget most of that messy]]></description>
 										<content:encoded><![CDATA[<h2>Introduction</h2>
@@ -1353,15 +1353,15 @@ self.location = [location.longitude, location.latitude]
 <p>If you have questions, please head to our <a href="https://community.mongodb.com/">developer community website</a> where the MongoDB engineers and the MongoDB community will help you build your next big idea with MongoDB.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/realm/maps/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/realm/maps/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Realm Partitioning Strategies</title>
-		<link>/mongodb/realm-partitioning-strategies</link>
-					<comments>/mongodb/realm-partitioning-strategies#respond</comments>
+		<link>./../../mongodb/realm-partitioning-strategies/index.html</link>
+					<comments>./../../mongodb/realm-partitioning-strategies/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 04 May 2021 15:04:47 +0000</pubDate>
@@ -1370,7 +1370,7 @@ self.location = [location.longitude, location.latitude]
 		<category><![CDATA[android]]></category>
 		<category><![CDATA[ios]]></category>
 		<category><![CDATA[mongodb]]></category>
-		<guid isPermaLink="false">/?p=4611</guid>
+		<guid isPermaLink="false">./../../index.html?p=4611</guid>
 
 					<description><![CDATA[I&#8217;ve just released a new article – Realm Partitioning Strategies. Realm partitioning can be used to control what data is synced to each mobile device, ensuring that your app is efficient, performant and secure. This article will help you pick the right partitioning strategy for your app. MongoDB Realm Sync stores the superset of your]]></description>
 										<content:encoded><![CDATA[<p>I&#8217;ve just released a <a href="https://developer.mongodb.com/how-to/realm-partitioning-strategies">new article – Realm Partitioning Strategies</a>.</p>
@@ -1388,22 +1388,22 @@ Alternative strategies include partitioning by:</p>
 <p><a href="https://developer.mongodb.com/how-to/realm-partitioning-strategies">The article</a> discusses all of those strategies so that you adopt one, or craft a different strategy that&#8217;s customized to your app&#8217;s needs.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/realm-partitioning-strategies/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/realm-partitioning-strategies/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Accessing Realm Data on iOS using Realm Studio</title>
-		<link>/mongodb/accessing-realm-data-on-ios-using-realm-studio</link>
-					<comments>/mongodb/accessing-realm-data-on-ios-using-realm-studio#respond</comments>
+		<link>./../../mongodb/accessing-realm-data-on-ios-using-realm-studio/index.html</link>
+					<comments>./../../mongodb/accessing-realm-data-on-ios-using-realm-studio/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 09 Feb 2021 13:17:49 +0000</pubDate>
 				<category><![CDATA[MongoDB]]></category>
 		<category><![CDATA[Realm]]></category>
 		<category><![CDATA[mongodb]]></category>
-		<guid isPermaLink="false">/?p=4594</guid>
+		<guid isPermaLink="false">./../../index.html?p=4594</guid>
 
 					<description><![CDATA[The Realm Mobile Database makes it much faster to develop mobile applications. MongoDB Realm Studio is a desktop GUI that lets you view, manipulate, and import data held within your mobile app&#8217;s Realm database. I&#8217;ve just published a new article (Accessing Realm Data on iOS using Realm Studio) which steps through how to track down]]></description>
 										<content:encoded><![CDATA[
@@ -1424,15 +1424,15 @@ I&#8217;ve just published a new article (<a href="https://developer.mongodb.com/
 
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/accessing-realm-data-on-ios-using-realm-studio/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/accessing-realm-data-on-ios-using-realm-studio/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Building a Mobile Chat App Using Realm – Data Architecture</title>
-		<link>/uncategorized/building-a-mobile-chat-app-using-realm-data-architecture</link>
-					<comments>/uncategorized/building-a-mobile-chat-app-using-realm-data-architecture#respond</comments>
+		<link>./../../uncategorized/building-a-mobile-chat-app-using-realm-data-architecture/index.html</link>
+					<comments>./../../uncategorized/building-a-mobile-chat-app-using-realm-data-architecture/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 07 Jan 2021 08:09:00 +0000</pubDate>
@@ -1443,7 +1443,7 @@ I&#8217;ve just published a new article (<a href="https://developer.mongodb.com/
 		<category><![CDATA[ios]]></category>
 		<category><![CDATA[mobile]]></category>
 		<category><![CDATA[mongodb]]></category>
-		<guid isPermaLink="false">/?p=4580</guid>
+		<guid isPermaLink="false">./../../index.html?p=4580</guid>
 
 					<description><![CDATA[I&#8217;ve just built an iOS chat app using SwiftUI, Realm, and Realm Sync. I decided on a chat app as it makes an interesting case study for designing a data model and controlling who can access what data: A chat message needs to be viewable by all members of a chat room and no one else.]]></description>
 										<content:encoded><![CDATA[<p>I&#8217;ve just built an <a href="https://github.com/ClusterDB/RChat" target="_blank" rel="noopener">iOS chat app</a> using SwiftUI, Realm, and Realm Sync. I decided on a chat app as it makes an interesting case study for designing a data model and controlling who can access what data:</p>
@@ -1459,15 +1459,15 @@ I&#8217;ve just published a new article (<a href="https://developer.mongodb.com/
 <p>Checkout <a href="https://developer.mongodb.com/how-to/realm-swiftui-ios-chat-app">Building a Mobile Chat App Using Realm – Data Architecture</a> for all of the details.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/uncategorized/building-a-mobile-chat-app-using-realm-data-architecture/feed</wfw:commentRss>
+					<wfw:commentRss>./../../uncategorized/building-a-mobile-chat-app-using-realm-data-architecture/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Building an iOS app with Realm, SwiftUI, &#038; Combine</title>
-		<link>/me/building-an-ios-app-with-realm-swiftui-combine</link>
-					<comments>/me/building-an-ios-app-with-realm-swiftui-combine#respond</comments>
+		<link>./../../me/building-an-ios-app-with-realm-swiftui-combine/index.html</link>
+					<comments>./../../me/building-an-ios-app-with-realm-swiftui-combine/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 01 Dec 2020 16:42:00 +0000</pubDate>
@@ -1475,7 +1475,7 @@ I&#8217;ve just published a new article (<a href="https://developer.mongodb.com/
 		<category><![CDATA[MongoDB]]></category>
 		<category><![CDATA[Realm]]></category>
 		<category><![CDATA[mongodb]]></category>
-		<guid isPermaLink="false">/?p=4573</guid>
+		<guid isPermaLink="false">./../../index.html?p=4573</guid>
 
 					<description><![CDATA[I&#8217;m relatively new to building iOS apps (a little over a year&#8217;s experience), and so I prefer using the latest technologies that make me a more productive developer. That means my preferred app stack looks like this: In &#x1f525; Out &#x2744;&#xfe0f; Swift Objective C SwiftUI UIKit Combine RxSwift Realm Core Data MongoDB Realm Sync (where]]></description>
 										<content:encoded><![CDATA[
@@ -1524,15 +1524,15 @@ You can download all of the code for the front end app from the <a href="https:/
 Checkout <a href="https://developer.mongodb.com/how-to/realm-swiftui-combine-first-app">Build Your First iOS Mobile App Using Realm, SwiftUI, &amp; Combine</a> for all of the details.
 ]]></content:encoded>
 					
-					<wfw:commentRss>/me/building-an-ios-app-with-realm-swiftui-combine/feed</wfw:commentRss>
+					<wfw:commentRss>./../../me/building-an-ios-app-with-realm-swiftui-combine/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>How to create Dynamic Custom Roles with MongoDB Stitch</title>
-		<link>/mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch</link>
-					<comments>/mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch#respond</comments>
+		<link>./../../mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch/index.html</link>
+					<comments>./../../mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 28 Mar 2019 09:54:35 +0000</pubDate>
@@ -1540,7 +1540,7 @@ Checkout <a href="https://developer.mongodb.com/how-to/realm-swiftui-combine-fir
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
 		<category><![CDATA[serverless]]></category>
-		<guid isPermaLink="false">/?p=4566</guid>
+		<guid isPermaLink="false">./../../index.html?p=4566</guid>
 
 					<description><![CDATA[None of us want to write lots of code to control what data each user can access. In most cases, you can set up your data access controls in seconds by using Stitch&#8217;s built-in templates, e.g., &#8220;Users can read and write their own data&#8221; or &#8220;Users can read and write their own data. Users that]]></description>
 										<content:encoded><![CDATA[<p>None of us want to write lots of code to control what data each user can access. In most cases, you can set up your data access controls in seconds by using <a href="https://docs.mongodb.com/stitch/mongodb/define-roles-and-permissions/#select-a-collection-rule-template" title="Stitch includes templates to control what data a user can access">Stitch&#8217;s built-in templates</a>, e.g., &#8220;Users can read and write their own data&#8221; or &#8220;Users can read and write their own data. Users that belong to a sharing list can read that data&#8221;. Stitch also lets you create <a href="https://docs.mongodb.com/stitch/mongodb/define-roles-and-permissions/#define-the-role-s-apply-when-condition" title="Define your own criteria to identify a MongoDB Stitch role">custom roles</a> that you tailor to your application and schema – this post creates such a rule, querying a second collection when deciding whether to allow a user to insert a document.</p>
@@ -1626,15 +1626,15 @@ WriteResult({ "nInserted" : 1 })
 <p>I recently had someone ask me how to implement &#8220;traditional database roles&#8221; using Stitch, i.e. an administrator explicitly defines which user ids belong to a specific role, and then use that role to determine whether they can access a collection. You can use this same approach for that use case – have a collection that assigns users to roles and then find the user id in that collection from a Stitch function that&#8217;s used in roles for the collections you want to protect. You could then optimize the rules by including the users&#8217; roles as an attribute in their authentication token – but I&#8217;ll save that for a future post!</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Replace tedious coding with MongoDB Stitch and public APIs</title>
-		<link>/mongodb/replace-tedious-coding-with-mongodb-stitch-and-public-apis</link>
-					<comments>/mongodb/replace-tedious-coding-with-mongodb-stitch-and-public-apis#respond</comments>
+		<link>./../../mongodb/replace-tedious-coding-with-mongodb-stitch-and-public-apis/index.html</link>
+					<comments>./../../mongodb/replace-tedious-coding-with-mongodb-stitch-and-public-apis/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 14 Jan 2019 13:37:07 +0000</pubDate>
@@ -1642,7 +1642,7 @@ WriteResult({ "nInserted" : 1 })
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[MongoDB Stitch]]></category>
 		<category><![CDATA[rest api]]></category>
-		<guid isPermaLink="false">/?p=4561</guid>
+		<guid isPermaLink="false">./../../index.html?p=4561</guid>
 
 					<description><![CDATA[Most apps and websites contain much functionality that&#8217;s tedious to implement and has been done thousands of times before. MongoDB Stitch takes care of a lot of these chores – for example, making it simple to interact with third-party APIs. This post explains how I used Stitch to do just that that this week. I]]></description>
 										<content:encoded><![CDATA[<p>Most apps and websites contain much functionality that&#8217;s tedious to implement and has been done thousands of times before. <a href="https://docs.mongodb.com/stitch/" title="MongoDB Stitch serverless platform">MongoDB Stitch</a> takes care of a lot of these <a href="https://www.mongodb.com/blog/post/mongodb-stitch--saving-developers-from-chores?jmp=blog" title="MongoDB Stitch – saving developers from chores">chores</a> – for example, making it simple to interact with third-party APIs. This post explains how I used Stitch to do just that that this week.</p>
@@ -1726,7 +1726,7 @@ WriteResult({ "nInserted" : 1 })
 <p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform?jmp=blog" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/replace-tedious-coding-with-mongodb-stitch-and-public-apis/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/replace-tedious-coding-with-mongodb-stitch-and-public-apis/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

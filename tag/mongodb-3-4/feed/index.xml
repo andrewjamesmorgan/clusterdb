@@ -9,8 +9,8 @@
 
 <channel>
 	<title>mongodb 3.4 &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/mongodb-3-4/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Mon, 19 Dec 2016 10:26:32 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>What&#8217;s New in MongoDB 3.4 Webinar Replay</title>
-		<link>/mongodb/whats-new-in-mongodb-3-4-webinar-replay</link>
-					<comments>/mongodb/whats-new-in-mongodb-3-4-webinar-replay#respond</comments>
+		<link>./../../mongodb/whats-new-in-mongodb-3-4-webinar-replay/index.html</link>
+					<comments>./../../mongodb/whats-new-in-mongodb-3-4-webinar-replay/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Mon, 19 Dec 2016 10:26:32 +0000</pubDate>
@@ -32,10 +32,10 @@
 		<category><![CDATA[graph]]></category>
 		<category><![CDATA[mongodb]]></category>
 		<category><![CDATA[mongodb 3.4]]></category>
-		<guid isPermaLink="false">/?p=4337</guid>
+		<guid isPermaLink="false">./../../index.html?p=4337</guid>
 
 					<description><![CDATA[Last week, Jason Ma and myself presented a webinar on what&#8217;s new in MongoDB 3.4 – the replay is now available here. Overview In the age of digital transformation and disruption, your ability to thrive depends on how you adapt to the constantly changing environment. MongoDB 3.4 is the latest release of the leading database for]]></description>
-										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2016/12/MongoDB-3.4-Webinar.png"><img fetchpriority="high" decoding="async" src="/wp-content/uploads/2016/12/MongoDB-3.4-Webinar-300x171.png" alt="MongoDB 3.4 webinar" width="300" height="171" class="alignright size-medium wp-image-4339" srcset="/wp-content/uploads/2016/12/MongoDB-3.4-Webinar-300x171.png 300w, /wp-content/uploads/2016/12/MongoDB-3.4-Webinar-768x438.png 768w, /wp-content/uploads/2016/12/MongoDB-3.4-Webinar-1024x584.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a>Last week, Jason Ma and myself presented a webinar on what&#8217;s new in MongoDB 3.4 – <a href="https://www.mongodb.com/presentations/webinar-whats-new-in-mongodb-34" title="What's new in MongoDB 3.4 webinar replay">the replay is now available here</a>.</p>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2016/12/MongoDB-3.4-Webinar.png"><img fetchpriority="high" decoding="async" src="./../../wp-content/uploads/2016/12/MongoDB-3.4-Webinar-300x171.png" alt="MongoDB 3.4 webinar" width="300" height="171" class="alignright size-medium wp-image-4339" srcset="./../../wp-content/uploads/2016/12/MongoDB-3.4-Webinar-300x171.png 300w, ./../../wp-content/uploads/2016/12/MongoDB-3.4-Webinar-768x438.png 768w, ./../../wp-content/uploads/2016/12/MongoDB-3.4-Webinar-1024x584.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a>Last week, Jason Ma and myself presented a webinar on what&#8217;s new in MongoDB 3.4 – <a href="https://www.mongodb.com/presentations/webinar-whats-new-in-mongodb-34" title="What's new in MongoDB 3.4 webinar replay">the replay is now available here</a>.</p>
 <h2>Overview</h2>
 <p>In the age of digital transformation and disruption, your ability to thrive depends on how you adapt to the constantly changing environment. MongoDB 3.4 is the latest release of the leading database for modern applications, a culmination of native database features and enhancements that will allow you to easily evolve your solutions to address emerging challenges and use cases.</p>
 <p>In this webinar, we introduce you to what’s new, including:</p>
@@ -49,15 +49,15 @@
 <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/andrewjamesmorgan/mongo-db-34-webinar" title="MongoDB 3.4 webinar" target="_blank">MongoDB 3.4 webinar</a> </strong> from <strong><a target="_blank" href="//www.slideshare.net/andrewjamesmorgan">Andrew Morgan</a></strong> </div>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/whats-new-in-mongodb-3-4-webinar-replay/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/whats-new-in-mongodb-3-4-webinar-replay/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Language-Specific Views in MongoDB 3.4</title>
-		<link>/mongodb/language-specific-views-in-mongodb-3-4</link>
-					<comments>/mongodb/language-specific-views-in-mongodb-3-4#respond</comments>
+		<link>./../../mongodb/language-specific-views-in-mongodb-3-4/index.html</link>
+					<comments>./../../mongodb/language-specific-views-in-mongodb-3-4/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 16 Nov 2016 13:50:47 +0000</pubDate>
@@ -67,7 +67,7 @@
 		<category><![CDATA[mongodb 3.4]]></category>
 		<category><![CDATA[MongoDB Compass]]></category>
 		<category><![CDATA[views]]></category>
-		<guid isPermaLink="false">/?p=4293</guid>
+		<guid isPermaLink="false">./../../index.html?p=4293</guid>
 
 					<description><![CDATA[Language-Specific Views in MongoDB 3.4 Introduction This post shows you how to create multiple language-specific views on top of a common collection. Each view is optimized for its language with a collated index which only presents entries for documents in that language. Additionally, each view excludes some fields from the underlying collection – further limiting]]></description>
 										<content:encoded><![CDATA[<h1>Language-Specific Views in MongoDB 3.4</h1>
@@ -692,16 +692,16 @@ db.germanSpeakersRedacted.findOne()
 <h4>MongoDB Compass – Viewing Views Graphically</h4>
 <p>While the <code>mongo</code> shell is very powerful and flexible, it is often easier to understand and navigate your data graphically, this is where <a href="https://www.mongodb.com/products/compass">MongoDB Compass</a> is invaluable. The good news is that MongoDB Compass handles views in exactly the same way as it does collections.</p>
 <p>In Figure 1, we can view the documents in the base, <code>customers</code>, collection. Note that the <code>salary</code> value is visible.</p>
-<p><em><div id="attachment_4295" style="width: 1366px" class="wp-caption alignright"><a href="/wp-content/uploads/2016/11/Compass_original_schema.png"><img decoding="async" aria-describedby="caption-attachment-4295" src="/wp-content/uploads/2016/11/Compass_original_schema.png" alt="View data in MongoDB base customers collection" width="1356" height="840" class="size-full wp-image-4295" srcset="/wp-content/uploads/2016/11/Compass_original_schema.png 1356w, /wp-content/uploads/2016/11/Compass_original_schema-300x186.png 300w, /wp-content/uploads/2016/11/Compass_original_schema-768x476.png 768w, /wp-content/uploads/2016/11/Compass_original_schema-1024x634.png 1024w" sizes="(max-width: 1356px) 100vw, 1356px" /></a><p id="caption-attachment-4295" class="wp-caption-text">Figure 1: View data in base customers collection</p></div></em></p>
+<p><em><div id="attachment_4295" style="width: 1366px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2016/11/Compass_original_schema.png"><img decoding="async" aria-describedby="caption-attachment-4295" src="./../../wp-content/uploads/2016/11/Compass_original_schema.png" alt="View data in MongoDB base customers collection" width="1356" height="840" class="size-full wp-image-4295" srcset="./../../wp-content/uploads/2016/11/Compass_original_schema.png 1356w, ./../../wp-content/uploads/2016/11/Compass_original_schema-300x186.png 300w, ./../../wp-content/uploads/2016/11/Compass_original_schema-768x476.png 768w, ./../../wp-content/uploads/2016/11/Compass_original_schema-1024x634.png 1024w" sizes="(max-width: 1356px) 100vw, 1356px" /></a><p id="caption-attachment-4295" class="wp-caption-text">Figure 1: View data in base customers collection</p></div></em></p>
 <p>Figure 2 confirms that the <code>salary</code> field has been removed from the German view.</p>
-<div id="attachment_4298" style="width: 1366px" class="wp-caption alignright"><a href="/wp-content/uploads/2016/11/Compass_german_speakers.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4298" src="/wp-content/uploads/2016/11/Compass_german_speakers.png" alt="Salary has been redacted from the German view" width="1356" height="841" class="size-full wp-image-4298" srcset="/wp-content/uploads/2016/11/Compass_german_speakers.png 1356w, /wp-content/uploads/2016/11/Compass_german_speakers-300x186.png 300w, /wp-content/uploads/2016/11/Compass_german_speakers-768x476.png 768w, /wp-content/uploads/2016/11/Compass_german_speakers-1024x635.png 1024w" sizes="auto, (max-width: 1356px) 100vw, 1356px" /></a><p id="caption-attachment-4298" class="wp-caption-text">Figure 2: Salary has been redacted from the German view</p></div>
+<div id="attachment_4298" style="width: 1366px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2016/11/Compass_german_speakers.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4298" src="./../../wp-content/uploads/2016/11/Compass_german_speakers.png" alt="Salary has been redacted from the German view" width="1356" height="841" class="size-full wp-image-4298" srcset="./../../wp-content/uploads/2016/11/Compass_german_speakers.png 1356w, ./../../wp-content/uploads/2016/11/Compass_german_speakers-300x186.png 300w, ./../../wp-content/uploads/2016/11/Compass_german_speakers-768x476.png 768w, ./../../wp-content/uploads/2016/11/Compass_german_speakers-1024x635.png 1024w" sizes="auto, (max-width: 1356px) 100vw, 1356px" /></a><p id="caption-attachment-4298" class="wp-caption-text">Figure 2: Salary has been redacted from the German view</p></div>
 <p>In Figure 3, we see that only Chinese documents have been included in the Chinese view.</p>
-<div id="attachment_4299" style="width: 1369px" class="wp-caption alignright"><a href="/wp-content/uploads/2016/11/Compass_Chinese_speakers.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4299" src="/wp-content/uploads/2016/11/Compass_Chinese_speakers.png" alt="Chinese view contains only Chinese documents" width="1359" height="841" class="size-full wp-image-4299" srcset="/wp-content/uploads/2016/11/Compass_Chinese_speakers.png 1359w, /wp-content/uploads/2016/11/Compass_Chinese_speakers-300x186.png 300w, /wp-content/uploads/2016/11/Compass_Chinese_speakers-768x475.png 768w, /wp-content/uploads/2016/11/Compass_Chinese_speakers-1024x634.png 1024w" sizes="auto, (max-width: 1359px) 100vw, 1359px" /></a><p id="caption-attachment-4299" class="wp-caption-text">Figure 3: Chinese view contains only Chinese documents</p></div>
+<div id="attachment_4299" style="width: 1369px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2016/11/Compass_Chinese_speakers.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4299" src="./../../wp-content/uploads/2016/11/Compass_Chinese_speakers.png" alt="Chinese view contains only Chinese documents" width="1359" height="841" class="size-full wp-image-4299" srcset="./../../wp-content/uploads/2016/11/Compass_Chinese_speakers.png 1359w, ./../../wp-content/uploads/2016/11/Compass_Chinese_speakers-300x186.png 300w, ./../../wp-content/uploads/2016/11/Compass_Chinese_speakers-768x475.png 768w, ./../../wp-content/uploads/2016/11/Compass_Chinese_speakers-1024x634.png 1024w" sizes="auto, (max-width: 1359px) 100vw, 1359px" /></a><p id="caption-attachment-4299" class="wp-caption-text">Figure 3: Chinese view contains only Chinese documents</p></div>
 <h4>Next Steps</h4>
 <p>Collation and read-only views are just 2 of the exciting new features added in MongoDB 3.4 – read more and these and everything else that&#8217;s new in <a href="https://www.mongodb.com/collateral/mongodb-3.4-whats-new" title="What's new in MongoDB 3.4">MongoDB 3.4: What’s New</a>.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mongodb/language-specific-views-in-mongodb-3-4/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mongodb/language-specific-views-in-mongodb-3-4/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

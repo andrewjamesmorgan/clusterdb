@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Evaluation Guide &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/evaluation-guide/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Tue, 21 Apr 2009 16:32:39 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Enhanced MySQL Cluster Evaluation White Paper</title>
-		<link>/mysql-cluster/enhanced-mysql-cluster-evaluation-white-paper</link>
-					<comments>/mysql-cluster/enhanced-mysql-cluster-evaluation-white-paper#respond</comments>
+		<link>./../../mysql-cluster/enhanced-mysql-cluster-evaluation-white-paper/index.html</link>
+					<comments>./../../mysql-cluster/enhanced-mysql-cluster-evaluation-white-paper/index.html#respond</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 21 Apr 2009 16:32:39 +0000</pubDate>
@@ -30,17 +30,17 @@
 		<category><![CDATA[Evaluation Guide]]></category>
 		<category><![CDATA[MySQL Cluster CGE]]></category>
 		<category><![CDATA[Selecting a database]]></category>
-		<guid isPermaLink="false">/?p=30</guid>
+		<guid isPermaLink="false">./../../index.html?p=30</guid>
 
 					<description><![CDATA[As part of MySQL Cluster 7.0, an existing white paper has been brought up to date and extended. If you&#8217;re considering evaluating MySQL Cluster or are in the process of an evaluation then I&#8217;d strongly recommend reading this paper. Even if you haven&#8217;t got that far in your database evaluation, it&#8217;s worth taking a look]]></description>
 										<content:encoded><![CDATA[<p>As part of MySQL Cluster 7.0, an existing white paper has been brought up to date and extended. If you&#8217;re considering evaluating MySQL Cluster or are in the process of an evaluation then I&#8217;d strongly recommend reading this paper. Even if you haven&#8217;t got that far in your database evaluation, it&#8217;s worth taking a look as it describes both where the database excels and situations where it may be less suitable or where extra attention would be needed.</p>
 <p>The <a title="MySQL Cluster Evaluation Guide" href="http://www.mysql.com/why-mysql/white-papers/mysql_cluster_eval_guide.php" target="MySQL Cluster Evaluation Guide">MySQL Cluster Evaluation Guide</a> can be downloaded from the <a href="http://www.mysql.com/why-mysql/white-papers/mysql_cluster_eval_guide.php" target="MySQL Cluster Evaluation Guide">mysql.com site</a>.</p>
-<div id="attachment_44" style="width: 611px" class="wp-caption alignnone"><a href="/wp-content/uploads/2009/04/mysql-cluster-architecture.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-44" class="size-full wp-image-44" title="mysql-cluster-architecture" src="/wp-content/uploads/2009/04/mysql-cluster-architecture.jpg" alt="MySQL Cluster Architecture" width="601" height="338" srcset="/wp-content/uploads/2009/04/mysql-cluster-architecture.jpg 601w, /wp-content/uploads/2009/04/mysql-cluster-architecture-300x168.jpg 300w" sizes="(max-width: 601px) 100vw, 601px" /></a><p id="caption-attachment-44" class="wp-caption-text">MySQL Cluster Architecture</p></div>
+<div id="attachment_44" style="width: 611px" class="wp-caption alignnone"><a href="./../../wp-content/uploads/2009/04/mysql-cluster-architecture.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-44" class="size-full wp-image-44" title="mysql-cluster-architecture" src="./../../wp-content/uploads/2009/04/mysql-cluster-architecture.jpg" alt="MySQL Cluster Architecture" width="601" height="338" srcset="./../../wp-content/uploads/2009/04/mysql-cluster-architecture.jpg 601w, ./../../wp-content/uploads/2009/04/mysql-cluster-architecture-300x168.jpg 300w" sizes="(max-width: 601px) 100vw, 601px" /></a><p id="caption-attachment-44" class="wp-caption-text">MySQL Cluster Architecture</p></div>
 <p>The purpose of the guide is to present several key points to consider during the planning and execution of an evaluation of MySQL Cluster and MySQL Cluster Carrier Grade Edition. This will enable you to efficiently evaluate MySQL Cluster and determine if it is the right choice for your new project, or database migration for an existing application.</p>
 <p>One of the enhancements made in the new version is a trouble shooting section that describes the errors you may see when ramping up the size or transaction rates for your database and what to do to remove them.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/enhanced-mysql-cluster-evaluation-white-paper/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/enhanced-mysql-cluster-evaluation-white-paper/feed/index.html</wfw:commentRss>
 			<slash:comments>0</slash:comments>
 		
 		

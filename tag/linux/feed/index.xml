@@ -9,8 +9,8 @@
 
 <channel>
 	<title>LINUX &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/linux/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Fri, 23 Jul 2010 10:27:33 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Install, configure and run MySQL Cluster &#8211; demo video</title>
-		<link>/mysql-cluster/install-configure-and-run-mysql-cluster-demo-video</link>
-					<comments>/mysql-cluster/install-configure-and-run-mysql-cluster-demo-video#comments</comments>
+		<link>./../../mysql-cluster/install-configure-and-run-mysql-cluster-demo-video/index.html</link>
+					<comments>./../../mysql-cluster/install-configure-and-run-mysql-cluster-demo-video/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 23 Jul 2010 10:27:33 +0000</pubDate>
@@ -31,7 +31,7 @@
 		<category><![CDATA[LINUX]]></category>
 		<category><![CDATA[MySQL Cluster 7.1]]></category>
 		<category><![CDATA[tutorial]]></category>
-		<guid isPermaLink="false">/?p=1216</guid>
+		<guid isPermaLink="false">./../../index.html?p=1216</guid>
 
 					<description><![CDATA[There is a new video available: Demonstration of installing, configuring and running MySQL Cluster (LINUX) to accompany the MySQL Cluster Quick Start guides. The Flash video video lasts for about 7 minutes. If you aren&#8217;t able to view Flash on your device then a (poorer quality) version is included here &#8211; watch the Flash version if]]></description>
 										<content:encoded><![CDATA[<p>There is a new video available: <a href="http://www.mysql.com/products/database/cluster/cluster_install_demo_linux.html" target="_blank">Demonstration of installing, configuring and running MySQL Cluster (LINUX)</a> to accompany the <a href="http://www.mysql.com/products/database/cluster/get-started.html#quickstart" target="_blank">MySQL Cluster Quick Start guides</a>. The Flash video video lasts for about 7 minutes.</p>
@@ -39,15 +39,15 @@
 <p><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="480" height="385" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="allowFullScreen" value="true" /><param name="allowscriptaccess" value="always" /><param name="src" value="http://www.youtube.com/v/4OixfzhOJoA&amp;hl=en_US&amp;fs=1" /><param name="allowfullscreen" value="true" /><embed type="application/x-shockwave-flash" width="480" height="385" src="http://www.youtube.com/v/4OixfzhOJoA&amp;hl=en_US&amp;fs=1" allowscriptaccess="always" allowfullscreen="true"></embed></object></p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/install-configure-and-run-mysql-cluster-demo-video/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/install-configure-and-run-mysql-cluster-demo-video/feed/index.html</wfw:commentRss>
 			<slash:comments>10</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Deploying MySQL Cluster over multiple hosts</title>
-		<link>/mysql-cluster/deploying-mysql-cluster-over-multiple-hosts</link>
-					<comments>/mysql-cluster/deploying-mysql-cluster-over-multiple-hosts#comments</comments>
+		<link>./../../mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/index.html</link>
+					<comments>./../../mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 10 Jul 2009 19:33:55 +0000</pubDate>
@@ -55,12 +55,12 @@
 		<category><![CDATA[LINUX]]></category>
 		<category><![CDATA[multi-host]]></category>
 		<category><![CDATA[MySQL]]></category>
-		<guid isPermaLink="false">/?p=262</guid>
+		<guid isPermaLink="false">./../../index.html?p=262</guid>
 
 					<description><![CDATA[This post builds upon the earlier article (Creating a simple Cluster on a single LINUX host) which explained how to install and run a Cluster where all of the nodes run on the same physical host. The single host solution is not great for a real deployment &#8211; MySQL Cluster is designed to provide a]]></description>
-										<content:encoded><![CDATA[<p>This post builds upon the earlier article (<a href="/mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host/" target="_blank">Creating a simple Cluster on a single LINUX host</a>) which explained how to install and run a Cluster where all of the nodes run on the same physical host.</p>
+										<content:encoded><![CDATA[<p>This post builds upon the earlier article (<a href="./../../mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host/index.html" target="_blank">Creating a simple Cluster on a single LINUX host</a>) which explained how to install and run a Cluster where all of the nodes run on the same physical host.</p>
 <p>The single host solution is not great for a real deployment &#8211; MySQL Cluster is designed to provide a High Availability (HA) solution by synchronously replicating data between data nodes &#8211; if all of the data nodes run on a single host that that machine is a single point of failure.</p>
-<div id="attachment_264" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/07/multi_host_cluster.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-264" class="size-medium wp-image-264" title="Multi-Host Cluster" src="/wp-content/uploads/2009/07/multi_host_cluster-300x184.jpg" alt="MySQL Cluster running accross 2 hosts" width="300" height="184" srcset="/wp-content/uploads/2009/07/multi_host_cluster-300x184.jpg 300w, /wp-content/uploads/2009/07/multi_host_cluster.jpg 753w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-264" class="wp-caption-text">MySQL Cluster running accross 2 hosts</p></div>
+<div id="attachment_264" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2009/07/multi_host_cluster.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-264" class="size-medium wp-image-264" title="Multi-Host Cluster" src="./../../wp-content/uploads/2009/07/multi_host_cluster-300x184.jpg" alt="MySQL Cluster running accross 2 hosts" width="300" height="184" srcset="./../../wp-content/uploads/2009/07/multi_host_cluster-300x184.jpg 300w, ./../../wp-content/uploads/2009/07/multi_host_cluster.jpg 753w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-264" class="wp-caption-text">MySQL Cluster running accross 2 hosts</p></div>
 <p>This article demonstrates how to split the nodes between hosts; the configuration will still be fairly simple, using just 2 machines but it should be obvious how to extend it to more.</p>
 <p>This new Cluster will be split across 2 machines, with all functions duplicated on each machine as shown in the diagram.</p>
 <h3>Downloading and installing</h3>
@@ -270,18 +270,18 @@ Bye
 <p>This is still a fairly simple, contrived set up. Hopefully it&#8217;s clear how additional data or SQL nodes could be added and in a larger deployment you may well decide to run the management and SQL nodes on different hosts to the data nodes (in fact, when starting up the management nodes there is a warning message suggesting you deploy them elsewhere!).</p>
 <p>To move the management node to a 3rd, independent physical host (and a 4th one if you want 2 management nodes for redundancy -a future article will explain when you might want to do that),  just change the IP address in the  [ndb_mgmd] section of config.ini and then run the ndb_mgmd executable on that new host. Note that the management node consumes very few resources and so can share that host with other functions/applications (e.g. SQL Server nodes but not data nodes).</p>
 <p>You’d also set several more variables in the configuration files in order to size and tune your Cluster.</p>
-<p>In this article, I used 2 LINUX hosts but you could extend the Windows example introduced in <a href="/mysql-cluster/my-first-cluster-running-on-windows/" target="_blank">My first Cluster running on Windows</a> in exactly the same way.</p>
+<p>In this article, I used 2 LINUX hosts but you could extend the Windows example introduced in <a href="./../../mysql-cluster/my-first-cluster-running-on-windows/index.html" target="_blank">My first Cluster running on Windows</a> in exactly the same way.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/feed/index.html</wfw:commentRss>
 			<slash:comments>120</slash:comments>
 		
 		
 			</item>
 		<item>
 		<title>Creating a simple Cluster on a single LINUX host</title>
-		<link>/mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host</link>
-					<comments>/mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host#comments</comments>
+		<link>./../../mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host/index.html</link>
+					<comments>./../../mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 17 Jun 2009 12:42:54 +0000</pubDate>
@@ -290,10 +290,10 @@ Bye
 		<category><![CDATA[MySQL]]></category>
 		<category><![CDATA[MySQL Cluster 7.0]]></category>
 		<category><![CDATA[MySQL Cluster CGE]]></category>
-		<guid isPermaLink="false">/?p=172</guid>
+		<guid isPermaLink="false">./../../index.html?p=172</guid>
 
 					<description><![CDATA[It isn&#8217;t necessarily immediately obvious how to set up a Cluster on LINUX; this post attempts to show how to get a simple Cluster up and running. For simplicity, all of the nodes will run on a single host &#8211; a subsequent post will take the subsequent steps of moving some of them to a]]></description>
-										<content:encoded><![CDATA[<p>It isn&#8217;t necessarily immediately obvious how to set up a Cluster on LINUX; this post attempts to show how to get a simple Cluster up and running. For simplicity, all of the nodes will run on a single host &#8211; a subsequent post will take the subsequent steps of moving some of them to a second host.  As with my <a href="/mysql-cluster/my-first-cluster-running-on-windows/" target="_blank">Windows post</a> the Cluster will contain the following nodes:</p>
+										<content:encoded><![CDATA[<p>It isn&#8217;t necessarily immediately obvious how to set up a Cluster on LINUX; this post attempts to show how to get a simple Cluster up and running. For simplicity, all of the nodes will run on a single host &#8211; a subsequent post will take the subsequent steps of moving some of them to a second host.  As with my <a href="./../../mysql-cluster/my-first-cluster-running-on-windows/index.html" target="_blank">Windows post</a> the Cluster will contain the following nodes:</p>
 <ul>
 <li>1 Management node (ndb_mgmd)</li>
 <li>2 Data nodes (ndbd)</li>
@@ -466,10 +466,10 @@ mysql&gt; select * from assets;
 mysql&gt; quit
 Bye</span></pre>
 <h3>Your next steps</h3>
-<p>This is a very simple, contrived set up &#8211; in any sensible deployment, the nodes would be spread across multiple physical hosts in the interests of performance and redundancy (take a look at the new article (<a href="/mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/" target="_self">Deploying MySQL Cluster over multiple host</a>) to see how to do that). You’d also set several more variables in the configuration files in order to size and tune your Cluster.</p>
+<p>This is a very simple, contrived set up &#8211; in any sensible deployment, the nodes would be spread across multiple physical hosts in the interests of performance and redundancy (take a look at the new article (<a href="./../../mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/index.html" target="_self">Deploying MySQL Cluster over multiple host</a>) to see how to do that). You’d also set several more variables in the configuration files in order to size and tune your Cluster.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host/feed/index.html</wfw:commentRss>
 			<slash:comments>43</slash:comments>
 		
 		

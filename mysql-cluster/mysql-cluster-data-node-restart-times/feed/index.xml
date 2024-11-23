@@ -8,8 +8,8 @@
 <channel>
 	<title>
 	Comments on: MySQL Cluster Data Node restart times	</title>
-	<atom:link href="/mysql-cluster/mysql-cluster-data-node-restart-times/feed" rel="self" type="application/rss+xml" />
-	<link>/mysql-cluster/mysql-cluster-data-node-restart-times</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../mysql-cluster-data-node-restart-times/index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Fri, 18 Jul 2014 15:09:05 +0000</lastBuildDate>
 	<sy:updatePeriod>
@@ -20,16 +20,16 @@
 	<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/mysql-cluster-data-node-restart-times#comment-187699</link>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-187699</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 18 Jul 2014 15:09:05 +0000</pubDate>
-		<guid isPermaLink="false">/?p=365#comment-187699</guid>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-187699</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-data-node-restart-times#comment-174998&quot;&gt;anusha&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-data-node-restart-times/index.html#comment-174998&quot;&gt;anusha&lt;/a&gt;.
 
 The best approach is to monitor the files for a while. You&#039;ll see that the files get allocated but then as new ones are created, old ones are deleted and so you should see the overall disk usage level out.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-data-node-restart-times#comment-174998">anusha</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-data-node-restart-times/index.html#comment-174998">anusha</a>.</p>
 <p>The best approach is to monitor the files for a while. You&#8217;ll see that the files get allocated but then as new ones are created, old ones are deleted and so you should see the overall disk usage level out.</p>
 ]]></content:encoded>
 		
@@ -37,13 +37,13 @@ The best approach is to monitor the files for a while. You&#039;ll see that the 
 		<item>
 		<title>
 		By: anusha		</title>
-		<link>/mysql-cluster/mysql-cluster-data-node-restart-times#comment-174998</link>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-174998</link>
 
 		<dc:creator><![CDATA[anusha]]></dc:creator>
 		<pubDate>Sat, 05 Jul 2014 10:16:04 +0000</pubDate>
-		<guid isPermaLink="false">/?p=365#comment-174998</guid>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-174998</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-data-node-restart-times#comment-202&quot;&gt;Girish&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-data-node-restart-times/index.html#comment-202&quot;&gt;Girish&lt;/a&gt;.
 
 &#062;&#062;&#062;&#062;&#062;&#062;&#062;
 Just to be clear, which files on my datanode should increase in size?
@@ -52,7 +52,7 @@ There are files named ndb_2_* in my data dir as well as files in $datadir/
 &#062;&#062;&#062;&#062;&#062;&#062;&#062;&#062;&#062;
 
 I&#039;m also interested in knowing this. Could you please clarify]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-data-node-restart-times#comment-202">Girish</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-data-node-restart-times/index.html#comment-202">Girish</a>.</p>
 <p>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<br />
 Just to be clear, which files on my datanode should increase in size?</p>
 <p>There are files named ndb_2_* in my data dir as well as files in $datadir/<br />
@@ -64,13 +64,13 @@ Just to be clear, which files on my datanode should increase in size?</p>
 		<item>
 		<title>
 		By: andrew		</title>
-		<link>/mysql-cluster/mysql-cluster-data-node-restart-times#comment-204</link>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-204</link>
 
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Thu, 27 Sep 2012 09:12:26 +0000</pubDate>
-		<guid isPermaLink="false">/?p=365#comment-204</guid>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-204</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-data-node-restart-times#comment-203&quot;&gt;Brian&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-data-node-restart-times/index.html#comment-203&quot;&gt;Brian&lt;/a&gt;.
 
 Brian,
 
@@ -80,15 +80,15 @@ Brian,
 
 Assuming that this is the case then you need to restart the data nodes once network connectivity has been restored.
 
-Refer to &lt;a href=&quot;/mysql-cluster/mysql-cluster-fault-tolerance-impact-of-deployment-decisions/&quot; title=&quot;MySQL Cluster fault tolerance – impact of deployment decisions&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;MySQL Cluster fault tolerance – impact of deployment decisions&lt;/a&gt; for more details on how this works.
+Refer to &lt;a href=&quot;./../mysql-cluster-fault-tolerance-impact-of-deployment-decisions/&quot;/index.html title=&quot;MySQL Cluster fault tolerance – impact of deployment decisions&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;MySQL Cluster fault tolerance – impact of deployment decisions&lt;/a&gt; for more details on how this works.
 
 Regards, Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-data-node-restart-times#comment-203">Brian</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-data-node-restart-times/index.html#comment-203">Brian</a>.</p>
 <p>Brian,</p>
 <p> first of all, I&#8217;ll mention that it&#8217;s worth checking the log files.</p>
 <p> My best guess would be that when you isolated the host running one or more data nodes, those data nodes running there realised that they no longer formed a majority and so needed to check if they could continue. If 50% of the data nodes were on that host then they would attempt to contact the management node for an arbitration decision &#8211; if they can&#8217;t contact the arbitrator then they will shut themselves down to avoid the potential for a split-brain scenario. You can configure the hertbeat interval and so influence how long the network can be dropped.</p>
 <p>Assuming that this is the case then you need to restart the data nodes once network connectivity has been restored.</p>
-<p>Refer to <a href="/mysql-cluster/mysql-cluster-fault-tolerance-impact-of-deployment-decisions/" title="MySQL Cluster fault tolerance – impact of deployment decisions" target="_blank" rel="nofollow">MySQL Cluster fault tolerance – impact of deployment decisions</a> for more details on how this works.</p>
+<p>Refer to <a href="./../mysql-cluster-fault-tolerance-impact-of-deployment-decisions/index.html" title="MySQL Cluster fault tolerance – impact of deployment decisions" target="_blank" rel="nofollow">MySQL Cluster fault tolerance – impact of deployment decisions</a> for more details on how this works.</p>
 <p>Regards, Andrew.</p>
 ]]></content:encoded>
 		
@@ -96,11 +96,11 @@ Regards, Andrew.]]></description>
 		<item>
 		<title>
 		By: Brian		</title>
-		<link>/mysql-cluster/mysql-cluster-data-node-restart-times#comment-203</link>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-203</link>
 
 		<dc:creator><![CDATA[Brian]]></dc:creator>
 		<pubDate>Thu, 27 Sep 2012 06:31:38 +0000</pubDate>
-		<guid isPermaLink="false">/?p=365#comment-203</guid>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-203</guid>
 
 					<description><![CDATA[Hi Andrew,
 
@@ -124,11 +124,11 @@ Brian</p>
 		<item>
 		<title>
 		By: Girish		</title>
-		<link>/mysql-cluster/mysql-cluster-data-node-restart-times#comment-202</link>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-202</link>
 
 		<dc:creator><![CDATA[Girish]]></dc:creator>
 		<pubDate>Tue, 01 Nov 2011 15:36:02 +0000</pubDate>
-		<guid isPermaLink="false">/?p=365#comment-202</guid>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-202</guid>
 
 					<description><![CDATA[Hi Andrew,
 
@@ -150,13 +150,13 @@ Thanks again.]]></description>
 		<item>
 		<title>
 		By: admin		</title>
-		<link>/mysql-cluster/mysql-cluster-data-node-restart-times#comment-201</link>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-201</link>
 
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Tue, 01 Nov 2011 14:10:40 +0000</pubDate>
-		<guid isPermaLink="false">/?p=365#comment-201</guid>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-201</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-data-node-restart-times#comment-199&quot;&gt;Girish&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-data-node-restart-times/index.html#comment-199&quot;&gt;Girish&lt;/a&gt;.
 
 Hi Girish,
 
@@ -165,7 +165,7 @@ Hi Girish,
  The data nodes don&#039;t have individual files for each table and so you won&#039;t see the table names there. What you&#039;re seeing with the MySQL Server directories is not the files containing the &lt;strong&gt;contents &lt;/strong&gt;of the tables but a copy of the data disctionary/schema definitions for those tables (e.g. if you add more rows to these tables then the files you see with the data nodes should increase in size but the ones with the MySQL Servers should not).
 
 Regards, Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-data-node-restart-times#comment-199">Girish</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-data-node-restart-times/index.html#comment-199">Girish</a>.</p>
 <p>Hi Girish,</p>
 <p> everything is in order! </p>
 <p> The data nodes don&#8217;t have individual files for each table and so you won&#8217;t see the table names there. What you&#8217;re seeing with the MySQL Server directories is not the files containing the <strong>contents </strong>of the tables but a copy of the data disctionary/schema definitions for those tables (e.g. if you add more rows to these tables then the files you see with the data nodes should increase in size but the ones with the MySQL Servers should not).</p>
@@ -176,11 +176,11 @@ Regards, Andrew.]]></description>
 		<item>
 		<title>
 		By: Girish		</title>
-		<link>/mysql-cluster/mysql-cluster-data-node-restart-times#comment-200</link>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-200</link>
 
 		<dc:creator><![CDATA[Girish]]></dc:creator>
 		<pubDate>Tue, 01 Nov 2011 13:44:00 +0000</pubDate>
-		<guid isPermaLink="false">/?p=365#comment-200</guid>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-200</guid>
 
 					<description><![CDATA[To start mysql on the mysql node I run this command, the ndbcluster option sets this engine to default:
 sudo ./mysqld_safe --user=mysql --ndbcluster &#038;]]></description>
@@ -192,11 +192,11 @@ sudo ./mysqld_safe &#8211;user=mysql &#8211;ndbcluster &amp;</p>
 		<item>
 		<title>
 		By: Girish		</title>
-		<link>/mysql-cluster/mysql-cluster-data-node-restart-times#comment-199</link>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-199</link>
 
 		<dc:creator><![CDATA[Girish]]></dc:creator>
 		<pubDate>Tue, 01 Nov 2011 13:39:19 +0000</pubDate>
-		<guid isPermaLink="false">/?p=365#comment-199</guid>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-199</guid>
 
 					<description><![CDATA[Hi Andrew, thanks for the prompt reply.
 
@@ -252,13 +252,13 @@ ndb-connectstring=xx.xxx.xxx.xxx</p>
 		<item>
 		<title>
 		By: admin		</title>
-		<link>/mysql-cluster/mysql-cluster-data-node-restart-times#comment-198</link>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-198</link>
 
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<pubDate>Tue, 01 Nov 2011 07:56:10 +0000</pubDate>
-		<guid isPermaLink="false">/?p=365#comment-198</guid>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-198</guid>
 
-					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-data-node-restart-times#comment-197&quot;&gt;Girish&lt;/a&gt;.
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-data-node-restart-times/index.html#comment-197&quot;&gt;Girish&lt;/a&gt;.
 
 Hi Girish,
 
@@ -275,7 +275,7 @@ ALTER TABLE clusterdb.existing ENGINE=NDBCLUSTER;
 Let me know how you get on.
 
 Regards, Andrew.]]></description>
-			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-data-node-restart-times#comment-197">Girish</a>.</p>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-data-node-restart-times/index.html#comment-197">Girish</a>.</p>
 <p>Hi Girish,</p>
 <p> first step &#8211; check that MySQL Cluster is enabled in the MySQL Servers &#8211; from the mysql CLI run SHOW ENGINES; and check that NDBCLUSTER is enabled.</p>
 <p> If it is then step 2 is to make sure that you&#8217;re telling MySQL to use Cluster when you create your tables. For example&#8230;</p>
@@ -290,11 +290,11 @@ Regards, Andrew.]]></description>
 		<item>
 		<title>
 		By: Girish		</title>
-		<link>/mysql-cluster/mysql-cluster-data-node-restart-times#comment-197</link>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-197</link>
 
 		<dc:creator><![CDATA[Girish]]></dc:creator>
 		<pubDate>Tue, 01 Nov 2011 00:12:05 +0000</pubDate>
-		<guid isPermaLink="false">/?p=365#comment-197</guid>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-197</guid>
 
 					<description><![CDATA[Once MySQL Cluster is set up should I be seeing the MySQL database and table data stored in my datadir on my datanodes? Right now the data appears only in the datadir of my MySQL node, so something doesn&#039;t seem right.
 

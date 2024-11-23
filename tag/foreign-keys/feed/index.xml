@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Foreign Keys &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/foreign-keys/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Tue, 18 Jun 2013 12:04:03 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,18 +21,18 @@
 	
 	<item>
 		<title>Foreign Keys in MySQL Cluster</title>
-		<link>/mysql-cluster/foreign-keys-in-mysql-cluster</link>
-					<comments>/mysql-cluster/foreign-keys-in-mysql-cluster#comments</comments>
+		<link>./../../mysql-cluster/foreign-keys-in-mysql-cluster/index.html</link>
+					<comments>./../../mysql-cluster/foreign-keys-in-mysql-cluster/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Tue, 18 Jun 2013 12:04:03 +0000</pubDate>
 				<category><![CDATA[MySQL Cluster]]></category>
 		<category><![CDATA[Foreign Keys]]></category>
 		<category><![CDATA[MySQL Cluster CGE]]></category>
-		<guid isPermaLink="false">/?p=2298</guid>
+		<guid isPermaLink="false">./../../index.html?p=2298</guid>
 
 					<description><![CDATA[The newly announced GA of MySQL Cluster 7.3 (7.3.2) builds upon second DMR (7.3.1 m2) released earlier in the year which added Foreign Keys to MySQL Cluster. Foreign Keys is a feature requested by many, many people and has often been cited as the reason for not being able to replace InnoDB with MySQL Cluster]]></description>
-										<content:encoded><![CDATA[<div id="attachment_2304" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2012/05/FK_Relationship.png"><img decoding="async" aria-describedby="caption-attachment-2304" class="size-medium wp-image-2304" title="Foreign Key Constraints" src="/wp-content/uploads/2012/05/FK_Relationship-300x103.png" alt="Foreign Key constraints between tables" width="300" height="103" /></a><p id="caption-attachment-2304" class="wp-caption-text">Foreign Key constraints between tables</p></div>
+										<content:encoded><![CDATA[<div id="attachment_2304" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2012/05/FK_Relationship.png"><img decoding="async" aria-describedby="caption-attachment-2304" class="size-medium wp-image-2304" title="Foreign Key Constraints" src="./../../wp-content/uploads/2012/05/FK_Relationship-300x103.png" alt="Foreign Key constraints between tables" width="300" height="103" /></a><p id="caption-attachment-2304" class="wp-caption-text">Foreign Key constraints between tables</p></div>
 <p>The newly announced GA of MySQL Cluster 7.3 (7.3.2) builds upon second DMR (7.3.1 m2) released earlier in the year which added Foreign Keys to MySQL Cluster. Foreign Keys is a feature requested by many, many people and has often been cited as the reason for not being able to replace InnoDB with MySQL Cluster when they needed the extra availability or scalability. </p>
 <p>Note that this post is an up-version of the original &#8211; and was first published with the 7.3 labs release in June 2012.</p>
 <h3>What&#8217;s a Foreign Key</h3>
@@ -258,7 +258,7 @@ mysql&gt; SELECT * FROM counties;SELECT * FROM towns;
 <li>You cannot change primary keys through the NDB API which means that the MySQL Server actually has to simulate such operations by deleting and re-adding the row. If the PK in the parent table has a FK constraint on it then this causes non-ideal behaviour. With <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">Restrict</span> or <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">No Action</span> constraints, the change will result in an error. With Cascaded constraints, you&#8217;d want the rows in the child table to be updated with the new FK value but, the implicit delete of the row from the parent table would remove the associated rows from the child table and the subsequent implicit insert into the parent wouldn&#8217;t reinstate the child rows. For this reason, an attempt to add an <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">ON UPDATE CASCADE</span> where the parent column is a primary key will be rejected.</li>
 </ul>
 <h3>MySQL Workbench</h3>
-<p><div id="attachment_2567" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2012/09/WB-ndb-FKs-full.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-2567" src="/wp-content/uploads/2012/09/WB-ndb-FKs-full-300x208.png" alt="Viewing &amp; updating Foreign Key Constraints in MySQL Workbench" title="Viewing &amp; updating Foreign Key Constraints in MySQL Workbench" width="300" height="208" class="size-medium wp-image-2567" /></a><p id="caption-attachment-2567" class="wp-caption-text">Viewing and updating Foreign Key Constraints in MySQL Workbench</p></div>While not really the subject of this post, MySQL Workbench is a great tool for database developers and one of the features is the creation, modification and reverse engineering of schemas. For example, you could import your existing schema, add a new table and then introduce a FK constraint between an existing table and your new one. Previously, WorkBench would only allow you to play with FKs for InnoDB tables.</p>
+<p><div id="attachment_2567" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2012/09/WB-ndb-FKs-full.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-2567" src="./../../wp-content/uploads/2012/09/WB-ndb-FKs-full-300x208.png" alt="Viewing &amp; updating Foreign Key Constraints in MySQL Workbench" title="Viewing &amp; updating Foreign Key Constraints in MySQL Workbench" width="300" height="208" class="size-medium wp-image-2567" /></a><p id="caption-attachment-2567" class="wp-caption-text">Viewing and updating Foreign Key Constraints in MySQL Workbench</p></div>While not really the subject of this post, MySQL Workbench is a great tool for database developers and one of the features is the creation, modification and reverse engineering of schemas. For example, you could import your existing schema, add a new table and then introduce a FK constraint between an existing table and your new one. Previously, WorkBench would only allow you to play with FKs for InnoDB tables.</p>
 <h3>Closing remarks</h3>
 <p>We believe that this is going to enable a whole new set of applications exploit the advantages of MySQL Cluster (on-line scalability, real-time performance, NoSQL APIs, real-time performance, on-line schema changes,&#8230;) either because:</p>
 <ul>
@@ -268,12 +268,12 @@ mysql&gt; SELECT * FROM counties;SELECT * FROM towns;
 </ul>
 <p>If you are new to MySQL Cluster then here are some useful resources to get you started:</p>
 <ul>
-<li><a href="/mysql-cluster/mysql-cluster-7-3-auto-installer" title="MySQL Cluster Auto-Installer; browser based GUI to get a well configured cluster up and running within minutes" target="_blank">MySQL Cluster Auto-Installer; browser based GUI to get a well configured cluster up and running within minutes</a> </li>
+<li><a href="./../../mysql-cluster/mysql-cluster-7-3-auto-installer/index.html" title="MySQL Cluster Auto-Installer; browser based GUI to get a well configured cluster up and running within minutes" target="_blank">MySQL Cluster Auto-Installer; browser based GUI to get a well configured cluster up and running within minutes</a> </li>
 <li><a href="https://www.mysql.com/why-mysql/white-papers/mysql_cluster_eval_guide.php" title="Get the most out of your MySQL Cluster evaluation" target="_blank">Get the most out of your MySQL Cluster evaluation</a></li>
 </ul>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/foreign-keys-in-mysql-cluster/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/foreign-keys-in-mysql-cluster/feed/index.html</wfw:commentRss>
 			<slash:comments>48</slash:comments>
 		
 		

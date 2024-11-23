@@ -9,8 +9,8 @@
 
 <channel>
 	<title>Raspberry Pi &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/raspberry-pi/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Fri, 01 Jun 2012 13:41:09 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>MySQL Cluster running on Raspberry Pi</title>
-		<link>/mysql-cluster/mysql-cluster-running-on-raspberry-pi</link>
-					<comments>/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comments</comments>
+		<link>./../../mysql-cluster/mysql-cluster-running-on-raspberry-pi/index.html</link>
+					<comments>./../../mysql-cluster/mysql-cluster-running-on-raspberry-pi/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Fri, 01 Jun 2012 13:41:09 +0000</pubDate>
@@ -30,10 +30,10 @@
 		<category><![CDATA[MySQL]]></category>
 		<category><![CDATA[MySQL Cluster 7.2]]></category>
 		<category><![CDATA[Raspberry Pi]]></category>
-		<guid isPermaLink="false">/?p=2365</guid>
+		<guid isPermaLink="false">./../../index.html?p=2365</guid>
 
 					<description><![CDATA[I start a long weekend tonight and it&#8217;s the kids&#8217; last day of school before their school holidays and so last night felt like the right time to play a bit. This week I received my Raspberry Pi &#8211; if you haven&#8217;t heard of it then you should take a look at the Raspberry Pi]]></description>
-										<content:encoded><![CDATA[<div id="attachment_2364" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2012/06/Raspberry-Pi-010.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-2364" class="size-medium wp-image-2364" title="MySQL Cluster running on Raspberry Pi" src="/wp-content/uploads/2012/06/Raspberry-Pi-010-300x224.jpg" alt="MySQL Cluster running on Raspberry Pi" width="300" height="224" /></a><p id="caption-attachment-2364" class="wp-caption-text">MySQL Cluster running on Raspberry Pi</p></div>
+										<content:encoded><![CDATA[<div id="attachment_2364" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2012/06/Raspberry-Pi-010.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-2364" class="size-medium wp-image-2364" title="MySQL Cluster running on Raspberry Pi" src="./../../wp-content/uploads/2012/06/Raspberry-Pi-010-300x224.jpg" alt="MySQL Cluster running on Raspberry Pi" width="300" height="224" /></a><p id="caption-attachment-2364" class="wp-caption-text">MySQL Cluster running on Raspberry Pi</p></div>
 <p>I start a long weekend tonight and it&#8217;s the kids&#8217; last day of school before their school holidays and so last night felt like the right time to play a bit. This week I received my Raspberry Pi &#8211; if you haven&#8217;t heard of it then you should take a look at the <a title="Raspberry Pi FAQ" href="http://www.raspberrypi.org/faqs" target="_blank">Raspberry Pi FAQ</a> &#8211; basically it&#8217;s a ridiculously cheap ($25 or $35 if you want the top of the range model) ARM based PC that&#8217;s the size of a credit card.</p>
 <p>A knew I had to have one to play with but what to do with it? Why not start by porting MySQL Cluster onto it? We always claim that Cluster runs on commodity hardware &#8211; surely this would be the ultimate test of that claim.</p>
 <p>I chose the customised version of Debian &#8211; you have to copy it onto the SD memory card that acts as the storage for the Pi. Once up and running on the Pi, the first step was to increase the size of the main storage partition &#8211; it starts at about 2 Gbytes &#8211; using gparted. I then had to compile MySQL Cluster &#8211; ARM isn&#8217;t a supported platform and so there are no pre-built binaries. I needed to install a couple of packages before I could get very far:</p>
@@ -175,7 +175,7 @@ mysql&gt; SELECT * FROM simples;
 <p>OK &#8211; so is there any real application to this? Well, probably not other than providing a cheap development environment &#8211; imagine scaling out to 48 data nodes, that would cost $1,680 (+ the cost of some SD cards)! More practically might be management nodes &#8211; we know that they need very few resources. As a reminder &#8211; this is not a supported platform!</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql-cluster/mysql-cluster-running-on-raspberry-pi/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql-cluster/mysql-cluster-running-on-raspberry-pi/feed/index.html</wfw:commentRss>
 			<slash:comments>19</slash:comments>
 		
 		

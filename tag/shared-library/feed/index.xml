@@ -9,8 +9,8 @@
 
 <channel>
 	<title>shared library &#8211; Andrew Morgan on Databases</title>
-	<atom:link href="/tag/shared-library/feed" rel="self" type="application/rss+xml" />
-	<link>/</link>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
 	<description>Database technologies - especially around scalability and High Availability</description>
 	<lastBuildDate>Wed, 12 Aug 2009 12:54:30 +0000</lastBuildDate>
 	<language>en-US</language>
@@ -21,8 +21,8 @@
 	
 	<item>
 		<title>Creating a MySQL plugin to produce an integer timestamp</title>
-		<link>/mysql/creating-a-mysql-plugin-to-produce-an-interger-timestamp</link>
-					<comments>/mysql/creating-a-mysql-plugin-to-produce-an-interger-timestamp#comments</comments>
+		<link>./../../mysql/creating-a-mysql-plugin-to-produce-an-interger-timestamp/index.html</link>
+					<comments>./../../mysql/creating-a-mysql-plugin-to-produce-an-interger-timestamp/index.html#comments</comments>
 		
 		<dc:creator><![CDATA[andrew]]></dc:creator>
 		<pubDate>Wed, 12 Aug 2009 12:54:30 +0000</pubDate>
@@ -32,7 +32,7 @@
 		<category><![CDATA[Stored Procedures]]></category>
 		<category><![CDATA[time]]></category>
 		<category><![CDATA[timestamp]]></category>
-		<guid isPermaLink="false">/?p=451</guid>
+		<guid isPermaLink="false">./../../index.html?p=451</guid>
 
 					<description><![CDATA[This article shows how to create a MySQL-plugin that can be used to create a function which can in turn be used in stored procedures. The function will produce an integer value representing the time (to the nearest usec). I&#8217;m working on an article for conflict detection/resolution when using MySQL Cluster asynchronous replication which requires]]></description>
 										<content:encoded><![CDATA[<p>This article shows how to create a MySQL-plugin that can be used to create a function which can in turn be used in stored procedures. The function will produce an integer value representing the time (to the nearest usec).</p>
@@ -81,7 +81,7 @@ unsigned long int inttime(UDF_INIT *initid, UDF_ARGS *args, char *result,
 <p>I used the c code found at http://lists.mysql.com/internals/33702 as the starting point.</p>
 ]]></content:encoded>
 					
-					<wfw:commentRss>/mysql/creating-a-mysql-plugin-to-produce-an-interger-timestamp/feed</wfw:commentRss>
+					<wfw:commentRss>./../../mysql/creating-a-mysql-plugin-to-produce-an-interger-timestamp/feed/index.html</wfw:commentRss>
 			<slash:comments>3</slash:comments>
 		
 		
