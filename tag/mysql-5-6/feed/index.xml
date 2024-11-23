@@ -1,0 +1,740 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>MySQL 5.6 &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Mon, 05 Aug 2013 12:54:05 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Standalone MySQL Utilities Now GA! Includes running mysqlfailover as a daemon</title>
+		<link>./../../mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon/index.html</link>
+					<comments>./../../mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon/index.html#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 05 Aug 2013 12:54:05 +0000</pubDate>
+				<category><![CDATA[MySQL Replication]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL 5.6]]></category>
+		<category><![CDATA[MySQL Utilities]]></category>
+		<guid isPermaLink="false">./../../index.html?p=2905</guid>
+
+					<description><![CDATA[With the release of MySQL Utilities 1.3.4, the standalone (not bundled with the MySQL WorkBench GUI) package is now Generally Available and fully supported. This post will focus on a very important change (the ability to run as a daemon rather than in a terminal) to the mysqlfailover utility which allows you to build a]]></description>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/08/MySQL_Utilities-GA.png"><img decoding="async" class="alignright size-medium wp-image-2906" alt="MySQL Utilities are now GA - logo" src="./../../wp-content/uploads/2013/08/MySQL_Utilities-GA-300x125.png" width="300" height="125" /></a>With the release of MySQL Utilities 1.3.4, the standalone (not bundled with the MySQL WorkBench GUI) package is now Generally Available and fully supported. This post will focus on a very important change (the ability to run as a daemon rather than in a terminal) to the <span style="color: #008080;">mysqlfailover </span>utility which allows you to build a light-weight HA database solution using MySQL Replication.</p>
+<p>For a general overview of MySQL Utilities, <a title="MySQL Utilities Webinar – Q&amp;A + replay" href="./../../mysql/mysql-utilities-webinar-qa-replay-now-available/index.html" target="_blank">take a look at this recent webinar</a> or for a deeper dive into using them to setup replication and adding auto-failover of the master function to slaves <a title="Replication and auto-failover made easy with MySQL Utilities" href="./../../mysql/replication-and-auto-failover-made-easy-with-mysql-utilities/index.html" target="_blank">watch this video and worked example</a>.</p>
+<p>When we first released the <span style="color: #008080;">mysqlfailover</span> utility, the reaction was very positive but the feedback also told us that to really use this to provide High Availability in a production system two enhancements were critical:</p>
+<ol>
+<li>The ability to not have the database password visible when someone queries the status of the process (for example, using the <span style="color: #008080;">ps</span> command). This was addressed by allowing the connection string to be specified using a <span style="color: #008080;">login-path</span> (referring to an entry in .mylogin.cnf &#8211; see <a title="Setting up .mylogin.cnf using  mysql_config_editor utility" href="https://dev.mysql.com/doc/refman/5.6/en/mysql-config-editor.html" target="_blank">https://dev.mysql.com/doc/refman/5.6/en/mysql-config-editor.html</a>) in place of <span style="color: #008080;">&lt;user&gt;[:&lt;passwd&gt;]@&lt;host&gt;</span>. This is a vital security enhancement added in MySQL Utilities 1.3.1.</li>
+<li>Allowing <span style="color: #008080;">mysqlfailover</span> to be run as a daemon rather than being tied to the terminal from where it had to be manually launched. This option is key to enabling the user to build a reslient HA system that doesn&#8217;t rely on mysqlfailover being launched from a terminal and that terminal then never going away.</li>
+</ol>
+<p>The rest of this post focuses on how to run <span style="color: #008080;">mysqlfailover</span> as a daemon.</p>
+<p>By default, <span style="color: #008080;">mysqlfailover </span>runs as an interactive program within the terminal it was run from; it constantly refreshes, providing a summary of the status of the replication topology as shown below.</p>
+<pre><span style="color: #008080;">mysql@mini servers]$ mysqlfailover --master=root@192.168.1.101:5001 
+  --discover-slaves-login=root --rediscover
+
+MySQL Replication Failover Utility
+Failover Mode = auto     Next Interval = Thu Aug  1 23:34:56 2013
+
+Master Information
+------------------
+Binary Log File   Position  Binlog_Do_DB  Binlog_Ignore_DB
+mini1-bin.000001  581
+
+GTID Executed Set
+1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+
+WARNING: Errant transaction(s) found on slave(s).
+Replication Health Status
++----------------+-------+---------+--------+------------+---------+
+| host           | port  | role    | state  | gtid_mode  | health  |
++----------------+-------+---------+--------+------------+---------+
+| 192.168.1.101  | 5001  | MASTER  | UP     | ON         | OK      |
+| 192.168.1.101  | 5002  | SLAVE   | UP     | ON         | OK      |
+| 192.168.1.101  | 5003  | SLAVE   | UP     | ON         | OK      |
+| 192.168.1.101  | 5004  | SLAVE   | UP     | ON         | OK      |
++----------------+-------+---------+--------+------------+---------+
+
+Q-quit R-refresh H-health G-GTID Lists U-UUIDs
+</span></pre>
+<p>To run <span style="color: #008080;">mysqlfailover</span> as a daemon, the first new command-line option you must provide is <span style="color: #008080;">&#8211;daemon=start</span>; as you&#8217;d expect this runs the process as a daemon. In this mode, you won&#8217;t get to see the output from <span style="color: #008080;">mysqlfailover</span> at your terminal and so you should make sure that you know what log file is being used &#8211; so it&#8217;s best to specify it with <span style="color: #008080;">&#8211;log=&lt;path-to-log-file&gt;</span>. You can also control what information is periodically written to the log file using <span style="color: #008080;">&#8211;report-values=&lt;list-of-attributes from health,gtid,uuid&gt;</span>.  As you&#8217;ll likely to want to be able to manage the daemon without having to be in the same directory (and also likely to manage it from scripts that are automatically run when the server starts and stops) it makes sense to specify where the process ID file should be stored using <span style="color: #008080;">&#8211;pid=&lt;path-to-pid-file&gt;</span>.</p>
+<p>The final incantation might look something like the following:</p>
+<pre><span style="color: #008080;">mysqlfailover --master=root@192.168.1.101:5001 
+  --discover-slaves-login=root 
+  --rediscover 
+  --log=/home/mysql/servers/mysqlfailover.log 
+  --pidfile=/home/mysql/servers/mysqlfailover.pid 
+  --daemon=start 
+  --report-values=health,gtid,uuid
+</span></pre>
+<p>and the resulting log file could then contain information such as this:</p>
+<pre><span style="color: #008080;">2013-08-02 01:10:34 AM INFO Getting health for master: 192.168.1.101:5001.
+2013-08-02 01:10:35 AM INFO Health Status:
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5001, role: MASTER, state: UP, gtid_mode: ON, health: OK
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5002, role: SLAVE, state: UP, gtid_mode: ON, health: OK
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5003, role: SLAVE, state: UP, gtid_mode: ON, health: OK
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5004, role: SLAVE, state: UP, gtid_mode: ON, health: OK
+2013-08-02 01:10:35 AM INFO GTID Status - Transactions executed on the servers:
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5001, role: MASTER, gtid: 1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5002, role: SLAVE, gtid: 1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5002, role: SLAVE, gtid: 1db19050-faf9-11e2-a214-0800272b8804:1
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5003, role: SLAVE, gtid: 1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5003, role: SLAVE, gtid: 200f8139-faf9-11e2-a214-0800272b8804:1
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5004, role: SLAVE, gtid: 1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5004, role: SLAVE, gtid: 22842441-faf9-11e2-a214-0800272b8804:1
+2013-08-02 01:10:35 AM INFO UUID Status:
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5001, role: MASTER, uuid: 1aca3d80-faf9-11e2-a214-0800272b8804
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5002, role: SLAVE, uuid: 1db19050-faf9-11e2-a214-0800272b8804
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5003, role: SLAVE, uuid: 200f8139-faf9-11e2-a214-0800272b8804
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5004, role: SLAVE, uuid: 22842441-faf9-11e2-a214-0800272b8804
+</span></pre>
+<p>As you&#8217;d expect, you can also stop the daemon:</p>
+<pre><span style="color: #008080;">mysqlfailover 
+    --log=/home/mysql/servers/mysqlfailover.log 
+    --pidfile=/home/mysql/servers/mysqlfailover.pid 
+    --daemon=stop
+</span></pre>
+<p>and restart it:</p>
+<pre><span style="color: #008080;">mysqlfailover 
+    --log=/home/mysql/servers/mysqlfailover.log 
+    --pidfile=/home/mysql/servers/mysqlfailover.pid 
+    --daemon=restart
+</span></pre>
+<p>The final option for <span style="color: #008080;">daemon=</span> is <span style="color: #008080;">daemon=nodetach</span> which is like start but the terminal that it&#8217;s run from will continue to view the output from the daemon.</p>
+<p>One thing to note is that when the server is restarted, <span style="color: #008080;">mysqlfailover</span> needs to be started again and this is not something that is automatically configured when you run it as a daemon &#8211; rather, it&#8217;s your responsibility to ensure that it&#8217;s restarted (for example, including it in an <span style="color: #008080;">init</span> script.</p>
+<p>Please try it out and (as always) let us know how you get on &#8211; the addition of these extra options is a direct result of the user feedback received for the earlier versions.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon/feed/index.html</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Virtual Developers Day</title>
+		<link>./../../mysql/mysql-virtual-developers-day/index.html</link>
+					<comments>./../../mysql/mysql-virtual-developers-day/index.html#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 25 Jul 2013 08:38:00 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL 5.6]]></category>
+		<category><![CDATA[MySQL Cluster 7.3]]></category>
+		<guid isPermaLink="false">./../../index.html?p=2889</guid>
+
+					<description><![CDATA[I&#8217;ll be presenting the keynote for Wednesday&#8217;s (31st July) MySQL Virtual Developer Day. The idea behind this event is that you get half a day of on-line presentations as well as live Q&#038;A. My session focuses on what&#8217;s new in MySQL &#8211; in particular MySQL 5.6 and MySQL Cluster 7.3. As you&#8217;ll come to have]]></description>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/07/MySQL-Developers-Day.png"><img fetchpriority="high" decoding="async" src="./../../wp-content/uploads/2013/07/MySQL-Developers-Day-300x181.png" alt="MySQL Virtual Developers Day" width="300" height="181" class="alignright size-medium wp-image-2890" /></a>I&#8217;ll be presenting the keynote for Wednesday&#8217;s (31st July) <a href="https://oracle.6connex.com/portal/mysql/login?skipRedirectRegistration=true" title="MySQL Virtual Developers Day" target="_blank">MySQL Virtual Developer Day</a>. The idea behind this event is that you get half a day of on-line presentations as well as live Q&#038;A. My session focuses on what&#8217;s new in MySQL &#8211; in particular MySQL 5.6 and MySQL Cluster 7.3. As you&#8217;ll come to have expected, the event is free but you need to <a href="https://oracle.6connex.com/portal/mysql/login?skipRedirectRegistration=true" title="Register for MySQL Virtual Developers Day" target="_blank">register here</a>.<br />
+In the following agenda, all times are local to Singapore&#8230;<br />
+<a href="./../../wp-content/uploads/2013/07/agenda.png"><img decoding="async" src="./../../wp-content/uploads/2013/07/agenda.png" alt="MySQL Virtual Developers Day (APAC) Agenda" width="683" height="208" class="alignright size-full wp-image-2891" /></a></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql/mysql-virtual-developers-day/feed/index.html</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Utilities Webinar</title>
+		<link>./../../mysql/mysql-utilities-webinar/index.html</link>
+					<comments>./../../mysql/mysql-utilities-webinar/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 16 Jul 2013 12:50:09 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Replication]]></category>
+		<category><![CDATA[MySQL 5.6]]></category>
+		<category><![CDATA[MySQL Utilities]]></category>
+		<category><![CDATA[MySQL Workbench]]></category>
+		<guid isPermaLink="false">./../../index.html?p=2876</guid>
+
+					<description><![CDATA[On Thursday, Dr Charles Bell and I will be presenting a webinar on MySQL Utilities; there will be a heavy focus on what you can acheive with them and how you should use them. As well as listening to the presentation, this is a great chance to get your questions answered by the experts (Israel]]></description>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/07/MySQL_Utilities.png"><img loading="lazy" decoding="async" src="./../../wp-content/uploads/2013/07/MySQL_Utilities-300x125.png" alt="MySQL Utilities logo" width="300" height="125" class="alignright size-medium wp-image-2875" /></a>On Thursday, Dr Charles Bell and I will be presenting a webinar on MySQL Utilities; there will be a heavy focus on what you can acheive with them and how you should use them. As well as listening to the presentation, this is a great chance to get your questions answered by the experts (Israel Gomez from the engineering team will also be on-line to help with the questions). As always, the webinar is free but you should <a href="http://www.mysql.com/news-and-events/web-seminars/focus-on-mysql-utilities/" title="MySQL Utilities webinar - registration" target="_blank">register in advance here</a>. If the time isn&#8217;t convenient, register anyway and you&#8217;ll be sent a link to the replay when it&#8217;s available.</p>
+<h3>Abstract:</h3>
+<p>MySQL Utilities provide a collection of command-line utilities that are used for maintaining and administering MySQL databases, including:</p>
+<ul>
+<li>Admin Utilities (Clone, Copy, Compare, Diff, Export, Import)</li>
+<li>Replication Utilities (Setup, Configuration, Automated Slave Promotion)</li>
+<li>General Utilities (Disk Usage, Redundant Indexes, Search Meta Data)</li>
+</ul>
+<p>Andrew Morgan and Chuck Bell will guide you through these utilities, and many more, explaining what you can gain from these tools and how to use them (for example how a single command repeatedly checks your master server and in the event it fails, automatically promotes one of the slaves to be the new master). This is your opportunity to listen to the development lead describe what he and his team have created, and to get your questions answered by the experts.</p>
+<p>WHO:<br />
+Andrew Morgan, Principal Product Manager<br />
+Chuck Bell, Software Development Manager</p>
+<p>WHEN:<br />
+Thu, Jul 18: 09:00 Pacific time (America)<br />
+Thu, Jul 18: 10:00 Mountain time (America)<br />
+Thu, Jul 18: 11:00 Central time (America)<br />
+Thu, Jul 18: 12:00 Eastern time (America)<br />
+Thu, Jul 18: 16:00 UTC<br />
+Thu, Jul 18: 17:00 Western European time<br />
+Thu, Jul 18: 18:00 Central European time<br />
+Thu, Jul 18: 19:00 Eastern European time<br />
+Thu, Jul 18: 21:30 India, Sri Lanka<br />
+Fri, Jul 19: 00:00 Singapore/Malaysia/Philippines time<br />
+Fri, Jul 19: 00:00 China time<br />
+Fri, Jul 19: 01:00 日本<br />
+Fri, Jul 19: 02:00 NSW, ACT, Victoria, Tasmania (Australia) </p>
+<p>The presentation will be approximately 60 minutes long followed by Q&#038;A. </p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql/mysql-utilities-webinar/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL 5.6 GA &#8211; Replication Enhancements</title>
+		<link>./../../mysql-replication/mysql-5-6-ga-replication-enhancements/index.html</link>
+					<comments>./../../mysql-replication/mysql-5-6-ga-replication-enhancements/index.html#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 05 Feb 2013 13:05:44 +0000</pubDate>
+				<category><![CDATA[MySQL Replication]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL 5.6]]></category>
+		<guid isPermaLink="false">./../../index.html?p=2684</guid>
+
+					<description><![CDATA[MySQL 5.6 has now been declared Generally Available (i.e. suitable for production use). This is a very exciting release from a MySQL replication perspective with some big new features. These include: Global Transaction Identifiers (GTIDs) &#8211; a unique identifier that is used accross your replication topology to identify a transaction. Makes setting up and managing]]></description>
+										<content:encoded><![CDATA[<p><div id="attachment_2687" style="width: 304px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2013/02/MTS.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2687" src="./../../wp-content/uploads/2013/02/MTS-294x300.png" alt="Multi-Threaded Slave" width="294" height="300" class="size-medium wp-image-2687" /></a><p id="caption-attachment-2687" class="wp-caption-text">Multi-Threaded Slave</p></div>MySQL 5.6 has now been declared Generally Available (i.e. suitable for production use). This is a very exciting release from a MySQL replication perspective with some big new features. These include:</p>
+<ul>
+<li><strong>Global Transaction Identifiers (GTIDs)</strong> &#8211; a unique identifier that is used accross your replication topology to identify a transaction. Makes setting up and managing your cluster (including the promotion of a new master) far simpler and more reliable.
+</li>
+<li><strong>Multi-threaded slaves (MTS)</strong> &#8211; Increases the performance of replication on the slave; different threads will handle applying events to different databases.</li>
+<li><strong>Binary Log Group Commit</strong> &#8211; Improves replication performance on the master.</li>
+<li><strong>Optimized Row Based Replication</strong> &#8211; reduces the amount of data that needs to be replicated; reducing network usage and potentially speeding up replication.</li>
+<li><strong>Crash-Safe Replication</strong> &#8211; makes replication transactional. The data and replication positioning information are both updated as part of the same transaction.</li>
+<li><strong>Replication Event Checksums</strong> &#8211; checks to ensure that the data being replicated hasn&#8217;t become corrupted, avoids writing corrupted data to the slave.</li>
+<li><strong>Time-Delayed Replication</strong> &#8211; configure one or more of your slaves to only apply replicated events after a configured time. This can be useful to protect against DBA mistakes.</li>
+<li><strong>Informational Logs</strong> &#8211; includes the original statement in the binary log when using row-based-replication to aid in debugging.</li>
+</ul>
+<p>To coincide with the GA announcement, a new white paper has been released &#8211; <a href="http://www.mysql.com/why-mysql/white-papers/mysql-replication-introduction" title="MySQL 5.6 Replication - An Introduction" target="_blank">MySQL 5.6 Replication An Introduction</a> &#8211; that provides a lot more details on these new features. We&#8217;ve also released a second white paper &#8211; <a href="http://www.mysql.com/why-mysql/white-papers/mysql-replication-tutorial" title="MySQL 5.6 Replication Enhancing Scalability and Availability – A Tutorial" target="_blank">MySQL 5.6 Replication, Enhancing Scalability and Availability &#8211; A Tutorial</a> that steps you through using MySQL Replication, with a particular focus on the new features.</p>
+<p>If you&#8217;re already familiar with using MySQL Replication, here are a few pointers on what to do differently for the new MySQL 5.6 features but you should refer to the <a href="http://www.mysql.com/why-mysql/white-papers/mysql-replication-tutorial" title="MySQL 5.6 Replication Enhancing Scalability and Availability – A Tutorial" target="_blank">full tutorial</a> to see these changes in context.</p>
+<p>First of all, here are some extra configuration parameters to include&#8230;</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">
+[mysqld]
+gtid-mode=on				# GTID
+enforce-gtid-consistency=true		# GTID
+master-info-repository=TABLE            # Chrash-safe replication
+relay-log-info-repository=TABLE         # Chrash-safe replication
+slave-parallel-workers=2                # MTS
+binlog-checksum=CRC32                   # Checksums
+master-verify-checksum=1                # Checksums
+slave-sql-verify-checksum=1             # Checksums
+binlog-rows-query-log_events=1          # Informational logs
+</pre>
+<p>When initiating (or restarting) replication on the slave, it is no longer necessary to include the binary log positioning information as the master and slave will automatically negotiate what outstanding events need to be replicated based on any GTIDs previously received by the slave&#8230;</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">
+slave> CHANGE MASTER TO MASTER_HOST='black', 
+                        MASTER_USER='repl_user', 
+                        MASTER_PASSWORD='billy', 
+                        MASTER_AUTO_POSITION=1;
+</pre>
+<p>Please try out these new features and let us know what you think.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-replication/mysql-5-6-ga-replication-enhancements/feed/index.html</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>&#8220;MySQL &#038; Friends devroom&#8221; at FOSDEM 2013</title>
+		<link>./../../mysql-cluster/mysql-friends-devroom-at-fosdem-2013/index.html</link>
+					<comments>./../../mysql-cluster/mysql-friends-devroom-at-fosdem-2013/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 18 Jan 2013 09:00:09 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL 5.6]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<guid isPermaLink="false">./../../index.html?p=2669</guid>
+
+					<description><![CDATA[The Free and Open source Software Developers’ European Meeting (FOSDEM) is a two-day event organized by volunteers to promote the widespread use of Free and Open Source software. As in previous years, there is a dedicated stream of MySQL Sessions. On Saturday (2nd Feb) evening there&#8217;s a MySQL community dinner and then we&#8217;ve a packed]]></description>
+										<content:encoded><![CDATA[<p><div id="attachment_2670" style="width: 136px" class="wp-caption alignright"><a href="https://fosdem.org/2013/"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2670" src="./../../wp-content/uploads/2013/01/about.png" alt="FOSDEM 2013" width="126" height="124" class="size-full wp-image-2670" /></a><p id="caption-attachment-2670" class="wp-caption-text">FOSDEM 2013</p></div>The Free and Open source Software Developers’ European Meeting (FOSDEM) is a two-day event organized by volunteers to promote the widespread use of Free and Open Source software. As in previous years, there is a dedicated stream of MySQL Sessions. On Saturday (2nd Feb) evening there&#8217;s a <a href="http://www.eventbrite.com/event/5255505358" title="FOSDEM 2013 MySQL Community Dinner" target="_blank">MySQL community dinner</a> and then we&#8217;ve a <a href="https://fosdem.org/2013/schedule/track/mysql_and_friends/" title="MySQL devroom schedule for FOSEM 2013" target="_blank">packed program</a> from 9:15 through 17:30 on Sunday (3rd Feb).</p>
+<p>FOSDEM 2013 is a free event and there&#8217;s no requirement  to pre-register &#8211; just get yourself along to Brussels.</p>
+<p>This year I&#8217;ll be making a <a href="https://fosdem.org/2013/schedule/event/mysql_cluster/" title="FOSDEM 2013 - MySQL Cluster" target="_blank">presentation introducing MySQL Cluster</a>. Several of my colleagues from Oracle will also be there to present on the latest and greatest MySQL capabilities &#8211; including what&#8217;s coming in MySQL 5.6. This will be a great opportunity to politely listen to some real technical experts but an even better one to pester them for extra details &#8211; whether during the presentations or when you can grab them at other times.</p>
+<p>Hope to see some of you there!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/mysql-friends-devroom-at-fosdem-2013/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Replication and auto-failover made easy with MySQL Utilities</title>
+		<link>./../../mysql/replication-and-auto-failover-made-easy-with-mysql-utilities/index.html</link>
+					<comments>./../../mysql/replication-and-auto-failover-made-easy-with-mysql-utilities/index.html#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 24 Sep 2012 14:08:00 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[failover]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL 5.6]]></category>
+		<category><![CDATA[MySQL Replication]]></category>
+		<category><![CDATA[utilities]]></category>
+		<guid isPermaLink="false">./../../index.html?p=2472</guid>
+
+					<description><![CDATA[If you&#8217;re a user of MySQL Workbench then you may have noticed a pocket knife icon appear in the top right hand corner &#8211; click on that and a terminal opens which gives you access to the MySQL utilities. In this post I&#8217;m focussing on the replication utilities but you can also refer to the]]></description>
+										<content:encoded><![CDATA[<div id="attachment_2474" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2012/08/WorkBench.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2474" class="size-medium wp-image-2474" title="MySQL utilities in Workbench" alt="MySQL utilities in Workbench" src="./../../wp-content/uploads/2012/08/WorkBench-300x164.jpg" width="300" height="164" /></a><p id="caption-attachment-2474" class="wp-caption-text">Utilities in MySQL Workbench</p></div>
+<p>If you&#8217;re a user of MySQL Workbench then you may have noticed a pocket knife icon appear in the top right hand corner &#8211; click on that and a terminal opens which gives you access to the MySQL utilities. In this post I&#8217;m focussing on the replication utilities but you can also refer to the full <a title="MySQL Utilities documentation" href="http://dev.mysql.com/doc/workbench/en/mysql-utilities.html" target="_blank">MySQL Utilities documentation</a>.</p>
+<p>What I&#8217;ll step through is how to uses these utilities to:</p>
+<ul>
+<li>Set up replication from a single master to multiple slaves</li>
+<li>Automatically detect the failure of the master and promote one of the slaves to be the new master</li>
+<li>Introduce the old master back into the topology as a new slave and then promote it to be the master again</li>
+</ul>
+<h3>Tutorial Video</h3>
+<p>Before going through the steps in detail here&#8217;s a demonstration of the replication utilities in action&#8230;<br />
+<iframe loading="lazy" title="MySQL Replication Utilities Tutorial" width="480" height="270" src="https://www.youtube.com/embed/yZJECIq5-Ac?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br />
+To get full use of these utilities you should use the InnoDB storage engine together with the <a title="MySQL 5.6 Replication - including global transaction IDs" href="http://dev.mysql.com/tech-resources/articles/mysql-5.6-replication.html" target="_blank">Global Transaction ID functionality from the latest MySQL 5.6 DMR</a>.</p>
+<h3>Do you really need/want auto-failover?</h3>
+<p>For many people, the instinctive reaction is to deploy a fully automated system that detects when the master database fails and then fails over (promotes a slave to be the new master) without human intervention. For many applications this may be the correct approach.</p>
+<p>There are inherent risks to this though &#8211; What if the failover implementation has a flaw and fails (after all, we probably don&#8217;t test this out in the production system very often)? What if the slave isn&#8217;t able to cope with the workload and makes things worse? Is it just a transitory glitch and would the best approach have been just to wait it out?</p>
+<p>Following a <a title="Github outage following auto-failover of the database" href="http://github.com/blog/1261-github-availability-this-week" target="_blank">recent, high profile outage</a> there has been a great deal of debate on the topic between those that recommend auto-failover and those that believe it should only ever be entrusted to a knowledgeable (of the application and the database architecture) and well informed (of the state of the database nodes, application load etc.) human. Of course, if the triggering of the failover is to be left to a human then you want that person to have access to the information they need and an extremely simple procedure (ideally a single command) to execute the failover. Probably the truth is that it all depends on your specific circumstances.</p>
+<p>The MySQL replication utilities aim to support you whichever camp you belong to:</p>
+<ul>
+<li>In the fully automated mode, the utilities will continually monitor the state of the master and in the event of its failure identify the best slave to promote &#8211; by default it will select the one that is most up-to-date and then apply any changes that are available on other slaves but not on this one before promoting it to be the new master. The user can override this behaviour (for example by limiting which of the slaves are eligible for promotion). The user is also able to bind in their own programs to be run before and after the failover (for example, to inform the application).</li>
+<li>In the monitoring mode, the utility still continually checks the availability of the master, and informs the user if it should fail. The user then executes a single command to fail over to their preferred slave.</li>
+</ul>
+<h3>Step 1. Make sure MySQL Servers are configured correctly</h3>
+<p>For some of the utilities, it&#8217;s important that you&#8217;re using Global Transaction IDs; binary logging needs to be enabled; may as well use the new crash-safe slave functionality&#8230; It&#8217;s beyond the scope of this post to go through all of those and so instead I&#8217;ll just give example configuration files for the 5 MySQL Servers that will be used:</p>
+<p><strong>my1.cnf</strong></p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[mysqld]
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+disable-gtid-unsafe-statements=true # Use enforce-gtid-consistency from 5.6.9+
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+sync-master-info=1
+datadir=/home/billy/mysql/data1
+server-id=1
+log-bin=util11-bin.log
+report-host=utils1
+report-port=3306
+socket=/home/billy/mysql/sock1
+port=3306</pre>
+<p><strong>my2.cnf</strong></p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[mysqld]
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+disable-gtid-unsafe-statements=true # Use enforce-gtid-consistency from 5.6.9+
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+sync-master-info=1
+datadir=/home/billy/mysql/data2
+server-id=2
+log-bin=util12-bin.log
+report-host=utils1
+report-port=3307
+socket=/home/billy/mysql/sock2
+port=3307</pre>
+<p><strong>my3.cnf</strong></p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[mysqld]
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+disable-gtid-unsafe-statements=true # Use enforce-gtid-consistency from 5.6.9+
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+sync-master-info=1
+datadir=/home/billy/mysql/data3
+server-id=3
+log-bin=util2-bin.log
+report-host=utils2
+report-port=3306
+socket=/home/billy/mysql/sock3
+port=3306</pre>
+<p><strong>my4.cnf</strong></p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[mysqld]
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+disable-gtid-unsafe-statements=true # Use enforce-gtid-consistency from 5.6.9+
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+master-info-file=/home/billy/mysql/master4.info
+datadir=/home/billy/mysql/data4
+server-id=4
+log-bin=util4-bin.log
+report-host=utils2
+report-port=3307
+socket=/home/billy/mysql/sock4
+port=3307</pre>
+<p><strong>my5.cnf</strong></p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[mysqld]
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+disable-gtid-unsafe-statements=true # Use enforce-gtid-consistency from 5.6.9+
+datadir=/home/billy/mysql/data5
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+sync-master-info=1
+#master-info-file=/home/billy/mysql/master5.info
+server-id=5
+log-bin=util5-bin.log
+report-host=utils2
+report-port=3308
+socket=/home/billy/mysql/sock5
+port=3308</pre>
+<p>The utilities are actually going to be run from a remote host and so it will be necessary for that host to access each of the MySQL Servers and so a user has to be granted remote access (note that the utilities will automatically create the replication user):</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[billy@utils1 ~]$ mysql -h 127.0.0.1 -P3306 -u root -e "grant all on *.* to root@'%' with grant option;"
+[billy@utils1 ~]$ mysql -h 127.0.0.1 -P3307 -u root -e "grant all on *.* to root@'%' with grant option;"
+[billy@utils2 ~]$ mysql -h 127.0.0.1 -P3306 -u root -e "grant all on *.* to root@'%' with grant option;"
+[billy@utils2 ~]$ mysql -h 127.0.0.1 -P3307 -u root -e "grant all on *.* to root@'%' with grant option;"
+[billy@utils2 ~]$ mysql -h 127.0.0.1 -P3308 -u root -e "grant all on *.* to root@'%' with grant option;"</pre>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;"></pre>
+<p>OK &#8211; that&#8217;s the most painful part of the whole process out of the way!</p>
+<h3>Set up replication</h3>
+<p>While there are extra options (such as specifying what username/password to use for the replication user or providing a password for the root user) I&#8217;m going to keep things simple and use the defaults as much as possible. The following commands are run from the MySQL Utilities terminal &#8211; just click on the pocket-knife icon in MySQL Workbench.</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlreplicate --master=root@utils1:3306 --slave=root@utils1:3307</strong>
+# master on utils1: ... connected.
+# slave on utils1: ... connected.
+# Checking for binary logging on master...
+# Setting up replication...
+# ...done.
+
+<strong>mysqlreplicate --master=root@utils1:3306 --slave=root@utils2:3306</strong>
+# master on utils1: ... connected.
+# slave on utils2: ... connected.
+# Checking for binary logging on master...
+# Setting up replication...
+# ...done.
+
+<strong>mysqlreplicate --master=root@utils1:3306 --slave=root@utils2:3307</strong>
+# master on utils1: ... connected.
+# slave on utils2: ... connected.
+# Checking for binary logging on master...
+# Setting up replication...
+# ...done.
+
+<strong>mysqlreplicate --master=root@utils1:3306 --slave=root@utils2:3308</strong>
+# master on utils1: ... connected.
+# slave on utils2: ... connected.
+# Checking for binary logging on master...
+# Setting up replication...
+# ...done.</pre>
+<p>That&#8217;s it, replication has now been set up from one master to four slaves.</p>
+<p>You can now check that the replication topology matches what you intended:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlrplshow --master=root@utils1 --discover-slaves-login=root;</strong>
+# master on utils1: ... connected.
+# Finding slaves for master: utils1:3306
+
+# Replication Topology Graph
+utils1:3306 (MASTER)
+   |
+   +--- utils1:3307 - (SLAVE)
+   |
+   +--- utils2:3306 - (SLAVE)
+   |
+   +--- utils2:3307 - (SLAVE)
+   |
+   +--- utils2:3308 - (SLAVE)</pre>
+<p>Additionally, you can also check that any of the replication relationships is correctly configure:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlrplcheck --master=root@utils1 --slave=root@utils2</strong>
+# master on utils1: ... connected.
+# slave on utils2: ... connected.
+Test Description                                                     Status
+---------------------------------------------------------------------------
+Checking for binary logging on master                                [pass]
+Are there binlog exceptions?                                         [pass]
+Replication user exists?                                             [pass]
+Checking server_id values                                            [pass]
+Is slave connected to master?                                        [pass]
+Check master information file                                        [pass]
+Checking InnoDB compatibility                                        [pass]
+Checking storage engines compatibility                               [pass]
+Checking lower_case_table_names settings                             [pass]
+Checking slave delay (seconds behind master)                         [pass]
+# ...done.</pre>
+<p>Including the <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">-s</span> option would have included the output that you&#8217;d expect to see from <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">SHOW SLAVE STATUSG on the slave.</span></p>
+<h3>Automated monitoring and failover</h3>
+<p>The previous section showed how you can save some serious time (and opportunity for user-error) when setting up MySQL replication. We now look at using the utilities to automatically monitor the state of the master and then automatically promote a new master from the pool of slaves. For simplicity I&#8217;ll stick with default values wherever possible but note that there are a number of extra options available to you such as:</p>
+<ul>
+<li>Constraining which slaves are eligible for promotion to master; the default is to take the most up-to-date slave</li>
+<li>Binding in your own scripts to be run before or after the failover (e.g. inform your application to switch master?)</li>
+<li>Have the utility monitor the state of the servers but don&#8217;t automatically initiate failover</li>
+</ul>
+<p>Here is how to set it up:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlfailover --master=root@utils1:3306 --discover-slaves-login=root --rediscover</strong>
+
+MySQL Replication Failover Utility
+Failover Mode = auto     Next Interval = Wed Aug 15 13:19:30 2012
+
+Master Information
+------------------
+Binary Log File    Position  Binlog_Do_DB  Binlog_Ignore_DB
+util11-bin.000001  2586
+
+Replication Health Status
++---------+-------+---------+--------+------------+---------+
+| host    | port  | role    | state  | gtid_mode  | health  |
++---------+-------+---------+--------+------------+---------+
+| utils1  | 3306  | MASTER  | UP     | ON         | OK      |
+| utils1  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3306  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3308  | SLAVE   | UP     | ON         | OK      |
++---------+-------+---------+--------+------------+---------+
+
+Q-quit R-refresh H-health G-GTID Lists U-UUIDs</pre>
+<p><span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysqlfailover</span> will then continue to run, refreshing the state &#8211; just waiting for something to go wrong.</p>
+<p>Rather than waiting, I kill the master MySQL Server:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqladmin -h utils1 -P3306 -u root shutdown</strong></pre>
+<p>Checking with the still-running <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysqlfailover</span> we can see that it has promoted <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">utils1:3307</span>.</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">MySQL Replication Failover Utility
+Failover Mode = auto     Next Interval = Wed Aug 15 13:21:13 2012
+
+Master Information
+------------------
+Binary Log File    Position  Binlog_Do_DB  Binlog_Ignore_DB
+util12-bin.000001  7131
+
+Replication Health Status
++---------+-------+---------+--------+------------+---------+
+| host    | port  | role    | state  | gtid_mode  | health  |
++---------+-------+---------+--------+------------+---------+
+| utils1  | 3307  | MASTER  | UP     | ON         | OK      |
+| utils2  | 3306  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3308  | SLAVE   | UP     | ON         | OK      |
++---------+-------+---------+--------+------------+---------+
+
+Q-quit R-refresh H-health G-GTID Lists U-UUIDs</pre>
+<h3>Add the recovered MySQL Server back into the topology</h3>
+<p>After restarting the failed MySQL Server, it can be added back into the mix as a slave to the new master:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlreplicate --master=root@utils1:3307 --slave=root@utils1:3306</strong>
+# master on utils1: ... connected.
+# slave on utils1: ... connected.
+# Checking for binary logging on master...
+# Setting up replication...
+# ...done.</pre>
+<p>The output from <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysqlfailover</span> (still running) confirms the addition:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">MySQL Replication Failover Utility
+Failover Mode = auto     Next Interval = Wed Aug 15 13:24:38 2012
+
+Master Information
+------------------
+Binary Log File    Position  Binlog_Do_DB  Binlog_Ignore_DB
+util12-bin.000001  7131
+
+Replication Health Status
++---------+-------+---------+--------+------------+---------+
+| host    | port  | role    | state  | gtid_mode  | health  |
++---------+-------+---------+--------+------------+---------+
+| utils1  | 3307  | MASTER  | UP     | ON         | OK      |
+| utils1  | 3306  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3306  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3308  | SLAVE   | UP     | ON         | OK      |
++---------+-------+---------+--------+------------+---------+
+
+Q-quit R-refresh H-health G-GTID Lists U-UUIDs</pre>
+<p>If it were important that the recovered MySQL Server be restored as the master then it is simple to manually trigger the promotion (after quitting out of <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysqlfailover</span>):</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlrpladmin --master=root@utils1:3307 --new-master=root@utils1:3306 --demote-master 
+  --discover-slaves-login=root switchover</strong>
+
+# Discovering slaves for master at utils1:3307
+# Checking privileges.
+# Performing switchover from master at utils1:3307 to slave at utils1:3306.
+# Checking candidate slave prerequisites.
+# Waiting for slaves to catch up to old master.
+# Stopping slaves.
+# Performing STOP on all slaves.
+# Demoting old master to be a slave to the new master.
+# Switching slaves to new master.
+# Starting all slaves.
+# Performing START on all slaves.
+# Checking slaves for errors.
+# Switchover complete.
+#
+# Replication Topology Health:
++---------+-------+---------+--------+------------+---------+
+| host    | port  | role    | state  | gtid_mode  | health  |
++---------+-------+---------+--------+------------+---------+
+| utils1  | 3306  | MASTER  | UP     | ON         | OK      |
+| utils1  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3306  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3308  | SLAVE   | UP     | ON         | OK      |
++---------+-------+---------+--------+------------+---------+
+# ...done.</pre>
+<p>As always, we&#8217;d really appreciate people trying this out and giving us feedback!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql/replication-and-auto-failover-made-easy-with-mysql-utilities/feed/index.html</wfw:commentRss>
+			<slash:comments>115</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL 5.6 Replication &#8211; webinar replay</title>
+		<link>./../../mysql-cluster/mysql-5-6-replication-webinar-replay/index.html</link>
+					<comments>./../../mysql-cluster/mysql-5-6-replication-webinar-replay/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 29 May 2012 14:25:25 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL 5.6]]></category>
+		<category><![CDATA[MySQL Replication]]></category>
+		<guid isPermaLink="false">./../../index.html?p=2346</guid>
+
+					<description><![CDATA[On Wednesday (16th May 2012), Mat Keep and I presented on the new replication features that are previewed as part of the latest MySQL 5.6 Development Release. The replay for that webinar (together with the chart deck) is now available from here. In addition, there were a huge number of great questions raised and we had]]></description>
+										<content:encoded><![CDATA[<div id="attachment_2288" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2012/05/Global_Transaction_IDs.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2288" class="size-medium wp-image-2288" title="MySQL 5.6 Replication - Global Transaction IDs" src="./../../wp-content/uploads/2012/05/Global_Transaction_IDs-300x186.png" alt="MySQL 5.6 Replication - Global Transaction IDs" width="300" height="186" /></a><p id="caption-attachment-2288" class="wp-caption-text">MySQL 5.6 Replication - Global Transaction IDs</p></div>
+<p>On Wednesday (16th May 2012), Mat Keep and I presented on the new replication features that are previewed as part of the latest MySQL 5.6 Development Release.</p>
+<p>The <a title="MySQL Cluster 5.6 Replication - webinar replay" href="http://www.mysql.com/news-and-events/on-demand-webinars/display-od-711.html" target="_blank">replay for that webinar (together with the chart deck) is now available from here</a>.</p>
+<p>In addition, there were a huge number of great questions raised and we had a couple of  key engineers answering them on-line &#8211; <a title="MySQL 5.5 Replication - FAQ" href="https://blogs.oracle.com/MySQL/entry/mysql_5_6_replication_faq" target="_blank">view the Q&amp;A transcript here</a>.</p>
+<p>A reminder of the topics covered in the webinar&#8230;</p>
+<p>MySQL 5.6 delivers new replication capabilities which we will discuss in the webinar:</p>
+<ul>
+<li>High performance with Multi-Threaded Slaves and Optimized Row Based Replication</li>
+<li>High availability with Global Transaction Identifiers, Failover Utilities and Crash Safe Slaves &amp; Binlog</li>
+<li>Data integrity with Replication Event Checksums</li>
+<li>Dev/Ops agility with new Replication Utilities, Time Delayed Replication and more</li>
+</ul>
+<p>&nbsp;</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/mysql-5-6-replication-webinar-replay/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Upcoming webinar: MySQL 5.6 Replication &#8211; For Next Generation of Web and Cloud Services</title>
+		<link>./../../mysql-replication/upcoming-webinar-mysql-5-6-replication-for-next-generation-of-web-and-cloud-services/index.html</link>
+					<comments>./../../mysql-replication/upcoming-webinar-mysql-5-6-replication-for-next-generation-of-web-and-cloud-services/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 10 May 2012 08:40:12 +0000</pubDate>
+				<category><![CDATA[MySQL Replication]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL 5.6]]></category>
+		<category><![CDATA[webinar]]></category>
+		<guid isPermaLink="false">./../../index.html?p=2286</guid>
+
+					<description><![CDATA[On Wednesday (16th May 2012), Mat Keep and I will be presenting the new replication features that are previewed as part of the latest MySQL 5.6 Development Release. If you&#8217;d like to attend then register here. MySQL 5.6 delivers new replication capabilities which we will discuss in the webinar: High performance with Multi-Threaded Slaves and Optimized]]></description>
+										<content:encoded><![CDATA[<div id="attachment_2288" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2012/05/Global_Transaction_IDs.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2288" class="size-medium wp-image-2288" title="MySQL 5.6 Replication - Global Transaction IDs" src="./../../wp-content/uploads/2012/05/Global_Transaction_IDs-300x186.png" alt="MySQL 5.6 Replication - Global Transaction IDs" width="300" height="186" /></a><p id="caption-attachment-2288" class="wp-caption-text">MySQL 5.6 Replication - Global Transaction IDs</p></div>
+<p>On Wednesday (16th May 2012), Mat Keep and I will be presenting the new replication features that are previewed as part of the latest MySQL 5.6 Development Release. If you&#8217;d like to attend then <a title="MySQL 5.6 Replication - For Next Generation of Web and Cloud Services" href="http://mysql.com/news-and-events/web-seminars/display-711.html" target="_blank">register here</a>.</p>
+<p>MySQL 5.6 delivers new replication capabilities which we will discuss in the webinar:</p>
+<ul>
+<li>High performance with Multi-Threaded Slaves and Optimized Row Based Replication</li>
+<li>High availability with Global Transaction Identifiers, Failover Utilities and Crash Safe Slaves &amp; Binlog</li>
+<li>Data integrity with Replication Event Checksums</li>
+<li>Dev/Ops agility with new Replication Utilities, Time Delayed Replication and more</li>
+</ul>
+<p>The session will wrap up with resources to get started with MySQL 5.6 and an opportunity to ask questions.</p>
+<p>The webinar will last 45-60 minutes and will start on Wednesday, May 16, 2012 at 09:00 Pacific time (America); start times in other time zones:</p>
+<ul>
+<li>Wed, May 16: 06:00 Hawaii time</li>
+<li>Wed, May 16: 10:00 Mountain time (America)</li>
+<li>Wed, May 16: 11:00 Central time (America)</li>
+<li>Wed, May 16: 12:00 Eastern time (America)</li>
+<li>Wed, May 16: 16:00 UTC</li>
+<li>Wed, May 16: 17:00 Western European time</li>
+<li>Wed, May 16: 18:00 Central European time</li>
+<li>Wed, May 16: 19:00 Eastern European time</li>
+</ul>
+<p>As always, it&#8217;s worth registering even if you can&#8217;t make the live webcast as you&#8217;ll  be emailed a link to the replay as soon as it&#8217;s available.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-replication/upcoming-webinar-mysql-5-6-replication-for-next-generation-of-web-and-cloud-services/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>NoSQL and MySQL &#8211; free webinar, replay now available</title>
+		<link>./../../mysql-cluster/nosql-and-mysql-free-webinar/index.html</link>
+					<comments>./../../mysql-cluster/nosql-and-mysql-free-webinar/index.html#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 18 Apr 2012 15:40:20 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL 5.6]]></category>
+		<category><![CDATA[MySQL Cluster 7.2]]></category>
+		<category><![CDATA[NoSQL]]></category>
+		<guid isPermaLink="false">./../../index.html?p=2254</guid>
+
+					<description><![CDATA[Update &#8211; the webinar replay is now available from here. On Thursday, I&#8217;ll be presenting a webinar on NoSQL (of course with a MySQL twist!) &#8211; as always it&#8217;s free to attend but you need to register here in advance. Even if you can&#8217;t attend, it&#8217;s worth registering as you&#8217;ll be sent a link to]]></description>
+										<content:encoded><![CDATA[<div id="attachment_2253" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2012/03/Key-Value-Store.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2253" class="size-medium wp-image-2253" title="Key-Value-Store" src="./../../wp-content/uploads/2012/03/Key-Value-Store-300x190.png" alt="" width="300" height="190" /></a><p id="caption-attachment-2253" class="wp-caption-text">Schema-free NoSQL Data</p></div>
+<p>Update &#8211; the <a title="SQL &amp; NoSQL - the best of both worlds using MySQL" href="https://www.mysql.com/news-and-events/on-demand-webinars/display-od-695.html" target="_blank">webinar replay is now available from here</a>.</p>
+<p>On Thursday, I&#8217;ll be presenting a webinar on NoSQL (of course with a MySQL twist!) &#8211; as always it&#8217;s free to attend but you need to <a title="NoSQL Access to MySQL - the Best of Both Worlds" href="http://www.mysql.com/news-and-events/web-seminars/display-695.html" target="_blank">register here in advance</a>. Even if you can&#8217;t attend, it&#8217;s worth registering as you&#8217;ll be sent a link to the replay and the charts. The session will introduce the concepts and motivations behind the NoSQL movement and then go on to explain how you can get most of the same benefits with MySQL (including MySQL Cluster) while still getting the RDBMS benefits such as ACID transactions.</p>
+<p>The official description:</p>
+<blockquote><p>The ever increasing performance demands of web-based services has generated significant interest in providing NoSQL access methods to MySQL &#8211; enabling users to maintain all of the advantages of their existing relational database infrastructure, while providing blazing fast performance for simple queries, using an API to complement regular SQL access to their data. This session looks at the existing NoSQL access methods for MySQL as well as the latest developments for both the InnoDB and MySQL Cluster storage engines. See how you can get the best of both worlds &#8211; persistence, consistency, rich queries, high availability, scalability and simple, flexible APIs and schemas for agile development.</p></blockquote>
+<p>When:</p>
+<ul>
+<li>Thursday, March 29, 2012: 09:00 Pacific time (America)</li>
+<li>Thu, Mar 29: 06:00 Hawaii time</li>
+<li>Thu, Mar 29: 10:00 Mountain time (America)</li>
+<li>Thu, Mar 29: 11:00 Central time (America)</li>
+<li>Thu, Mar 29: 12:00 Eastern time (America)</li>
+<li>Thu, Mar 29: 16:00 UTC</li>
+<li>Thu, Mar 29: 17:00 Western European time</li>
+<li>Thu, Mar 29: 18:00 Central European time</li>
+<li>Thu, Mar 29: 19:00 Eastern European time</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/nosql-and-mysql-free-webinar/feed/index.html</wfw:commentRss>
+			<slash:comments>4</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL 5.6 Replication Enhancements &#8211; webinar replay</title>
+		<link>./../../mysql-replication/mysql-5-6-replication-enhancements-webinar-replay/index.html</link>
+					<comments>./../../mysql-replication/mysql-5-6-replication-enhancements-webinar-replay/index.html#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 06 Jan 2012 15:30:46 +0000</pubDate>
+				<category><![CDATA[MySQL Replication]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL 5.6]]></category>
+		<guid isPermaLink="false">./../../index.html?p=2183</guid>
+
+					<description><![CDATA[The replay has now been released for the MySQL 5.6 replication enhancements replay where you can get the latest information on all of the great new content that has been included in the MySQL 5.6 Development Releases as well as some features that are still being developed. You can view the replay here. Some of the]]></description>
+										<content:encoded><![CDATA[<div id="attachment_2174" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/12/Global_Transaction_IDs.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2174" class="size-medium wp-image-2174" title="Global_Transaction_IDs" src="./../../wp-content/uploads/2011/12/Global_Transaction_IDs-300x189.png" alt="" width="300" height="189" /></a><p id="caption-attachment-2174" class="wp-caption-text">Global Transaction IDs - simplifying replication management</p></div>
+<p>The replay has now been released for the MySQL 5.6 replication enhancements replay where you can get the latest information on all of the great new content that has been included in the MySQL 5.6 Development Releases as well as some features that are still being developed. You can <a title="What's New in MySQL 5.6 - Part 2: Replication Enhancements" href="http://www.mysql.com/news-and-events/on-demand-webinars/display-od-677.html" target="_blank">view the replay here</a>.</p>
+<p>Some of the topics discussed are:</p>
+<ul>
+<li>Enhanced data integrity: Global Transactions Identifiers, Crash-Safe Slaves and Replication Event Checksums;</li>
+<li>High performance: Multi-Threaded Slaves, Binlog Group Commit and Optimized Row-Based Replication;</li>
+<li>Improved flexibility: Time Delayed Replication, Multi-Source Replication, Binlog API and Informational Log Events</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-replication/mysql-5-6-replication-enhancements-webinar-replay/feed/index.html</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

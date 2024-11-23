@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="./../xmlrpc.php">
+	
+	<title>ndbinfo | Andrew Morgan on Databases</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="./../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="./../comments/feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; ndbinfo Tag Feed" href="./feed/index.html">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/*  */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/*  */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="./../wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="./../wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="./../wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="./../wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="./../wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="./../wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="./../wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="./../wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="./../wp-json/index.html"><link rel="alternate" title="JSON" type="application/json" href="./../wp-json/wp/v2/tags/81/index.html"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../xmlrpc.php?rsd">
+
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style><style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style><script type="text/javascript">//
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//</script><style type="text/css"></style><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style></head>
+
+<body class="archive tag tag-ndbinfo tag-81 custom-background">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="./../index.html"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="http://www.clusterdb.com/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu"><li class="page_item page-item-1011"><a href="./../about/index.html">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="./../wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+		
+		<h2 class="arh">Tag Archive for ndbinfo</h2>
+				
+					<div id="post-1458" class="post-1458 post type-post status-publish format-standard hentry category-mysql-cluster tag-mysql tag-mysql-cluster-70 tag-mysql-cluster-7-1 tag-mysql-cluster-manager tag-mysql-enterprise-monitor tag-ndbinfo">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mysql-cluster/upcoming-webinar-whats-new-in-managing-mysql-cluster/index.html">January 14, 2011</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../mysql-cluster/upcoming-webinar-whats-new-in-managing-mysql-cluster/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../mysql-cluster/upcoming-webinar-whats-new-in-managing-mysql-cluster/index.html" rel="bookmark">On-demand-webinar &#8211; What&#8217;s New in Managing MySQL Cluster</a></h2>
+				
+				<div class="entry">
+										<p><img decoding="async" class="alignright size-full wp-image-919" title="mysql-cluster-logo-150x105" src="./../wp-content/uploads/2010/02/mysql-cluster-logo-150x105.png" alt="" width="150" height="105"></p>
+<p>The recording of this webinar is now available to <a href="./cluster2Lecluster/index.html" target="_blank">view on-line here</a>.</p>
+<p>There will be a live webinar on Wednesday January 12 describing the new ways that you can manage MySQL Cluster (with a bit of monitoring thrown in). As always, the webinar is free but you need to <a href="http://www.mysql.com/news-and-events/web-seminars/display-599.html" target="_blank">register here</a>. The event is scheduled for 09:00 Pacific / 17:00 UK / 18:00 Central European time but if you can&#8217;t make the live webinar it&#8217;s still worth registering so that you&#8217;re emailed the replay after the event.</p>
+<p>By their very nature, clustered environments involve more effort and resource to administer than standalone systems, and the same is true of MySQL Cluster, the database designed for web-scale throughput with carrier-grade availability.</p>
+<p>In this webinar, we will present an overview of the three latest enhancements to provisioning, monitoring and managing MySQL Cluster &#8211; collectively serving to lower costs, enhance agility and reduce the risk of downtime caused by manual configuration errors.</p>
+<p>In this webinar, we will present:</p>
+<ul>
+<li><strong>NDBINFO</strong>: released with MySQL Cluster 7.1, NDBINFO presents real-time status and usage statistics, providing developers and DBAs with a simple means of pro-actively monitoring and optimizing database performance and availability.</li>
+<li><strong>MySQL Cluster Manager</strong>: available as part of the commercial MySQL Cluster Carrier Grade Edition simplifies the creation and management of MySQL Cluster by automating common management tasks, delivering higher administration productivity and enhancing cluster agility. Tasks that used to take 46 commands can be reduced to just one!</li>
+<li><strong>MySQL Cluster Advisors &amp; Graphs</strong>: part of the MySQL Enterprise Monitor and available in the commercial MySQL Cluster Carrier Grade Edition, the Enterprise Advisor includes automated best practice rules that alert on key performance and availability metrics from MySQL Cluster data nodes.</li>
+</ul>
+<p>You will also learn how you can get started evaluating and using all of these tools to simplify MySQL Cluster management.</p>
+<p>This session will be approximately 1 hour in length and will include interactive Q&amp;A throughout. Please join us for this informative webinar!</p>
+<h4>WHO:</h4>
+<ul>
+<li><strong>Andrew Morgan</strong>, MySQL Cluster Product Management, Oracle</li>
+<li><strong>Mat Keep</strong>, MySQL Cluster Product Management, Oracle</li>
+</ul>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mysql-cluster/upcoming-webinar-whats-new-in-managing-mysql-cluster" data-via="wpbeginner" data-text="On-demand-webinar &#8211; What&#8217;s New in Managing MySQL Cluster" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mysql-cluster/upcoming-webinar-whats-new-in-managing-mysql-cluster"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mysql-cluster/upcoming-webinar-whats-new-in-managing-mysql-cluster" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-cluster%2Fupcoming-webinar-whats-new-in-managing-mysql-cluster&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="./mysql/index.html" rel="tag">MySQL</a>, <a href="./mysql-cluster-70/index.html" rel="tag">MySQL Cluster 7.0</a>, <a href="./mysql-cluster-7-1/index.html" rel="tag">MySQL Cluster 7.1</a>, <a href="./mysql-cluster-manager/index.html" rel="tag">MySQL Cluster Manager</a>, <a href="./mysql-enterprise-monitor/index.html" rel="tag">MySQL Enterprise Monitor</a>, <a href="./ndbinfo/index.html" rel="tag">ndbinfo</a></div>
+
+			</div>			<div id="post-1382" class="post-1382 post type-post status-publish format-standard hentry category-mysql-cluster tag-mysql tag-mysql-cluster tag-mysql-cluster-7-1 tag-mysql-enterprise-monitor tag-ndbinfo">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mysql-cluster/monitoring-mysql-cluster-with-mysql-enterprise-monitor/index.html">November 8, 2010</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../mysql-cluster/monitoring-mysql-cluster-with-mysql-enterprise-monitor/index.html#comments">One comment</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../mysql-cluster/monitoring-mysql-cluster-with-mysql-enterprise-monitor/index.html" rel="bookmark">Monitoring MySQL Cluster with MySQL Enterprise Monitor</a></h2>
+				
+				<div class="entry">
+										<div id="attachment_1385" style="width: 310px" class="wp-caption alignright"><a href="./../wp-content/uploads/2010/11/MEM_2_3.jpg"><img decoding="async" aria-describedby="caption-attachment-1385" class="size-medium wp-image-1385" title="MEM_2_3" src="./../wp-content/uploads/2010/11/MEM_2_3-300x160.jpg" alt="" width="300" height="160"></a><p id="caption-attachment-1385" class="wp-caption-text">MySQL Enterprise Monitor with MySQL Cluster</p></div>
+<p>A few months ago, I posted a<a href="./../mysql-cluster/configure-mysql-enterprise-monitor-to-monitor-mysql-cluster/index.html" target="_blank"> walkthrough of how to extend MySQL Enterprise Monitor in order to monitor MySQL Cluster</a>. The great news is that as of MySQL Enterprise Monitor 2.3 (available from <a href="http://edelivery.oracle.com/" target="_blank">Oracle E-Delivery</a> since 1st November) this functionality is included in the core product and so there is no need to add the extra features in manually. Of course, that post might still be of interest if you want to further extend MySQL Enterprise Monitor.</p>
+<p>This post briefly steps through the new (Cluster-specific) functionality but if you&#8217;re interested, why not try it for yourself and download the new MySQL Enterprise Monitor software from <a href="http://edelivery.oracle.com/" target="_blank">Oracle E-Delivery</a>. If you like what you see then the good news is that if you take out a subscription for MySQL Cluster CGE (or buy a license) then this now also entitles you to use MySQL Enterprise Monitor.</p>
+<p>There are two main aspects that have been extended to cover MySQL Cluster:</p>
+<ul>
+<li>A new MySQL Cluster Advisor has been added. This Advisor is made up of a set of rules that check various aspects of the data nodes and raise alerts if a configurable threshold is exceeded</li>
+<li>A set of new graphs have been added so that you can monitor the usage of key resources over time.</li>
+</ul>
+<p>Note that MySQL Enterprise Monitor has no direct connection to the data nodes and so one or more of the MySQL Servers from the Cluster is effectively used as a proxy. There is nothing special for you to configure on the servers, behind the scenes, Enterprise Monitor is reading the contents of the ndbinfo database that was introduced in MySQL Cluster 7.1.</p>
+<p>If using an older version of MySQL Cluster then you get less benefit from MySQL Enterprise Monitor but there is still some value in using it to monitor the MySQL Servers that are part of the cluster:</p>
+<ul>
+<li>Use the Query Analyzer to keep track of how your applications access the database and troubleshoot performance issues</li>
+<li>Monitor the state of the MySQL Server itself (number of client connections, CPU usage etc.)</li>
+<li>Generate alerts when data nodes are out of service.</li>
+</ul>
+<div id="attachment_1388" style="width: 310px" class="wp-caption alignright"><a href="./../wp-content/uploads/2010/11/MEM_schedule.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-1388" class="size-medium wp-image-1388" title="MEM_schedule" src="./../wp-content/uploads/2010/11/MEM_schedule-300x259.jpg" alt="" width="300" height="259"></a><p id="caption-attachment-1388" class="wp-caption-text">Schedule Cluster Rules Against the Servers</p></div>
+<p>There is <a href="http://dev.mysql.com/doc/mysql-monitor/2.3/en/mem-install.html" target="_blank">documentation covering installing and running the MySQL Enterprise Monitor service manager and agents</a> and so I won&#8217;t repeat the steps here except to point out that you need one or more of the agents to be configured to monitor one or more of the MySQL Servers in your Cluster. Of course, you could monitor multiple MySQL Cluster deployments from the same dashboard &#8211; just make sure that you have an agent monitoring at least one MySQL Server from each one.</p>
+<p>By default, none of the rules from the MySQL Cluster Advisor are scheduled against any of your servers and so the first thing you need to do is go to the &#8220;Advisors&#8221; tab and from their select &#8220;Add to Schedule&#8221;. Select the server(s) on the left and then check the radio button(s) against the whole Cluster advisor or against one or more of the rules within it and click the &#8220;schedule&#8221; button. You&#8217;ll then be given the option to override the default frequency that each rule is run before confirming the activation (scheduling) of the rule(s) for your server(s). This is also the point where you can indicate whether or not an SNMP Trap should be raised when the alert is raised/cleared (the destinations for the SNMP notifications can be set under the &#8220;Settings&#8221; tab).</p>
+<div id="attachment_1389" style="width: 310px" class="wp-caption alignright"><a href="./../wp-content/uploads/2010/11/MEM_schedule_error.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1389" class="size-medium wp-image-1389" title="MEM_schedule_error" src="./../wp-content/uploads/2010/11/MEM_schedule_error-300x259.jpg" alt="" width="300" height="259"></a><p id="caption-attachment-1389" class="wp-caption-text">Error scheduling rules against wrong version of MySQL Server</p></div>
+<p>Note that if you try scheduling the Cluster Advisor rules against a MySQL Server that is not part of a MySQL Cluster 7.1 (or later) deployment they you will get errors indicating that the server cannot provide the required data.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="attachment_1392" style="width: 310px" class="wp-caption alignright"><a href="./../wp-content/uploads/2010/11/MEM_graph.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1392" class="size-medium wp-image-1392" title="MEM_graph" src="./../wp-content/uploads/2010/11/MEM_graph-300x230.jpg" alt="" width="300" height="230"></a><p id="caption-attachment-1392" class="wp-caption-text">MySQL Cluster Graphs</p></div>
+<p>The new MySQL Cluster graphs are activated by default and you can view them from the &#8220;Graphs&#8221; tab but note that if there are no MySQL Cluster 7.1 servers in the list that you highlight on the left of the browser then the Cluster graphs will be hidden.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="attachment_1391" style="width: 310px" class="wp-caption alignright"><a href="./../wp-content/uploads/2010/11/MEM_alter_rule.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1391" class="size-medium wp-image-1391" title="MEM_alter_rule" src="./../wp-content/uploads/2010/11/MEM_alter_rule-300x191.jpg" alt="" width="300" height="191"></a><p id="caption-attachment-1391" class="wp-caption-text">Customize Cluster Rule</p></div>
+<p>Note that there is still scope for simple customizations directly from the the MySQL Enterprise Monitor GUI. For example if you don&#8217;t think that the default thresholds are appropriate for your configuration then select &#8220;Manage Rules&#8221; within the &#8220;Advisors&#8221; tab and then click &#8220;edit&#8221; next to the rule in question &#8211; you then get the option to alter the threshold values.</p>
+<p>As a final configuration step, go back to the &#8220;Monitor&#8221; tab and click on &#8220;edit favorites&#8221; to promote your favourite Cluster graphs to the home screen.</p>
+<p>&nbsp;</p>
+<p><div id="attachment_1412" style="width: 310px" class="wp-caption alignright"><a href="./../wp-content/uploads/2010/11/MEM_alert.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1412" src="./../wp-content/uploads/2010/11/MEM_alert-300x193.jpg" alt="" title="MEM_alert" width="300" height="193" class="size-medium wp-image-1412"></a><p id="caption-attachment-1412" class="wp-caption-text">Details of Cluster alert</p></div>Any Critical alerts (including ones for the newly scheduled Cluster rules) will appear on the Monitor page &#8211; to see the Info and Warning alerts, select the &#8220;Events&#8221; tab. Clicking on any of these alerts will give you extra details and the opportunity to close the alert.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mysql-cluster/monitoring-mysql-cluster-with-mysql-enterprise-monitor" data-via="wpbeginner" data-text="Monitoring MySQL Cluster with MySQL Enterprise Monitor" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mysql-cluster/monitoring-mysql-cluster-with-mysql-enterprise-monitor"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mysql-cluster/monitoring-mysql-cluster-with-mysql-enterprise-monitor" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-cluster%2Fmonitoring-mysql-cluster-with-mysql-enterprise-monitor&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="./mysql/index.html" rel="tag">MySQL</a>, <a href="./mysql-cluster/index.html" rel="tag">MySQL Cluster</a>, <a href="./mysql-cluster-7-1/index.html" rel="tag">MySQL Cluster 7.1</a>, <a href="./mysql-enterprise-monitor/index.html" rel="tag">MySQL Enterprise Monitor</a>, <a href="./ndbinfo/index.html" rel="tag">ndbinfo</a></div>
+
+			</div>			<div id="post-1064" class="post-1064 post type-post status-publish format-standard hentry category-mysql-cluster tag-mysql tag-mysql-cluster-7-1 tag-mysql-cluster-cge tag-mysql-enterprise-monitor tag-ndbinfo">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mysql-cluster/configure-mysql-enterprise-monitor-to-monitor-mysql-cluster/index.html">May 20, 2010</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../mysql-cluster/configure-mysql-enterprise-monitor-to-monitor-mysql-cluster/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../mysql-cluster/configure-mysql-enterprise-monitor-to-monitor-mysql-cluster/index.html" rel="bookmark">Configure MySQL Enterprise Monitor to monitor MySQL Cluster</a></h2>
+				
+				<div class="entry">
+										<p><a href="./../wp-content/uploads/2010/04/Cluster_7_1.jpg"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-1039" title="Cluster_7_1" src="./../wp-content/uploads/2010/04/Cluster_7_1-300x103.jpg" alt="" width="300" height="103"></a>MySQL Cluster 7.1 introduced the ndbinfo database which contains views giving real-time access to a whole host of information that helps you monitor and tune your MySQL Cluster deployment. Because this data can be accessed through regular SQL, various systems can be configured to monitor the Cluster. This post gives one example, extending MySQL Enterprise Monitor to keep an eye on the amount of free memory on the data nodes (through a graph) and then raise an alarm when it starts to run low &#8211; even generating SNMP traps if that&#8217;s what you need.</p>
+<p>One of the features of MySQL Enterprise Monitor is that you can define custom data collectors and that those data collectors can run SQL queries to get the data. The information retrieved by those custom data collectors can then be used with rules that the user defines through the MySQL Enterprise Monitor GUI to create warning/alarms.</p>
+<p>In this example, I create two new data collectors in the file&#8221;&lt;MySQL Enterprise Monitor installation directory&gt;/agent/share/mysql-proxy/items/cluster.xml&#8221; before starting up the MySQL Enterprise Monitor agent (note that these should be created for the agent of each MySQL Server in the Cluster that you would like to use to present the information from the data nodes):</p>
+<p><strong>cluster.xml</strong>:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;classes&gt;
+  &lt;class&gt;
+    &lt;namespace&gt;mysql&lt;/namespace&gt;
+    &lt;classname&gt;cluster_max_used&lt;/classname&gt;
+    &lt;query&gt;&lt;![CDATA[SELECT MAX(used) AS Used FROM ndbinfo.memoryusage WHERE memory_type = 'Data Memory';]]&gt;&lt;/query&gt;
+  &lt;/class&gt;
+  &lt;class&gt;
+    &lt;namespace&gt;mysql&lt;/namespace&gt;
+    &lt;classname&gt;cluster_min_avail&lt;/classname&gt;
+    &lt;query&gt;&lt;![CDATA[SELECT MIN(total) AS Total FROM ndbinfo.memoryusage WHERE memory_type = 'Data Memory';]]&gt;&lt;/query&gt;
+  &lt;/class&gt;
+&lt;/classes&gt;</span></pre>
+<p>So that the agent picks up this file, it should be referenced within &lt;MySQL Enterprise Monitor installation directory&gt;/agent/mysql-monitor-agent.ini:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">agent-item-files = share/mysql-monitor-agent/items/quan.lua,share/mysql-monitor-agent/items/items-mysql-monitor.xml,
+share/mysql-monitor-agent/items/custom.xml,<strong>share/mysql-monitor-agent/items/cluster.xml</strong></span></pre>
+<p><a href="./../wp-content/uploads/2010/05/Cluster_MEM_rule.jpg"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-1069" title="Fig. 1 Create rule" src="./../wp-content/uploads/2010/05/Cluster_MEM_rule-271x300.jpg" alt="" width="271" height="300"></a></p>
+<p>In MySQL Enterprise Monitor, events are raised by rules. Rules are grouped together into Advisors and so I create a new Advisor called &#8220;MySQL Cluster&#8221; and then create just one new rule within that Advisor group.</p>
+<p>As shown in Fig. 1 the rule is called &#8220;Data Node Low Memory&#8221;. The &#8220;Variable Assignment&#8221; section is used to define 2 variables %used_mem% and %config_mem% which are populated from the <span style="color: #800000;">Used </span>and <span style="color: #800000;">Total </span>results from the 2 new data collectors. The &#8220;Expression&#8221; section is used to test &#8220;((<span style="color: #800000;">Total </span>&#8211; <span style="color: #800000;">Used</span>)/<span style="color: #800000;">Total</span>)x100&lt; THRESHOLD&#8221; and then the values to be substituted for THRESHOLD are defined in the &#8220;Thresholds&#8221; section &#8211; indicating at what points the Info, Warning and Critical Alters should be raised.</p>
+<p>There are then a number of optional sections that you can use to add useful information to the person investigating the alert.</p>
+<p>Once the rule has been created, the next step is to schedule and (if desired) tag that the alerts should also result in SNMP traps being raised. This is standard MySQL Enterprise Monitor practice and so it isn&#8217;t explained here except to point out that this rule is monitoring information from the data nodes but the rule has to be applied to a MySQL Server in the Cluster (MySQL Enterprise Monitor has no idea what a data node is) and so you need to schedule the rule against one or more arbitrary MySQL Server instances in the Cluster).</p>
+<div id="attachment_1068" style="width: 310px" class="wp-caption alignright"><a href="./../wp-content/uploads/2010/05/Cluster_Mem_warning.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1068" class="size-medium wp-image-1068" title="Cluster_Mem_warning" src="./../wp-content/uploads/2010/05/Cluster_Mem_warning-300x238.jpg" alt="" width="300" height="238"></a><p id="caption-attachment-1068" class="wp-caption-text">Fig. 2 Warning alert</p></div>
+<p>To test the functionality, start adding more data to your MySQL Cluster until the Warning alert is triggered as shown in Fig. 2. As you can see, the optional information we included is shown &#8211; including values from <span style="color: #800000;">Used </span>and <span style="color: #800000;">Total</span>.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="attachment_1065" style="width: 310px" class="wp-caption alignright"><a href="./../wp-content/uploads/2010/05/Cluster_MEM_critical.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1065" class="size-medium wp-image-1065" title="Cluster_MEM_critical" src="./../wp-content/uploads/2010/05/Cluster_MEM_critical-300x186.jpg" alt="" width="300" height="186"></a><p id="caption-attachment-1065" class="wp-caption-text">Fig. 3 Major alert</p></div>
+<p>I then add more data to the database until the critical alert is raised and confirm that it&#8217;s displayed on the main monitoring panel of the MySQL Enterprise Monitor dashboard. Note that if you requested these alerts be included with the SNMP feed then SNMP traps will also be raised.</p>
+<p>Please note that this example is intended to illustrate the mechanics of setting up monitoring on an arbitrary piece of data from ndbinfo and obviously in the real world you would want to monitor more than just the memory and even for the memory, you might want to use a more sophisticated rule.</p>
+<div id="attachment_1067" style="width: 310px" class="wp-caption alignright"><a href="./../wp-content/uploads/2010/05/Cluster_MEM_graph.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1067" class="size-medium wp-image-1067" title="Cluster_MEM_graph" src="./../wp-content/uploads/2010/05/Cluster_MEM_graph-300x217.jpg" alt="" width="300" height="217"></a><p id="caption-attachment-1067" class="wp-caption-text">Fig. 4 Custom graph for memory usage</p></div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>It is sometimes more useful to see how a value changes over time. For this, MySQL Enterprise Monitor provides graphs. The data collectors created for the rule can also be used to add a new graph to Enterprise monitor. The graph is defined by creating the following file:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">&lt;com_mysql_merlin_server_graph_Design&gt;
+</span><span style="color: #800000;">  &lt;version&gt;1.0&lt;/version&gt;
+</span><span style="color: #800000;">  &lt;uuid&gt;b0bc2bba-ea9b-102b-b396-94aca32b0b28&lt;/uuid&gt;
+  &lt;tag&gt;&lt;/tag&gt;</span><span style="color: #800000;">
+  &lt;name&gt;Per Data Node Data Memory Use&lt;/name&gt;
+ </span><span style="color: #800000;"> &lt;rangeLabel&gt;MB&lt;/rangeLabel&gt; &lt;frequency&gt;00:01:00&lt;/frequency&gt;</span><span style="color: #800000;">
+  &lt;series&gt;</span><span style="color: #800000;">
+    &lt;label&gt;Used&lt;/label&gt;
+    &lt;expression&gt;cluster_data_node_used_data_memory/1024/1024&lt;/expression&gt;
+  </span><span style="color: #800000;">&lt;/series&gt;
+ </span><span style="color: #800000;"> &lt;series&gt;
+    &lt;label&gt;Avail&lt;/label&gt;
+    </span><span style="color: #800000;">&lt;expression&gt;cluster_data_node_config_data_memory/1024/1024&lt;/expression&gt;</span><span style="color: #800000;">
+  &lt;/series&gt;</span><span style="color: #800000;">
+  &lt;variables&gt;
+    &lt;name&gt;cluster_data_node_used_data_memory&lt;/name&gt;
+    </span><span style="color: #800000;">&lt;dcItem&gt;
+</span><span style="color: #800000;">      &lt;nameSpace&gt;mysql&lt;/nameSpace&gt;</span><span style="color: #800000;">
+      &lt;className&gt;cluster_max_used&lt;/className&gt;</span><span style="color: #800000;">
+      &lt;attribName&gt;Used&lt;/attribName&gt;
+ </span><span style="color: #800000;">   &lt;/dcItem&gt;
+   </span><span style="color: #800000;"> &lt;instance&gt;local&lt;/instance&gt;
+</span><span style="color: #800000;">  &lt;/variables&gt;
+</span><span style="color: #800000;">  &lt;variables&gt;</span><span style="color: #800000;">
+    &lt;name&gt;cluster_data_node_config_data_memory&lt;/name&gt;
+</span><span style="color: #800000;">    &lt;dcItem&gt;</span><span style="color: #800000;">
+      &lt;nameSpace&gt;mysql&lt;/nameSpace&gt;
+     </span><span style="color: #800000;"> &lt;className&gt;cluster_min_avail&lt;/className&gt;
+     </span><span style="color: #800000;"> &lt;attribName&gt;Total&lt;/attribName&gt;</span><span style="color: #800000;">
+    &lt;/dcItem&gt;</span><span style="color: #800000;">
+    &lt;instance&gt;local&lt;/instance&gt;
+  </span><span style="color: #800000;">&lt;/variables&gt;
+&lt;/com_mysql_merlin_server_graph_Design&gt;
+</span><span style="color: #800000;"> </span></pre>
+<div id="attachment_1066" style="width: 310px" class="wp-caption alignright"><a href="./../wp-content/uploads/2010/05/Cluster_MEM_dashboard.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1066" class="size-medium wp-image-1066" title="Cluster_MEM_dashboard" src="./../wp-content/uploads/2010/05/Cluster_MEM_dashboard-300x174.jpg" alt="" width="300" height="174"></a><p id="caption-attachment-1066" class="wp-caption-text">Fig. 5 MySQL Enterprise Monitor dashboard</p></div>
+<p>Click on Import/Export in the Graphs tab in Enterprise Monitor (2.2) and then import the file defining the graph.</p>
+<p>The graph will then appear on the graphs tab and can also be configured to appear on the main dashboard as shown in Fig. 5</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mysql-cluster/configure-mysql-enterprise-monitor-to-monitor-mysql-cluster" data-via="wpbeginner" data-text="Configure MySQL Enterprise Monitor to monitor MySQL Cluster" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mysql-cluster/configure-mysql-enterprise-monitor-to-monitor-mysql-cluster"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mysql-cluster/configure-mysql-enterprise-monitor-to-monitor-mysql-cluster" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-cluster%2Fconfigure-mysql-enterprise-monitor-to-monitor-mysql-cluster&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="./mysql/index.html" rel="tag">MySQL</a>, <a href="./mysql-cluster-7-1/index.html" rel="tag">MySQL Cluster 7.1</a>, <a href="./mysql-cluster-cge/index.html" rel="tag">MySQL Cluster CGE</a>, <a href="./mysql-enterprise-monitor/index.html" rel="tag">MySQL Enterprise Monitor</a>, <a href="./ndbinfo/index.html" rel="tag">ndbinfo</a></div>
+
+			</div>			<div id="post-929" class="post-929 post type-post status-publish format-standard hentry category-mysql-cluster tag-mysql tag-mysql-cluster tag-mysql-cluster-cge tag-mysql-enterprise-monitor tag-ndbinfo tag-snmp">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mysql-cluster/using-ndbinfo-example-of-monitoring-data-nodes-with-mysql-enterprise-monitor/index.html">February 4, 2010</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../mysql-cluster/using-ndbinfo-example-of-monitoring-data-nodes-with-mysql-enterprise-monitor/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../mysql-cluster/using-ndbinfo-example-of-monitoring-data-nodes-with-mysql-enterprise-monitor/index.html" rel="bookmark">Using NDBINFO &#8211; example of monitoring data nodes with MySQL Enterprise Monitor</a></h2>
+				
+				<div class="entry">
+										<p><a href="./../wp-content/uploads/2010/02/mysql-cluster-logo-150x105.png"><img loading="lazy" decoding="async" class="alignright size-full wp-image-919" title="mysql-cluster-logo-150x105" src="./../wp-content/uploads/2010/02/mysql-cluster-logo-150x105.png" alt="" width="150" height="105"></a>You may have read <a href="http://ocklin.blogspot.com/2010/02/mysql-cluster-711-is-there.html" target="_blank">Bernd&#8217;s recent post</a> that explained how to try out some new beta functionality for MySQL Cluster and wondered what kind of use you could put the new ndb$info to. ndb$info uses tables/views to give real-time access to a whole host of information that helps you monitor and tune your MySQL Cluster deployment. This article gives one example, extending MySQL Enterprise Monitor to keep an eye on the amount of free memory on the data nodes and then raise an alarm when it starts to run low &#8211; even generating SNMP traps if that&#8217;s what you need.</p>
+<p>One of the features of MySQL Enterprise Monitor is that you can define custom data collectors and that those data collectors can run SQL queries to get the data. The information retrieved by those custom data collectors can then be used with rules that the user defines through the MySQL Enterprise Monitor GUI to create warning/alarms.</p>
+<p>In this example, I create two new data collectors and store the files in the &#8220;&lt;MySQL Enterprise Monitor installation directory&gt;/agent/share/mysql-proxy/items/&#8221; directory before starting up the MySQL Enterprise Monitor agents:</p>
+<p><strong>cluster_max_used.xml</strong>:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;classes&gt;
+  &lt;class&gt;
+    &lt;namespace&gt;mysql&lt;/namespace&gt;
+    &lt;classname&gt;cluster_max_used&lt;/classname&gt;
+    &lt;query&gt;&lt;![CDATA[SELECT MAX(used) as Used FROM ndbinfo.memoryusage
+      WHERE DATA_MEMORY = 'DATA_MEMORY']]&gt;
+    &lt;/query&gt;
+  &lt;/class&gt;
+&lt;/classes&gt;</span></pre>
+<p><strong>cluster_min_avail.xml</strong>:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><span style="color: #800000;">
+&lt;classes&gt;
+</span><span style="color: #800000;">  &lt;class&gt;
+</span><span style="color: #800000;">    &lt;namespace&gt;mysql&lt;/namespace&gt;
+    &lt;classname&gt;cluster_min_avail&lt;/classname&gt;
+    &lt;query&gt;&lt;![CDATA[SELECT MIN(max)as Max FROM ndbinfo.memoryusage
+       WHERE DATA_MEMORY = 'DATA_MEMORY']]&gt;
+    &lt;/query&gt;
+  &lt;/class&gt;
+&lt;/classes&gt;</span></pre>
+<div id="attachment_927" style="width: 310px" class="wp-caption alignright"><a href="./../wp-content/uploads/2010/02/rule.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-927" class="size-medium wp-image-927" title="rule" src="./../wp-content/uploads/2010/02/rule-300x297.jpg" alt="" width="300" height="297" srcset="./../wp-content/uploads/2010/02/rule-300x297.jpg 300w, ./../wp-content/uploads/2010/02/rule-150x150.jpg 150w, ./../wp-content/uploads/2010/02/rule.jpg 759w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><p id="caption-attachment-927" class="wp-caption-text">Fig. 1 Rule definition</p></div>
+<p>In MySQL Enterprise Monitor, rules are grouped together into Advisors and so I create a new Advisor called &#8220;MySQL Cluster&#8221; and then create just one new rule within that Advisor group.</p>
+<p>As shown in Fig. 1 the rule is called &#8220;Data Node Low Memory&#8221;. The &#8220;Variable Assignment&#8221; section is used to define 2 variables %used_mem% and %config_mem% which are populated from the <span style="color: #800000;">Used </span>and <span style="color: #800000;">Max </span>results from the 2 new data collectors. The &#8220;Expression&#8221; section is used to test &#8220;(<span style="color: #800000;">Max </span>&#8211; <span style="color: #800000;">Used</span>) &lt; THRESHOLD&#8221; and then the values to be substituted for THRESHOLD are defined in the &#8220;Thresholds&#8221; section &#8211; indicating at what points the Info, Warning and Critical Alters should be raised.</p>
+<p>There are then a number of optional sections that you can use to add useful information to the person investigating the alert.</p>
+<p>Once the rule has been created, the next step is to schedule it and (if desired) tag that the alerts should also result in SNMP traps being raised. This is standard MySQL Enterprise Monitor practice and so it isn&#8217;t explained here except to point out that this rule is monitoring information from the data nodes but the rule has to be applied to a MySQL Server (MySQL Enterprise Monitor has no idea what a data node is) and so you need to schedule the rule against one or more arbitrary MySQL Server instances in the Cluster.</p>
+<div id="attachment_928" style="width: 310px" class="wp-caption alignright"><a href="./../wp-content/uploads/2010/02/Info_warning.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-928" class="size-medium wp-image-928" title="Info_warning" src="./../wp-content/uploads/2010/02/Info_warning-300x239.jpg" alt="" width="300" height="239" srcset="./../wp-content/uploads/2010/02/Info_warning-300x239.jpg 300w, ./../wp-content/uploads/2010/02/Info_warning.jpg 938w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><p id="caption-attachment-928" class="wp-caption-text">Fig. 2 Warning alert</p></div>
+<p> <br>
+ <br>
+To test the functionality, start adding more data to your MySQL Cluster until the Warning alert is triggered as shown in Fig. 2. As you can see, the optional information we included is shown &#8211; including values from <span style="color: #800000;">Used </span>and <span style="color: #800000;">Max</span>.<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+<div id="attachment_926" style="width: 310px" class="wp-caption alignright"><a href="./../wp-content/uploads/2010/02/critical.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-926" class="size-medium wp-image-926" title="critical" src="./../wp-content/uploads/2010/02/critical-300x146.jpg" alt="" width="300" height="146" srcset="./../wp-content/uploads/2010/02/critical-300x146.jpg 300w, ./../wp-content/uploads/2010/02/critical-1024x501.jpg 1024w, ./../wp-content/uploads/2010/02/critical.jpg 1082w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><p id="caption-attachment-926" class="wp-caption-text">Fig. 3 Critical alarm</p></div></p>
+<p>I then add more data to the database until the critical alert is raised and confirm that it&#8217;s displayed on the main monitoring panel of the MySQL Enterprise Monitor dashboard. Note that if you requested these alerts be included with the SNMP feed then SNMP traps will also be raised.</p>
+<p>Please note that this example is intended to illustrate the mechanics of setting up monitoring on an arbitrary piece of data from ndbinfo and obviously in the real world you would want to monitor more than just the memory and even for the memory, you might want to use a more sophisticated rule.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mysql-cluster/using-ndbinfo-example-of-monitoring-data-nodes-with-mysql-enterprise-monitor" data-via="wpbeginner" data-text="Using NDBINFO &#8211; example of monitoring data nodes with MySQL Enterprise Monitor" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mysql-cluster/using-ndbinfo-example-of-monitoring-data-nodes-with-mysql-enterprise-monitor"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mysql-cluster/using-ndbinfo-example-of-monitoring-data-nodes-with-mysql-enterprise-monitor" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-cluster%2Fusing-ndbinfo-example-of-monitoring-data-nodes-with-mysql-enterprise-monitor&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="./mysql/index.html" rel="tag">MySQL</a>, <a href="./mysql-cluster/index.html" rel="tag">MySQL Cluster</a>, <a href="./mysql-cluster-cge/index.html" rel="tag">MySQL Cluster CGE</a>, <a href="./mysql-enterprise-monitor/index.html" rel="tag">MySQL Enterprise Monitor</a>, <a href="./ndbinfo/index.html" rel="tag">ndbinfo</a>, <a href="./snmp/index.html" rel="tag">snmp</a></div>
+
+			</div>      
+							<div class="more_posts">
+					<span class="post_links"> &nbsp; </span>
+				</div>
+						
+
+					
+	</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://www.clusterdb.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="./../mongodb/building-a-collaborative-ios-minesweeper-game-with-realm/index.html">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="./../mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial/index.html">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="./../mongodb/realm-swift-type-projections/index.html">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="./../mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/index.html">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="./../mongodb/goodbye-nspredicate-hello-realm-swift-query-api/index.html">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script></div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="./../mysql-cluster/mysql-cluster-running-on-raspberry-pi/index.html#comment-787242">MySQL Cluster running on Raspberry Pi</a></li><li class="recentcomments"><span class="comment-author-link">andrew</span> on <a href="./../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="./../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link">Sai Krishnan</span> on <a href="./../mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-661143">Get MySQL Replication up and running in 5 minutes</a></li><li class="recentcomments"><span class="comment-author-link">Nayan</span> on <a href="./../mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-660628">Get MySQL Replication up and running in 5 minutes</a></li></ul></li>
+<li id="categories-2" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2"><a href="./../category/me/index.html">Me</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="./../category/mongodb/index.html">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="./../category/mysql/index.html">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="./../category/mysql-cluster/index.html">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131"><a href="./../category/mysql-fabric/index.html">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="./../category/mysql-replication/index.html">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214"><a href="./../category/mongodb/realm/index.html">Realm</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="./../category/uncategorized/index.html">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div class="tagcloud"><a href="./7-4/index.html" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="./apache-kafka/index.html" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="./cluster/index.html" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="./ha/index.html" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="./high-availability/index.html" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="./ios/index.html" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="./java/index.html" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="./javascript/index.html" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="./mcm/index.html" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="./mean/index.html" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="./memcached/index.html" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="./mobile/index.html" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="./mongodb/index.html" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="./mongodb-3-2/index.html" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="./mongodb-atlas/index.html" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="./mongodb-mobile/index.html" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="./mongodb-stitch/index.html" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="./mysql/index.html" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="./mysql-5-6/index.html" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="./mysql-cluster/index.html" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="./mysql-cluster-70/index.html" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="./mysql-cluster-7-1/index.html" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="./mysql-cluster-7-2/index.html" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="./mysql-cluster-7-3/index.html" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="./mysql-cluster-7-4/index.html" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="./mysql-cluster-cge/index.html" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="./mysql-cluster-manager/index.html" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="./mysql-enterprise-monitor/index.html" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="./mysql-fabric-2/index.html" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="./mysql-replication/index.html" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="./mysql-utilities/index.html" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="./ndb-api/index.html" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="./node-js/index.html" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="./nosql/index.html" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="./performance/index.html" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="./realm/index.html" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="./replication/index.html" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="./secondary/index.html" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="./serverless/index.html" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="./sharding/index.html" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="./swift/index.html" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="./swiftui/index.html" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="./webcast/index.html" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="./webinar/index.html" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="./windows/index.html" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a></div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="./../2022/03/index.html">March 2022</a></li>
+	<li><a href="./../2022/02/index.html">February 2022</a></li>
+	<li><a href="./../2022/01/index.html">January 2022</a></li>
+	<li><a href="./../2021/12/index.html">December 2021</a></li>
+	<li><a href="./../2021/11/index.html">November 2021</a></li>
+	<li><a href="./../2021/09/index.html">September 2021</a></li>
+	<li><a href="./../2021/08/index.html">August 2021</a></li>
+	<li><a href="./../2021/07/index.html">July 2021</a></li>
+	<li><a href="./../2021/06/index.html">June 2021</a></li>
+	<li><a href="./../2021/05/index.html">May 2021</a></li>
+	<li><a href="./../2021/04/index.html">April 2021</a></li>
+	<li><a href="./../2021/02/index.html">February 2021</a></li>
+	<li><a href="./../2021/01/index.html">January 2021</a></li>
+	<li><a href="./../2020/12/index.html">December 2020</a></li>
+	<li><a href="./../2019/03/index.html">March 2019</a></li>
+	<li><a href="./../2019/01/index.html">January 2019</a></li>
+	<li><a href="./../2018/12/index.html">December 2018</a></li>
+	<li><a href="./../2018/11/index.html">November 2018</a></li>
+	<li><a href="./../2018/10/index.html">October 2018</a></li>
+	<li><a href="./../2018/09/index.html">September 2018</a></li>
+	<li><a href="./../2017/09/index.html">September 2017</a></li>
+	<li><a href="./../2017/03/index.html">March 2017</a></li>
+	<li><a href="./../2017/02/index.html">February 2017</a></li>
+	<li><a href="./../2017/01/index.html">January 2017</a></li>
+	<li><a href="./../2016/12/index.html">December 2016</a></li>
+	<li><a href="./../2016/11/index.html">November 2016</a></li>
+	<li><a href="./../2016/09/index.html">September 2016</a></li>
+	<li><a href="./../2016/01/index.html">January 2016</a></li>
+	<li><a href="./../2015/11/index.html">November 2015</a></li>
+	<li><a href="./../2015/10/index.html">October 2015</a></li>
+	<li><a href="./../2015/09/index.html">September 2015</a></li>
+	<li><a href="./../2015/06/index.html">June 2015</a></li>
+	<li><a href="./../2015/04/index.html">April 2015</a></li>
+	<li><a href="./../2015/03/index.html">March 2015</a></li>
+	<li><a href="./../2015/02/index.html">February 2015</a></li>
+	<li><a href="./../2015/01/index.html">January 2015</a></li>
+	<li><a href="./../2014/12/index.html">December 2014</a></li>
+	<li><a href="./../2014/11/index.html">November 2014</a></li>
+	<li><a href="./../2014/10/index.html">October 2014</a></li>
+	<li><a href="./../2014/09/index.html">September 2014</a></li>
+	<li><a href="./../2014/08/index.html">August 2014</a></li>
+	<li><a href="./../2014/07/index.html">July 2014</a></li>
+	<li><a href="./../2014/06/index.html">June 2014</a></li>
+	<li><a href="./../2014/05/index.html">May 2014</a></li>
+	<li><a href="./../2014/04/index.html">April 2014</a></li>
+	<li><a href="./../2014/03/index.html">March 2014</a></li>
+	<li><a href="./../2014/02/index.html">February 2014</a></li>
+	<li><a href="./../2014/01/index.html">January 2014</a></li>
+	<li><a href="./../2013/12/index.html">December 2013</a></li>
+	<li><a href="./../2013/11/index.html">November 2013</a></li>
+	<li><a href="./../2013/09/index.html">September 2013</a></li>
+	<li><a href="./../2013/08/index.html">August 2013</a></li>
+	<li><a href="./../2013/07/index.html">July 2013</a></li>
+	<li><a href="./../2013/06/index.html">June 2013</a></li>
+	<li><a href="./../2013/05/index.html">May 2013</a></li>
+	<li><a href="./../2013/03/index.html">March 2013</a></li>
+	<li><a href="./../2013/02/index.html">February 2013</a></li>
+	<li><a href="./../2013/01/index.html">January 2013</a></li>
+	<li><a href="./../2012/12/index.html">December 2012</a></li>
+	<li><a href="./../2012/11/index.html">November 2012</a></li>
+	<li><a href="./../2012/09/index.html">September 2012</a></li>
+	<li><a href="./../2012/07/index.html">July 2012</a></li>
+	<li><a href="./../2012/06/index.html">June 2012</a></li>
+	<li><a href="./../2012/05/index.html">May 2012</a></li>
+	<li><a href="./../2012/04/index.html">April 2012</a></li>
+	<li><a href="./../2012/03/index.html">March 2012</a></li>
+	<li><a href="./../2012/02/index.html">February 2012</a></li>
+	<li><a href="./../2012/01/index.html">January 2012</a></li>
+	<li><a href="./../2011/12/index.html">December 2011</a></li>
+	<li><a href="./../2011/11/index.html">November 2011</a></li>
+	<li><a href="./../2011/10/index.html">October 2011</a></li>
+	<li><a href="./../2011/09/index.html">September 2011</a></li>
+	<li><a href="./../2011/07/index.html">July 2011</a></li>
+	<li><a href="./../2011/06/index.html">June 2011</a></li>
+	<li><a href="./../2011/05/index.html">May 2011</a></li>
+	<li><a href="./../2011/04/index.html">April 2011</a></li>
+	<li><a href="./../2011/03/index.html">March 2011</a></li>
+	<li><a href="./../2011/02/index.html">February 2011</a></li>
+	<li><a href="./../2011/01/index.html">January 2011</a></li>
+	<li><a href="./../2010/12/index.html">December 2010</a></li>
+	<li><a href="./../2010/11/index.html">November 2010</a></li>
+	<li><a href="./../2010/10/index.html">October 2010</a></li>
+	<li><a href="./../2010/09/index.html">September 2010</a></li>
+	<li><a href="./../2010/08/index.html">August 2010</a></li>
+	<li><a href="./../2010/07/index.html">July 2010</a></li>
+	<li><a href="./../2010/06/index.html">June 2010</a></li>
+	<li><a href="./../2010/05/index.html">May 2010</a></li>
+	<li><a href="./../2010/04/index.html">April 2010</a></li>
+	<li><a href="./../2010/03/index.html">March 2010</a></li>
+	<li><a href="./../2010/02/index.html">February 2010</a></li>
+	<li><a href="./../2010/01/index.html">January 2010</a></li>
+	<li><a href="./../2009/12/index.html">December 2009</a></li>
+	<li><a href="./../2009/11/index.html">November 2009</a></li>
+	<li><a href="./../2009/10/index.html">October 2009</a></li>
+	<li><a href="./../2009/09/index.html">September 2009</a></li>
+	<li><a href="./../2009/08/index.html">August 2009</a></li>
+	<li><a href="./../2009/07/index.html">July 2009</a></li>
+	<li><a href="./../2009/06/index.html">June 2009</a></li>
+	<li><a href="./../2009/05/index.html">May 2009</a></li>
+	<li><a href="./../2009/04/index.html">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 --></body>
+</html>

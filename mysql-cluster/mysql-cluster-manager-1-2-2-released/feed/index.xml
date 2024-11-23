@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: MySQL Cluster Manager 1.2.2 released	</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../mysql-cluster-manager-1-2-2-released/index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 19 Feb 2013 07:22:33 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: andrew		</title>
+		<link>./../mysql-cluster-manager-1-2-2-released/index.html#comment-728</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 19 Feb 2013 07:22:33 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2659#comment-728</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-manager-1-2-2-released/index.html#comment-727&quot;&gt;andrew&lt;/a&gt;.
+
+The new version of the white paper is now available from &lt;a href=&quot;http://www.mysql.com/why-mysql/white-papers/mysql-cluster-manager/&quot; title=&quot;MySQL Cluster Manager white paper&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;http://www.mysql.com/why-mysql/white-papers/mysql-cluster-manager/&lt;/a&gt;]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-manager-1-2-2-released/index.html#comment-727">andrew</a>.</p>
+<p>The new version of the white paper is now available from <a href="http://www.mysql.com/why-mysql/white-papers/mysql-cluster-manager/" title="MySQL Cluster Manager white paper" target="_blank" rel="nofollow">http://www.mysql.com/why-mysql/white-papers/mysql-cluster-manager/</a></p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>./../mysql-cluster-manager-1-2-2-released/index.html#comment-727</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 15 Feb 2013 09:26:35 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2659#comment-727</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-manager-1-2-2-released/index.html#comment-726&quot;&gt;Bheem&lt;/a&gt;.
+
+Hi Bheem,
+
+ thanks for pointing out that the version of the wp that&#039;s currently published at &lt;a href=&quot;http://www.mysql.com/why-mysql/white-papers/mysql-cluster-manager/&quot; title=&quot;MySQL Cluster Manager white paper&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;http://www.mysql.com/why-mysql/white-papers/mysql-cluster-manager/&lt;/a&gt; is pretty old. I&#039;ve just submitted a new version, hopefully it will be visible fairly soon.
+
+Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-manager-1-2-2-released/index.html#comment-726">Bheem</a>.</p>
+<p>Hi Bheem,</p>
+<p> thanks for pointing out that the version of the wp that&#8217;s currently published at <a href="http://www.mysql.com/why-mysql/white-papers/mysql-cluster-manager/" title="MySQL Cluster Manager white paper" target="_blank" rel="nofollow">http://www.mysql.com/why-mysql/white-papers/mysql-cluster-manager/</a> is pretty old. I&#8217;ve just submitted a new version, hopefully it will be visible fairly soon.</p>
+<p>Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Bheem		</title>
+		<link>./../mysql-cluster-manager-1-2-2-released/index.html#comment-726</link>
+
+		<dc:creator><![CDATA[Bheem]]></dc:creator>
+		<pubDate>Fri, 15 Feb 2013 06:49:45 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2659#comment-726</guid>
+
+					<description><![CDATA[Andrew,
+
+Thanks for keeping your site up to  date. I am a frequent visitor of your site.
+
+Do you happen to have any white paper on
+“MySQL Cluster Manager 1.2.2&quot; ?]]></description>
+			<content:encoded><![CDATA[<p>Andrew,</p>
+<p>Thanks for keeping your site up to  date. I am a frequent visitor of your site.</p>
+<p>Do you happen to have any white paper on<br />
+“MySQL Cluster Manager 1.2.2&#8243; ?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>./../mysql-cluster-manager-1-2-2-released/index.html#comment-725</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 22 Jan 2013 13:19:27 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2659#comment-725</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-manager-1-2-2-released/index.html#comment-724&quot;&gt;syed&lt;/a&gt;.
+
+Syed,
+
+ you can perform on-lne (hot) backups with the community/GPL version of MySQL Cluster through the ndb_mgm CLI. MySQL Cluster Manager simplifies the process - especially when you do the restore as it becomes a single command (rather than having to restore each data node separately).
+
+ Of course there are other advantages to using the commercial version including all of the functionality in MySQL Cluster Manager, MySQL Enterprise Monitor and of course, support. If you were accessing data via MySQL Servers then you coul also benefit from its commercial plugins (such as thread pooling).
+
+Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-manager-1-2-2-released/index.html#comment-724">syed</a>.</p>
+<p>Syed,</p>
+<p> you can perform on-lne (hot) backups with the community/GPL version of MySQL Cluster through the ndb_mgm CLI. MySQL Cluster Manager simplifies the process &#8211; especially when you do the restore as it becomes a single command (rather than having to restore each data node separately).</p>
+<p> Of course there are other advantages to using the commercial version including all of the functionality in MySQL Cluster Manager, MySQL Enterprise Monitor and of course, support. If you were accessing data via MySQL Servers then you coul also benefit from its commercial plugins (such as thread pooling).</p>
+<p>Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: syed		</title>
+		<link>./../mysql-cluster-manager-1-2-2-released/index.html#comment-724</link>
+
+		<dc:creator><![CDATA[syed]]></dc:creator>
+		<pubDate>Tue, 22 Jan 2013 12:55:25 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2659#comment-724</guid>
+
+					<description><![CDATA[Dear Andrew,
+
+We have a 4node cluster with 2 datanodes and 2 servers+mgrs cohosting and use NDB alone in Application(ndb c++ apis only). We are looking at MySQL CGE tools for backup and monitor. 
+
+Is it really worth buying CGE for such a small scale 4 nodes? And is NDB Engine backup is &quot;Hot&quot; and supported by Mysql Enterprise Backup?
+
+Regards,
+
+-SYED]]></description>
+			<content:encoded><![CDATA[<p>Dear Andrew,</p>
+<p>We have a 4node cluster with 2 datanodes and 2 servers+mgrs cohosting and use NDB alone in Application(ndb c++ apis only). We are looking at MySQL CGE tools for backup and monitor. </p>
+<p>Is it really worth buying CGE for such a small scale 4 nodes? And is NDB Engine backup is &#8220;Hot&#8221; and supported by Mysql Enterprise Backup?</p>
+<p>Regards,</p>
+<p>-SYED</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

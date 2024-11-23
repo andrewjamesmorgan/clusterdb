@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="./../../xmlrpc.php">
+	
+	<title>Using Maps and Location Data in Your SwiftUI (+Realm) App | Andrew Morgan on Databases</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="./../../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="./../../comments/feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Using Maps and Location Data in Your SwiftUI (+Realm) App Comments Feed" href="./feed/index.html">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/*  */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/*  */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="./../../wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="./../../wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="./../../wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="./../../wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="./../../wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="./../../wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="./../../wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="./../../wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="./../../wp-json/index.html"><link rel="alternate" title="JSON" type="application/json" href="./../../wp-json/wp/v2/posts/4620/index.html"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../../xmlrpc.php?rsd">
+
+<link rel="canonical" href="./maps/index.html">
+<link rel="shortlink" href="./../../index.html?p=4620">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="./../../wp-json/oembed/1.0/embed/index.html?url=http%3A%2F%2F%2Fmongodb%2Frealm%2Fmaps">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="./../../wp-json/oembed/1.0/embed/index.html?url=http%3A%2F%2F%2Fmongodb%2Frealm%2Fmaps#038;format=xml">
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style><style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style><script type="text/javascript">//
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//</script><style type="text/css"></style><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style></head>
+
+<body class="post-template-default single single-post postid-4620 single-format-standard custom-background">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="./../../index.html"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="http://www.clusterdb.com/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="./../../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu"><li class="page_item page-item-1011"><a href="./../../about/index.html">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="./../../wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+
+					<div id="post-4620" class="post-4620 post type-post status-publish format-standard hentry category-realm tag-ios tag-mobile tag-mongodb tag-realm tag-swiftui">
+			
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./maps/index.html">July 12, 2021</a>
+			</div>
+	<div class="postcomments">
+		<a href="./maps/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+				
+				<h2 class="post-title">Using Maps and Location Data in Your SwiftUI (+Realm) App</h2>
+				
+				<div class="entry">
+										<h2>Introduction</h2>
+<p>Embedding Apple Maps and location functionality in SwiftUI apps used to be a bit of a pain. It required writing your own SwiftUI wrapper around UIKit code—see these examples from the O-FISH app:</p>
+<ul>
+<li><a href="https://github.com/WildAid/o-fish-ios/blob/main/o-fish-ios/Helpers/LocationHelper.swift">Location helper</a></li>
+<li><a href="https://github.com/WildAid/o-fish-ios/tree/main/o-fish-ios/Views/Components/Maps">Map views</a></li>
+</ul>
+<p>If you only need to support iOS14 and later, then you can <strong>forget most of that messy code &#x1f60a;</strong>. If you need to support iOS13—sorry, you need to go the O-FISH route!</p>
+<p>iOS14 introduced the <a href="https://developer.apple.com/documentation/mapkit/map">Map</a> SwiftUI view (part of <a href="https://developer.apple.com/documentation/mapkit/map">Mapkit</a>) allowing you to embed maps directly into your SwiftUI apps without messy wrapper code.</p>
+<p>This article shows you how to embed Apple Maps into your app views using Mapkit&#8217;s Map view. We&#8217;ll then look at how you can fetch the user&#8217;s current location—with their permission, of course!</p>
+<p>Finally, we&#8217;ll see how to store the location data in Realm in a format that lets MongoDB Realm sync it to MongoDB Atlas. Once in Atlas, you can add a <a href="https://docs.mongodb.com/manual/core/2dsphere/">geospatial index</a> and use <a href="https://www.mongodb.com/products/charts">MongoDB Charts</a> to plot the data on a map—we&#8217;ll look at that too.</p>
+<p>Most of the code snippets have been extracted from the <a href="https://github.com/realm/RChat">RChat app</a>. That app is a good place to see maps and location data in action. <a href="https://developer.mongodb.com/how-to/building-a-mobile-chat-app-using-realm-new-way/">Building a Mobile Chat App Using Realm – The New and Easier Way</a> is a good place to learn more about the RChat app—including how to enable <a href="https://docs.mongodb.com/realm/sync/">MongoDB Realm Sync</a>.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li><a href="https://github.com/realm/realm-cocoa/releases">Realm-Cocoa 10.8.0</a>+ (may work with some 10.7.X versions)</li>
+<li>iOS 14.5+ (<a href="https://developer.apple.com/documentation/mapkit/map">Mapkit</a> was introduced in iOS 14.0 and so most features should work with earlier iOS 14.X versions)</li>
+<li><a href="https://developer.apple.com/xcode/">XCode12+</a></li>
+</ul>
+<h2>How to Add an Apple Map to Your SwiftUI App</h2>
+<p>To begin, let&#8217;s create a simple view that displays a map, the coordinates of the center of that map, and the zoom level:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/realm_map1_7ea7ecbf15.gif" alt="Gif of scrolling around an embedded Apple Map and seeing the reported coordinates changing"></p>
+<p>With Mapkit and SwiftUI, this only takes a few lines of code:</p>
+<pre><code class="swift">import MapKit
+import SwiftUI
+
+struct MyMapView: View {
+    @State private var region: MKCoordinateRegion = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: MapDefaults.latitude, longitude: MapDefaults.longitude),
+        span: MKCoordinateSpan(latitudeDelta: MapDefaults.zoom, longitudeDelta: MapDefaults.zoom))
+
+    private enum MapDefaults {
+        static let latitude = 45.872
+        static let longitude = -1.248
+        static let zoom = 0.5
+    }
+
+    var body: some View {
+        VStack {
+            Text("lat: \(region.center.latitude), long: \(region.center.longitude). Zoom: \(region.span.latitudeDelta)")
+            .font(.caption)
+            .padding()
+            Map(coordinateRegion: $region,
+                interactionModes: .all,
+                showsUserLocation: true)
+        }
+    }
+}
+</code></pre>
+<p>Note that <code>showsUserLocation</code> won&#8217;t work unless the user has already given the app permission to use their location—we&#8217;ll get to that.</p>
+<p><code>region</code> is initialized to a starting location, but it&#8217;s updated by the <code>Map</code> view as the user scrolls and zooms in and out.</p>
+<h3>Adding Bells and Whistles to Your Maps (Pins at Least)</h3>
+<p>Pins can be added to a map in the form of &#8220;annotations.&#8221; Let&#8217;s start with a single pin:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/realm_map2_3812086195.png" alt="Embedded Apple Map showing a red pin"></p>
+<p>Annotations are provided as an array of structs where each instance must contain the coordinates of the pin. The struct must also conform to the <a href="https://developer.apple.com/documentation/swift/identifiable">Identifiable</a> protocol:</p>
+<pre><code class="swift">struct MyAnnotationItem: Identifiable {
+    var coordinate: CLLocationCoordinate2D
+    let id = UUID()
+}
+</code></pre>
+<p>We can now create an array of <code>MyAnnotationItem</code> structs:</p>
+<pre><code class="swift">let annotationItems = [
+    MyAnnotationItem(coordinate: CLLocationCoordinate2D(
+        latitude: MapDefaults.latitude,
+        longitude: MapDefaults.longitude))]
+</code></pre>
+<p>We then pass <code>annotationItems</code> to the <code>MapView</code> and indicate that we want a <code>MapMarker</code> at the contained coordinates:</p>
+<pre><code class="swift">Map(coordinateRegion: $region,
+    interactionModes: .all,
+    showsUserLocation: true,
+    annotationItems: annotationItems) { item in
+        MapMarker(coordinate: item.coordinate)
+    }
+</code></pre>
+<p>That gives us the result we wanted.</p>
+<p>What if we want multiple pins? Not a problem. Just add more <code>MyAnnotationItem</code> instances to the array.</p>
+<p>All of the pins will be the same default color. But, what if we want different colored pins? It&#8217;s simple to extend our code to produce this:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/realm_map3_669f6ec179.png" alt="Embedded Apple Map showing red, yellow, and plue pins at different locations"></p>
+<p>Firstly, we need to extend <code>MyAnnotationItem</code> to include an optional <code>color</code> and a <code>tint</code> that returns <code>color</code> if it&#8217;s been defined and &#8220;red&#8221; if not:</p>
+<pre><code class="swift">struct MyAnnotationItem: Identifiable {
+    var coordinate: CLLocationCoordinate2D
+    var color: Color?
+    var tint: Color { color ?? .red }
+    let id = UUID()
+}
+</code></pre>
+<p>In our sample data, we can now choose to provide a color for each annotation:</p>
+<pre><code class="swift">let annotationItems = [
+    MyAnnotationItem(
+        coordinate: CLLocationCoordinate2D(
+            latitude: MapDefaults.latitude,
+            longitude: MapDefaults.longitude)),
+    MyAnnotationItem(
+        coordinate: CLLocationCoordinate2D(
+            latitude: 45.8827419,
+            longitude: -1.1932383),
+        color: .yellow),
+    MyAnnotationItem(
+        coordinate: CLLocationCoordinate2D(
+            latitude: 45.915737,
+            longitude: -1.3300991),
+        color: .blue)
+]
+</code></pre>
+<p>The <code>MapView</code> can then use the <code>tint</code>:</p>
+<pre><code class="swift">Map(coordinateRegion: $region,
+    interactionModes: .all,
+    showsUserLocation: true,
+    annotationItems: annotationItems) { item in
+    MapMarker(
+        coordinate: item.coordinate,
+        tint: item.tint)
+}
+</code></pre>
+<p>If you get bored of pins, you can use <code>MapAnnotation</code> to use any view you like for your annotations:</p>
+<pre><code class="swift">Map(coordinateRegion: $region,
+    interactionModes: .all,
+    showsUserLocation: true,
+    annotationItems: annotationItems) { item in
+    MapAnnotation(coordinate: item.coordinate) {
+        Image(systemName: "gamecontroller.fill")
+            .foregroundColor(item.tint)
+    }
+}
+</code></pre>
+<p>This is the result:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/realm_map5_8509602cd7.png" alt="Apple Map showing red, yellow and blue game controller icons at different locations on the map"></p>
+<p>You could also include the name of the system image to use with each annotation.</p>
+<p>This <a href="https://gist.github.com/am-MongoDB/3073226a84bf6deb6b2df7afcb21ca92">gist</a> contains the final code for the view.</p>
+<h2>Finding Your User&#8217;s Location</h2>
+<h3>Asking for Permission</h3>
+<p>Apple is pretty vocal about respecting the privacy of their users, and so it shouldn&#8217;t be a shock that your app will have to request permission before being able to access a user&#8217;s location.</p>
+<p>The first step is to add a key-value pair to your Xcode project to indicate that the app may request permission to access the user&#8217;s location, and what text should be displayed in the alert. You can add the pair to the &#8220;Info.plist&#8221; file:</p>
+<pre><code>Privacy - Location When In Use Usage Description : We'll only use your location when you ask to include it in a message
+</code></pre>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Info_plist_1500a15e11.png" alt="Screenshot from Xcode showing the key-value pair for requesting permission for the app to access the user's location"></p>
+<p>Once that setting has been added, the user should see an alert the first time that the app attempts to access their current location:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/request_access_to_location_08d1be66d1.png" alt="iPhone screenshot – app is requesting permission to access the user's location"></p>
+<h3>Accessing Current Location</h3>
+<p>While Mapkit has made maps simple and native in SwiftUI, the same can&#8217;t be said for location data.</p>
+<p>You need to create a SwiftUI wrapper for Apple&#8217;s <a href="https://developer.apple.com/documentation/corelocation">Core Location</a> functionality. There&#8217;s not a lot of value in explaining this boilerplate code—just copy this code from RChat&#8217;s <a href="https://github.com/realm/RChat/blob/main/RChat-iOS/RChat/Helpers/LocationHelper.swift">LocationHelper.swift</a> file, and paste it into your app:</p>
+<pre><code class="swift">import CoreLocation
+
+class LocationHelper: NSObject, ObservableObject {
+
+    static let shared = LocationHelper()
+    static let DefaultLocation = CLLocationCoordinate2D(latitude: 45.8827419, longitude: -1.1932383)
+
+    static var currentLocation: CLLocationCoordinate2D {
+        guard let location = shared.locationManager.location else {
+            return DefaultLocation
+        }
+        return location.coordinate
+    }
+
+    private let locationManager = CLLocationManager()
+
+    private override init() {
+        super.init()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+}
+
+extension LocationHelper: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) { }
+
+    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location manager failed with error: \(error.localizedDescription)")
+    }
+
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        print("Location manager changed the status: \(status)")
+    }
+}
+</code></pre>
+<p>Once added, you can access the user&#8217;s location with this simple call:</p>
+<pre><code class="swift">let location = LocationHelper.currentLocation
+</code></pre>
+<h3>Store Location Data in Your Realm Database</h3>
+<h4>The Location Format Expected by MongoDB</h4>
+<p>Realm doesn&#8217;t have a native type for a geographic location, and so it&#8217;s up to us how we choose to store it in a Realm Object. That is, unless we want to synchronize the data to MongoDB Atlas using MongoDB Realm Sync, and go on to use MongoDB&#8217;s geospatial functionality.</p>
+<p>To make the best use of the location data in Atlas, we need to add a <a href="https://docs.mongodb.com/manual/geospatial-queries/#geospatial-indexes">geospatial index</a> to the field (which we’ll see how to do soon.) That means storing the location in a <a href="https://docs.mongodb.com/manual/geospatial-queries/#geospatial-data">supported format</a>. Not all options will work with Realm Sync (e.g., it&#8217;s not guaranteed that attributes will appear in the same order in your Realm Object and the synced Atlas document). The most robust approach is to use an array where the first element is longitude and the second is latitude:</p>
+<pre><code class="json">location: [&lt;longitude&gt;, &lt;latitude&gt;]
+</code></pre>
+<h4>Your Realm Object</h4>
+<p>The RChat app gives users the option to include their location in a chat message—this means that we need to include the location in the <a href="https://github.com/realm/RChat/blob/main/RChat-iOS/RChat/Model/ChatMessage.swift">ChatMessage</a> Object:</p>
+<pre><code class="swift">@objcMembers class ChatMessage: Object, ObjectKeyIdentifiable {
+  …
+    let location = List&lt;Double&gt;()
+  …
+    convenience init(author: String, text: String, image: Photo?, location: [Double] = []) {
+        ...
+    location.forEach { coord in
+            self.location.append(coord)
+      }
+        ...
+        }
+    }
+   ….
+}
+</code></pre>
+<p>The <code>location</code> array that&#8217;s passed to that initializer is formed like this:</p>
+<pre><code class="swift">let location = LocationHelper.currentLocation
+self.location = [location.longitude, location.latitude]
+</code></pre>
+<h2>Location Data in Your Backend MongoDB Realm App</h2>
+<p>The easiest way to create your backend MongoDB Realm schema is to enable <a href="https://docs.mongodb.com/realm/sync/enable-development-mode/">Development Mode</a>—that way, the schema is automatically generated from your Swift Realm Objects.</p>
+<p>This is the generated <a href="https://github.com/realm/RChat/blob/main/RChat-Realm/RChat/services/mongodb-atlas/rules/RChat.ChatMessage.json">schema</a> for our &#8220;ChatMessage&#8221; collection:</p>
+<pre><code class="swift">{
+    "bsonType": "object",
+    "properties": {
+      "_id": {
+        "bsonType": "string"
+      },
+      ...
+      "location": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "double"
+        }
+      }
+    },
+    "required": [
+      "_id",
+      ...
+    ],
+    "title": "ChatMessage"
+}
+</code></pre>
+<p>This is a document that&#8217;s been created from a synced Realm <code>ChatMessage</code> object:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/atlas_document_d09cb3be1d.png" alt="Screen capture of an Atlas document, which includes an array named location"></p>
+<h3>Adding a Geospatial Index in Atlas</h3>
+<p>Now that you have location data stored in Atlas, it would be nice to be able to work with it—e.g., running <a href="https://docs.mongodb.com/manual/geospatial-queries/">geospatial queries</a>. To enable this, you need to add a <a href="https://docs.mongodb.com/manual/geospatial-queries/#geospatial-indexes">geospatial index</a> to the <code>location</code> field.</p>
+<p>From the Atlas UI, select the &#8220;Indexes&#8221; tab for your collection and click &#8220;CREATE INDEX&#8221;:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/geo_index1_604fcbcd13.png" alt="Atlas screen capture of creating a new index"></p>
+<p>You should then configure a <code>2dsphere</code> index:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/geo_index2_8878556cfc.png" alt="Atlas screen capture of creating a new 2dsphere index"></p>
+<p>Most chat messages won&#8217;t include the user&#8217;s location and so I set the <code>sparse</code> option for efficiency.</p>
+<p>Note that you&#8217;ll get an error message if your ChatMessage collection contains any documents where the value in the location attribute isn&#8217;t in a valid geospatial format.</p>
+<p>Atlas will then build the index. This will be very quick, unless you already have a huge number of documents containing the location field. Once complete, you can move onto the next section.</p>
+<h3>Plotting Your Location Data in MongoDB Charts</h3>
+<p><a href="https://www.mongodb.com/products/charts">MongoDB Charts</a> is a simple way to visualize MongoDB data. You can access it through the same UI as Realm and Atlas. Just click on the &#8220;Charts&#8221; button:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/select_charts_9c8caa71c0.png" alt="Atlas screen capture of MongoDB Charts button"></p>
+<p>The first step is to click the &#8220;Add Data Source&#8221; button:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/charts_data_source_4cbf88fea5.png" alt="Charts screen capture of adding a new data source"></p>
+<p>Select your Atlas cluster:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/charts_select_cluster_b6d35ea00e.png" alt="Charts screen capture of adding Atlas cluster as a data source"></p>
+<p>Select the <code>RChat.ChatMessage</code> collection:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/charts_select_collections_4f0dc0577d.png" alt="Charts screen capture of selecting the ChatMessage collection in the RChat database"></p>
+<p>Click “Finish.” You’ll be taken to the default Dashboards view, which is empty for now. Click &#8220;Add Dashboard&#8221;:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/charts_dashboard1_b25eb3e015.png" alt="Charts screen capture of adding a new dashboard"></p>
+<p>In your new dashboard, click &#8220;ADD CHART&#8221;:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/charts_add_chart_f00639d1a1.png" alt="Charts screen capture of adding a new chart"></p>
+<p>Configure your chart as shown here by:<br>
+&#8211; Setting the chart type to &#8220;Geospatial&#8221; and the sub-type to &#8220;Scatter.&#8221;<br>
+&#8211; Dragging the &#8220;location&#8221; attribute to the coordinates box.<br>
+&#8211; Dragging the &#8220;author&#8221; field to the &#8220;Color&#8221; box.</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/charts_create_chart_81189874ac.png" alt="Charts screen capture of configuring a new chart"></p>
+<p>Once you&#8217;ve created your chart, you can <a href="https://docs.mongodb.com/charts/saas/embed-chart-anon-auth/#std-label-anon-embedding-charts">embed it</a> in web apps, etc. That&#8217;s beyond the scope of this article, but check out the <a href="https://docs.mongodb.com/charts/saas/">MongoDB Charts docs</a> if you&#8217;re interested.</p>
+<h2>Conclusion</h2>
+<p>SwiftUI makes it easy to embed Apple Maps in your SwiftUI apps. As with most Apple frameworks, there are extra maps features available if you break out from SwiftUI, but I&#8217;d suggest that the simplicity of working with SwiftUI is enough incentive for you to avoid that unless you have a compelling reason.</p>
+<p>Accessing location information from within SwiftUI still feels a bit of a hack, but in reality, you cut and paste the helper code once, and then you&#8217;re good to go.</p>
+<p>By storing the location as a <code>[longitude, latitude]</code> array (<code>List</code>) in your Realm database, it&#8217;s simple to sync it with MongoDB Atlas. Once in Atlas, you have the full power of MongoDB&#8217;s geospatial functionality to work your location data.</p>
+<p>If you have questions, please head to our <a href="https://community.mongodb.com/">developer community website</a> where the MongoDB engineers and the MongoDB community will help you build your next big idea with MongoDB.</p>
+					<div class="clear"></div>
+										<!-- <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="http://www.clusterdb.com/mongodb/realm/maps"
+    dc:identifier="http://www.clusterdb.com/mongodb/realm/maps"
+    dc:title="Using Maps and Location Data in Your SwiftUI (+Realm) App"
+    trackback:ping="http://www.clusterdb.com/mongodb/realm/maps/trackback" />
+</rdf:RDF> -->			
+				</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mongodb/realm/maps" data-via="wpbeginner" data-text="Using Maps and Location Data in Your SwiftUI (+Realm) App" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mongodb/realm/maps"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mongodb/realm/maps" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmongodb%2Frealm%2Fmaps&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../../category/mongodb/realm/index.html" rel="category tag">Realm</a> | 
+Tags: <a href="./../../tag/ios/index.html" rel="tag">ios</a>, <a href="./../../tag/mobile/index.html" rel="tag">mobile</a>, <a href="./../../tag/mongodb/index.html" rel="tag">mongodb</a>, <a href="./../../tag/realm/index.html" rel="tag">Realm</a>, <a href="./../../tag/swiftui/index.html" rel="tag">SwiftUI</a></div>
+
+			</div>
+			
+		
+<!-- You can start editing here. -->
+
+
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="./maps/index.html#respond" style="display:none;">Cancel reply</a></small></h3><p class="must-log-in">You must be <a href="./../../wp-login.php?redirect_to=http%3A%2F%2F%2Fmongodb%2Frealm%2Fmaps">logged in</a> to post a comment.</p>	</div><!-- #respond -->
+		<div class="clear"></div>
+		
+		</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://www.clusterdb.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="./../building-a-collaborative-ios-minesweeper-game-with-realm/index.html">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="./../using-realm-flexible-sync-in-your-app-an-ios-tutorial/index.html">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="./../realm-swift-type-projections/index.html">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="./../introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/index.html">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="./../goodbye-nspredicate-hello-realm-swift-query-api/index.html">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script></div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="./../../mysql-cluster/mysql-cluster-running-on-raspberry-pi/index.html#comment-787242">MySQL Cluster running on Raspberry Pi</a></li><li class="recentcomments"><span class="comment-author-link">andrew</span> on <a href="./../../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="./../../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link">Sai Krishnan</span> on <a href="./../../mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-661143">Get MySQL Replication up and running in 5 minutes</a></li><li class="recentcomments"><span class="comment-author-link">Nayan</span> on <a href="./../../mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-660628">Get MySQL Replication up and running in 5 minutes</a></li></ul></li>
+<li id="categories-2" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2"><a href="./../../category/me/index.html">Me</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="./../../category/mongodb/index.html">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="./../../category/mysql/index.html">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="./../../category/mysql-cluster/index.html">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131"><a href="./../../category/mysql-fabric/index.html">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="./../../category/mysql-replication/index.html">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214"><a href="./../../category/mongodb/realm/index.html">Realm</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="./../../category/uncategorized/index.html">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div class="tagcloud"><a href="./../../tag/7-4/index.html" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="./../../tag/apache-kafka/index.html" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="./../../tag/cluster/index.html" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="./../../tag/ha/index.html" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="./../../tag/high-availability/index.html" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="./../../tag/ios/index.html" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="./../../tag/java/index.html" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="./../../tag/javascript/index.html" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="./../../tag/mcm/index.html" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="./../../tag/mean/index.html" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="./../../tag/memcached/index.html" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="./../../tag/mobile/index.html" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="./../../tag/mongodb/index.html" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="./../../tag/mongodb-3-2/index.html" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="./../../tag/mongodb-atlas/index.html" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="./../../tag/mongodb-mobile/index.html" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="./../../tag/mongodb-stitch/index.html" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="./../../tag/mysql/index.html" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="./../../tag/mysql-5-6/index.html" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="./../../tag/mysql-cluster/index.html" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="./../../tag/mysql-cluster-70/index.html" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="./../../tag/mysql-cluster-7-1/index.html" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="./../../tag/mysql-cluster-7-2/index.html" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="./../../tag/mysql-cluster-7-3/index.html" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="./../../tag/mysql-cluster-7-4/index.html" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="./../../tag/mysql-cluster-cge/index.html" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="./../../tag/mysql-cluster-manager/index.html" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="./../../tag/mysql-enterprise-monitor/index.html" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="./../../tag/mysql-fabric-2/index.html" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="./../../tag/mysql-replication/index.html" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="./../../tag/mysql-utilities/index.html" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="./../../tag/ndb-api/index.html" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="./../../tag/node-js/index.html" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="./../../tag/nosql/index.html" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="./../../tag/performance/index.html" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="./../../tag/realm/index.html" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="./../../tag/replication/index.html" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="./../../tag/secondary/index.html" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="./../../tag/serverless/index.html" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="./../../tag/sharding/index.html" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="./../../tag/swift/index.html" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="./../../tag/swiftui/index.html" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="./../../tag/webcast/index.html" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="./../../tag/webinar/index.html" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="./../../tag/windows/index.html" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a></div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="./../../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="./../../2022/03/index.html">March 2022</a></li>
+	<li><a href="./../../2022/02/index.html">February 2022</a></li>
+	<li><a href="./../../2022/01/index.html">January 2022</a></li>
+	<li><a href="./../../2021/12/index.html">December 2021</a></li>
+	<li><a href="./../../2021/11/index.html">November 2021</a></li>
+	<li><a href="./../../2021/09/index.html">September 2021</a></li>
+	<li><a href="./../../2021/08/index.html">August 2021</a></li>
+	<li><a href="./../../2021/07/index.html">July 2021</a></li>
+	<li><a href="./../../2021/06/index.html">June 2021</a></li>
+	<li><a href="./../../2021/05/index.html">May 2021</a></li>
+	<li><a href="./../../2021/04/index.html">April 2021</a></li>
+	<li><a href="./../../2021/02/index.html">February 2021</a></li>
+	<li><a href="./../../2021/01/index.html">January 2021</a></li>
+	<li><a href="./../../2020/12/index.html">December 2020</a></li>
+	<li><a href="./../../2019/03/index.html">March 2019</a></li>
+	<li><a href="./../../2019/01/index.html">January 2019</a></li>
+	<li><a href="./../../2018/12/index.html">December 2018</a></li>
+	<li><a href="./../../2018/11/index.html">November 2018</a></li>
+	<li><a href="./../../2018/10/index.html">October 2018</a></li>
+	<li><a href="./../../2018/09/index.html">September 2018</a></li>
+	<li><a href="./../../2017/09/index.html">September 2017</a></li>
+	<li><a href="./../../2017/03/index.html">March 2017</a></li>
+	<li><a href="./../../2017/02/index.html">February 2017</a></li>
+	<li><a href="./../../2017/01/index.html">January 2017</a></li>
+	<li><a href="./../../2016/12/index.html">December 2016</a></li>
+	<li><a href="./../../2016/11/index.html">November 2016</a></li>
+	<li><a href="./../../2016/09/index.html">September 2016</a></li>
+	<li><a href="./../../2016/01/index.html">January 2016</a></li>
+	<li><a href="./../../2015/11/index.html">November 2015</a></li>
+	<li><a href="./../../2015/10/index.html">October 2015</a></li>
+	<li><a href="./../../2015/09/index.html">September 2015</a></li>
+	<li><a href="./../../2015/06/index.html">June 2015</a></li>
+	<li><a href="./../../2015/04/index.html">April 2015</a></li>
+	<li><a href="./../../2015/03/index.html">March 2015</a></li>
+	<li><a href="./../../2015/02/index.html">February 2015</a></li>
+	<li><a href="./../../2015/01/index.html">January 2015</a></li>
+	<li><a href="./../../2014/12/index.html">December 2014</a></li>
+	<li><a href="./../../2014/11/index.html">November 2014</a></li>
+	<li><a href="./../../2014/10/index.html">October 2014</a></li>
+	<li><a href="./../../2014/09/index.html">September 2014</a></li>
+	<li><a href="./../../2014/08/index.html">August 2014</a></li>
+	<li><a href="./../../2014/07/index.html">July 2014</a></li>
+	<li><a href="./../../2014/06/index.html">June 2014</a></li>
+	<li><a href="./../../2014/05/index.html">May 2014</a></li>
+	<li><a href="./../../2014/04/index.html">April 2014</a></li>
+	<li><a href="./../../2014/03/index.html">March 2014</a></li>
+	<li><a href="./../../2014/02/index.html">February 2014</a></li>
+	<li><a href="./../../2014/01/index.html">January 2014</a></li>
+	<li><a href="./../../2013/12/index.html">December 2013</a></li>
+	<li><a href="./../../2013/11/index.html">November 2013</a></li>
+	<li><a href="./../../2013/09/index.html">September 2013</a></li>
+	<li><a href="./../../2013/08/index.html">August 2013</a></li>
+	<li><a href="./../../2013/07/index.html">July 2013</a></li>
+	<li><a href="./../../2013/06/index.html">June 2013</a></li>
+	<li><a href="./../../2013/05/index.html">May 2013</a></li>
+	<li><a href="./../../2013/03/index.html">March 2013</a></li>
+	<li><a href="./../../2013/02/index.html">February 2013</a></li>
+	<li><a href="./../../2013/01/index.html">January 2013</a></li>
+	<li><a href="./../../2012/12/index.html">December 2012</a></li>
+	<li><a href="./../../2012/11/index.html">November 2012</a></li>
+	<li><a href="./../../2012/09/index.html">September 2012</a></li>
+	<li><a href="./../../2012/07/index.html">July 2012</a></li>
+	<li><a href="./../../2012/06/index.html">June 2012</a></li>
+	<li><a href="./../../2012/05/index.html">May 2012</a></li>
+	<li><a href="./../../2012/04/index.html">April 2012</a></li>
+	<li><a href="./../../2012/03/index.html">March 2012</a></li>
+	<li><a href="./../../2012/02/index.html">February 2012</a></li>
+	<li><a href="./../../2012/01/index.html">January 2012</a></li>
+	<li><a href="./../../2011/12/index.html">December 2011</a></li>
+	<li><a href="./../../2011/11/index.html">November 2011</a></li>
+	<li><a href="./../../2011/10/index.html">October 2011</a></li>
+	<li><a href="./../../2011/09/index.html">September 2011</a></li>
+	<li><a href="./../../2011/07/index.html">July 2011</a></li>
+	<li><a href="./../../2011/06/index.html">June 2011</a></li>
+	<li><a href="./../../2011/05/index.html">May 2011</a></li>
+	<li><a href="./../../2011/04/index.html">April 2011</a></li>
+	<li><a href="./../../2011/03/index.html">March 2011</a></li>
+	<li><a href="./../../2011/02/index.html">February 2011</a></li>
+	<li><a href="./../../2011/01/index.html">January 2011</a></li>
+	<li><a href="./../../2010/12/index.html">December 2010</a></li>
+	<li><a href="./../../2010/11/index.html">November 2010</a></li>
+	<li><a href="./../../2010/10/index.html">October 2010</a></li>
+	<li><a href="./../../2010/09/index.html">September 2010</a></li>
+	<li><a href="./../../2010/08/index.html">August 2010</a></li>
+	<li><a href="./../../2010/07/index.html">July 2010</a></li>
+	<li><a href="./../../2010/06/index.html">June 2010</a></li>
+	<li><a href="./../../2010/05/index.html">May 2010</a></li>
+	<li><a href="./../../2010/04/index.html">April 2010</a></li>
+	<li><a href="./../../2010/03/index.html">March 2010</a></li>
+	<li><a href="./../../2010/02/index.html">February 2010</a></li>
+	<li><a href="./../../2010/01/index.html">January 2010</a></li>
+	<li><a href="./../../2009/12/index.html">December 2009</a></li>
+	<li><a href="./../../2009/11/index.html">November 2009</a></li>
+	<li><a href="./../../2009/10/index.html">October 2009</a></li>
+	<li><a href="./../../2009/09/index.html">September 2009</a></li>
+	<li><a href="./../../2009/08/index.html">August 2009</a></li>
+	<li><a href="./../../2009/07/index.html">July 2009</a></li>
+	<li><a href="./../../2009/06/index.html">June 2009</a></li>
+	<li><a href="./../../2009/05/index.html">May 2009</a></li>
+	<li><a href="./../../2009/04/index.html">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 --><script type="text/javascript" src="./../../wp-includes/js/comment-reply.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
+</body>
+</html>

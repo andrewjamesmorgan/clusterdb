@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="./../xmlrpc.php">
+	
+	<title>Creating a simple Cluster on a single LINUX host | Andrew Morgan on Databases</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="./../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="./../comments/feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Creating a simple Cluster on a single LINUX host Comments Feed" href="./feed/index.html">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/*  */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/*  */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="./../wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="./../wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="./../wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="./../wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="./../wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="./../wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="./../wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="./../wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="./../wp-json/index.html"><link rel="alternate" title="JSON" type="application/json" href="./../wp-json/wp/v2/posts/172/index.html"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../xmlrpc.php?rsd">
+
+<link rel="canonical" href="./creating-a-simple-cluster-on-a-single-linux-host/index.html">
+<link rel="shortlink" href="./../index.html?p=172">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host#038;format=xml">
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style><style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style><script type="text/javascript">//
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//</script><style type="text/css"></style><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style></head>
+
+<body class="post-template-default single single-post postid-172 single-format-standard custom-background">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="./../index.html"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="http://www.clusterdb.com/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu"><li class="page_item page-item-1011"><a href="./../about/index.html">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="./../wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+
+					<div id="post-172" class="post-172 post type-post status-publish format-standard hentry category-mysql-cluster tag-linux tag-mysql tag-mysql-cluster tag-mysql-cluster-70 tag-mysql-cluster-cge">
+			
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html">June 17, 2009</a>
+			</div>
+	<div class="postcomments">
+		<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comments">43 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+				
+				<h2 class="post-title">Creating a simple Cluster on a single LINUX host</h2>
+				
+				<div class="entry">
+										<p>It isn&#8217;t necessarily immediately obvious how to set up a Cluster on LINUX; this post attempts to show how to get a simple Cluster up and running. For simplicity, all of the nodes will run on a single host &#8211; a subsequent post will take the subsequent steps of moving some of them to a second host.  As with my <a href="./my-first-cluster-running-on-windows/index.html" target="_blank">Windows post</a> the Cluster will contain the following nodes:</p>
+<ul>
+<li>1 Management node (ndb_mgmd)</li>
+<li>2 Data nodes (ndbd)</li>
+<li>3 MySQL Server (API) nodes (mysqld)</li>
+</ul>
+<h3>Downloading and installing</h3>
+<p>Browse to the <a href="http://dev.mysql.com/downloads/cluster/7.0.html#Linux_(non_RPM_packages)" target="_blank">MySQL Cluster LINUX download page</a> at mysql.com and download the correct version (32 or 64 bit) and store it in the desired directory (in my case, /home/billy/mysql) and then extract and rename the new folder to something easier to work with&#8230;</p>
+<pre style="padding-left: 30px; font-size: 11px"><span style="color: #993300;">[billy@ws1 mysql]$ tar xvf mysql-cluster-gpl-7.0.6-linux-x86_64-glibc23.tar.gz
+[billy@ws1 mysql]$ mv mysql-cluster-gpl-7.0.6-linux-x86_64-glibc23 7_0_6</span></pre>
+<p>Create 3 data folders (one for each of the MySQL API &#8211; mysqld &#8211; processes) and setup the files that will be needed for them to run correctly&#8230;</p>
+<pre style="padding-left: 30px; font-size: 11px"><span style="color: #993300;">[</span><span style="color: #993300;"><span style="color: #993300;">billy@ws1 mysql]$ cd 7_0_6/data
+[bil</span>ly@ws1 data]$ mkdir data1 data2 data3
+[billy@ws1 data]$ mkdir data1/mysql data1/test data2/mysql data2/test data3/mysql data3/test
+[billy@ws1 7_0_6]$ cd ..
+[billy@ws1 7_0_6]$ scripts/mysql_install_db --basedir=/home/billy/mysql/7_0_6 --datadir=/home/billy/mysql/7_0_6/data/data1
+[billy@ws1 7_0_6]$ scripts/mysql_install_db --basedir=/home/billy/mysql/7_0_6 --datadir=/home/billy/mysql/7_0_6/data/data2
+[billy@ws1 7_0_6]$ scripts/mysql_install_db --basedir=/home/billy/mysql/7_0_6 --datadir=/home/billy/mysql/7_0_6/data/data3</span></pre>
+<h3>Configure and run the Cluster</h3>
+<p>Create a sub-directory called &#8220;conf&#8221; and create the following 4 files there:</p>
+<p style="padding-left: 30px;"><strong>config.ini</strong></p>
+<pre style="padding-left: 60px; font-size: 11px"><span style="color: #333399;">[ndbd default]
+noofreplicas=2
+
+[ndbd]
+hostname=localhost
+id=2
+
+[ndbd]
+hostname=localhost
+id=3
+
+[ndb_mgmd]
+id = 1
+hostname=localhost
+
+[mysqld]
+id=4
+hostname=localhost
+
+[mysqld]
+id=5
+hostname=localhost
+
+[mysqld]
+id=6
+hostname=localhost</span></pre>
+<p style="padding-left: 30px;"><strong>my.1.conf</strong></p>
+<pre style="padding-left: 60px; font-size: 11px"><span style="color: #333399;">[mysqld]
+ndb-nodeid=4
+ndbcluster
+datadir=/home/billy/mysql/7_0_6/data/data1
+basedir=/home/billy/mysql/7_0_6
+port=3306
+server-id=1
+log-bin</span></pre>
+<p style="padding-left: 30px;"><strong>my.2.conf</strong></p>
+<pre style="padding-left: 60px; font-size: 11px"><span style="color: #333399;">[mysqld]
+ndb-nodeid=5
+ndbcluster
+datadir=/home/billy/mysql/7_0_6/data/data2
+basedir=/home/billy/mysql/7_0_6
+port=3307
+server-id=2
+log-bin</span></pre>
+<p style="padding-left: 30px;"><strong>my.3.conf</strong></p>
+<pre style="padding-left: 60px; font-size: 11px"><span style="color: #333399;">[mysqld]
+ndb-nodeid=6
+ndbcluster
+datadir=/home/billy/mysql/7_0_6/data/data3
+basedir=/home/billy/mysql/7_0_6
+port=3308
+server-id=3
+log-bin</span></pre>
+<p>Those files configure the nodes that make up the Cluster.  From a command prompt window, launch the management node:</p>
+<pre style="padding-left: 30px; font-size: 11px"><span style="color: #993300;">[billy@ws1 7_0_6]$ bin/ndb_mgmd --initial -f conf/config.ini --configdir=</span><span style="color: #993300;">/home/billy/mysql/7_0_6</span><span style="color: #993300;">/conf
+2009-06-17 13:00:08 [MgmSrvr] INFO     -- NDB Cluster Management Server. mysql-5.1.34 ndb-7.0.6
+2009-06-17 13:00:08 [MgmSrvr] INFO     -- Reading cluster configuration from 'conf/config.ini'</span></pre>
+<p>Check that the management node is up and running:</p>
+<pre style="padding-left: 30px; font-size: 11px"><span style="color: #993300;">[billy@ws1 7_0_6]$ bin/ndb_mgm
+ndb_mgm&gt; show
+Connected to Management Server at: localhost:1186
+Cluster Configuration
+---------------------
+[ndbd(NDB)]    2 node(s)
+id=2 (not connected, accepting connect from localhost)
+id=3 (not connected, accepting connect from localhost)
+
+[ndb_mgmd(MGM)]    1 node(s)
+id=1    @localhost  (mysql-5.1.34 ndb-7.0.6)
+
+[mysqld(API)]    3 node(s)
+id=4 (not connected, accepting connect from localhost)
+id=5 (not connected, accepting connect from localhost)
+id=6 (not connected, accepting connect from localhost)
+ndb_mgm&gt; quit</span></pre>
+<p>and then start the 2 data nodes (ndbd) and 3 MySQL API/Server nodes (ndbd) and then check that they&#8217;re all up and running:</p>
+<pre style="padding-left: 30px; font-size: 11px"><span style="color: #993300;">[billy@ws1 7_0_6]$ bin/ndbd --initial -c localhost:1186
+2009-06-17 13:05:47 [ndbd] INFO     -- Configuration fetched from 'localhost:1186', generation: 1
+[billy@ws1 7_0_6]$ bin/ndbd --initial -c localhost:1186
+2009-06-17 13:05:51 [ndbd] INFO     -- Configuration fetched from 'localhost:1186', generation: 1
+
+[billy@ws1 7_0_6]$ bin/mysqld --defaults-file=conf/my.1.conf&amp;
+[billy@ws1 7_0_6]$ bin/mysqld --defaults-file=conf/my.2.conf&amp;
+[billy@ws1 7_0_6]$ bin/mysqld --defaults-file=conf/my.3.conf&amp;
+
+[billy@ws1 7_0_6]$ bin/ndb_mgm
+-- NDB Cluster -- Management Client --
+ndb_mgm&gt; show
+Connected to Management Server at: localhost:1186
+Cluster Configuration
+---------------------
+[ndbd(NDB)]    2 node(s)
+id=2    @127.0.0.1  (mysql-5.1.34 ndb-7.0.6, Nodegroup: 0, Master)
+id=3    @127.0.0.1  (mysql-5.1.34 ndb-7.0.6, Nodegroup: 0)
+
+[ndb_mgmd(MGM)]    1 node(s)
+id=1    @127.0.0.1  (mysql-5.1.34 ndb-7.0.6)
+
+[mysqld(API)]    3 node(s)
+id=4    @127.0.0.1  (mysql-5.1.34 ndb-7.0.6)
+id=5    @127.0.0.1  (mysql-5.1.34 ndb-7.0.6)
+id=6    @127.0.0.1  (mysql-5.1.34 ndb-7.0.6)
+ndb_mgm&gt; quit</span></pre>
+<h3>Using the Cluster</h3>
+<p>There are now 3 API nodes/MySQL Servers/mysqlds running; all accessing the same data. Each of those nodes can be accessed by the mysql client using the ports that were configured in the my.X.cnf files. For example, we can access the first of those nodes (node 4) in the following way (each API node is accessed using the port number in its associate my.X.cnf file:</p>
+<pre style="padding-left: 30px; font-size: 11px"><span style="color: #993300;">[billy@ws1 7_0_6]$ bin/mysql -h localhost -P 3306
+Welcome to the MySQL monitor.  Commands end with ; or g.
+Your MySQL connection id is 4
+Server version: 5.1.34-ndb-7.0.6-cluster-gpl-log MySQL Cluster Server (GPL)
+Type 'help;' or 'h' for help. Type 'c' to clear the current input statement.
+mysql&gt; use test;
+Database changed
+mysql&gt; create table assets (name varchar(30) not null primary key,
+-&gt; value int) engine=ndb;
+090617 13:21:36 [Note] NDB Binlog: CREATE TABLE Event: REPL$test/assets
+090617 13:21:36 [Note] NDB Binlog: logging ./test/assets (UPDATED,USE_WRITE)
+090617 13:21:37 [Note] NDB Binlog: DISCOVER TABLE Event: REPL$test/assets
+090617 13:21:37 [Note] NDB Binlog: DISCOVER TABLE Event: REPL$test/assets
+090617 13:21:37 [Note] NDB Binlog: logging ./test/assets (UPDATED,USE_WRITE)
+090617 13:21:37 [Note] NDB Binlog: logging ./test/assets (UPDATED,USE_WRITE)
+Query OK, 0 rows affected (0.99 sec)
+mysql&gt; insert into assets values ('Car','1900');
+Query OK, 1 row affected (0.03 sec)
+mysql&gt; select * from assets;
++------+-------+
+| name | value |
++------+-------+
+| Car  |  1900 |
++------+-------+
+1 row in set (0.00 sec)
+mysql&gt; quit
+Bye</span></pre>
+<p>Note that as this table is using the ndb (MySQL Cluster) storage engine, the data is actually held in the data nodes rather than in the SQL node and so we can access the exact same data from either of the other 2 SQL nodes:</p>
+<pre style="padding-left: 30px; font-size: 11px"><span style="color: #993300;">[billy@ws1 7_0_6]$ bin/mysql -h localhost -P 3307
+Welcome to the MySQL monitor.  Commands end with ; or g.
+Your MySQL connection id is 5
+Server version: 5.1.34-ndb-7.0.6-cluster-gpl-log MySQL Cluster Server (GPL)
+type 'help;' or 'h' for help. Type 'c' to clear the current input statement.
+mysql&gt; use test;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+Database changed
+mysql&gt; select * from assets;
++------+-------+
+| name | value |
++------+-------+
+| Car  |  1900 |
++------+-------+
+1 row in set (0.00 sec)
+mysql&gt; quit
+Bye</span></pre>
+<h3>Your next steps</h3>
+<p>This is a very simple, contrived set up &#8211; in any sensible deployment, the nodes would be spread across multiple physical hosts in the interests of performance and redundancy (take a look at the new article (<a href="./deploying-mysql-cluster-over-multiple-hosts/index.html" target="_self">Deploying MySQL Cluster over multiple host</a>) to see how to do that). You’d also set several more variables in the configuration files in order to size and tune your Cluster.</p>
+					<div class="clear"></div>
+										<!-- <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="http://www.clusterdb.com/mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host"
+    dc:identifier="http://www.clusterdb.com/mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host"
+    dc:title="Creating a simple Cluster on a single LINUX host"
+    trackback:ping="http://www.clusterdb.com/mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host/trackback" />
+</rdf:RDF> -->			
+				</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host" data-via="wpbeginner" data-text="Creating a simple Cluster on a single LINUX host" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="./../tag/linux/index.html" rel="tag">LINUX</a>, <a href="./../tag/mysql/index.html" rel="tag">MySQL</a>, <a href="./../tag/mysql-cluster/index.html" rel="tag">MySQL Cluster</a>, <a href="./../tag/mysql-cluster-70/index.html" rel="tag">MySQL Cluster 7.0</a>, <a href="./../tag/mysql-cluster-cge/index.html" rel="tag">MySQL Cluster CGE</a></div>
+
+			</div>
+			
+		
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+	<h3>43 comments</h3>
+
+		
+	<ol class="commentlist">
+			<li class="comment even thread-even depth-1" id="comment-84">
+				<div id="div-comment-84" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/ff5f7755dcc59920e9d3c95139ae5731?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ff5f7755dcc59920e9d3c95139ae5731?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn"><a href="http://www.encryptec.net/" class="url" rel="ugc external nofollow">Gareth Bult</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-84">June 20, 2009 at 11:48 pm</a>		</div>
+
+		<p>Be interested to hear from other people running this sort of setup .. I run something almost identical (but with two management nodes) and have done for about 18 months. Reliability and performance are terrible and to date I&#8217;ve lost all my data twice. [in particular, it seems not to want to deal with power outages gracefully]</p>
+<p>Maybe it&#8217;s because I&#8217;m on a slightly older version, but given the problems I&#8217;ve had and the ones I&#8217;ve seen some people having upgrading, I&#8217;m pretty much afraid to touch it.</p>
+<p>I&#8217;ve also found the default action of using RAM rather than disk rather limiting, and although you can now use disk for some tables, it seems &#8220;fiddley&#8221;.</p>
+<p>Also (!) some things that work on other tables fail to work on NDB based tables .. although documented this isn&#8217;t necessarily all that obvious. For example I was caught out thinking I could just move current stuff to the cluster .. this fell down when I discovered full text indexing isn&#8217;t supported (!)</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt thread-odd thread-alt depth-1 parent" id="comment-85">
+				<div id="div-comment-85" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">admin</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-85">June 22, 2009 at 12:57 pm</a>		</div>
+
+		<p>Gareth,</p>
+<p> have you raised the data loss issue with the Cluster forum (<a href="http://forums.mysql.com/list.php?25" rel="nofollow ugc">http://forums.mysql.com/list.php?25</a>) or the Cluster mailing list (cluster@lists.mysql.com)? While the advice would be to try to set things up such that a single power failure didn&#8217;t impact all of the data nodes making up a node group, that isn&#8217;t always possible and I wouldn&#8217;t expect data to be lost &#8211; if you haven&#8217;t done so already, raise the issue so that it can be identified whether there&#8217;s a bug or if there is something in your configuration that could be changed.</p>
+<p>You make a good point that it&#8217;s worth checking the known limitations of MySQL Cluster in the documentation before making the switch. Over time, the list will get shorter but there are things that MySQL currently can&#8217;t do that other storage engines can (e.g. foreign keys aren&#8217;t supported but you can simulate them using stored procedures).</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment even depth-2 parent" id="comment-494572">
+				<div id="div-comment-494572" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/135fc7bf223271f9fad58f91a1a3a4be?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/135fc7bf223271f9fad58f91a1a3a4be?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">victor kerber</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-494572">May 19, 2015 at 10:28 pm</a>		</div>
+
+		<p>Hi Andrew,<br>
+I am trying to implement the MySQL cluster &#8230; but I&#8217;m having a lot of difficulties and can barely find material on my doubts.</p>
+<p>I know the topic is not about that, but I would like to help me &#8230;</p>
+<p>Installed cluster religiously following:<br>
+<a href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-install-linux-binary.html" rel="nofollow ugc">http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-install-linux-binary.html</a></p>
+<p>At the end, I used the Auto-installer to configure and start the cluster so far ok &#8230; I performed tests and I could see my data replicated &#8230; but when testing the resistance to failure, simulating the desligamendo the physical server where is the date Nod1, that did not work &#8230; I can not start the Nod1 again &#8230; to try to get the following error:<br>
+[Root @ Nod1 bin] # ./ndbd<br>
+Unable to connect with connect string: nodeid = 0, localhost: 1186<br>
+Retrying every 5 seconds. Attempts left: 12 11 10 9 8 7 6 5 4 3 2 1 failed.<br>
+05/19/2015 18:05:16 [ndbd] ERROR &#8211; Could not connect to server management, error &#8221;</p>
+<p>What should I do to fix? Replication still works but I&#8217;m just with NOD2 ..</p>
+<p>I appreciate your help.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-3" id="comment-494969">
+				<div id="div-comment-494969" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-494969">May 20, 2015 at 2:44 pm</a>		</div>
+
+		<p>Is the ndb_mgmd process running on the same machine where you&#8217;re trying to start the data node? If not then you you need to explicitly provide its location&#8230; <code>ndbmtd --connect-string="other-host:1186"</code>.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-86">
+				<div id="div-comment-86" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/0e5bddc4dcf63ac17addda968ee7d4a0?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/0e5bddc4dcf63ac17addda968ee7d4a0?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Phil</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-86">July 5, 2009 at 6:00 pm</a>		</div>
+
+		<p>Hello Andrew,</p>
+<p>Great article &#8211; thanks a lot! I am really looking forward to the article you mentioned redarding the distribution amongst multiple servers.</p>
+<p>Cheers,<br>
+Phil</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-87">
+				<div id="div-comment-87" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="./deploying-mysql-cluster-over-multiple-hosts/index.html" class="url" rel="ugc">Deploying MySQL Cluster over multiple hosts @ Andrew Morgan&#8217;s MySQL Cluster Database Blog</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-87">July 10, 2009 at 7:33 pm</a>		</div>
+
+		<p>[&#8230;] post builds upon the earlier article (Creating a simple Cluster on a single LINUX host) which explained how to install and run a Cluster where all of the nodes run on the same physical [&#8230;]</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback even thread-even depth-1" id="comment-88">
+				<div id="div-comment-88" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="./mysql-cluster-7-0-7-source-released/index.html" class="url" rel="ugc">MySQL Cluster 7.0.7 source released @ Andrew Morgan&#8217;s MySQL Cluster Database Blog</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-88">September 2, 2009 at 8:05 pm</a>		</div>
+
+		<p>[&#8230;] Following this you can configure and use the software as normal (refer to Creating a simple Cluster on a single LINUX host). [&#8230;]</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-89">
+				<div id="div-comment-89" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="./accessing-the-same-data-through-ldap-and-sql/index.html" class="url" rel="ugc">Accessing the same data through LDAP and SQL @ Andrew Morgan&#8217;s MySQL Cluster Database Blog</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-89">October 9, 2009 at 1:25 pm</a>		</div>
+
+		<p>[&#8230;] installed MySQL Cluster  &#8211; if that isn&#8217;t the case then please first refer to &#8220;Creating a simple Cluster on a single LINUX host&#8221; or &#8220;Deploying MySQL Cluster over multiple [&#8230;]</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback even thread-even depth-1" id="comment-90">
+				<div id="div-comment-90" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://planetmysql.ru/2009/10/09/accessing-the-same-data-through-ldap-and-sql/" class="url" rel="ugc external nofollow">Accessing the same data through LDAP and SQL &laquo; PlanetMysql.ru &#8211; информация о СУБД MySQL</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-90">October 9, 2009 at 4:10 pm</a>		</div>
+
+		<p>[&#8230;] installed MySQL Cluster  &#8211; if that isn&#8217;t the case then please first refer to &#8220;Creating a simple Cluster on a single LINUX host&#8221; or &#8220;Deploying MySQL Cluster over multiple [&#8230;]</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-91">
+				<div id="div-comment-91" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="./using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial/index.html" class="url" rel="ugc">Using ClusterJ (part of MySQL Cluster Connector for Java) &#8211; a tutorial @ Andrew Morgan&#8217;s MySQL Cluster Database Blog</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-91">March 30, 2010 at 12:40 pm</a>		</div>
+
+		<p>[&#8230;] on ClusterJ rather than on running MySQL Cluster; if you are new to MySQL Cluster then refer to running a simple Cluster before trying this [&#8230;]</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="pingback even thread-even depth-1" id="comment-92">
+				<div id="div-comment-92" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="./using-clusterjpa-part-of-mysql-cluster-connector-for-java-%e2%80%93-a-tutorial/index.html" class="url" rel="ugc">Using ClusterJPA (part of MySQL Cluster Connector for Java) – a tutorial @ Andrew Morgan&#8217;s MySQL Cluster Database Blog</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-92">March 31, 2010 at 2:02 pm</a>		</div>
+
+		<p>[&#8230;] on ClusterJPA rather than on running MySQL Cluster; if you are new to MySQL Cluster then refer to Running a simple Cluster before trying these [&#8230;]</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-93">
+				<div id="div-comment-93" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/7ad8e8fa0c1da203ef4509b4d4504733?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/7ad8e8fa0c1da203ef4509b4d4504733?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Steve</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-93">June 1, 2010 at 12:49 am</a>		</div>
+
+		<p>Hi.. How to know where i can find the configuration for localhost:1186 ? And what for we used this port ? Can you help me to show me, where i can found the configuration ? Because i try to connect to &#8220;ndb_mgm&#8221;, when i use &#8220;show&#8221; it shown &#8220;Unable to connect with connect string: nodeid=0, localhost:1186&#8221;. I try to look for that port with &#8220;netstat&#8221;, but i don&#8217;t find that port is listen.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-2" id="comment-95">
+				<div id="div-comment-95" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">admin</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-95">June 7, 2010 at 10:37 am</a>		</div>
+
+		<p>Hi Steve, </p>
+<p> 1186 is the default port that the MySQL Cluster management node uses (can be override it in config.ini). When you run ndb_mgmd, it will listen to that port.</p>
+<p>Regards, Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-94">
+				<div id="div-comment-94" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/dec1e2760c524c00a3e2583cce7ccc4c?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/dec1e2760c524c00a3e2583cce7ccc4c?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Daniel Cabrera</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-94">June 3, 2010 at 8:13 am</a>		</div>
+
+		<p>Great work and thanks a lot for this guide.</p>
+<p>I´ve followed the instructions, and found some problems on ubuntu 10.04 and MySqlCluster 7.0.13 .</p>
+<p>I´d like to share this to people who migth find the same problems on ubuntu.</p>
+<p>First, the base_dir must be owned by mysql user( &#8220;mysql&#8221; in my system), else scripts/mysql_install_db fails to install the databases.<br>
+It took me a while to discover this, but scripts/mysql_install_db runs flawlessly after running </p>
+<p>shell&gt;chown -R mysql &#8220;extracted folder&#8221; ( in this guide /home/billy/mysql/7_0_6 )</p>
+<p>after creating the data folders</p>
+<p>Then, in the my.*.conf files, you must alter three lines :</p>
+<p>1.-&gt; &#8220;log-bin&#8221; should read &#8220;log-bin=auth-bin&#8221; (or whatever log type you want ) to get rid of this warning when running mysqld </p>
+<p>&#8221; No argument was provided to &#8211;log-bin, and &#8211;log-bin-index was not used; so replication may break when this MySQL server acts as a master and has his hostname changed!! Please use &#8216;&#8211;log-bin=auth-bin&#8217; to avoid this problem. &#8221;</p>
+<p>2.-&gt; You must add this line &#8220;user=mysql&#8221; to run bin/mysql without errors and security warnings</p>
+<p>3.-&gt; Also,you should include &#8220;socket=/tmp/my.*.sock&#8221;<br>
+were * is the nomber of the config file name(you could use whatever file name you want, they just have to be different for each config file) to connect to servers using bin/mysql.</p>
+<p>The command should be :</p>
+<p>shell&gt;bin/mysql -h localhost -P 3306  &#8211;socket=/tmp/my.1.sock </p>
+<p>to avoid this error : </p>
+<p>ERROR 2002 (HY000): Can&#8217;t connect to local MySQL server through socket &#8216;/var/run/mysqld/mysqld.sock&#8217; (2)</p>
+<p>So, finally the conf/my.1.conf file should look like this :</p>
+<p>[mysqld]<br>
+user=mysql<br>
+ndb-nodeid=4<br>
+ndbcluster<br>
+datadir=&#8221;basedir&#8221;/data/data1<br>
+basedir=&#8221;basedir&#8221;<br>
+port=3306<br>
+server-id=1<br>
+log-bin=auth-bin<br>
+socket=/tmp/my.1.sock</p>
+<p>Hope this helps to get this demo install running on Lucid Lynx</p>
+<p>Thanks again for your guide.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-463676">
+				<div id="div-comment-463676" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/f5f8713a923a10a81f44eccc0731f4f8?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/f5f8713a923a10a81f44eccc0731f4f8?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Kamal</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-463676">March 23, 2015 at 1:08 pm</a>		</div>
+
+		<p>Hi, I have followed your instruction to setup the mysql cluster on cloud VM with CentOS hosted on it. First time all went fine, i was able to see the whole cluster connected. after that I shutdown the cluster with ndb_mgmd shutdown command. Then after some time I tried to re-start it, but there is an error saying<br>
+2015-03-23 13:05:57 [MgmtSrvr] INFO     &#8212; The default config directory &#8216;/usr/local/mysql/mysql-cluster&#8217; does not exist. Trying to create it&#8230;<br>
+Failed to create directory &#8216;/usr/local/mysql/mysql-cluster&#8217;, error: 2<br>
+2015-03-23 13:05:57 [MgmtSrvr] ERROR    &#8212; Could not create directory &#8216;/usr/local/mysql/mysql-cluster&#8217;. Either create it manually or specify a different directory with &#8211;configdir=</p>
+<p>But when i create the directory it say, unable to identify which node need to start.</p>
+<p>What to do&#8230; i searched on the net, tried all the possible solution I could found. Can you please help me out. thanks.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-2" id="comment-467286">
+				<div id="div-comment-467286" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-467286">April 1, 2015 at 3:09 pm</a>		</div>
+
+		<p>Did you forget to specify the location of the config file when you restarted the ndb_mgmd process (<code>--config-file=...</code>)?</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-477710">
+				<div id="div-comment-477710" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Manoj</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-477710">April 24, 2015 at 8:41 am</a>		</div>
+
+		<p>I am trying this:</p>
+<p>bin/mysqld &#8211;user=root &#8211;defaults-file=conf/my.1.conf&amp;</p>
+<p>I am getting following error.</p>
+<p>2015-04-24 07:36:07 0 [Warning] Using unique option prefix key_buffer instead of key_buffer_size is deprecated and will be removed in a future release. Please use the full name instead.<br>
+2015-04-24 07:36:07 0 [Warning] Ignoring user change to &#8216;root&#8217; because the user was set to &#8216;mysql&#8217; earlier on the command line</p>
+<p>2015-04-24 07:36:07 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use &#8211;explicit_defaults_for_timestamp server option (see documentation for more details).<br>
+2015-04-24 07:36:07 0 [Note] bin/mysqld (mysqld 5.6.24-ndb-7.3.9-cluster-gpl-log) starting as process 10591 &#8230;<br>
+2015-04-24 07:36:07 10591 [ERROR] Can&#8217;t read from messagefile &#8216;/usr/share/mysql/english/errmsg.sys&#8217;</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-2 parent" id="comment-477722">
+				<div id="div-comment-477722" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-477722">April 24, 2015 at 9:08 am</a>		</div>
+
+		<p>When you setup the system tables, did you provide your config file&#8230;<br>
+<code>./scripts/mysql_install_db --defaults-file=my.cnf</code></p>
+<p>Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment even depth-3 parent" id="comment-477735">
+				<div id="div-comment-477735" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Manoj</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-477735">April 24, 2015 at 9:41 am</a>		</div>
+
+		<p>Andrew, yes I have provided it.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-4 parent" id="comment-477738">
+				<div id="div-comment-477738" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-477738">April 24, 2015 at 9:43 am</a>		</div>
+
+		<p>Try running mysql_instal_db with the <code>--nodefaults</code> option.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment even depth-5 parent" id="comment-477754">
+				<div id="div-comment-477754" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Manoj</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-477754">April 24, 2015 at 9:59 am</a>		</div>
+
+		<p>Hi, I have did what you suggested, but not working. I can see the following error in error.log file:</p>
+<p>2015-04-24 08:57:21 15545 [Warning] Using unique option prefix myisam-recover instead of myisam-recover-options is deprecated and will be removed in a future release. Please use the full name instead.<br>
+2015-04-24 08:57:21 15545 [Note] Plugin ‘FEDERATED’ is disabled.<br>
+2015-04-24 08:57:21 15545 [Note] Plugin ‘ndbcluster’ is disabled.<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Using atomics to ref count buffer pool pages<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: The InnoDB memory heap is disabled<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Memory barrier is not used<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Compressed tables use zlib 1.2.3<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Using Linux native AIO<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Using CPU crc32 instructions<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Initializing buffer pool, size = 128.0M<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Completed initialization of buffer pool<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Highest supported file format is Barracuda.<br>
+2015-04-24 08:57:22 15545 [Note] InnoDB: 128 rollback segment(s) are active.<br>
+2015-04-24 08:57:22 15545 [Note] InnoDB: Waiting for purge to start<br>
+2015-04-24 08:57:22 15545 [Note] InnoDB: 5.6.24 started; log sequence number 298796228394<br>
+2015-04-24 08:57:22 15545 [ERROR] bin/mysqld: unknown variable ‘defaults-file=conf/my.3.conf’<br>
+2015-04-24 08:57:22 15545 [ERROR] Aborting</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-5" id="comment-477758">
+				<div id="div-comment-477758" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-477758">April 24, 2015 at 10:02 am</a>		</div>
+
+		<p>Are you sure that you&#8217;re using <code>--defaults...</code> rather than <code>-defaults...</code>? It has to be <code>--</code></p>
+<p>Andrew.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even depth-5" id="comment-477762">
+				<div id="div-comment-477762" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Manoj</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-477762">April 24, 2015 at 10:07 am</a>		</div>
+
+		<p>Andrew, this is what I am trying.</p>
+<p>bin/mysqld &#8211;user=root &#8211;defaults-file=/home/linux/mysql73/conf/my.3.conf&amp;</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt depth-5" id="comment-477767">
+				<div id="div-comment-477767" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Manoj</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-477767">April 24, 2015 at 10:10 am</a>		</div>
+
+		<p>Andrew, I am using the correct syntax, may be my copy paste in the comment is wrong, but this is what exactly I am trying.</p>
+<p>bin/mysqld &#8211;user=root &#8211;defaults-file=/home/linux/mysql73/conf/my.3.conf&amp;</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even depth-5 parent" id="comment-477769">
+				<div id="div-comment-477769" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Manoj</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-477769">April 24, 2015 at 10:14 am</a>		</div>
+
+		<p>Hey Andrew, I got it fixed, actually –defaults-file=/home/linux/mysql73/conf/my.3.conf should be my first option and &#8211;user=root should be my second option. I have made it reverse. Now the conrfiguraton shows in this way. Please tell me if it is correct.</p>
+<p>root@linux03:~/mysql73# bin/ndb_mgm<br>
+&#8212; NDB Cluster &#8212; Management Client &#8212;<br>
+ndb_mgm&gt; show<br>
+Connected to Management Server at: localhost:1186<br>
+Cluster Configuration<br>
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;<br>
+[ndbd(NDB)]	2 node(s)<br>
+id=2	@127.0.0.1  (mysql-5.6.24 ndb-7.3.9, Nodegroup: 0, *)<br>
+id=3	@127.0.0.1  (mysql-5.6.24 ndb-7.3.9, Nodegroup: 0)</p>
+<p>[ndb_mgmd(MGM)]	1 node(s)<br>
+id=1	@127.0.0.1  (mysql-5.6.24 ndb-7.3.9)</p>
+<p>[mysqld(API)]	3 node(s)<br>
+id=4	@127.0.0.1  (mysql-5.6.24 ndb-7.3.9)<br>
+id=5	@127.0.0.1  (mysql-5.6.24 ndb-7.3.9)<br>
+id=6	@127.0.0.1  (mysql-5.6.24 ndb-7.3.9)</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-5" id="comment-477777">
+				<div id="div-comment-477777" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-477777">April 24, 2015 at 10:23 am</a>		</div>
+
+		<p>All looks good 🙂</p>
+<p>Any reason why you&#8217;re using MySQL Cluster 7.3 rather than 7.4?</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even depth-5 parent" id="comment-477772">
+				<div id="div-comment-477772" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Manoj</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-477772">April 24, 2015 at 10:20 am</a>		</div>
+
+		<p>Andrew, sorry to post again, now I face a different kind of error:</p>
+<p>root@linux03:~/mysql73# bin/mysql -h localhost -P 3306<br>
+ERROR 2002 (HY000): Can&#8217;t connect to local MySQL server through socket &#8216;/var/run/mysqld/mysqld.sock&#8217; (111)</p>
+<p>Can you please help on this.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-5" id="comment-477776">
+				<div id="div-comment-477776" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-477776">April 24, 2015 at 10:23 am</a>		</div>
+
+		<p>Try replacing <code>localhost</code> with <code>127.0.0.1</code>. Another little MySQL quirk!</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment even depth-5" id="comment-477780">
+				<div id="div-comment-477780" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Manoj</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-477780">April 24, 2015 at 10:26 am</a>		</div>
+
+		<p>No reason, I just went to the downloaded page and it 7.3 was the latest one.</p>
+<p>You mean to say I need to change configuration in config.ini file? or in my.cnf?</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+		<li class="comment odd alt depth-5" id="comment-477790">
+				<div id="div-comment-477790" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Manoj</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-477790">April 24, 2015 at 10:38 am</a>		</div>
+
+		<p>Hey Andrew, It worked great. Appreciate you patience in answering. </p>
+<p>You dont have to reply to all of us, but still you are doing. Totally appreciate your work.</p>
+<p>Looking forward for a tutorial on how to put one data node in a different machine by make necessary changes in the same setup.</p>
+
+		
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-477752">
+				<div id="div-comment-477752" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Manoj</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-477752">April 24, 2015 at 9:59 am</a>		</div>
+
+		<p>Hi, I have did what you suggested, but not working. I can see the following error in error.log file:</p>
+<p>2015-04-24 08:57:21 15545 [Warning] Using unique option prefix myisam-recover instead of myisam-recover-options is deprecated and will be removed in a future release. Please use the full name instead.<br>
+2015-04-24 08:57:21 15545 [Note] Plugin &#8216;FEDERATED&#8217; is disabled.<br>
+2015-04-24 08:57:21 15545 [Note] Plugin &#8216;ndbcluster&#8217; is disabled.<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Using atomics to ref count buffer pool pages<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: The InnoDB memory heap is disabled<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Memory barrier is not used<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Compressed tables use zlib 1.2.3<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Using Linux native AIO<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Using CPU crc32 instructions<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Initializing buffer pool, size = 128.0M<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Completed initialization of buffer pool<br>
+2015-04-24 08:57:21 15545 [Note] InnoDB: Highest supported file format is Barracuda.<br>
+2015-04-24 08:57:22 15545 [Note] InnoDB: 128 rollback segment(s) are active.<br>
+2015-04-24 08:57:22 15545 [Note] InnoDB: Waiting for purge to start<br>
+2015-04-24 08:57:22 15545 [Note] InnoDB: 5.6.24 started; log sequence number 298796228394<br>
+2015-04-24 08:57:22 15545 [ERROR] bin/mysqld: unknown variable &#8216;defaults-file=conf/my.3.conf&#8217;<br>
+2015-04-24 08:57:22 15545 [ERROR] Aborting</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment odd alt depth-2" id="comment-477755">
+				<div id="div-comment-477755" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Manoj</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-477755">April 24, 2015 at 10:00 am</a>		</div>
+
+		<p>Sorry for updating as new question, have updated it as a comment in my previous question.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-489501">
+				<div id="div-comment-489501" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/73eb39f7198d6775fa73185e3270919d?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/73eb39f7198d6775fa73185e3270919d?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Ashish Batler</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-489501">May 12, 2015 at 9:43 am</a>		</div>
+
+		<p>i did this<br>
+bin/mysqld &#8211;defaults-file=conf/my.1.conf&amp;<br>
+did not work</p>
+<p>then i added &#8211;user=root and still it did not work</p>
+<p>root@ashishbatler:/home/ashu/mysql/7_0_6# bin/ndb_mgm<br>
+&#8212; NDB Cluster &#8212; Management Client &#8212;<br>
+ndb_mgm&gt; show<br>
+Connected to Management Server at: localhost:1186<br>
+Cluster Configuration<br>
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;<br>
+[ndbd(NDB)]	2 node(s)<br>
+id=2	@127.0.0.1  (mysql-5.1.67 ndb-7.0.37, Nodegroup: 0, Master)<br>
+id=3	@127.0.0.1  (mysql-5.1.67 ndb-7.0.37, Nodegroup: 0)</p>
+<p>[ndb_mgmd(MGM)]	1 node(s)<br>
+id=1	@127.0.0.1  (mysql-5.1.67 ndb-7.0.37)</p>
+<p>[mysqld(API)]	3 node(s)<br>
+id=4 (not connected, accepting connect from localhost)<br>
+id=5 (not connected, accepting connect from localhost)<br>
+id=6 (not connected, accepting connect from localhost)</p>
+<p>ndb_mgm&gt;</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-2" id="comment-489559">
+				<div id="div-comment-489559" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-489559">May 12, 2015 at 12:08 pm</a>		</div>
+
+		<p>Were you given an error message when the mysqld failed to start? Note that the <code>--user=root</code> option is for when you run the <code>mysql</code> client. Your command shows that your running as your machine&#8217;s <code>root</code> &#8211; the mysqld is not meant to be run by root and so that might be why it&#8217;s failing.</p>
+<p>Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-505031">
+				<div id="div-comment-505031" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Manoj</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-505031">June 1, 2015 at 11:45 am</a>		</div>
+
+		<p>Hi Andrew, </p>
+<p>I have created database in one mysqld and trying to see it in others, it worked fine.<br>
+But when I created few tables in that database and tried to see in the others, it is not working, actually tables what I created are more, will take time to reflect on other mysqld&#8217;s ??</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment odd alt depth-2 parent" id="comment-505038">
+				<div id="div-comment-505038" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Manoj</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-505038">June 1, 2015 at 12:04 pm</a>		</div>
+
+		<p>Hi Andrew, I got the answer from my query, thanx.</p>
+<p>But there is another issue, I am not able to access sql nodes from outside, I have executed following command in mysql console, it worked fine.<br>
+grant all on *.* to &#8216;%&#8217;@&#8217;%&#8217; identified by &#8216;password&#8217; with grant option</p>
+<p>But, when I went to remote machine and does this, it is not working. This is the output:</p>
+<p>manoj@manoj-Vostro-3546:~$ mysql -h 10.0.0.203 -P 3308<br>
+ERROR 1045 (28000): Access denied for user &#8216;manoj&#8217;@&#8217;manoj-Vostro-3546.local&#8217; (using password: NO)</p>
+<p>Can you please help on this.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-3" id="comment-512425">
+				<div id="div-comment-512425" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-512425">June 11, 2015 at 1:23 pm</a>		</div>
+
+		<p>Sorry for the delay – I’m not able to check at this point but it’s worth raising the question on the <a href="http://forums.mysql.com/list.php?25" rel="nofollow">MySQL Clsuter forum</a>.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-505944">
+				<div id="div-comment-505944" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Manoj</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-505944">June 2, 2015 at 8:13 pm</a>		</div>
+
+		<p>Hi Andrew, I am trying to create some tables, but after some time it is showing following error, any idea how to handle this.</p>
+<p>2015-06-02 19:12:18 3888 [ERROR] bin/mysqld: The table &#8216;assets&#8217; is full<br>
+ERROR 1114 (HY000): The table &#8216;assets&#8217; is full</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment even depth-2 parent" id="comment-506385">
+				<div id="div-comment-506385" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/ea82e4cb9d126e7c89ad37db936b3f09?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Manoj</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-506385">June 3, 2015 at 1:41 pm</a>		</div>
+
+		<p>Hi Andrew, this is the result of ALL REPORT MEMORY</p>
+<p>Node 2: Data usage is 0%(45 32K pages of total 98048)<br>
+Node 2: Index usage is 0%(408 8K pages of total 392224)<br>
+Node 3: Data usage is 0%(45 32K pages of total 98048)<br>
+Node 3: Index usage is 0%(408 8K pages of total 392224)</p>
+<p>it shows 0%, but still I am getting table full error, thanks in advance.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-3" id="comment-512422">
+				<div id="div-comment-512422" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-512422">June 11, 2015 at 1:22 pm</a>		</div>
+
+		<p>Sorry for the delay – I’m not able to check at this point but it’s worth raising the question on the <a href="http://forums.mysql.com/list.php?25" rel="nofollow">MySQL Cluster forum</a>.</p>
+<p>Best Regards, Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-2" id="comment-512424">
+				<div id="div-comment-512424" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-512424">June 11, 2015 at 1:23 pm</a>		</div>
+
+		<p>Sorry for the delay – I’m not able to check at this point but it’s worth raising the question on the <a href="http://forums.mysql.com/list.php?25" rel="nofollow">MySQL Cluster forum</a>.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-521899">
+				<div id="div-comment-521899" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/870f629e8457986429fbacd32d041909?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/870f629e8457986429fbacd32d041909?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">dejau</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-521899">June 23, 2015 at 10:37 am</a>		</div>
+
+		<p>Is there no more mysql auto installer gui in linux? just noticed the tutorial is only in windows though. Or I am just mistaken, it must be a commercial license. Please advise</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-2" id="comment-531714">
+				<div id="div-comment-531714" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#comment-531714">July 10, 2015 at 7:02 pm</a>		</div>
+
+		<p>The auto-installer is available on Linux too &#8211; I just used Windows for the example.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">Log in to Reply</a></div>
+				</div>
+				</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	</ol>
+
+	</div>
+ 
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="./creating-a-simple-cluster-on-a-single-linux-host/index.html#respond" style="display:none;">Cancel reply</a></small></h3><p class="must-log-in">You must be <a href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fcreating-a-simple-cluster-on-a-single-linux-host">logged in</a> to post a comment.</p>	</div><!-- #respond -->
+		<div class="clear"></div>
+		
+		</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://www.clusterdb.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="./../mongodb/building-a-collaborative-ios-minesweeper-game-with-realm/index.html">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="./../mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial/index.html">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="./../mongodb/realm-swift-type-projections/index.html">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="./../mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/index.html">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="./../mongodb/goodbye-nspredicate-hello-realm-swift-query-api/index.html">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script></div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="./mysql-cluster-running-on-raspberry-pi/index.html#comment-787242">MySQL Cluster running on Raspberry Pi</a></li><li class="recentcomments"><span class="comment-author-link">andrew</span> on <a href="./setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="./setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link">Sai Krishnan</span> on <a href="./get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-661143">Get MySQL Replication up and running in 5 minutes</a></li><li class="recentcomments"><span class="comment-author-link">Nayan</span> on <a href="./get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-660628">Get MySQL Replication up and running in 5 minutes</a></li></ul></li>
+<li id="categories-2" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2"><a href="./../category/me/index.html">Me</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="./../category/mongodb/index.html">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="./../category/mysql/index.html">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="./../category/mysql-cluster/index.html">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131"><a href="./../category/mysql-fabric/index.html">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="./../category/mysql-replication/index.html">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214"><a href="./../category/mongodb/realm/index.html">Realm</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="./../category/uncategorized/index.html">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div class="tagcloud"><a href="./../tag/7-4/index.html" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="./../tag/apache-kafka/index.html" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="./../tag/cluster/index.html" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="./../tag/ha/index.html" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="./../tag/high-availability/index.html" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="./../tag/ios/index.html" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="./../tag/java/index.html" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="./../tag/javascript/index.html" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="./../tag/mcm/index.html" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="./../tag/mean/index.html" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="./../tag/memcached/index.html" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="./../tag/mobile/index.html" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="./../tag/mongodb/index.html" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="./../tag/mongodb-3-2/index.html" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="./../tag/mongodb-atlas/index.html" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="./../tag/mongodb-mobile/index.html" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="./../tag/mongodb-stitch/index.html" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="./../tag/mysql/index.html" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="./../tag/mysql-5-6/index.html" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="./../tag/mysql-cluster/index.html" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="./../tag/mysql-cluster-70/index.html" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="./../tag/mysql-cluster-7-1/index.html" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="./../tag/mysql-cluster-7-2/index.html" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="./../tag/mysql-cluster-7-3/index.html" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="./../tag/mysql-cluster-7-4/index.html" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="./../tag/mysql-cluster-cge/index.html" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="./../tag/mysql-cluster-manager/index.html" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="./../tag/mysql-enterprise-monitor/index.html" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="./../tag/mysql-fabric-2/index.html" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="./../tag/mysql-replication/index.html" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="./../tag/mysql-utilities/index.html" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="./../tag/ndb-api/index.html" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="./../tag/node-js/index.html" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="./../tag/nosql/index.html" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="./../tag/performance/index.html" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="./../tag/realm/index.html" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="./../tag/replication/index.html" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="./../tag/secondary/index.html" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="./../tag/serverless/index.html" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="./../tag/sharding/index.html" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="./../tag/swift/index.html" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="./../tag/swiftui/index.html" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="./../tag/webcast/index.html" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="./../tag/webinar/index.html" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="./../tag/windows/index.html" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a></div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="./../2022/03/index.html">March 2022</a></li>
+	<li><a href="./../2022/02/index.html">February 2022</a></li>
+	<li><a href="./../2022/01/index.html">January 2022</a></li>
+	<li><a href="./../2021/12/index.html">December 2021</a></li>
+	<li><a href="./../2021/11/index.html">November 2021</a></li>
+	<li><a href="./../2021/09/index.html">September 2021</a></li>
+	<li><a href="./../2021/08/index.html">August 2021</a></li>
+	<li><a href="./../2021/07/index.html">July 2021</a></li>
+	<li><a href="./../2021/06/index.html">June 2021</a></li>
+	<li><a href="./../2021/05/index.html">May 2021</a></li>
+	<li><a href="./../2021/04/index.html">April 2021</a></li>
+	<li><a href="./../2021/02/index.html">February 2021</a></li>
+	<li><a href="./../2021/01/index.html">January 2021</a></li>
+	<li><a href="./../2020/12/index.html">December 2020</a></li>
+	<li><a href="./../2019/03/index.html">March 2019</a></li>
+	<li><a href="./../2019/01/index.html">January 2019</a></li>
+	<li><a href="./../2018/12/index.html">December 2018</a></li>
+	<li><a href="./../2018/11/index.html">November 2018</a></li>
+	<li><a href="./../2018/10/index.html">October 2018</a></li>
+	<li><a href="./../2018/09/index.html">September 2018</a></li>
+	<li><a href="./../2017/09/index.html">September 2017</a></li>
+	<li><a href="./../2017/03/index.html">March 2017</a></li>
+	<li><a href="./../2017/02/index.html">February 2017</a></li>
+	<li><a href="./../2017/01/index.html">January 2017</a></li>
+	<li><a href="./../2016/12/index.html">December 2016</a></li>
+	<li><a href="./../2016/11/index.html">November 2016</a></li>
+	<li><a href="./../2016/09/index.html">September 2016</a></li>
+	<li><a href="./../2016/01/index.html">January 2016</a></li>
+	<li><a href="./../2015/11/index.html">November 2015</a></li>
+	<li><a href="./../2015/10/index.html">October 2015</a></li>
+	<li><a href="./../2015/09/index.html">September 2015</a></li>
+	<li><a href="./../2015/06/index.html">June 2015</a></li>
+	<li><a href="./../2015/04/index.html">April 2015</a></li>
+	<li><a href="./../2015/03/index.html">March 2015</a></li>
+	<li><a href="./../2015/02/index.html">February 2015</a></li>
+	<li><a href="./../2015/01/index.html">January 2015</a></li>
+	<li><a href="./../2014/12/index.html">December 2014</a></li>
+	<li><a href="./../2014/11/index.html">November 2014</a></li>
+	<li><a href="./../2014/10/index.html">October 2014</a></li>
+	<li><a href="./../2014/09/index.html">September 2014</a></li>
+	<li><a href="./../2014/08/index.html">August 2014</a></li>
+	<li><a href="./../2014/07/index.html">July 2014</a></li>
+	<li><a href="./../2014/06/index.html">June 2014</a></li>
+	<li><a href="./../2014/05/index.html">May 2014</a></li>
+	<li><a href="./../2014/04/index.html">April 2014</a></li>
+	<li><a href="./../2014/03/index.html">March 2014</a></li>
+	<li><a href="./../2014/02/index.html">February 2014</a></li>
+	<li><a href="./../2014/01/index.html">January 2014</a></li>
+	<li><a href="./../2013/12/index.html">December 2013</a></li>
+	<li><a href="./../2013/11/index.html">November 2013</a></li>
+	<li><a href="./../2013/09/index.html">September 2013</a></li>
+	<li><a href="./../2013/08/index.html">August 2013</a></li>
+	<li><a href="./../2013/07/index.html">July 2013</a></li>
+	<li><a href="./../2013/06/index.html">June 2013</a></li>
+	<li><a href="./../2013/05/index.html">May 2013</a></li>
+	<li><a href="./../2013/03/index.html">March 2013</a></li>
+	<li><a href="./../2013/02/index.html">February 2013</a></li>
+	<li><a href="./../2013/01/index.html">January 2013</a></li>
+	<li><a href="./../2012/12/index.html">December 2012</a></li>
+	<li><a href="./../2012/11/index.html">November 2012</a></li>
+	<li><a href="./../2012/09/index.html">September 2012</a></li>
+	<li><a href="./../2012/07/index.html">July 2012</a></li>
+	<li><a href="./../2012/06/index.html">June 2012</a></li>
+	<li><a href="./../2012/05/index.html">May 2012</a></li>
+	<li><a href="./../2012/04/index.html">April 2012</a></li>
+	<li><a href="./../2012/03/index.html">March 2012</a></li>
+	<li><a href="./../2012/02/index.html">February 2012</a></li>
+	<li><a href="./../2012/01/index.html">January 2012</a></li>
+	<li><a href="./../2011/12/index.html">December 2011</a></li>
+	<li><a href="./../2011/11/index.html">November 2011</a></li>
+	<li><a href="./../2011/10/index.html">October 2011</a></li>
+	<li><a href="./../2011/09/index.html">September 2011</a></li>
+	<li><a href="./../2011/07/index.html">July 2011</a></li>
+	<li><a href="./../2011/06/index.html">June 2011</a></li>
+	<li><a href="./../2011/05/index.html">May 2011</a></li>
+	<li><a href="./../2011/04/index.html">April 2011</a></li>
+	<li><a href="./../2011/03/index.html">March 2011</a></li>
+	<li><a href="./../2011/02/index.html">February 2011</a></li>
+	<li><a href="./../2011/01/index.html">January 2011</a></li>
+	<li><a href="./../2010/12/index.html">December 2010</a></li>
+	<li><a href="./../2010/11/index.html">November 2010</a></li>
+	<li><a href="./../2010/10/index.html">October 2010</a></li>
+	<li><a href="./../2010/09/index.html">September 2010</a></li>
+	<li><a href="./../2010/08/index.html">August 2010</a></li>
+	<li><a href="./../2010/07/index.html">July 2010</a></li>
+	<li><a href="./../2010/06/index.html">June 2010</a></li>
+	<li><a href="./../2010/05/index.html">May 2010</a></li>
+	<li><a href="./../2010/04/index.html">April 2010</a></li>
+	<li><a href="./../2010/03/index.html">March 2010</a></li>
+	<li><a href="./../2010/02/index.html">February 2010</a></li>
+	<li><a href="./../2010/01/index.html">January 2010</a></li>
+	<li><a href="./../2009/12/index.html">December 2009</a></li>
+	<li><a href="./../2009/11/index.html">November 2009</a></li>
+	<li><a href="./../2009/10/index.html">October 2009</a></li>
+	<li><a href="./../2009/09/index.html">September 2009</a></li>
+	<li><a href="./../2009/08/index.html">August 2009</a></li>
+	<li><a href="./../2009/07/index.html">July 2009</a></li>
+	<li><a href="./../2009/06/index.html">June 2009</a></li>
+	<li><a href="./../2009/05/index.html">May 2009</a></li>
+	<li><a href="./../2009/04/index.html">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 --><script type="text/javascript" src="./../wp-includes/js/comment-reply.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
+</body>
+</html>

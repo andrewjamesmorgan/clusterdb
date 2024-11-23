@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>AQL &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Wed, 15 Feb 2012 13:00:41 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>70x Faster Joins with AQL now GA with MySQL Cluster 7.2</title>
+		<link>./../../mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2/index.html</link>
+					<comments>./../../mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2/index.html#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 15 Feb 2012 13:00:41 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[AQL]]></category>
+		<category><![CDATA[join]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.2]]></category>
+		<guid isPermaLink="false">./../../index.html?p=2027</guid>
+
+					<description><![CDATA[The new GA MySQL Cluster 7.2 Release (7.2.4) just announced by Oracle includes 2 new features which when combined can improve the performance of joins by a factor of 70x (or even higher). The first enhancement is that MySQL Cluster now provides the MySQL Server with better information on the available indexes which allows the]]></description>
+										<content:encoded><![CDATA[<div id="attachment_2030" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/09/AQL_70x_faster_join.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-2030" class="size-medium wp-image-2030" title="AQL_70x_faster_join" src="./../../wp-content/uploads/2011/09/AQL_70x_faster_join-300x261.jpg" alt="" width="300" height="261" /></a><p id="caption-attachment-2030" class="wp-caption-text">70x faster joins with AQL</p></div>
+<p>The new GA MySQL Cluster 7.2  Release (7.2.4) just announced by Oracle includes 2 new features which when combined can improve the performance of joins by a factor of 70x (or even higher). The first enhancement is that MySQL Cluster now provides the MySQL Server with better information  on the available indexes which allows the MySQL optimizer to automatically produce better query execution plans. Previously it was up to the user to manually provide hints to the optimizer. The second new feature is Adaptive Query Localization which allows the work of the join to be distributed across the data nodes (local to the data it&#8217;s working with) rather than up in the MySQL Server; this allows more computing power to be applied to calculating the join as well as dramatically reducing the number of messages being passed around the system. The combined result is that your joins can now run <strong>MUCH</strong> faster and this post describes a test that results in a 70x speed-up for a real-world query.</p>
+<h2>The Query</h2>
+<div id="attachment_2033" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/09/AQL_Query.jpg"><img decoding="async" aria-describedby="caption-attachment-2033" class="size-medium wp-image-2033" title="AQL_Query" src="./../../wp-content/uploads/2011/09/AQL_Query-300x171.jpg" alt="" width="300" height="171" /></a><p id="caption-attachment-2033" class="wp-caption-text">11-Way Join used in Test</p></div>
+<p>The join used in this test is based on a real-world example used for an on-line store/Content Management System. The original query identified all of the media in the system which was appropriate to a particular device and for which a user is entitled to access. As this query is part of a customer&#8217;s application I&#8217;ve replaced all of the table and column names.</p>
+<p>The join runs across 11 tables (which contain 33.5K rows in total) and produces a result set of 2,060 rows, each with 19 columns. The figure to the right illustrates the join and the full join is included below.</p>
+<pre style="color: #000080;">SELECT
+        tab1.uniquekey,
+        tab8.name,
+        tab8.tab8id,
+        tab11.name,
+        tab11.tab11id,
+        tab11.value,
+        tab10.tab10id,
+        tab10.name,
+        tab2.name,
+        tab2.tab2id,
+        tab4.value + tab5.value + tab6.value,
+        tab3.colx,
+        tab3.tab3id,
+        tab4.tab4id,
+        tab4.name,
+        tab5.tab5id,
+        tab5.name,
+        tab6.tab6id,
+        tab6.name
+FROM
+        tab1,tab2,tab3,tab4,tab5,tab6,tab7,tab8,tab9,tab10,tab11
+WHERE
+        tab7.tab2id = tab2.tab2id	AND
+        tab7.tab8id = tab8.tab8id	AND
+        tab9.tab2id = tab2.tab2id	AND
+	tab9.tab10id = tab10.tab10id	AND
+	tab10.tab11id = tab11.tab11id	AND
+        tab3.tab2id = tab2.tab2id	AND
+	tab3.tab4id = tab4.tab4id	AND
+	tab4.tab5id = tab5.tab5id	AND
+	tab4.colz =  'Y'		AND
+	tab5.tab6id = tab6.tab6id	AND
+	tab6.tab6id IN (6)		AND
+	(tab3.tab4id IN (66, 77, 88))	AND
+	tab1.tab2id = tab2.tab2id	AND
+	tab1.colx = 6;</pre>
+<h2>Enabling AQL</h2>
+<p>First of all, make sure that you&#8217;re using the GA version of MySQL Cluster (7.2.4 or later); the Open Source version is available from   <a title="dev.mysql.com/downloads/cluster" href="dev.mysql.com/downloads/cluster" target="_blank">http://dev.mysql.com/downloads/cluster/#downloads</a></p>
+<p>and the commercial version from the <a href="https://edelivery.oracle.com/" title="Download MySQL Cluster 7.2 from the Oracle Software Delivery Cloud" target="_new">Oracle Software Delivery Cloud</a>. You can double check that AQL is enabled:</p>
+<pre style="color: #000080;">mysql> show variables like 'ndb_join_pushdown';
+
+| ndb_join_pushdown                   | ON |</pre>
+<h2>Running the Query &#038; Results</h2>
+<div id="attachment_2031" style="width: 199px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/09/AQL_lab.jpg"><img decoding="async" aria-describedby="caption-attachment-2031" class="size-medium wp-image-2031" title="AQL_lab" src="./../../wp-content/uploads/2011/09/AQL_lab-189x300.jpg" alt="" width="189" height="300" /></a><p id="caption-attachment-2031" class="wp-caption-text">Test configuration</p></div>
+<p>To get the full benefit from AQL, you should run &#8220;ANALYZE TABLE;&#8221; once for each of the tables (no need to repeat for every query and it only needs running on one MySQL Server in the Cluster). This is very important and you should start doing this as a matter of course when you create or modify a table.</p>
+<p>For this test, 3 machines were used:</p>
+<ol>
+<li>Intel Core 2 Quad Core @2.83 GHz; 8 Gbytes RAM; single, multi-threaded data node (ndbmtd)</li>
+<li>Intel Core 2 Quad Core @2.83 GHz; 8 Gbytes RAM; single, multi-threaded data node (ndbmtd)</li>
+<li>4 Core Fedora VM running on VirtualBox on Windows 7, single MySQL Server</li>
+</ol>
+<p>The query was then run and compared to MySQL CLuster 7.1.15a:</p>
+<table Style="border-width: 1px;">
+<tbody>
+<tr>
+<td>MySQL Cluster 7.1.15a</td>
+<td>1 minute 27.23 secs</td>
+<td></td>
+</tr>
+<tr>
+<td>MySQL Cluster 7.2.1 (without having run ANALYZE TABLE)</td>
+<td>1 minute 5.3 secs</td>
+<td>1.33x Cluster 7.1</td>
+</tr>
+<tr>
+<td>MySQL Cluster 7.2.1 (having run ANALYZE TABLE)</td>
+<td>1.26 secs</td>
+<td>69.23x Cluster 7.1</td>
+</tr>
+</tbody>
+</table>
+<h2>How it Works</h2>
+<div id="attachment_1626" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/03/Nested-Loop-Join.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1626" class="size-medium wp-image-1626" title="Nested Loop Join" src="./../../wp-content/uploads/2011/03/Nested-Loop-Join-300x155.jpg" alt="" width="300" height="155" /></a><p id="caption-attachment-1626" class="wp-caption-text">Classic Nested-Loop-Join</p></div>
+<p>Traditionally, joins have been implemented in the MySQL Server where the query was executed. This is implemented as a nested-loop join; for every row from the first part of the join, a request has to be sent to the data nodes in order to fetch the data for the next level of the join and for every row in that level&#8230;. This method can result in a lot of network messages which slows down the query (as well as wasting resources). When turned on, Adaptive Query Localization results in the hard work being pushed down to the data nodes where the data is locally accessible. As a bonus, the work is divided amongst the pool of data nodes and so you get parallel execution.</p>
+<div id="attachment_1627" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/03/NDB-API.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1627" class="size-medium wp-image-1627" title="NDB API" src="./../../wp-content/uploads/2011/03/NDB-API-300x188.jpg" alt="" width="300" height="188" /></a><p id="caption-attachment-1627" class="wp-caption-text">NDB API</p></div>
+<p>I&#8217;ll leave the real deep and dirty details to others but cover the basic concepts here. All API nodes access the data nodes using the native C++ NDB API, the MySQL Server is one example of an API node (the new <a href="./../../mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html" target="_blank">Memcached Cluster API</a> is another). This API has been expanded to allow parameterised or linked queries where the input from one query is dependent on the previous one. To borrow an example from an excellent <a href="http://messagepassing.blogspot.com/2011/01/low-latency-distributed-parallel-joins.html" target="_blank">post by Frazer Clement</a> on the topic, the classic way to implement a join would be&#8230;</p>
+<pre style="font-size: 11px;">SQL > select t1.b, t2.c from t1,t2 where t1.pk=22 and t1.b=t2.pk;
+  ndbapi > read column b from t1 where pk = 22;</pre>
+<pre style="font-size: 11px;">              [round trip]</pre>
+<pre style="font-size: 11px;">           (b = 15)
+  ndbapi > read column c from t2 where pk = 15;</pre>
+<pre style="font-size: 11px;">              [round trip]</pre>
+<pre style="font-size: 11px;">           (c = 30)
+           [ return b = 15, c = 30 ]</pre>
+<p>Using the new functionality this can be performed with a single network round trip where the second read operation is dependent on the results of the first&#8230;</p>
+<pre style="font-size: 11px;">  ndbapi > read column <strong><span style="color: #800000;">@b</span></strong>:=b from t1 where pk = 22;
+           read column c from t2 where pk=<span style="color: #800000;"><strong>@b</strong></span>;</pre>
+<pre style="font-size: 11px;">              [round trip]</pre>
+<pre style="font-size: 11px;">           (b = 15, c = 30)
+           [ return b = 15, c = 30 ]</pre>
+<p>You can check whether your query is fitting these rules using EXPLAIN, for example:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> set ndb_join_pushdown=on;</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #008000;">mysql> EXPLAIN SELECT COUNT(*) FROM residents,postcodes WHERE residents.postcode=postcodes.postcode AND postcodes.town="MAIDENHEAD";</span>
+<span style="color: #008000;">+----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+--------------------------------------------------------------------------+</span>
+<span style="color: #008000;">| id | select_type | table     | type   | possible_keys | key     | key_len | ref                          | rows   | Extra                                                                    |
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+--------------------------------------------------------------------------+ 
+| 1  | SIMPLE      | residents | ALL    | NULL          | NULL    | NULL    | NULL                         | 100000 | Parent of 2 pushed join@1                                                |
+| 1  | SIMPLE      | postcodes | eq_ref | PRIMARY       | PRIMARY | 22      | clusterdb.residents.postcode | 1      | Child of 'residents' in pushed join@1; Using where with pushed condition | 
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+--------------------------------------------------------------------------+</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> EXPLAIN EXTENDED SELECT COUNT(*) FROM residents,postcodes,towns 
+  WHERE residents.postcode=postcodes.postcode AND 
+  postcodes.town=towns.town AND towns.county="Berkshire"; 
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+ 
+| id | select_type | table     | type   | possible_keys | key     | key_len | ref                          | rows   | filtered | Extra                                                                                                                  | 
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+ 
+| 1  | SIMPLE      | residents | ALL    | NULL          | NULL    | NULL    | NULL                         | 100000 | 100.00   | Parent of 3 pushed join@1                                                                                              | 
+| 1  | SIMPLE      | postcodes | eq_ref | PRIMARY       | PRIMARY | 22      | clusterdb.residents.postcode | 1      | 100.00   | Child of 'residents' in pushed join@1                                                                                  |
+| 1  | SIMPLE      | towns     | eq_ref | PRIMARY       | PRIMARY | 22      | clusterdb.postcodes.town     | 1      | 100.00   | Child of 'postcodes' in pushed join@1; Using where with pushed condition: (`clusterdb`.`towns`.`county` = 'Berkshire') | 
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+</span></pre>
+<p>Note that if you want to check for more details why your join isn&#8217;t currently being pushed down to the data node then you can use &#8220;<span style="color: #008000;">EXPLAIN EXTENDED</span>&#8221; and then &#8220;<span style="color: #008000;">SHOW WARNINGS</span>&#8221; to get more hints. Hopefully that will allow you to tweak your queries to get the best improvements.</p>
+<p>PLEASE let us know your experiences and give us examples of queries that worked well and (just as importantly) those that didn&#8217;t so that we can improve the feature &#8211; just leave a comment on this Blog with your table schemas, your query and your before/after timings.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2/feed/index.html</wfw:commentRss>
+			<slash:comments>10</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

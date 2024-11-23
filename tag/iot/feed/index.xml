@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>IoT &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 18 Sep 2018 10:31:31 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Recording sensor data with MongoDB Stitch &#038; Electric Imp</title>
+		<link>./../../mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp/index.html</link>
+					<comments>./../../mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 18 Sep 2018 10:31:31 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[IoT]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Stitch]]></category>
+		<category><![CDATA[serverless]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4517</guid>
+
+					<description><![CDATA[My early experiments with IoT involved standalone sensors, breakout boards, Arduinos, Raspberry Pis, and a soldering iron. It was a lot of fun, but it took ages to build even the simplest of projects. Therefore, I was super excited when I discovered that Electric Imp had a self-contained IoT hardware developer kit and a library]]></description>
+										<content:encoded><![CDATA[<p>My early experiments with IoT involved standalone sensors, breakout boards, Arduinos, Raspberry Pis, and a soldering iron. It was a lot of fun, but it took ages to build even the simplest of projects.</p>
+<p>Therefore, I was super excited when I discovered that Electric Imp had a self-contained <a href="https://store.electricimp.com/products/impexplorer-developer-kit?variant=31118866130">IoT hardware developer kit</a> <strong>and</strong> a <a href="https://developer.electricimp.com/libraries/webservices/mongodbstitch">library</a> to access <a href="https://www.mongodb.com/cloud/stitch" title="MongoDB Stitch Serverless Platform">MongoDB Stitch</a> directly.</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/impExplorer-opi47819wd.jpg" alt="Electric Imp impExplorer IoT development kit" /></p>
+<p>My first experiment with Electric Imp took sensor data (temperature, humidity, air pressure, light level, and orientation) from the device, and stored it in MongoDB.</p>
+<p>The Electric Imp code (written in <a href="http://www.squirrel-lang.org/" title="Squirrel programming language">Squirrel</a>) is split into 2 parts:<br />
+&#8211; On-device code – sends sensor data to the agent<br />
+&#8211; Agent code, running in Electric Imp&#8217;s cloud – forwards the data to Stitch</p>
+<p>This post focuses on the integration between the Electric Imp agent code and Stitch, but those interested can <a href="https://github.com/am-MongoDB/MongoDB-Stitch-Imp_IoT/blob/master/electricImp/device.nut" title="Send data from Electric Imp impExplorer to agent">view the device code</a>.</p>
+<p>The agent code receives the readings from the device, and then it uses the Electric Imp MongoDB Stitch library to forward them to Stitch:</p>
+<pre><code class="squirel">#require "MongoDBStitch.agent.lib.nut:1.0.0"
+
+//Create the connection to Stitch
+stitch &lt;- MongoDBStitch("imptemp-sobpa");
+
+//Add an API key to link this device to a specific Stitch User
+const API_KEY = "hNErDmBw1zYGOfpaSv4Pf5kaNQrIaxOHLZgj0vExzDcxWf9GAEX055l1mXXX";
+
+//Ensure you are authenticated to Stitch
+stitch.loginWithApiKey(API_KEY);
+
+function log(data) {
+    stitch.executeFunction("Imp_Write", [data], function (error, response) {
+        if (error) {
+            server.log("error: " + error.details);
+        } else {
+            server.log("temperature sent");
+        }
+    });
+}
+
+// Register a function to receive sensor data from the device
+device.on("reading.sent", log);
+</code></pre>
+<p>Note that you will need to create the <code>API_KEY</code> through the Stitch UI.</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/electricImp_MongoDB_Stitch-a9ibd5y5ki.png" alt="impExplorer sends readings to Electric Imp agent which sends them to MongoDB Stitch to store in MongoDB Atlas" /></p>
+<p>The <code>Imp_Write</code> function receives the readings from the agent, retrieves outside weather data from <a href="http://www.darksky.net/">DarkSky.net</a>, and stores the data in the <code>TempData</code> <a href="https://www.mongodb.com/cloud/atlas" title="MongoDB Atlas database as a service">MongoDB Atlas</a> collection:</p>
+<pre><code class="js">exports = function(data){
+
+  //Get the current time
+  var now = new Date();
+
+  var darksky = context.services.get("darksky");
+  var mongodb = context.services.get("mongodb-atlas");
+  var TempData = mongodb.db("Imp").collection("TempData");
+
+  // Fetch the current weather from darksky.net
+
+  darksky.get({"url": "https://api.darksky.net/forecast/" + 
+    context.values.get("DarkSkyKey") + '/' + 
+    context.values.get("DeviceLocation") +
+    "?exclude=minutely,hourly,daily,alerts,flags&amp;units=auto"
+  }).then(response =&gt; {
+    var darkskyJSON = EJSON.parse(response.body.text()).currently;
+
+    var status =
+      {
+        "Timestamp": now.getTime(),
+        "Date": now,
+        "Readings": data,
+        "External": darkskyJSON,
+      };
+    status.Readings.light = (100*(data.light/65536));
+    context.functions.execute("controlHumidity", data.temp, data.humid);
+    TempData.insertOne(status).then(
+      results =&gt; {
+        console.log("Successfully wrote document to TempData");
+      },
+      error =&gt; {
+        console.log("Error writing to TempData collection: " + error);
+      });
+  });
+};
+</code></pre>
+<p><code>ImpWrite</code> also calls the <code>controlHumidity</code> method – find more on that in <a href="https://www.mongodb.com/blog/post/controlling-humidity-with-a-mongodb-stitch-http-service-and-ifttt" title="Controlling humidity with a MongoDB Stitch HTTP service and IFTTT">this post</a>.</p>
+<p>You can recreate the Stitch app for yourself by <a href="https://github.com/am-MongoDB/MongoDB-Stitch-Imp_IoT" title="MongoDB Stitch app to control a dehumidifier using IFTTT and ElectricImp">downloading the app from GitHub</a> and <a href="https://docs.mongodb.com/stitch/import-export/create-stitch-app/" title="Import an application into MongoDB Stitch">importing it into Stitch</a>. You&#8217;ll need to set some of your own keys first (including the details of your IFTTT webhook address) – details are in the <a href="https://github.com/am-MongoDB/MongoDB-Stitch-Imp_IoT/blob/master/README.md">README</a>. The repo also includes the Electric Imp code for the agent and device.</p>
+<p>Creating your first Stitch app? Start with one of the <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch serverless platform – tutorials">Stitch tutorials</a>.</p>
+<p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">MongoDB Stitch white paper</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Controlling humidity with a MongoDB Stitch HTTP service and IFTTT</title>
+		<link>./../../mongodb/controlling-humidity-with-a-mongodb-stitch-http-service-and-ifttt/index.html</link>
+					<comments>./../../mongodb/controlling-humidity-with-a-mongodb-stitch-http-service-and-ifttt/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 17 Sep 2018 11:58:23 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[IFTTT]]></category>
+		<category><![CDATA[IoT]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Stitch]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4511</guid>
+
+					<description><![CDATA[I&#8217;ve long been a fan of using IFTTT as a quick and easy way to automate my home/life by connecting cloud and IoT services. My IFTTT Applets are what make my study lights flash when my Amazon Alexa timer expires in the kitchen; they&#8217;re what add my FourSquare check-ins to my Google calendar and MongoDB]]></description>
+										<content:encoded><![CDATA[<p>I&#8217;ve long been a fan of using <a href="https://ifttt.com/">IFTTT</a> as a quick and easy way to automate my home/life by connecting cloud and IoT services. My IFTTT Applets are what make my study lights flash when my Amazon Alexa timer expires in the kitchen; they&#8217;re what add my FourSquare check-ins to my Google calendar and MongoDB database.</p>
+<p>I have a dumb dehumidifier in my study, and I wanted to make it a bit smarter using <a href="https://www.mongodb.com/cloud/stitch" title="MongoDB Stitch – serverless platform for MongoDB">MongoDB Stitch</a>. I use an <a href="https://developer.electricimp.com/libraries/webservices/mongodbstitch">ElectricImp IoT device</a> to send periodic temperature and humidity sensor readings to my Stitch app. The Stitch app then fetches weather data from <a href="https://darksky.net/">DarkSky.net</a> and stores the combined data in a MongoDB collection. I have a dashboard that lets me view that data over time.</p>
+<p>Based on the latest humidity and temperature, a Stitch function decides whether to turn the humidifier on or off. The function then uses a <a href="https://docs.mongodb.com/stitch/reference/partner-services/http/" title="Use any REST API with the MongoDB Stitch REST API">Stitch HTTP service</a> I created to send a request an IFTTT Maker service webhook with the desired state (<code>on|off</code>).</p>
+<pre><code class="js">exports = function(temp, humidity){
+
+  var IFTTT = context.services.get("IFTTT");
+
+  // The humidifier is very inefficient if room is too cold, so only turn
+  // it on if the humidity is too high and temperature is high enough
+
+  var state = "dry";
+
+  if (temp &gt; context.values.get("minTemp")) {
+    if (humidity &gt; context.values.get("maxHumidity")) {
+        state = "damp";
+    }
+  }
+
+  IFTTT.get({"url": "https://maker.ifttt.com/trigger/" + 
+    state + "/with/key/" + 
+    context.values.get("MakerIFTTKey")})
+  .then(() =&gt; {
+    console.log("Sent IFTTT request");
+  });
+};
+</code></pre>
+<p>The webhook uses the <a href="https://ifttt.com/kasa">TP-Link Kasa IFTTT service</a> to send an <code>on|off</code> request to my smart plug:</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/MongoDB_IFTTT-vbnx495cp3.png" alt="IFTTT Webhook to turn plug onn" title="Maker webhook in IFTTT" /></p>
+<p>You can recreate this Stitch app for your self by <a href="https://github.com/am-MongoDB/MongoDB-Stitch-Imp_IoT" title="MongoDB Stitch app to control a dehumidifier using IFTTT and ElectricImp">downloading the app from GitHub</a> and <a href="https://docs.mongodb.com/stitch/import-export/create-stitch-app/" title="Import an application into MongoDB Stitch">importing into Stitch</a>. You&#8217;ll need to set some of your own keys first (including the details of your IFTTT webhook address) – details are in the <a href="https://github.com/am-MongoDB/MongoDB-Stitch-Imp_IoT/blob/master/README.md">README</a>. The repo also includes the ElectricImp device and agent code.</p>
+<p>Creating your first Stitch app? Start with one of the <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch serverless platform – tutorials">Stitch tutorials</a>.</p>
+<p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/controlling-humidity-with-a-mongodb-stitch-http-service-and-ifttt/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: MySQL Cluster 7.4 is GA!	</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 12 May 2015 13:03:09 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: andrew		</title>
+		<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476635</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 22 Apr 2015 15:38:11 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=4005#comment-476635</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476034&quot;&gt;Odis&lt;/a&gt;.
+
+The PRIMARY server is the one that &#039;wins&#039; in the event of a conflict. This form of conflict detection is only supported for pairs of Clusters.
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476034">Odis</a>.</p>
+<p>The PRIMARY server is the one that &#8216;wins&#8217; in the event of a conflict. This form of conflict detection is only supported for pairs of Clusters.</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Odis		</title>
+		<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476050</link>
+
+		<dc:creator><![CDATA[Odis]]></dc:creator>
+		<pubDate>Tue, 21 Apr 2015 16:13:06 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=4005#comment-476050</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476040&quot;&gt;Odis&lt;/a&gt;.
+
+of course, i have exec 
+stop slave
+reset slave
+reset master
+and reinstalled replication]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476040">Odis</a>.</p>
+<p>of course, i have exec<br />
+stop slave<br />
+reset slave<br />
+reset master<br />
+and reinstalled replication</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Odis		</title>
+		<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476040</link>
+
+		<dc:creator><![CDATA[Odis]]></dc:creator>
+		<pubDate>Tue, 21 Apr 2015 15:32:05 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=4005#comment-476040</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476034&quot;&gt;Odis&lt;/a&gt;.
+
+It seems to me that i still have some errors. 
+orig_server_id is 0 in both servers in ndb_binlog_index 
+
+mysql-infr&#062; select distinct orig_server_id from mysql.ndb_binlog_index;
++----------------+
+&#124; orig_server_id &#124;
++----------------+
+&#124;              0 &#124;
++----------------+
+1 row in set (0,00 sec)]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476034">Odis</a>.</p>
+<p>It seems to me that i still have some errors.<br />
+orig_server_id is 0 in both servers in ndb_binlog_index </p>
+<p>mysql-infr&gt; select distinct orig_server_id from mysql.ndb_binlog_index;<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;-+<br />
+| orig_server_id |<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;-+<br />
+|              0 |<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;-+<br />
+1 row in set (0,00 sec)</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Odis		</title>
+		<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-476034</link>
+
+		<dc:creator><![CDATA[Odis]]></dc:creator>
+		<pubDate>Tue, 21 Apr 2015 15:13:17 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=4005#comment-476034</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-475362&quot;&gt;andrew&lt;/a&gt;.
+
+Hello. Thanks for answer!
+It seems that error was due to replicate-wild-do-table.
+I have added replicate-wild-do-table=mysql.ndb_apply_status and now i can see epochs.
+
+mysql-infr&#062; select * from mysql.ndb_apply_status;
++-----------+------------------+----------------+-----------+---------+
+&#124; server_id &#124; epoch            &#124; log_name       &#124; start_pos &#124; end_pos &#124;
++-----------+------------------+----------------+-----------+---------+
+&#124;         3 &#124; 6492358463979522 &#124; log-bin.000030 &#124;     95880 &#124;   96334 &#124;
+&#124;         1 &#124; 6598573005209607 &#124; log-bin.000030 &#124;    280326 &#124;  280933 &#124;
++-----------+------------------+----------------+-----------+---------+
+2 rows in set (0,00 sec)
+
+But what exactly PRIMARY and SECONDARY values? How to set up this values in case circular replication with 3 and more servers?
+
+Thanks.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-475362">andrew</a>.</p>
+<p>Hello. Thanks for answer!<br />
+It seems that error was due to replicate-wild-do-table.<br />
+I have added replicate-wild-do-table=mysql.ndb_apply_status and now i can see epochs.</p>
+<p>mysql-infr&gt; select * from mysql.ndb_apply_status;<br />
++&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;+<br />
+| server_id | epoch            | log_name       | start_pos | end_pos |<br />
++&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;+<br />
+|         3 | 6492358463979522 | log-bin.000030 |     95880 |   96334 |<br />
+|         1 | 6598573005209607 | log-bin.000030 |    280326 |  280933 |<br />
++&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;+<br />
+2 rows in set (0,00 sec)</p>
+<p>But what exactly PRIMARY and SECONDARY values? How to set up this values in case circular replication with 3 and more servers?</p>
+<p>Thanks.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-475362</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 20 Apr 2015 11:57:21 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=4005#comment-475362</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-467292&quot;&gt;Odis&lt;/a&gt;.
+
+&lt;blockquote&gt;But all rows in ndb_apply_status contain only epoch with value 0:&lt;/blockquote&gt;
+
+That suggests that the replication setup is wrong in some way - need to fix that before moving on.  Best to step back and create a dummy table for testing that changes are binlogged as expected and result in ndb_apply_status writes etc...  You should also check that you&#039;re checking the right servers.
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-467292">Odis</a>.</p>
+<blockquote><p>But all rows in ndb_apply_status contain only epoch with value 0:</p></blockquote>
+<p>That suggests that the replication setup is wrong in some way &#8211; need to fix that before moving on.  Best to step back and create a dummy table for testing that changes are binlogged as expected and result in ndb_apply_status writes etc&#8230;  You should also check that you&#8217;re checking the right servers.</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Odis		</title>
+		<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-467294</link>
+
+		<dc:creator><![CDATA[Odis]]></dc:creator>
+		<pubDate>Wed, 01 Apr 2015 14:23:39 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=4005#comment-467294</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-467292&quot;&gt;Odis&lt;/a&gt;.
+
+I have used FLUSH TABLES WITH READ LOCK on both servers (PRIMARY and SECONDARY) to be clear:
+
+1st server: FLUSH TABLES WITH READ LOCK; SHOW MASTER STATUS;
+2nd server: CHANGE MASTER TO ... (with values from master status); START SLAVE;
+1st server: release lock
+2nd server: FLUSH TABLES WITH READ LOCK; SHOW MASTER STATUS;
+1st server: CHANGE MASTER TO ... (with values from master status); START SLAVE;
+2nd server: release lock]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-467292">Odis</a>.</p>
+<p>I have used FLUSH TABLES WITH READ LOCK on both servers (PRIMARY and SECONDARY) to be clear:</p>
+<p>1st server: FLUSH TABLES WITH READ LOCK; SHOW MASTER STATUS;<br />
+2nd server: CHANGE MASTER TO &#8230; (with values from master status); START SLAVE;<br />
+1st server: release lock<br />
+2nd server: FLUSH TABLES WITH READ LOCK; SHOW MASTER STATUS;<br />
+1st server: CHANGE MASTER TO &#8230; (with values from master status); START SLAVE;<br />
+2nd server: release lock</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Odis		</title>
+		<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-467292</link>
+
+		<dc:creator><![CDATA[Odis]]></dc:creator>
+		<pubDate>Wed, 01 Apr 2015 14:18:06 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=4005#comment-467292</guid>
+
+					<description><![CDATA[Hello. 
+I try to make new active-active replication work. For now I have 2 clusters: one with 2 sql, 2 management and 2 datanodes and one with 1 sql, 1 management and 1 datanode. I try to make first Cluster PRIMARY and second - SECONDARY. So, replication works, data is changed on both sides when i modify it somewhere, but I can&#039;t understand how there may be failover. 
+
+There are queries which I must run:
+mysqlC&#062; SELECT @latest:=MAX(epoch)
+     -&#062;     FROM mysql.ndb_apply_status
+     -&#062;     WHERE server_id=1;
+
+mysqlC&#062; SELECT
+     -&#062;     @file:=SUBSTRING_INDEX(File, &#039;/&#039;, -1),
+     -&#062;     @pos:=Position
+     -&#062;     FROM mysql.ndb_binlog_index
+     -&#062;     WHERE orig_epoch &#062;= @latest
+     -&#062;     AND orig_server_id = 1
+     -&#062;     ORDER BY epoch ASC LIMIT 1;
+
+But all rows in ndb_apply_status contain only epoch with value 0:
+ mysql-infr&#062; select distinct epoch from mysql.ndb_apply_status;
++-------+
+&#124; epoch &#124;
++-------+
+&#124;     0 &#124;
++-------+
+1 row in set (0,00 sec)
+
+mysql-office&#062; select distinct epoch from mysql.ndb_apply_status;
++-------+
+&#124; epoch &#124;
++-------+
+&#124;     0 &#124;
++-------+
+1 row in set (0,01 sec)
+
+And somewhy orig_server_id = 0 in ndb_binlog_index, but I haven&#039;t such id:
+mysql-office&#062; select * from information_schema.global_variables where variable_name like &quot;server_id&quot;;
++---------------+----------------+
+&#124; VARIABLE_NAME &#124; VARIABLE_VALUE &#124;
++---------------+----------------+
+&#124; SERVER_ID     &#124; 3              &#124;
++---------------+----------------+
+1 row in set (0,00 sec)
+mysql-infr&#062; select * from information_schema.global_variables where variable_name like &quot;server_id&quot;;
++---------------+----------------+
+&#124; VARIABLE_NAME &#124; VARIABLE_VALUE &#124;
++---------------+----------------+
+&#124; SERVER_ID     &#124; 1              &#124;
++---------------+----------------+
+1 row in set (0,00 sec)
+
+So, I can&#039;t understand how can I get right file and position for replication.
+
+It is first issue. 
+
+Should server be in read only when i make &quot;change master&quot;? 
+In this article you are using empty tables before starting replication, but I want to make replication with filled tables. I don&#039;t know how to do it with NDB, so I made 
+FLUSH TABLES WITH READ LOCK, 
+then made dump, moved it to slave, made
+CHANGE MASTER ... 
+START SLAVE
+and after that removed lock. Is it right algorithm?
+
+Thanks.]]></description>
+			<content:encoded><![CDATA[<p>Hello.<br />
+I try to make new active-active replication work. For now I have 2 clusters: one with 2 sql, 2 management and 2 datanodes and one with 1 sql, 1 management and 1 datanode. I try to make first Cluster PRIMARY and second &#8211; SECONDARY. So, replication works, data is changed on both sides when i modify it somewhere, but I can&#8217;t understand how there may be failover. </p>
+<p>There are queries which I must run:<br />
+mysqlC&gt; SELECT @latest:=MAX(epoch)<br />
+     -&gt;     FROM mysql.ndb_apply_status<br />
+     -&gt;     WHERE server_id=1;</p>
+<p>mysqlC&gt; SELECT<br />
+     -&gt;     @file:=SUBSTRING_INDEX(File, &#8216;/&#8217;, -1),<br />
+     -&gt;     @pos:=Position<br />
+     -&gt;     FROM mysql.ndb_binlog_index<br />
+     -&gt;     WHERE orig_epoch &gt;= @latest<br />
+     -&gt;     AND orig_server_id = 1<br />
+     -&gt;     ORDER BY epoch ASC LIMIT 1;</p>
+<p>But all rows in ndb_apply_status contain only epoch with value 0:<br />
+ mysql-infr&gt; select distinct epoch from mysql.ndb_apply_status;<br />
++&#8212;&#8212;-+<br />
+| epoch |<br />
++&#8212;&#8212;-+<br />
+|     0 |<br />
++&#8212;&#8212;-+<br />
+1 row in set (0,00 sec)</p>
+<p>mysql-office&gt; select distinct epoch from mysql.ndb_apply_status;<br />
++&#8212;&#8212;-+<br />
+| epoch |<br />
++&#8212;&#8212;-+<br />
+|     0 |<br />
++&#8212;&#8212;-+<br />
+1 row in set (0,01 sec)</p>
+<p>And somewhy orig_server_id = 0 in ndb_binlog_index, but I haven&#8217;t such id:<br />
+mysql-office&gt; select * from information_schema.global_variables where variable_name like &#8220;server_id&#8221;;<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;-+<br />
+| VARIABLE_NAME | VARIABLE_VALUE |<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;-+<br />
+| SERVER_ID     | 3              |<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;-+<br />
+1 row in set (0,00 sec)<br />
+mysql-infr&gt; select * from information_schema.global_variables where variable_name like &#8220;server_id&#8221;;<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;-+<br />
+| VARIABLE_NAME | VARIABLE_VALUE |<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;-+<br />
+| SERVER_ID     | 1              |<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;-+<br />
+1 row in set (0,00 sec)</p>
+<p>So, I can&#8217;t understand how can I get right file and position for replication.</p>
+<p>It is first issue. </p>
+<p>Should server be in read only when i make &#8220;change master&#8221;?<br />
+In this article you are using empty tables before starting replication, but I want to make replication with filled tables. I don&#8217;t know how to do it with NDB, so I made<br />
+FLUSH TABLES WITH READ LOCK,<br />
+then made dump, moved it to slave, made<br />
+CHANGE MASTER &#8230;<br />
+START SLAVE<br />
+and after that removed lock. Is it right algorithm?</p>
+<p>Thanks.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Daniël van Eeden		</title>
+		<link>./../mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/index.html#comment-450223</link>
+
+		<dc:creator><![CDATA[Daniël van Eeden]]></dc:creator>
+		<pubDate>Fri, 27 Feb 2015 10:28:15 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=4005#comment-450223</guid>
+
+					<description><![CDATA[Congratulations on the release!
+
+One of the links is broken:
+http://dev.mysql.com/downloads/benchmarks.html%20
+There is a trailing space which should be removed.]]></description>
+			<content:encoded><![CDATA[<p>Congratulations on the release!</p>
+<p>One of the links is broken:<br />
+<a href="http://dev.mysql.com/downloads/benchmarks.html%20" rel="nofollow ugc">http://dev.mysql.com/downloads/benchmarks.html%20</a><br />
+There is a trailing space which should be removed.</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

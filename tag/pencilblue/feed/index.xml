@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>PencilBlue &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Thu, 15 Sep 2016 17:31:07 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Using PencilBlue with MongoDB Atlas</title>
+		<link>./../../mongodb/using-pencilblue-with-mongodb-atlas/index.html</link>
+					<comments>./../../mongodb/using-pencilblue-with-mongodb-atlas/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 15 Sep 2016 17:31:07 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Atlas]]></category>
+		<category><![CDATA[MongoDB Compass]]></category>
+		<category><![CDATA[node.js]]></category>
+		<category><![CDATA[PencilBlue]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4215</guid>
+
+					<description><![CDATA[PencilBlue is a Node.js based, open source blogging and Content Management System, targeted at enterprise grade websites. This post explains why MongoDB Atlas is an ideal choice for PencilBlue and then goes on to show how to configure PencilBlue to use it. Why MongoDB Atlas is the Ideal Database for PencilBlue MongoDB delivers flexible schemas,]]></description>
+										<content:encoded><![CDATA[<p>PencilBlue is a Node.js based, open source blogging and Content Management System, targeted at enterprise grade websites.</p>
+<p>This post explains why MongoDB Atlas is an ideal choice for PencilBlue and then goes on to show how to configure PencilBlue to use it.</p>
+<h1>Why MongoDB Atlas is the Ideal Database for PencilBlue</h1>
+<p>MongoDB delivers flexible schemas, rich queries, an idiomatic Node.js driver, and simple to use high availability and scaling. This makes it the go-to database for anyone looking to build applications on Node.js.</p>
+<p><a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> provides all of the features of MongoDB, without the operational heavy lifting required for any new application. MongoDB Atlas is available on demand through a pay-as-you-go model and billed on an hourly basis, letting you focus on what you do best.</p>
+<p>It’s easy to get started – use a simple GUI to select the instance size, region, and features you need. MongoDB Atlas provides:</p>
+<ul>
+<li>Security features to protect access to your data</li>
+<li>Built in replication for always-on availability, tolerating complete data center failure</li>
+<li>Backups and point in time recovery to protect against data corruption</li>
+<li>Fine-grained monitoring to let you know when to scale. Additional instances can be provisioned with the push of a button</li>
+<li>Automated patching and one-click upgrades for new major versions of the database, enabling you to take advantage of the latest and greatest MongoDB features</li>
+<li>A choice of cloud providers, regions, and billing options</li>
+</ul>
+<p>Like PencilBlue, MongoDB Atlas is a natural fit for users looking to simplify their development and operations work, letting them focus on what makes their application unique rather than commodity (albeit essential) plumbing.</p>
+<h1>Installing PencilBlue and Connecting it to MongoDB Atlas</h1>
+<p>Before starting with PencilBlue, you should launch your MongoDB cluster using <a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> and then (optionally) create a user with read and write privileges for just the database that will be used for this project, as shown in Figure 1.</p>
+<div id="attachment_4216" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/PencilBlue_user.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-4216" src="./../../wp-content/uploads/2016/09/PencilBlue_user-910x1024.png" alt="Adding a PencilBlue User to MongoDB Atlas" width="480" height="540" class="size-large wp-image-4216" srcset="./../../wp-content/uploads/2016/09/PencilBlue_user-910x1024.png 910w, ./../../wp-content/uploads/2016/09/PencilBlue_user-267x300.png 267w, ./../../wp-content/uploads/2016/09/PencilBlue_user-768x864.png 768w, ./../../wp-content/uploads/2016/09/PencilBlue_user.png 1596w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4216" class="wp-caption-text">Figure 1: Adding a PencilBlue User to MongoDB Atlas</p></div>
+<p>You must also add your IP address to the IP Whitelist in the MongoDB Atlas security tab (Figure 2).</p>
+<div id="attachment_4217" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/PencilBlue_whitelist_IP.png"><img decoding="async" aria-describedby="caption-attachment-4217" src="./../../wp-content/uploads/2016/09/PencilBlue_whitelist_IP-1024x701.png" alt="Add IP Address to MongoDB Atlas Whitelist" width="480" height="329" class="size-large wp-image-4217" srcset="./../../wp-content/uploads/2016/09/PencilBlue_whitelist_IP-1024x701.png 1024w, ./../../wp-content/uploads/2016/09/PencilBlue_whitelist_IP-300x205.png 300w, ./../../wp-content/uploads/2016/09/PencilBlue_whitelist_IP-768x526.png 768w, ./../../wp-content/uploads/2016/09/PencilBlue_whitelist_IP.png 1502w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4217" class="wp-caption-text">Figure 2: Add IP Address to MongoDB Atlas Whitelist</p></div>
+<p>If it isn&#8217;t already installed on your system, download and install Node.js:</p>
+<pre><code>$ curl https://nodejs.org/dist/v4.4.7/node-v4.4.7-linux-x64.tar.xz -o node.tar.xz
+$ tar xf node.tar.xz
+</code></pre>
+<p>You should then add the <code>bin</code> sub-folder to your <code>.bash_profile</code> before installing the PencilBlue command line interface (CLI):</p>
+<pre><code>$ sudo npm install -g pencilblue-cli
+Password:
+npm WARN engine pencilblue-cli@0.3.1: wanted: {"node":"&gt;= 4.4.7"} (current: {"node":"0.12.5","npm":"2.11.2"})
+/usr/local/bin/pencilblue -&gt; /usr/local/lib/node_modules/pencilblue-cli/lib/pencilblue-cli.js
+/usr/local/bin/pbctrl -&gt; /usr/local/lib/node_modules/pencilblue-cli/lib/pencilblue-cli.js
+pencilblue-cli@0.3.1 /usr/local/lib/node_modules/pencilblue-cli
+├── process@0.11.8
+├── colors@1.1.2
+├── q@1.4.1
+├── shelljs@0.7.3 (interpret@1.0.1, rechoir@0.6.2, glob@7.0.5)
+└── prompt@1.0.0 (revalidator@0.1.8, pkginfo@0.4.0, read@1.0.7, winston@2.1.1, utile@0.3.0)
+</code></pre>
+<p>The CLI can then be used to install and configure PencilBlue itself:</p>
+<pre><code>$ pbctrl install PencilBlue
+Site Name:  (My PencilBlue Site) PokeSite
+Site Root:  (http://localhost:8080)/ 
+Address to bind to:  (0.0.0.0) 
+Site Port:  (8080) 
+MongoDB URL:  (mongodb://127.0.0.1:27017/) mongodb://pencilblue_user:my_password@cluster0-shard-00-00-qfovx.mongodb.net:27017,cluster0-shard-00-01-qfovx.mongodb.net:27017,cluster0-shard-00-02-qfovx.mongodb.net:27017/?ssl=true&amp;authSource=admin
+Database Name:  (pencilblue) clusterdb
+Do you want to install Bower components?:  (y/N) 
+Cloning PencilBlue from github...
+Cloning into 'PencilBlue'...
+Installing npm modules...
+...
+Creating config.js...
+Installation completed.
+</code></pre>
+<p>Note that if you need to change the configuration (e.g., to specify a new URL to connect to MongoDB) then edit the <code>config.js</code> file that was created during this step.</p>
+<p>The MongoDB URL you provided contains these components:</p>
+<ul>
+<li><code>pencilblue_user</code> is the name of the user you created in the MongoDB Atlas UI</li>
+<li><code>my_password</code> is the password you chose when creating the user in MongoDB Atlas</li>
+<li><code>cluster0-shard-00-00-qfovx.mongodb.net</code>, <code>cluster0-shard-00-01-qfovx.mongodb.net</code>, &amp; <code>cluster0-shard-00-02-qfovx.mongodb.net</code> are the hostnames of the instances in your MongoDB Atlas replica set (click on the &#8220;CONNECT&#8221; button in the MongoDB Atlas UI if you don&#8217;t have these – Figure 3)</li>
+<li><code>27017</code> is the standard MongoDB port number</li>
+<li>To enforce security, MongoDB Atlas mandates that the <code>ssl</code> option is used</li>
+<li><code>admin</code> is the database that&#8217;s being used to store the credentials for <code>pencilblue_user</code></li>
+</ul>
+<div id="attachment_4218" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/PencilBlue_Find_Connect_String.png"><img decoding="async" aria-describedby="caption-attachment-4218" src="./../../wp-content/uploads/2016/09/PencilBlue_Find_Connect_String-1024x414.png" alt="Find the Hostnames From the MongoDB Atlas UI" width="480" height="194" class="size-large wp-image-4218" srcset="./../../wp-content/uploads/2016/09/PencilBlue_Find_Connect_String-1024x414.png 1024w, ./../../wp-content/uploads/2016/09/PencilBlue_Find_Connect_String-300x121.png 300w, ./../../wp-content/uploads/2016/09/PencilBlue_Find_Connect_String-768x310.png 768w, ./../../wp-content/uploads/2016/09/PencilBlue_Find_Connect_String.png 1520w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4218" class="wp-caption-text">Figure 3: Find the Hostnames From the MongoDB Atlas UI</p></div>
+<p><code>clusterdb</code> is the name of the database (schema) that PencilBlue will use (note that unlike some frameworks, the database name is specified separately rather than being embedded in the MongoDB URL).</p>
+<p>The PencilBlue process can now be started:</p>
+<pre><code>$ cd PencilBlue/
+$ pbctrl start
+</code></pre>
+<h1>Confirm that MongoDB Atlas is Being Used</h1>
+<p>At this point, it is possible to connect to MongoDB Atlas using the MongoDB shell (we&#8217;ll look at an easier way to navigate the data later) to confirm that the schema has been created:</p>
+<pre><code>$ mongo mongodb://cluster0-shard-00-00-qfovx.mongodb.net:27017,cluster0-shard-00-01-qfovx.mongodb.net:27017,cluster0-shard-00-02-qfovx.mongodb.net:27017/admin?replicaSet=Cluster0-shard-0 --ssl --username billy --password my_password
+
+Cluster0-shard-0:PRIMARY&gt; show dbs
+admin      0.000GB
+clusterdb  0.008GB
+local      0.007GB
+
+Cluster0-shard-0:PRIMARY&gt; use clusterdb
+switched to db clusterdb
+
+Cluster0-shard-0:PRIMARY&gt; show collections
+article
+auth_token
+comment
+custom_object
+custom_object_type
+fs.chunks
+fs.files
+job_log
+lock
+media
+page
+password_reset
+plugin
+plugin_settings
+section
+server_registry
+session
+setting
+theme_settings
+topic
+unverified_user
+user
+</code></pre>
+<h1>Create Your First Page in PencilBlue</h1>
+<p>Browse to the application at <a href="http://localhost:8080/">http://localhost:8080/</a> as shown in Figure 4 and create a user account.</p>
+<div id="attachment_4219" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/PencilBlue_Browser.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4219" src="./../../wp-content/uploads/2016/09/PencilBlue_Browser-1016x1024.png" alt="Register User in PencilBlue" width="480" height="484" class="size-large wp-image-4219" srcset="./../../wp-content/uploads/2016/09/PencilBlue_Browser-1016x1024.png 1016w, ./../../wp-content/uploads/2016/09/PencilBlue_Browser-150x150.png 150w, ./../../wp-content/uploads/2016/09/PencilBlue_Browser-298x300.png 298w, ./../../wp-content/uploads/2016/09/PencilBlue_Browser-768x774.png 768w, ./../../wp-content/uploads/2016/09/PencilBlue_Browser-144x144.png 144w, ./../../wp-content/uploads/2016/09/PencilBlue_Browser.png 1750w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4219" class="wp-caption-text">Figure 4: Register User in PencilBlue</p></div>
+<p>You&#8217;re then able to login and create your first page (Figure 5).</p>
+<div id="attachment_4220" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/PencilBlue_Create_content.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4220" src="./../../wp-content/uploads/2016/09/PencilBlue_Create_content-1024x973.png" alt="Create a New Page Using PencilBlue" width="480" height="456" class="size-large wp-image-4220" srcset="./../../wp-content/uploads/2016/09/PencilBlue_Create_content-1024x973.png 1024w, ./../../wp-content/uploads/2016/09/PencilBlue_Create_content-300x285.png 300w, ./../../wp-content/uploads/2016/09/PencilBlue_Create_content-768x730.png 768w, ./../../wp-content/uploads/2016/09/PencilBlue_Create_content.png 1902w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4220" class="wp-caption-text">Figure 5: Create a New Page Using PencilBlue</p></div>
+<p>After saving, the new page can be viewed (Figure 6).</p>
+<div id="attachment_4221" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/PencilBlue_Page.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4221" src="./../../wp-content/uploads/2016/09/PencilBlue_Page-776x1024.png" alt="View Pokémon Page in PencilBlue" width="480" height="633" class="size-large wp-image-4221" srcset="./../../wp-content/uploads/2016/09/PencilBlue_Page-776x1024.png 776w, ./../../wp-content/uploads/2016/09/PencilBlue_Page-227x300.png 227w, ./../../wp-content/uploads/2016/09/PencilBlue_Page-768x1014.png 768w, ./../../wp-content/uploads/2016/09/PencilBlue_Page.png 1620w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4221" class="wp-caption-text">Figure 6: View Pokémon Page in PencilBlue</p></div>
+<p>To visually navigate through the PencilBlue schema and data, <a href="https://www.mongodb.com/download-center?jmp=nav#compass">download and install MongoDB Compass</a>. Use your MongoDB Atlas credentials to connect Compass to your MongoDB database – Figure 7.</p>
+<div id="attachment_4222" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/PencilBlue_Connect_Compass_to_MongoDB_Atlas.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4222" src="./../../wp-content/uploads/2016/09/PencilBlue_Connect_Compass_to_MongoDB_Atlas-1024x839.png" alt="Connect MongoDB Compass to MongoDB Atlas" width="480" height="393" class="size-large wp-image-4222" srcset="./../../wp-content/uploads/2016/09/PencilBlue_Connect_Compass_to_MongoDB_Atlas-1024x839.png 1024w, ./../../wp-content/uploads/2016/09/PencilBlue_Connect_Compass_to_MongoDB_Atlas-300x246.png 300w, ./../../wp-content/uploads/2016/09/PencilBlue_Connect_Compass_to_MongoDB_Atlas-768x629.png 768w, ./../../wp-content/uploads/2016/09/PencilBlue_Connect_Compass_to_MongoDB_Atlas.png 1802w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4222" class="wp-caption-text">Figure 7: Connect MongoDB Compass to MongoDB Atlas</p></div>
+<p>Navigate through the structure of the data in the <code>clusterdb</code> database (Figure 8); view the JSON documents (Figure 9) and check the indexes (Figure 10).</p>
+<div id="attachment_4223" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/PencilBlue_Compass_Schema.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4223" src="./../../wp-content/uploads/2016/09/PencilBlue_Compass_Schema-1024x594.png" alt="Explore PencilBlue Schema Using MongoDB Compass" width="480" height="278" class="size-large wp-image-4223" srcset="./../../wp-content/uploads/2016/09/PencilBlue_Compass_Schema-1024x594.png 1024w, ./../../wp-content/uploads/2016/09/PencilBlue_Compass_Schema-300x174.png 300w, ./../../wp-content/uploads/2016/09/PencilBlue_Compass_Schema-768x445.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4223" class="wp-caption-text">Figure 8: Explore PencilBlue Schema Using MongoDB Compass</p></div>
+<div id="attachment_4224" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/PencilBlue_Compass_Document.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4224" src="./../../wp-content/uploads/2016/09/PencilBlue_Compass_Document-1024x595.png" alt="View PencilBlue Documents in MongoDB Compass" width="480" height="279" class="size-large wp-image-4224" srcset="./../../wp-content/uploads/2016/09/PencilBlue_Compass_Document-1024x595.png 1024w, ./../../wp-content/uploads/2016/09/PencilBlue_Compass_Document-300x174.png 300w, ./../../wp-content/uploads/2016/09/PencilBlue_Compass_Document-768x446.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4224" class="wp-caption-text">Figure 9: View PencilBlue Documents in MongoDB Compass</p></div>
+<div id="attachment_4225" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/PencilBlue_Compass_Indexes.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4225" src="./../../wp-content/uploads/2016/09/PencilBlue_Compass_Indexes-1024x594.png" alt="View PencilBlue Indexes Using MongoDB Compass" width="480" height="278" class="size-large wp-image-4225" srcset="./../../wp-content/uploads/2016/09/PencilBlue_Compass_Indexes-1024x594.png 1024w, ./../../wp-content/uploads/2016/09/PencilBlue_Compass_Indexes-300x174.png 300w, ./../../wp-content/uploads/2016/09/PencilBlue_Compass_Indexes-768x446.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4225" class="wp-caption-text">Figure 10: View PencilBlue Indexes Using MongoDB Compass</p></div>
+<h1>Next Steps</h1>
+<p>While MongoDB Atlas radically simplifies the operation of MongoDB there are still some decisions to take to ensure the best performance and reliability for your application. The <a href="https://www.mongodb.com/collateral/mongodb-atlas-best-practices">MongoDB Atlas Best Practices white paper</a> provides guidance on best practices for deploying, managing, and optimizing the performance of your database with MongoDB Atlas.</p>
+<p>The guide outlines considerations for achieving performance at scale with MongoDB Atlas across a number of key dimensions, including instance size selection, application patterns, schema design and indexing, and disk I/O. While this guide is broad in scope, it is not exhaustive. Following the recommendations in the guide will provide a solid foundation for ensuring optimal application performance.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/using-pencilblue-with-mongodb-atlas/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

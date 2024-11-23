@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="./../xmlrpc.php">
+	
+	<title>Andrew Morgan on Databases | Database technologies &#8211; especially around scalability and High Availability | Page 6</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="./../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="./../comments/feed/index.html">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="./../wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="./../wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="./../wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="./../wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="./../wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="./../wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="./../wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="./../wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="./../wp-json/index.html">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../xmlrpc.php?rsd">
+
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style>
+<style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style>
+<script type="text/javascript">
+				//<![CDATA[
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//]]>
+				</script><style type="text/css"></style>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style>
+</head>
+
+<body class="home blog paged custom-background paged-6">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="./../index.html"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="http://www.clusterdb.com/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu">
+<li class="page_item page-item-1011"><a href="./../about/index.html">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="./../wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+		
+				 
+					<div id="post-4276" class="post-4276 post type-post status-publish format-standard hentry category-mongodb tag-amazon tag-amazon-kinesis tag-mongodb tag-mongodb-atlas tag-mongodb-compass">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mongodb/mongodb_amazon_kinesis/index.html">November 8, 2016</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../mongodb/mongodb_amazon_kinesis/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../mongodb/mongodb_amazon_kinesis/index.html" rel="bookmark">Processing Data Streams with Amazon Kinesis and MongoDB Atlas</a></h2>
+				
+				<div class="entry">
+										<p>This post provides an introduction to Amazon Kinesis: its architecture, what it provides, and how it&#8217;s typically used. It goes on to step through how to implement an application where data is ingested by Amazon Kinesis before being processed and then stored in MongoDB Atlas.</p>
+<p>This is part of a <a href="./../mongodb/using-mongodb-atlas-from-your-favorite-language-or-framework/index.html">series of posts which examine how to use MongoDB Atlas with a number of complementary technologies and frameworks</a>.</p>
+<h2>Introduction to Amazon Kinesis</h2>
+<p>The role of Amazon Kinesis is to get large volumes of streaming data into AWS where it can then be processed, analyzed, and moved between AWS services. The service is designed to ingest and store terabytes of data every hour, from multiple sources. Kinesis provides high availability, including synchronous replication within an AWS region. It also transparently handles scalability, adding and removing resources as needed.</p>
+<p>Once the data is inside AWS, it can be processed or analyzed immediately, as well as being stored using other AWS services (such as S3) for later use. By storing the data in MongoDB, it can be used both to drive real-time, operational decisions as well as for deeper analysis.</p>
+<p>As the number, variety, and velocity of data sources grow, new architectures and technologies are needed. Technologies like Amazon Kinesis and <a href="https://www.mongodb.com/blog/post/mongodb-and-data-streaming-implementing-a-mongodb-kafka-consumer" title="Data Streaming with Apache Kafka &amp; MongoDB">Apache Kafka</a> are focused on ingesting the massive flow of data from multiple fire hoses and then routing it to the systems that need it – optionally filtering, aggregating, and analyzing en-route.</p>
+<div id="attachment_4277" style="width: 1201px" class="wp-caption alignright">
+<a href="./../wp-content/uploads/2016/11/kinesis-architecture.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-4277" class="wp-image-4277 size-full" src="./../wp-content/uploads/2016/11/kinesis-architecture.png" alt="AWS Kinesis Architecture" width="1191" height="636" srcset="./../wp-content/uploads/2016/11/kinesis-architecture.png 1191w, ./../wp-content/uploads/2016/11/kinesis-architecture-300x160.png 300w, ./../wp-content/uploads/2016/11/kinesis-architecture-768x410.png 768w, ./../wp-content/uploads/2016/11/kinesis-architecture-1024x547.png 1024w" sizes="(max-width: 1191px) 100vw, 1191px"></a><p id="caption-attachment-4277" class="wp-caption-text">Figure 1: AWS Kinesis Architecture</p>
+</div>
+<p>Typical data sources include:</p>
+<ul>
+<li>IoT assets and devices(e.g., sensor readings)</li>
+<li>On-line purchases from an ecommerce store</li>
+<li>Log files</li>
+<li>Video game activity</li>
+<li>Social media posts</li>
+<li>Financial market data feeds</li>
+</ul>
+<p>Rather than leave this data to fester in text files, Kinesis can ingest the data, allowing it to be processed to find patterns, detect exceptions, drive operational actions, and provide aggregations to be displayed through dashboards.</p>
+<p>There are actually 3 services which make up Amazon Kinesis:</p>
+<ul>
+<li>
+<strong>Amazon Kinesis Firehose</strong> is the simplest way to load massive volumes of streaming data into AWS. The capacity of your Firehose is adjusted automatically to keep pace with the stream throughput. It can optionally compress and encrypt the data before it&#8217;s stored.</li>
+<li>
+<strong>Amazon Kinesis Streams</strong> are similar to the Firehose service but give you more control, allowing for:
+<ul>
+<li>Multi-stage processing</li>
+<li>Custom stream partitioning rules</li>
+<li>Reliable storage of the stream data until it has been processed.</li>
+</ul>
+</li>
+<li>
+<strong>Amazon Kinesis Analytics</strong> is the simplest way to process the data once it has been ingested by either Kinesis Firehose or Streams. The user provides SQL queries which are then applied to analyze the data; the results can then be displayed, stored, or sent to another Kinesis stream for further processing.</li>
+</ul>
+<p>This post focuses on Amazon Kinesis Streams, in particular, implementing a <em>consumer</em> that ingests the data, enriches it, and then stores it in MongoDB.</p>
+<h3>Accessing Kinesis Streams – the Libraries</h3>
+<p>There are multiple ways to read (consume) and write (produce) data with Kinesis Streams:</p>
+<ul>
+<li>
+<a href="https://www.mongodb.com/blog/post/Amazon%20Kinesis%20Streams%20API">Amazon Kinesis Streams API</a>
+<ul>
+<li>Provides two APIs for putting data into an Amazon Kinesis stream: <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecord.html">PutRecord</a> and <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecords.html">PutRecords</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="http://docs.aws.amazon.com/kinesis/latest/dev/developing-producers-with-kpl.html">Amazon Kinesis Producer Library (KPL)</a>
+<ul>
+<li>Easy to use and highly configurable Java library that helps you put data into an Amazon Kinesis stream. Amazon Kinesis Producer Library (KPL) presents a simple, asynchronous, high throughput, and reliable interface.</li>
+</ul>
+</li>
+<li>
+<a href="http://docs.aws.amazon.com/streams/latest/dev/writing-with-agents.html">Amazon Kinesis Agent</a>
+<ul>
+<li>The agent continuously monitors a set of files and sends new entries to your Stream or Firehose.</li>
+</ul>
+</li>
+<li>
+<a href="http://docs.aws.amazon.com/kinesis/latest/dev/developing-consumer-apps-with-kcl.html">Amazon Kinesis Client Library (KCL)</a>
+<ul>
+<li>A Java library that helps you easily build Amazon Kinesis Applications for reading and processing data from an Amazon Kinesis stream. KCL handles issues such as adapting to changes in stream volume, load-balancing streaming data, coordinating distributed services, providing fault-tolerance, and processing data.</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/awslabs/amazon-kinesis-client/tree/master/src/main/java/com/amazonaws/services/kinesis/multilang">Amazon Kinesis Client Library MultiLangDemon</a>
+<ul>
+<li>The MultiLangDemon is used as a proxy by non-Java applications to use the Kinesis Client Library.</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/awslabs/amazon-kinesis-connectors">Amazon Kinesis Connector Library</a>
+<ul>
+<li>A library that helps you easily integrate Amazon Kinesis with other AWS services and third-party tools.</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/awslabs/kinesis-storm-spout">Amazon Kinesis Storm Spout</a>
+<ul>
+<li>A library that helps you easily integrate Amazon Kinesis Streams with Apache Storm.</li>
+</ul>
+</li>
+</ul>
+<p>The example application in this post use the Kinesis Agent and the Kinesis Client Library MultiLangDemon (with Node.js).</p>
+<h2>Role of MongoDB Atlas</h2>
+<p>MongoDB is a distributed database delivering a flexible schema for rapid application development, rich queries, idiomatic drivers, and built in redundancy and scale-out. This makes it the go-to database for anyone looking to build modern applications.</p>
+<p><a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> is a hosted database service for MongoDB. It provides all of the features of MongoDB, without the operational heavy lifting required for any new application. MongoDB Atlas is available on demand through a pay-as-you-go model and billed on an hourly basis, letting you focus on what you do best.</p>
+<p>It’s easy to get started – use a simple GUI to select the instance size, region, and features you need. MongoDB Atlas provides:</p>
+<ul>
+<li>Security features to protect access to your data</li>
+<li>Built in replication for always-on availability, tolerating complete data center failure</li>
+<li>Backups and point in time recovery to protect against data corruption</li>
+<li>Fine-grained monitoring to let you know when to scale. Additional instances can be provisioned with the push of a button</li>
+<li>Automated patching and one-click upgrades for new major versions of the database, enabling you to take advantage of the latest and greatest MongoDB features</li>
+<li>A choice of regions and billing options</li>
+</ul>
+<p>Like Amazon Kinesis, MongoDB Atlas is a natural fit for users looking to simplify their development and operations work, letting them focus on what makes their application unique rather than commodity (albeit essential) plumbing. Also like Kinesis, you only pay for MongoDB Atlas when you&#8217;re using it with no upfront costs and no charges after you terminate your cluster.</p>
+<h2>Example Application</h2>
+<p>The rest of this post focuses on building a system to process log data. There are 2 sources of log data:</p>
+<ol>
+<li>A simple client that acts as a Kinesis Streams <em>producer</em>, generating sensor readings and writing them to a stream</li>
+<li>
+<em>Amazon Kinesis Agent</em> monitoring a SYSLOG file and sending each log event to a stream</li>
+</ol>
+<p>In both cases, the data is consumed from the stream using the same <em>consumer</em>, which adds some metadata to each entry and then stores it in MongoDB Atlas.</p>
+<h3>Create Kinesis IAM Policy in AWS</h3>
+<p>From the <a href="https://console.aws.amazon.com/iam">IAM section of the AWS console</a> use the wizard to create a new policy. The policy should grant permission to perform specific actions on a particular stream (in this case &#8220;ClusterDBStream&#8221;) and the results should look similar to this:</p>
+<p><script src="https://gist.github.com/am-MongoDB/aab01421f66be44ae5d53fd2e4d031ee.js"></script></p>
+<p>Next, create a new user and associate it with the new policy. <strong>Important</strong>: Take a note of the <em>AWS_ACCESS_KEY_ID</em> and <em>AWS_SECRET_ACCESS_KEY</em>.</p>
+<h3>Create MongoDB Atlas Cluster</h3>
+<p>Register with <a href="https://www.mongodb.com/cloud" title="MongoDB Atlas cloud-hosted database service">MongoDB Atlas</a> and use the simple GUI to select the instance size, region, and features you need (Figure 2).</p>
+<p><a href="./../wp-content/uploads/2016/11/Create_MongoDB_Atlas_Cluster.gif"><img decoding="async" class="alignright size-full wp-image-4278" src="./../wp-content/uploads/2016/11/Create_MongoDB_Atlas_Cluster.gif" alt="create mongodb atlas cluster" width="960" height="540"></a></p>
+<p>Create a user with read and write privileges for just the database that will be used for your application, as shown in Figure 3.</p>
+<div id="attachment_4279" style="width: 833px" class="wp-caption alignright">
+<a href="./../wp-content/uploads/2016/11/Create_Application_User_in_MongoDB_Atlas.png"><img decoding="async" aria-describedby="caption-attachment-4279" class="size-full wp-image-4279" src="./../wp-content/uploads/2016/11/Create_Application_User_in_MongoDB_Atlas.png" alt="Creating an Application user in MongoDB Atlas" width="823" height="922" srcset="./../wp-content/uploads/2016/11/Create_Application_User_in_MongoDB_Atlas.png 823w, ./../wp-content/uploads/2016/11/Create_Application_User_in_MongoDB_Atlas-268x300.png 268w, ./../wp-content/uploads/2016/11/Create_Application_User_in_MongoDB_Atlas-768x860.png 768w" sizes="(max-width: 823px) 100vw, 823px"></a><p id="caption-attachment-4279" class="wp-caption-text">Figure 3: Creating an Application user in MongoDB Atlas</p>
+</div>
+<p>You must also add the IP address of your application server to the IP Whitelist in the MongoDB Atlas security tab (Figure 4). Note that if multiple application servers will be accessing MongoDB Atlas then an IP address range can be specified in CIDR format (IP Address/number of significant bits).</p>
+<div id="attachment_4280" style="width: 1770px" class="wp-caption alignright">
+<a href="./../wp-content/uploads/2016/11/Add_IP_Address_Range_to_MongoDB_Atlas.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4280" class="wp-image-4280 size-full" src="./../wp-content/uploads/2016/11/Add_IP_Address_Range_to_MongoDB_Atlas.png" alt="Add App Server IP Address(es) to MongoDB Atlas" width="1760" height="876" srcset="./../wp-content/uploads/2016/11/Add_IP_Address_Range_to_MongoDB_Atlas.png 1760w, ./../wp-content/uploads/2016/11/Add_IP_Address_Range_to_MongoDB_Atlas-300x149.png 300w, ./../wp-content/uploads/2016/11/Add_IP_Address_Range_to_MongoDB_Atlas-768x382.png 768w, ./../wp-content/uploads/2016/11/Add_IP_Address_Range_to_MongoDB_Atlas-1024x510.png 1024w" sizes="auto, (max-width: 1760px) 100vw, 1760px"></a><p id="caption-attachment-4280" class="wp-caption-text">Figure 4: Add App Server IP Address(es) to MongoDB Atlas</p>
+</div>
+<p>If your application server(s) are running in AWS, then an alternative to IP Whitelisting is to <a href="https://docs.atlas.mongodb.com/setup-cluster-security/" title="configure a VPC (Virtual Private Cloud) Peering relationship between your MongoDB Atlas group and AWS">configure a VPC (Virtual Private Cloud) Peering relationship between your MongoDB Atlas group and the VPC containing your AWS resources</a>. This removes the requirement to add and remove IP addresses as AWS reschedules functions, and is especially useful when using highly dynamic services such as AWS Lambda.</p>
+<p>Click the &#8220;Connect&#8221; button and make a note of the URI that should be used when connecting to the database (note that you will substitute the user name and password with ones that you&#8217;ve just created).</p>
+<h3>App Part 1 – Kinesis/Atlas Consumer</h3>
+<p>The code and configuration files in Parts 1 &amp; 2 are based on the sample consumer and producer included with the <a href="https://github.com/awslabs/amazon-kinesis-client-nodejs" title="Amazon Kinesis Client Library for Node.js">client library for Node.js (MultiLangDaemon)</a>.</p>
+<p>Install the <a href="https://github.com/awslabs/amazon-kinesis-client-nodejs">Node.js client library</a>:</p>
+<pre><code>git clone https://github.com/awslabs/amazon-kinesis-client-nodejs.git
+cd amazon-kinesis-client-nodejs
+npm install
+</code></pre>
+<p>Install the <a href="https://mongodb.github.io/node-mongodb-native/" title="The next generation Node.JS driver for MongoDB">MongoDB Node.js Driver</a>:</p>
+<pre><code>npm install --save mongodb
+</code></pre>
+<p>Move to the consumer sample folder:</p>
+<pre><code>cd samples/basic_sample/consumer/
+</code></pre>
+<p>Create a configuration file (&#8220;logging_consumer.properties&#8221;), taking care to set the correct stream and application names and AWS region:</p>
+<p><script src="https://gist.github.com/am-MongoDB/5edcbe58788cbf40c1776a8f2cb01e1d.js"></script></p>
+<p>The code for working with MongoDB can be abstracted to a helper file (&#8220;db.js&#8221;):</p>
+<p><script src="https://gist.github.com/am-MongoDB/a04cc764301e0911f59a7b0df2bf5abe.js"></script></p>
+<p>Create the application Node.js file (&#8220;logging_consumer_app.js&#8221;), making sure to replace the database user and host details in &#8220;mongodbConnectString&#8221; with your own:</p>
+<p><script src="https://gist.github.com/am-MongoDB/3941d20f2f530ae52bb7bd62a3532b69.js"></script></p>
+<p>Note that this code adds some metadata to the received object before writing it to MongoDB. At this point, it is also possible to filter objects based on any of their fields.</p>
+<p>Note also that this Node.js code logs a lot of information to the &#8220;application log&#8221; file (including the database password!); this is for debugging and would be removed from a real application.</p>
+<p>The simplest way to have the application use the user credentials (noted when creating the user in AWS IAM) is to export them from the shell where the application will be launched:</p>
+<pre><code>export AWS_ACCESS_KEY_ID=????????????????????
+export AWS_SECRET_ACCESS_KEY=????????????????????????????????????????
+</code></pre>
+<p>Finally, launch the consumer application:</p>
+<pre><code>../../../bin/kcl-bootstrap --java /usr/bin/java -e -p ./logging_consumer.properties
+</code></pre>
+<p>Check the &#8220;application.log&#8221; file for any errors.</p>
+<h3>App Part 2 – Kinesis Producer</h3>
+<p>As for the consumer, export the credentials for the user created in AWS IAM:</p>
+<pre><code>cd amazon-kinesis-client-nodejs/samples/basic_sample/producer
+
+export AWS_ACCESS_KEY_ID=????????????????????
+export AWS_SECRET_ACCESS_KEY=????????????????????????????????????????
+</code></pre>
+<p>Create the configuration file (&#8220;config.js&#8221;) and ensure that the correct AWS region and stream are specified:</p>
+<p><script src="https://gist.github.com/am-MongoDB/0ab029c1071a6a715a553b00d2396f40.js"></script></p>
+<p>Create the producer code (&#8220;logging_producer.js&#8221;):</p>
+<p><script src="https://gist.github.com/am-MongoDB/0ee9d95fc1abcaf0949245811dcf7d6e.js"></script></p>
+<p>The producer is launched from &#8220;logging_producer_app.js&#8221;:</p>
+<p><script src="https://gist.github.com/am-MongoDB/a598575392fa0f29742fa0952f90ecd8.js"></script></p>
+<p>Run the producer:</p>
+<pre><code>node logging_producer_app.js
+</code></pre>
+<p>Check the consumer and producer &#8220;application.log&#8221; files for errors.</p>
+<p>At this point, data should have been written to MongoDB Atlas. Using the connection string provided after clicking the &#8220;Connect&#8221; button in MongoDB Atlas, connect to the database and confirm that the documents have been added:</p>
+<p><script src="https://gist.github.com/am-MongoDB/66ae718bb72659e179a1073bfd1fbeca.js"></script></p>
+<h3>App Part 3 – Capturing Live Logs Using Amazon Kinesis Agent</h3>
+<p>Using the same consumer, the next step is to stream real log data. Fortunately, this doesn&#8217;t require any additional code as the Kinesis Agent can be used to monitor files and add every new entry to a Kinesis Stream (or Firehose).</p>
+<p>Install the Kinesis Agent:</p>
+<pre><code>sudo yum install –y aws-kinesis-agent
+</code></pre>
+<p>and edit the configuration file to use the correct AWS region, user credentials, and stream in &#8220;/etc/aws-kinesis/agent.json&#8221;:</p>
+<p><script src="https://gist.github.com/am-MongoDB/41f45486b4ba170a4b7474cb3d63b45b.js"></script></p>
+<p>&#8220;/var/log/messages&#8221; is a SYSLOG file and so a &#8220;dataProcessingOptions&#8221; field is included in the configuration to automatically convert each log into a JSON document before writing it to the Kinesis Stream.</p>
+<p>The agent will not run as root and so the permissions for &#8220;/var/log/messages&#8221; need to be made more permissive:</p>
+<pre><code>sudo chmod og+r /var/log/messages
+</code></pre>
+<p>The agent can now be started:</p>
+<pre><code>sudo service aws-kinesis-agent start
+</code></pre>
+<p>Monitor the agent&#8217;s log file to see what it&#8217;s doing:</p>
+<pre><code>sudo tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log
+</code></pre>
+<p>If there aren&#8217;t enough logs being generated on the machine then extra ones can be injected manually for testing:</p>
+<pre><code>logger -i This is a test log
+</code></pre>
+<p>This will create a log with the &#8220;program&#8221; field set to your username (in this case, &#8220;ec2-user&#8221;). Check that the logs get added to MongoDB Atlas:</p>
+<p><script src="https://gist.github.com/am-MongoDB/777754041547d2a5bb7f1017a34a9c2e.js"></script></p>
+<h3>Checking the Data with MongoDB Compass</h3>
+<p>To visually navigate through the MongoDB schema and data, <a href="https://www.mongodb.com/download-center?jmp=nav#compass">download and install MongoDB Compass</a>. Use your MongoDB Atlas credentials to connect Compass to your MongoDB database (the hostname should refer to the primary node in your replica set or a &#8220;mongos&#8221; process if your MongoDB cluster is sharded).</p>
+<p>Navigate through the structure of the data in the &#8220;clusterdb&#8221; database (Figure 5) and view the JSON documents.</p>
+<div id="attachment_4281" style="width: 969px" class="wp-caption alignright">
+<a href="./../wp-content/uploads/2016/11/Compass_schema.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4281" class="size-full wp-image-4281" src="./../wp-content/uploads/2016/11/Compass_schema.png" alt="Explore Schema Using MongoDB Compass" width="959" height="958" srcset="./../wp-content/uploads/2016/11/Compass_schema.png 959w, ./../wp-content/uploads/2016/11/Compass_schema-150x150.png 150w, ./../wp-content/uploads/2016/11/Compass_schema-300x300.png 300w, ./../wp-content/uploads/2016/11/Compass_schema-768x767.png 768w, ./../wp-content/uploads/2016/11/Compass_schema-144x144.png 144w" sizes="auto, (max-width: 959px) 100vw, 959px"></a><p id="caption-attachment-4281" class="wp-caption-text">Figure 5: Explore Schema Using MongoDB Compass</p>
+</div>
+<p>Clicking on a value builds a query and then clicking &#8220;Apply&#8221; filters the results (Figure 6).</p>
+<div id="attachment_4282" style="width: 721px" class="wp-caption alignright">
+<a href="./../wp-content/uploads/2016/11/Filter_MongoDB_Compass_Results.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4282" class="size-full wp-image-4282" src="./../wp-content/uploads/2016/11/Filter_MongoDB_Compass_Results.png" alt="View Filtered Documents in MongoDB Compass" width="711" height="907" srcset="./../wp-content/uploads/2016/11/Filter_MongoDB_Compass_Results.png 711w, ./../wp-content/uploads/2016/11/Filter_MongoDB_Compass_Results-235x300.png 235w" sizes="auto, (max-width: 711px) 100vw, 711px"></a><p id="caption-attachment-4282" class="wp-caption-text">Figure 6: View Filtered Documents in MongoDB Compass</p>
+</div>
+<h3>Add Document Validation Rules</h3>
+<p>One of MongoDB’s primary attractions for developers is that it gives them the ability to start application development without first needing to define a formal schema. Operations teams appreciate the fact that they don’t need to perform a time-consuming schema upgrade operation every time the developers need to store a different attribute.</p>
+<p>This is well suited to the application built in this post as logs from different sources are likely to include different attributes. There are however some attributes that we always expect to be there (e.g., the metadata that the application is adding). For applications reading the documents from this collection to be able to rely on those fields being present, the documents should be validated before they are written to the database. Prior to MongoDB 3.2, those checks had to be implemented in the application but they can now be performed by the database itself.</p>
+<p>Executing a single command from the &#8220;mongo&#8221; shell adds the document checks:</p>
+<p><script src="https://gist.github.com/am-MongoDB/0d9c7cb0df7c7bcb3961a43c9d99e607.js"></script></p>
+<p>The above command adds multiple checks:</p>
+<ul>
+<li>The &#8220;program&#8221; field exists and contains a string</li>
+<li>There&#8217;s a sub-document called &#8220;metadata&#8221; containing at least 2 fields:</li>
+<li>&#8220;mongoLabel&#8221; which must be a string</li>
+<li>&#8220;timeAdded&#8221; which must be a date</li>
+</ul>
+<p>Test that the rules are correctly applied when attempting to write to the database:</p>
+<p><script src="https://gist.github.com/am-MongoDB/21d1ef80caf7a69e9d6962cca0667f55.js"></script></p>
+<h3>Cleaning Up (IMPORTANT!)</h3>
+<p>Remember that you will continue to be charged for the services even when you&#8217;re no longer actively using them. If you no longer need to use the services then clean up:</p>
+<ul>
+<li>From the MongoDB Atlas GUI, select your Cluster, click on the ellipses and select &#8220;Terminate&#8221;.</li>
+<li>From the AWS management console select the Kinesis service, then Kinesis Streams, and then delete your stream.</li>
+<li>From the AWS management console select the DynamoDB service, then tables, and then delete your table.</li>
+</ul>
+<h2>Using MongoDB Atlas with Other Frameworks and Services</h2>
+<p>We have detailed walkthroughs for using MongoDB Atlas with several programming languages and frameworks, as well as generic instructions that can be used with others. They can all be found in <a href="./../mongodb/using-mongodb-atlas-from-your-favorite-language-or-framework/index.html">Using MongoDB Atlas From Your Favorite Language or Framework</a>.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mongodb/mongodb_amazon_kinesis" data-via="wpbeginner" data-text="Processing Data Streams with Amazon Kinesis and MongoDB Atlas" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mongodb/mongodb_amazon_kinesis"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mongodb/mongodb_amazon_kinesis" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmongodb%2Fmongodb_amazon_kinesis&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mongodb/index.html" rel="category tag">MongoDB</a> | 
+Tags: <a href="./../tag/amazon/index.html" rel="tag">Amazon</a>, <a href="./../tag/amazon-kinesis/index.html" rel="tag">Amazon Kinesis</a>, <a href="./../tag/mongodb/index.html" rel="tag">mongodb</a>, <a href="./../tag/mongodb-atlas/index.html" rel="tag">MongoDB Atlas</a>, <a href="./../tag/mongodb-compass/index.html" rel="tag">MongoDB Compass</a>
+</div>
+
+			</div>			<div id="post-4267" class="post-4267 post type-post status-publish format-standard hentry category-mongodb tag-apache-kafka tag-docker tag-kubernetes tag-microservices tag-mongodb">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mongodb/building-microservices-with-mongodb-docker-kubernetes-kafka/index.html">November 4, 2016</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../mongodb/building-microservices-with-mongodb-docker-kubernetes-kafka/index.html#comments">2 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../mongodb/building-microservices-with-mongodb-docker-kubernetes-kafka/index.html" rel="bookmark">Building Microservices with MongoDB, Docker, Kubernetes &#038; Kafka</a></h2>
+				
+				<div class="entry">
+										<div id="attachment_4268" style="width: 310px" class="wp-caption alignright">
+<a href="./../wp-content/uploads/2016/11/Microservices_Docker_Kafka.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4268" src="./../wp-content/uploads/2016/11/Microservices_Docker_Kafka-300x162.png" alt="Building Microservices with Docker, Kubernetes, Kafka &amp; MongoDB" width="300" height="162" class="size-medium wp-image-4268" srcset="./../wp-content/uploads/2016/11/Microservices_Docker_Kafka-300x162.png 300w, ./../wp-content/uploads/2016/11/Microservices_Docker_Kafka-768x414.png 768w, ./../wp-content/uploads/2016/11/Microservices_Docker_Kafka-1024x552.png 1024w, ./../wp-content/uploads/2016/11/Microservices_Docker_Kafka.png 1914w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><p id="caption-attachment-4268" class="wp-caption-text">Building Microservices with Docker, Kubernetes, Kafka &#038; MongoDB</p>
+</div>
+<p>As part of <a href="https://www.mongodb.com/europe16">MongoDB Europe</a> on 15th November, I&#8217;ll be presenting on Microservices and some of the key technologies that enable them. Tickets are still available and the discount code <strong>andrewmorgan20</strong> saves you 20% – <a href="https://www.eventbrite.com/e/mongodb-europe-2016-registration-24345807967">register here</a>.</p>
+<h2>Session Abstract</h2>
+<p>Organisations are building their applications around microservice architectures because of the flexibility, speed of delivery, and maintainability they deliver.</p>
+<p>Want to try out MongoDB on your laptop? Execute a single command and you have a lightweight, self-contained sandbox; another command removes all trace when you&#8217;re done. Need an identical copy of your application stack in multiple environments? Build your own container image and then your entire development, test, operations, and support teams can launch an identical clone environment.</p>
+<p>Containers are revolutionising the entire software lifecycle: from the earliest technical experiments and proofs of concept through development, test, deployment, and support. Orchestration tools manage how multiple containers are created, upgraded and made highly available. Orchestration also controls how containers are connected to build sophisticated applications from multiple, microservice containers.</p>
+<p>This session introduces you to technologies such as Docker, Kubernetes &amp; Kafka which are driving the microservices revolution. Learn about containers and orchestration – and most importantly how to exploit them for stateful services such as MongoDB.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mongodb/building-microservices-with-mongodb-docker-kubernetes-kafka" data-via="wpbeginner" data-text="Building Microservices with MongoDB, Docker, Kubernetes &#038; Kafka" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mongodb/building-microservices-with-mongodb-docker-kubernetes-kafka"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mongodb/building-microservices-with-mongodb-docker-kubernetes-kafka" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmongodb%2Fbuilding-microservices-with-mongodb-docker-kubernetes-kafka&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mongodb/index.html" rel="category tag">MongoDB</a> | 
+Tags: <a href="./../tag/apache-kafka/index.html" rel="tag">Apache Kafka</a>, <a href="./../tag/docker/index.html" rel="tag">docker</a>, <a href="./../tag/kubernetes/index.html" rel="tag">Kubernetes</a>, <a href="./../tag/microservices/index.html" rel="tag">microservices</a>, <a href="./../tag/mongodb/index.html" rel="tag">mongodb</a>
+</div>
+
+			</div>			<div id="post-4263" class="post-4263 post type-post status-publish format-standard hentry category-mongodb tag-apache-kafka tag-containers tag-docker tag-kubernetes tag-microservices tag-mongodb">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mongodb/the-rise-of-microservices-containers-and-orchestration/index.html">September 28, 2016</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../mongodb/the-rise-of-microservices-containers-and-orchestration/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../mongodb/the-rise-of-microservices-containers-and-orchestration/index.html" rel="bookmark">The rise of microservices &#8211; containers and orchestration</a></h2>
+				
+				<div class="entry">
+										<p>Earlier this week, I presented on microservices at MongoDB&#8217;s Big Data event in Frankfurt. You can view the slides here.</p>
+<iframe loading="lazy" src="https://www.slideshare.net/slideshow/embed_code/66507221" width="480" height="398" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe><br>
+<h2>Abstract</h2>
+<p>Organisations are building their applications around microservice architectures because of the flexibility, speed of delivery, and maintainability they deliver. In this session, the concepts behind containers and orchestration will be explained and how to use them with MongoDB.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mongodb/the-rise-of-microservices-containers-and-orchestration" data-via="wpbeginner" data-text="The rise of microservices &#8211; containers and orchestration" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mongodb/the-rise-of-microservices-containers-and-orchestration"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mongodb/the-rise-of-microservices-containers-and-orchestration" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmongodb%2Fthe-rise-of-microservices-containers-and-orchestration&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mongodb/index.html" rel="category tag">MongoDB</a> | 
+Tags: <a href="./../tag/apache-kafka/index.html" rel="tag">Apache Kafka</a>, <a href="./../tag/containers/index.html" rel="tag">containers</a>, <a href="./../tag/docker/index.html" rel="tag">docker</a>, <a href="./../tag/kubernetes/index.html" rel="tag">Kubernetes</a>, <a href="./../tag/microservices/index.html" rel="tag">microservices</a>, <a href="./../tag/mongodb/index.html" rel="tag">mongodb</a>
+</div>
+
+			</div>			<div id="post-4259" class="post-4259 post type-post status-publish format-standard hentry category-mongodb tag-apache-kafka tag-kafka tag-mongodb tag-streaming tag-webinar">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mongodb/webinar-replay-data-streaming-with-apache-kafka-mongodb/index.html">September 20, 2016</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../mongodb/webinar-replay-data-streaming-with-apache-kafka-mongodb/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../mongodb/webinar-replay-data-streaming-with-apache-kafka-mongodb/index.html" rel="bookmark">Webinar Replay: Data Streaming with Apache Kafka &#038; MongoDB</a></h2>
+				
+				<div class="entry">
+										<p>I recently co-presented a webinar with David Tucker from Confluent.</p>
+<p>The replay is now available: <a href="https://www.mongodb.com/presentations/webinar-data-streaming-with-apache-kafka-and-mongodb" title="Data Streaming with Apache Kafka &amp; MongoDB">Data Streaming with Apache Kafka &amp; MongoDB</a>.</p>
+<h2>Abstract</h2>
+<p>A new generation of technologies is needed to consume and exploit today&#8217;s real time, fast moving data sources. Apache Kafka, originally developed at LinkedIn, has emerged as one of these key new technologies.</p>
+<p>This webinar explores the use-cases and architecture for Kafka, and how it integrates with MongoDB to build sophisticated data-driven applications that exploit new sources of data.</p>
+<p>Watch the webinar to learn:</p>
+<ul>
+<li>What MongoDB is and where it&#8217;s used</li>
+<li>What data streaming is and where it fits into modern data architectures</li>
+<li>How Kafka works, what it delivers, and where it&#8217;s used</li>
+<li>How to operationalize the Data Lake with MongoDB &amp; Kafka<br>
+How MongoDB integrates with Kafka – both as a producer and a consumer of event &#8211; data</li>
+</ul>
+<h2>Slides</h2>
+<p><iframe loading="lazy" src="//www.slideshare.net/slideshow/embed_code/key/rjSE2U2ziN7cHe" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe></p>
+<div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/mongodb/webinar-data-streaming-with-apache-kafka-mongodb" title="Webinar: Data Streaming with Apache Kafka &amp; MongoDB" target="_blank">Webinar: Data Streaming with Apache Kafka &amp; MongoDB</a> </strong> from <strong><a href="//www.slideshare.net/mongodb" target="_blank">MongoDB</a></strong> </div>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mongodb/webinar-replay-data-streaming-with-apache-kafka-mongodb" data-via="wpbeginner" data-text="Webinar Replay: Data Streaming with Apache Kafka &#038; MongoDB" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mongodb/webinar-replay-data-streaming-with-apache-kafka-mongodb"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mongodb/webinar-replay-data-streaming-with-apache-kafka-mongodb" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmongodb%2Fwebinar-replay-data-streaming-with-apache-kafka-mongodb&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mongodb/index.html" rel="category tag">MongoDB</a> | 
+Tags: <a href="./../tag/apache-kafka/index.html" rel="tag">Apache Kafka</a>, <a href="./../tag/kafka/index.html" rel="tag">Kafka</a>, <a href="./../tag/mongodb/index.html" rel="tag">mongodb</a>, <a href="./../tag/streaming/index.html" rel="tag">streaming</a>, <a href="./../tag/webinar/index.html" rel="tag">webinar</a>
+</div>
+
+			</div>			<div id="post-4248" class="post-4248 post type-post status-publish format-standard hentry category-mongodb tag-frameworks tag-mongodb tag-mongodb-atlas">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mongodb/using-mongodb-atlas-from-your-favorite-language-or-framework/index.html">September 16, 2016</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../mongodb/using-mongodb-atlas-from-your-favorite-language-or-framework/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../mongodb/using-mongodb-atlas-from-your-favorite-language-or-framework/index.html" rel="bookmark">Using MongoDB Atlas From Your Favorite Language or Framework</a></h2>
+				
+				<div class="entry">
+										<p>Developers love working with MongoDB. One reason is the flexible data model, another is that there&#8217;s an idiomatic driver for just about every programming language and someone&#8217;s probably already built a framework on top of MongoDB that takes care of a lot of the grunt work. With high availability and scaling built in, they can also be confident that MongoDB will continue to meet their needs as their business grows.</p>
+<p><a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> provides all of the features of MongoDB, without the operational heavy lifting required for any new application. MongoDB Atlas is available on demand through a pay-as-you-go model and billed on an hourly basis, letting you focus on what you do best.</p>
+<p>It’s easy to get started – use a simple GUI to select the instance size, region, and features you need (Figure 1).</p>
+<div id="attachment_4249" style="width: 970px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Create_MongoDB_Atlas_Cluster.gif"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4249" src="./../wp-content/uploads/2016/09/Create_MongoDB_Atlas_Cluster.gif" alt="Create MongoDB Atlas Cluster" width="960" height="540" class="size-full wp-image-4249"></a><p id="caption-attachment-4249" class="wp-caption-text">Figure 1: Create MongoDB Atlas Cluster</p>
+</div>
+<p>MongoDB Atlas provides:</p>
+<ul>
+<li>Security features to protect access to your data</li>
+<li>Built in replication for always-on availability, tolerating complete data center failure</li>
+<li>Backups and point in time recovery to protect against data corruption</li>
+<li>Fine-grained monitoring to let you know when to scale. Additional instances can be provisioned with the push of a button</li>
+<li>Automated patching and one-click upgrades for new major versions of the database, enabling you to take advantage of the latest and greatest MongoDB features</li>
+<li>A choice of cloud providers, regions, and billing options</li>
+</ul>
+<p>This post provides instructions on how to use MongoDB Atlas directly from your application or how to configure your favorite framework to use it. It goes on to provide links to some worked examples for specific frameworks.</p>
+<h1>Worked Examples for Specific Frameworks</h1>
+<p>Detailed walkthroughs are available for specific programming languages and frameworks:</p>
+<ul>
+<li>
+<a href="https://www.mongodb.com/blog/post/using-pencilblue-with-mongodb-atlas">Using PencilBlue with MongoDB Atlas</a> (JavaScript, Node.js)</li>
+<li>
+<a href="https://www.mongodb.com/blog/post/develop-and-deploy-a-nodejs-app-to-aws-elastic-beanstalk-and-mongodb-atlas">Develop &amp; Deploy a Node.js App to AWS Elastic Beanstalk &amp; MongoDB Atlas</a> (JavaScript, Node.js, Express, AWS Elastic Beanstalk)</li>
+<li>
+<a href="https://www.mongodb.com/blog/post/processing-data-streams-with-amazon-kinesis-and-mongodb-atlas">Processing Data Streams with Amazon Kinesis and MongoDB Atlas</a> (Amazon Kinesis, JavaScript, Node.js)</li>
+<li>
+<a href="https://www.mongodb.com/blog/post/mongodb-atlas-as-the-data-store-for-apostrophe">MongoDB Atlas as The Data Store for Apostrophe</a> (JavaScript, Node.js)</li>
+<li>
+<a href="https://www.mongodb.com/blog/post/configuring-keystonejs-to-use-mongodb-atlas">Configuring KeystoneJS to Use MongoDB Atlas</a> (JavaSript, Express, Node.js)</li>
+<li>
+<a href="https://www.mongodb.com/blog/post/getting-started-with-python-pymodm-and-mongodb-atlas">Getting Started with Python, PyMODM, and MongoDB Atlas</a> (Python, PyMODM)</li>
+<li>
+<a href="https://www.okgrow.com/posts/mongodb-atlas-setup">MongoDB Atlas with Meteor: A Step-By-Step Guide</a> <strong>External site</strong> (Meteor, JavaScript, Angular, React</li>
+</ul>
+<p>This list will be extended as new blog posts are produced. If your preferred language or framework isn&#8217;t listed above then read on as the following, generic instructions cover most other cases.</p>
+<h1>Preparing MongoDB Atlas For Your Application</h1>
+<p>Launch your MongoDB cluster using <a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> and then (optionally) create a user with read and write privileges for just the database that will be used for your application, as shown in Figure 2.</p>
+<div id="attachment_4250" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Create_Application_User_in_MongoDB_Atlas.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4250" src="./../wp-content/uploads/2016/09/Create_Application_User_in_MongoDB_Atlas-1024x979.png" alt="Creating an Application user in MongoDB Atlas" width="480" height="459" class="size-large wp-image-4250" srcset="./../wp-content/uploads/2016/09/Create_Application_User_in_MongoDB_Atlas-1024x979.png 1024w, ./../wp-content/uploads/2016/09/Create_Application_User_in_MongoDB_Atlas-300x287.png 300w, ./../wp-content/uploads/2016/09/Create_Application_User_in_MongoDB_Atlas-768x734.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4250" class="wp-caption-text">Figure 2: Creating an Application user in MongoDB Atlas</p>
+</div>
+<p>You must also add the IP address of your application server to the IP Whitelist in the MongoDB Atlas security tab (Figure 3). Note that if multiple application servers will be accessing MongoDB Atlas then an IP address range can be specified in CIDR format (IP Address/number of significant bits).</p>
+<div id="attachment_4252" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Add_IP_Address_Range_to_MongoDB_Atlas.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4252" src="./../wp-content/uploads/2016/09/Add_IP_Address_Range_to_MongoDB_Atlas-1024x510.png" alt="Add App Server IP Address(es) to MongoDB Atlas" width="480" height="239" class="size-large wp-image-4252" srcset="./../wp-content/uploads/2016/09/Add_IP_Address_Range_to_MongoDB_Atlas-1024x510.png 1024w, ./../wp-content/uploads/2016/09/Add_IP_Address_Range_to_MongoDB_Atlas-300x149.png 300w, ./../wp-content/uploads/2016/09/Add_IP_Address_Range_to_MongoDB_Atlas-768x382.png 768w, ./../wp-content/uploads/2016/09/Add_IP_Address_Range_to_MongoDB_Atlas.png 1760w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4252" class="wp-caption-text">Figure 3: Add App Server IP Address(es) to MongoDB Atlas</p>
+</div>
+<h1>Connecting Your Application (Framework) to MongoDB Atlas</h1>
+<p>The exact way that you specify how to connect to MongoDB Atlas will vary depending on your programming language and (optionally) the framework you&#8217;re using. However it&#8217;s pretty universal that you&#8217;ll need to provide a connection string/URI. The core of this URI can be retrieved by clicking on the <em>CONNECT</em> button for your cluster in the MongoDB Atlas GUI, selecting the <em>MongoDB Drivers</em> tab and then copying the string (Figure 4).</p>
+<div id="attachment_4253" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/MongoDB_Atlas_URI.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4253" src="./../wp-content/uploads/2016/09/MongoDB_Atlas_URI-1024x399.png" alt="Copy MongoDB Atlas Connection String/URI" width="480" height="187" class="size-large wp-image-4253" srcset="./../wp-content/uploads/2016/09/MongoDB_Atlas_URI-1024x399.png 1024w, ./../wp-content/uploads/2016/09/MongoDB_Atlas_URI-300x117.png 300w, ./../wp-content/uploads/2016/09/MongoDB_Atlas_URI-768x299.png 768w, ./../wp-content/uploads/2016/09/MongoDB_Atlas_URI.png 1380w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4253" class="wp-caption-text">Figure 4: Copy MongoDB Atlas Connection String/URI</p>
+</div>
+<p>Note that this URI contains the administrator username for your MongoDB Atlas group and will connect to the <em>admin</em> database – you&#8217;ll probably want to change that.</p>
+<p>Your final URI should look something like this:</p>
+<pre><code>mongodb://appuser:my_password@cluster0-shard-00-00-qfovx.mongodb.net:27017,cluster0-shard-00-01-qfovx.mongodb.net:27017,cluster0-shard-00-02-qfovx.mongodb.net:27017/appdatabase?ssl=true&amp;authSource=admin'
+</code></pre>
+<p>The URI contains these components:</p>
+<ul>
+<li>
+<strong>appuser</strong> is the name of the user you created in the MongoDB Atlas UI.</li>
+<li>
+<strong>my_password</strong> is the password you chose when creating the user in MongoDB Atlas.</li>
+<li>
+<strong>cluster0-shard-00-00-qfovx.mongodb.net</strong>, <strong>cluster0-shard-00-01-qfovx.mongodb.net</strong>, &amp; <strong>cluster0-shard-00-02-qfovx.mongodb.net</strong> are the hostnames of the instances in your MongoDB Atlas replica set (click on the &#8220;CONNECT&#8221; button in the MongoDB Atlas UI if you don&#8217;t have these).</li>
+<li>
+<strong>27017</strong> is the standard MongoDB port number.</li>
+<li>
+<strong>appdatabase</strong> is the name of the database (schema) that your application or framework will use. Note that for some frameworks, this should be omitted and the database name configured separately – check the default configuration file or documentation for your framework to see if it&#8217;s possible to provide the database name outside of the URI.</li>
+<li>To enforce security, MongoDB Atlas mandates that the <strong>ssl</strong> option is used.</li>
+<li>
+<strong>admin</strong> is the database that&#8217;s being used to store the credentials for <strong>appuser</strong>.</li>
+</ul>
+<h1>Check Your Application Data</h1>
+<p>At this point, you should add some test data through your application and then confirm that it&#8217;s being correctly stored in MongoDB Atlas.</p>
+<p><a href="https://www.mongodb.com/products/compass">MongoDB Compass</a> is the GUI for MongoDB, allowing you to visually explore your data and interact with your data with full CRUD functionality. The same credentials can be used to connect Compass to your MongoDB database (Figure 5).</p>
+<div id="attachment_4254" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-2.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4254" src="./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-2-1024x794.png" alt="Connect MongoDB Compass to MongoDB Atlas" width="480" height="372" class="size-large wp-image-4254" srcset="./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-2-1024x794.png 1024w, ./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-2-300x233.png 300w, ./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-2-768x595.png 768w, ./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-2.png 1798w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4254" class="wp-caption-text">Figure 5: Connect MongoDB Compass to MongoDB Atlas</p>
+</div>
+<p>Once connected, explore the data added to your collections (Figure 6).</p>
+<div id="attachment_4255" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Explore_MongoDB_Atlas_data_with_MongoDB_Compass-1.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4255" src="./../wp-content/uploads/2016/09/Explore_MongoDB_Atlas_data_with_MongoDB_Compass-1-1024x734.png" alt="Explore MongoDB Atlas Data Using MongoDB Compass" width="480" height="344" class="size-large wp-image-4255" srcset="./../wp-content/uploads/2016/09/Explore_MongoDB_Atlas_data_with_MongoDB_Compass-1-1024x734.png 1024w, ./../wp-content/uploads/2016/09/Explore_MongoDB_Atlas_data_with_MongoDB_Compass-1-300x215.png 300w, ./../wp-content/uploads/2016/09/Explore_MongoDB_Atlas_data_with_MongoDB_Compass-1-768x550.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4255" class="wp-caption-text">Figure 6: Explore MongoDB Atlas Data Using MongoDB Compass</p>
+</div>
+<p>It is also possible to add, delete, and modify documents (Figure 7).</p>
+<div id="attachment_4256" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Modify_MongoDB_Atlas_document_in_MongoDB_Compass-1.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4256" src="./../wp-content/uploads/2016/09/Modify_MongoDB_Atlas_document_in_MongoDB_Compass-1-1024x340.png" alt="Modify a Document in MongoDB Compass" width="480" height="159" class="size-large wp-image-4256" srcset="./../wp-content/uploads/2016/09/Modify_MongoDB_Atlas_document_in_MongoDB_Compass-1-1024x340.png 1024w, ./../wp-content/uploads/2016/09/Modify_MongoDB_Atlas_document_in_MongoDB_Compass-1-300x100.png 300w, ./../wp-content/uploads/2016/09/Modify_MongoDB_Atlas_document_in_MongoDB_Compass-1-768x255.png 768w, ./../wp-content/uploads/2016/09/Modify_MongoDB_Atlas_document_in_MongoDB_Compass-1.png 2002w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4256" class="wp-caption-text">Figure 7: Modify a Document in MongoDB Compass</p>
+</div>
+<p>You can verify that the document has really been updated from the MongoDB shell:</p>
+<pre><code class="js">Cluster0-shard-0:PRIMARY&gt; use appdatabase
+Cluster0-shard-0:PRIMARY&gt; db.simples.find({
+    first_name: "Stephanie", 
+    last_name: "Green"}).pretty()
+{
+    "_id" : ObjectId("57a206be0e8ecb0d5b5549f9"),
+    "first_name" : "Stephanie",
+    "last_name" : "Green",
+    "email" : "sgreen1b@tiny.cc",
+    "gender" : "Female",
+    "ip_address" : "129.173.45.61",
+    "children" : [
+        {
+            "first_name" : "Eugene",
+            "birthday" : "8/25/1985"
+        },
+        {
+            "first_name" : "Nicole",
+            "birthday" : "12/29/1963",
+            "favoriteColor" : "Yellow"
+        }
+    ]
+}
+</code></pre>
+<h1>Migrating Your Data to MongoDB Atlas</h1>
+<p>This post has assumed that you&#8217;re building a new application but what if you already have one, with data stored in a MongoDB cluster that you&#8217;re managing yourself? Fortunately, the process to migrate your data to MongoDB Atlas (and back out again if desired) is straightforward and is described in <a href="https://www.mongodb.com/blog/post/migrating-data-to-mongodb-atlas">Migrating Data to MongoDB Atlas</a>.</p>
+<p>We offer a <a href="https://www.mongodb.com/products/consulting#mongodb_atlas_migration">MongoDB Atlas Migration service</a> to help you properly configure MongoDB Atlas and develop a migration plan. This is especially helpful if you need to minimize downtime for your application, if you have a complex sharded deployment, or if you want to revise your deployment architecture as part of the migration. <a href="https://www.mongodb.com/contact/consulting/mongodb-atlas-migration">Contact us</a> to learn more about the MongoDB Atlas Migration service.</p>
+<h1>Next Steps</h1>
+<p>While MongoDB Atlas radically simplifies the operation of MongoDB there are still some decisions to take to ensure the best performance and reliability for your application. The <a href="https://www.mongodb.com/collateral/mongodb-atlas-best-practices">MongoDB Atlas Best Practices white paper</a> provides guidance on best practices for deploying, managing, and optimizing the performance of your database with MongoDB Atlas.</p>
+<p>The guide outlines considerations for achieving performance at scale with MongoDB Atlas across a number of key dimensions, including instance size selection, application patterns, schema design and indexing, and disk I/O. While this guide is broad in scope, it is not exhaustive. Following the recommendations in the guide will provide a solid foundation for ensuring optimal application performance.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mongodb/using-mongodb-atlas-from-your-favorite-language-or-framework" data-via="wpbeginner" data-text="Using MongoDB Atlas From Your Favorite Language or Framework" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mongodb/using-mongodb-atlas-from-your-favorite-language-or-framework"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mongodb/using-mongodb-atlas-from-your-favorite-language-or-framework" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmongodb%2Fusing-mongodb-atlas-from-your-favorite-language-or-framework&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mongodb/index.html" rel="category tag">MongoDB</a> | 
+Tags: <a href="./../tag/frameworks/index.html" rel="tag">Frameworks</a>, <a href="./../tag/mongodb/index.html" rel="tag">mongodb</a>, <a href="./../tag/mongodb-atlas/index.html" rel="tag">MongoDB Atlas</a>
+</div>
+
+			</div>			<div id="post-4239" class="post-4239 post type-post status-publish format-standard hentry category-mongodb tag-cms tag-javascript tag-keystonejs tag-mongodb tag-mongodb-atlas tag-node-js">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mongodb/configuring-keystonejs-to-use-mongodb-atlas/index.html">September 16, 2016</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../mongodb/configuring-keystonejs-to-use-mongodb-atlas/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../mongodb/configuring-keystonejs-to-use-mongodb-atlas/index.html" rel="bookmark">Configuring KeystoneJS to Use MongoDB Atlas</a></h2>
+				
+				<div class="entry">
+										<p>KeystoneJS is an open source framework for building web applications and Content Management Systems. It&#8217;s built on top of MongoDB, Express, and Node.js &#8211; key components of the ubiquitous MEAN stack.</p>
+<p>This post explains why MongoDB Atlas is an ideal choice for KeystoneJS and then goes on to show how to configure KeystoneJS to use it.</p>
+<h1>Why are KeystoneJS and MongoDB Atlas a Good Match</h1>
+<p>The MEAN stack is extremely popular and well supported and it&#8217;s the go to platform when developing modern applications. For its part, MongoDB brings flexible schemas, rich queries, an idiomatic Node.js driver, and simple to use high availability and scaling.</p>
+<p><a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> provides all of the features of MongoDB, without the operational heavy lifting required for any new application. MongoDB Atlas is available on demand through a pay-as-you-go model and billed on an hourly basis, letting you focus on what you do best.</p>
+<p>It’s easy to get started – use a simple GUI to select the instance size, region, and features you need. MongoDB Atlas provides:</p>
+<ul>
+<li>Security features to protect access to your data</li>
+<li>Built in replication for always-on availability, tolerating complete data center failure</li>
+<li>Backups and point in time recovery to protect against data corruption</li>
+<li>Fine-grained monitoring to let you know when to scale. Additional instances can be provisioned with the push of a button</li>
+<li>Automated patching and one-click upgrades for new major versions of the database, enabling you to take advantage of the latest and greatest MongoDB features</li>
+<li>A choice of cloud providers, regions, and billing options</li>
+</ul>
+<p>Like KeystoneJS, MongoDB Atlas is a natural fit for users looking to simplify their development and operations work, letting them focus on what makes their application unique rather than commodity (albeit essential) plumbing.</p>
+<h1>Installing KeystoneJS and Configuring it to Use MongoDB Atlas</h1>
+<p>Before starting with KeystoneJS, you should launch your MongoDB cluster using <a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> and then (optionally) create a user with read and write privileges for just the database that will be used for this project, as shown in Figure 1. You must also add the IP address of your application server to the IP Whitelist in the MongoDB Atlas security tab.</p>
+<div id="attachment_4240" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Add_KeystoneJS_user.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4240" src="./../wp-content/uploads/2016/09/Add_KeystoneJS_user-1024x891.png" alt="Creating KeystoneJS user in MongoDB Atlas" width="480" height="418" class="size-large wp-image-4240" srcset="./../wp-content/uploads/2016/09/Add_KeystoneJS_user-1024x891.png 1024w, ./../wp-content/uploads/2016/09/Add_KeystoneJS_user-300x261.png 300w, ./../wp-content/uploads/2016/09/Add_KeystoneJS_user-768x668.png 768w, ./../wp-content/uploads/2016/09/Add_KeystoneJS_user.png 2010w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4240" class="wp-caption-text">Figure 1: Creating KeystoneJS user in MongoDB Atlas</p>
+</div>
+<p>If it isn&#8217;t already installed on your system, download and install Node.js:</p>
+<p><script src="https://gist.github.com/am-MongoDB/3bbb946bb35fd8054e95adf92b96f103.js"></script><br>
+You should then add the <code>bin</code> sub-folder to your <code>.bash_profile</code> file and then install KeystoneJS:</p>
+<p><script src="https://gist.github.com/am-MongoDB/ada983d4879a3439751da83044644790.js"></script></p>
+<p>Before starting KeystoneJS you need to configure it with details on how to connect to your specific MongoDB Atlas cluster. This is done by updating the <code>MONGO_URI</code> value within the <code>.env</code> file:</p>
+<p><script src="https://gist.github.com/am-MongoDB/2b40abeec5e34a9443a26012507417d6.js"></script></p>
+<p>The URI contains these components:</p>
+<ul>
+<li>
+<code>keystonejs_user</code> is the name of the user you created in the MongoDB Atlas UI</li>
+<li>
+<code>my_password</code> is the password you chose when creating the user in MongoDB Atlas</li>
+<li>
+<code>cluster0-shard-00-00-qfovx.mongodb.net</code>, <code>cluster0-shard-00-01-qfovx.mongodb.net</code>, &amp; <code>cluster0-shard-00-02-qfovx.mongodb.net</code> are the hostnames of the instances in your MongoDB Atlas replica set (click on the &#8220;CONNECT&#8221; button in the MongoDB Atlas UI if you don&#8217;t have these)</li>
+<li>
+<code>27017</code> is the standard MongoDB port number</li>
+<li>
+<code>clusterdb</code> is the name of the database (schema) that KeystoneJS will use (note that this must match the project name used when installing KeystoneJS as well as the database you granted the user access to)</li>
+<li>To enforce security, MongoDB Atlas mandates that the <code>ssl</code> option is used</li>
+<li>
+<code>admin</code> is the database that&#8217;s being used to store the credentials for <code>keystonejs_user</code>
+</li>
+</ul>
+<p>Clients connect to KeystoneJS through port 3000 and so you must open that port in your firewall.</p>
+<p>You can then start KeystoneJS:</p>
+<pre><code>$ node keystone
+</code></pre>
+<p><script src="https://gist.github.com/am-MongoDB/7e0305ec2a8acf6a9891a44da048987a.js"></script></p>
+<h1>Testing the Configuration</h1>
+<p>Browse to the application at <code>http://address-of-app-server:3000</code> as shown in Figure 2.</p>
+<div id="attachment_4241" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/KeystoneJS.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4241" src="./../wp-content/uploads/2016/09/KeystoneJS-1024x648.png" alt="KeystoneJS Running on MongoDB Atlas" width="480" height="304" class="size-large wp-image-4241" srcset="./../wp-content/uploads/2016/09/KeystoneJS-1024x648.png 1024w, ./../wp-content/uploads/2016/09/KeystoneJS-300x190.png 300w, ./../wp-content/uploads/2016/09/KeystoneJS-768x486.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4241" class="wp-caption-text">Figure 2: KeystoneJS Running on MongoDB Atlas</p>
+</div>
+<p>Sign in using the credentials shown and then confirm that you can upload some images to a gallery and create a new page as shown in Figure 3.</p>
+<div id="attachment_4242" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/create_KeystoneJS_post_on_MongoDB_Atlas.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4242" src="./../wp-content/uploads/2016/09/create_KeystoneJS_post_on_MongoDB_Atlas-1024x943.png" alt="Create a Page in KeystoneJS with Data Stored in MongoDB Atlas" width="480" height="442" class="size-large wp-image-4242" srcset="./../wp-content/uploads/2016/09/create_KeystoneJS_post_on_MongoDB_Atlas-1024x943.png 1024w, ./../wp-content/uploads/2016/09/create_KeystoneJS_post_on_MongoDB_Atlas-300x276.png 300w, ./../wp-content/uploads/2016/09/create_KeystoneJS_post_on_MongoDB_Atlas-768x707.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4242" class="wp-caption-text">Figure 3: Create a Page in KeystoneJS with Data Stored in MongoDB Atlas</p>
+</div>
+<p>After saving the page, confirm that you can browse to the newly created post (Figure 4).</p>
+<div id="attachment_4243" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/view_KeystoneJS_post_on_MongoDB_Atlas.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4243" src="./../wp-content/uploads/2016/09/view_KeystoneJS_post_on_MongoDB_Atlas-1024x905.png" alt="View KeystoneJS Post with Data Read from MongoDB Atlas" width="480" height="424" class="size-large wp-image-4243" srcset="./../wp-content/uploads/2016/09/view_KeystoneJS_post_on_MongoDB_Atlas-1024x905.png 1024w, ./../wp-content/uploads/2016/09/view_KeystoneJS_post_on_MongoDB_Atlas-300x265.png 300w, ./../wp-content/uploads/2016/09/view_KeystoneJS_post_on_MongoDB_Atlas-768x679.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4243" class="wp-caption-text">Figure 4: View KeystoneJS Post with Data Read from MongoDB Atlas</p>
+</div>
+<p>Optionally, confirm that, MongoDB Atlas really is being used by KeystoneJS, you can connect using the MongoDB shell:</p>
+<p><script src="https://gist.github.com/am-MongoDB/ec422d08c7a5560f776b5638f06185d6.js"></script></p>
+<p>To visually navigate through the schema and data created by KeystoneJS, <a href="https://www.mongodb.com/download-center?jmp=nav#compass">download and install MongoDB Compass</a>. The same credentials can be used to connect Compass to your MongoDB database – Figure 5.</p>
+<div id="attachment_4244" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-1.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4244" src="./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-1-1024x794.png" alt="Connect MongoDB Compass to MongoDB Atlas Database" width="480" height="372" class="size-large wp-image-4244" srcset="./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-1-1024x794.png 1024w, ./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-1-300x233.png 300w, ./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-1-768x595.png 768w, ./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-1.png 1798w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4244" class="wp-caption-text">Figure 5: Connect MongoDB Compass to MongoDB Atlas Database</p>
+</div>
+<p>Navigate through the structure of the data in the <code>clusterdb</code> database (Figure 6) and view the JSON documents (Figure 7).</p>
+<div id="attachment_4245" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Compass_KeystoneJS_Schema.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4245" src="./../wp-content/uploads/2016/09/Compass_KeystoneJS_Schema-1024x712.png" alt="Explore KeystoneJS Schema Using MongoDB Compass" width="480" height="334" class="size-large wp-image-4245" srcset="./../wp-content/uploads/2016/09/Compass_KeystoneJS_Schema-1024x712.png 1024w, ./../wp-content/uploads/2016/09/Compass_KeystoneJS_Schema-300x209.png 300w, ./../wp-content/uploads/2016/09/Compass_KeystoneJS_Schema-768x534.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4245" class="wp-caption-text">Figure 6: Explore KeystoneJS Schema Using MongoDB Compass</p>
+</div>
+<div id="attachment_4246" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Compass_KeystoneJS_Data.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4246" src="./../wp-content/uploads/2016/09/Compass_KeystoneJS_Data-1024x435.png" alt="View Documents Stored by KeystoneJS Using MongoDB Atlas" width="480" height="204" class="size-large wp-image-4246" srcset="./../wp-content/uploads/2016/09/Compass_KeystoneJS_Data-1024x435.png 1024w, ./../wp-content/uploads/2016/09/Compass_KeystoneJS_Data-300x128.png 300w, ./../wp-content/uploads/2016/09/Compass_KeystoneJS_Data-768x327.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4246" class="wp-caption-text">Figure 7: View Documents Stored by KeystoneJS Using MongoDB Atlas</p>
+</div>
+<h1>Next Steps</h1>
+<p>While MongoDB Atlas radically simplifies the operation of MongoDB there are still some decisions to take to ensure the best performance and reliability for your application. The <a href="https://www.mongodb.com/collateral/mongodb-atlas-best-practices">MongoDB Atlas Best Practices white paper</a> provides guidance on best practices for deploying, managing, and optimizing the performance of your database with MongoDB Atlas.</p>
+<p>The guide outlines considerations for achieving performance at scale with MongoDB Atlas across a number of key dimensions, including instance size selection, application patterns, schema design and indexing, and disk I/O. While this guide is broad in scope, it is not exhaustive. Following the recommendations in the guide will provide a solid foundation for ensuring optimal application performance.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mongodb/configuring-keystonejs-to-use-mongodb-atlas" data-via="wpbeginner" data-text="Configuring KeystoneJS to Use MongoDB Atlas" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mongodb/configuring-keystonejs-to-use-mongodb-atlas"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mongodb/configuring-keystonejs-to-use-mongodb-atlas" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmongodb%2Fconfiguring-keystonejs-to-use-mongodb-atlas&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mongodb/index.html" rel="category tag">MongoDB</a> | 
+Tags: <a href="./../tag/cms/index.html" rel="tag">CMS</a>, <a href="./../tag/javascript/index.html" rel="tag">javascript</a>, <a href="./../tag/keystonejs/index.html" rel="tag">KeystoneJS</a>, <a href="./../tag/mongodb/index.html" rel="tag">mongodb</a>, <a href="./../tag/mongodb-atlas/index.html" rel="tag">MongoDB Atlas</a>, <a href="./../tag/node-js/index.html" rel="tag">node.js</a>
+</div>
+
+			</div>			<div id="post-4235" class="post-4235 post type-post status-publish format-standard hentry category-mongodb tag-dbaas tag-migration tag-mongodb tag-mongodb-atlas">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mongodb/migrating-data-to-mongodb-atlas/index.html">September 16, 2016</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../mongodb/migrating-data-to-mongodb-atlas/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../mongodb/migrating-data-to-mongodb-atlas/index.html" rel="bookmark">Migrating Data to MongoDB Atlas</a></h2>
+				
+				<div class="entry">
+										<p><a href="https://www.mongodb.com/atlas">MongoDB Atlas</a> was announced at this year&#8217;s MongoDB World. It&#8217;s great not just for new applications, but also your existing MongoDB databases running on other platforms. This post will focus on how you migrate your data and applications over to MongoDB Atlas.</p>
+<h1>What is MongoDB Atlas?</h1>
+<p>MongoDB Atlas provides all of the features of MongoDB, without the operational heavy lifting required for any new application. MongoDB Atlas is available on demand through a pay-as-you-go model and billed on an hourly basis, letting you focus on what you do best.</p>
+<p>It’s easy to get started – use a simple GUI to select the instance size, region, and features you need. MongoDB Atlas provides:</p>
+<ul>
+<li>Security features to protect access to your data</li>
+<li>Built in replication for always-on availability, tolerating complete data center failure</li>
+<li>Backups and point in time recovery to protect against data corruption</li>
+<li>Fine-grained monitoring to let you know when to scale. Additional instances can be provisioned with the push of a button</li>
+<li>Automated patching and one-click upgrades for new major versions of the database, enabling you to take advantage of the latest and greatest MongoDB features</li>
+<li>A choice of cloud providers, regions, and billing options</li>
+</ul>
+<p>But what if you already have application data held in your own on-prem or cloud-based MongoDB database – is it possible to safely migrate that data to MongoDB Atlas? What if your data is held in a 3rd party hosted MongoDB service such as Compose or mLab? Conversely, is it possible to build your application against MongoDB Atlas and then move the data to a MongoDB database running on another platform in the future?</p>
+<p>The answer to all of those questions is &#8220;yes&#8221;. In the future you should expect this to be a highly automated process but right now it involves some manual steps – the purpose of this blog post is to describe the process.</p>
+<h1>Moving Your Application Data to MongoDB Atlas</h1>
+<p>The procedure is very straightforward, but if you can&#8217;t tolerate losing any of your updates then it does involve stopping application writes for a period. That means it&#8217;s vital that you prepare in advance in order to minimize the impact.</p>
+<h2>Pre-Migration Checklist</h2>
+<ul>
+<li>How long will writes need to be stopped? Perform a dry-run of the <code>mongodump</code> &amp; <code>mongorestore</code> steps but without stopping application writes to answer this.</li>
+<li>When will the stopping of writes have the smallest impact?</li>
+<li>What can you change in the application to minimize the impact, e.g. provide a read-only version of the service when it isn&#8217;t possible to write to the database?</li>
+<li>Will you warn users of planned maintenance ahead of time?</li>
+<li>Do you have sufficient storage space to store the dumped data on the machine where you plan to run <code>mongodump</code>?</li>
+<li>Once the data has been migrated to MongoDB Atlas, the application will need to switch its database connections to the new address; identify how this will be done.</li>
+<li>List the IP Addresses of all the machines that will need to connect to MongoDB Atlas – this includes your application nodes as well as the machine where <code>mongorestore</code> will be run. These will need to be added to your MongoDB Atlas group&#8217;s whitelist.</li>
+<li>Decide on what MongoDB Atlas instance size to use and, if necessary how many shards will be needed.</li>
+<li>Decide on which region to use, e.g. co locating the MongoDB Atlas instances with your cloud-based application servers.</li>
+</ul>
+<h2>Execute the Migration</h2>
+<ul>
+<li>Create the <a href="https://www.mongodb.com/cloud">MongoDB Atlas cluster</a>.</li>
+<li>Add the required IP Addresses to the whitelist in your group&#8217;s security tab.</li>
+<li>Stop database writes to your existing database; either in your application logic or by blocking them for each of your databases (schemas) in the original MongoDB deployment:</li>
+</ul>
+<pre><code>laptop&gt; mongo --host=ec2-52-208-185-213.eu-west-1.compute.amazonaws.com \
+    --eval "db.fsyncLock()"
+</code></pre>
+<ul>
+<li>Back up the data from the existing database (writes the data to a directory named <code>dump</code>):</li>
+</ul>
+<pre><code>laptop&gt; mongodump --host=ec2-52-208-185-213.eu-west-1.compute.amazonaws.com \
+    --port=27017
+</code></pre>
+<ul>
+<li>Write the data to MongoDB Atlas (using the connection information provided in the Web UI):</li>
+</ul>
+<pre><code>mongorestore --ssl --host cluster0-shard-00-00-qfovx.mongodb.net \
+    --port 27017 -u billy -p XXX dump
+</code></pre>
+<ul>
+<li>Switch the application&#8217;s database connections over to your MongoDB Atlas instance.</li>
+</ul>
+<p>Want more help?  We offer a <a href="https://www.mongodb.com/products/consulting#mongodb_atlas_migration">MongoDB Atlas Migration service</a> to help you properly configure MongoDB Atlas and develop a migration plan. This is especially helpful if you need to minimize downtime for your application, if you have a complex sharded deployment, or if you want to revise your deployment architecture as part of the migration. <a href="https://www.mongodb.com/contact/consulting/mongodb-atlas-migration">Contact us</a> to learn more about the MongoDB Atlas Migration service.</p>
+<h1>Moving Your Application Data Out of MongoDB Atlas</h1>
+<p>To migrate data out, you can download a MongoDB Atlas backup and then copy the contents to the receiving MongoDB cluster; the <a href="https://docs.cloudmanager.mongodb.com/tutorial/restore-replica-set/#restore-the-primary">documentation describes how to load the data into the receiving replica set</a>. The backup can be either a periodic snapshot or a point-in-time view of the MongoDB Atlas database. If you can&#8217;t tolerate lost writes, they must be stopped by the application (<code>fsyncLock</code> is not available in MongoDB Atlas).</p>
+<h1>Getting the Best Out of MongoDB Atlas</h1>
+<p>While MongoDB Atlas radically simplifies the operation of MongoDB there are still some decisions to take to ensure the best performance and reliability for your application. The <a href="https://www.mongodb.com/collateral/mongodb-atlas-best-practices">MongoDB Atlas Best Practices white paper</a> provides guidance on best practices for deploying, managing, and optimizing the performance of your database with MongoDB Atlas.</p>
+<p>The guide outlines considerations for achieving performance at scale with MongoDB Atlas across a number of key dimensions, including instance size selection, application patterns, schema design and indexing, and disk I/O. While this guide is broad in scope, it is not exhaustive. Following the recommendations in the guide will provide a solid foundation for ensuring optimal application performance.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mongodb/migrating-data-to-mongodb-atlas" data-via="wpbeginner" data-text="Migrating Data to MongoDB Atlas" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mongodb/migrating-data-to-mongodb-atlas"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mongodb/migrating-data-to-mongodb-atlas" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmongodb%2Fmigrating-data-to-mongodb-atlas&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mongodb/index.html" rel="category tag">MongoDB</a> | 
+Tags: <a href="./../tag/dbaas/index.html" rel="tag">DBaaS</a>, <a href="./../tag/migration/index.html" rel="tag">Migration</a>, <a href="./../tag/mongodb/index.html" rel="tag">mongodb</a>, <a href="./../tag/mongodb-atlas/index.html" rel="tag">MongoDB Atlas</a>
+</div>
+
+			</div>			<div id="post-4230" class="post-4230 post type-post status-publish format-standard hentry category-mongodb tag-apache-kafka tag-data-streaming tag-kafka tag-mongodb">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mongodb/mongodb-data-streaming-implementing-a-mongodb-kafka-consumer/index.html">September 16, 2016</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../mongodb/mongodb-data-streaming-implementing-a-mongodb-kafka-consumer/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../mongodb/mongodb-data-streaming-implementing-a-mongodb-kafka-consumer/index.html" rel="bookmark">MongoDB &#038; Data Streaming – Implementing a MongoDB Kafka Consumer</a></h2>
+				
+				<div class="entry">
+										<h1>Data Streaming</h1>
+<p>In today&#8217;s data landscape, no single system can provide all of the required perspectives to deliver real insight. Deriving the full meaning from data requires mixing huge volumes of information from many sources.</p>
+<p>At the same time, we&#8217;re impatient to get answers instantly; if the time to insight exceeds 10s of milliseconds then the value is lost – applications such as high frequency trading, fraud detection, and recommendation engines can&#8217;t afford to wait. This often means analyzing the inflow of data before it even makes it to the database of record. Add in zero tolerance for data loss and the challenge gets even more daunting.</p>
+<p>Kafka and data streams are focused on ingesting the massive flow of data from multiple fire-hoses and then routing it to the systems that need it – filtering, aggregating, and analyzing en-route.</p>
+<p>This blog introduces Apache Kafka and then illustrates how to use MongoDB as a source (producer) and destination (consumer) for the streamed data. A more complete study of this topic can be found in the <a href="https://www.mongodb.com/collateral/data-streaming-with-apache-kafka-and-mongodb" title="Data Streaming with Kafka &amp; MongoDB">Data Streaming with Kafka &amp; MongoDB</a> white paper.</p>
+<h1>Apache Kafka</h1>
+<p>Kafka provides a flexible, scalable, and reliable method to communicate streams of event data from one or more <strong>producers</strong> to one or more <strong>consumers</strong>. Examples of <strong>events</strong> include:</p>
+<ul>
+<li>A periodic sensor reading such as the current temperature</li>
+<li>A user adding an item to the shopping cart in an online store</li>
+<li>A Tweet being sent with a specific hashtag</li>
+</ul>
+<p>Streams of Kafka events are organized into <strong>topics</strong>. A producer chooses a topic to send a given event to, and consumers select which topics they pull events from. For example, a financial application could pull NYSE stock trades from one topic, and company financial announcements from another in order to look for trading opportunities.</p>
+<p>In Kafka, topics are further divided into <strong>partitions</strong> to support scale out. Each Kafka node (<strong>broker</strong>) is responsible for receiving, storing, and passing on all of the events from one or more partitions for a given topic. In this way, the processing and storage for a topic can be linearly scaled across many brokers. Similarly, an application may scale out by using many consumers for a given topic, with each pulling events from a discrete set of partitions.</p>
+<div id="attachment_4231" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Kafka_topic.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4231" src="./../wp-content/uploads/2016/09/Kafka_topic-1024x720.png" alt="Kafka Producers, Consumers, Topics, and Partitions" width="480" height="338" class="size-large wp-image-4231" srcset="./../wp-content/uploads/2016/09/Kafka_topic-1024x720.png 1024w, ./../wp-content/uploads/2016/09/Kafka_topic-300x211.png 300w, ./../wp-content/uploads/2016/09/Kafka_topic-768x540.png 768w, ./../wp-content/uploads/2016/09/Kafka_topic.png 1464w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4231" class="wp-caption-text">Figure 1: Kafka Producers, Consumers, Topics, and Partitions</p>
+</div>
+<h1>MongoDB As A Kafka Consumer – A Java Example</h1>
+<p>In order to use MongoDB as a Kafka consumer, the received events must be converted into BSON documents before they are stored in the database. In this example, the events are strings representing JSON documents. The strings are converted to Java objects so that they are easy for Java developers to work with; those objects are then transformed into BSON documents.</p>
+<p>Complete source code, Maven configuration, and test data can be found further down, but here are some of the highlights; starting with the main loop for receiving and processing event messages from the Kafka topic:</p>
+<p><script src="https://gist.github.com/am-MongoDB/c802bcd43fec731d219ee8ace58dd880.js"></script></p>
+<p>The <code>Fish</code> class includes helper methods to hide how the objects are converted into BSON documents:</p>
+<p><script src="https://gist.github.com/am-MongoDB/432ffc15d4f95209da70123c9d752826.js"></script></p>
+<p>In a real application more would be done with the received messages – they could be combined with reference data read from MongoDB, acted on and then passed along the pipeline by publishing to additional topics. In this example, the final step is to confirm from the <code>mongo</code> shell that the data has been added to the database:</p>
+<p><script src="https://gist.github.com/2fd1f4a7ecaf5dd6a426fc8b53e9b4c0.js"></script></p>
+<h2>Full Java Code for MongoDB Kafka Consumer</h2>
+<h3>Business Object – <code>Fish.java</code>
+</h3>
+<p><script src="https://gist.github.com/217f007071922dc2d7d37eed9fe7a789.js"></script></p>
+<h3>Kafka Consumer for MongoDB – <code>MongoDBSimpleConsumer.java</code>
+</h3>
+<p>Note that this example consumer is written using the Kafka <em>Simple Consumer API</em> – there is also a Kafka <em>High Level Consumer API</em> which hides much of the complexity – including managing the offsets. The Simple API provides more control to the application but at the cost of writing extra code.<br>
+<script src="https://gist.github.com/77eb68a6af50f93453a7c316dbe1c6b5.js"></script></p>
+<h3>Maven Dependencies – <code>pom.xml</code>
+</h3>
+<p><script src="https://gist.github.com/03f9bfbbedfe4fa015854c9a39ba4bbc.js"></script></p>
+<h3>Test Data – <code>Fish.json</code>
+</h3>
+<p>A sample of the test data injected into Kafka is shown below:</p>
+<p><script src="https://gist.github.com/5e74c8913119107936f9a5594b7dd149.js"></script></p>
+<p>For simple testing, this data can be injected into the <code>clusterdb-topic1</code> topic using the <code>kafka-console-producer.sh</code> command.</p>
+<h1>Next Steps</h1>
+<p>To learn much more about data streaming and how MongoDB fits in (including Apache Kafka and competing and complementary technologies) read the <a href="https://www.mongodb.com/collateral/data-streaming-with-apache-kafka-and-mongodb" title="Data Streaming with Kafka &amp; MongoDB">Data Streaming with Kafka &amp; MongoDB</a> white paper and watch the <a href="https://www.mongodb.com/presentations/webinar-data-streaming-with-apache-kafka-and-mongodb">webinar replay</a>.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mongodb/mongodb-data-streaming-implementing-a-mongodb-kafka-consumer" data-via="wpbeginner" data-text="MongoDB &#038; Data Streaming – Implementing a MongoDB Kafka Consumer" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mongodb/mongodb-data-streaming-implementing-a-mongodb-kafka-consumer"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mongodb/mongodb-data-streaming-implementing-a-mongodb-kafka-consumer" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmongodb%2Fmongodb-data-streaming-implementing-a-mongodb-kafka-consumer&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mongodb/index.html" rel="category tag">MongoDB</a> | 
+Tags: <a href="./../tag/apache-kafka/index.html" rel="tag">Apache Kafka</a>, <a href="./../tag/data-streaming/index.html" rel="tag">data streaming</a>, <a href="./../tag/kafka/index.html" rel="tag">Kafka</a>, <a href="./../tag/mongodb/index.html" rel="tag">mongodb</a>
+</div>
+
+			</div>			<div id="post-4215" class="post-4215 post type-post status-publish format-standard hentry category-mongodb tag-javascript tag-mongodb tag-mongodb-atlas tag-mongodb-compass tag-node-js tag-pencilblue">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mongodb/using-pencilblue-with-mongodb-atlas/index.html">September 15, 2016</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../mongodb/using-pencilblue-with-mongodb-atlas/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../mongodb/using-pencilblue-with-mongodb-atlas/index.html" rel="bookmark">Using PencilBlue with MongoDB Atlas</a></h2>
+				
+				<div class="entry">
+										<p>PencilBlue is a Node.js based, open source blogging and Content Management System, targeted at enterprise grade websites.</p>
+<p>This post explains why MongoDB Atlas is an ideal choice for PencilBlue and then goes on to show how to configure PencilBlue to use it.</p>
+<h1>Why MongoDB Atlas is the Ideal Database for PencilBlue</h1>
+<p>MongoDB delivers flexible schemas, rich queries, an idiomatic Node.js driver, and simple to use high availability and scaling. This makes it the go-to database for anyone looking to build applications on Node.js.</p>
+<p><a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> provides all of the features of MongoDB, without the operational heavy lifting required for any new application. MongoDB Atlas is available on demand through a pay-as-you-go model and billed on an hourly basis, letting you focus on what you do best.</p>
+<p>It’s easy to get started – use a simple GUI to select the instance size, region, and features you need. MongoDB Atlas provides:</p>
+<ul>
+<li>Security features to protect access to your data</li>
+<li>Built in replication for always-on availability, tolerating complete data center failure</li>
+<li>Backups and point in time recovery to protect against data corruption</li>
+<li>Fine-grained monitoring to let you know when to scale. Additional instances can be provisioned with the push of a button</li>
+<li>Automated patching and one-click upgrades for new major versions of the database, enabling you to take advantage of the latest and greatest MongoDB features</li>
+<li>A choice of cloud providers, regions, and billing options</li>
+</ul>
+<p>Like PencilBlue, MongoDB Atlas is a natural fit for users looking to simplify their development and operations work, letting them focus on what makes their application unique rather than commodity (albeit essential) plumbing.</p>
+<h1>Installing PencilBlue and Connecting it to MongoDB Atlas</h1>
+<p>Before starting with PencilBlue, you should launch your MongoDB cluster using <a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> and then (optionally) create a user with read and write privileges for just the database that will be used for this project, as shown in Figure 1.</p>
+<div id="attachment_4216" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/PencilBlue_user.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4216" src="./../wp-content/uploads/2016/09/PencilBlue_user-910x1024.png" alt="Adding a PencilBlue User to MongoDB Atlas" width="480" height="540" class="size-large wp-image-4216" srcset="./../wp-content/uploads/2016/09/PencilBlue_user-910x1024.png 910w, ./../wp-content/uploads/2016/09/PencilBlue_user-267x300.png 267w, ./../wp-content/uploads/2016/09/PencilBlue_user-768x864.png 768w, ./../wp-content/uploads/2016/09/PencilBlue_user.png 1596w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4216" class="wp-caption-text">Figure 1: Adding a PencilBlue User to MongoDB Atlas</p>
+</div>
+<p>You must also add your IP address to the IP Whitelist in the MongoDB Atlas security tab (Figure 2).</p>
+<div id="attachment_4217" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/PencilBlue_whitelist_IP.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4217" src="./../wp-content/uploads/2016/09/PencilBlue_whitelist_IP-1024x701.png" alt="Add IP Address to MongoDB Atlas Whitelist" width="480" height="329" class="size-large wp-image-4217" srcset="./../wp-content/uploads/2016/09/PencilBlue_whitelist_IP-1024x701.png 1024w, ./../wp-content/uploads/2016/09/PencilBlue_whitelist_IP-300x205.png 300w, ./../wp-content/uploads/2016/09/PencilBlue_whitelist_IP-768x526.png 768w, ./../wp-content/uploads/2016/09/PencilBlue_whitelist_IP.png 1502w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4217" class="wp-caption-text">Figure 2: Add IP Address to MongoDB Atlas Whitelist</p>
+</div>
+<p>If it isn&#8217;t already installed on your system, download and install Node.js:</p>
+<pre><code>$ curl https://nodejs.org/dist/v4.4.7/node-v4.4.7-linux-x64.tar.xz -o node.tar.xz
+$ tar xf node.tar.xz
+</code></pre>
+<p>You should then add the <code>bin</code> sub-folder to your <code>.bash_profile</code> before installing the PencilBlue command line interface (CLI):</p>
+<pre><code>$ sudo npm install -g pencilblue-cli
+Password:
+npm WARN engine pencilblue-cli@0.3.1: wanted: {"node":"&gt;= 4.4.7"} (current: {"node":"0.12.5","npm":"2.11.2"})
+/usr/local/bin/pencilblue -&gt; /usr/local/lib/node_modules/pencilblue-cli/lib/pencilblue-cli.js
+/usr/local/bin/pbctrl -&gt; /usr/local/lib/node_modules/pencilblue-cli/lib/pencilblue-cli.js
+pencilblue-cli@0.3.1 /usr/local/lib/node_modules/pencilblue-cli
+├── process@0.11.8
+├── colors@1.1.2
+├── q@1.4.1
+├── shelljs@0.7.3 (interpret@1.0.1, rechoir@0.6.2, glob@7.0.5)
+└── prompt@1.0.0 (revalidator@0.1.8, pkginfo@0.4.0, read@1.0.7, winston@2.1.1, utile@0.3.0)
+</code></pre>
+<p>The CLI can then be used to install and configure PencilBlue itself:</p>
+<pre><code>$ pbctrl install PencilBlue
+Site Name:  (My PencilBlue Site) PokeSite
+Site Root:  (http://localhost:8080) 
+Address to bind to:  (0.0.0.0) 
+Site Port:  (8080) 
+MongoDB URL:  (mongodb://127.0.0.1:27017/) mongodb://pencilblue_user:my_password@cluster0-shard-00-00-qfovx.mongodb.net:27017,cluster0-shard-00-01-qfovx.mongodb.net:27017,cluster0-shard-00-02-qfovx.mongodb.net:27017/?ssl=true&amp;authSource=admin
+Database Name:  (pencilblue) clusterdb
+Do you want to install Bower components?:  (y/N) 
+Cloning PencilBlue from github...
+Cloning into 'PencilBlue'...
+Installing npm modules...
+...
+Creating config.js...
+Installation completed.
+</code></pre>
+<p>Note that if you need to change the configuration (e.g., to specify a new URL to connect to MongoDB) then edit the <code>config.js</code> file that was created during this step.</p>
+<p>The MongoDB URL you provided contains these components:</p>
+<ul>
+<li>
+<code>pencilblue_user</code> is the name of the user you created in the MongoDB Atlas UI</li>
+<li>
+<code>my_password</code> is the password you chose when creating the user in MongoDB Atlas</li>
+<li>
+<code>cluster0-shard-00-00-qfovx.mongodb.net</code>, <code>cluster0-shard-00-01-qfovx.mongodb.net</code>, &amp; <code>cluster0-shard-00-02-qfovx.mongodb.net</code> are the hostnames of the instances in your MongoDB Atlas replica set (click on the &#8220;CONNECT&#8221; button in the MongoDB Atlas UI if you don&#8217;t have these – Figure 3)</li>
+<li>
+<code>27017</code> is the standard MongoDB port number</li>
+<li>To enforce security, MongoDB Atlas mandates that the <code>ssl</code> option is used</li>
+<li>
+<code>admin</code> is the database that&#8217;s being used to store the credentials for <code>pencilblue_user</code>
+</li>
+</ul>
+<div id="attachment_4218" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/PencilBlue_Find_Connect_String.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4218" src="./../wp-content/uploads/2016/09/PencilBlue_Find_Connect_String-1024x414.png" alt="Find the Hostnames From the MongoDB Atlas UI" width="480" height="194" class="size-large wp-image-4218" srcset="./../wp-content/uploads/2016/09/PencilBlue_Find_Connect_String-1024x414.png 1024w, ./../wp-content/uploads/2016/09/PencilBlue_Find_Connect_String-300x121.png 300w, ./../wp-content/uploads/2016/09/PencilBlue_Find_Connect_String-768x310.png 768w, ./../wp-content/uploads/2016/09/PencilBlue_Find_Connect_String.png 1520w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4218" class="wp-caption-text">Figure 3: Find the Hostnames From the MongoDB Atlas UI</p>
+</div>
+<p><code>clusterdb</code> is the name of the database (schema) that PencilBlue will use (note that unlike some frameworks, the database name is specified separately rather than being embedded in the MongoDB URL).</p>
+<p>The PencilBlue process can now be started:</p>
+<pre><code>$ cd PencilBlue/
+$ pbctrl start
+</code></pre>
+<h1>Confirm that MongoDB Atlas is Being Used</h1>
+<p>At this point, it is possible to connect to MongoDB Atlas using the MongoDB shell (we&#8217;ll look at an easier way to navigate the data later) to confirm that the schema has been created:</p>
+<pre><code>$ mongo mongodb://cluster0-shard-00-00-qfovx.mongodb.net:27017,cluster0-shard-00-01-qfovx.mongodb.net:27017,cluster0-shard-00-02-qfovx.mongodb.net:27017/admin?replicaSet=Cluster0-shard-0 --ssl --username billy --password my_password
+
+Cluster0-shard-0:PRIMARY&gt; show dbs
+admin      0.000GB
+clusterdb  0.008GB
+local      0.007GB
+
+Cluster0-shard-0:PRIMARY&gt; use clusterdb
+switched to db clusterdb
+
+Cluster0-shard-0:PRIMARY&gt; show collections
+article
+auth_token
+comment
+custom_object
+custom_object_type
+fs.chunks
+fs.files
+job_log
+lock
+media
+page
+password_reset
+plugin
+plugin_settings
+section
+server_registry
+session
+setting
+theme_settings
+topic
+unverified_user
+user
+</code></pre>
+<h1>Create Your First Page in PencilBlue</h1>
+<p>Browse to the application at <a href="http://localhost:8080/">http://localhost:8080</a> as shown in Figure 4 and create a user account.</p>
+<div id="attachment_4219" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/PencilBlue_Browser.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4219" src="./../wp-content/uploads/2016/09/PencilBlue_Browser-1016x1024.png" alt="Register User in PencilBlue" width="480" height="484" class="size-large wp-image-4219" srcset="./../wp-content/uploads/2016/09/PencilBlue_Browser-1016x1024.png 1016w, ./../wp-content/uploads/2016/09/PencilBlue_Browser-150x150.png 150w, ./../wp-content/uploads/2016/09/PencilBlue_Browser-298x300.png 298w, ./../wp-content/uploads/2016/09/PencilBlue_Browser-768x774.png 768w, ./../wp-content/uploads/2016/09/PencilBlue_Browser-144x144.png 144w, ./../wp-content/uploads/2016/09/PencilBlue_Browser.png 1750w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4219" class="wp-caption-text">Figure 4: Register User in PencilBlue</p>
+</div>
+<p>You&#8217;re then able to login and create your first page (Figure 5).</p>
+<div id="attachment_4220" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/PencilBlue_Create_content.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4220" src="./../wp-content/uploads/2016/09/PencilBlue_Create_content-1024x973.png" alt="Create a New Page Using PencilBlue" width="480" height="456" class="size-large wp-image-4220" srcset="./../wp-content/uploads/2016/09/PencilBlue_Create_content-1024x973.png 1024w, ./../wp-content/uploads/2016/09/PencilBlue_Create_content-300x285.png 300w, ./../wp-content/uploads/2016/09/PencilBlue_Create_content-768x730.png 768w, ./../wp-content/uploads/2016/09/PencilBlue_Create_content.png 1902w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4220" class="wp-caption-text">Figure 5: Create a New Page Using PencilBlue</p>
+</div>
+<p>After saving, the new page can be viewed (Figure 6).</p>
+<div id="attachment_4221" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/PencilBlue_Page.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4221" src="./../wp-content/uploads/2016/09/PencilBlue_Page-776x1024.png" alt="View Pokémon Page in PencilBlue" width="480" height="633" class="size-large wp-image-4221" srcset="./../wp-content/uploads/2016/09/PencilBlue_Page-776x1024.png 776w, ./../wp-content/uploads/2016/09/PencilBlue_Page-227x300.png 227w, ./../wp-content/uploads/2016/09/PencilBlue_Page-768x1014.png 768w, ./../wp-content/uploads/2016/09/PencilBlue_Page.png 1620w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4221" class="wp-caption-text">Figure 6: View Pokémon Page in PencilBlue</p>
+</div>
+<p>To visually navigate through the PencilBlue schema and data, <a href="https://www.mongodb.com/download-center?jmp=nav#compass">download and install MongoDB Compass</a>. Use your MongoDB Atlas credentials to connect Compass to your MongoDB database – Figure 7.</p>
+<div id="attachment_4222" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/PencilBlue_Connect_Compass_to_MongoDB_Atlas.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4222" src="./../wp-content/uploads/2016/09/PencilBlue_Connect_Compass_to_MongoDB_Atlas-1024x839.png" alt="Connect MongoDB Compass to MongoDB Atlas" width="480" height="393" class="size-large wp-image-4222" srcset="./../wp-content/uploads/2016/09/PencilBlue_Connect_Compass_to_MongoDB_Atlas-1024x839.png 1024w, ./../wp-content/uploads/2016/09/PencilBlue_Connect_Compass_to_MongoDB_Atlas-300x246.png 300w, ./../wp-content/uploads/2016/09/PencilBlue_Connect_Compass_to_MongoDB_Atlas-768x629.png 768w, ./../wp-content/uploads/2016/09/PencilBlue_Connect_Compass_to_MongoDB_Atlas.png 1802w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4222" class="wp-caption-text">Figure 7: Connect MongoDB Compass to MongoDB Atlas</p>
+</div>
+<p>Navigate through the structure of the data in the <code>clusterdb</code> database (Figure 8); view the JSON documents (Figure 9) and check the indexes (Figure 10).</p>
+<div id="attachment_4223" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/PencilBlue_Compass_Schema.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4223" src="./../wp-content/uploads/2016/09/PencilBlue_Compass_Schema-1024x594.png" alt="Explore PencilBlue Schema Using MongoDB Compass" width="480" height="278" class="size-large wp-image-4223" srcset="./../wp-content/uploads/2016/09/PencilBlue_Compass_Schema-1024x594.png 1024w, ./../wp-content/uploads/2016/09/PencilBlue_Compass_Schema-300x174.png 300w, ./../wp-content/uploads/2016/09/PencilBlue_Compass_Schema-768x445.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4223" class="wp-caption-text">Figure 8: Explore PencilBlue Schema Using MongoDB Compass</p>
+</div>
+<div id="attachment_4224" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/PencilBlue_Compass_Document.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4224" src="./../wp-content/uploads/2016/09/PencilBlue_Compass_Document-1024x595.png" alt="View PencilBlue Documents in MongoDB Compass" width="480" height="279" class="size-large wp-image-4224" srcset="./../wp-content/uploads/2016/09/PencilBlue_Compass_Document-1024x595.png 1024w, ./../wp-content/uploads/2016/09/PencilBlue_Compass_Document-300x174.png 300w, ./../wp-content/uploads/2016/09/PencilBlue_Compass_Document-768x446.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4224" class="wp-caption-text">Figure 9: View PencilBlue Documents in MongoDB Compass</p>
+</div>
+<div id="attachment_4225" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/PencilBlue_Compass_Indexes.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4225" src="./../wp-content/uploads/2016/09/PencilBlue_Compass_Indexes-1024x594.png" alt="View PencilBlue Indexes Using MongoDB Compass" width="480" height="278" class="size-large wp-image-4225" srcset="./../wp-content/uploads/2016/09/PencilBlue_Compass_Indexes-1024x594.png 1024w, ./../wp-content/uploads/2016/09/PencilBlue_Compass_Indexes-300x174.png 300w, ./../wp-content/uploads/2016/09/PencilBlue_Compass_Indexes-768x446.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4225" class="wp-caption-text">Figure 10: View PencilBlue Indexes Using MongoDB Compass</p>
+</div>
+<h1>Next Steps</h1>
+<p>While MongoDB Atlas radically simplifies the operation of MongoDB there are still some decisions to take to ensure the best performance and reliability for your application. The <a href="https://www.mongodb.com/collateral/mongodb-atlas-best-practices">MongoDB Atlas Best Practices white paper</a> provides guidance on best practices for deploying, managing, and optimizing the performance of your database with MongoDB Atlas.</p>
+<p>The guide outlines considerations for achieving performance at scale with MongoDB Atlas across a number of key dimensions, including instance size selection, application patterns, schema design and indexing, and disk I/O. While this guide is broad in scope, it is not exhaustive. Following the recommendations in the guide will provide a solid foundation for ensuring optimal application performance.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mongodb/using-pencilblue-with-mongodb-atlas" data-via="wpbeginner" data-text="Using PencilBlue with MongoDB Atlas" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mongodb/using-pencilblue-with-mongodb-atlas"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mongodb/using-pencilblue-with-mongodb-atlas" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmongodb%2Fusing-pencilblue-with-mongodb-atlas&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mongodb/index.html" rel="category tag">MongoDB</a> | 
+Tags: <a href="./../tag/javascript/index.html" rel="tag">javascript</a>, <a href="./../tag/mongodb/index.html" rel="tag">mongodb</a>, <a href="./../tag/mongodb-atlas/index.html" rel="tag">MongoDB Atlas</a>, <a href="./../tag/mongodb-compass/index.html" rel="tag">MongoDB Compass</a>, <a href="./../tag/node-js/index.html" rel="tag">node.js</a>, <a href="./../tag/pencilblue/index.html" rel="tag">PencilBlue</a>
+</div>
+
+			</div>			<div id="post-4201" class="post-4201 post type-post status-publish format-standard hentry category-mongodb tag-aws tag-elastic-beanstalk tag-mongodb tag-mongodb-atlas tag-node-js">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../mongodb/develop-deploy-a-node-js-app-to-aws-elastic-beanstalk-mongodb-atlas/index.html">September 15, 2016</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../mongodb/develop-deploy-a-node-js-app-to-aws-elastic-beanstalk-mongodb-atlas/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../mongodb/develop-deploy-a-node-js-app-to-aws-elastic-beanstalk-mongodb-atlas/index.html" rel="bookmark">Develop &#038; Deploy a Node.js App to AWS Elastic Beanstalk &#038; MongoDB Atlas</a></h2>
+				
+				<div class="entry">
+										<h1>Introduction</h1>
+<p>This blog post demonstrates how to build and deploy an application on AWS Elastic Beanstalk, and have that application connect to <a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> as its back-end database service:</p>
+<ul>
+<li>Introducing the example <em>MongoPop</em> application</li>
+<li>Connecting applications to your MongoDB Atlas cluster; including IP address whitelisting</li>
+<li>Downloading and testing MongoPop locally and on AWS Elastic Beanstalk</li>
+<li>Populating your database with thousands of realistic documents</li>
+<li>Explaining key parts of the application code</li>
+<li>Adapting and redeploying applications</li>
+<li>Graphically exploring your schema and data with MongoDB Compass</li>
+</ul>
+<p>AWS Elastic Beanstalk is a service offered by Amazon to make it simple for developers to deploy and manage their cloud-based applications. After you&#8217;ve uploaded your application, Elastic Beanstalk automatically takes care of:</p>
+<ul>
+<li>Capacity provisioning, adding more instances as needed</li>
+<li>Load balancing</li>
+<li>Health monitoring</li>
+</ul>
+<p>MongoDB Atlas provides all of the features of the MongoDB database, without the operational heavy lifting. MongoDB Atlas is available on demand through a pay-as-you-go model and billed on an hourly basis, letting you focus on your application code.</p>
+<p>It’s easy to get started – use a simple GUI to select the instance size, region, and features you need. MongoDB Atlas provides:</p>
+<ul>
+<li>Security features to protect access to your data</li>
+<li>Built in replication for always-on availability, tolerating complete data center failure</li>
+<li>Backups and point in time recovery to protect against data corruption</li>
+<li>Fine-grained monitoring to let you know when to scale. Additional instances can be provisioned with the push of a button</li>
+<li>Automated patching and one-click upgrades for new major versions of the database, enabling you to take advantage of the latest and greatest MongoDB features</li>
+<li>A choice of cloud providers, regions, and billing options</li>
+</ul>
+<p>There is clearly a lot of synergy between these technologies – both of them handling the enabling infrastructure, letting the developer spend their precious time on writing great applications. To continue in the spirit of developer productivity, the application used in this post is developed using Node.js, the Express web application framework, and the Pug (formerly Jade) template engine.</p>
+<h1>The Application &#8211; MongoPop</h1>
+<p>Let&#8217;s start by taking a look at what the new Mongopop application provides.</p>
+<p>Getting your MongoDB Atlas cluster up and running is a breeze but what do you do with it next? Wouldn&#8217;t it be great to populate it with some realistic data so that you can start experimenting? This is what MongoPop does – even letting you tailor the format and contents of the data using the <a href="http://www.mockaroo.com/">Mockaroo</a> service.</p>
+<p>Mockaroo is a flexible service, allowing you to define a rich schema and then generate realistic sample data sets. Supported types include:</p>
+<ul>
+<li>Email address</li>
+<li>City</li>
+<li>European first name</li>
+<li>JSON array</li>
+<li>Branded drug names</li>
+<li>Custom types defined by you, based on regular expressions</li>
+</ul>
+<p>Data files can be downloaded from Mockaroo in multiple formats, including: JSON, CSV, and SQL.</p>
+<p>MongoPop pulls data from Mockaroo and then automatically writes the data to your database. It defaults to our example Mockaroo schema but you can replace that with a URL for any schema that you&#8217;ve defined in Mockaroo (or any other service providing arrays of JSON documents). Mockaroo takes care of connecting to MongoDB Atlas and runs multithreaded, speeding up the process of loading large datasets into MongoDB.</p>
+<h2>Using MongoPop</h2>
+<div id="attachment_4203" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Identify_IP_Address_for_MongoDB_Atlas_whitelisting.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4203" src="./../wp-content/uploads/2016/09/Identify_IP_Address_for_MongoDB_Atlas_whitelisting-1024x524.png" alt="Identify IP Address of MongoPop Server for MongoDB Atlas IP Whitelisting" width="480" height="246" class="size-large wp-image-4203" srcset="./../wp-content/uploads/2016/09/Identify_IP_Address_for_MongoDB_Atlas_whitelisting-1024x524.png 1024w, ./../wp-content/uploads/2016/09/Identify_IP_Address_for_MongoDB_Atlas_whitelisting-300x153.png 300w, ./../wp-content/uploads/2016/09/Identify_IP_Address_for_MongoDB_Atlas_whitelisting-768x393.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4203" class="wp-caption-text">Figure 1: Identify IP Address of MongoPop Server for MongoDB Atlas IP Whitelisting</p>
+</div>
+<p>When you first access MongoPop (Figure 1), you&#8217;re presented with a form to provide details on how to connect to your MongoDB Atlas instance, and what you&#8217;d like the data to look like. Before completing the form, take a note of the IP address that&#8217;s displayed. This IP address needs to be added to the whitelist for your group, which is done through the security tab of the <a href="https://www.mongodb.com/cloud">MongoDB Atlas UI</a> (Figure 2).</p>
+<div id="attachment_4204" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Add_IP_Address_to_MongoDB_Atlas_whitelist.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4204" src="./../wp-content/uploads/2016/09/Add_IP_Address_to_MongoDB_Atlas_whitelist-1024x428.png" alt="Add MongoPop IP Address to MongoDB Atlas Group Whitelist" width="480" height="201" class="size-large wp-image-4204" srcset="./../wp-content/uploads/2016/09/Add_IP_Address_to_MongoDB_Atlas_whitelist-1024x428.png 1024w, ./../wp-content/uploads/2016/09/Add_IP_Address_to_MongoDB_Atlas_whitelist-300x126.png 300w, ./../wp-content/uploads/2016/09/Add_IP_Address_to_MongoDB_Atlas_whitelist-768x321.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4204" class="wp-caption-text">Figure 2: Add MongoPop IP Address to MongoDB Atlas Group Whitelist</p>
+</div>
+<p>In a production Elastic Beanstalk environment, the IP whitelisting can be a little more involved – that will be covered later in this post.</p>
+<div id="attachment_4205" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Find_Node_Driver_Connect_String_MongoDB_Atlas.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4205" src="./../wp-content/uploads/2016/09/Find_Node_Driver_Connect_String_MongoDB_Atlas-1024x416.png" alt="Find the Node.js Driver Connect String in MongoDB Atlas" width="480" height="195" class="size-large wp-image-4205" srcset="./../wp-content/uploads/2016/09/Find_Node_Driver_Connect_String_MongoDB_Atlas-1024x416.png 1024w, ./../wp-content/uploads/2016/09/Find_Node_Driver_Connect_String_MongoDB_Atlas-300x122.png 300w, ./../wp-content/uploads/2016/09/Find_Node_Driver_Connect_String_MongoDB_Atlas-768x312.png 768w, ./../wp-content/uploads/2016/09/Find_Node_Driver_Connect_String_MongoDB_Atlas.png 1380w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4205" class="wp-caption-text">Figure 3: Find the Node.js Driver Connect String in MongoDB Atlas</p>
+</div>
+<p>While in the MongoDB Atlas UI, click the &#8220;CONNECT&#8221; button, select the &#8220;MongoDB Drivers&#8221; tab and then the &#8220;COPY&#8221; button (Figure 3). Paste the copied URI directly into MongoPop. You should also enter the password and the database you want to use.</p>
+<p>Note that the URI needs editing before it&#8217;s actually used but MongoPop handles that using the password and database name you provide; the final URI will take this form: <code>mongodb://mongodb_user:my_password@cluster0-shard-00-00-qfovx.mongodb.net:27017,cluster0-shard-00-01-qfovx.mongodb.net:27017,cluster0-shard-00-02-qfovx.mongodb.net:27017/mongopop?ssl=true&amp;authSource=admin</code>.</p>
+<p>This URI contains these components:</p>
+<ul>
+<li>
+<code>mongodb_user</code> is the name of the user you gave when creating the group in the MongoDB Atlas UI. Alternatively, create a new user in the MongoDB Atlas UI with more restricted privileges.</li>
+<li>
+<code>my_password</code> is the password you chose when creating the user in MongoDB Atlas.</li>
+<li>
+<code>cluster0-shard-00-00-qfovx.mongodb.net</code>, <code>cluster0-shard-00-01-qfovx.mongodb.net</code>, &amp; <code>cluster0-shard-00-02-qfovx.mongodb.net</code> are the hostnames of the instances in your MongoDB Atlas replica set.</li>
+<li>
+<code>27017</code> is the default MongoDB port number.</li>
+<li>
+<code>mongopop</code> is the name of the database (schema) that MongoPop will use.</li>
+<li>To enforce over-the-wire encryption, MongoDB Atlas mandates that the <code>ssl</code> option is used.</li>
+<li>
+<code>admin</code> is the database that&#8217;s being used to store the credentials for <code>mongodb_user</code>.</li>
+</ul>
+<p>The remaining fields define the collection to store the documents, the source of the document schema, and the number of documents (in thousands) to be added. The source URL defaults to a document format already defined but you can create your own by registering at the <a href="http://www.mockaroo.com/">Mockaroo</a> site, defining the document structure and then using the URL provided.</p>
+<p>After clicking the &#8220;populate&#8221; button, MongoPop fetches the data set(s) from Mockaroo and then adds the documents to your MongoDB Atlas collection. Once the data has been added, the page refreshes and you&#8217;re shown a sample of the documents now stored in your collection (Figure 4).</p>
+<div id="attachment_4206" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/MongoDB_Atlas_sample_document.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4206" src="./../wp-content/uploads/2016/09/MongoDB_Atlas_sample_document-1024x771.png" alt="Sample of Data Added to MongoDB Atlas Collection" width="480" height="361" class="size-large wp-image-4206" srcset="./../wp-content/uploads/2016/09/MongoDB_Atlas_sample_document-1024x771.png 1024w, ./../wp-content/uploads/2016/09/MongoDB_Atlas_sample_document-300x226.png 300w, ./../wp-content/uploads/2016/09/MongoDB_Atlas_sample_document-768x578.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4206" class="wp-caption-text">Figure 4: Sample of Data Added to MongoDB Atlas Collection</p>
+</div>
+<h3>MongoDB Compass</h3>
+<p>Congratulations, you now have some data in your database! An optional step is to start exploring that data using <a href="https://www.mongodb.com/products/compass">MongoDB Compass</a>. The same credentials can be used to connect Compass to your MongoDB database (Figure 5).</p>
+<div id="attachment_4207" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4207" src="./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-1024x839.png" alt="Connect MongoDB Compass to MongoDB Atlas" width="480" height="393" class="size-large wp-image-4207" srcset="./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-1024x839.png 1024w, ./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-300x246.png 300w, ./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-768x629.png 768w, ./../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas.png 1796w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4207" class="wp-caption-text">Figure 5: Connect MongoDB Compass to MongoDB Atlas</p>
+</div>
+<p>Once connected, explore the data added to the collection (Figure 6).</p>
+<div id="attachment_4208" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Explore_MongoDB_Atlas_data_with_MongoDB_Compass.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4208" src="./../wp-content/uploads/2016/09/Explore_MongoDB_Atlas_data_with_MongoDB_Compass-1024x734.png" alt="Explore MongoDB Atlas Data Using MongoDB Compass" width="480" height="344" class="size-large wp-image-4208" srcset="./../wp-content/uploads/2016/09/Explore_MongoDB_Atlas_data_with_MongoDB_Compass-1024x734.png 1024w, ./../wp-content/uploads/2016/09/Explore_MongoDB_Atlas_data_with_MongoDB_Compass-300x215.png 300w, ./../wp-content/uploads/2016/09/Explore_MongoDB_Atlas_data_with_MongoDB_Compass-768x550.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4208" class="wp-caption-text">Figure 6: Explore MongoDB Atlas Data Using MongoDB Compass</p>
+</div>
+<p>In this version (1.3) of MongoDB Compass (currently in <a href="https://www.mongodb.com/download-center?jmp=nav#compass">beta</a>), it is also possible to add, delete, and modify documents (Figure 7).</p>
+<div id="attachment_4209" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Modify_MongoDB_Atlas_document_in_MongoDB_Compass.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4209" src="./../wp-content/uploads/2016/09/Modify_MongoDB_Atlas_document_in_MongoDB_Compass-1024x340.png" alt="Modify a Document in MongoDB Compass" width="480" height="159" class="size-large wp-image-4209" srcset="./../wp-content/uploads/2016/09/Modify_MongoDB_Atlas_document_in_MongoDB_Compass-1024x340.png 1024w, ./../wp-content/uploads/2016/09/Modify_MongoDB_Atlas_document_in_MongoDB_Compass-300x100.png 300w, ./../wp-content/uploads/2016/09/Modify_MongoDB_Atlas_document_in_MongoDB_Compass-768x255.png 768w, ./../wp-content/uploads/2016/09/Modify_MongoDB_Atlas_document_in_MongoDB_Compass.png 2002w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4209" class="wp-caption-text">Figure 7: Modify a Document in MongoDB Compass</p>
+</div>
+<p>You can verify that the document has really been updated from the MongoDB shell:</p>
+<p><script src="https://gist.github.com/am-MongoDB/fd52e83e27d4db27e84be40c5c6c719d.js"></script></p>
+<h2>Downloading the Application</h2>
+<p>The tools for deploying your application to AWS Elastic Beanstalk integrate with <code>git</code>, which makes it the best way to get the code. Assuming that <code>git</code> is already installed, downloading the code is simple:</p>
+<p><script src="https://gist.github.com/am-MongoDB/f20c38dc8fdbb058eec5c828da33b845.js"></script></p>
+<p>If you then want to refresh your local repository with the latest version:</p>
+<p><script src="https://gist.github.com/am-MongoDB/79171206054c25534005da997a001ebb.js"></script></p>
+<p>Alternatively, simply <a href="https://github.com/andrewjamesmorgan/mongopop/archive/master.zip">download the zip file</a>.</p>
+<h2>Testing The Application Locally</h2>
+<p>Deploying to Elastic Beanstalk is straightforward but there is a delay each time you update and redeploy your application. For that reason, it&#8217;s still useful to be able to test and debug locally.</p>
+<p>After downloading the application, installing its dependencies and then running it is trivial (this assumes that you already have Node.js installed):</p>
+<p><script src="https://gist.github.com/am-MongoDB/3aa672bbdc0f0db3ce6655a295251e28.js"></script></p>
+<p><code>npm_install</code> installs all of the required dependencies (which are described in <code>package.json</code>). <code>npm start</code> starts the application – once it it running browse to <a href="http://localhost:3000/pop"><code>http://localhost:3000/pop</code></a> to try it out.</p>
+<h3>Deploying to AWS Elastic Beanstalk</h3>
+<p>You can create your Elastic Beanstalk environment and deploy and monitor your application from the <a href="https://console.aws.amazon.com/elasticbeanstalk">AWS console</a>. If you don&#8217;t already have an account then that&#8217;s where you would create it. If you already have an account, and a copy of your Access Key ID and Secret Access Key, then using the <a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html">EB CLI</a> provides a more efficient workflow.</p>
+<p>The method for installing the EB CLI <a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html">varies by platform</a> but if you already have Homebrew installed on OS X then it&#8217;s as simple as:</p>
+<p><script src="https://gist.github.com/am-MongoDB/dad9ee324bd60683dc24d1c0b909c565.js"></script></p>
+<p><code>eb init</code> sets default values for Elastic Beanstalk applications created with the EB CLI by prompting you with a series of questions:</p>
+<p><script src="https://gist.github.com/am-MongoDB/bb7a6f5986844ee3a4d65eb3db534b66.js"></script></p>
+<p><code>eb create</code> creates a new environment and deploys the current application to that environment:</p>
+<p><script src="https://gist.github.com/am-MongoDB/700457d947aba7a81751bd4c62c6172d.js"></script></p>
+<p>Finally, <code>eb open</code> connects to the MongoPop app from your browser.</p>
+<p>If you want to make changes to the application then the EB CLI makes it simple to redeploy the new version. As an example, edit the <code>views/pop.jade</code> file to add an extra paragraph after the title:</p>
+<p><script src="https://gist.github.com/am-MongoDB/48ddde4054dde848b02924ba2d7ecb0b.js"></script></p>
+<p>The EB CLI integrates with <code>git</code> and so update <code>git</code> with the change and then redeploy:</p>
+<p><script src="https://gist.github.com/am-MongoDB/48c861d261f4d91a354485b06fc68776.js"></script></p>
+<div id="attachment_4210" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Personalised_AWS_Elasticbeanstalk_App.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4210" src="./../wp-content/uploads/2016/09/Personalised_AWS_Elasticbeanstalk_App-1024x241.png" alt="Personalized Version of MongoPop Deployed to AWS EBS" width="480" height="113" class="size-large wp-image-4210" srcset="./../wp-content/uploads/2016/09/Personalised_AWS_Elasticbeanstalk_App-1024x241.png 1024w, ./../wp-content/uploads/2016/09/Personalised_AWS_Elasticbeanstalk_App-300x71.png 300w, ./../wp-content/uploads/2016/09/Personalised_AWS_Elasticbeanstalk_App-768x181.png 768w, ./../wp-content/uploads/2016/09/Personalised_AWS_Elasticbeanstalk_App.png 1952w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4210" class="wp-caption-text">Figure 8: Personalized Version of MongoPop Deployed to AWS EBS</p>
+</div>
+<p>When you&#8217;re finished with the application, the environment can be deleted with a single command:</p>
+<p><script src="https://gist.github.com/am-MongoDB/7771e7c498d3b085b5784d32ecd07ea3.js"></script></p>
+<p>Note that this doesn&#8217;t remove the application deployment files that Elastic Beanstalk keeps in AWS S3 storage. To avoid continuing charges, delete those files through the <a href="https://console.aws.amazon.com/s3">AWS console</a> (Figure 9).</p>
+<div id="attachment_4211" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/Remove_Files_from_AWS_S3_Storage.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4211" src="./../wp-content/uploads/2016/09/Remove_Files_from_AWS_S3_Storage-1024x734.png" alt="Remove Deployment Files From AWS S3 Storage" width="480" height="344" class="size-large wp-image-4211" srcset="./../wp-content/uploads/2016/09/Remove_Files_from_AWS_S3_Storage-1024x734.png 1024w, ./../wp-content/uploads/2016/09/Remove_Files_from_AWS_S3_Storage-300x215.png 300w, ./../wp-content/uploads/2016/09/Remove_Files_from_AWS_S3_Storage-768x551.png 768w, ./../wp-content/uploads/2016/09/Remove_Files_from_AWS_S3_Storage.png 1436w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4211" class="wp-caption-text">Figure 9: Remove Deployment Files From AWS S3 Storage</p>
+</div>
+<h1>Code Highlights</h1>
+<p>The full code for MongoPop can be found in <a href="https://github.com/andrewjamesmorgan/mongopop">GitHub</a> but this section presents some snippets that are specific to MongoDB and MongoDB Atlas.</p>
+<p>Firstly, constructing the final URI to access the database (from <code>views/pop.js</code>):</p>
+<p><script src="https://gist.github.com/am-MongoDB/7fbd00a28851dd32f97b644f0460319c.js"></script></p>
+<p>Connecting to the database and working with the collection (<code>javascripts/db.js</code>):</p>
+<p><script src="https://gist.github.com/am-MongoDB/3bbc2e113c31bb9802a3b073712efec8.js"></script></p>
+<p>All of the dependencies (including the MongoDB Node.js driver) are defined in <code>package.json</code>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/38887db8319434ec1928288a4cf39146.js"></script></p>
+<h1>The IP Address Whitelisting Challenge</h1>
+<p>IP address whitelisting is a key MongoDB Atlas security feature, adding an extra layer to prevent 3rd parties from accessing your data. Clients are prevented from accessing the database unless their IP address has been added to the <a href="https://docs.atlas.mongodb.com/setup-cluster-security/#add-ip-addresses-to-the-whitelist">IP whitelist</a> for your MongoDB Atlas group.</p>
+<p>VPC Peering for MongoDB Atlas is under development and will be available soon, offering a simple, robust solution. It will allow the whitelisting of an entire AWS Security Group within the VPC containing your application servers.</p>
+<p>If you need to deploy a robust, scalable application before VPC peering becomes available, some extra steps may be required.</p>
+<p>In our example application, the public IP address of the AWS EC2 instance running MongoPop was added to the MongoDB Atlas whitelist for the group.</p>
+<p>That works fine but what happens if that EC2 instance fails and is rescheduled – its IP Address changes and so it would not be able to connect to MongoDB Atlas until it was whitelisted. That scenario can be remedied by assigning an Elastic IP address (which survives rescheduling) to the EC2 instance using the <a href="https://console.aws.amazon.com/ec2">AWS Console</a>.</p>
+<p>What if demand for your application grows and Elastic Beanstalk determines that it needs to add an extra EC2 instance? Again, that instance will have an IP Address that hasn&#8217;t yet been added to the MongoDB Atlas whitelist. To cover that scenario (as well as rescheduling), the AWS NAT Gateway service can be used. Figure 10 illustrates a configuration using a NAT Gateway.<br>
+</p>
+<div id="attachment_4212" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2016/09/NAT_Gateway_with_AWS_Elastic_Beanstalk.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4212" src="./../wp-content/uploads/2016/09/NAT_Gateway_with_AWS_Elastic_Beanstalk-1024x618.png" alt="Presenting a Single IP Address Using an AWS NAT Gateway" width="480" height="290" class="size-large wp-image-4212" srcset="./../wp-content/uploads/2016/09/NAT_Gateway_with_AWS_Elastic_Beanstalk-1024x618.png 1024w, ./../wp-content/uploads/2016/09/NAT_Gateway_with_AWS_Elastic_Beanstalk-300x181.png 300w, ./../wp-content/uploads/2016/09/NAT_Gateway_with_AWS_Elastic_Beanstalk-768x463.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4212" class="wp-caption-text">Figure 10: Presenting a Single IP Address Using an AWS NAT Gateway</p>
+</div>
+<p>Two subnets are created within the AWS Virtual Private Cloud (VPC):</p>
+<ul>
+<li>The <strong>public subnet</strong> contains the front-end servers which external clients access via an Elastic IP Address attached to the Internet Gateway (IGW). It also contains the NAT Gateway service.</li>
+<li>The <strong>private subnet</strong> contains the back-end servers which will access MongoDB Atlas.</li>
+</ul>
+<p>Routing tables must be created to route all messages from the private subnet destined for public IP addresses through the NAT Gateway. The NAT Gateway has its own Elastic IP Address which all of the outgoing messages that pass through it appear to originate from – this IP Address must be added to the MongoDB Atlas whitelist.</p>
+<p>Messages between the front-end and back-end servers use local IP Addresses and so are routed directly, without passing through the NAT Gateway. Messages from external clients are routed from the IGW to the front-end servers.</p>
+<p>Clearly this configuration adds cost and complexity (e.g., the application needs breaking into front and back-end components).</p>
+<p>An alternative is to add extra logic to your application so that it automatically adds its IP address to the whitelist using the <a href="https://docs.atlas.mongodb.com/api/">MongoDB Atlas Public API</a>. If taking that approach, then also consider how to remove redundant IP addresses as the whitelist is limited to 20 entries.</p>
+<h1>What Next?</h1>
+<p>While MongoDB Atlas radically simplifies the operation of MongoDB there are still some decisions to take to ensure the best performance and reliability for your application. The <a href="https://www.mongodb.com/collateral/mongodb-atlas-best-practices">MongoDB Atlas Best Practices white paper</a> provides guidance on best practices for deploying, managing, and optimizing the performance of your database with MongoDB Atlas.</p>
+<p>The guide outlines considerations for achieving performance at scale with MongoDB Atlas across a number of key dimensions, including instance size selection, application patterns, schema design and indexing, and disk I/O. While this guide is broad in scope, it is not exhaustive. Following the recommendations in the guide will provide a solid foundation for ensuring optimal application performance.</p>
+<p>Learn more about the capabilities of MongoDB Atlas and try it out for yourself <a href="https://www.mongodb.com/cloud">here</a>.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mongodb/develop-deploy-a-node-js-app-to-aws-elastic-beanstalk-mongodb-atlas" data-via="wpbeginner" data-text="Develop &#038; Deploy a Node.js App to AWS Elastic Beanstalk &#038; MongoDB Atlas" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mongodb/develop-deploy-a-node-js-app-to-aws-elastic-beanstalk-mongodb-atlas"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mongodb/develop-deploy-a-node-js-app-to-aws-elastic-beanstalk-mongodb-atlas" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmongodb%2Fdevelop-deploy-a-node-js-app-to-aws-elastic-beanstalk-mongodb-atlas&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mongodb/index.html" rel="category tag">MongoDB</a> | 
+Tags: <a href="./../tag/aws/index.html" rel="tag">AWS</a>, <a href="./../tag/elastic-beanstalk/index.html" rel="tag">Elastic Beanstalk</a>, <a href="./../tag/mongodb/index.html" rel="tag">mongodb</a>, <a href="./../tag/mongodb-atlas/index.html" rel="tag">MongoDB Atlas</a>, <a href="./../tag/node-js/index.html" rel="tag">node.js</a>
+</div>
+
+			</div>			
+							<div class="more_posts">
+					<span class="post_links"><a href="./7/index.html">&laquo; Older Entries</a> &nbsp; <a href="./5/index.html">Recent Entries &raquo;</a></span>
+				</div>
+			
+					
+		</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://www.clusterdb.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="./../mongodb/building-a-collaborative-ios-minesweeper-game-with-realm/index.html">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="./../mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial/index.html">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="./../mongodb/realm-swift-type-projections/index.html">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="./../mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/index.html">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="./../mongodb/goodbye-nspredicate-hello-realm-swift-query-api/index.html">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments">
+<h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments">
+<li class="recentcomments">
+<span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="./../mysql-cluster/mysql-cluster-running-on-raspberry-pi/index.html#comment-787242">MySQL Cluster running on Raspberry Pi</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">andrew</span> on <a href="./../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="./../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Sai Krishnan</span> on <a href="./../mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-661143">Get MySQL Replication up and running in 5 minutes</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Nayan</span> on <a href="./../mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-660628">Get MySQL Replication up and running in 5 minutes</a>
+</li>
+</ul>
+</li>
+<li id="categories-2" class="widget widget_categories">
+<h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2">
+<a href="./../category/me/index.html">Me</a>
+</li>
+	<li class="cat-item cat-item-146">
+<a href="./../category/mongodb/index.html">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3">
+<a href="./../category/mysql/index.html">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4">
+<a href="./../category/mysql-cluster/index.html">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131">
+<a href="./../category/mysql-fabric/index.html">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5">
+<a href="./../category/mysql-replication/index.html">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214">
+<a href="./../category/mongodb/realm/index.html">Realm</a>
+</li>
+	<li class="cat-item cat-item-1">
+<a href="./../category/uncategorized/index.html">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud">
+<h2 class="widgettitle">Tags</h2>
+<div class="tagcloud">
+<a href="./../tag/7-4/index.html" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="./../tag/apache-kafka/index.html" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="./../tag/cluster/index.html" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="./../tag/ha/index.html" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="./../tag/high-availability/index.html" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="./../tag/ios/index.html" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="./../tag/java/index.html" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="./../tag/javascript/index.html" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="./../tag/mcm/index.html" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="./../tag/mean/index.html" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="./../tag/memcached/index.html" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="./../tag/mobile/index.html" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="./../tag/mongodb/index.html" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="./../tag/mongodb-3-2/index.html" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="./../tag/mongodb-atlas/index.html" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="./../tag/mongodb-mobile/index.html" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="./../tag/mongodb-stitch/index.html" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="./../tag/mysql/index.html" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="./../tag/mysql-5-6/index.html" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="./../tag/mysql-cluster/index.html" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="./../tag/mysql-cluster-70/index.html" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="./../tag/mysql-cluster-7-1/index.html" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="./../tag/mysql-cluster-7-2/index.html" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="./../tag/mysql-cluster-7-3/index.html" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="./../tag/mysql-cluster-7-4/index.html" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="./../tag/mysql-cluster-cge/index.html" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="./../tag/mysql-cluster-manager/index.html" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="./../tag/mysql-enterprise-monitor/index.html" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="./../tag/mysql-fabric-2/index.html" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="./../tag/mysql-replication/index.html" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="./../tag/mysql-utilities/index.html" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="./../tag/ndb-api/index.html" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="./../tag/node-js/index.html" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="./../tag/nosql/index.html" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="./../tag/performance/index.html" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="./../tag/realm/index.html" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="./../tag/replication/index.html" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="./../tag/secondary/index.html" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="./../tag/serverless/index.html" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="./../tag/sharding/index.html" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="./../tag/swift/index.html" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="./../tag/swiftui/index.html" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="./../tag/webcast/index.html" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="./../tag/webinar/index.html" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="./../tag/windows/index.html" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a>
+</div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive">
+<h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="./../2022/03/index.html">March 2022</a></li>
+	<li><a href="./../2022/02/index.html">February 2022</a></li>
+	<li><a href="./../2022/01/index.html">January 2022</a></li>
+	<li><a href="./../2021/12/index.html">December 2021</a></li>
+	<li><a href="./../2021/11/index.html">November 2021</a></li>
+	<li><a href="./../2021/09/index.html">September 2021</a></li>
+	<li><a href="./../2021/08/index.html">August 2021</a></li>
+	<li><a href="./../2021/07/index.html">July 2021</a></li>
+	<li><a href="./../2021/06/index.html">June 2021</a></li>
+	<li><a href="./../2021/05/index.html">May 2021</a></li>
+	<li><a href="./../2021/04/index.html">April 2021</a></li>
+	<li><a href="./../2021/02/index.html">February 2021</a></li>
+	<li><a href="./../2021/01/index.html">January 2021</a></li>
+	<li><a href="./../2020/12/index.html">December 2020</a></li>
+	<li><a href="./../2019/03/index.html">March 2019</a></li>
+	<li><a href="./../2019/01/index.html">January 2019</a></li>
+	<li><a href="./../2018/12/index.html">December 2018</a></li>
+	<li><a href="./../2018/11/index.html">November 2018</a></li>
+	<li><a href="./../2018/10/index.html">October 2018</a></li>
+	<li><a href="./../2018/09/index.html">September 2018</a></li>
+	<li><a href="./../2017/09/index.html">September 2017</a></li>
+	<li><a href="./../2017/03/index.html">March 2017</a></li>
+	<li><a href="./../2017/02/index.html">February 2017</a></li>
+	<li><a href="./../2017/01/index.html">January 2017</a></li>
+	<li><a href="./../2016/12/index.html">December 2016</a></li>
+	<li><a href="./../2016/11/index.html">November 2016</a></li>
+	<li><a href="./../2016/09/index.html">September 2016</a></li>
+	<li><a href="./../2016/01/index.html">January 2016</a></li>
+	<li><a href="./../2015/11/index.html">November 2015</a></li>
+	<li><a href="./../2015/10/index.html">October 2015</a></li>
+	<li><a href="./../2015/09/index.html">September 2015</a></li>
+	<li><a href="./../2015/06/index.html">June 2015</a></li>
+	<li><a href="./../2015/04/index.html">April 2015</a></li>
+	<li><a href="./../2015/03/index.html">March 2015</a></li>
+	<li><a href="./../2015/02/index.html">February 2015</a></li>
+	<li><a href="./../2015/01/index.html">January 2015</a></li>
+	<li><a href="./../2014/12/index.html">December 2014</a></li>
+	<li><a href="./../2014/11/index.html">November 2014</a></li>
+	<li><a href="./../2014/10/index.html">October 2014</a></li>
+	<li><a href="./../2014/09/index.html">September 2014</a></li>
+	<li><a href="./../2014/08/index.html">August 2014</a></li>
+	<li><a href="./../2014/07/index.html">July 2014</a></li>
+	<li><a href="./../2014/06/index.html">June 2014</a></li>
+	<li><a href="./../2014/05/index.html">May 2014</a></li>
+	<li><a href="./../2014/04/index.html">April 2014</a></li>
+	<li><a href="./../2014/03/index.html">March 2014</a></li>
+	<li><a href="./../2014/02/index.html">February 2014</a></li>
+	<li><a href="./../2014/01/index.html">January 2014</a></li>
+	<li><a href="./../2013/12/index.html">December 2013</a></li>
+	<li><a href="./../2013/11/index.html">November 2013</a></li>
+	<li><a href="./../2013/09/index.html">September 2013</a></li>
+	<li><a href="./../2013/08/index.html">August 2013</a></li>
+	<li><a href="./../2013/07/index.html">July 2013</a></li>
+	<li><a href="./../2013/06/index.html">June 2013</a></li>
+	<li><a href="./../2013/05/index.html">May 2013</a></li>
+	<li><a href="./../2013/03/index.html">March 2013</a></li>
+	<li><a href="./../2013/02/index.html">February 2013</a></li>
+	<li><a href="./../2013/01/index.html">January 2013</a></li>
+	<li><a href="./../2012/12/index.html">December 2012</a></li>
+	<li><a href="./../2012/11/index.html">November 2012</a></li>
+	<li><a href="./../2012/09/index.html">September 2012</a></li>
+	<li><a href="./../2012/07/index.html">July 2012</a></li>
+	<li><a href="./../2012/06/index.html">June 2012</a></li>
+	<li><a href="./../2012/05/index.html">May 2012</a></li>
+	<li><a href="./../2012/04/index.html">April 2012</a></li>
+	<li><a href="./../2012/03/index.html">March 2012</a></li>
+	<li><a href="./../2012/02/index.html">February 2012</a></li>
+	<li><a href="./../2012/01/index.html">January 2012</a></li>
+	<li><a href="./../2011/12/index.html">December 2011</a></li>
+	<li><a href="./../2011/11/index.html">November 2011</a></li>
+	<li><a href="./../2011/10/index.html">October 2011</a></li>
+	<li><a href="./../2011/09/index.html">September 2011</a></li>
+	<li><a href="./../2011/07/index.html">July 2011</a></li>
+	<li><a href="./../2011/06/index.html">June 2011</a></li>
+	<li><a href="./../2011/05/index.html">May 2011</a></li>
+	<li><a href="./../2011/04/index.html">April 2011</a></li>
+	<li><a href="./../2011/03/index.html">March 2011</a></li>
+	<li><a href="./../2011/02/index.html">February 2011</a></li>
+	<li><a href="./../2011/01/index.html">January 2011</a></li>
+	<li><a href="./../2010/12/index.html">December 2010</a></li>
+	<li><a href="./../2010/11/index.html">November 2010</a></li>
+	<li><a href="./../2010/10/index.html">October 2010</a></li>
+	<li><a href="./../2010/09/index.html">September 2010</a></li>
+	<li><a href="./../2010/08/index.html">August 2010</a></li>
+	<li><a href="./../2010/07/index.html">July 2010</a></li>
+	<li><a href="./../2010/06/index.html">June 2010</a></li>
+	<li><a href="./../2010/05/index.html">May 2010</a></li>
+	<li><a href="./../2010/04/index.html">April 2010</a></li>
+	<li><a href="./../2010/03/index.html">March 2010</a></li>
+	<li><a href="./../2010/02/index.html">February 2010</a></li>
+	<li><a href="./../2010/01/index.html">January 2010</a></li>
+	<li><a href="./../2009/12/index.html">December 2009</a></li>
+	<li><a href="./../2009/11/index.html">November 2009</a></li>
+	<li><a href="./../2009/10/index.html">October 2009</a></li>
+	<li><a href="./../2009/09/index.html">September 2009</a></li>
+	<li><a href="./../2009/08/index.html">August 2009</a></li>
+	<li><a href="./../2009/07/index.html">July 2009</a></li>
+	<li><a href="./../2009/06/index.html">June 2009</a></li>
+	<li><a href="./../2009/05/index.html">May 2009</a></li>
+	<li><a href="./../2009/04/index.html">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 -->
+</body>
+</html>

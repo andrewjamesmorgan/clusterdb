@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>kotlin &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Wed, 26 Jan 2022 10:30:57 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</title>
+		<link>./../../mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/index.html</link>
+					<comments>./../../mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 26 Jan 2022 10:30:57 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[Realm]]></category>
+		<category><![CDATA[.net]]></category>
+		<category><![CDATA[android]]></category>
+		<category><![CDATA[ios]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[kotlin]]></category>
+		<category><![CDATA[Swift]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4651</guid>
+
+					<description><![CDATA[We are excited to announce the public preview of our next version of Realm Sync: Flexible Sync. This new method of syncing puts the power into the hands of the developer. Now, developers can get more granular control over the data synced to user applications with intuitive language-native queries and hierarchical permissions. Introduction Prior to]]></description>
+										<content:encoded><![CDATA[<p>We are excited to announce the public preview of our next version of Realm Sync: Flexible Sync. This new method of syncing puts the power into the hands of the developer. Now, developers can get more granular control over the data synced to user applications with intuitive language-native queries and hierarchical permissions.</p>
+<p><iframe width=600 height=400 src="https://www.youtube.com/embed/bGaMhy7ns3I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<h2>Introduction</h2>
+<p>Prior to launching the general availability of Realm Sync in February 2021, the Realm team spent countless hours with developers learning how they build best-in-class mobile applications. A common theme emerged—building real-time, offline-first mobile apps require an overwhelming amount of complex, non-differentiating work.</p>
+<p>Our <a href="https://www.mongodb.com/developer/how-to/realm-partitioning-strategies/">first version of Realm Sync</a> addressed this pain by abstracting away offline-first, real-time syncing functionality using declarative APIs. It expedited the time-to-market for many developers and worked well for apps where data is static and compartmentalized, or where permissions rarely need to change. But for dynamic apps and complex use cases, developers still had to spend time creating workarounds instead of developing new features. With that in mind, we built the next iteration of Realm Sync: Flexible Sync. Flexible Sync is designed to help developers:</p>
+<ul>
+<li>Get to market faster: Use intuitive, language-native queries to define the data synced to user applications instead of proprietary concepts.</li>
+<li>Optimize real-time collaboration between users: Utilize object-level conflict-resolution logic.</li>
+<li>Simplify permissions: Apply role-based logic to applications with an expressive permissions system that groups users into roles on a pe-class or collection basis.</li>
+</ul>
+<h2>Language-Native Querying</h2>
+<p>Flexible Sync’s query-based sync logic is distinctly different from how Realm Sync operates today. The new structure is designed to more closely mirror how developers are used to building sync today—typically using GET requests with query parameters.</p>
+<p>One of the primary benefits of Flexible Sync is that it eliminates all the time developers spend determining what query parameters to pass to an endpoint. Instead, the Realm APIs directly integrate with the native querying system on the developer’s choice of platform—for example, a predicate-based query language for iOS, a Fluent query for Android, a string-based query for Javascript, and a LINQ query for .NET.</p>
+<p>Under the hood, the Realm Sync thread sends the query to MongoDB Realm (Realm’s cloud offering). MongoDB Realm translates the query to MongoDB’s query language and executes the query against MongoDB Atlas. Atlas then returns the resulting documents. Those documents are then translated into Realm objects, sent down to the Realm client, and stored on disk. The Realm Sync thread keeps a queue of any changes made locally to synced objects—even when offline. As soon as connectivity is reestablished, any changes made to the server-side or client-side are synced down using built-in granular conflict resolution logic. All of this occurs behind the scenes while the developer is interacting with the data. This is the part we’ve heard our users describe as “magic.”</p>
+<p>Flexible Sync also enables much more dynamic queries, based on user inputs. Picture a home listing app that allows users to search available properties in a certain area. As users define inputs—only show houses in Dallas, TX that cost less than $300k and have at least three bedrooms—the query parameters can be combined with logical ANDs and ORs to produce increasingly complex queries, and narrow down the search result even further. All query results are combined into a single realm file on the client’s device, which significantly simplifies code required on the client-side and ensures changes to data are synced efficiently and in real time.</p>
+<h3>Swift</h3>
+<pre><code class="swift">// Set your Schema
+class Listing: Object {
+    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted var location: String
+    @Persisted var price: Int
+    @Persisted var bedrooms: Int
+}
+
+// Configure your App and login
+let app = App(id: "XXXX")
+let user = try! await app.login(credentials:
+            .emailPassword(email: "email", password: "password"))
+
+// Set the new Flexible Sync Config and open the Realm
+let config = user.flexibleSyncConfiguration()
+let realm = try! await Realm(configuration: config, downloadBeforeOpen: .always)
+
+// Create a Query and Add it to your Subscriptions
+let subscriptions = realm.subscriptions
+
+try! await subscriptions.write {
+    subscriptions.append(QuerySubscription&lt;Listing&gt;(name: "home-search") {
+        $0.location == "dallas" &amp;&amp; $0.price &lt; 300000 &amp;&amp; $0.bedrooms &gt;= 3
+    })
+}
+
+// Now query the local realm and get your home listings - output is 100 listings
+// in the results
+print(realm.objects(Listing.self).count)
+
+// Remove the subscription - the data is removed from the local device but stays
+// on the server
+try! await subscriptions.write {
+    subscriptions.remove(named: "home-search")
+}
+
+// Output is 0 - listings have been removed locally
+print(realm.objects(Listing.self).count)
+</code></pre>
+<h3>Kotlin</h3>
+<pre><code class="kotlin">// Set your Schema
+open class Listing: ObjectRealm() {
+  @PrimaryKey
+  @RealmField("_id")
+  var id: ObjectId
+  var location: String = ""
+  var price: Int = 0
+  var bedrooms: Int = 0
+}
+
+// Configure your App and login
+val app = App("&lt;YOUR_APP_ID_HERE&gt;")
+val user = app.login(Credentials.emailPassword("email", "password"))
+
+// Set the new Flexible Sync Config and open the Realm
+let config = SyncConfiguration.defaultConfig(user)
+let realm = Realm.getInstance(config)
+
+// Create a Query and Add it to your Subscriptions
+val subscriptions = realm.subscriptions
+subscriptions.update { mutableSubscriptions -&gt;
+   val sub = Subscription.create(
+      "home-search", 
+      realm.where&lt;Listing&gt;()
+         .equalTo("location", "dallas")
+         .lessThan("price", 300_000)
+         .greaterThanOrEqual("bedrooms", 3)
+   )
+   mutableSubscriptions.add(subscription)
+}
+
+// Wait for server to accept the new subscription and download data
+subscriptions.waitForSynchronization()
+realm.refresh()
+
+// Now query the local realm and get your home listings - output is 100 listings 
+// in the results
+val homes = realm.where&lt;Listing&gt;().count()
+
+// Remove the subscription - the data is removed from the local device but stays 
+// on the server
+subscriptions.update { mutableSubscriptions -&gt;
+   mutableSubscriptions.remove("home-search")
+}
+subscriptions.waitForSynchronization()
+realm.refresh()
+
+// Output is 0 - listings have been removed locally
+val homes = realm.where&lt;Listing&gt;().count()
+</code></pre>
+<h3>.NET</h3>
+<pre><code class="csharp">// Set your Schema
+class Listing: RealmObject
+{
+    [PrimaryKey, MapTo("_id")]
+    public ObjectId Id { get; set; }
+    public string Location { get; set; }
+    public int Price { get; set; }
+    public int Bedrooms { get; set; }
+}
+
+// Configure your App and login
+var app = App.Create(YOUR_APP_ID_HERE);
+var user = await app.LogInAsync(Credentials.EmailPassword("email", "password"));
+
+// Set the new Flexible Sync Config and open the Realm
+var config = new FlexibleSyncConfiguration(user);
+var realm = await Realm.GetInstanceAsync(config);
+
+// Create a Query and Add it to your Subscriptions
+var dallasQuery = realm.All&lt;Listing&gt;().Where(l =&gt; l.Location == "dallas" &amp;&amp; l.Price &lt; 300_000 &amp;&amp; l.Bedrooms &gt;= 3);
+realm.Subscriptions.Update(() =&gt;
+{
+    realm.Subscriptions.Add(dallasQuery);
+});
+
+await realm.Subscriptions.WaitForSynchronizationAsync();
+
+// Now query the local realm and get your home listings - output is 100 listings
+// in the results
+var numberOfListings = realm.All&lt;Listing&gt;().Count();
+
+// Remove the subscription - the data is removed from the local device but stays
+// on the server
+
+realm.Subscriptions.Update(() =&gt;
+{
+    realm.Subscriptions.Remove(dallasQuery);
+});
+
+await realm.Subscriptions.WaitForSynchronizationAsync();
+
+// Output is 0 - listings have been removed locally
+numberOfListings = realm.All&lt;Listing&gt;().Count();
+</code></pre>
+<h3>JavaScript</h3>
+<pre><code class="js">import Realm from "realm";
+
+// Set your Schema
+const ListingSchema = {
+  name: "Listing",
+  primaryKey: "_id",
+  properties: {
+    _id: "objectId",
+    location: "string",
+    price: "int",
+    bedrooms: "int",
+  },
+};
+
+// Configure your App and login
+const app = new Realm.App({ id: YOUR_APP_ID_HERE });
+const credentials = Realm.Credentials.emailPassword("email", "password");
+const user = await app.logIn(credentials);
+
+// Set the new Flexible Sync Config and open the Realm
+const realm = await Realm.open({
+  schema: [ListingSchema],
+  sync: { user, flexible: true },
+});
+
+// Create a Query and Add it to your Subscriptions
+await realm.subscriptions.update((mutableSubscriptions) =&gt; {
+  mutableSubscriptions.add(
+    realm
+      .objects(ListingSchema.name)
+      .filtered("location = 'dallas' &amp;&amp; price &lt; 300000 &amp;&amp; bedrooms = 3", {
+        name: "home-search",
+      })
+  );
+});
+
+// Now query the local realm and get your home listings - output is 100 listings
+// in the results
+let homes = realm.objects(ListingSchema.name).length;
+
+// Remove the subscription - the data is removed from the local device but stays
+// on the server
+await realm.subscriptions.update((mutableSubscriptions) =&gt; {
+  mutableSubscriptions.removeByName("home-search");
+});
+
+// Output is 0 - listings have been removed locally
+homes = realm.objects(ListingSchema.name).length;
+</code></pre>
+<h2>Optimizing for Real-Time Collaboration</h2>
+<p>Flexible Sync also enhances query performance and optimizes for real-time user collaboration by treating a single object or document as the smallest entity for synchronization. Flexible Sync allows for Sync Realms to more efficiently share data and for conflict resolution to incorporate changes faster and with less data transfer.</p>
+<p>For example, you and a fellow employee are analyzing the remaining tasks for a week. Your coworker wants to see all of the time-intensive tasks remaining (<code>workunits &amp;gt; 5</code>), and you want to see all the tasks you have left for the week (<code>owner == ianward</code>). Your queries will overlap where <code>workunits &amp;gt; 5</code> and <code>owner == ianward</code>. If your coworker notices one of your tasks is marked incorrectly as <code>7 workunits</code> and changes the value to <code>6</code>, you will see the change reflected on your device in real time. Under the hood, the merge algorithm will only sync the changed document instead of the entire set of query results increasing query performance.</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Interesecting_Tasks_380cf4962d.png" alt="Venn diagram showing that 2 different queries can share some of the same documents" /></p>
+<h2>Permissions</h2>
+<p>Whether it’s a company’s internal application or an app on the App Store, permissions are required in almost every application. That’s why we are excited by how seamless Flexible Sync makes applying a document-level permission model when syncing data—meaning synced documents can be limited based on a user’s role.</p>
+<p>Consider how a sales organization uses a CRM application. An individual sales representative should only be able to access her own sales pipeline while her manager needs to be able to see the entire region’s sales pipeline. In Flexible Sync, a user’s role will be combined with the client-side query to determine the appropriate result set. For example, when the sales representative above wants to view her deals, she would send a query where <code>opportunities.owner == "EmmaLullo"</code> but when her manager wants to see all the opportunities for their entire team, they would query with opportunities.team == &#8220;West”. If a user sends a much more expansive query, such as querying for all opportunities, then the permissions system would only allow data to be synced for which the user had explicit access.</p>
+<pre><code class="json">{
+  "Opportunities": {
+    "roles": [
+        {
+                name: "manager", 
+                applyWhen: { "%%user.custom_data.isSalesManager": true},
+                read: {"team": "%%user.custom_data.teamManager"}
+                write: {"team": "%%user.custom_data.teamManager"}
+            },
+        {
+                name: "salesperson",
+                applyWhen: {},
+                read: {"owner": "%%user.id"}
+                write: {"owner": "%%user.id"}
+        }
+    ]
+  },
+{
+  "Bookings": {
+    "roles": [
+        {
+                name: "accounting", 
+                applyWhen: { "%%user.custom_data.isAccounting": true},
+                read: true,
+                write: true
+            },
+        {
+                name: "sales",
+                applyWhen: {},
+                read: {"%%user.custom_data.isSales": true},
+                write: false
+        }
+    ]
+  }
+</code></pre>
+<h2>Looking Ahead</h2>
+<p>Ultimately, our goal with Flexible Sync is to deliver a sync service that can fit any use case or schema design pattern imaginable without custom code or workarounds. And while we are excited that Flexible Sync is now in preview, we’re nowhere near done.</p>
+<p>The Realm Sync team is planning to bring you more query operators and permissions integrations over the course of 2022. Up next we are looking to expose array operators and enable querying on embedded documents, but really, we look to you, our users, to help us drive the roadmap. Submit your ideas and feature requests to our <a href="https://feedback.mongodb.com/forums/923521-realm">feedback portal</a> and ask questions in our <a href="https://www.mongodb.com/community/forums/c/realm/realm-sync/111">Community forum</a>. Happy building!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

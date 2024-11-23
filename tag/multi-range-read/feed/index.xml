@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Multi-Range Read &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Wed, 01 Jul 2009 20:12:26 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>MySQL Cluster Multi-Range Read using NDB API</title>
+		<link>./../../mysql-cluster/mysql-cluster-multi-range-read-using-ndb-api/index.html</link>
+					<comments>./../../mysql-cluster/mysql-cluster-multi-range-read-using-ndb-api/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 01 Jul 2009 20:12:26 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Batched-Key Access]]></category>
+		<category><![CDATA[BKA]]></category>
+		<category><![CDATA[MRR]]></category>
+		<category><![CDATA[Multi-Range Read]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<guid isPermaLink="false">./../../index.html?p=227</guid>
+
+					<description><![CDATA[As described in &#8220;Batching &#8211; improving MySQL Cluster performance when using the NDB API&#8220;, reducing the number of times the application node has to access the data nodes can greatly improve performance and reduce latency. That article focussed on setting up multiple operatations (as part of a single transaction) and then executing them as a]]></description>
+										<content:encoded><![CDATA[<p>As described in &#8220;<a href="./../../mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api/index.html" target="_blank">Batching &#8211; improving MySQL Cluster performance when using the NDB API</a>&#8220;, reducing the number of times the application node has to access the data nodes can greatly improve performance and reduce latency. That article focussed on setting up multiple operatations (as part of a single transaction) and then executing them as a single batch sent by the NDB API library to the data nodes.</p>
+<p>The purpose of this entry is to show how a single NDB API operation can access multiple rows from a table with a single index lookup. It goes on to explain the signifficance of this both now and in the future (much faster joins using SQL for MySQL Cluster tables).</p>
+<p>There are several operation types to cover table scans and index lookups (refer to the &#8220;<a href="http://dev.mysql.com/doc/ndbapi/en/index.html" target="_blank">MySQL Cluster API Developer Guide</a>&#8221; for detals). For this example, I use an NdbIndexScanOperation.</p>
+<p>The code sample assumes that the following table structure and data has been set up for table &#8220;COUNTRY&#8221; in database &#8220;TEST_DB_1&#8221; using the NDB storage engine (Note that the <a href="./../../wp-content/uploads/2009/07/mrr_example.cpp" target="_blank">full example application </a>sets this up automatically):</p>
+<pre style="padding-left: 30px; font-size: 11px;color: #993300;">+--------------+------------------+------+-----+---------+-------+
+| Field        | Type             | Null | Key | Default | Extra |
++--------------+------------------+------+-----+---------+-------+
+| SUB_ID       | int(10) unsigned | NO   | PRI | NULL    |       |
+| COUNTRY_CODE | int(10) unsigned | NO   |     | NULL    |       |
++--------------+------------------+------+-----+---------+-------+
+
++--------+--------------+
+| SUB_ID | COUNTRY_CODE |
++--------+--------------+
+|     13 |            1 |
+|      2 |            1 |
+|      4 |           61 |
+|      7 |           46 |
+|      9 |           44 |
+|     10 |           33 |
+|     12 |           44 |
+|      5 |           33 |
+|     14 |           61 |
+|      1 |           44 |
+|      8 |            1 |
++--------+--------------+</pre>
+<p>The following code causes the NDB API library to send a single request from the application to the data nodes to read the rows where the primary key &#8220;SUB_ID&#8221; falls into the ranges (2&lt;= SUB_ID &lt;4); (5 &lt; SUB_ID &lt;=9) or (SUB_ID == 13). Note that this is just a fragment of the code and the error checking has been removed for clarity (refer to  <a href="./../../wp-content/uploads/2009/07/mrr_example.cpp" target="_blank">full example application </a>to see the rest of the code, including the error handling).</p>
+<pre style="padding-left: 30px; font-size: 11px;color: #993300;">NdbIndexScanOperation *psop;
+
+/* RecAttrs for NdbRecAttr Api */
+NdbRecAttr *recAttrAttr1;
+NdbRecAttr *recAttrAttr2;
+
+psop=myTransaction-&gt;getNdbIndexScanOperation(myPIndex);
+
+Uint32 scanFlags=
+  NdbScanOperation::SF_OrderBy |
+  NdbScanOperation::SF_MultiRange |
+  NdbScanOperation::SF_ReadRangeNo;
+
+psop-&gt;readTuples(NdbOperation::LM_Read,
+                 scanFlags,
+                 (Uint32) 0,          // batch
+                 (Uint32) 0)          // parallel
+
+/* Add a bound
+* Tuples where SUB_ID &gt;=2 and &lt; 4
+*/
+Uint32 low=2;
+Uint32 high=4;
+Uint32 match=13;
+
+psop-&gt;setBound("SUB_ID", NdbIndexScanOperation::BoundLE, (char*)&amp;low);
+psop-&gt;setBound("SUB_ID", NdbIndexScanOperation::BoundGT, (char*)&amp;high);
+psop-&gt;end_of_bound(0);
+
+/* Second bound
+* Tuples where SUB_ID &gt; 5 and &lt;=9
+*/
+low=5;
+high=9;
+psop-&gt;setBound("SUB_ID", NdbIndexScanOperation::BoundLT, (char*)&amp;low);
+psop-&gt;setBound("SUB_ID", NdbIndexScanOperation::BoundGE, (char*)&amp;high);
+psop-&gt;end_of_bound(1);
+
+/* Third bound
+* Tuples where SUB_ID == 13
+*/
+psop-&gt;setBound("SUB_ID", NdbIndexScanOperation::BoundEQ, (char*)&amp;match);
+psop-&gt;end_of_bound(2);
+
+/* Read all columns */
+recAttrAttr1=psop-&gt;getValue("SUB_ID");
+recAttrAttr2=psop-&gt;getValue("COUNTRY_CODE");
+
+myTransaction-&gt;execute( NdbTransaction::Commit);
+
+while (psop-&gt;nextResult(true) == 0)
+{
+  printf(" %8d    %8d   Range no : %2dn",
+  recAttrAttr1-&gt;u_32_value(),
+  recAttrAttr2-&gt;u_32_value(),
+  psop-&gt;get_range_no());
+}
+psop-&gt;close();</pre>
+<p>When run, this code produces the following output:</p>
+<pre style="padding-left: 30px; font-size: 11px;color: #993300;">SUB_ID    COUNTRY_CODE
+2           1   Range no :  0
+7          46   Range no :  1
+8           1   Range no :  1
+9          44   Range no :  1
+13          1   Range no :  2</pre>
+<h3>Why is this signifficant?</h3>
+<p>This can be very useful for applications using the NDB API; imagine an application that wanted to find the birthdays for all of my friends. Assume that I have 2 tables of interest:</p>
+<pre style="padding-left: 30px; font-size: 11px;color: #993300;">mysql&gt; describe friends; describe birthday;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| name   | varchar(30) | NO   | PRI | NULL    |       |
+| friend | varchar(30) | NO   | PRI |         |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(30) | NO   | PRI | NULL    |       |
+| day   | int(11)     | YES  |     | NULL    |       |
+| month | int(11)     | YES  |     | NULL    |       |
+| year  | int(11)     | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)</pre>
+<p>Using the NDB API, I can create 1 NdbIndexScanOperation operation to read all tuples from &#8220;friends&#8221; where the &#8220;name&#8221; field matches &#8220;Andrew&#8221; and then use the results to perform a second NdbIndexScanOperation to read the rows that match each of my friends&#8217; names in the &#8220;birthday&#8221; table. In other words, performing a join using only 2 trips from the application to the data nodes.</p>
+<p>
+Of course, it&#8217;s simple to get the same results using SQL&#8230;<code>SELECT birthday.name, birthday.day, birthday.month FROM friends, birthday WHERE friend.name='Andrew' AND friends.friend=birthday.name;</code><strong>However</strong>, if the tables are very large and I have a lot of friends then performing this join using SQL can be expensive as it requires a separate trip to the data nodes to fetch each birthday. In the future, Batched Key Access (BKA) will optimise these joins by performing one of these NDB API Multi-Range Reads (MRR) to fetch all of the birthdays in one go!  Until then, using the NDB API directly can deliver signifficantly faster results.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/mysql-cluster-multi-range-read-using-ndb-api/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

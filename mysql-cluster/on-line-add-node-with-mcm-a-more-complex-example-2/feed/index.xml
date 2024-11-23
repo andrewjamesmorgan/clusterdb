@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: On-line add-node with MCM; a more complex example	</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../on-line-add-node-with-mcm-a-more-complex-example-2/index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Fri, 18 Jul 2014 15:19:20 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: andrew		</title>
+		<link>./../on-line-add-node-with-mcm-a-more-complex-example-2/index.html#comment-187706</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 18 Jul 2014 15:19:20 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2265#comment-187706</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../on-line-add-node-with-mcm-a-more-complex-example-2/index.html#comment-184929&quot;&gt;vishnu&lt;/a&gt;.
+
+Hi Vishnu,
+
+ obvious question but did you have other schema changes being applied at the time?
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../on-line-add-node-with-mcm-a-more-complex-example-2/index.html#comment-184929">vishnu</a>.</p>
+<p>Hi Vishnu,</p>
+<p> obvious question but did you have other schema changes being applied at the time?</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: vishnu		</title>
+		<link>./../on-line-add-node-with-mcm-a-more-complex-example-2/index.html#comment-184929</link>
+
+		<dc:creator><![CDATA[vishnu]]></dc:creator>
+		<pubDate>Tue, 15 Jul 2014 04:36:34 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2265#comment-184929</guid>
+
+					<description><![CDATA[hi
+
+can you shed some light as to how an online alter(reorg partitions) works in ndb 
+
+i was trying it out yesterday in 7.3.5 and got the 
+ERROR 1297 (HY000): Got temporary error 701 &#039;System busy with other schema operation&#039; from NDBCLUSTER error.
+
+are there any parameteres i need to tune for online alters in specific ?
+
+thanks,
+
+with regards,
+ch Vishnu]]></description>
+			<content:encoded><![CDATA[<p>hi</p>
+<p>can you shed some light as to how an online alter(reorg partitions) works in ndb </p>
+<p>i was trying it out yesterday in 7.3.5 and got the<br />
+ERROR 1297 (HY000): Got temporary error 701 &#8216;System busy with other schema operation&#8217; from NDBCLUSTER error.</p>
+<p>are there any parameteres i need to tune for online alters in specific ?</p>
+<p>thanks,</p>
+<p>with regards,<br />
+ch Vishnu</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

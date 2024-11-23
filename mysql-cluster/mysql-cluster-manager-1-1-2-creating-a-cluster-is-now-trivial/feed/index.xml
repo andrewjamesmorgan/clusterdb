@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: MySQL Cluster Manager 1.1.2 &#8211; creating a Cluster is now trivial	</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../mysql-cluster-manager-1-1-2-creating-a-cluster-is-now-trivial/index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Fri, 13 Dec 2013 15:21:12 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: Pedro		</title>
+		<link>./../mysql-cluster-manager-1-1-2-creating-a-cluster-is-now-trivial/index.html#comment-30181</link>
+
+		<dc:creator><![CDATA[Pedro]]></dc:creator>
+		<pubDate>Fri, 13 Dec 2013 15:21:12 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2002#comment-30181</guid>
+
+					<description><![CDATA[How can I solve this problem?
+
+MySQL Cluster Manager 1.2.4 (64bit) started
+Connect to MySQL Cluster Manager by running &quot;/opt/mcm-1.2.4/bin/mcm&quot; -a desenv-linux2:1862
+Configuring default cluster &#039;mycluster&#039;...
+ERROR: Unable to create site, aborting bootstrap!
+ERROR 2004: (00MGR) Host desenv-linux2 is not a member of site mysite
+
+
+
+file log:
+
+
+ Starting xcom thread on port 18620
+2013-12-13 12:19:47.184: (message) MySQL Cluster Manager 1.2.4 (64bit) started
+2013-12-13 12:19:47.184: (message) [T0x1ed5280 CMGR ]: Starting recovery
+2013-12-13 12:19:47.184: (message) [T0x1ed5280 CMGR ]: Cluster Manager thread started
+2013-12-13 12:19:47.186: (message) [T0x1ebf010 chass]: Listening for client connections on desenv-linux2:1862
+2013-12-13 12:19:47.186: (message) [T0x7fe4700021c0 BOOT ]: Starting bootstrap thread
+2013-12-13 12:19:47.245: (message) [T0x1ed5240 XCOM ]: Recovery completed
+2013-12-13 12:19:47.307: (message) [T0x1ebf010 chass]: Received command : create site --hosts=desenv-linux2 mysite
+2013-12-13 12:19:47.313: (message) [T0x1ebf010 chass]: Handling request id 1
+2013-12-13 12:19:47.313: (critical) network-mysqld.c:2043: left the MySQL protocol&#039;s state-machine at state &#039;CON_STATE_READ_QUERY&#039;. You may see the connection hang now.]]></description>
+			<content:encoded><![CDATA[<p>How can I solve this problem?</p>
+<p>MySQL Cluster Manager 1.2.4 (64bit) started<br />
+Connect to MySQL Cluster Manager by running &#8220;/opt/mcm-1.2.4/bin/mcm&#8221; -a desenv-linux2:1862<br />
+Configuring default cluster &#8216;mycluster&#8217;&#8230;<br />
+ERROR: Unable to create site, aborting bootstrap!<br />
+ERROR 2004: (00MGR) Host desenv-linux2 is not a member of site mysite</p>
+<p>file log:</p>
+<p> Starting xcom thread on port 18620<br />
+2013-12-13 12:19:47.184: (message) MySQL Cluster Manager 1.2.4 (64bit) started<br />
+2013-12-13 12:19:47.184: (message) [T0x1ed5280 CMGR ]: Starting recovery<br />
+2013-12-13 12:19:47.184: (message) [T0x1ed5280 CMGR ]: Cluster Manager thread started<br />
+2013-12-13 12:19:47.186: (message) [T0x1ebf010 chass]: Listening for client connections on desenv-linux2:1862<br />
+2013-12-13 12:19:47.186: (message) [T0x7fe4700021c0 BOOT ]: Starting bootstrap thread<br />
+2013-12-13 12:19:47.245: (message) [T0x1ed5240 XCOM ]: Recovery completed<br />
+2013-12-13 12:19:47.307: (message) [T0x1ebf010 chass]: Received command : create site &#8211;hosts=desenv-linux2 mysite<br />
+2013-12-13 12:19:47.313: (message) [T0x1ebf010 chass]: Handling request id 1<br />
+2013-12-13 12:19:47.313: (critical) network-mysqld.c:2043: left the MySQL protocol&#8217;s state-machine at state &#8216;CON_STATE_READ_QUERY&#8217;. You may see the connection hang now.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Oracle Announces New Release of MySQL &#124; Caped Crusaders Tech		</title>
+		<link>./../mysql-cluster-manager-1-1-2-creating-a-cluster-is-now-trivial/index.html#comment-548</link>
+
+		<dc:creator><![CDATA[Oracle Announces New Release of MySQL &#124; Caped Crusaders Tech]]></dc:creator>
+		<pubDate>Sun, 19 Feb 2012 20:19:59 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2002#comment-548</guid>
+
+					<description><![CDATA[[...] which is also GA in version 1.1.4, which fully supports the MySQL 7.2 GA.  Check out their Cluster Manager and their blog article on Synchronously Replicating Databases Across Data [...]]]></description>
+			<content:encoded><![CDATA[<p>[&#8230;] which is also GA in version 1.1.4, which fully supports the MySQL 7.2 GA.  Check out their Cluster Manager and their blog article on Synchronously Replicating Databases Across Data [&#8230;]</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

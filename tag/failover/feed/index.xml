@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>failover &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Mon, 24 Sep 2012 14:08:00 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Replication and auto-failover made easy with MySQL Utilities</title>
+		<link>./../../mysql/replication-and-auto-failover-made-easy-with-mysql-utilities/index.html</link>
+					<comments>./../../mysql/replication-and-auto-failover-made-easy-with-mysql-utilities/index.html#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 24 Sep 2012 14:08:00 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[failover]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL 5.6]]></category>
+		<category><![CDATA[MySQL Replication]]></category>
+		<category><![CDATA[utilities]]></category>
+		<guid isPermaLink="false">./../../index.html?p=2472</guid>
+
+					<description><![CDATA[If you&#8217;re a user of MySQL Workbench then you may have noticed a pocket knife icon appear in the top right hand corner &#8211; click on that and a terminal opens which gives you access to the MySQL utilities. In this post I&#8217;m focussing on the replication utilities but you can also refer to the]]></description>
+										<content:encoded><![CDATA[<div id="attachment_2474" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2012/08/WorkBench.jpg"><img decoding="async" aria-describedby="caption-attachment-2474" class="size-medium wp-image-2474" title="MySQL utilities in Workbench" alt="MySQL utilities in Workbench" src="./../../wp-content/uploads/2012/08/WorkBench-300x164.jpg" width="300" height="164" /></a><p id="caption-attachment-2474" class="wp-caption-text">Utilities in MySQL Workbench</p></div>
+<p>If you&#8217;re a user of MySQL Workbench then you may have noticed a pocket knife icon appear in the top right hand corner &#8211; click on that and a terminal opens which gives you access to the MySQL utilities. In this post I&#8217;m focussing on the replication utilities but you can also refer to the full <a title="MySQL Utilities documentation" href="http://dev.mysql.com/doc/workbench/en/mysql-utilities.html" target="_blank">MySQL Utilities documentation</a>.</p>
+<p>What I&#8217;ll step through is how to uses these utilities to:</p>
+<ul>
+<li>Set up replication from a single master to multiple slaves</li>
+<li>Automatically detect the failure of the master and promote one of the slaves to be the new master</li>
+<li>Introduce the old master back into the topology as a new slave and then promote it to be the master again</li>
+</ul>
+<h3>Tutorial Video</h3>
+<p>Before going through the steps in detail here&#8217;s a demonstration of the replication utilities in action&#8230;<br />
+<iframe title="MySQL Replication Utilities Tutorial" width="480" height="270" src="https://www.youtube.com/embed/yZJECIq5-Ac?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br />
+To get full use of these utilities you should use the InnoDB storage engine together with the <a title="MySQL 5.6 Replication - including global transaction IDs" href="http://dev.mysql.com/tech-resources/articles/mysql-5.6-replication.html" target="_blank">Global Transaction ID functionality from the latest MySQL 5.6 DMR</a>.</p>
+<h3>Do you really need/want auto-failover?</h3>
+<p>For many people, the instinctive reaction is to deploy a fully automated system that detects when the master database fails and then fails over (promotes a slave to be the new master) without human intervention. For many applications this may be the correct approach.</p>
+<p>There are inherent risks to this though &#8211; What if the failover implementation has a flaw and fails (after all, we probably don&#8217;t test this out in the production system very often)? What if the slave isn&#8217;t able to cope with the workload and makes things worse? Is it just a transitory glitch and would the best approach have been just to wait it out?</p>
+<p>Following a <a title="Github outage following auto-failover of the database" href="http://github.com/blog/1261-github-availability-this-week" target="_blank">recent, high profile outage</a> there has been a great deal of debate on the topic between those that recommend auto-failover and those that believe it should only ever be entrusted to a knowledgeable (of the application and the database architecture) and well informed (of the state of the database nodes, application load etc.) human. Of course, if the triggering of the failover is to be left to a human then you want that person to have access to the information they need and an extremely simple procedure (ideally a single command) to execute the failover. Probably the truth is that it all depends on your specific circumstances.</p>
+<p>The MySQL replication utilities aim to support you whichever camp you belong to:</p>
+<ul>
+<li>In the fully automated mode, the utilities will continually monitor the state of the master and in the event of its failure identify the best slave to promote &#8211; by default it will select the one that is most up-to-date and then apply any changes that are available on other slaves but not on this one before promoting it to be the new master. The user can override this behaviour (for example by limiting which of the slaves are eligible for promotion). The user is also able to bind in their own programs to be run before and after the failover (for example, to inform the application).</li>
+<li>In the monitoring mode, the utility still continually checks the availability of the master, and informs the user if it should fail. The user then executes a single command to fail over to their preferred slave.</li>
+</ul>
+<h3>Step 1. Make sure MySQL Servers are configured correctly</h3>
+<p>For some of the utilities, it&#8217;s important that you&#8217;re using Global Transaction IDs; binary logging needs to be enabled; may as well use the new crash-safe slave functionality&#8230; It&#8217;s beyond the scope of this post to go through all of those and so instead I&#8217;ll just give example configuration files for the 5 MySQL Servers that will be used:</p>
+<p><strong>my1.cnf</strong></p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[mysqld]
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+disable-gtid-unsafe-statements=true # Use enforce-gtid-consistency from 5.6.9+
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+sync-master-info=1
+datadir=/home/billy/mysql/data1
+server-id=1
+log-bin=util11-bin.log
+report-host=utils1
+report-port=3306
+socket=/home/billy/mysql/sock1
+port=3306</pre>
+<p><strong>my2.cnf</strong></p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[mysqld]
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+disable-gtid-unsafe-statements=true # Use enforce-gtid-consistency from 5.6.9+
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+sync-master-info=1
+datadir=/home/billy/mysql/data2
+server-id=2
+log-bin=util12-bin.log
+report-host=utils1
+report-port=3307
+socket=/home/billy/mysql/sock2
+port=3307</pre>
+<p><strong>my3.cnf</strong></p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[mysqld]
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+disable-gtid-unsafe-statements=true # Use enforce-gtid-consistency from 5.6.9+
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+sync-master-info=1
+datadir=/home/billy/mysql/data3
+server-id=3
+log-bin=util2-bin.log
+report-host=utils2
+report-port=3306
+socket=/home/billy/mysql/sock3
+port=3306</pre>
+<p><strong>my4.cnf</strong></p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[mysqld]
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+disable-gtid-unsafe-statements=true # Use enforce-gtid-consistency from 5.6.9+
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+master-info-file=/home/billy/mysql/master4.info
+datadir=/home/billy/mysql/data4
+server-id=4
+log-bin=util4-bin.log
+report-host=utils2
+report-port=3307
+socket=/home/billy/mysql/sock4
+port=3307</pre>
+<p><strong>my5.cnf</strong></p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[mysqld]
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+disable-gtid-unsafe-statements=true # Use enforce-gtid-consistency from 5.6.9+
+datadir=/home/billy/mysql/data5
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+sync-master-info=1
+#master-info-file=/home/billy/mysql/master5.info
+server-id=5
+log-bin=util5-bin.log
+report-host=utils2
+report-port=3308
+socket=/home/billy/mysql/sock5
+port=3308</pre>
+<p>The utilities are actually going to be run from a remote host and so it will be necessary for that host to access each of the MySQL Servers and so a user has to be granted remote access (note that the utilities will automatically create the replication user):</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[billy@utils1 ~]$ mysql -h 127.0.0.1 -P3306 -u root -e "grant all on *.* to root@'%' with grant option;"
+[billy@utils1 ~]$ mysql -h 127.0.0.1 -P3307 -u root -e "grant all on *.* to root@'%' with grant option;"
+[billy@utils2 ~]$ mysql -h 127.0.0.1 -P3306 -u root -e "grant all on *.* to root@'%' with grant option;"
+[billy@utils2 ~]$ mysql -h 127.0.0.1 -P3307 -u root -e "grant all on *.* to root@'%' with grant option;"
+[billy@utils2 ~]$ mysql -h 127.0.0.1 -P3308 -u root -e "grant all on *.* to root@'%' with grant option;"</pre>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;"></pre>
+<p>OK &#8211; that&#8217;s the most painful part of the whole process out of the way!</p>
+<h3>Set up replication</h3>
+<p>While there are extra options (such as specifying what username/password to use for the replication user or providing a password for the root user) I&#8217;m going to keep things simple and use the defaults as much as possible. The following commands are run from the MySQL Utilities terminal &#8211; just click on the pocket-knife icon in MySQL Workbench.</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlreplicate --master=root@utils1:3306 --slave=root@utils1:3307</strong>
+# master on utils1: ... connected.
+# slave on utils1: ... connected.
+# Checking for binary logging on master...
+# Setting up replication...
+# ...done.
+
+<strong>mysqlreplicate --master=root@utils1:3306 --slave=root@utils2:3306</strong>
+# master on utils1: ... connected.
+# slave on utils2: ... connected.
+# Checking for binary logging on master...
+# Setting up replication...
+# ...done.
+
+<strong>mysqlreplicate --master=root@utils1:3306 --slave=root@utils2:3307</strong>
+# master on utils1: ... connected.
+# slave on utils2: ... connected.
+# Checking for binary logging on master...
+# Setting up replication...
+# ...done.
+
+<strong>mysqlreplicate --master=root@utils1:3306 --slave=root@utils2:3308</strong>
+# master on utils1: ... connected.
+# slave on utils2: ... connected.
+# Checking for binary logging on master...
+# Setting up replication...
+# ...done.</pre>
+<p>That&#8217;s it, replication has now been set up from one master to four slaves.</p>
+<p>You can now check that the replication topology matches what you intended:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlrplshow --master=root@utils1 --discover-slaves-login=root;</strong>
+# master on utils1: ... connected.
+# Finding slaves for master: utils1:3306
+
+# Replication Topology Graph
+utils1:3306 (MASTER)
+   |
+   +--- utils1:3307 - (SLAVE)
+   |
+   +--- utils2:3306 - (SLAVE)
+   |
+   +--- utils2:3307 - (SLAVE)
+   |
+   +--- utils2:3308 - (SLAVE)</pre>
+<p>Additionally, you can also check that any of the replication relationships is correctly configure:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlrplcheck --master=root@utils1 --slave=root@utils2</strong>
+# master on utils1: ... connected.
+# slave on utils2: ... connected.
+Test Description                                                     Status
+---------------------------------------------------------------------------
+Checking for binary logging on master                                [pass]
+Are there binlog exceptions?                                         [pass]
+Replication user exists?                                             [pass]
+Checking server_id values                                            [pass]
+Is slave connected to master?                                        [pass]
+Check master information file                                        [pass]
+Checking InnoDB compatibility                                        [pass]
+Checking storage engines compatibility                               [pass]
+Checking lower_case_table_names settings                             [pass]
+Checking slave delay (seconds behind master)                         [pass]
+# ...done.</pre>
+<p>Including the <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">-s</span> option would have included the output that you&#8217;d expect to see from <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">SHOW SLAVE STATUSG on the slave.</span></p>
+<h3>Automated monitoring and failover</h3>
+<p>The previous section showed how you can save some serious time (and opportunity for user-error) when setting up MySQL replication. We now look at using the utilities to automatically monitor the state of the master and then automatically promote a new master from the pool of slaves. For simplicity I&#8217;ll stick with default values wherever possible but note that there are a number of extra options available to you such as:</p>
+<ul>
+<li>Constraining which slaves are eligible for promotion to master; the default is to take the most up-to-date slave</li>
+<li>Binding in your own scripts to be run before or after the failover (e.g. inform your application to switch master?)</li>
+<li>Have the utility monitor the state of the servers but don&#8217;t automatically initiate failover</li>
+</ul>
+<p>Here is how to set it up:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlfailover --master=root@utils1:3306 --discover-slaves-login=root --rediscover</strong>
+
+MySQL Replication Failover Utility
+Failover Mode = auto     Next Interval = Wed Aug 15 13:19:30 2012
+
+Master Information
+------------------
+Binary Log File    Position  Binlog_Do_DB  Binlog_Ignore_DB
+util11-bin.000001  2586
+
+Replication Health Status
++---------+-------+---------+--------+------------+---------+
+| host    | port  | role    | state  | gtid_mode  | health  |
++---------+-------+---------+--------+------------+---------+
+| utils1  | 3306  | MASTER  | UP     | ON         | OK      |
+| utils1  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3306  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3308  | SLAVE   | UP     | ON         | OK      |
++---------+-------+---------+--------+------------+---------+
+
+Q-quit R-refresh H-health G-GTID Lists U-UUIDs</pre>
+<p><span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysqlfailover</span> will then continue to run, refreshing the state &#8211; just waiting for something to go wrong.</p>
+<p>Rather than waiting, I kill the master MySQL Server:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqladmin -h utils1 -P3306 -u root shutdown</strong></pre>
+<p>Checking with the still-running <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysqlfailover</span> we can see that it has promoted <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">utils1:3307</span>.</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">MySQL Replication Failover Utility
+Failover Mode = auto     Next Interval = Wed Aug 15 13:21:13 2012
+
+Master Information
+------------------
+Binary Log File    Position  Binlog_Do_DB  Binlog_Ignore_DB
+util12-bin.000001  7131
+
+Replication Health Status
++---------+-------+---------+--------+------------+---------+
+| host    | port  | role    | state  | gtid_mode  | health  |
++---------+-------+---------+--------+------------+---------+
+| utils1  | 3307  | MASTER  | UP     | ON         | OK      |
+| utils2  | 3306  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3308  | SLAVE   | UP     | ON         | OK      |
++---------+-------+---------+--------+------------+---------+
+
+Q-quit R-refresh H-health G-GTID Lists U-UUIDs</pre>
+<h3>Add the recovered MySQL Server back into the topology</h3>
+<p>After restarting the failed MySQL Server, it can be added back into the mix as a slave to the new master:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlreplicate --master=root@utils1:3307 --slave=root@utils1:3306</strong>
+# master on utils1: ... connected.
+# slave on utils1: ... connected.
+# Checking for binary logging on master...
+# Setting up replication...
+# ...done.</pre>
+<p>The output from <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysqlfailover</span> (still running) confirms the addition:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">MySQL Replication Failover Utility
+Failover Mode = auto     Next Interval = Wed Aug 15 13:24:38 2012
+
+Master Information
+------------------
+Binary Log File    Position  Binlog_Do_DB  Binlog_Ignore_DB
+util12-bin.000001  7131
+
+Replication Health Status
++---------+-------+---------+--------+------------+---------+
+| host    | port  | role    | state  | gtid_mode  | health  |
++---------+-------+---------+--------+------------+---------+
+| utils1  | 3307  | MASTER  | UP     | ON         | OK      |
+| utils1  | 3306  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3306  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3308  | SLAVE   | UP     | ON         | OK      |
++---------+-------+---------+--------+------------+---------+
+
+Q-quit R-refresh H-health G-GTID Lists U-UUIDs</pre>
+<p>If it were important that the recovered MySQL Server be restored as the master then it is simple to manually trigger the promotion (after quitting out of <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysqlfailover</span>):</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlrpladmin --master=root@utils1:3307 --new-master=root@utils1:3306 --demote-master 
+  --discover-slaves-login=root switchover</strong>
+
+# Discovering slaves for master at utils1:3307
+# Checking privileges.
+# Performing switchover from master at utils1:3307 to slave at utils1:3306.
+# Checking candidate slave prerequisites.
+# Waiting for slaves to catch up to old master.
+# Stopping slaves.
+# Performing STOP on all slaves.
+# Demoting old master to be a slave to the new master.
+# Switching slaves to new master.
+# Starting all slaves.
+# Performing START on all slaves.
+# Checking slaves for errors.
+# Switchover complete.
+#
+# Replication Topology Health:
++---------+-------+---------+--------+------------+---------+
+| host    | port  | role    | state  | gtid_mode  | health  |
++---------+-------+---------+--------+------------+---------+
+| utils1  | 3306  | MASTER  | UP     | ON         | OK      |
+| utils1  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3306  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3308  | SLAVE   | UP     | ON         | OK      |
++---------+-------+---------+--------+------------+---------+
+# ...done.</pre>
+<p>As always, we&#8217;d really appreciate people trying this out and giving us feedback!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql/replication-and-auto-failover-made-easy-with-mysql-utilities/feed/index.html</wfw:commentRss>
+			<slash:comments>115</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

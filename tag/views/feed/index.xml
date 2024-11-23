@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>views &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Wed, 16 Nov 2016 13:50:47 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Language-Specific Views in MongoDB 3.4</title>
+		<link>./../../mongodb/language-specific-views-in-mongodb-3-4/index.html</link>
+					<comments>./../../mongodb/language-specific-views-in-mongodb-3-4/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 16 Nov 2016 13:50:47 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[collations]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[mongodb 3.4]]></category>
+		<category><![CDATA[MongoDB Compass]]></category>
+		<category><![CDATA[views]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4293</guid>
+
+					<description><![CDATA[Language-Specific Views in MongoDB 3.4 Introduction This post shows you how to create multiple language-specific views on top of a common collection. Each view is optimized for its language with a collated index which only presents entries for documents in that language. Additionally, each view excludes some fields from the underlying collection – further limiting]]></description>
+										<content:encoded><![CDATA[<h1>Language-Specific Views in MongoDB 3.4</h1>
+<h4>Introduction</h4>
+<p>This post shows you how to create multiple language-specific views on top of a common collection. Each view is optimized for its language with a collated index which only presents entries for documents in that language. Additionally, each view excludes some fields from the underlying collection – further limiting the data that can be seen through the that view. Finally, user-defined roles are created to restrict users to just the view(s) they should be able to see, ensuring they can only access the data that they&#8217;re entitled to.</p>
+<p>In the course of setting up this environment, a number of features are demonstrated:</p>
+<ul>
+<li><strong><a href="https://docs.mongodb.com/master/core/views/#reference-views">Read-Only Views</a></strong> (<em>New in MongoDB 3.4</em>): DBAs can define non-materialized views that expose only a subset of data from an underlying collection, i.e. a view that filters out entire documents or specific fields, such as Personally Identifiable Information (PII) from sales data or health records. As a result, risks of data exposure are dramatically reduced. DBAs can define a view of a collection that&#8217;s generated from an aggregation over another collection(s) or view.</li>
+<li><strong><a href="https://docs.mongodb.com/master/reference/collation/">Multiple Language Collations</a></strong> (<em>New in MongoDB 3.4</em>): Applications addressing global audiences require handling content that spans many languages. Each language has different rules governing the comparison and sorting of data. MongoDB collations allow users to build applications that adhere to these language-specific comparison rules for over 100 different languages and locales. Developers can specify collations for collections, indexes, views, or for individual operations.</li>
+<li><strong><a href="https://docs.mongodb.com/manual/core/index-partial/">Partial Indexes</a></strong>: Partial indexes balance delivering good query performance while consuming fewer system resources. For example, consider an order processing application. The <code>order</code> collection is frequently queried by the application to display all incomplete orders for a particular user. Building an index on the userID field of the collection is necessary for good performance. However, only a small percentage of orders are in progress at a given time. Limiting the index on <code>userID</code> to contain only orders that are in the “active” state could reduce the number of index entries from millions to thousands, saving working set memory and disk space, while speeding up queries even further as smaller indexes result in faster searches.</li>
+<li><strong><a href="https://docs.mongodb.com/manual/core/security-user-defined-roles/">User Defined Roles</a></strong>: User-defined roles, enable administrators to assign finely-grained privileges to users and applications, based on the specific functionality they require. MongoDB provides the ability to specify user privileges at both the database, collection, and view levels.</li>
+<li><strong><a href="https://www.mongodb.com/products/compass">MongoDB Compass</a></strong>: MongoDB Compass is the easiest way for DBAs to explore and manage MongoDB data. As the GUI for MongoDB, Compass enables users to visually explore their data, and run ad-hoc queries in seconds – all with zero knowledge of MongoDB&#8217;s query language. The latest Compass release expands functionality to allow users to manipulate documents directly from the GUI, optimize performance, and create data governance controls. </li>
+</ul>
+<h4>The Data Set</h4>
+<p>The example used in this post is built on a collection containing documents for customers from multiple countries – one of the fields indicates a customer&#8217;s country, but there is no field that identifies their spoken language. To fix that, we infer their language from their country to create a new <code>language</code> field in each document:</p>
+<pre><code class="js">db.customers.updateMany(
+    {country: "China"},
+    {$set: {language: "Chinese"}})
+
+db.customers.updateMany(
+    {country: "Germany"},
+    {$set: {language: "German"}})
+
+db.customers.updateMany(
+    {country: {$in: ["USA", "Canada", "United Kingdom"]}},
+    {$set: {language: "English"}})
+</code></pre>
+<p>A typical document now looks like this:</p>
+<pre><code class="js">db.customers.findOne()
+{
+    "_id" : ObjectId("57fb8fbb99b01440193088eb"),
+    "first_name" : "Ben",
+    "last_name" : "Dixon",
+    "country" : "Germany",
+    "avatar" : "https://robohash.org/quiseumquam.bmp?size=50x50&amp;set=set1",
+    "ip_address" : "10.102.15.35",
+    "dependents" : [
+        {
+            "name" : "Ben",
+            "birthday" : "12-Apr-1994"
+        },
+        {
+            "name" : "Lucas",
+            "birthday" : "22-Jun-2016"
+        },
+        {
+            "name" : "Erik",
+            "birthday" : "05-Jul-2005"
+        }
+    ],
+    "birthday" : "02-Jul-1964",
+    "salary" : "£910070.80",
+    "skills" : [
+        {
+            "skill" : "Cvent"
+        },
+        {
+            "skill" : "TKI"
+        }
+    ],
+    "gender" : "Male",
+    "language" : "German"
+}
+</code></pre>
+<p>You might ask why we need to add this extra field rather than simply calculating the language each time it&#8217;s needed? The answer is that multiple countries share the same language and partial indexes don&#8217;t allow us to use the <code>$or</code> or <code>$in</code> operators.</p>
+<p>At this stage, the only index on the collection is on the <code>_id</code> field:</p>
+<pre><code class="js">db.customers.getIndexes()
+[
+    {
+        "v" : 2,
+        "key" : {
+            "_id" : 1
+        },
+        "name" : "_id_",
+        "ns" : "production.customers"
+    }
+]
+</code></pre>
+<p>If you want to work through this example for yourself then the following steps will populate a collection called &#8220;customers&#8221; in a database called <code>production</code>:</p>
+<pre><code class="bash">curl -o customers.tgz http://clusterdb.com/upload/customers.tgz
+tar fxz customers.tgz
+mongorestore
+</code></pre>
+<p>There should be 111,000 documents in the collection after running <code>mongorestore</code>:</p>
+<pre><code class="js">use production
+db.customers.findOne()
+{
+    "_id" : ObjectId("57fb8fbb99b01440193088eb"),
+    "first_name" : "Ben",
+    "last_name" : "Dixon",
+    "country" : "Germany",
+    "avatar" : "https://robohash.org/quiseumquam.bmp?size=50x50&amp;set=set1",
+    "ip_address" : "10.102.15.35",
+    "dependents" : [
+        {
+            "name" : "Ben",
+            "birthday" : "12-Apr-1994"
+        },
+        {
+            "name" : "Lucas",
+            "birthday" : "22-Jun-2016"
+        },
+        {
+            "name" : "Erik",
+            "birthday" : "05-Jul-2005"
+        }
+    ],
+    "birthday" : "02-Jul-1964",
+    "salary" : "£910070.80",
+    "skills" : [
+        {
+            "skill" : "Cvent"
+        },
+        {
+            "skill" : "TKI"
+        }
+    ],
+    "gender" : "Male",
+    "language" : "German"
+}
+
+db.customers.count()
+111000
+</code></pre>
+<h4>Adding Indexes</h4>
+<p>Collations – allow values to be compared and sorted using rules specific to a local language. In this example, we are supporting 3 languages: English, German, and Chinese. For each of these languages, a collated index will later be used to correctly sort the customers based on their last and first name.</p>
+<p>To this end, collation-specific, compound (<code>last_name</code> + <code>first_name</code>) indexes are created:</p>
+<pre><code class="js">db.customers.createIndex( 
+    {last_name: 1, first_name : 1 }, 
+    {name: "chinese_name_index",
+     collation: {locale: "zh" },
+     partialFilterExpression: { language: "Chinese" } 
+    }
+);
+
+db.customers.createIndex( 
+    {last_name: 1, first_name : 1 }, 
+    {name: "english_name_index",
+     collation: {locale: "en" },
+     partialFilterExpression: { language: "English" } 
+    }
+);
+
+db.customers.createIndex( 
+    {last_name: 1, first_name : 1 }, 
+    {name: "german_name_index",
+     collation: {locale: "de" },
+     partialFilterExpression: { language: "German" } 
+    }
+);
+</code></pre>
+<p>The exact behaviour of comparisons and sorting using the collated index can be further refined by including additional parameters alongside the <code>locale</code> in the collation documentation. Details of these optional parameters can be found in the <a href="https://docs.mongodb.com/master/reference/collation/">collation documentation</a>.</p>
+<p>Note that each of those indexes is partial, only containing entries for document where <code>language</code> is set to the matching value. This saves memory and disk space, and speeds up both reads and writes.</p>
+<p>This is the final set of indexes:</p>
+<pre><code class="js">db.customers.getIndexes()
+[
+    {
+        "v" : 2,
+        "key" : {
+            "_id" : 1
+        },
+        "name" : "_id_",
+        "ns" : "production.customers"
+    },
+    {
+        "v" : 2,
+        "key" : {
+            "last_name" : 1,
+            "first_name" : 1
+        },
+        "name" : "german_name_index",
+        "ns" : "production.customers",
+        "partialFilterExpression" : {
+            "language" : "German"
+        },
+        "collation" : {
+            "locale" : "de",
+            "caseLevel" : false,
+            "caseFirst" : "off",
+            "strength" : 3,
+            "numericOrdering" : false,
+            "alternate" : "non-ignorable",
+            "maxVariable" : "punct",
+            "normalization" : false,
+            "backwards" : false,
+            "version" : "57.1"
+        }
+    },
+    {
+        "v" : 2,
+        "key" : {
+            "last_name" : 1,
+            "first_name" : 1
+        },
+        "name" : "chinese_name_index",
+        "ns" : "production.customers",
+        "partialFilterExpression" : {
+            "language" : "Chinese"
+        },
+        "collation" : {
+            "locale" : "zh",
+            "caseLevel" : false,
+            "caseFirst" : "off",
+            "strength" : 3,
+            "numericOrdering" : false,
+            "alternate" : "non-ignorable",
+            "maxVariable" : "punct",
+            "normalization" : false,
+            "backwards" : false,
+            "version" : "57.1"
+        }
+    },
+    {
+        "v" : 2,
+        "key" : {
+            "last_name" : 1,
+            "first_name" : 1
+        },
+        "name" : "english_name_index",
+        "ns" : "production.customers",
+        "partialFilterExpression" : {
+            "language" : "English"
+        },
+        "collation" : {
+            "locale" : "en",
+            "caseLevel" : false,
+            "caseFirst" : "off",
+            "strength" : 3,
+            "numericOrdering" : false,
+            "alternate" : "non-ignorable",
+            "maxVariable" : "punct",
+            "normalization" : false,
+            "backwards" : false,
+            "version" : "57.1"
+        }
+    }
+]
+</code></pre>
+<h4>Create Views</h4>
+<p>A view is created for each language to:</p>
+<ul>
+<li>Filter out any documents where the <code>language</code> field doesn&#8217;t match that of the view</li>
+<li>Remove the <code>salary</code>, <code>country</code>, and <code>language</code> fields</li>
+<li>Indicate which collation should be used</li>
+</ul>
+<pre><code class="js">db.createView(
+    "chineseSpeakersRedacted",
+    "customers",
+    [
+        {$match: {
+            language: "Chinese",
+            last_name: {$exists: true}
+        }},
+        {$project: {
+            salary: 0, 
+            country: 0,
+            language: 0
+            }
+        }
+    ],
+    {collation: {locale: "zh"}}
+)
+
+db.createView(
+    "englishSpeakersRedacted",
+    "customers",
+    [
+        {$match: {
+            language: "English",
+            last_name: {$exists: true}
+        }},
+        {$project: {
+            salary: 0, 
+            country: 0,
+            language: 0
+            }
+        }
+    ],
+    {collation: {locale: "en"}}
+)
+
+db.createView(
+    "germanSpeakersRedacted",
+    "customers",
+    [
+        {$match: {
+            language: "German",
+            last_name: {$exists: true}
+        }},
+        {$project: {
+            salary: 0, 
+            country: 0,
+            language: 0
+            }
+        }
+    ],
+    {collation: {locale: "de"}}
+)
+</code></pre>
+<p>You might ask why <code>last_name: {$exists: true}</code> is included in the <code>$match</code> stage? The reason is that it encourages the optimizer to use our language-specific partial indexes when using these views.</p>
+<p>Note that this is using the <a href="https://docs.mongodb.com/manual/core/aggregation-pipeline/">MongoDB Aggregation Framework</a> and so you could add lots of other <a href="https://docs.mongodb.com/manual/reference/operator/aggregation/">operations</a>, including: unwinding arrays, looking up values from other collections, grouping data, and adding new, computed fields.</p>
+<p>The views now appear like collections and can be queried in the same manner (note that they are ready-only):</p>
+<pre><code class="js">show collections
+
+chineseSpeakersRedacted
+customers
+englishSpeakersRedacted
+germanSpeakersRedacted
+system.views
+
+db.germanSpeakersRedacted.find({last_name: "Cole"}, {first_name:1, _id:0, gender:1}).sort({first_name: 1})
+{ "first_name" : "Amelie", "gender" : "Female" }
+{ "first_name" : "Amelie", "gender" : "Female" }
+{ "first_name" : "Amelie", "gender" : "Female" }
+{ "first_name" : "Amelie", "gender" : "Female" }
+{ "first_name" : "Amelie", "gender" : "Female" }
+{ "first_name" : "Amelie", "gender" : "Female" }
+{ "first_name" : "Amelie", "gender" : "Female" }
+{ "first_name" : "Amelie", "gender" : "Female" }
+{ "first_name" : "Amelie", "gender" : "Female" }
+{ "first_name" : "Anna", "gender" : "Female" }
+{ "first_name" : "Anna", "gender" : "Female" }
+{ "first_name" : "Anna", "gender" : "Female" }
+{ "first_name" : "Anna", "gender" : "Female" }
+{ "first_name" : "Anna", "gender" : "Female" }
+{ "first_name" : "Anna", "gender" : "Female" }
+{ "first_name" : "Anna", "gender" : "Female" }
+{ "first_name" : "Anna", "gender" : "Female" }
+{ "first_name" : "Anton", "gender" : "Male" }
+{ "first_name" : "Anton", "gender" : "Male" }
+{ "first_name" : "Anton", "gender" : "Male" }
+</code></pre>
+<p>The query above searches for all documents where the <code>last_name</code> is <code>Cole</code> (because this query is using the German view, behind the scenes, all non-German documents have already been filtered out), discards all but the <code>first_name</code> and <code>gender</code> fields, and then sorts by the <code>first_name</code> (using the German collation).</p>
+<p><code>explain()</code> confirms that the German collation index was used:</p>
+<pre><code class="js">db.germanSpeakersRedacted.find({last_name: "Cole"}, {first_name:1, _id:0, gender:1}).sort({first_name: 1}).explain()
+{
+    "stages" : [
+        {
+            "$cursor" : {
+                "query" : {
+                    "$and" : [
+                        {
+                            "language" : "German",
+                            "last_name" : {
+                                "$exists" : true
+                            }
+                        },
+                        {
+                            "last_name" : "Cole"
+                        }
+                    ]
+                },
+                "fields" : {
+                    "first_name" : 1,
+                    "gender" : 1,
+                    "_id" : 0
+                },
+                "queryPlanner" : {
+                    "plannerVersion" : 1,
+                    "namespace" : "production.customers",
+                    "indexFilterSet" : false,
+                    "parsedQuery" : {
+                        "$and" : [
+                            {
+                                "language" : {
+                                    "$eq" : "German"
+                                }
+                            },
+                            {
+                                "last_name" : {
+                                    "$eq" : "Cole"
+                                }
+                            },
+                            {
+                                "last_name" : {
+                                    "$exists" : true
+                                }
+                            }
+                        ]
+                    },
+                    "collation" : {
+                        "locale" : "de",
+                        "caseLevel" : false,
+                        "caseFirst" : "off",
+                        "strength" : 3,
+                        "numericOrdering" : false,
+                        "alternate" : "non-ignorable",
+                        "maxVariable" : "punct",
+                        "normalization" : false,
+                        "backwards" : false,
+                        "version" : "57.1"
+                    },
+                    "winningPlan" : {
+                        "stage" : "FETCH",
+                        "filter" : {
+                            "$and" : [
+                                {
+                                    "last_name" : {
+                                        "$exists" : true
+                                    }
+                                },
+                                {
+                                    "language" : {
+                                        "$eq" : "German"
+                                    }
+                                }
+                            ]
+                        },
+                        "inputStage" : {
+                            "stage" : "IXSCAN",
+                            "keyPattern" : {
+                                "last_name" : 1,
+                                "first_name" : 1
+                            },
+                            "indexName" : "german_name_index",
+                            "collation" : {
+                                "locale" : "de",
+                                "caseLevel" : false,
+                                "caseFirst" : "off",
+                                "strength" : 3,
+                                "numericOrdering" : false,
+                                "alternate" : "non-ignorable",
+                                "maxVariable" : "punct",
+                                "normalization" : false,
+                                "backwards" : false,
+                                "version" : "57.1"
+                            },
+                            "isMultiKey" : false,
+                            "multiKeyPaths" : {
+                                "last_name" : [ ],
+                                "first_name" : [ ]
+                            },
+                            "isUnique" : false,
+                            "isSparse" : false,
+                            "isPartial" : true,
+                            "indexVersion" : 2,
+                            "direction" : "forward",
+                            "indexBounds" : {
+                                "last_name" : [
+                                    "[\"-E?1\u0001\b\u0001\u0007\", \"-E?1\u0001\b\u0001\u0007\"]"
+                                ],
+                                "first_name" : [
+                                    "[MinKey, MaxKey]"
+                                ]
+                            }
+                        }
+                    },
+                    "rejectedPlans" : [ ]
+                }
+            }
+        },
+        {
+            "$project" : {
+                "language" : false,
+                "country" : false,
+                "salary" : false
+            }
+        },
+        {
+            "$sort" : {
+                "sortKey" : {
+                    "first_name" : 1
+                }
+            }
+        },
+        {
+            "$project" : {
+                "_id" : false,
+                "gender" : true,
+                "first_name" : true
+            }
+        }
+    ],
+    "ok" : 1
+</code></pre>
+<h4>User-Defined Roles – Limiting Access to the Views</h4>
+<p>One of the reasons for creating the views was to protect some of the data (the customers&#8217; salaries) as not all users should see this information. At this point, all users can still access the base &#8220;customers&#8221; collection and so we&#8217;ve fallen short of that objective. User-defined roles to the rescue!</p>
+<p>We create an <code>admin</code> user that has the built in <a href="https://docs.mongodb.com/manual/reference/built-in-roles/#root"><code>root</code> role</a> and so can access any database, create new users, and perform any other activity:</p>
+<pre><code class="js">use admin
+db.createUser({
+    user: "admin",
+    pwd: "secret",
+    roles: [
+        {role:"root",db:"admin"}
+        ]
+    })
+</code></pre>
+<p>The next step is to create a role that only gives its members read access to the <code>germanSpeakersRedacted</code> collection (within the <code>production</code> database):</p>
+<pre><code class="js">use admin
+db.createRole(
+   {
+     role: "germanViewer",
+     privileges: [
+       { resource: { db: "production", collection: "germanSpeakersRedacted" },  actions: [ "find" ] }
+     ],
+     roles: []
+   }
+)
+</code></pre>
+<p>You can then create one or more users that have <code>germanViewer</code> within their defined roles:</p>
+<pre><code class="js">use admin
+db.createUser({
+    user: "germanIT",
+    pwd: "secret",
+    roles: [
+        {role:"germanViewer",db:"admin"}
+        ]
+    })
+</code></pre>
+<p>Additional privileges can be added to existing roles using <a href="https://docs.mongodb.com/manual/reference/command/grantPrivilegesToRole/#dbcmd.grantPrivilegesToRole"><code>grantPrivilegesToRole</code></a> and extra roles can be assigned to existing users using <a href="https://docs.mongodb.com/manual/reference/command/grantRolesToUser/#dbcmd.grantRolesToUser"><code>grantRolesToUser</code></a>.</p>
+<p>For these access controls to work, users must be created with appropriate permissions and the MongoDB server process must be started with the <code>--auth</code> option:</p>
+<pre><code class="bash">mongod --auth
+</code></pre>
+<p>When connecting to the database as our newly-created <code>admin</code> user, the base <code>customers</code> collection is still accessible:</p>
+<pre><code class="js">mongo -u admin -p secret --authenticationDatabase admin
+
+use production
+db.customers.findOne()
+
+{
+    "_id" : ObjectId("57fb8fbb99b01440193088eb"),
+    "first_name" : "Ben",
+    "last_name" : "Dixon",
+    "country" : "Germany",
+    "avatar" : "https://robohash.org/quiseumquam.bmp?size=50x50&amp;set=set1",
+    "ip_address" : "10.102.15.35",
+    "dependents" : [
+        {
+            "name" : "Ben",
+            "birthday" : "12-Apr-1994"
+        },
+        {
+            "name" : "Lucas",
+            "birthday" : "22-Jun-2016"
+        },
+        {
+            "name" : "Erik",
+            "birthday" : "05-Jul-2005"
+        }
+    ],
+    "birthday" : "02-Jul-1964",
+    "salary" : "£910070.80",
+    "skills" : [
+        {
+            "skill" : "Cvent"
+        },
+        {
+            "skill" : "TKI"
+        }
+    ],
+    "gender" : "Male",
+    "language" : "German"
+}
+</code></pre>
+<p>When connecting as the <code>germanIT</code> user, only the German view can be accessed:</p>
+<pre><code class="js">mongo -u germanIT -p secret --authenticationDatabase admin
+
+use production
+
+show collections
+2016-10-28T10:24:03.765+0100 E QUERY    [main] Error: listCollections failed: {
+    "ok" : 0,
+    "errmsg" : "not authorized on production to execute command { listCollections: 1.0, filter: {} }",
+    "code" : 13,
+    "codeName" : "Unauthorized"
+} :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+DB.prototype._getCollectionInfosCommand@src/mongo/shell/db.js:805:1
+DB.prototype.getCollectionInfos@src/mongo/shell/db.js:817:19
+DB.prototype.getCollectionNames@src/mongo/shell/db.js:828:16
+shellHelper.show@src/mongo/shell/utils.js:748:9
+shellHelper@src/mongo/shell/utils.js:645:15
+@(shellhelp2):1:1
+
+db.customers.findOne()
+2016-10-21T14:40:19.477+0100 E QUERY    [main] Error: error: {
+    "ok" : 0,
+    "errmsg" : "not authorized on production to execute command { find: \"customers\", filter: {}, limit: 1.0, singleBatch: true }",
+    "code" : 13,
+    "codeName" : "Unauthorized"
+} :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+DBCommandCursor@src/mongo/shell/query.js:702:1
+DBQuery.prototype._exec@src/mongo/shell/query.js:117:28
+DBQuery.prototype.hasNext@src/mongo/shell/query.js:288:5
+DBCollection.prototype.findOne@src/mongo/shell/collection.js:294:10
+@(shell):1:1
+
+db.germanSpeakersRedacted.findOne()
+{
+    "_id" : ObjectId("57fb8fbb99b01440193088eb"),
+    "first_name" : "Ben",
+    "last_name" : "Dixon",
+    "avatar" : "https://robohash.org/quiseumquam.bmp?size=50x50&amp;set=set1",
+    "ip_address" : "10.102.15.35",
+    "dependents" : [
+        {
+            "name" : "Ben",
+            "birthday" : "12-Apr-1994"
+        },
+        {
+            "name" : "Lucas",
+            "birthday" : "22-Jun-2016"
+        },
+        {
+            "name" : "Erik",
+            "birthday" : "05-Jul-2005"
+        }
+    ],
+    "birthday" : "02-Jul-1964",
+    "skills" : [
+        {
+            "skill" : "Cvent"
+        },
+        {
+            "skill" : "TKI"
+        }
+    ],
+    "gender" : "Male"
+}
+</code></pre>
+<h4>MongoDB Compass – Viewing Views Graphically</h4>
+<p>While the <code>mongo</code> shell is very powerful and flexible, it is often easier to understand and navigate your data graphically, this is where <a href="https://www.mongodb.com/products/compass">MongoDB Compass</a> is invaluable. The good news is that MongoDB Compass handles views in exactly the same way as it does collections.</p>
+<p>In Figure 1, we can view the documents in the base, <code>customers</code>, collection. Note that the <code>salary</code> value is visible.</p>
+<p><em><div id="attachment_4295" style="width: 1366px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2016/11/Compass_original_schema.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-4295" src="./../../wp-content/uploads/2016/11/Compass_original_schema.png" alt="View data in MongoDB base customers collection" width="1356" height="840" class="size-full wp-image-4295" srcset="./../../wp-content/uploads/2016/11/Compass_original_schema.png 1356w, ./../../wp-content/uploads/2016/11/Compass_original_schema-300x186.png 300w, ./../../wp-content/uploads/2016/11/Compass_original_schema-768x476.png 768w, ./../../wp-content/uploads/2016/11/Compass_original_schema-1024x634.png 1024w" sizes="(max-width: 1356px) 100vw, 1356px" /></a><p id="caption-attachment-4295" class="wp-caption-text">Figure 1: View data in base customers collection</p></div></em></p>
+<p>Figure 2 confirms that the <code>salary</code> field has been removed from the German view.</p>
+<div id="attachment_4298" style="width: 1366px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2016/11/Compass_german_speakers.png"><img decoding="async" aria-describedby="caption-attachment-4298" src="./../../wp-content/uploads/2016/11/Compass_german_speakers.png" alt="Salary has been redacted from the German view" width="1356" height="841" class="size-full wp-image-4298" srcset="./../../wp-content/uploads/2016/11/Compass_german_speakers.png 1356w, ./../../wp-content/uploads/2016/11/Compass_german_speakers-300x186.png 300w, ./../../wp-content/uploads/2016/11/Compass_german_speakers-768x476.png 768w, ./../../wp-content/uploads/2016/11/Compass_german_speakers-1024x635.png 1024w" sizes="(max-width: 1356px) 100vw, 1356px" /></a><p id="caption-attachment-4298" class="wp-caption-text">Figure 2: Salary has been redacted from the German view</p></div>
+<p>In Figure 3, we see that only Chinese documents have been included in the Chinese view.</p>
+<div id="attachment_4299" style="width: 1369px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2016/11/Compass_Chinese_speakers.png"><img decoding="async" aria-describedby="caption-attachment-4299" src="./../../wp-content/uploads/2016/11/Compass_Chinese_speakers.png" alt="Chinese view contains only Chinese documents" width="1359" height="841" class="size-full wp-image-4299" srcset="./../../wp-content/uploads/2016/11/Compass_Chinese_speakers.png 1359w, ./../../wp-content/uploads/2016/11/Compass_Chinese_speakers-300x186.png 300w, ./../../wp-content/uploads/2016/11/Compass_Chinese_speakers-768x475.png 768w, ./../../wp-content/uploads/2016/11/Compass_Chinese_speakers-1024x634.png 1024w" sizes="(max-width: 1359px) 100vw, 1359px" /></a><p id="caption-attachment-4299" class="wp-caption-text">Figure 3: Chinese view contains only Chinese documents</p></div>
+<h4>Next Steps</h4>
+<p>Collation and read-only views are just 2 of the exciting new features added in MongoDB 3.4 – read more and these and everything else that&#8217;s new in <a href="https://www.mongodb.com/collateral/mongodb-3.4-whats-new" title="What's new in MongoDB 3.4">MongoDB 3.4: What’s New</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/language-specific-views-in-mongodb-3-4/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

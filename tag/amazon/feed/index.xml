@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Amazon &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 08 Nov 2016 18:09:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Processing Data Streams with Amazon Kinesis and MongoDB Atlas</title>
+		<link>./../../mongodb/mongodb_amazon_kinesis/index.html</link>
+					<comments>./../../mongodb/mongodb_amazon_kinesis/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 08 Nov 2016 18:09:24 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[Amazon]]></category>
+		<category><![CDATA[Amazon Kinesis]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Atlas]]></category>
+		<category><![CDATA[MongoDB Compass]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4276</guid>
+
+					<description><![CDATA[This post provides an introduction to Amazon Kinesis: its architecture, what it provides, and how it&#8217;s typically used. It goes on to step through how to implement an application where data is ingested by Amazon Kinesis before being processed and then stored in MongoDB Atlas. This is part of a series of posts which examine]]></description>
+										<content:encoded><![CDATA[<p>This post provides an introduction to Amazon Kinesis: its architecture, what it provides, and how it&#8217;s typically used. It goes on to step through how to implement an application where data is ingested by Amazon Kinesis before being processed and then stored in MongoDB Atlas.</p>
+<p>This is part of a <a href="./../../mongodb/using-mongodb-atlas-from-your-favorite-language-or-framework/index.html">series of posts which examine how to use MongoDB Atlas with a number of complementary technologies and frameworks</a>.</p>
+<h2>Introduction to Amazon Kinesis</h2>
+<p>The role of Amazon Kinesis is to get large volumes of streaming data into AWS where it can then be processed, analyzed, and moved between AWS services. The service is designed to ingest and store terabytes of data every hour, from multiple sources. Kinesis provides high availability, including synchronous replication within an AWS region. It also transparently handles scalability, adding and removing resources as needed.</p>
+<p>Once the data is inside AWS, it can be processed or analyzed immediately, as well as being stored using other AWS services (such as S3) for later use. By storing the data in MongoDB, it can be used both to drive real-time, operational decisions as well as for deeper analysis.</p>
+<p>As the number, variety, and velocity of data sources grow, new architectures and technologies are needed. Technologies like Amazon Kinesis and <a href="https://www.mongodb.com/blog/post/mongodb-and-data-streaming-implementing-a-mongodb-kafka-consumer" title="Data Streaming with Apache Kafka &amp; MongoDB">Apache Kafka</a> are focused on ingesting the massive flow of data from multiple fire hoses and then routing it to the systems that need it – optionally filtering, aggregating, and analyzing en-route.</p>
+<div id="attachment_4277" style="width: 1201px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2016/11/kinesis-architecture.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-4277" class="wp-image-4277 size-full" src="./../../wp-content/uploads/2016/11/kinesis-architecture.png" alt="AWS Kinesis Architecture" width="1191" height="636" srcset="./../../wp-content/uploads/2016/11/kinesis-architecture.png 1191w, ./../../wp-content/uploads/2016/11/kinesis-architecture-300x160.png 300w, ./../../wp-content/uploads/2016/11/kinesis-architecture-768x410.png 768w, ./../../wp-content/uploads/2016/11/kinesis-architecture-1024x547.png 1024w" sizes="(max-width: 1191px) 100vw, 1191px" /></a><p id="caption-attachment-4277" class="wp-caption-text">Figure 1: AWS Kinesis Architecture</p></div>
+<p>Typical data sources include:</p>
+<ul>
+<li>IoT assets and devices(e.g., sensor readings)</li>
+<li>On-line purchases from an ecommerce store</li>
+<li>Log files</li>
+<li>Video game activity</li>
+<li>Social media posts</li>
+<li>Financial market data feeds</li>
+</ul>
+<p>Rather than leave this data to fester in text files, Kinesis can ingest the data, allowing it to be processed to find patterns, detect exceptions, drive operational actions, and provide aggregations to be displayed through dashboards.</p>
+<p>There are actually 3 services which make up Amazon Kinesis:</p>
+<ul>
+<li><strong>Amazon Kinesis Firehose</strong> is the simplest way to load massive volumes of streaming data into AWS. The capacity of your Firehose is adjusted automatically to keep pace with the stream throughput. It can optionally compress and encrypt the data before it&#8217;s stored.</li>
+<li><strong>Amazon Kinesis Streams</strong> are similar to the Firehose service but give you more control, allowing for:
+<ul>
+<li>Multi-stage processing</li>
+<li>Custom stream partitioning rules</li>
+<li>Reliable storage of the stream data until it has been processed.</li>
+</ul>
+</li>
+<li><strong>Amazon Kinesis Analytics</strong> is the simplest way to process the data once it has been ingested by either Kinesis Firehose or Streams. The user provides SQL queries which are then applied to analyze the data; the results can then be displayed, stored, or sent to another Kinesis stream for further processing.</li>
+</ul>
+<p>This post focuses on Amazon Kinesis Streams, in particular, implementing a <em>consumer</em> that ingests the data, enriches it, and then stores it in MongoDB.</p>
+<h3>Accessing Kinesis Streams – the Libraries</h3>
+<p>There are multiple ways to read (consume) and write (produce) data with Kinesis Streams:</p>
+<ul>
+<li><a href="https://www.mongodb.com/blog/post/Amazon%20Kinesis%20Streams%20API">Amazon Kinesis Streams API</a>
+<ul>
+<li>Provides two APIs for putting data into an Amazon Kinesis stream: <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecord.html">PutRecord</a> and <a href="http://docs.aws.amazon.com/kinesis/latest/APIReference/API_PutRecords.html">PutRecords</a></li>
+</ul>
+</li>
+<li><a href="http://docs.aws.amazon.com/kinesis/latest/dev/developing-producers-with-kpl.html">Amazon Kinesis Producer Library (KPL)</a>
+<ul>
+<li>Easy to use and highly configurable Java library that helps you put data into an Amazon Kinesis stream. Amazon Kinesis Producer Library (KPL) presents a simple, asynchronous, high throughput, and reliable interface.</li>
+</ul>
+</li>
+<li><a href="http://docs.aws.amazon.com/streams/latest/dev/writing-with-agents.html">Amazon Kinesis Agent</a>
+<ul>
+<li>The agent continuously monitors a set of files and sends new entries to your Stream or Firehose.</li>
+</ul>
+</li>
+<li><a href="http://docs.aws.amazon.com/kinesis/latest/dev/developing-consumer-apps-with-kcl.html">Amazon Kinesis Client Library (KCL)</a>
+<ul>
+<li>A Java library that helps you easily build Amazon Kinesis Applications for reading and processing data from an Amazon Kinesis stream. KCL handles issues such as adapting to changes in stream volume, load-balancing streaming data, coordinating distributed services, providing fault-tolerance, and processing data.</li>
+</ul>
+</li>
+<li><a href="https://github.com/awslabs/amazon-kinesis-client/tree/master/src/main/java/com/amazonaws/services/kinesis/multilang">Amazon Kinesis Client Library MultiLangDemon</a>
+<ul>
+<li>The MultiLangDemon is used as a proxy by non-Java applications to use the Kinesis Client Library.</li>
+</ul>
+</li>
+<li><a href="https://github.com/awslabs/amazon-kinesis-connectors">Amazon Kinesis Connector Library</a>
+<ul>
+<li>A library that helps you easily integrate Amazon Kinesis with other AWS services and third-party tools.</li>
+</ul>
+</li>
+<li><a href="https://github.com/awslabs/kinesis-storm-spout">Amazon Kinesis Storm Spout</a>
+<ul>
+<li>A library that helps you easily integrate Amazon Kinesis Streams with Apache Storm.</li>
+</ul>
+</li>
+</ul>
+<p>The example application in this post use the Kinesis Agent and the Kinesis Client Library MultiLangDemon (with Node.js).</p>
+<h2>Role of MongoDB Atlas</h2>
+<p>MongoDB is a distributed database delivering a flexible schema for rapid application development, rich queries, idiomatic drivers, and built in redundancy and scale-out. This makes it the go-to database for anyone looking to build modern applications.</p>
+<p><a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> is a hosted database service for MongoDB. It provides all of the features of MongoDB, without the operational heavy lifting required for any new application. MongoDB Atlas is available on demand through a pay-as-you-go model and billed on an hourly basis, letting you focus on what you do best.</p>
+<p>It’s easy to get started – use a simple GUI to select the instance size, region, and features you need. MongoDB Atlas provides:</p>
+<ul>
+<li>Security features to protect access to your data</li>
+<li>Built in replication for always-on availability, tolerating complete data center failure</li>
+<li>Backups and point in time recovery to protect against data corruption</li>
+<li>Fine-grained monitoring to let you know when to scale. Additional instances can be provisioned with the push of a button</li>
+<li>Automated patching and one-click upgrades for new major versions of the database, enabling you to take advantage of the latest and greatest MongoDB features</li>
+<li>A choice of regions and billing options</li>
+</ul>
+<p>Like Amazon Kinesis, MongoDB Atlas is a natural fit for users looking to simplify their development and operations work, letting them focus on what makes their application unique rather than commodity (albeit essential) plumbing. Also like Kinesis, you only pay for MongoDB Atlas when you&#8217;re using it with no upfront costs and no charges after you terminate your cluster.</p>
+<h2>Example Application</h2>
+<p>The rest of this post focuses on building a system to process log data. There are 2 sources of log data:</p>
+<ol>
+<li>A simple client that acts as a Kinesis Streams <em>producer</em>, generating sensor readings and writing them to a stream</li>
+<li><em>Amazon Kinesis Agent</em> monitoring a SYSLOG file and sending each log event to a stream</li>
+</ol>
+<p>In both cases, the data is consumed from the stream using the same <em>consumer</em>, which adds some metadata to each entry and then stores it in MongoDB Atlas.</p>
+<h3>Create Kinesis IAM Policy in AWS</h3>
+<p>From the <a href="https://console.aws.amazon.com/iam">IAM section of the AWS console</a> use the wizard to create a new policy. The policy should grant permission to perform specific actions on a particular stream (in this case &#8220;ClusterDBStream&#8221;) and the results should look similar to this:</p>
+<p><script src="https://gist.github.com/am-MongoDB/aab01421f66be44ae5d53fd2e4d031ee.js"></script></p>
+<p>Next, create a new user and associate it with the new policy. <strong>Important</strong>: Take a note of the <em>AWS_ACCESS_KEY_ID</em> and <em>AWS_SECRET_ACCESS_KEY</em>.</p>
+<h3>Create MongoDB Atlas Cluster</h3>
+<p>Register with <a href="https://www.mongodb.com/cloud" title="MongoDB Atlas cloud-hosted database service">MongoDB Atlas</a> and use the simple GUI to select the instance size, region, and features you need (Figure 2).</p>
+<p><a href="./../../wp-content/uploads/2016/11/Create_MongoDB_Atlas_Cluster.gif"><img decoding="async" class="alignright size-full wp-image-4278" src="./../../wp-content/uploads/2016/11/Create_MongoDB_Atlas_Cluster.gif" alt="create mongodb atlas cluster" width="960" height="540" /></a></p>
+<p>Create a user with read and write privileges for just the database that will be used for your application, as shown in Figure 3.</p>
+<div id="attachment_4279" style="width: 833px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2016/11/Create_Application_User_in_MongoDB_Atlas.png"><img decoding="async" aria-describedby="caption-attachment-4279" class="size-full wp-image-4279" src="./../../wp-content/uploads/2016/11/Create_Application_User_in_MongoDB_Atlas.png" alt="Creating an Application user in MongoDB Atlas" width="823" height="922" srcset="./../../wp-content/uploads/2016/11/Create_Application_User_in_MongoDB_Atlas.png 823w, ./../../wp-content/uploads/2016/11/Create_Application_User_in_MongoDB_Atlas-268x300.png 268w, ./../../wp-content/uploads/2016/11/Create_Application_User_in_MongoDB_Atlas-768x860.png 768w" sizes="(max-width: 823px) 100vw, 823px" /></a><p id="caption-attachment-4279" class="wp-caption-text">Figure 3: Creating an Application user in MongoDB Atlas</p></div>
+<p>You must also add the IP address of your application server to the IP Whitelist in the MongoDB Atlas security tab (Figure 4). Note that if multiple application servers will be accessing MongoDB Atlas then an IP address range can be specified in CIDR format (IP Address/number of significant bits).</p>
+<div id="attachment_4280" style="width: 1770px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2016/11/Add_IP_Address_Range_to_MongoDB_Atlas.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4280" class="wp-image-4280 size-full" src="./../../wp-content/uploads/2016/11/Add_IP_Address_Range_to_MongoDB_Atlas.png" alt="Add App Server IP Address(es) to MongoDB Atlas" width="1760" height="876" srcset="./../../wp-content/uploads/2016/11/Add_IP_Address_Range_to_MongoDB_Atlas.png 1760w, ./../../wp-content/uploads/2016/11/Add_IP_Address_Range_to_MongoDB_Atlas-300x149.png 300w, ./../../wp-content/uploads/2016/11/Add_IP_Address_Range_to_MongoDB_Atlas-768x382.png 768w, ./../../wp-content/uploads/2016/11/Add_IP_Address_Range_to_MongoDB_Atlas-1024x510.png 1024w" sizes="auto, (max-width: 1760px) 100vw, 1760px" /></a><p id="caption-attachment-4280" class="wp-caption-text">Figure 4: Add App Server IP Address(es) to MongoDB Atlas</p></div>
+<p>If your application server(s) are running in AWS, then an alternative to IP Whitelisting is to <a href="https://docs.atlas.mongodb.com/setup-cluster-security/" title="configure a VPC (Virtual Private Cloud) Peering relationship between your MongoDB Atlas group and AWS">configure a VPC (Virtual Private Cloud) Peering relationship between your MongoDB Atlas group and the VPC containing your AWS resources</a>. This removes the requirement to add and remove IP addresses as AWS reschedules functions, and is especially useful when using highly dynamic services such as AWS Lambda.</p>
+<p>Click the &#8220;Connect&#8221; button and make a note of the URI that should be used when connecting to the database (note that you will substitute the user name and password with ones that you&#8217;ve just created).</p>
+<h3>App Part 1 – Kinesis/Atlas Consumer</h3>
+<p>The code and configuration files in Parts 1 &amp; 2 are based on the sample consumer and producer included with the <a href="https://github.com/awslabs/amazon-kinesis-client-nodejs" title="Amazon Kinesis Client Library for Node.js">client library for Node.js (MultiLangDaemon)</a>.</p>
+<p>Install the <a href="https://github.com/awslabs/amazon-kinesis-client-nodejs">Node.js client library</a>:</p>
+<pre><code>git clone https://github.com/awslabs/amazon-kinesis-client-nodejs.git
+cd amazon-kinesis-client-nodejs
+npm install
+</code></pre>
+<p>Install the <a href="https://mongodb.github.io/node-mongodb-native/" title="The next generation Node.JS driver for MongoDB">MongoDB Node.js Driver</a>:</p>
+<pre><code>npm install --save mongodb
+</code></pre>
+<p>Move to the consumer sample folder:</p>
+<pre><code>cd samples/basic_sample/consumer/
+</code></pre>
+<p>Create a configuration file (&#8220;logging_consumer.properties&#8221;), taking care to set the correct stream and application names and AWS region:</p>
+<p><script src="https://gist.github.com/am-MongoDB/5edcbe58788cbf40c1776a8f2cb01e1d.js"></script></p>
+<p>The code for working with MongoDB can be abstracted to a helper file (&#8220;db.js&#8221;):</p>
+<p><script src="https://gist.github.com/am-MongoDB/a04cc764301e0911f59a7b0df2bf5abe.js"></script></p>
+<p>Create the application Node.js file (&#8220;logging_consumer_app.js&#8221;), making sure to replace the database user and host details in &#8220;mongodbConnectString&#8221; with your own:</p>
+<p><script src="https://gist.github.com/am-MongoDB/3941d20f2f530ae52bb7bd62a3532b69.js"></script></p>
+<p>Note that this code adds some metadata to the received object before writing it to MongoDB. At this point, it is also possible to filter objects based on any of their fields.</p>
+<p>Note also that this Node.js code logs a lot of information to the &#8220;application log&#8221; file (including the database password!); this is for debugging and would be removed from a real application.</p>
+<p>The simplest way to have the application use the user credentials (noted when creating the user in AWS IAM) is to export them from the shell where the application will be launched:</p>
+<pre><code>export AWS_ACCESS_KEY_ID=????????????????????
+export AWS_SECRET_ACCESS_KEY=????????????????????????????????????????
+</code></pre>
+<p>Finally, launch the consumer application:</p>
+<pre><code>../../../bin/kcl-bootstrap --java /usr/bin/java -e -p ./logging_consumer.properties
+</code></pre>
+<p>Check the &#8220;application.log&#8221; file for any errors.</p>
+<h3>App Part 2 – Kinesis Producer</h3>
+<p>As for the consumer, export the credentials for the user created in AWS IAM:</p>
+<pre><code>cd amazon-kinesis-client-nodejs/samples/basic_sample/producer
+
+export AWS_ACCESS_KEY_ID=????????????????????
+export AWS_SECRET_ACCESS_KEY=????????????????????????????????????????
+</code></pre>
+<p>Create the configuration file (&#8220;config.js&#8221;) and ensure that the correct AWS region and stream are specified:</p>
+<p><script src="https://gist.github.com/am-MongoDB/0ab029c1071a6a715a553b00d2396f40.js"></script></p>
+<p>Create the producer code (&#8220;logging_producer.js&#8221;):</p>
+<p><script src="https://gist.github.com/am-MongoDB/0ee9d95fc1abcaf0949245811dcf7d6e.js"></script></p>
+<p>The producer is launched from &#8220;logging_producer_app.js&#8221;:</p>
+<p><script src="https://gist.github.com/am-MongoDB/a598575392fa0f29742fa0952f90ecd8.js"></script></p>
+<p>Run the producer:</p>
+<pre><code>node logging_producer_app.js
+</code></pre>
+<p>Check the consumer and producer &#8220;application.log&#8221; files for errors.</p>
+<p>At this point, data should have been written to MongoDB Atlas. Using the connection string provided after clicking the &#8220;Connect&#8221; button in MongoDB Atlas, connect to the database and confirm that the documents have been added:</p>
+<p><script src="https://gist.github.com/am-MongoDB/66ae718bb72659e179a1073bfd1fbeca.js"></script></p>
+<h3>App Part 3 – Capturing Live Logs Using Amazon Kinesis Agent</h3>
+<p>Using the same consumer, the next step is to stream real log data. Fortunately, this doesn&#8217;t require any additional code as the Kinesis Agent can be used to monitor files and add every new entry to a Kinesis Stream (or Firehose).</p>
+<p>Install the Kinesis Agent:</p>
+<pre><code>sudo yum install –y aws-kinesis-agent
+</code></pre>
+<p>and edit the configuration file to use the correct AWS region, user credentials, and stream in &#8220;/etc/aws-kinesis/agent.json&#8221;:</p>
+<p><script src="https://gist.github.com/am-MongoDB/41f45486b4ba170a4b7474cb3d63b45b.js"></script></p>
+<p>&#8220;/var/log/messages&#8221; is a SYSLOG file and so a &#8220;dataProcessingOptions&#8221; field is included in the configuration to automatically convert each log into a JSON document before writing it to the Kinesis Stream.</p>
+<p>The agent will not run as root and so the permissions for &#8220;/var/log/messages&#8221; need to be made more permissive:</p>
+<pre><code>sudo chmod og+r /var/log/messages
+</code></pre>
+<p>The agent can now be started:</p>
+<pre><code>sudo service aws-kinesis-agent start
+</code></pre>
+<p>Monitor the agent&#8217;s log file to see what it&#8217;s doing:</p>
+<pre><code>sudo tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log
+</code></pre>
+<p>If there aren&#8217;t enough logs being generated on the machine then extra ones can be injected manually for testing:</p>
+<pre><code>logger -i This is a test log
+</code></pre>
+<p>This will create a log with the &#8220;program&#8221; field set to your username (in this case, &#8220;ec2-user&#8221;). Check that the logs get added to MongoDB Atlas:</p>
+<p><script src="https://gist.github.com/am-MongoDB/777754041547d2a5bb7f1017a34a9c2e.js"></script></p>
+<h3>Checking the Data with MongoDB Compass</h3>
+<p>To visually navigate through the MongoDB schema and data, <a href="https://www.mongodb.com/download-center?jmp=nav#compass">download and install MongoDB Compass</a>. Use your MongoDB Atlas credentials to connect Compass to your MongoDB database (the hostname should refer to the primary node in your replica set or a &#8220;mongos&#8221; process if your MongoDB cluster is sharded).</p>
+<p>Navigate through the structure of the data in the &#8220;clusterdb&#8221; database (Figure 5) and view the JSON documents.</p>
+<div id="attachment_4281" style="width: 969px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2016/11/Compass_schema.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4281" class="size-full wp-image-4281" src="./../../wp-content/uploads/2016/11/Compass_schema.png" alt="Explore Schema Using MongoDB Compass" width="959" height="958" srcset="./../../wp-content/uploads/2016/11/Compass_schema.png 959w, ./../../wp-content/uploads/2016/11/Compass_schema-150x150.png 150w, ./../../wp-content/uploads/2016/11/Compass_schema-300x300.png 300w, ./../../wp-content/uploads/2016/11/Compass_schema-768x767.png 768w, ./../../wp-content/uploads/2016/11/Compass_schema-144x144.png 144w" sizes="auto, (max-width: 959px) 100vw, 959px" /></a><p id="caption-attachment-4281" class="wp-caption-text">Figure 5: Explore Schema Using MongoDB Compass</p></div>
+<p>Clicking on a value builds a query and then clicking &#8220;Apply&#8221; filters the results (Figure 6).</p>
+<div id="attachment_4282" style="width: 721px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2016/11/Filter_MongoDB_Compass_Results.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4282" class="size-full wp-image-4282" src="./../../wp-content/uploads/2016/11/Filter_MongoDB_Compass_Results.png" alt="View Filtered Documents in MongoDB Compass" width="711" height="907" srcset="./../../wp-content/uploads/2016/11/Filter_MongoDB_Compass_Results.png 711w, ./../../wp-content/uploads/2016/11/Filter_MongoDB_Compass_Results-235x300.png 235w" sizes="auto, (max-width: 711px) 100vw, 711px" /></a><p id="caption-attachment-4282" class="wp-caption-text">Figure 6: View Filtered Documents in MongoDB Compass</p></div>
+<h3>Add Document Validation Rules</h3>
+<p>One of MongoDB’s primary attractions for developers is that it gives them the ability to start application development without first needing to define a formal schema. Operations teams appreciate the fact that they don’t need to perform a time-consuming schema upgrade operation every time the developers need to store a different attribute.</p>
+<p>This is well suited to the application built in this post as logs from different sources are likely to include different attributes. There are however some attributes that we always expect to be there (e.g., the metadata that the application is adding). For applications reading the documents from this collection to be able to rely on those fields being present, the documents should be validated before they are written to the database. Prior to MongoDB 3.2, those checks had to be implemented in the application but they can now be performed by the database itself.</p>
+<p>Executing a single command from the &#8220;mongo&#8221; shell adds the document checks:</p>
+<p><script src="https://gist.github.com/am-MongoDB/0d9c7cb0df7c7bcb3961a43c9d99e607.js"></script></p>
+<p>The above command adds multiple checks:</p>
+<ul>
+<li>The &#8220;program&#8221; field exists and contains a string</li>
+<li>There&#8217;s a sub-document called &#8220;metadata&#8221; containing at least 2 fields:</li>
+<li>&#8220;mongoLabel&#8221; which must be a string</li>
+<li>&#8220;timeAdded&#8221; which must be a date</li>
+</ul>
+<p>Test that the rules are correctly applied when attempting to write to the database:</p>
+<p><script src="https://gist.github.com/am-MongoDB/21d1ef80caf7a69e9d6962cca0667f55.js"></script></p>
+<h3>Cleaning Up (IMPORTANT!)</h3>
+<p>Remember that you will continue to be charged for the services even when you&#8217;re no longer actively using them. If you no longer need to use the services then clean up:</p>
+<ul>
+<li>From the MongoDB Atlas GUI, select your Cluster, click on the ellipses and select &#8220;Terminate&#8221;.</li>
+<li>From the AWS management console select the Kinesis service, then Kinesis Streams, and then delete your stream.</li>
+<li>From the AWS management console select the DynamoDB service, then tables, and then delete your table.</li>
+</ul>
+<h2>Using MongoDB Atlas with Other Frameworks and Services</h2>
+<p>We have detailed walkthroughs for using MongoDB Atlas with several programming languages and frameworks, as well as generic instructions that can be used with others. They can all be found in <a href="./../../mongodb/using-mongodb-atlas-from-your-favorite-language-or-framework/index.html">Using MongoDB Atlas From Your Favorite Language or Framework</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/mongodb_amazon_kinesis/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Migration &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Fri, 16 Sep 2016 08:34:35 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Migrating Data to MongoDB Atlas</title>
+		<link>./../../mongodb/migrating-data-to-mongodb-atlas/index.html</link>
+					<comments>./../../mongodb/migrating-data-to-mongodb-atlas/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 16 Sep 2016 08:34:35 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[DBaaS]]></category>
+		<category><![CDATA[Migration]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Atlas]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4235</guid>
+
+					<description><![CDATA[MongoDB Atlas was announced at this year&#8217;s MongoDB World. It&#8217;s great not just for new applications, but also your existing MongoDB databases running on other platforms. This post will focus on how you migrate your data and applications over to MongoDB Atlas. What is MongoDB Atlas? MongoDB Atlas provides all of the features of MongoDB,]]></description>
+										<content:encoded><![CDATA[<p><a href="https://www.mongodb.com/atlas">MongoDB Atlas</a> was announced at this year&#8217;s MongoDB World. It&#8217;s great not just for new applications, but also your existing MongoDB databases running on other platforms. This post will focus on how you migrate your data and applications over to MongoDB Atlas.</p>
+<h1>What is MongoDB Atlas?</h1>
+<p>MongoDB Atlas provides all of the features of MongoDB, without the operational heavy lifting required for any new application. MongoDB Atlas is available on demand through a pay-as-you-go model and billed on an hourly basis, letting you focus on what you do best.</p>
+<p>It’s easy to get started – use a simple GUI to select the instance size, region, and features you need. MongoDB Atlas provides:</p>
+<ul>
+<li>Security features to protect access to your data</li>
+<li>Built in replication for always-on availability, tolerating complete data center failure</li>
+<li>Backups and point in time recovery to protect against data corruption</li>
+<li>Fine-grained monitoring to let you know when to scale. Additional instances can be provisioned with the push of a button</li>
+<li>Automated patching and one-click upgrades for new major versions of the database, enabling you to take advantage of the latest and greatest MongoDB features</li>
+<li>A choice of cloud providers, regions, and billing options</li>
+</ul>
+<p>But what if you already have application data held in your own on-prem or cloud-based MongoDB database – is it possible to safely migrate that data to MongoDB Atlas? What if your data is held in a 3rd party hosted MongoDB service such as Compose or mLab? Conversely, is it possible to build your application against MongoDB Atlas and then move the data to a MongoDB database running on another platform in the future?</p>
+<p>The answer to all of those questions is &#8220;yes&#8221;. In the future you should expect this to be a highly automated process but right now it involves some manual steps – the purpose of this blog post is to describe the process.</p>
+<h1>Moving Your Application Data to MongoDB Atlas</h1>
+<p>The procedure is very straightforward, but if you can&#8217;t tolerate losing any of your updates then it does involve stopping application writes for a period. That means it&#8217;s vital that you prepare in advance in order to minimize the impact.</p>
+<h2>Pre-Migration Checklist</h2>
+<ul>
+<li>How long will writes need to be stopped? Perform a dry-run of the <code>mongodump</code> &amp; <code>mongorestore</code> steps but without stopping application writes to answer this.</li>
+<li>When will the stopping of writes have the smallest impact?</li>
+<li>What can you change in the application to minimize the impact, e.g. provide a read-only version of the service when it isn&#8217;t possible to write to the database?</li>
+<li>Will you warn users of planned maintenance ahead of time?</li>
+<li>Do you have sufficient storage space to store the dumped data on the machine where you plan to run <code>mongodump</code>?</li>
+<li>Once the data has been migrated to MongoDB Atlas, the application will need to switch its database connections to the new address; identify how this will be done.</li>
+<li>List the IP Addresses of all the machines that will need to connect to MongoDB Atlas – this includes your application nodes as well as the machine where <code>mongorestore</code> will be run. These will need to be added to your MongoDB Atlas group&#8217;s whitelist.</li>
+<li>Decide on what MongoDB Atlas instance size to use and, if necessary how many shards will be needed.</li>
+<li>Decide on which region to use, e.g. co locating the MongoDB Atlas instances with your cloud-based application servers.</li>
+</ul>
+<h2>Execute the Migration</h2>
+<ul>
+<li>Create the <a href="https://www.mongodb.com/cloud">MongoDB Atlas cluster</a>.</li>
+<li>Add the required IP Addresses to the whitelist in your group&#8217;s security tab.</li>
+<li>Stop database writes to your existing database; either in your application logic or by blocking them for each of your databases (schemas) in the original MongoDB deployment:</li>
+</ul>
+<pre><code>laptop&gt; mongo --host=ec2-52-208-185-213.eu-west-1.compute.amazonaws.com \
+    --eval "db.fsyncLock()"
+</code></pre>
+<ul>
+<li>Back up the data from the existing database (writes the data to a directory named <code>dump</code>):</li>
+</ul>
+<pre><code>laptop&gt; mongodump --host=ec2-52-208-185-213.eu-west-1.compute.amazonaws.com \
+    --port=27017
+</code></pre>
+<ul>
+<li>Write the data to MongoDB Atlas (using the connection information provided in the Web UI):</li>
+</ul>
+<pre><code>mongorestore --ssl --host cluster0-shard-00-00-qfovx.mongodb.net \
+    --port 27017 -u billy -p XXX dump
+</code></pre>
+<ul>
+<li>Switch the application&#8217;s database connections over to your MongoDB Atlas instance.</li>
+</ul>
+<p>Want more help?  We offer a <a href="https://www.mongodb.com/products/consulting#mongodb_atlas_migration">MongoDB Atlas Migration service</a> to help you properly configure MongoDB Atlas and develop a migration plan. This is especially helpful if you need to minimize downtime for your application, if you have a complex sharded deployment, or if you want to revise your deployment architecture as part of the migration. <a href="https://www.mongodb.com/contact/consulting/mongodb-atlas-migration">Contact us</a> to learn more about the MongoDB Atlas Migration service.</p>
+<h1>Moving Your Application Data Out of MongoDB Atlas</h1>
+<p>To migrate data out, you can download a MongoDB Atlas backup and then copy the contents to the receiving MongoDB cluster; the <a href="https://docs.cloudmanager.mongodb.com/tutorial/restore-replica-set/#restore-the-primary">documentation describes how to load the data into the receiving replica set</a>. The backup can be either a periodic snapshot or a point-in-time view of the MongoDB Atlas database. If you can&#8217;t tolerate lost writes, they must be stopped by the application (<code>fsyncLock</code> is not available in MongoDB Atlas).</p>
+<h1>Getting the Best Out of MongoDB Atlas</h1>
+<p>While MongoDB Atlas radically simplifies the operation of MongoDB there are still some decisions to take to ensure the best performance and reliability for your application. The <a href="https://www.mongodb.com/collateral/mongodb-atlas-best-practices">MongoDB Atlas Best Practices white paper</a> provides guidance on best practices for deploying, managing, and optimizing the performance of your database with MongoDB Atlas.</p>
+<p>The guide outlines considerations for achieving performance at scale with MongoDB Atlas across a number of key dimensions, including instance size selection, application patterns, schema design and indexing, and disk I/O. While this guide is broad in scope, it is not exhaustive. Following the recommendations in the guide will provide a solid foundation for ensuring optimal application performance.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/migrating-data-to-mongodb-atlas/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

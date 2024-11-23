@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Adaptive Query Localization &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Mon, 11 Apr 2011 13:04:19 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Dramatically Increased MySQL Cluster JOIN performance with Adaptive Query Localization</title>
+		<link>./../../mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization/index.html</link>
+					<comments>./../../mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization/index.html#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 11 Apr 2011 13:04:19 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Adaptive Query Localization]]></category>
+		<category><![CDATA[MySQL Cluster 7.2]]></category>
+		<guid isPermaLink="false">./../../index.html?p=1618</guid>
+
+					<description><![CDATA[Regular readers of this Blog or attendees at the 2010 O&#8217;Reilly MySQL Conference may recall a feature that the MySQL Cluster team were working to speed up JOINs (see Jonas&#8217;s slides from that conference here). The good news is that work has continued since then and it is now part of the new MySQL Cluster]]></description>
+										<content:encoded><![CDATA[<p>Regular readers of this Blog or attendees at the 2010 O&#8217;Reilly MySQL Conference may recall a feature that the MySQL Cluster team were working to speed up JOINs (<a href="http://assets.en.oreilly.com/1/event/36/MySQL%20Cluster%20and%20Pushdown-joins%20_In%20Pursuit%20of%20the%20Holy%20Grail_%20Presentation.pdf" target="_blank">see Jonas&#8217;s slides from that conference here</a>). The good news is that work has continued since then and it is now part of the new MySQL Cluster 7.2 Milestone Development Release. This post will step through where to get hold of the binaries and see the benefits for yourself. The examples I try here result in a 25x speedup just by turning the feature on &#8211; I&#8217;ve also seen a 50x speedup on other queries!</p>
+<p>We&#8217;re anxious to get feedback on what benefits you see with your application&#8217;s JOINs, please respond to this post.</p>
+<h3>What&#8217;s in a name?</h3>
+<p>If some of this seems familiar but you don&#8217;t remember hearing the term &#8220;Adaptive Query Localization&#8221; before then you&#8217;re not going crazy &#8211; previous internal names were SPJ (Select Project Join) and Pushed-Down Joins. We just figured that Adaptive Query Localization was more descriptive.</p>
+<h3>
+<div id="attachment_1626" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/03/Nested-Loop-Join.jpg"><img decoding="async" aria-describedby="caption-attachment-1626" class="size-medium wp-image-1626" title="Nested Loop Join" src="./../../wp-content/uploads/2011/03/Nested-Loop-Join-300x155.jpg" alt="" width="300" height="155" /></a><p id="caption-attachment-1626" class="wp-caption-text">Classic Nested-Loop-Join</p></div>
+<p>What does it do?</h3>
+<p>Traditionally, joins have been implemented in the MySQL Server where the query was executed. This is implemented as a nested-loop join; for every row from the first part of the join, a request has to be sent to the data nodes in order to fetch the data for the next level of the join and for every row in that level&#8230;. This method can result in a lot of network messages which slows down the query (as well as wasting resources).</p>
+<p>When turned on, Adaptive Query Localization results in the hard work being pushed down to the data nodes where the data is locally accessible. As a bonus, the work is divided amongst the pool of data nodes and so you get parallel execution.</p>
+<h3>
+<div id="attachment_1627" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/03/NDB-API.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-1627" class="size-medium wp-image-1627" title="NDB API" src="./../../wp-content/uploads/2011/03/NDB-API-300x188.jpg" alt="" width="300" height="188" /></a><p id="caption-attachment-1627" class="wp-caption-text">NDB API</p></div>
+<p>How is it implemented?</h3>
+<p>I&#8217;ll leave the real deep and dirty details to others but cover the basic concepts here. All API nodes access the data nodes using the native C++ NDB API, the MySQL Server is one example of an API node (the new <a href="./../../mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html" target="_blank">Memcached Cluster API</a> is another). This API has been expanded to allowed parameterised or linked queries where the input from one query is dependent on the previous one.</p>
+<p>To borrow an example from an excellent <a href="http://messagepassing.blogspot.com/2011/01/low-latency-distributed-parallel-joins.html" target="_blank">post by Frazer Clement</a> on the topic, the classic way to implement a join would be&#8230;</p>
+<pre style="font-size: 11px;">SQL > select t1.b, t2.c from t1,t2 where t1.pk=22 and t1.b=t2.pk;
+  ndbapi > read column b from t1 where pk = 22;</pre>
+<pre style="font-size: 11px;">              [round trip]</pre>
+<pre style="font-size: 11px;">           (b = 15)
+  ndbapi > read column c from t2 where pk = 15;</pre>
+<pre style="font-size: 11px;">              [round trip]</pre>
+<pre style="font-size: 11px;">           (c = 30)
+           [ return b = 15, c = 30 ]</pre>
+<p>Using the new functionality this can be performed with a single network round trip where the second read operation is dependent on the results of the first&#8230;</p>
+<pre style="font-size: 11px;">  ndbapi > read column <strong><span style="color: #800000;">@b</span></strong>:=b from t1 where pk = 22;
+           read column c from t2 where pk=<span style="color: #800000;"><strong>@b</strong></span>;</pre>
+<pre style="font-size: 11px;">              [round trip]</pre>
+<pre style="font-size: 11px;">           (b = 15, c = 30)
+           [ return b = 15, c = 30 ]</pre>
+<div id="attachment_1625" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/03/Optimised-Join.jpg"><img decoding="async" aria-describedby="caption-attachment-1625" class="size-medium wp-image-1625" title="Optimised Join" src="./../../wp-content/uploads/2011/03/Optimised-Join-300x157.jpg" alt="" width="300" height="157" /></a><p id="caption-attachment-1625" class="wp-caption-text">Effects of Adaptive Query Localization</p></div>
+<p>Note that if your application is using the NDB API directly then you can use this same linked query functionality to speed up your queries.</p>
+<h3>Where do I get it?</h3>
+<p>Download the source or binaries from <a href="http://dev.mysql.com/downloads/cluster/" target="_blank">http://dev.mysql.com/downloads/cluster/</a> (select the sub-tab for the Development Milestone Release).</p>
+<h3>How do I use it?</h3>
+<p>The first step is to get you Cluster up and running. As the focus of this feature is to reduce the amount of network messaging, it makes sense to perform your tests on multiple machines; if you need pointers on setting Cluster up then check this post on <a title="Deploying MySQL Cluster over multiple hosts" href="./../../mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/index.html" target="_blank">running Cluster over multiple machines</a> (or the <a title="Running MySQL Cluster over multiple Windows servers" href="./../../mysql-cluster/running-mysql-cluster-over-multiple-servers/index.html" target="_blank">Windows version</a>).</p>
+<div id="attachment_1636" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/03/System-Configuration.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1636" class="size-medium wp-image-1636" title="System Configuration" src="./../../wp-content/uploads/2011/03/System-Configuration-300x158.jpg" alt="" width="300" height="158" /></a><p id="caption-attachment-1636" class="wp-caption-text">System Configuration</p></div>
+<p>For my test, I used 2 PCs, each running Fedora 14 with Quad-Core CPU, 8 GBytes of RAM and Gigabit Ethernet connectivity. Each PC was running 2 data nodes (ndbd rather than ndbmtd) and one of the PCs was also running the management node and the MySQL Server running the queries (note that this configuration is not suitable for a HA deployment &#8211; for that run the management node on a third machine and run a MySQL Server on 192.168.1.11).</p>
+<p>I&#8217;d hoped to go a step further and have the MySQL Server run on a third machine but hardware problems put paid to that &#8211; the reason that this would have been interesting is that it would have meant more of the messaging would be over the network and so would give a more realistic performance comparison (the speedup factor should have been higher). Another couple of steps that could further improve the speedup:</p>
+<ol>
+<li>Use multi-threaded data nodes (as more of the work is being done in the data nodes, this should help)</li>
+<li>Use machines with more cores</li>
+<li>Tune the configuration parameters (I&#8217;m keeping it as simple as possible here)</li>
+</ol>
+<p>For reference, here is the configuration file used (config.ini):</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #333399;"> [ndb_mgmd]</span>
+<span style="color: #333399; font-size: 11px;"> hostname=192.168.1.7</span>
+<span style="color: #333399; font-size: 11px;"> datadir=/home/billy/mysql/spj/my_cluster/ndb_data</span>
+<span style="color: #333399; font-size: 11px;"> NodeId=1</span>
+
+<span style="color: #333399;"> [ndbd default]</span>
+<span style="color: #333399;"> noofreplicas=2</span>
+<span style="color: #333399;"> DiskPageBufferMemory=4M</span>
+
+<span style="color: #333399;"> [ndbd]</span>
+<span style="color: #333399;"> hostname=192.168.1.7</span>
+<span style="color: #333399;"> datadir=/home/billy/mysql/spj/my_cluster/ndb_data</span>
+<span style="color: #333399;"> NodeId=3</span>
+
+<span style="color: #333399;"> [ndbd]</span>
+<span style="color: #333399;"> hostname=192.168.1.11</span>
+<span style="color: #333399;"> datadir=/home/billy/mysql/spj/my_cluster/ndb_data</span>
+<span style="color: #333399;"> NodeId=4</span>
+
+<span style="color: #333399;"> [ndbd]</span>
+<span style="color: #333399;"> hostname=192.168.1.7</span>
+<span style="color: #333399;"> datadir=/home/billy/mysql/spj/my_cluster/ndb_data2</span>
+<span style="color: #333399;"> NodeId=5</span>
+
+<span style="color: #333399;"> [ndbd]</span>
+<span style="color: #333399;"> hostname=192.168.1.11</span>
+<span style="color: #333399;"> datadir=/home/billy/mysql/spj/my_cluster/ndb_data2</span>
+<span style="color: #333399;"> NodeId=6</span>
+
+<span style="color: #333399;"> [mysqld]</span>
+<span style="color: #333399;"> NodeId=50</span></pre>
+<p>And for the MySQL Server (my.cnf):</p>
+<p style="padding-left: 30px; font-size: 11px;"><span style="color: #333399;">[mysqld]<br />
+ndbcluster<br />
+datadir=/home/billy/mysql/spj/my_cluster/mysqld_data</span></p>
+<p>As a reminder &#8211; here is how you start up such a Cluster:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #333399;">[billy@ws2 my_cluster]$ ndb_mgmd -f conf/config.ini --initial </span>
+<span style="color: #333399;">  --configdir=/home/billy/mysql/spj/my_cluster/conf/</span>
+<span style="color: #333399;">[billy@ws2 my_cluster]$ ndbd -c 192.168.1.7:1186</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #800000;">[billy@ws1 my_cluster]$ ndbd -c 192.168.1.7:1186</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #333399;">[billy@ws2 my_cluster]$ ndbd -c 192.168.1.7:1186</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #800000;">[billy@ws1 my_cluster]$ ndbd -c 192.168.1.7:1186</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;">
+<div><span style="color: #333399;">[billy@ws2 my_cluster]$ ndb_mgm -e show # Wait until data nodes are running
+</span><span style="color: #333399;">[billy@ws2 my_cluster]$ mysqld --defaults-file=conf/my.cnf&
+[billy@ws2 </span><span style="color: #333399;">my_cluster]$ mysql -h 127.0.0.1 -P 3306 -u root</span></div></pre>
+<p>Three tables that are to be used for the queries and these are created as follows:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> CREATE DATABASE clusterdb; USE clusterdb;</span>
+<span style="color: #008000;">mysql> CREATE TABLE residents (id INT NOT NULL PRIMARY KEY, name VARCHAR(20),
+  postcode VARCHAR(20)) ENGINE=ndb;</span>
+<span style="color: #008000;">mysql> CREATE TABLE postcodes (postcode VARCHAR(20) NOT NULL PRIMARY KEY, 
+  town VARCHAR(20)) ENGINE=ndb;</span>
+<span style="color: #008000;">mysql> CREATE TABLE towns (town VARCHAR(20) NOT NULL PRIMARY KEY,
+  county VARCHAR(20)) ENGINE=ndb;</span></pre>
+<p>I then added 100K rows to each of these tables; if you want to recreate this then you can <a href="./../../adaptive_query_example_data.zip" target="_blank">download the data files here</a>.</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> LOAD DATA LOCAL INFILE  "/home/billy/Dropbox/LINUX/projects/SPJ/residents.csv"</span>
+<span style="color: #008000;">   REPLACE INTO TABLE residents FIELDS TERMINATED BY ',' ENCLOSED BY '"';</span>
+<span style="color: #008000;">mysql> LOAD DATA LOCAL INFILE  "/home/billy/Dropbox/LINUX/projects/SPJ/postcodes.csv"</span>
+<span style="color: #008000;">  REPLACE INTO TABLE postcodes FIELDS TERMINATED BY ',' ENCLOSED BY '"';</span>
+<span style="color: #008000;">mysql> LOAD DATA LOCAL INFILE  "/home/billy/Dropbox/LINUX/projects/SPJ/towns.csv"</span>
+<span style="color: #008000;">  REPLACE INTO TABLE towns FIELDS TERMINATED BY ',' ENCLOSED BY '"'; </span></pre>
+<p>Now everything is set up to actually perform our tests! First of all two queries are run with the adaptive query localization turned <strong>off</strong> i.e. this is the &#8220;before&#8221; picture:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> set ndb_join_pushdown=off;</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> SELECT COUNT(*)  FROM residents,postcodes WHERE
+  residents.postcode=postcodes.postcode AND postcodes.town="MAIDENHEAD";</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> | COUNT(*) |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> |    20000 |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> 1 row in set (<span style="color: #800000;"><strong>27.65 sec</strong></span>)</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> SELECT COUNT(*)  FROM residents,postcodes,towns WHERE
+  residents.postcode=postcodes.postcode AND
+  postcodes.town=towns.town AND towns.county="Berkshire";</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> | COUNT(*) |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> |    40001 |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> 1 row in set (<span style="color: #800000;"><strong>48.68 sec</strong></span>)</span></pre>
+<p>and then the test is repeated with adaptive query localization turned on:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> set ndb_join_pushdown=on;</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> SELECT COUNT(*)  FROM residents,postcodes WHERE
+  residents.postcode=postcodes.postcode</span><span style="color: #008000;"> AND postcodes.town="MAIDENHEAD";</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> | COUNT(*) |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> |    20000 |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> 1 row in set (<span style="color: #800000;"><strong>1.07 sec</strong></span>)</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> SELECT COUNT(*)  FROM residents,postcodes,towns WHERE
+  residents.postcode=postcodes.postcode </span><span style="color: #008000;">AND postcodes.town=towns.town
+  AND towns.county="Berkshire";</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> | COUNT(*) |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> |    40001 |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> 1 row in set (<span style="color: #800000;"><strong>2.02 sec</strong></span>)</span></pre>
+<p>For those 2 queries it represents a 25.8x and 24.1x speedup.</p>
+<p>It&#8217;s important to note that not every join can currently be pushed down to the data nodes; here are the current rules (we hope to relax them overtime) for a query to be suitable:</p>
+<ul>
+<li>JOINed columns must have the same data type</li>
+<li>Queries should not reference BLOBs</li>
+<li>Explicit locking is not supported</li>
+<li>Only supports fully or partially qualified primary keys or plain indexes as access method for child tables (first part of JOIN can be a full table scan)</li>
+</ul>
+<p>You can check whether your query is fitting these rules using EXPLAIN, for example:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> set ndb_join_pushdown=on;</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #008000;">mysql> EXPLAIN SELECT COUNT(*)  FROM residents,postcodes WHERE residents.postcode=postcodes.postcode AND postcodes.town="MAIDENHEAD";</span>
+<span style="color: #008000;">+----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+--------------------------------------------------------------------------+</span>
+<span style="color: #008000;">| id | select_type | table     | type   | possible_keys | key     | key_len | ref                          | rows   | Extra                                                                    |</span><span style="color: #008000;">
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+--------------------------------------------------------------------------+</span><span style="color: #008000;">
+|  1 | SIMPLE      | residents | ALL    | NULL          | NULL    | NULL    | NULL                         | 100000 | Parent of 2 pushed join@1                                                |</span><span style="color: #008000;">
+|  1 | SIMPLE      | postcodes | eq_ref | PRIMARY       | PRIMARY | 22      | clusterdb.residents.postcode |      1 | Child of 'residents' in pushed join@1; Using where with pushed condition |</span><span style="color: #008000;">
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+--------------------------------------------------------------------------+</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> EXPLAIN EXTENDED SELECT COUNT(*)  FROM residents,postcodes,towns WHERE residents.postcode=postcodes.postcode AND postcodes.town=towns.town AND towns.county="Berkshire";</span><span style="color: #008000;">
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+</span><span style="color: #008000;">
+| id | select_type | table     | type   | possible_keys | key     | key_len | ref                          | rows   | filtered | Extra                                                                                                                  |</span><span style="color: #008000;">
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+</span><span style="color: #008000;">
+|  1 | SIMPLE      | residents | ALL    | NULL          | NULL    | NULL    | NULL                         | 100000 |   100.00 | Parent of 3 pushed join@1                                                                                              |</span><span style="color: #008000;">
+|  1 | SIMPLE      | postcodes | eq_ref | PRIMARY       | PRIMARY | 22      | clusterdb.residents.postcode |      1 |   100.00 | Child of 'residents' in pushed join@1                                                                                  |</span><span style="color: #008000;">
+|  1 | SIMPLE      | towns     | eq_ref | PRIMARY       | PRIMARY | 22      | clusterdb.postcodes.town     |      1 |   100.00 | Child of 'postcodes' in pushed join@1; Using where with pushed condition: (`clusterdb`.`towns`.`county` = 'Berkshire') |</span><span style="color: #008000;">
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+</span></pre>
+<p>Note that if you want to check for more details why your join isn&#8217;t currently being pushed down to the data node then you can use &#8220;<span style="color: #008000;">EXPLAIN EXTENDED</span>&#8221; and then &#8220;<span style="color: #008000;">SHOW WARNINGS</span>&#8221; to get more hints. Hopefully that will allow you to tweak your queries to get the best improvements.</p>
+<p>PLEASE let us know your experiences and give us examples of queries that worked well and (just as importantly) those that didn&#8217;t so that we can improve the feature &#8211; just leave a comment on this Blog with your table schemas, your query and your before/after timings.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization/feed/index.html</wfw:commentRss>
+			<slash:comments>12</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

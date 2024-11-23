@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="./../../../xmlrpc.php">
+	
+	<title>MySQL | Andrew Morgan on Databases | Page 14</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="./../../../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="./../../../comments/feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; MySQL Tag Feed" href="./../feed/index.html">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="./../../../wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="./../../../wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="./../../../wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="./../../../wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="./../../../wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="./../../../wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="./../../../wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="./../../../wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="./../../../wp-json/index.html">
+<link rel="alternate" title="JSON" type="application/json" href="./../../../wp-json/wp/v2/tags/147/index.html">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../../../xmlrpc.php?rsd">
+
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style>
+<style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style>
+<script type="text/javascript">
+				//<![CDATA[
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//]]>
+				</script><style type="text/css"></style>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style>
+</head>
+
+<body class="archive paged tag tag-mysql tag-147 custom-background paged-14 tag-paged-14">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="./../../../index.html"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="http://www.clusterdb.com/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="./../../../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../../../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../../../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../../../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../../../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../../../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu">
+<li class="page_item page-item-1011"><a href="./../../../about/index.html">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="./../../../wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+		
+		<h2 class="arh">Tag Archive for MySQL</h2>
+				
+					<div id="post-1618" class="post-1618 post type-post status-publish format-standard hentry category-mysql category-mysql-cluster tag-adaptive-query-localization tag-mysql tag-mysql-cluster-7-2">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../../../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../../../mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization/index.html">April 11, 2011</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../../../mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization/index.html#comments">12 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../../../mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization/index.html" rel="bookmark">Dramatically Increased MySQL Cluster JOIN performance with Adaptive Query Localization</a></h2>
+				
+				<div class="entry">
+										<p>Regular readers of this Blog or attendees at the 2010 O&#8217;Reilly MySQL Conference may recall a feature that the MySQL Cluster team were working to speed up JOINs (<a href="http://assets.en.oreilly.com/1/event/36/MySQL%20Cluster%20and%20Pushdown-joins%20_In%20Pursuit%20of%20the%20Holy%20Grail_%20Presentation.pdf" target="_blank">see Jonas&#8217;s slides from that conference here</a>). The good news is that work has continued since then and it is now part of the new MySQL Cluster 7.2 Milestone Development Release. This post will step through where to get hold of the binaries and see the benefits for yourself. The examples I try here result in a 25x speedup just by turning the feature on &#8211; I&#8217;ve also seen a 50x speedup on other queries!</p>
+<p>We&#8217;re anxious to get feedback on what benefits you see with your application&#8217;s JOINs, please respond to this post.</p>
+<h3>What&#8217;s in a name?</h3>
+<p>If some of this seems familiar but you don&#8217;t remember hearing the term &#8220;Adaptive Query Localization&#8221; before then you&#8217;re not going crazy &#8211; previous internal names were SPJ (Select Project Join) and Pushed-Down Joins. We just figured that Adaptive Query Localization was more descriptive.</p>
+<h3>
+<div id="attachment_1626" style="width: 310px" class="wp-caption alignright">
+<a href="./../../../wp-content/uploads/2011/03/Nested-Loop-Join.jpg"><img decoding="async" aria-describedby="caption-attachment-1626" class="size-medium wp-image-1626" title="Nested Loop Join" src="./../../../wp-content/uploads/2011/03/Nested-Loop-Join-300x155.jpg" alt="" width="300" height="155"></a><p id="caption-attachment-1626" class="wp-caption-text">Classic Nested-Loop-Join</p>
+</div>
+</h3>
+<p>What does it do?
+</p>
+<p>Traditionally, joins have been implemented in the MySQL Server where the query was executed. This is implemented as a nested-loop join; for every row from the first part of the join, a request has to be sent to the data nodes in order to fetch the data for the next level of the join and for every row in that level&#8230;. This method can result in a lot of network messages which slows down the query (as well as wasting resources).</p>
+<p>When turned on, Adaptive Query Localization results in the hard work being pushed down to the data nodes where the data is locally accessible. As a bonus, the work is divided amongst the pool of data nodes and so you get parallel execution.</p>
+<h3>
+<div id="attachment_1627" style="width: 310px" class="wp-caption alignright">
+<a href="./../../../wp-content/uploads/2011/03/NDB-API.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-1627" class="size-medium wp-image-1627" title="NDB API" src="./../../../wp-content/uploads/2011/03/NDB-API-300x188.jpg" alt="" width="300" height="188"></a><p id="caption-attachment-1627" class="wp-caption-text">NDB API</p>
+</div>
+</h3>
+<p>How is it implemented?
+</p>
+<p>I&#8217;ll leave the real deep and dirty details to others but cover the basic concepts here. All API nodes access the data nodes using the native C++ NDB API, the MySQL Server is one example of an API node (the new <a href="./../../../mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html" target="_blank">Memcached Cluster API</a> is another). This API has been expanded to allowed parameterised or linked queries where the input from one query is dependent on the previous one.</p>
+<p>To borrow an example from an excellent <a href="http://messagepassing.blogspot.com/2011/01/low-latency-distributed-parallel-joins.html" target="_blank">post by Frazer Clement</a> on the topic, the classic way to implement a join would be&#8230;</p>
+<pre style="font-size: 11px;">SQL > select t1.b, t2.c from t1,t2 where t1.pk=22 and t1.b=t2.pk;
+  ndbapi > read column b from t1 where pk = 22;</pre>
+<pre style="font-size: 11px;">              [round trip]</pre>
+<pre style="font-size: 11px;">           (b = 15)
+  ndbapi > read column c from t2 where pk = 15;</pre>
+<pre style="font-size: 11px;">              [round trip]</pre>
+<pre style="font-size: 11px;">           (c = 30)
+           [ return b = 15, c = 30 ]</pre>
+<p>Using the new functionality this can be performed with a single network round trip where the second read operation is dependent on the results of the first&#8230;</p>
+<pre style="font-size: 11px;">  ndbapi > read column <strong><span style="color: #800000;">@b</span></strong>:=b from t1 where pk = 22;
+           read column c from t2 where pk=<span style="color: #800000;"><strong>@b</strong></span>;</pre>
+<pre style="font-size: 11px;">              [round trip]</pre>
+<pre style="font-size: 11px;">           (b = 15, c = 30)
+           [ return b = 15, c = 30 ]</pre>
+<div id="attachment_1625" style="width: 310px" class="wp-caption alignright">
+<a href="./../../../wp-content/uploads/2011/03/Optimised-Join.jpg"><img decoding="async" aria-describedby="caption-attachment-1625" class="size-medium wp-image-1625" title="Optimised Join" src="./../../../wp-content/uploads/2011/03/Optimised-Join-300x157.jpg" alt="" width="300" height="157"></a><p id="caption-attachment-1625" class="wp-caption-text">Effects of Adaptive Query Localization</p>
+</div>
+<p>Note that if your application is using the NDB API directly then you can use this same linked query functionality to speed up your queries.</p>
+<h3>Where do I get it?</h3>
+<p>Download the source or binaries from <a href="http://dev.mysql.com/downloads/cluster/" target="_blank">http://dev.mysql.com/downloads/cluster/</a> (select the sub-tab for the Development Milestone Release).</p>
+<h3>How do I use it?</h3>
+<p>The first step is to get you Cluster up and running. As the focus of this feature is to reduce the amount of network messaging, it makes sense to perform your tests on multiple machines; if you need pointers on setting Cluster up then check this post on <a title="Deploying MySQL Cluster over multiple hosts" href="./../../../mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/index.html" target="_blank">running Cluster over multiple machines</a> (or the <a title="Running MySQL Cluster over multiple Windows servers" href="./../../../mysql-cluster/running-mysql-cluster-over-multiple-servers/index.html" target="_blank">Windows version</a>).</p>
+<div id="attachment_1636" style="width: 310px" class="wp-caption alignright">
+<a href="./../../../wp-content/uploads/2011/03/System-Configuration.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1636" class="size-medium wp-image-1636" title="System Configuration" src="./../../../wp-content/uploads/2011/03/System-Configuration-300x158.jpg" alt="" width="300" height="158"></a><p id="caption-attachment-1636" class="wp-caption-text">System Configuration</p>
+</div>
+<p>For my test, I used 2 PCs, each running Fedora 14 with Quad-Core CPU, 8 GBytes of RAM and Gigabit Ethernet connectivity. Each PC was running 2 data nodes (ndbd rather than ndbmtd) and one of the PCs was also running the management node and the MySQL Server running the queries (note that this configuration is not suitable for a HA deployment &#8211; for that run the management node on a third machine and run a MySQL Server on 192.168.1.11).</p>
+<p>I&#8217;d hoped to go a step further and have the MySQL Server run on a third machine but hardware problems put paid to that &#8211; the reason that this would have been interesting is that it would have meant more of the messaging would be over the network and so would give a more realistic performance comparison (the speedup factor should have been higher). Another couple of steps that could further improve the speedup:</p>
+<ol>
+<li>Use multi-threaded data nodes (as more of the work is being done in the data nodes, this should help)</li>
+<li>Use machines with more cores</li>
+<li>Tune the configuration parameters (I&#8217;m keeping it as simple as possible here)</li>
+</ol>
+<p>For reference, here is the configuration file used (config.ini):</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #333399;"> [ndb_mgmd]</span>
+<span style="color: #333399; font-size: 11px;"> hostname=192.168.1.7</span>
+<span style="color: #333399; font-size: 11px;"> datadir=/home/billy/mysql/spj/my_cluster/ndb_data</span>
+<span style="color: #333399; font-size: 11px;"> NodeId=1</span>
+
+<span style="color: #333399;"> [ndbd default]</span>
+<span style="color: #333399;"> noofreplicas=2</span>
+<span style="color: #333399;"> DiskPageBufferMemory=4M</span>
+
+<span style="color: #333399;"> [ndbd]</span>
+<span style="color: #333399;"> hostname=192.168.1.7</span>
+<span style="color: #333399;"> datadir=/home/billy/mysql/spj/my_cluster/ndb_data</span>
+<span style="color: #333399;"> NodeId=3</span>
+
+<span style="color: #333399;"> [ndbd]</span>
+<span style="color: #333399;"> hostname=192.168.1.11</span>
+<span style="color: #333399;"> datadir=/home/billy/mysql/spj/my_cluster/ndb_data</span>
+<span style="color: #333399;"> NodeId=4</span>
+
+<span style="color: #333399;"> [ndbd]</span>
+<span style="color: #333399;"> hostname=192.168.1.7</span>
+<span style="color: #333399;"> datadir=/home/billy/mysql/spj/my_cluster/ndb_data2</span>
+<span style="color: #333399;"> NodeId=5</span>
+
+<span style="color: #333399;"> [ndbd]</span>
+<span style="color: #333399;"> hostname=192.168.1.11</span>
+<span style="color: #333399;"> datadir=/home/billy/mysql/spj/my_cluster/ndb_data2</span>
+<span style="color: #333399;"> NodeId=6</span>
+
+<span style="color: #333399;"> [mysqld]</span>
+<span style="color: #333399;"> NodeId=50</span></pre>
+<p>And for the MySQL Server (my.cnf):</p>
+<p style="padding-left: 30px; font-size: 11px;"><span style="color: #333399;">[mysqld]<br>
+ndbcluster<br>
+datadir=/home/billy/mysql/spj/my_cluster/mysqld_data</span></p>
+<p>As a reminder &#8211; here is how you start up such a Cluster:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #333399;">[billy@ws2 my_cluster]$ ndb_mgmd -f conf/config.ini --initial </span>
+<span style="color: #333399;">  --configdir=/home/billy/mysql/spj/my_cluster/conf/</span>
+<span style="color: #333399;">[billy@ws2 my_cluster]$ ndbd -c 192.168.1.7:1186</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #800000;">[billy@ws1 my_cluster]$ ndbd -c 192.168.1.7:1186</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #333399;">[billy@ws2 my_cluster]$ ndbd -c 192.168.1.7:1186</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #800000;">[billy@ws1 my_cluster]$ ndbd -c 192.168.1.7:1186</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;">
+<div>
+<span style="color: #333399;">[billy@ws2 my_cluster]$ ndb_mgm -e show # Wait until data nodes are running
+</span><span style="color: #333399;">[billy@ws2 my_cluster]$ mysqld --defaults-file=conf/my.cnf&
+[billy@ws2 </span><span style="color: #333399;">my_cluster]$ mysql -h 127.0.0.1 -P 3306 -u root</span>
+</div></pre>
+<p>Three tables that are to be used for the queries and these are created as follows:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> CREATE DATABASE clusterdb; USE clusterdb;</span>
+<span style="color: #008000;">mysql> CREATE TABLE residents (id INT NOT NULL PRIMARY KEY, name VARCHAR(20),
+  postcode VARCHAR(20)) ENGINE=ndb;</span>
+<span style="color: #008000;">mysql> CREATE TABLE postcodes (postcode VARCHAR(20) NOT NULL PRIMARY KEY, 
+  town VARCHAR(20)) ENGINE=ndb;</span>
+<span style="color: #008000;">mysql> CREATE TABLE towns (town VARCHAR(20) NOT NULL PRIMARY KEY,
+  county VARCHAR(20)) ENGINE=ndb;</span></pre>
+<p>I then added 100K rows to each of these tables; if you want to recreate this then you can <a href="./../../../adaptive_query_example_data.zip" target="_blank">download the data files here</a>.</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> LOAD DATA LOCAL INFILE  "/home/billy/Dropbox/LINUX/projects/SPJ/residents.csv"</span>
+<span style="color: #008000;">   REPLACE INTO TABLE residents FIELDS TERMINATED BY ',' ENCLOSED BY '"';</span>
+<span style="color: #008000;">mysql> LOAD DATA LOCAL INFILE  "/home/billy/Dropbox/LINUX/projects/SPJ/postcodes.csv"</span>
+<span style="color: #008000;">  REPLACE INTO TABLE postcodes FIELDS TERMINATED BY ',' ENCLOSED BY '"';</span>
+<span style="color: #008000;">mysql> LOAD DATA LOCAL INFILE  "/home/billy/Dropbox/LINUX/projects/SPJ/towns.csv"</span>
+<span style="color: #008000;">  REPLACE INTO TABLE towns FIELDS TERMINATED BY ',' ENCLOSED BY '"'; </span></pre>
+<p>Now everything is set up to actually perform our tests! First of all two queries are run with the adaptive query localization turned <strong>off</strong> i.e. this is the &#8220;before&#8221; picture:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> set ndb_join_pushdown=off;</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> SELECT COUNT(*)  FROM residents,postcodes WHERE
+  residents.postcode=postcodes.postcode AND postcodes.town="MAIDENHEAD";</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> | COUNT(*) |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> |    20000 |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> 1 row in set (<span style="color: #800000;"><strong>27.65 sec</strong></span>)</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> SELECT COUNT(*)  FROM residents,postcodes,towns WHERE
+  residents.postcode=postcodes.postcode AND
+  postcodes.town=towns.town AND towns.county="Berkshire";</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> | COUNT(*) |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> |    40001 |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> 1 row in set (<span style="color: #800000;"><strong>48.68 sec</strong></span>)</span></pre>
+<p>and then the test is repeated with adaptive query localization turned on:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> set ndb_join_pushdown=on;</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> SELECT COUNT(*)  FROM residents,postcodes WHERE
+  residents.postcode=postcodes.postcode</span><span style="color: #008000;"> AND postcodes.town="MAIDENHEAD";</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> | COUNT(*) |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> |    20000 |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> 1 row in set (<span style="color: #800000;"><strong>1.07 sec</strong></span>)</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> SELECT COUNT(*)  FROM residents,postcodes,towns WHERE
+  residents.postcode=postcodes.postcode </span><span style="color: #008000;">AND postcodes.town=towns.town
+  AND towns.county="Berkshire";</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> | COUNT(*) |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> |    40001 |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> 1 row in set (<span style="color: #800000;"><strong>2.02 sec</strong></span>)</span></pre>
+<p>For those 2 queries it represents a 25.8x and 24.1x speedup.</p>
+<p>It&#8217;s important to note that not every join can currently be pushed down to the data nodes; here are the current rules (we hope to relax them overtime) for a query to be suitable:</p>
+<ul>
+<li>JOINed columns must have the same data type</li>
+<li>Queries should not reference BLOBs</li>
+<li>Explicit locking is not supported</li>
+<li>Only supports fully or partially qualified primary keys or plain indexes as access method for child tables (first part of JOIN can be a full table scan)</li>
+</ul>
+<p>You can check whether your query is fitting these rules using EXPLAIN, for example:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> set ndb_join_pushdown=on;</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #008000;">mysql> EXPLAIN SELECT COUNT(*)  FROM residents,postcodes WHERE residents.postcode=postcodes.postcode AND postcodes.town="MAIDENHEAD";</span>
+<span style="color: #008000;">+----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+--------------------------------------------------------------------------+</span>
+<span style="color: #008000;">| id | select_type | table     | type   | possible_keys | key     | key_len | ref                          | rows   | Extra                                                                    |</span><span style="color: #008000;">
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+--------------------------------------------------------------------------+</span><span style="color: #008000;">
+|  1 | SIMPLE      | residents | ALL    | NULL          | NULL    | NULL    | NULL                         | 100000 | Parent of 2 pushed join@1                                                |</span><span style="color: #008000;">
+|  1 | SIMPLE      | postcodes | eq_ref | PRIMARY       | PRIMARY | 22      | clusterdb.residents.postcode |      1 | Child of 'residents' in pushed join@1; Using where with pushed condition |</span><span style="color: #008000;">
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+--------------------------------------------------------------------------+</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> EXPLAIN EXTENDED SELECT COUNT(*)  FROM residents,postcodes,towns WHERE residents.postcode=postcodes.postcode AND postcodes.town=towns.town AND towns.county="Berkshire";</span><span style="color: #008000;">
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+</span><span style="color: #008000;">
+| id | select_type | table     | type   | possible_keys | key     | key_len | ref                          | rows   | filtered | Extra                                                                                                                  |</span><span style="color: #008000;">
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+</span><span style="color: #008000;">
+|  1 | SIMPLE      | residents | ALL    | NULL          | NULL    | NULL    | NULL                         | 100000 |   100.00 | Parent of 3 pushed join@1                                                                                              |</span><span style="color: #008000;">
+|  1 | SIMPLE      | postcodes | eq_ref | PRIMARY       | PRIMARY | 22      | clusterdb.residents.postcode |      1 |   100.00 | Child of 'residents' in pushed join@1                                                                                  |</span><span style="color: #008000;">
+|  1 | SIMPLE      | towns     | eq_ref | PRIMARY       | PRIMARY | 22      | clusterdb.postcodes.town     |      1 |   100.00 | Child of 'postcodes' in pushed join@1; Using where with pushed condition: (`clusterdb`.`towns`.`county` = 'Berkshire') |</span><span style="color: #008000;">
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+</span></pre>
+<p>Note that if you want to check for more details why your join isn&#8217;t currently being pushed down to the data node then you can use &#8220;<span style="color: #008000;">EXPLAIN EXTENDED</span>&#8221; and then &#8220;<span style="color: #008000;">SHOW WARNINGS</span>&#8221; to get more hints. Hopefully that will allow you to tweak your queries to get the best improvements.</p>
+<p>PLEASE let us know your experiences and give us examples of queries that worked well and (just as importantly) those that didn&#8217;t so that we can improve the feature &#8211; just leave a comment on this Blog with your table schemas, your query and your before/after timings.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization" data-via="wpbeginner" data-text="Dramatically Increased MySQL Cluster JOIN performance with Adaptive Query Localization" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql%2Fdramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../../../category/mysql/index.html" rel="category tag">MySQL</a>, <a href="./../../../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="./../../adaptive-query-localization/index.html" rel="tag">Adaptive Query Localization</a>, <a href="./../../mysql/index.html" rel="tag">MySQL</a>, <a href="./../../mysql-cluster-7-2/index.html" rel="tag">MySQL Cluster 7.2</a>
+</div>
+
+			</div>			<div id="post-1761" class="post-1761 post type-post status-publish format-standard hentry category-mysql-cluster tag-mysql tag-mysql-cluster tag-mysql-cluster-cge tag-mysql-replication">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../../../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../../../mysql-cluster/almost-here-mysql-cluster-at-collaborate-11/index.html">April 8, 2011</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../../../mysql-cluster/almost-here-mysql-cluster-at-collaborate-11/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../../../mysql-cluster/almost-here-mysql-cluster-at-collaborate-11/index.html" rel="bookmark">Almost here &#8211; MySQL Cluster at Collaborate 11</a></h2>
+				
+				<div class="entry">
+										<p><a href="./../../../wp-content/uploads/2011/03/collaborate11.jpg"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-1525" title="collaborate11" src="./../../../wp-content/uploads/2011/03/collaborate11-300x111.jpg" alt="" width="300" height="111"></a><br>
+  A quick reminder that MySQL is well represented at the Oracle Collaborate conference which starts in Orlando on Sunday.
+  </p>
+<p>For those not familiar with Collaborate, it&#8217;s the big community conference for Oracle users &#8211; this year it&#8217;s in Orlando from April 10th through 14th (I&#8217;ve just re-checked the weather forecast, 31 Celsius vs. -18 at the last conference I presented at &#8211; OOW Beijing in December &#8211; what a difference 4 months and 8,000 miles make!).</p>
+<p>  I&#8217;ll be presenting on MySQL Cluster in a session called &#8220;<a href="http://coll11.mapyourshow.com/3_0/sessions/sessiondetails.cfm?ScheduledSessionID=2230" target="_blank">Building Highly Available Scalable Real-Time Services with MySQL Cluster</a>&#8221; where I&#8217;ll focus on:
+</p>
+<ul>
+<li>Basics of MySQL Cluster &#8211; what it does, who uses it and why</li>
+<li>Accessing your data &#8211; SQL and NoSQL access methods</li>
+<li>Latest features</li>
+<li>What&#8217;s coming in the future.</li>
+</ul>
+<p>
+My session starts at 8:00 am on Tuesday 12th April (sorry for the early start) and is in room 306A.
+</p>
+<p>For people interested in MySQL Cluster, another session you should try to attend is &#8220;<a href="http://coll11.mapyourshow.com/3_0/sessions/sessiondetails.cfm?ScheduledSessionID=2271" target="_blank">MySQL Cluster for the Enterprise</a>&#8221; presented by Craig Russell at 2:15 pm on Wednesday 13th April.</p>
+<p>
+Other MySQL HA topics from the Oracle team:</p>
+<ul>
+<li><a href="http://coll11.mapyourshow.com/3_0/sessions/sessiondetails.cfm?ScheduledSessionID=2791" target="_blank">Boosting MySQL replication performance through the multi-threaded slave.</a></li>
+<li><a href="http://coll11.mapyourshow.com/3_0/sessions/sessiondetails.cfm?ScheduledSessionID=2122" target="_blank">MYSQL 5.5 REPLICATION</a></li>
+<li><a href="http://coll11.mapyourshow.com/3_0/sessions/sessiondetails.cfm?ScheduledSessionID=2792" target="_blank">INTRODUCTION TO MYSQL REPLICATION (Tutorial)</a></li>
+<li><a href="http://coll11.mapyourshow.com/3_0/sessions/sessiondetails.cfm?ScheduledSessionID=2184" target="_blank">SHARDING TECHNIQUES FOR MYSQL</a></li>
+</ul>
+<p>To get an overall picture of what is happening to MySQL in Oracle, you should attend Tomas Ulin&#8217;s (VP of MySQL Engineering) &#8220;<a href="http://coll11.mapyourshow.com/3_0/sessions/sessiondetails.cfm?ScheduledSessionID=2762" target="_blank">The State of MySQL</a>&#8221; session at 9:15 am on Monday 11th April.
+</p>
+<p>
+You can see a <a href="http://collaborate11.ioug.org/Education/MySQL/tabid/133/Default.aspx" target="_blank">full list of sessions in the MySQL track here</a>.
+</p>
+<p>
+And last but not least, come and visit us at the MySQL booths in the Oracle Demo Grounds (Booth #657) to chat with us and/or get a demo. Here are the opening times:</p>
+<ul>
+<li>Monday		 6:00pm &#8211; 8:00pm (Welcome Reception)</li>
+<li>Tuesday		10:15am &#8211; 4:00pm &#038; 5:30pm-7:00pm (Reception)</li>
+<li>Wednesday	10:15am &#8211; 4:00pm</li>
+</ul>
+<p>I&#8217;ll be at the demo booth as much as possible but definitely for the 6:00pm &#8211; 8:00pm slot on Monday and from 10:15am &#8211; 1pm on Wednesday &#8211; hope to see some of you there.
+</p>
+<p>
+Register for the event at <a href="http://collaborate11.ioug.org/Home/Registration/tabid/82/Default.aspx" target="_blank">http://collaborate11.ioug.org/Home/Registration/tabid/82/Default.aspx</a>	</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mysql-cluster/almost-here-mysql-cluster-at-collaborate-11" data-via="wpbeginner" data-text="Almost here &#8211; MySQL Cluster at Collaborate 11" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mysql-cluster/almost-here-mysql-cluster-at-collaborate-11"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mysql-cluster/almost-here-mysql-cluster-at-collaborate-11" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-cluster%2Falmost-here-mysql-cluster-at-collaborate-11&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../../../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="./../../mysql/index.html" rel="tag">MySQL</a>, <a href="./../../mysql-cluster/index.html" rel="tag">MySQL Cluster</a>, <a href="./../../mysql-cluster-cge/index.html" rel="tag">MySQL Cluster CGE</a>, <a href="./../../mysql-replication/index.html" rel="tag">MySQL Replication</a>
+</div>
+
+			</div>			<div id="post-1469" class="post-1469 post type-post status-publish format-standard hentry category-mysql-cluster tag-mysql tag-mysql-cluster tag-mysql-cluster-7-1 tag-mysql-cluster-cge tag-webinar">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../../../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../../../mysql-cluster/high-availability-solutions-part-for-the-mysql-on-windows-forum/index.html">March 23, 2011</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../../../mysql-cluster/high-availability-solutions-part-for-the-mysql-on-windows-forum/index.html#comments">2 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../../../mysql-cluster/high-availability-solutions-part-for-the-mysql-on-windows-forum/index.html" rel="bookmark">High Availability Solutions &#8211; part for the MySQL On Windows Forum</a></h2>
+				
+				<div class="entry">
+										<p style="text-align: center;"><a href="./../../../wp-content/uploads/2011/03/MySQL_Windows_Forum.jpg"><img loading="lazy" decoding="async" class="aligncenter size-full wp-image-1470" title="MySQL_Windows_Forum" src="./../../../wp-content/uploads/2011/03/MySQL_Windows_Forum.jpg" alt="" width="563" height="98"></a></p>
+<p><strong>STOP PRESS: <a href="http://event.on24.com/r.htm?e=284490&amp;s=1&amp;k=583E2237A777967F8410211EC54EF3CB&amp;partnerref=OnDemandAttendee" target="_blank">the recording of this forum is now available for replay</a></strong>.</p>
+<p>On March 16th, we&#8217;re holding an on-line forum to discuss MySQL on Windows &#8211; I&#8217;ll be handling the High Availability session (includes MySQL replication and MySQL Cluster). The event runs from 9 am Pacific Time until 12:00 pm; the HA session is schedules for 11:00 Pacific and runs for half an hour. I&#8217;ll also be answering questions on-line during the forum. As always the even is free but you need to <a href="https://event.on24.com/eventRegistration/EventLobbyServlet?target=registration.jsp&amp;eventid=284490&amp;sessionid=1&amp;key=583E2237A777967F8410211EC54EF3CB&amp;partnerref=banneroracleHP&amp;sourcepage=register" target="_blank">register here</a>.</p>
+<p>Here is the official description&#8230;</p>
+<div>
+<p>Join our Online Forum and discover how you can win with MySQL on Windows.  Oracle’s MySQL Vice President of Engineering Tomas Ulin will kick off a  comprehensive agenda of presentations enabling you to better  understand:</p>
+</div>
+<ul type="disc">
+<li>Why the world’s most popular open source database is extremely popular on  Windows, both for enterprise users and ISVs</li>
+<li>How MySQL fits into the Windows environment, and what are the upcoming  milestones to make MySQL even better on the Microsoft platform</li>
+<li>What are the visual tools at your disposal to effectively develop, deploy  and manage MySQL applications on Windows</li>
+<li>How you can deliver highly available business critical Windows based MySQL  applications</li>
+<li>Why Security Solutions Provider SonicWall selected MySQL over Microsoft SQL  Server, and how they successfully deliver MySQL based solutions</li>
+</ul>
+<p>Additionally, Oracle experts will be on live chat throughout the event to  answer your toughest questions.</p>
+<p><strong>MySQL on Windows: It Just Keeps Getting Better!</strong></p>
+<p>Oracle&#8217;s MySQL Vice President of Engineering Tomas Ulin will kick off the  Online Forum and review why MySQL has become highly popular on Windows for both  enterprise users and ISVs, as well as Oracle&#8217;s MySQL on Windows Strategy. Senior  Product Manager Rob Young will then help you understand how MySQL fits into your  familiar Windows environment, covering MySQL Connectors, integration with Visual  Studio, security aspects&#8230;and more. They will also review the improvements  Oracle recently delivered as well as the upcoming milestones to make MySQL even  better on Windows.</p>
+<p><strong>From Modeling to Performance Tuning: MySQL Visual Tools for  Developers &amp; DBAs</strong></p>
+<p>Are you wondering what visual tools are at your disposal to effectively  develop, deploy and manage MySQL applications on Windows? Mike Zinner and Rob  Young will show you how you can benefit from the following tools:</p>
+<ul>
+<li>MySQL Workbench, which provides visual data modeling, SQL development, and  comprehensive administration tools for MySQL server configuration, user  administration, and much more.</li>
+<li>The MySQL Enterprise Monitor, a &#8220;Virtual DBA assistant&#8221; that helps MySQL  DBAs manage more MySQL databases as well as find and fix problems before they  become serious problems or costly outages.</li>
+<li>The MySQL Query Analyzer, which helps improve your C# and .Net application  performance by monitoring query performance and accurately pinpointing SQL code  that is causing a slow down.</li>
+<li>MySQL Enterprise Backup, to perform online hot MySQL backups.</li>
+</ul>
+<p><strong>Implementing MySQL High Availability Solutions on  Windows</strong></p>
+<p>Databases play a key role in ensuring application availability, and MySQL  offers a range of HA solutions on Windows. Senior Product Manager Andrew Morgan  will in this session explore two of them:</p>
+<ul>
+<li>MySQL Replication, which has been widely deployed by some of the leading web  properties and in the enterprise to deliver highly available database services,  providing a means of mirroring data across multiple hosts to withstand failures  of individual systems.</li>
+<li>MySQL Cluster combining 99.999% availability with the low TCO of an open  source solution. With a distributed shared-nothing architecture and no single  point of failure, MySQL Cluster can scale linearly to meet the unprecedented  demands of the next generation web services &amp; telecom  applications.</li>
+</ul>
+<p><strong>Customer Story: SonicWall</strong></p>
+<p>SonicWALL provides network security and data protection solutions enabling to  secure, control and scale global networks. Director of Product Management Jan  Sijp will share with you how they have successfully delivered MySQL based  solutions on both Windows &amp; Linux, providing information about the  challenges they were facing, why they selected MySQL over Microsoft SQL Server,  and the implementation process.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mysql-cluster/high-availability-solutions-part-for-the-mysql-on-windows-forum" data-via="wpbeginner" data-text="High Availability Solutions &#8211; part for the MySQL On Windows Forum" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mysql-cluster/high-availability-solutions-part-for-the-mysql-on-windows-forum"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mysql-cluster/high-availability-solutions-part-for-the-mysql-on-windows-forum" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-cluster%2Fhigh-availability-solutions-part-for-the-mysql-on-windows-forum&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../../../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="./../../mysql/index.html" rel="tag">MySQL</a>, <a href="./../../mysql-cluster/index.html" rel="tag">MySQL Cluster</a>, <a href="./../../mysql-cluster-7-1/index.html" rel="tag">MySQL Cluster 7.1</a>, <a href="./../../mysql-cluster-cge/index.html" rel="tag">MySQL Cluster CGE</a>, <a href="./../../webinar/index.html" rel="tag">webinar</a>
+</div>
+
+			</div>			<div id="post-1613" class="post-1613 post type-post status-publish format-standard hentry category-mysql-cluster tag-mysql">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../../../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../../../mysql-cluster/mysql-london-meetup-on-tuesday/index.html">March 21, 2011</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../../../mysql-cluster/mysql-london-meetup-on-tuesday/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../../../mysql-cluster/mysql-london-meetup-on-tuesday/index.html" rel="bookmark">MySQL London Meetup on Tuesday</a></h2>
+				
+				<div class="entry">
+										<p>There&#8217;s a Meetup on Tuesday evening for MySQL users in the London area. It&#8217;s hosted at the Canonical offices (27th floor of Millbank Tower) at 18:30. Likely to last for a couple of hours before we head to a local pub for more serious discussions. </p>
+<p>These are pretty informal events &#8211; if you want to find out the latest news in the MySQL world or have something to say then please come along. I&#8217;m hoping to discuss the latest MySQL Cluster developments. </p>
+<p>Find the details and register at the Facebook page: http://www.facebook.com/event.php?eid=134352579966946&#038;ref=mf</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mysql-cluster/mysql-london-meetup-on-tuesday" data-via="wpbeginner" data-text="MySQL London Meetup on Tuesday" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mysql-cluster/mysql-london-meetup-on-tuesday"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mysql-cluster/mysql-london-meetup-on-tuesday" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-cluster%2Fmysql-london-meetup-on-tuesday&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../../../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="./../../mysql/index.html" rel="tag">MySQL</a>
+</div>
+
+			</div>			<div id="post-1610" class="post-1610 post type-post status-publish format-standard hentry category-mysql tag-mysql tag-mysql-cluster tag-nosql">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../../../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../../../mysql/are-you-using-nosql-databases/index.html">March 17, 2011</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../../../mysql/are-you-using-nosql-databases/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../../../mysql/are-you-using-nosql-databases/index.html" rel="bookmark">Are you using NoSQL databases?</a></h2>
+				
+				<div class="entry">
+										<p>We&#8217;re interested in finding out what NoSQL databases you might be using (and we include MySQL Cluster in that list when using one of its NoSQL interfaces such as the NDB API or ClusterJ).</p>
+<p>To figure this out we&#8217;ve posted a quick poll on the home page of <a href="http://dev.mysql.com/" target="_blank">dev.mysql.com</a> (go straight to the bottom-right corner of the page) &#8211; please take 30 seconds to complete it (it shouldn&#8217;t take any longer than that) if you can. In return, you can also see the latest results from the poll.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mysql/are-you-using-nosql-databases" data-via="wpbeginner" data-text="Are you using NoSQL databases?" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mysql/are-you-using-nosql-databases"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mysql/are-you-using-nosql-databases" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql%2Fare-you-using-nosql-databases&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../../../category/mysql/index.html" rel="category tag">MySQL</a> | 
+Tags: <a href="./../../mysql/index.html" rel="tag">MySQL</a>, <a href="./../../mysql-cluster/index.html" rel="tag">MySQL Cluster</a>, <a href="./../../nosql/index.html" rel="tag">NoSQL</a>
+</div>
+
+			</div>			<div id="post-1543" class="post-1543 post type-post status-publish format-standard hentry category-mysql tag-mysql">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../../../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../../../mysql/submit-your-mysql-proposals-for-oracle-openworld-2011/index.html">March 15, 2011</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../../../mysql/submit-your-mysql-proposals-for-oracle-openworld-2011/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../../../mysql/submit-your-mysql-proposals-for-oracle-openworld-2011/index.html" rel="bookmark">Submit your MySQL Proposals for Oracle OpenWorld 2011</a></h2>
+				
+				<div class="entry">
+										<p><a href="./../../../wp-content/uploads/2011/03/OracleOpenWorld2011.jpg"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-1542" title="OracleOpenWorld2011" src="./../../../wp-content/uploads/2011/03/OracleOpenWorld2011-300x69.jpg" alt="" width="300" height="69"></a>Once again, MySQL gets special treatment and has a dedicated track at this year&#8217;s Oracle OpenWorld (October 2-6 in San Francisco). If you think that you&#8217;d have something interesting to present (for example if you&#8217;re using MySQL in an interesting way) then why not submit a session &#8211; the <a href="https://oracleus.wingateweb.com/portal/cfp/closed.ww;jsessionid=abc15ul6YonIic6BSW35s" target="_blank">call for papers is now open</a>! Time&#8217;s a little tight to get your proposals in &#8211; the deadline is 27th March.</p>
+<p>Alternatively, if you want to attend but not present then there&#8217;s <a href="http://www.oracle.com/us/openworld/registration-173440.html" target="_blank">super-save discount until 1st April &#8211; register now</a>!</p>
+<p>&nbsp;</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mysql/submit-your-mysql-proposals-for-oracle-openworld-2011" data-via="wpbeginner" data-text="Submit your MySQL Proposals for Oracle OpenWorld 2011" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mysql/submit-your-mysql-proposals-for-oracle-openworld-2011"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mysql/submit-your-mysql-proposals-for-oracle-openworld-2011" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql%2Fsubmit-your-mysql-proposals-for-oracle-openworld-2011&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../../../category/mysql/index.html" rel="category tag">MySQL</a> | 
+Tags: <a href="./../../mysql/index.html" rel="tag">MySQL</a>
+</div>
+
+			</div>			<div id="post-1498" class="post-1498 post type-post status-publish format-standard hentry category-mysql-cluster tag-benchmark tag-mysql tag-mysql-cluster tag-mysql-cluster-70 tag-performance">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../../../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../../../mysql-cluster/mysql-cluster-database-7-performance-benchmark/index.html">March 14, 2011</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../../../mysql-cluster/mysql-cluster-database-7-performance-benchmark/index.html#comments">4 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../../../mysql-cluster/mysql-cluster-database-7-performance-benchmark/index.html" rel="bookmark">MySQL Cluster Database 7: Performance Benchmark</a></h2>
+				
+				<div class="entry">
+										<p>(Note that this is a copy of the <a href="http://blogs.sun.com/hasham/entry/mysql_cluster_7_performance_benchmark" target="_blank">original article from Hasham Pathan</a> posted on 21st April 2009).</p>
+<h3>Summary of Results:</h3>
+<p>We recently conducted a Performance Benchmark of the newly  released version of MySQL Cluster database software version  7.0 using the DBT2 Benchmark. The results are very impressive.</p>
+<p>Highlight of the results:</p>
+<ul>
+<li>For 4 Node Cluster, we achieved 251,000 Transactions per minute which is more than 4X improvement over the MySQL Cluster 6.3 release.</li>
+<li>For 2 Node Cluster, we achieved 143,000 Transactions per minute which is more than  4X improvement over the MySQL Cluster 6.3 release.</li>
+<li>Whether a user is looking to take advantage of the latest multi-core, multi-thread server processors, or is seeking to reduce space and energy consumption of their Cluster hardware, MySQL Cluster 7.0 provides a higher throughput, more efficient solution than previous generations of the MySQL Cluster database.</li>
+</ul>
+<p><em> Note that these results were obtained using 1GB  Gigabit Ethernet. We expect improved performance for high speed cluster interconnect like <a href="http://www.sun.com/products/networking/infiniband.jsp" target="_blank">InfiniBand </a>and <a href="http://www.dolphinics.com/" target="_blank">Dolphinics interconnect solutions</a>.</em> Testing using these interconnects is currently underway.</p>
+<p>Some of the KEY features of MySQL cluster 7.0 include &#8220;ability to add nodes and node groups online&#8221;  and &#8220;Data node multithreading support&#8221; You can look at the list of new feature available in MySQL cluster 7.0 <a href="http://www.mysql.com/why-mysql/white-papers/mysql_wp_cluster7_architecture.php" target="_blank">here</a>.</p>
+<h3>Deployment Architecture and Configuration Details:</h3>
+<div id="attachment_1497" style="width: 310px" class="wp-caption alignright">
+<a href="./../../../wp-content/uploads/2011/03/MySQL-Cluster-Topology-2Nodes.gif"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1497" class="size-medium wp-image-1497" title="MySQL-Cluster-Topology-2Nodes" src="./../../../wp-content/uploads/2011/03/MySQL-Cluster-Topology-2Nodes-300x256.gif" alt="" width="300" height="256"></a><p id="caption-attachment-1497" class="wp-caption-text">The topology diagram for 2 Node Scenario </p>
+</div>
+<p>In the case of a 2 node scenario, the data node processes were running on TWO Sun Fire x4450 system with 8 processor cores per data node. The MySQL server nodes were running a combination of Sun Fire x4450 systems and Sun Fire x4600 systems as shown in the deployment diagram below.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="attachment_1496" style="width: 287px" class="wp-caption alignright">
+<a href="./../../../wp-content/uploads/2011/03/MySQL-Cluster-Topology-4Nodes.gif"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1496" class="size-medium wp-image-1496" title="MySQL-Cluster-Topology-4Nodes" src="./../../../wp-content/uploads/2011/03/MySQL-Cluster-Topology-4Nodes-277x300.gif" alt="" width="277" height="300"></a><p id="caption-attachment-1496" class="wp-caption-text">The topology diagram for 4 Node Scenario</p>
+</div>
+<p>In the case of a 4 node scenario, FOUR x4450 system were used to deploy the Data Nodes, each data node using 8 cores.  The MySQL Server nodes were running on a combination of TWO Sun Fire x4600, ONE Sun Fire x4240 and FOUR Sun Fire x4450 systems.(co-located with data node systems). Other relevant details are captured in the deployment topology diagram.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3>Detailed Results:</h3>
+<div id="attachment_1495" style="width: 676px" class="wp-caption aligncenter">
+<a href="./../../../wp-content/uploads/2011/03/DBT2-Benchmark-4Nodes.gif"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1495" class="size-full wp-image-1495 " title="DBT2-Benchmark-4Nodes" src="./../../../wp-content/uploads/2011/03/DBT2-Benchmark-4Nodes.gif" alt="" width="666" height="561"></a><p id="caption-attachment-1495" class="wp-caption-text">Four Data Node Results</p>
+</div>
+<div id="attachment_1493" style="width: 627px" class="wp-caption alignright">
+<a href="./../../../wp-content/uploads/2011/03/DBT2-Benchmark-2Nodes.gif"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1493" class="size-full wp-image-1493 " title="DBT2-Benchmark-2Nodes" src="./../../../wp-content/uploads/2011/03/DBT2-Benchmark-2Nodes.gif" alt="" width="617" height="527"></a><p id="caption-attachment-1493" class="wp-caption-text">Two Data Node Results</p>
+</div>
+<h3>Important Notes:</h3>
+<ol>
+<li> Each MySQL server was bound to 3 processor cores using  &#8220;processor set&#8221; feature(to accommodate more MySQL Servers on the available hardware).  It is observed that we get increased  TPM/MySQL Server and slight decrease in the response time with 4 processor cores per MySQL server).  An example:  With 3 processor cores assigned for  the MySQL server process, we get the TPM of 12988 for 1 Server, 20 Warehouses.  With 4 processor cores, the TPM increases to 19113 with decrease in the response time from 52ms to 34ms.</li>
+<li> TPM &#8211; New-order transactions per minute. It should be noted that the each transaction comprises of about 30 queries, so average response time per query if calculated would be  ~3ms. More details on the &#8220;transaction&#8221; are available in the TPC-C specification  document and DBT2 code base.</li>
+<li>The MySQL 6.3 Cluster saturate with fewer number of MySQL servers. For comparison purpose,  we ran the tests with equal number of MySQL servers for both  MySQL Cluster 6.3 and 7.0</li>
+</ol>
+<h3>Benchmark Description</h3>
+<p>Database Test 2 (DBT-2) :  DBT2 is an open source benchmark developed by OSDL (Open Source Development Labs ). Significant updates to the benchmark were made to simplify its ability to run with a clustered database such as MySQL Cluster Carrier Grade Edition. DBT2 simulates a typical OLTP (Online Transaction Processing) application that performs transactions with around ten to twenty SQL statements per transaction within five distinct transaction types. The DBT2 benchmark can be used as a good indicator in regards to the expected performance of any application that performs fairly simple transactions and executes these transactions in a repetitive fashion.</p>
+<p>For the benchmark results above, DBT2 and MySQL Cluster were configured as an “in memory” database to simulate typical “real-time” database configurations. It should be noted that performance results are being measured as new-order transactions per minute (TPM).  The changes made to the DBT2 benchmark are documented and can be found on the SourceForge page for DBT2 downloads. It can also be downloaded from ww.iclaustron.com.</p>
+<h3>Additional Information:</h3>
+<p>More information on MySQL Cluster</p>
+<ul>
+<li><a href="http://www.mysql.com/why-mysql/white-papers/mysql_wp_cluster7_architecture.php" target="_blank">MySQL Cluster 7 Architecture and New Features</a></li>
+<li><a href="http://www.mysql.com/why-mysql/white-papers/mysql_cluster_eval_guide.php" target="_blank">MySQL Cluster Evaluation Guide</a></li>
+</ul>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mysql-cluster/mysql-cluster-database-7-performance-benchmark" data-via="wpbeginner" data-text="MySQL Cluster Database 7: Performance Benchmark" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mysql-cluster/mysql-cluster-database-7-performance-benchmark"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mysql-cluster/mysql-cluster-database-7-performance-benchmark" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-cluster%2Fmysql-cluster-database-7-performance-benchmark&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../../../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="./../../benchmark/index.html" rel="tag">benchmark</a>, <a href="./../../mysql/index.html" rel="tag">MySQL</a>, <a href="./../../mysql-cluster/index.html" rel="tag">MySQL Cluster</a>, <a href="./../../mysql-cluster-70/index.html" rel="tag">MySQL Cluster 7.0</a>, <a href="./../../performance/index.html" rel="tag">Performance</a>
+</div>
+
+			</div>			<div id="post-1479" class="post-1479 post type-post status-publish format-standard hentry category-mysql-cluster tag-mysql tag-mysql-cluster tag-mysql-replication tag-training">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../../../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../../../mysql-cluster/want-to-attend-a-mysql-5-5-seminar/index.html">March 11, 2011</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../../../mysql-cluster/want-to-attend-a-mysql-5-5-seminar/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../../../mysql-cluster/want-to-attend-a-mysql-5-5-seminar/index.html" rel="bookmark">Want to attend a MySQL 5.5 seminar?</a></h2>
+				
+				<div class="entry">
+										<p>Oracle University has added a new course to its training catalog &#8220;Introduction to MySQL 5.5&#8221; which is a day-long seminar. The seminar goes into some detail on many aspects of using MySQL and of course pays particular attention to the new features in MySQL 5.5. I&#8217;ve reviewed the material and can assure you that there is plenty of it!</p>
+<p>Of most relevance to this blog is the overview of MySQL Cluster (which isn&#8217;t a big focus of the seminar as Cluster is currently using MySQL 5.1) and MySQL replication &#8211; the highest profile 5.5 feature being asynchronous replication which can make sure that zero updates are lost even if the master fails catastrophically.</p>
+<p>At the time of writing, neither the on-line and instructor-led sessions have been scheduled and so you should<a href="http://education.oracle.com/pls/web_prod-plq-dad/db_pages.getCourseDesc?dc=D71615GC10" target="_blank"> register an interest here</a>. When OU have sufficient registrants they&#8217;ll schedule the sessions (note that unlike webinars, white papers etc. there is a charge for this training).</p>
+<p>Here&#8217;s the official description:</p>
+<p><strong>Introduction to MySQL 5.5</strong></p>
+<div id="_mcePaste">
+<strong>Duration</strong>: 1 Day</div>
+<div><strong>What you will learn</strong></div>
+<div id="_mcePaste" style="padding-left: 30px;">This one–day seminar covers all the new features and other key enhancements to MySQL 5.5 and the MySQL Enterprise Edition, including Performance, Scalability, Availability and Backups. Instructor lecture is supported by live demos as necessary. By attending this course, you learn how to plan your use of the MySQL 5.5 product release more effectively.</div>
+<div><strong>Students who can benefit from this course:</strong></div>
+<div id="_mcePaste" style="padding-left: 30px;">New users of MySQL, who have little or no previous experience with a relational database management system.</div>
+<div id="_mcePaste" style="padding-left: 30px;">Existing MySQL users who are interested in learning about the new functionality possible with the MySQL 5.5 Release</div>
+<div>
+<strong>Learn to</strong>:</div>
+<div id="_mcePaste" style="padding-left: 30px;">Plan your use of the mySQL 5.5 product release more effectively</div>
+<div><strong>Audience</strong></div>
+<div id="_mcePaste" style="padding-left: 30px;">Database Administrators</div>
+<div id="_mcePaste" style="padding-left: 30px;">Database Designers</div>
+<div><strong>Prerequisites</strong></div>
+<div id="_mcePaste" style="padding-left: 30px;">Basic computer literacy is required</div>
+<div id="_mcePaste" style="padding-left: 30px;">Knowledge of database concepts</div>
+<div id="_mcePaste" style="padding-left: 30px;">Previous experience with any command-line program</div>
+<div><strong>Course Objectives</strong></div>
+<div id="_mcePaste" style="padding-left: 30px;">Understand the features and benefits of MySQL</div>
+<div id="_mcePaste" style="padding-left: 30px;">Recognize new MySQL 5.5 features</div>
+<div id="_mcePaste" style="padding-left: 30px;">Understand how MySQL Enterprise Monitor and MySQL Query Analyzer alerts DBA to potential problems, queries and tuning opportunities before they impact key systems or applications</div>
+<div id="_mcePaste" style="padding-left: 30px;">Understand how MySQL Enterprise Monitor and MySQL Query Analyzer works with MySQL databases</div>
+<div id="_mcePaste" style="padding-left: 30px;">Distinguish how MySQL Workbench provides GUI-based data modeling, SQL development, deployment, and comprehensive administrative tools</div>
+<div id="_mcePaste" style="padding-left: 30px;">Understand Replication features and functionality</div>
+<div id="_mcePaste" style="padding-left: 30px;">Recognize how to supports full, incremental and partial backups with compression as well as point-in-time recovery</div>
+<div><strong>Course Topics</strong></div>
+<div><strong><br>
+</strong></div>
+<div id="_mcePaste" style="padding-left: 30px;"><strong>Introduction</strong></div>
+<div id="_mcePaste" style="padding-left: 30px;">Features and Benefits of MySQL</div>
+<div id="_mcePaste" style="padding-left: 30px;">MySQL Products and Service</div>
+<div id="_mcePaste" style="padding-left: 30px;">MySQL Community Edition vs. MySQL Enterprise Edition</div>
+<div id="_mcePaste" style="padding-left: 30px;">MySQL Certification Program</div>
+<div id="_mcePaste" style="padding-left: 30px;">MySQL Website</div>
+<div id="_mcePaste" style="padding-left: 30px;">MySQL Architecture</div>
+<div id="_mcePaste" style="padding-left: 30px;">How do I upgrade to MySQL 5.5</div>
+<div id="_mcePaste" style="padding-left: 30px;"><strong>Whats New in MySQL 5.5</strong></div>
+<div id="_mcePaste" style="padding-left: 30px;">Introducing InnoDB as MySQL’s Default Storage Engine</div>
+<div id="_mcePaste" style="padding-left: 30px;">Performance and Scalability and Benchmarks</div>
+<div id="_mcePaste" style="padding-left: 30px;">Improved Availability</div>
+<div id="_mcePaste" style="padding-left: 30px;">Improved Manageability and Efficiency</div>
+<div id="_mcePaste" style="padding-left: 30px;">Improved Usability</div>
+<div id="_mcePaste" style="padding-left: 30px;">Improved Instrumentation and Diagnostics</div>
+<div id="_mcePaste" style="padding-left: 30px;"><strong>MySQL Production Ready Software and Support</strong></div>
+<div id="_mcePaste" style="padding-left: 30px;">MySQL Administration</div>
+<div id="_mcePaste" style="padding-left: 30px;">Enterprise Monitor and Query Analyser</div>
+<div id="_mcePaste" style="padding-left: 30px;">MySQL Workbench (server configuration, user administration, object management)</div>
+<div id="_mcePaste" style="padding-left: 30px;"><strong>MySQL 5.5 Replication Enhancements</strong></div>
+<div id="_mcePaste" style="padding-left: 30px;">Overview of MySQL Replication</div>
+<div style="padding-left: 30px;">MySQL 5.5 Replication Features</div>
+<div id="_mcePaste" style="padding-left: 30px;">Users Wants and Needs</div>
+<div id="_mcePaste" style="padding-left: 30px;">Replication Enhancements in MySQL 5.5</div>
+<div id="_mcePaste" style="padding-left: 30px;">What’s Cooking in the Replication Labs</div>
+<div id="_mcePaste" style="padding-left: 30px;">Getting Started with MySQL 5.5 Replication</div>
+<div id="_mcePaste" style="padding-left: 30px;"><strong>MySQL Enterprise Backup</strong></div>
+<div id="_mcePaste" style="padding-left: 30px;">Database Backup Overview</div>
+<div id="_mcePaste" style="padding-left: 30px;">MySQL Enterprise Backup Features and Benefits</div>
+<div id="_mcePaste" style="padding-left: 30px;">Database Backup Types: Comparison</div>
+<div id="_mcePaste" style="padding-left: 30px;">MySQL Enterprise Backup: how it Works</div>
+<p style="padding-left: 30px;">
+					</p>
+<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mysql-cluster/want-to-attend-a-mysql-5-5-seminar" data-via="wpbeginner" data-text="Want to attend a MySQL 5.5 seminar?" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mysql-cluster/want-to-attend-a-mysql-5-5-seminar"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mysql-cluster/want-to-attend-a-mysql-5-5-seminar" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-cluster%2Fwant-to-attend-a-mysql-5-5-seminar&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../../../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="./../../mysql/index.html" rel="tag">MySQL</a>, <a href="./../../mysql-cluster/index.html" rel="tag">MySQL Cluster</a>, <a href="./../../mysql-replication/index.html" rel="tag">MySQL Replication</a>, <a href="./../../training/index.html" rel="tag">training</a>
+</div>
+
+			</div>			<div id="post-1467" class="post-1467 post type-post status-publish format-standard hentry category-mysql-cluster tag-mysql tag-mysql-cluster">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../../../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../../../mysql-cluster/mysql-cluster-7-1-10-released/index.html">February 14, 2011</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../../../mysql-cluster/mysql-cluster-7-1-10-released/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../../../mysql-cluster/mysql-cluster-7-1-10-released/index.html" rel="bookmark">MySQL Cluster 7.1.10 released</a></h2>
+				
+				<div class="entry">
+										<p><a href="./../../../wp-content/uploads/2010/02/mysql-cluster-logo-150x105.png"><img loading="lazy" decoding="async" class="alignright size-full  wp-image-919" title="mysql-cluster-logo-150x105" src="./../../../wp-content/uploads/2010/02/mysql-cluster-logo-150x105.png" alt="" width="150" height="105"></a>The binary version for MySQL Cluster 7.1.10 has now been made available at <a href="http://www.mysql.com/downloads/cluster/" target="_blank">http://www.mysql.com/downloads/cluster/</a></p>
+<p>A description of all of the changes (fixes) that have gone into MySQL Cluster 7.1.10 (compared to 7.1.9a) can be found in the <a href="http://dev.mysql.com/doc/refman/5.1/en/mysql-cluster-news-5-1-51-ndb-7-1-10.html" target="_blank">official MySQL Cluster documentation</a>.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mysql-cluster/mysql-cluster-7-1-10-released" data-via="wpbeginner" data-text="MySQL Cluster 7.1.10 released" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mysql-cluster/mysql-cluster-7-1-10-released"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mysql-cluster/mysql-cluster-7-1-10-released" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-cluster%2Fmysql-cluster-7-1-10-released&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../../../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="./../../mysql/index.html" rel="tag">MySQL</a>, <a href="./../../mysql-cluster/index.html" rel="tag">MySQL Cluster</a>
+</div>
+
+			</div>			<div id="post-1458" class="post-1458 post type-post status-publish format-standard hentry category-mysql-cluster tag-mysql tag-mysql-cluster-70 tag-mysql-cluster-7-1 tag-mysql-cluster-manager tag-mysql-enterprise-monitor tag-ndbinfo">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../../../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./../../../mysql-cluster/upcoming-webinar-whats-new-in-managing-mysql-cluster/index.html">January 14, 2011</a>
+			</div>
+	<div class="postcomments">
+		<a href="./../../../mysql-cluster/upcoming-webinar-whats-new-in-managing-mysql-cluster/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="./../../../mysql-cluster/upcoming-webinar-whats-new-in-managing-mysql-cluster/index.html" rel="bookmark">On-demand-webinar &#8211; What&#8217;s New in Managing MySQL Cluster</a></h2>
+				
+				<div class="entry">
+										<p><img loading="lazy" decoding="async" class="alignright size-full wp-image-919" title="mysql-cluster-logo-150x105" src="./../../../wp-content/uploads/2010/02/mysql-cluster-logo-150x105.png" alt="" width="150" height="105"></p>
+<p>The recording of this webinar is now available to <a href="./cluster2Lecluster/index.html" target="_blank">view on-line here</a>.</p>
+<p>There will be a live webinar on Wednesday January 12 describing the new ways that you can manage MySQL Cluster (with a bit of monitoring thrown in). As always, the webinar is free but you need to <a href="http://www.mysql.com/news-and-events/web-seminars/display-599.html" target="_blank">register here</a>. The event is scheduled for 09:00 Pacific / 17:00 UK / 18:00 Central European time but if you can&#8217;t make the live webinar it&#8217;s still worth registering so that you&#8217;re emailed the replay after the event.</p>
+<p>By their very nature, clustered environments involve more effort and resource to administer than standalone systems, and the same is true of MySQL Cluster, the database designed for web-scale throughput with carrier-grade availability.</p>
+<p>In this webinar, we will present an overview of the three latest enhancements to provisioning, monitoring and managing MySQL Cluster &#8211; collectively serving to lower costs, enhance agility and reduce the risk of downtime caused by manual configuration errors.</p>
+<p>In this webinar, we will present:</p>
+<ul>
+<li>
+<strong>NDBINFO</strong>: released with MySQL Cluster 7.1, NDBINFO presents real-time status and usage statistics, providing developers and DBAs with a simple means of pro-actively monitoring and optimizing database performance and availability.</li>
+<li>
+<strong>MySQL Cluster Manager</strong>: available as part of the commercial MySQL Cluster Carrier Grade Edition simplifies the creation and management of MySQL Cluster by automating common management tasks, delivering higher administration productivity and enhancing cluster agility. Tasks that used to take 46 commands can be reduced to just one!</li>
+<li>
+<strong>MySQL Cluster Advisors &amp; Graphs</strong>: part of the MySQL Enterprise Monitor and available in the commercial MySQL Cluster Carrier Grade Edition, the Enterprise Advisor includes automated best practice rules that alert on key performance and availability metrics from MySQL Cluster data nodes.</li>
+</ul>
+<p>You will also learn how you can get started evaluating and using all of these tools to simplify MySQL Cluster management.</p>
+<p>This session will be approximately 1 hour in length and will include interactive Q&amp;A throughout. Please join us for this informative webinar!</p>
+<h4>WHO:</h4>
+<ul>
+<li>
+<strong>Andrew Morgan</strong>, MySQL Cluster Product Management, Oracle</li>
+<li>
+<strong>Mat Keep</strong>, MySQL Cluster Product Management, Oracle</li>
+</ul>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mysql-cluster/upcoming-webinar-whats-new-in-managing-mysql-cluster" data-via="wpbeginner" data-text="On-demand-webinar &#8211; What&#8217;s New in Managing MySQL Cluster" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mysql-cluster/upcoming-webinar-whats-new-in-managing-mysql-cluster"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mysql-cluster/upcoming-webinar-whats-new-in-managing-mysql-cluster" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-cluster%2Fupcoming-webinar-whats-new-in-managing-mysql-cluster&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../../../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="./../../mysql/index.html" rel="tag">MySQL</a>, <a href="./../../mysql-cluster-70/index.html" rel="tag">MySQL Cluster 7.0</a>, <a href="./../../mysql-cluster-7-1/index.html" rel="tag">MySQL Cluster 7.1</a>, <a href="./../../mysql-cluster-manager/index.html" rel="tag">MySQL Cluster Manager</a>, <a href="./../../mysql-enterprise-monitor/index.html" rel="tag">MySQL Enterprise Monitor</a>, <a href="./../../ndbinfo/index.html" rel="tag">ndbinfo</a>
+</div>
+
+			</div>      
+							<div class="more_posts">
+					<span class="post_links"><a href="./15/index.html">&laquo; Older Entries</a> &nbsp; <a href="./13/index.html">Recent Entries &raquo;</a></span>
+				</div>
+						
+
+					
+	</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://www.clusterdb.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="./../../../mongodb/building-a-collaborative-ios-minesweeper-game-with-realm/index.html">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="./../../../mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial/index.html">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="./../../../mongodb/realm-swift-type-projections/index.html">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="./../../../mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/index.html">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="./../../../mongodb/goodbye-nspredicate-hello-realm-swift-query-api/index.html">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments">
+<h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments">
+<li class="recentcomments">
+<span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="./../../../mysql-cluster/mysql-cluster-running-on-raspberry-pi/index.html#comment-787242">MySQL Cluster running on Raspberry Pi</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">andrew</span> on <a href="./../../../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="./../../../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Sai Krishnan</span> on <a href="./../../../mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-661143">Get MySQL Replication up and running in 5 minutes</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Nayan</span> on <a href="./../../../mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-660628">Get MySQL Replication up and running in 5 minutes</a>
+</li>
+</ul>
+</li>
+<li id="categories-2" class="widget widget_categories">
+<h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2">
+<a href="./../../../category/me/index.html">Me</a>
+</li>
+	<li class="cat-item cat-item-146">
+<a href="./../../../category/mongodb/index.html">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3">
+<a href="./../../../category/mysql/index.html">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4">
+<a href="./../../../category/mysql-cluster/index.html">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131">
+<a href="./../../../category/mysql-fabric/index.html">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5">
+<a href="./../../../category/mysql-replication/index.html">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214">
+<a href="./../../../category/mongodb/realm/index.html">Realm</a>
+</li>
+	<li class="cat-item cat-item-1">
+<a href="./../../../category/uncategorized/index.html">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud">
+<h2 class="widgettitle">Tags</h2>
+<div class="tagcloud">
+<a href="./../../7-4/index.html" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="./../../apache-kafka/index.html" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="./../../cluster/index.html" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="./../../ha/index.html" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="./../../high-availability/index.html" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="./../../ios/index.html" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="./../../java/index.html" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="./../../javascript/index.html" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="./../../mcm/index.html" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="./../../mean/index.html" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="./../../memcached/index.html" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="./../../mobile/index.html" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="./../../mongodb/index.html" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="./../../mongodb-3-2/index.html" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="./../../mongodb-atlas/index.html" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="./../../mongodb-mobile/index.html" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="./../../mongodb-stitch/index.html" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="./../../mysql/index.html" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="./../../mysql-5-6/index.html" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="./../../mysql-cluster/index.html" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="./../../mysql-cluster-70/index.html" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="./../../mysql-cluster-7-1/index.html" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="./../../mysql-cluster-7-2/index.html" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="./../../mysql-cluster-7-3/index.html" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="./../../mysql-cluster-7-4/index.html" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="./../../mysql-cluster-cge/index.html" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="./../../mysql-cluster-manager/index.html" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="./../../mysql-enterprise-monitor/index.html" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="./../../mysql-fabric-2/index.html" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="./../../mysql-replication/index.html" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="./../../mysql-utilities/index.html" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="./../../ndb-api/index.html" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="./../../node-js/index.html" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="./../../nosql/index.html" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="./../../performance/index.html" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="./../../realm/index.html" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="./../../replication/index.html" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="./../../secondary/index.html" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="./../../serverless/index.html" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="./../../sharding/index.html" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="./../../swift/index.html" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="./../../swiftui/index.html" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="./../../webcast/index.html" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="./../../webinar/index.html" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="./../../windows/index.html" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a>
+</div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="./../../../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../../../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../../../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../../../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../../../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../../../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive">
+<h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="./../../../2022/03/index.html">March 2022</a></li>
+	<li><a href="./../../../2022/02/index.html">February 2022</a></li>
+	<li><a href="./../../../2022/01/index.html">January 2022</a></li>
+	<li><a href="./../../../2021/12/index.html">December 2021</a></li>
+	<li><a href="./../../../2021/11/index.html">November 2021</a></li>
+	<li><a href="./../../../2021/09/index.html">September 2021</a></li>
+	<li><a href="./../../../2021/08/index.html">August 2021</a></li>
+	<li><a href="./../../../2021/07/index.html">July 2021</a></li>
+	<li><a href="./../../../2021/06/index.html">June 2021</a></li>
+	<li><a href="./../../../2021/05/index.html">May 2021</a></li>
+	<li><a href="./../../../2021/04/index.html">April 2021</a></li>
+	<li><a href="./../../../2021/02/index.html">February 2021</a></li>
+	<li><a href="./../../../2021/01/index.html">January 2021</a></li>
+	<li><a href="./../../../2020/12/index.html">December 2020</a></li>
+	<li><a href="./../../../2019/03/index.html">March 2019</a></li>
+	<li><a href="./../../../2019/01/index.html">January 2019</a></li>
+	<li><a href="./../../../2018/12/index.html">December 2018</a></li>
+	<li><a href="./../../../2018/11/index.html">November 2018</a></li>
+	<li><a href="./../../../2018/10/index.html">October 2018</a></li>
+	<li><a href="./../../../2018/09/index.html">September 2018</a></li>
+	<li><a href="./../../../2017/09/index.html">September 2017</a></li>
+	<li><a href="./../../../2017/03/index.html">March 2017</a></li>
+	<li><a href="./../../../2017/02/index.html">February 2017</a></li>
+	<li><a href="./../../../2017/01/index.html">January 2017</a></li>
+	<li><a href="./../../../2016/12/index.html">December 2016</a></li>
+	<li><a href="./../../../2016/11/index.html">November 2016</a></li>
+	<li><a href="./../../../2016/09/index.html">September 2016</a></li>
+	<li><a href="./../../../2016/01/index.html">January 2016</a></li>
+	<li><a href="./../../../2015/11/index.html">November 2015</a></li>
+	<li><a href="./../../../2015/10/index.html">October 2015</a></li>
+	<li><a href="./../../../2015/09/index.html">September 2015</a></li>
+	<li><a href="./../../../2015/06/index.html">June 2015</a></li>
+	<li><a href="./../../../2015/04/index.html">April 2015</a></li>
+	<li><a href="./../../../2015/03/index.html">March 2015</a></li>
+	<li><a href="./../../../2015/02/index.html">February 2015</a></li>
+	<li><a href="./../../../2015/01/index.html">January 2015</a></li>
+	<li><a href="./../../../2014/12/index.html">December 2014</a></li>
+	<li><a href="./../../../2014/11/index.html">November 2014</a></li>
+	<li><a href="./../../../2014/10/index.html">October 2014</a></li>
+	<li><a href="./../../../2014/09/index.html">September 2014</a></li>
+	<li><a href="./../../../2014/08/index.html">August 2014</a></li>
+	<li><a href="./../../../2014/07/index.html">July 2014</a></li>
+	<li><a href="./../../../2014/06/index.html">June 2014</a></li>
+	<li><a href="./../../../2014/05/index.html">May 2014</a></li>
+	<li><a href="./../../../2014/04/index.html">April 2014</a></li>
+	<li><a href="./../../../2014/03/index.html">March 2014</a></li>
+	<li><a href="./../../../2014/02/index.html">February 2014</a></li>
+	<li><a href="./../../../2014/01/index.html">January 2014</a></li>
+	<li><a href="./../../../2013/12/index.html">December 2013</a></li>
+	<li><a href="./../../../2013/11/index.html">November 2013</a></li>
+	<li><a href="./../../../2013/09/index.html">September 2013</a></li>
+	<li><a href="./../../../2013/08/index.html">August 2013</a></li>
+	<li><a href="./../../../2013/07/index.html">July 2013</a></li>
+	<li><a href="./../../../2013/06/index.html">June 2013</a></li>
+	<li><a href="./../../../2013/05/index.html">May 2013</a></li>
+	<li><a href="./../../../2013/03/index.html">March 2013</a></li>
+	<li><a href="./../../../2013/02/index.html">February 2013</a></li>
+	<li><a href="./../../../2013/01/index.html">January 2013</a></li>
+	<li><a href="./../../../2012/12/index.html">December 2012</a></li>
+	<li><a href="./../../../2012/11/index.html">November 2012</a></li>
+	<li><a href="./../../../2012/09/index.html">September 2012</a></li>
+	<li><a href="./../../../2012/07/index.html">July 2012</a></li>
+	<li><a href="./../../../2012/06/index.html">June 2012</a></li>
+	<li><a href="./../../../2012/05/index.html">May 2012</a></li>
+	<li><a href="./../../../2012/04/index.html">April 2012</a></li>
+	<li><a href="./../../../2012/03/index.html">March 2012</a></li>
+	<li><a href="./../../../2012/02/index.html">February 2012</a></li>
+	<li><a href="./../../../2012/01/index.html">January 2012</a></li>
+	<li><a href="./../../../2011/12/index.html">December 2011</a></li>
+	<li><a href="./../../../2011/11/index.html">November 2011</a></li>
+	<li><a href="./../../../2011/10/index.html">October 2011</a></li>
+	<li><a href="./../../../2011/09/index.html">September 2011</a></li>
+	<li><a href="./../../../2011/07/index.html">July 2011</a></li>
+	<li><a href="./../../../2011/06/index.html">June 2011</a></li>
+	<li><a href="./../../../2011/05/index.html">May 2011</a></li>
+	<li><a href="./../../../2011/04/index.html">April 2011</a></li>
+	<li><a href="./../../../2011/03/index.html">March 2011</a></li>
+	<li><a href="./../../../2011/02/index.html">February 2011</a></li>
+	<li><a href="./../../../2011/01/index.html">January 2011</a></li>
+	<li><a href="./../../../2010/12/index.html">December 2010</a></li>
+	<li><a href="./../../../2010/11/index.html">November 2010</a></li>
+	<li><a href="./../../../2010/10/index.html">October 2010</a></li>
+	<li><a href="./../../../2010/09/index.html">September 2010</a></li>
+	<li><a href="./../../../2010/08/index.html">August 2010</a></li>
+	<li><a href="./../../../2010/07/index.html">July 2010</a></li>
+	<li><a href="./../../../2010/06/index.html">June 2010</a></li>
+	<li><a href="./../../../2010/05/index.html">May 2010</a></li>
+	<li><a href="./../../../2010/04/index.html">April 2010</a></li>
+	<li><a href="./../../../2010/03/index.html">March 2010</a></li>
+	<li><a href="./../../../2010/02/index.html">February 2010</a></li>
+	<li><a href="./../../../2010/01/index.html">January 2010</a></li>
+	<li><a href="./../../../2009/12/index.html">December 2009</a></li>
+	<li><a href="./../../../2009/11/index.html">November 2009</a></li>
+	<li><a href="./../../../2009/10/index.html">October 2009</a></li>
+	<li><a href="./../../../2009/09/index.html">September 2009</a></li>
+	<li><a href="./../../../2009/08/index.html">August 2009</a></li>
+	<li><a href="./../../../2009/07/index.html">July 2009</a></li>
+	<li><a href="./../../../2009/06/index.html">June 2009</a></li>
+	<li><a href="./../../../2009/05/index.html">May 2009</a></li>
+	<li><a href="./../../../2009/04/index.html">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 -->
+</body>
+</html>

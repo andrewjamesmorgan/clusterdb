@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: MySQL Cluster Manager 1.2 &#8211; using the new features	</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../mysql-cluster-manager-1-2-using-the-new-features/index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Thu, 16 Jan 2014 12:47:59 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: andrew		</title>
+		<link>./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-56546</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 16 Jan 2014 12:47:59 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2420#comment-56546</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-55398&quot;&gt;Stefan Lasiewski&lt;/a&gt;.
+
+Hi Stefan, yes the directories have changed - just go ahead and use the new path.
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-55398">Stefan Lasiewski</a>.</p>
+<p>Hi Stefan, yes the directories have changed &#8211; just go ahead and use the new path.</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Stefan Lasiewski		</title>
+		<link>./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-55398</link>
+
+		<dc:creator><![CDATA[Stefan Lasiewski]]></dc:creator>
+		<pubDate>Tue, 14 Jan 2014 23:06:59 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2420#comment-55398</guid>
+
+					<description><![CDATA[Andrew, can you clarify something?
+
+In your instructions, you use `mcm/bin/mcmd`:
+
+billy@black:~$ tar xfz mcm-1.2.1-cluster-7.2.9-linux-glibc2.5-x86-32bit.tar.gz
+billy@black:~$ mv mcm-1.2.1-cluster-7.2.9-linux-glibc2.5-x86-32bit mcm
+billy@black:~$ mcm/bin/mcmd --bootstrap
+
+But when I download the tarball from Oracle Edelivery, I need to use a different path. I need to use mcm/mcm1.x.y/bin instead of mcm/bin/ . Has the path changed? Am I downloading the right product?
+
+
+
+[stefanl@db1 ~]$ tar xfz mcm-1.2.4-cluster-7.3.2-linux-rhel5-x86-64bit.tar.gz  
+### Move the directory, like they do in the tutorial 
+[stefanl@db1 ~]$ mv mcm-1.2.4-cluster-7.3.2-linux-rhel5-x86-64bit mcm 
+[stefanl@db1 ~]$ mcm/bin/mcmd 
+bash: mcm/bin/mcmd: No such file or directory 
+### Where is mcmd??? It&#039;s under mcm/mcm1.2.4/bin , not mcm/bin .
+[stefanl@db1 ~]$ mcm/mcm1.2.4/bin/mcmd --bootstrap 
+MySQL Cluster Manager 1.2.4 (64bit) started
+[stefanl@db1 ~]$]]></description>
+			<content:encoded><![CDATA[<p>Andrew, can you clarify something?</p>
+<p>In your instructions, you use `mcm/bin/mcmd`:</p>
+<p>billy@black:~$ tar xfz mcm-1.2.1-cluster-7.2.9-linux-glibc2.5-x86-32bit.tar.gz<br />
+billy@black:~$ mv mcm-1.2.1-cluster-7.2.9-linux-glibc2.5-x86-32bit mcm<br />
+billy@black:~$ mcm/bin/mcmd &#8211;bootstrap</p>
+<p>But when I download the tarball from Oracle Edelivery, I need to use a different path. I need to use mcm/mcm1.x.y/bin instead of mcm/bin/ . Has the path changed? Am I downloading the right product?</p>
+<p>[stefanl@db1 ~]$ tar xfz mcm-1.2.4-cluster-7.3.2-linux-rhel5-x86-64bit.tar.gz<br />
+### Move the directory, like they do in the tutorial<br />
+[stefanl@db1 ~]$ mv mcm-1.2.4-cluster-7.3.2-linux-rhel5-x86-64bit mcm<br />
+[stefanl@db1 ~]$ mcm/bin/mcmd<br />
+bash: mcm/bin/mcmd: No such file or directory<br />
+### Where is mcmd??? It&#8217;s under mcm/mcm1.2.4/bin , not mcm/bin .<br />
+[stefanl@db1 ~]$ mcm/mcm1.2.4/bin/mcmd &#8211;bootstrap<br />
+MySQL Cluster Manager 1.2.4 (64bit) started<br />
+[stefanl@db1 ~]$</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-51129</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 10 Jan 2014 10:28:43 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2420#comment-51129</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-49851&quot;&gt;Stefan Lasiewski&lt;/a&gt;.
+
+Hi Stefan,
+
+ thanks for pointing this out; the video that the link pointed to is now &lt;a href=&quot;http://www.youtube.com/watch?v=DnWItDTZL2c&quot; title=&quot;MySQL Cluster overview video&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;available on YouTube&lt;/a&gt; instead.
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-49851">Stefan Lasiewski</a>.</p>
+<p>Hi Stefan,</p>
+<p> thanks for pointing this out; the video that the link pointed to is now <a href="http://www.youtube.com/watch?v=DnWItDTZL2c" title="MySQL Cluster overview video" target="_blank" rel="nofollow">available on YouTube</a> instead.</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Stefan Lasiewski		</title>
+		<link>./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-49851</link>
+
+		<dc:creator><![CDATA[Stefan Lasiewski]]></dc:creator>
+		<pubDate>Wed, 08 Jan 2014 23:52:24 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2420#comment-49851</guid>
+
+					<description><![CDATA[FYI, the link presented in the beginning of the video, http://clusterdb.com/u/clusterdemo , is a 404.]]></description>
+			<content:encoded><![CDATA[<p>FYI, the link presented in the beginning of the video, <a href="http://clusterdb.com/u/clusterdemo" rel="nofollow ugc">http://clusterdb.com/u/clusterdemo</a> , is a 404.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-670</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 01 Oct 2013 08:18:22 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2420#comment-670</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-669&quot;&gt;Ramesh&lt;/a&gt;.
+
+Hi Ramesh,
+
+ chances are that upgrading MCM to 1.2.4 will fix your problem. If not then please raise a case/bug report.
+
+Thanks, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-669">Ramesh</a>.</p>
+<p>Hi Ramesh,</p>
+<p> chances are that upgrading MCM to 1.2.4 will fix your problem. If not then please raise a case/bug report.</p>
+<p>Thanks, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Ramesh		</title>
+		<link>./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-669</link>
+
+		<dc:creator><![CDATA[Ramesh]]></dc:creator>
+		<pubDate>Tue, 01 Oct 2013 07:27:59 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2420#comment-669</guid>
+
+					<description><![CDATA[I am using mcm 1.2.2 and I also have sufficient unused slot for an ndbapi process.]]></description>
+			<content:encoded><![CDATA[<p>I am using mcm 1.2.2 and I also have sufficient unused slot for an ndbapi process.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-668</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 30 Sep 2013 17:27:58 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2420#comment-668</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-667&quot;&gt;Ramesh&lt;/a&gt;.
+
+Hi Ramesh - what version of MCM are you using? There are a couple of bugs which could have caused this - both of which have fixes in 1.2.4.
+
+Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-667">Ramesh</a>.</p>
+<p>Hi Ramesh &#8211; what version of MCM are you using? There are a couple of bugs which could have caused this &#8211; both of which have fixes in 1.2.4.</p>
+<p>Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Ramesh		</title>
+		<link>./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-667</link>
+
+		<dc:creator><![CDATA[Ramesh]]></dc:creator>
+		<pubDate>Mon, 30 Sep 2013 12:34:08 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2420#comment-667</guid>
+
+					<description><![CDATA[I have a backup of size 1.8G, which I have created using backup cluster cluster_name. But when trying to restore data I am getting
+ERROR 9003 (00MGR): Tx {0 372420 48} timed out on agent 0 @{49 0 210 Wait ndbd restore complete} participants: 0@host1:1186[X] 1@host2:1862[X] 1 1.]]></description>
+			<content:encoded><![CDATA[<p>I have a backup of size 1.8G, which I have created using backup cluster cluster_name. But when trying to restore data I am getting<br />
+ERROR 9003 (00MGR): Tx {0 372420 48} timed out on agent 0 @{49 0 210 Wait ndbd restore complete} participants: 0@host1:1186[X] 1@host2:1862[X] 1 1.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-666</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 18 Dec 2012 08:25:46 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2420#comment-666</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-665&quot;&gt;Bheem&lt;/a&gt;.
+
+Hi Bheemsen,
+
+ just stop the MCM 1.1 agents and then run the MCM 1.2 binaries - that should be all that&#039;s required.
+
+Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-665">Bheem</a>.</p>
+<p>Hi Bheemsen,</p>
+<p> just stop the MCM 1.1 agents and then run the MCM 1.2 binaries &#8211; that should be all that&#8217;s required.</p>
+<p>Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Bheem		</title>
+		<link>./../mysql-cluster-manager-1-2-using-the-new-features/index.html#comment-665</link>
+
+		<dc:creator><![CDATA[Bheem]]></dc:creator>
+		<pubDate>Tue, 18 Dec 2012 06:23:11 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2420#comment-665</guid>
+
+					<description><![CDATA[Andrew,
+
+Very nice article and tutorial. I downloaded the white paper and found that the upgrade information provided is not complete and clear under section 3.4.11.
+
+There are no clear steps on how to upgrade the existing mcm to 1.2 version.
+
+The doc says, just stop the agents. That&#039;s it.
+
+Any help on this, please?
+Thanks]]></description>
+			<content:encoded><![CDATA[<p>Andrew,</p>
+<p>Very nice article and tutorial. I downloaded the white paper and found that the upgrade information provided is not complete and clear under section 3.4.11.</p>
+<p>There are no clear steps on how to upgrade the existing mcm to 1.2 version.</p>
+<p>The doc says, just stop the agents. That&#8217;s it.</p>
+<p>Any help on this, please?<br />
+Thanks</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

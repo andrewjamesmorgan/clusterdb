@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="./../xmlrpc.php">
+	
+	<title>The Modern Application Stack &#8211; Part 5: Using ReactJS, ES6 &#038; JSX to Build a UI (the rise of MERN) | Andrew Morgan on Databases</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="./../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="./../comments/feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; The Modern Application Stack &#8211; Part 5: Using ReactJS, ES6 &#038; JSX to Build a UI (the rise of MERN) Comments Feed" href="./feed/index.html">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="./../wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="./../wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="./../wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="./../wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="./../wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="./../wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="./../wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="./../wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="./../wp-json/index.html">
+<link rel="alternate" title="JSON" type="application/json" href="./../wp-json/wp/v2/posts/4393/index.html">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../xmlrpc.php?rsd">
+
+<link rel="canonical" href="./the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern/index.html">
+<link rel="shortlink" href="./../index.html?p=4393">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=http%3A%2F%2F%2Fmongodb%2Fthe-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=http%3A%2F%2F%2Fmongodb%2Fthe-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern#038;format=xml">
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style>
+<style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style>
+<script type="text/javascript">
+				//<![CDATA[
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//]]>
+				</script><style type="text/css"></style>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style>
+</head>
+
+<body class="post-template-default single single-post postid-4393 single-format-standard custom-background">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="./../index.html"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="http://www.clusterdb.com/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu">
+<li class="page_item page-item-1011"><a href="./../about/index.html">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="./../wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+
+					<div id="post-4393" class="post-4393 post type-post status-publish format-standard hentry category-mongodb tag-es6 tag-javascript tag-mern tag-mern-stack tag-mongodb tag-react tag-reactjs">
+			
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern/index.html">February 24, 2017</a>
+			</div>
+	<div class="postcomments">
+		<a href="./the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern/index.html#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+				
+				<h2 class="post-title">The Modern Application Stack &#8211; Part 5: Using ReactJS, ES6 &#038; JSX to Build a UI (the rise of MERN)</h2>
+				
+				<div class="entry">
+										<p>This is the fifth in a series of blog posts examining technologies such as <strong>ReactJS</strong> that are driving the development of modern web and mobile applications.</p>
+<p><a href="./modern-application-stack-part-1-introducing-the-mean-stack/index.html"><strong>Modern Application Stack – Part 1: Introducing The MEAN Stack</strong></a> introduced the technologies making up the MEAN (MongoDB, Express, Angular, Node.js) and MERN (MongoDB, Express, React, Node.js) Stacks, why you might want to use them, and how to combine them to build your web application (or your native mobile or desktop app).</p>
+<p>The remainder of the series is focussed on working through the end to end steps of building a real (albeit simple) application – <em>MongoPop</em>. <a href="./mean_stack_2_mongodb_node_js/index.html" title="MongoDB with Node.js"><strong>Part 2: Using MongoDB With Node.js</strong></a> created an environment where we could work with a MongoDB database from Node.js; it also created a simplified interface to the MongoDB Node.js Driver. <a href="htthttp://www.clusterdb.com/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building REST API for MongoDB using Express JS"><strong>Part 3: Building a REST API with Express.js</strong></a> built on Part 2 by using Express.js to add a REST API which will be used by the clients that we implement in the final posts. <a href="./the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript/index.html" title="Building a Client UI Using Angular 2 &amp; TypeScript"><strong>Part 4: Building a Client UI Using Angular 2 (formerly AngularJS) &amp; TypeScript</strong></a> completed the MEAN stack by adding an Angular 2 client.</p>
+<p>This post is similar to <a href="./the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript/index.html" title="Building an Angular 2 client application">Part 4</a> except that it uses ReactJS rather than Angular to implement a remote web-app client for the <strong>Mongopop</strong> application – completing the full MERN application stack.</p>
+<h2>ReactJS (recap)</h2>
+<div id="attachment_4395" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2017/02/MERN_Stack.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-4395" src="./../wp-content/uploads/2017/02/MERN_Stack-1024x450.png" alt="MERN Stack architecture with React" width="480" height="211" class="size-large wp-image-4395" srcset="./../wp-content/uploads/2017/02/MERN_Stack-1024x450.png 1024w, ./../wp-content/uploads/2017/02/MERN_Stack-300x132.png 300w, ./../wp-content/uploads/2017/02/MERN_Stack-768x338.png 768w, ./../wp-content/uploads/2017/02/MERN_Stack.png 1819w" sizes="(max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4395" class="wp-caption-text">MERN Stack architecture with React</p>
+</div>
+<p><a href="https://facebook.github.io/react/" title="React, ReactJS">React</a> (alternatively referred to as ReactJS), is an up and coming alternative to Angular. It is a JavaScript library, developed by Facebook and Instagram, to build interactive, reactive user interfaces. Like Angular, React breaks the front-end application down into components. Each component can hold its own <em>state_and a parent can pass its state down to its child components (as _properties</em>) and those components can pass changes back to the parent through the use of callback functions. Components can also include regular data members (which are not state or properties) for data which isn&#8217;t rendered.</p>
+<p>State variables should be updated using the <code>setState</code> function – this allows ReactJS to calculate which elements of the page need to be refreshed in order to reflect the change. As refreshing the whole page can be an expensive operation, this can represent a significant efficiency and is a big part of what makes React live up to its name as “reactive”.</p>
+<p>React components are typically implemented using <a href="https://facebook.github.io/jsx/">JSX</a> – an extension of JavaScript that allows HTML syntax to be embedded within the code.</p>
+<p>React is most commonly executed within the browser but it can also be run on the back-end server within Node.js, or as a mobile app using <em>React Native</em>.</p>
+<h2>JSX &amp; ReactJS</h2>
+<p>It&#8217;s possible to implement ReactJS components using &#8216;pure&#8217; JavaScript (though, we&#8217;ve already seen in this series that it&#8217;s more complicated than that) but it&#8217;s more typical to use <a href="https://facebook.github.io/react/docs/introducing-jsx.html" title="Introducing JSX">JSX</a>. JSX extends the JavaScript syntax to allow HTML and JavaScript expressions to be used in the same code – making the code concise and easy to understand.</p>
+<p>Components can be implemented as a single function but in this post a class is used as it offers more options. The following code implements a very simple component:</p>
+<pre><code class="js">class HelloMessage extends React.Component {
+  render() {
+    return &lt;div&gt;Hello {this.props.name}&lt;/div&gt;;
+  }
+}
+</code></pre>
+<p>By extending <code>React.Component</code>, we indicate that the class implements a component and that the <code>render()</code> method returns the contents of that component</p>
+<p>The enclosing component can pass data down to this component as <em>properties</em> (accessed within the component as <code>this.props</code>); in this case, there is just one – <code>name</code>. JavaScript can be included at any point in the returned HTML by surrounding it with braces <code>{this.props.name}</code>. The enclosing component would include this code within its own <code>render()</code> method, where <code>userName</code> is part of that component&#8217;s state.:</p>
+<pre><code class="js">&lt;HelloMessage
+name={this.state.userName}
+/&gt;
+</code></pre>
+<p>The <em>state</em> data member for a component should include all of the variable values that are to be rendered (apart from those that have been passed down as properties). State values can be initialized directly in the class&#8217;s constructor function but after that, the <code>setState({userName: "Andrew"})</code> method should be used so that ReactJS knows that any elements containing <code>userName</code> should be rerendered.</p>
+<p>JSX gets compiled into JavaScript before it&#8217;s used (this post uses the <a href="https://babeljs.io/" title="Babel JavaScript compiler">Babel compiler</a>) and so there are no special dependencies on the browser.</p>
+<h2>Downloading, running, and using the Mongopop ReactJS application</h2>
+<p>The compiled ReactJS client code is included as part if the Mongopop package installed in <a href="./mean_stack_2_mongodb_node_js/index.html" title="Using MongoDB With Node.js">Part 2: Using MongoDB With Node.js</a>.</p>
+<p>The back-end application should be installed &amp; run in the same way as in parts 2 &amp; 3:</p>
+<pre><code>git clone git@github.com:am-MongoDB/MongoDB-Mongopop.git
+cd MongoDB-Mongopop
+npm install
+npm run express
+</code></pre>
+<p>Run the ReactJS client by browsing to <code>http://&lt;back-end-server&gt;:3000/react</code>.</p>
+<p>Unlike the Angular client, the ReactJS application is developed and built as a separate project, and then compiled results are copied to <code>public/react</code> in the back-end server (this is covered in the next section).</p>
+<h2>Build and deploy</h2>
+<p>To access the source and build an updated version of the client, a new GitHub repository must be downloaded – <a href="https://github.com/am-MongoDB/MongoDB-Mongopop-ReactJS" title="Mongopop ReactJS client for MongoDB">MongoDB-Mongopop-ReactJS</a>:</p>
+<pre><code class="bash">git clone git@github.com:am-MongoDB/MongoDB-Mongopop-ReactJS.git
+cd MongoDB-Mongopop-ReactJS
+</code></pre>
+<p>As with the back-end and the Angular client, <code>package.json</code> includes a list of dependencies as well as scripts:</p>
+<pre><code class="js">{
+  "name": "mongopop-react-client",
+  "version": "0.1.0",
+  "private": false,
+  "homepage": "http://localhost:3000/react",
+  "devDependencies": {
+    "react-scripts": "0.8.5"
+  },
+  "dependencies": {
+    "mongodb": "^2.2.20",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
+  }
+}
+</code></pre>
+<p>Before running any of the software, the Node.js dependencies (as defined in <code>package.json</code> must be installed into the <code>node_modules</code> directory):</p>
+<pre><code>npm install
+</code></pre>
+<p>To compile the JSX code, start the development server, and run the ReactJS client, run:</p>
+<pre><code>export PORT=3030 # As Express is already using 3000 on this machine
+npm start
+</code></pre>
+<p>This should automatically open the application within your browser. Note that the ReactJS code was loaded from a local development server but it will use the real REST API running in the back-end.</p>
+<p>Note that when running in this mode, you may get errors when your browser tries accessing the REST API – this is because browsers typically block cross-site scripting. To work around this, install <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related?hl=en-US">this extension from the Google Chrome store</a>.</p>
+<p>If you make changes to the ReactJS client and want to include them in the real back-end then build a new, optimized version:</p>
+<pre><code>npm run build
+</code></pre>
+<p>The contents of the <code>MongoDB-Mongopop-ReactJS/build</code> folder should then be copied to <code>MongoDB-Mongopop/public/react</code>.</p>
+<p>To see exactly what <code>react-scripts</code> is doing for these operations, review the scripts in <code>node_modules/react-scripts/scripts</code>.</p>
+<h2>Component architecture of the Mongopop ReactJS UI</h2>
+<p>Most ReactJS applications are built from one or more, nested components – Mongopop is no exception:</p>
+<div id="attachment_4396" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2017/02/ReactJS_Components.png"><img decoding="async" aria-describedby="caption-attachment-4396" src="./../wp-content/uploads/2017/02/ReactJS_Components-744x1024.png" alt="ReactJS components making up the Mongopop client app" width="480" height="661" class="size-large wp-image-4396" srcset="./../wp-content/uploads/2017/02/ReactJS_Components-744x1024.png 744w, ./../wp-content/uploads/2017/02/ReactJS_Components-218x300.png 218w, ./../wp-content/uploads/2017/02/ReactJS_Components-768x1057.png 768w, ./../wp-content/uploads/2017/02/ReactJS_Components.png 872w" sizes="(max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4396" class="wp-caption-text">ReactJS components making up the Mongopop client app</p>
+</div>
+<p>The top-level component (<code>MongoPopContainer</code>) renders the &#8220;Welcome to MongoPop&#8221; heading before delegating the the rest of the page to seven sub-components.</p>
+<p><code>MongoPopContainer</code> is implemented by a <a href="https://github.com/am-MongoDB/MongoDB-Mongopop-ReactJS/blob/master/src/App.js" title="Mongopop App.js main React component">JSX class of the same name</a>. The class contains the state variables for any information which must be used by more than one sub-component (e.g. the collection name). It also includes handler functions that will be used by sub-components when they make changes to any state variable passed down. The class implements the <code>render()</code> function which returns the expression that ReactJS must convert to HTML for rendering; in addition to the opening <code>&lt;h1&gt;Welcome to MongoPop&lt;/h1&gt;</code>, it includes an element for each of the sub-components. As part of those element definitions, it passes down state variables (which the sub-component receives as properties):</p>
+<pre><code class="js">&lt;CountDocuments
+  dataService={this.dataService}
+  collection={this.state.MongoDBCollectionName}
+/&gt;
+</code></pre>
+<p>Changes to a data value by a parent component will automatically be propagated to a child – it&#8217;s best practice to have data flow in this direction as much as possible. If a data value is changed by a child <em>and</em> the parent (either directly or as a proxy for one of its other child components) needs to know of the change, then the child triggers an event. That event is processed by a handler registered by the parent – the parent may then explicitly act on the change, but even if it does nothing explicit, the change flows to the other child components.</p>
+<p>Each of the sub-components is implemented by its own JSX class – e.g. <a href="https://github.com/am-MongoDB/MongoDB-Mongopop-ReactJS/blob/master/src/count.component.js" title="MongoDB Mongopop React count component">CountDocuments</a>.</p>
+<p>Mongopop is a reasonably flat application with only one layer of sub-components below <code>MongoPopContainer</code>, but more complex applications may nest deeper and reuse components.</p>
+<p>This table details what data is passed from <code>MongoPopContainer</code> down to each of its children and what data change events are sent back up to <code>MongoPopContainer</code> (and from there, back down to the other children):</p>
+<table class="table table-bordered" summary="ReactJS components for Mongopop ReactJS client application">
+<caption><strong>Flow of data between ReactJS components</strong></caption>
+<thead>
+<tr>
+<th>Child component</th>
+<th>Data passed down</th>
+<th>Data changes passed back up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">ServerDetails</pre>
+</td>
+<td>Data service</td>
+<td></td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">ConnectionInfo</pre>
+</td>
+<td>Data service</td>
+<td></td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">CollectionName</pre>
+</td>
+<td>Data service</td>
+<td>Collection Name</td>
+</tr>
+<tr>
+<td rowspan="2">
+<pre style="border:0px; background-color:#fff">AddDocuments</pre>
+</td>
+<td>Collection Name</td>
+<td rowspan="2"></td>
+</tr>
+<tr>
+<td>Data service</td>
+</tr>
+<tr>
+<td rowspan="2">
+<pre style="border:0px; background-color:#fff">CountDocuments</pre>
+</td>
+<td>Collection Name</td>
+<td rowspan="2"></td>
+</tr>
+<tr>
+<td>Data service</td>
+</tr>
+<tr>
+<td rowspan="3">
+<pre style="border:0px; background-color:#fff">UpdateDocuments</pre>
+</td>
+<td>Collection Name</td>
+<td rowspan="3"></td>
+</tr>
+<tr>
+<td>Data service</td>
+</tr>
+<tr>
+<td>Sample data to play with</td>
+</tr>
+<tr>
+<td rowspan="2">
+<pre style="border:0px; background-color:#fff">SampleDocuments</pre>
+</td>
+<td>Collection Name</td>
+<td rowspan="2">Sample data to play with</td>
+</tr>
+<tr>
+<td>Data service</td>
+</tr>
+</tbody>
+</table>
+<h2>What are all of these files?</h2>
+<p>To recap, the files and folders covered earlier in this series (for the back-end, under <code>MongoDB-Mongopop</code> folder):</p>
+<ul>
+<li>
+<strong><code>package.json</code></strong>: Instructs the Node.js package manager (<code>npm</code>) what it needs to do; including which dependency packages should be installed</li>
+<li>
+<strong><code>node_modues</code></strong>: Directory where <code>npm</code> will install packages</li>
+<li>
+<strong><code>node_modues/mongodb</code></strong>: The <a href="https://mongodb.github.io/node-mongodb-native/" title="MongoDB driver for Node.js">MongoDB driver for Node.js</a>
+</li>
+<li>
+<strong><code>node_modues/mongodb-core</code></strong>: Low-level MongoDB driver library; available for framework developers (application developers should avoid using it directly)</li>
+<li>
+<strong><code>javascripts/db.js</code></strong>: A JavaScript module we&#8217;ve created for use by our Node.js apps (in this series, it will be Express) to access MongoDB; this module in turn uses the MongoDB Node.js driver.</li>
+<li>
+<strong><code>config.js</code></strong>: Contains the application–specific configuration options</li>
+<li>
+<strong><code>bin/www</code></strong>: The script that starts an Express application; this is invoked by the <code>npm start</code> script within the <code>package.json</code> file. Starts the HTTP server, pointing it to the <code>app</code> module in <code>app.js</code>
+</li>
+<li>
+<strong><code>app.js</code></strong>: Defines the main back-end application module (<code>app</code>). Configures:
+<ul>
+<li>That the application will be run by Express</li>
+<li>Which routes there will be &amp; where they are located in the file system (<code>routes</code> directory)</li>
+<li>What view engine to use (Jade in this case)</li>
+<li>Where to find the <em>views</em> to be used by the view engine (<code>views</code> directory)</li>
+<li>What middleware to use (e.g. to parse the JSON received in requests)</li>
+<li>Where the static files (which can be read by the remote client) are located (<code>public</code> directory)</li>
+<li>Error handler for queries sent to an undefined route</li>
+</ul>
+</li>
+<li>
+<strong><code>views</code></strong>: Directory containing the templates that will be used by the Jade view engine to create the HTML for any pages generated by the Express application (for this application, this is just the error page that&#8217;s used in cases such as mistyped routes (&#8220;404 Page not found&#8221;))</li>
+<li>
+<strong><code>routes</code></strong>: Directory containing one JavaScript file for each Express route
+<ul>
+<li>
+<strong><code>routes/pop.js</code></strong>: Contains the Express application for the <code>/pop</code> route; this is the implementation of the Mongopop REST API. This defines methods for all of the supported route paths.</li>
+</ul>
+</li>
+<li>
+<strong><code>public</code></strong>: Contains all of the static files that must be accessible by a remote client (e.g., our Angular to React apps).</li>
+</ul>
+<p>In addition, for the ReactJS client application:</p>
+<ul>
+<li>
+<strong><code>public/react</code></strong> The deployed ReactJS client code; e.g. the JSX code that has been compiled down into vanilla JavaScript</li>
+</ul>
+<p>More significant for this post are the new files introduced under the <code>MongoDB-Mongopop-ReactJS</code> folder:</p>
+<ul>
+<li>
+<strong><code>build</code></strong>: Directory containing the compiled and optmized JavaScript (to be copied to the back-end)</li>
+<li>
+<strong><code>node-modules</code></strong>: Node.js modules used by the ReactJS client application (as opposed to the Express, server-side Node.js modules)</li>
+<li>
+<strong><code>public/index.html</code></strong>: Outer template for the application (includes the <code>root</code>div element)</li>
+<li>
+<strong><code>src</code></strong>: Directory JSX source code files we write for the application
+<ul>
+<li>
+<strong><code>index.js</code></strong>: Top-level JSX for the client; creates the <code>&lt;App /&gt;</code> element as a placeholder to be expanded by App.js </li>
+<li>
+<strong><code>App.js</code></strong>: Replaces the <code>&lt;App /&gt;</code> element from <code>index.js</code> with the output from the <code>MongoPopContainer</code> component/class. Includes the rest of the client components</li>
+<li>
+<strong><code>X.component.js</code></strong>: Class implementing sub-component X</li>
+<li>
+<strong><code>data.service.js</code></strong>: Service used to interact with the back-end REST API (mostly used to access the database)</li>
+</ul>
+</li>
+<li>
+<strong><code>package.json</code></strong>: Instructs the Node.js package manager (<code>npm</code>) what it needs to do; including which dependency packages should be installed</li>
+</ul>
+<h2>&#8220;Boilerplate&#8221; files and how they get invoked</h2>
+<p>If you&#8217;ve already read <a href="./the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript/index.html" title="Completing the MEAN stack – Mongopop Angular2 client">Part 4: Building a Client UI Using Angular 2 (formerly AngularJS) &amp; TypeScript</a>, you should be relieved to see that far fewer source files are involved before reaching the actual application code:</p>
+<div id="attachment_4397" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2017/02/ReactJS_file_relationships.png"><img decoding="async" aria-describedby="caption-attachment-4397" src="./../wp-content/uploads/2017/02/ReactJS_file_relationships-962x1024.png" alt="Relationships between ReactJS files" width="480" height="511" class="size-large wp-image-4397" srcset="./../wp-content/uploads/2017/02/ReactJS_file_relationships-962x1024.png 962w, ./../wp-content/uploads/2017/02/ReactJS_file_relationships-282x300.png 282w, ./../wp-content/uploads/2017/02/ReactJS_file_relationships-768x817.png 768w, ./../wp-content/uploads/2017/02/ReactJS_file_relationships.png 1340w" sizes="(max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4397" class="wp-caption-text">Relationships between ReactJS files</p>
+</div>
+<p><code>public/index.html</code> defines a <code>div</code> element with its <code>id</code> set to <code>root</code>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/9f298b6283e3a8d2d7d956291ec9439e.js"></script></p>
+<p><code>src/index.js</code> accesses the <code>root</code> element from <code>public/index.html</code> so that it can be populated with the output from the application. It imports <code>src/App.js</code> and creates the <code>&lt;App /&gt;</code> element.</p>
+<p><script src="https://gist.github.com/am-MongoDB/945a4aa73a75af90a25572b0de56b77e.js"></script></p>
+<p><code>src/App.js</code> defines the <code>App</code> class to satisfy the <code>App</code> element in <code>src/index.js</code>; that class renders the <code>&lt;MongoPopContainer /&gt;</code> element, which is made up of all of the sub-components. <code>App.js</code> imports each of the sub-component source files (<code>X.component.js</code>) so that they can implement those components. It also imports <code>src/data.service.js</code> to give access to the back-end Mongopop REST API:</p>
+<p><script src="https://gist.github.com/am-MongoDB/04bae5f85acfff596f7f1b4e29b7540e.js"></script></p>
+<h2>Calling the REST API</h2>
+<p>The <a href="https://github.com/am-MongoDB/MongoDB-Mongopop-ReactJS/blob/master/src/data.service.js" title="Acess to the Mongopop REST API from ReactJS">Data Service class</a> hides the communication with the back-end REST API; serving two purposes:</p>
+<ul>
+<li>Simplifying all of the components&#8217; code</li>
+<li>Shielding the components&#8217; code from any changes in the REST API signature or behavior – that can all be handled within the DataService</li>
+</ul>
+<p>The functions of the data service return promises to make working with their asynchronous behaviour simpler. Refer back to <a href="./mean_stack_2_mongodb_node_js/index.html" title="Using MongoDB With Node.js">Part 2: Using MongoDB With Node.js</a> if you need a recap on using <strong>promises</strong>.</p>
+<p>As a reminder from <a href="hhttp://www.clusterdb.com/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building a REST API with Express.js">Part 3: Building a REST API with Express.js</a>, this is the REST API we have to interact with:</p>
+<table class="table table-bordered" summary="Express route paths implemented for the Mongopop REST API">
+<caption><strong>Express routes implemented for the Mongopop REST API</strong></caption>
+<thead>
+<tr>
+<th>Route Path</th>
+<th>HTTP Method</th>
+<th>Parameters</th>
+<th>Response</th>
+<th>Purpose
+<pre style="border:0px; background-color:#fff; height:0px">                      </pre>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/</pre>
+</td>
+<td>GET</td>
+<td></td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+"AppName": "MongoPop",
+"Version": 1.0
+}
+        </pre>
+</td>
+<td>Returns the version of the API.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/ip</pre>
+</td>
+<td>GET</td>
+<td></td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">{"ip": string}</pre>
+</td>
+<td>Fetches the IP Address of the server running the Mongopop backend.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/config</pre>
+</td>
+<td>GET</td>
+<td></td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+mongodb: {
+    defaultDatabase: string,
+    defaultCollection: string,
+    defaultUri: string
+},
+mockarooUrl: string
+}
+        </pre>
+</td>
+<td>Fetches client-side defaults from the back-end config file.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/addDocs</pre>
+</td>
+<td>POST</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+MongoDBURI: string;
+collectionName: string;
+dataSource: string;
+numberDocs: number;
+unique: boolean;
+}
+        </pre>
+</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+success: boolean;
+count: number;
+error: string;
+}
+        </pre>
+</td>
+<td>Add `numberDocs` batches of documents, using documents fetched from `dataSource`</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/sampleDocs</pre>
+</td>
+<td>POST</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+MongoDBURI: string;
+collectionName: string;
+numberDocs: number;
+}
+        </pre>
+</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+success: boolean;   
+documents: string;
+error: string;
+}
+        </pre>
+</td>
+<td>Read a sample of the documents from a collection.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/countDocs</pre>
+</td>
+<td>POST</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+MongoDBURI: string; 
+collectionName: string;
+}
+        </pre>
+</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+success: boolean;   
+count: number;
+error: string;
+}
+        </pre>
+</td>
+<td>Counts the number of documents in the collection.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/updateDocs</pre>
+</td>
+<td>POST</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+MongoDBURI: string;
+collectionName: string;
+matchPattern: Object;
+dataChange: Object;
+threads: number;
+}
+        </pre>
+</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+success: boolean;
+count: number;
+error: string;
+}
+        </pre>
+</td>
+<td>Apply an update to all documents in a collection<br>
+    which match a given pattern</td>
+</tr>
+</tbody>
+</table>
+<p>This data access class uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest" title="Asynchronous-htttp-api">XMLHttpRequest API</a> to make asynchronous HTTP requests to the REST API running in the back-end (mostly to access MongoDB).</p>
+<p>One of the simplest functions that <a href="https://github.com/am-MongoDB/MongoDB-Mongopop-ReactJS/blob/master/src/data.service.js" title="MongoDB MongoPope React daat service"><code>data.service.js</code></a> provides is <code>fetchConfig</code> which sends an HTTP <code>GET</code> request to the back-end to retrieve default the client configuration parameters:</p>
+<p><script src="https://gist.github.com/am-MongoDB/b3e1a63771eda54d638c3bc632790fb1.js"></script></p>
+<p>When using this API, the application registers handler functions against a number of possible events; in this case:</p>
+<ul>
+<li>
+<code>onreadystatechange</code>: triggered if/when a successful HTTP response is received</li>
+<li>
+<code>onerror</code> &amp; <code>onabort</code>: triggered when there has been a problem</li>
+</ul>
+<p>The method returns a promise which subsequently – via the bound-in function (<code>processRequest</code> &amp; <code>processError</code>) – either:</p>
+<ul>
+<li>Provides an object representing the received response</li>
+<li>Raises an error with an appropriate message</li>
+</ul>
+<p>The <code>baseURL</code> data member is set to <code>http://localhost:3000/pop</code> but that can be changed by editing the data service creation line in <a href="https://github.com/am-MongoDB/MongoDB-Mongopop-ReactJS/blob/master/src/App.js" title="MongoDB Mongopop React component"><code>App.js</code></a>:</p>
+<pre><code class="js">this.dataService = new DataService("http://localhost:3000/pop");
+</code></pre>
+<p>Another of the methods sends a <code>POST</code> message to the REST API&#8217;s <code>pop/addDocs</code> route path to request the bulk addition of documents to a MongoDB collection:</p>
+<p><script src="https://gist.github.com/am-MongoDB/adfb0970e14dcedc105965ba9a26f778.js"></script></p>
+<p>The program flow is very similar to that of the previous function and, in the success case, it eventually resolves the returned promise with a count of the number of documents added.</p>
+<p>A final method from the <code>DataService</code> class worth looking at is <code>calculateMongoDBURI()</code> which takes the MongoDB URI provided by <a href="https://cloud.mongodb.com/" title="Hosted MongoDB as a cloud service">MongoDB Atlas</a> and converts it into one that can actually be used to access the database – replacing the <code>&lt;DATABASE&gt;</code> and <code>&lt;PASSWORD&gt;</code> placeholders with the actual values:</p>
+<p><script src="https://gist.github.com/am-MongoDB/94448e69217467113e6bd03ec0828fef.js"></script></p>
+<p>The function stores the final URI in the data service class&#8217;s <code>MongoDBURI</code> data member – to sent to the back-end when accessing the database (see <code>sendAddDocs</code> above). It also returns a second value (<code>MongoDBURIRedacted</code>) with the password masked out – to be used when displaying the URI.</p>
+<h2>A simple component that accepts data from its parent</h2>
+<p>Recall that the application consists of eight components: the top-level application which contains each of the <code>ServerDetails</code>, <code>ConnectionInfo</code>, <code>CollectionName</code>, <code>AddDocuments</code>, <code>CountDocuments</code>, <code>UpdateDocuments</code>, and <code>SampleDocuments</code> components.</p>
+<p>When building a new application, you would typically start by designing the the top-level component and then working downwards. As the top-level container is, perhaps, the most complex one to understand, we&#8217;ll start at the bottom and then work up.</p>
+<p>A simple sub-component to start with is the <a href="https://github.com/am-MongoDB/MongoDB-Mongopop-ReactJS/blob/master/src/add.component.js" title="MongoDB Mongopo Add React component"><code>AddDocuments</code></a> component:</p>
+<div id="attachment_4398" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2017/02/ReactJS_Components-1.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4398" src="./../wp-content/uploads/2017/02/ReactJS_Components-1-744x1024.png" alt="ReactJS component" width="480" height="661" class="size-large wp-image-4398" srcset="./../wp-content/uploads/2017/02/ReactJS_Components-1-744x1024.png 744w, ./../wp-content/uploads/2017/02/ReactJS_Components-1-218x300.png 218w, ./../wp-content/uploads/2017/02/ReactJS_Components-1-768x1057.png 768w, ./../wp-content/uploads/2017/02/ReactJS_Components-1.png 872w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4398" class="wp-caption-text">ReactJS component</p>
+</div>
+<p>A central design decision for any component is what <em>state</em> is required (any variable data that is to be rendered by the component should either be part of the component&#8217;s state or of the <code>properties</code> passed by its parent component). The state is initialised in the class&#8217;s constructor:</p>
+<p><script src="https://gist.github.com/am-MongoDB/efb47e5a6295df1344212ff8fe3955bc.js"></script></p>
+<p>Recall that any state variable X can be read using <code>this.state.X</code> but only the constructor should write to it that way – anywhere else should use the <code>setState()</code> function so that ReactJS is made aware of the change – enabling it to refresh any affected elements. In this class, there are six state variables:</p>
+<ul>
+<li>
+<code>MockarooURL</code>: The URL from a service such as <a href="https://www.mockaroo.com/">Mockaroo</a> which will return an array containing a set of example JSON documents</li>
+<li>
+<code>numDocsToAdd</code>: How many batches of documents should be added (with the default value of <code>MockarooURL</code>, each batch contains 1,000 documents)</li>
+<li>
+<code>uniqueDocs</code>: Whether each batch should be distinct from the other batches (this significantly slows things down)</li>
+<li>
+<code>numDocsAdded</code>: Updated with the number of added documents in the event that the operation succeeds</li>
+<li>
+<code>errorText</code>: Updated with an error message in the event that the operation fails</li>
+<li>
+<code>addedCollection</code>: Name of the collection that documents were last added to (initialized with the <code>collection</code> property passed by the parent component)</li>
+</ul>
+<div id="attachment_4399" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2017/02/state_variables_in_ReactJS_component.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4399" src="./../wp-content/uploads/2017/02/state_variables_in_ReactJS_component-1024x806.png" alt="ReactJS state variables" width="480" height="378" class="size-large wp-image-4399" srcset="./../wp-content/uploads/2017/02/state_variables_in_ReactJS_component-1024x806.png 1024w, ./../wp-content/uploads/2017/02/state_variables_in_ReactJS_component-300x236.png 300w, ./../wp-content/uploads/2017/02/state_variables_in_ReactJS_component-768x605.png 768w, ./../wp-content/uploads/2017/02/state_variables_in_ReactJS_component.png 1318w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4399" class="wp-caption-text">ReactJS state variables</p>
+</div>
+<p>Note that the constructor receives the properties passed down from the parent component. The constructor from the <code>React.Component</code> class must always be invoked within the component&#8217;s constructor: <code>super(props)</code>.</p>
+<p>The <code>bind</code>s at the end of the constructor make <code>this</code> available for use within the class&#8217;s methods.</p>
+<p>Further down in the class is the <code>render()</code> method which returns the content that ReactJS converts to HTML and JavaScript for the browser to render:</p>
+<p><script src="https://gist.github.com/am-MongoDB/8905927872d7e997af97e794cd0fc587.js"></script></p>
+<p>Recall that when coding in JSX, JavaScript can be embedded in the HTML by surrounding it with braces. The function uses that almost immediately to include the collection name in the component&#8217;s header: <code>&lt;h2&gt;Add documents to {this.props.collection}&lt;/h2&gt;</code>.</p>
+<p>The first <code>input</code> is initialized with <code>this.state.MockarooURL</code> and if the user changes the value then <code>this.handleURLChange</code> is invoked – which in turn updates the state value:</p>
+<p><script src="https://gist.github.com/am-MongoDB/9edda5acf297e57cd93fc8044ef54914.js"></script></p>
+<p>The same pattern holds for the <code>input</code>s for <code>numDocsToAdd</code> &amp; <code>uniqueDocs</code>.</p>
+<p>When this component&#8217;s button is pressed, the <code>onClick</code> event calls <code>this.handleAddSubmit()</code>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/df3968f8e0f1c0f636688e0031e3f3de.js"></script></p>
+<p>This function invokes the <code>sendAddDocs()</code> method of the data service that was passed down from the parent component (and so is part of <code>this.props</code>). <code>sendAddDocs()</code> returns a promise and the first function in the <code>then</code> clause is called if/when that promise is successfully resolved – setting the <code>numDocsAdded</code> state to the number of added documents; if the promise is instead rejected then the second function is called – setting the error message. In either case, the state change will cause the associated element to be rerendered:</p>
+<p><script src="https://gist.github.com/am-MongoDB/a9d5003f7d238f4f4a576fe14007c0a3.js"></script></p>
+<h2>Passing data down to a sub-component (and receiving changes back)</h2>
+<p>The <code>AddDocs</code> component is embedded within the <code>render()</code>method of <code>MongoPopContainer</code> component class; implemented in <a href="https://github.com/am-MongoDB/MongoDB-Mongopop-ReactJS/blob/master/src/App.js" title="MongoDB Mongopo ReactJS component"><code>App.js</code></a>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/3f54f24d2e8933f85a57e941a07de136.js"></script></p>
+<p>It passes down two items:</p>
+<ul>
+<li>
+<code>dataService</code> is an instance of the <code>DataService</code> class and is used to access the back-end (in particular, to interact with MongoDB). Appears as part of <code>AddDocument</code>&#8216;s properties and can be accessed as <code>this.props.dataService</code>.</li>
+<li>
+<code>collection</code> is a string representing the collection name. Appears as part of <code>AddDocument</code>&#8216;s properties and can be accessed as <code>this.props.collection</code>.</li>
+</ul>
+<p><code>MongoDBCollectionName</code> is initialized, and <code>dataService</code> is instantiated as part of the <code>MongoPopContainer</code> constructor:</p>
+<p><script src="https://gist.github.com/am-MongoDB/b9685e888b689a63fb5780581b625da2.js"></script></p>
+<p>Note that for a real, deployed application, <code>http://localhost:3000/pop</code> would be replaced with the public URL for REST API. Additionally, you should consider adding authentication to the API .</p>
+<p>But where did the collection name get set – the constructor initialized it to an empty string but that&#8217;s not we see when running the application? There&#8217;s a clue in the constructor:</p>
+<pre><code class="js">this.handleCollectionChange=this.handleCollectionChange.bind(this);
+</code></pre>
+<p>Recall that a <code>bind</code> like this is to allow a function (<code>this.handleCollectionChange()</code>) to access the <code>this</code> object:</p>
+<p><script src="https://gist.github.com/am-MongoDB/a6050d700e87b6a84667e6e39636aa54.js"></script></p>
+<p>The <code>handleCollectionChange()</code> method is passed down to the <code>CollectionName</code> component:</p>
+<p><script src="https://gist.github.com/am-MongoDB/b3dd9d388660f44f7fe0d0396463f29f.js"></script></p>
+<p>This is the <a href="https://github.com/am-MongoDB/MongoDB-Mongopop-ReactJS/blob/master/src/collection.name.component.js" title="MongoDB Mongopop ReactJS collection component"><code>CollectionName</code> component class</a>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/2f5609c0a6c00cbcee0c3039af179117.js"></script></p>
+<p><code>CollectionName</code> has a single state variable – <code>collection</code> – which is initially set in the <code>componentDidMount()</code> method by fetching the default client configuration information from the back-end by calling <code>this.props.dataService.fetchConfig()</code>. <a href="https://facebook.github.io/react/docs/react-component.html#componentdidmount"><code>componentDidMount</code></a> is one of the <a href="https://facebook.github.io/react/docs/react-component.html">component lifecycle methods</a> that are part of any <code>React.Component</code> class – it is invoked after the component has been loaded into the browser, it is where you would typically fetch any data from the back-end that&#8217;s needed for the component&#8217;s starting state. After setting the collection state, the change notification function passed down by the parent component is invoked to pass up the new value:</p>
+<pre><code class="js">_this.props.onChange(_this.state.collection);
+</code></pre>
+<p>Of course, the user needs to be able to change the collection name and so an <code>input</code> element is included. The value of the element is initialized with the collection state variable and when the user changes that value, <code>this.handleCollectionNameChange</code> is invoked. In turn, that method updates the component state and passes the new collection name up to the parent component by calling the change notification method provided by the parent.</p>
+<h2>Optionally empty components</h2>
+<p>It&#8217;s common that a component should only display its contents if a particular condition is met. Mongopop includes a feature to allow the user to apply a bulk change to a set of documents – selected using a pattern specified by the user. If they don&#8217;t know the typical document structure for the collection then it&#8217;s unlikely that they&#8217;ll make a sensible change. Mongopop forces them to first retrieve a sample of the documents before they&#8217;re given the option to make any changes.</p>
+<p>This optionality is implemented through the <code>SampleDocuments</code> &amp; <code>UpdateDocuments</code> components:</p>
+<table class="table table-bordered" summary="ReactJS components for Mongopop ReactJS client application">
+<caption><strong>Flow of data between ReactJS components</strong></caption>
+<thead>
+<tr>
+<th>Child component</th>
+<th>Data passed down</th>
+<th>Data changes passed back up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="3">
+<pre style="border:0px; background-color:#fff">UpdateDocuments</pre>
+</td>
+<td>Collection Name</td>
+<td rowspan="3"></td>
+</tr>
+<tr>
+<td>Data service</td>
+</tr>
+<tr>
+<td>Sample data to play with</td>
+</tr>
+<tr>
+<td rowspan="2">
+<pre style="border:0px; background-color:#fff">SampleDocuments</pre>
+</td>
+<td>Collection Name</td>
+<td rowspan="2">Sample data to play with</td>
+</tr>
+<tr>
+<td>Data service</td>
+</tr>
+</tbody>
+</table>
+<p>Recall that the <code>MongoPopContainer</code> component class includes a state variable named <code>DataToPlayWith</code> which is initialized to <code>FALSE</code>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/e805cc84f22425ca69a3be3e5471f5f9.js"></script></p>
+<p>That state is updated using the <code>handleDataAvailabiltyChange</code> method:</p>
+<p><script src="https://gist.github.com/am-MongoDB/2643ae015b34cdd007d64c37723cabae.js"></script></p>
+<p>That method is passed down to the <code>SampleDocuments</code> component:</p>
+<p><script src="https://gist.github.com/am-MongoDB/e3045afa1ba4ef16ffd26eee8501b9ac.js"></script></p>
+<p>When the user fetches a sample of the documents from a collection, the <a href="https://github.com/am-MongoDB/MongoDB-Mongopop-ReactJS/blob/master/src/sample.component.js" title="MongoDB Mongopo React JS sample documents component"><code>SampleDocuments</code> component</a> invokes the change notification method (<code>_this.props.onDataToWorkWith()</code>), passing back <code>TRUE</code> if the request was a success, <code>FALSE</code> otherwise:</p>
+<p><script src="https://gist.github.com/am-MongoDB/935a2525c7c19a5fe4faafc1340a448a.js"></script></p>
+<p><code>MongoPopContainer</code> passes its state variable <code>DataToPlayWith</code> down to the <code>UpdateDocuments</code> component:</p>
+<p><script src="https://gist.github.com/am-MongoDB/29798f6f9ced02711723385352f87414.js"></script></p>
+<p>The <a href="https://github.com/am-MongoDB/MongoDB-Mongopop-ReactJS/blob/master/src/update.component.js" title="MongoDB Mongopop Updated documents ReactJS component"><code>UpdateDocuments</code> component class</a> is then able to check the value using:</p>
+<p><script src="https://gist.github.com/am-MongoDB/a504ca807afe4ea76e710d8ae7e14bd7.js"></script></p>
+<p>Otherwise, the rest of this component is similar to those already seen:</p>
+<p><script src="https://gist.github.com/am-MongoDB/584938c293791e488c360554f335af92.js"></script></p>
+<h2>Periodic operations</h2>
+<p>The <a href="https://github.com/am-MongoDB/MongoDB-Mongopop-ReactJS/blob/master/src/count.component.js" title="MongoDB Mongopop React count component"><code>CountDocuments</code> component</a> has an extra feature – if the repeat option is checked then it will fetch and display the document count every five seconds. The function that&#8217;s called when the count button is clicked, checks the value of the state variable associated with the checkbox and if it&#8217;s set, calls <code>setInterval()</code> to call the <code>countOnce()</code> method every five seconds:</p>
+<p><script src="https://gist.github.com/am-MongoDB/c117558651ebca0c2806ecb92cf5ce71.js"></script></p>
+<p>The timer is cleared (<code>clearInterval()</code>) if there is an error or just before the component is unmounted (in <code>componentWillUnmount</code>).</p>
+<h2>Other components</h2>
+<p>For completeness, this is the full top-level component, <a href="https://github.com/am-MongoDB/MongoDB-Mongopop-ReactJS/blob/master/src/App.js"><code>App.js</code></a>, which includes the rest of the sub-components:</p>
+<p><script src="https://gist.github.com/am-MongoDB/c906c0585d164abd7e2b5228b5d1bd1c.js"></script></p>
+<p>The <a href="https://github.com/am-MongoDB/MongoDB-Mongopop-ReactJS/blob/master/src/connection.info.component.js" title="MongoDB Mongopop ReactJS connection info component"><code>ConnectionInfo</code> component</a>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/2b3542d5e2999273851b766b99df0969.js"></script></p>
+<p>The <a href="https://github.com/am-MongoDB/MongoDB-Mongopop-ReactJS/blob/master/src/server.details.component.js" title="MongoDB Mongopop server details React component"><code>ServerDetails</code> component</a>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/d663218f8610c98510c2d458316f8c41.js"></script></p>
+<h2>Testing &amp; debugging the ReactJS application</h2>
+<p>Now that the full MERN stack application has been implemented, you can test it from within your browser:</p>
+<p><iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/eS8R7z_FaVo?rel=0" frameborder="0" allowfullscreen></iframe></p>
+<p>Debugging the ReactJS client is straightforward using the <a href="https://developer.chrome.com/devtools">Google Chrome Developer Tools</a> which are built into the Chrome browser. Despite the browser executing the transpiled JavaScript the Dev Tools allows you to navigate and set breakpoints in your JSX code:</p>
+<div id="attachment_4400" style="width: 490px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2017/02/debug_JSX_in_Chrome.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4400" src="./../wp-content/uploads/2017/02/debug_JSX_in_Chrome-1024x869.png" alt="Debug React JSX with Google Chrome Developer tools" width="480" height="407" class="size-large wp-image-4400" srcset="./../wp-content/uploads/2017/02/debug_JSX_in_Chrome-1024x869.png 1024w, ./../wp-content/uploads/2017/02/debug_JSX_in_Chrome-300x255.png 300w, ./../wp-content/uploads/2017/02/debug_JSX_in_Chrome-768x652.png 768w, ./../wp-content/uploads/2017/02/debug_JSX_in_Chrome.png 1432w" sizes="auto, (max-width: 480px) 100vw, 480px"></a><p id="caption-attachment-4400" class="wp-caption-text">Debug React JSX with Google Chrome Developer tools</p>
+</div>
+<p>If there is a compilation error then the error is sent to the browser:</p>
+<div id="attachment_4401" style="width: 693px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2017/02/Compile_error.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4401" src="./../wp-content/uploads/2017/02/Compile_error.png" alt="ReactJS Compile errors in Google Chrome Developer tools" width="683" height="429" class="size-full wp-image-4401" srcset="./../wp-content/uploads/2017/02/Compile_error.png 683w, ./../wp-content/uploads/2017/02/Compile_error-300x188.png 300w" sizes="auto, (max-width: 683px) 100vw, 683px"></a><p id="caption-attachment-4401" class="wp-caption-text">ReactJS Compile errors in Google Chrome Developer tools</p>
+</div>
+<p>By installing the <a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en"><em>React Developer Tools</em> from the Google Chrome Store</a>, you get an extra &#8220;React&#8221; tab that can be used to view or modify the state or properties for any of the components:</p>
+<div id="attachment_4402" style="width: 1033px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2017/02/Chrome_React_dev_tool.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4402" src="./../wp-content/uploads/2017/02/Chrome_React_dev_tool.png" alt="React in Google Chrome Developer tools" width="1023" height="576" class="size-full wp-image-4402" srcset="./../wp-content/uploads/2017/02/Chrome_React_dev_tool.png 1023w, ./../wp-content/uploads/2017/02/Chrome_React_dev_tool-300x169.png 300w, ./../wp-content/uploads/2017/02/Chrome_React_dev_tool-768x432.png 768w" sizes="auto, (max-width: 1023px) 100vw, 1023px"></a><p id="caption-attachment-4402" class="wp-caption-text">React in Google Chrome Developer tools</p>
+</div>
+<h2>ReactJS vs. Angular</h2>
+<p>So should you use Angular 2 or React for your new web application? A quick Google search will find you some fairly deep comparisons of the two technologies but in summary, Angular 2 is a little more powerful while React is easier for developers to get up to speed with and use (note how many fewer files are needed). The <a href="./the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript/index.html" title="Angular2 with MongoDB">previous blog</a> in this series built the Mongopop client application using Angular 2, while this one built a near-identical app using ReactJS – hopefully these posts have helped you pick a favorite.</p>
+<p>The following snapshot from Google Trends suggests that Angular has been much more common for a number of years but that React is gaining ground:</p>
+<div id="attachment_4403" style="width: 837px" class="wp-caption aligncenter">
+<a href="./../wp-content/uploads/2017/02/ReactJS_vs_Angular.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4403" src="./../wp-content/uploads/2017/02/ReactJS_vs_Angular.png" alt="ReactJS popularity vs. Angular and Angular 2" width="827" height="374" class="size-full wp-image-4403" srcset="./../wp-content/uploads/2017/02/ReactJS_vs_Angular.png 827w, ./../wp-content/uploads/2017/02/ReactJS_vs_Angular-300x136.png 300w, ./../wp-content/uploads/2017/02/ReactJS_vs_Angular-768x347.png 768w" sizes="auto, (max-width: 827px) 100vw, 827px"></a><p id="caption-attachment-4403" class="wp-caption-text">ReactJS popularity vs. Angular and Angular 2</p>
+</div>
+<h2>Summary &amp; what&#8217;s next in the series</h2>
+<p>Previous posts stepped through building the Mongopop application back-end and then the creation of an Angular 2 client application. This post described how to build a front-end client using ReactJS. At this point, we have a complete, working, MERN stack application.</p>
+<p>The coupling between the front and back-end is loose; the client simply makes remote, HTTP requests to the back-end service – using the interface created in <a href="hhttp://www.clusterdb.com/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a>.</p>
+<p>This series will finish by demonstrating alternate methods to implement front-end client applications that aren&#8217;t browser-based.</p>
+<p>Continue to the final post this blog series to discover some more unconventional ways to use the Mongopop REST API:<br>
+* <a href="./modern-application-stack-part-1-introducing-the-mean-stack/index.html" title="MEAN stack, MERN stack">Part 1: Introducing The MEAN Stack (and the young MERN upstart)</a><br>
+* <a href="./mean_stack_2_mongodb_node_js/index.html" title="Using MongoDB With Node.js">Part 2: Using MongoDB With Node.js</a><br>
+* <a href="./the-modern-application-stack-part-3-building-a-rest-api-using-express-js/index.html" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a><br>
+* <a href="./the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript/index.html" title="Completing the MEAN stack – Mongopop Angular2 client">Part 4: Building a Client UI Using Angular 2 (formerly AngularJS) &amp; TypeScript</a><br>
+* <a href="./the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern/index.html" title="Building an application front-end with ReactJS and ES6">Part 5: Using ReactJS, ES6 &amp; JSX to Build a UI (the rise of MERN)</a><br>
+* <a href="./rest-mobile-app-amazon-alexa-cloud-services/index.html" title="Using REST APIs from mobile applications and Amazon Alexa">Part 6: Browsers Aren&#8217;t the Only UI – Mobile Apps, Amazon Alexa, Cloud Services&#8230;</a></p>
+<h2>A simpler way to build your app – MongoDB Stitch, Backend as a Service</h2>
+<p><a href="https://www.mongodb.com/cloud/stitch">MongoDB Stitch</a> is a backend as a service (BaaS), giving developers a REST-like API to MongoDB, and composability with other services, backed by a robust system for configuring fine-grained data access controls. Stitch provides native SDKs for JavaScript, iOS, and Android.</p>
+<p>Built-in integrations give your application frontend access to your favorite third party services: Twilio, AWS S3, Slack, Mailgun, PubNub, Google, and more. For ultimate flexibility, you can add custom integrations using MongoDB Stitch&#8217;s HTTP service.</p>
+<p>MongoDB Stitch allows you to compose multi-stage pipelines that orchestrate data across multiple services; where each stage acts on the data before passing its results on to the next.</p>
+<p>Unlike other BaaS offerings, MongoDB Stitch works with your existing as well as new MongoDB clusters, giving you access to the full power and scalability of the database. By defining appropriate data access rules, you can selectively expose your existing MongoDB data to other applications through MongoDB Stitch&#8217;s API.</p>
+<p>If you&#8217;d like to try it out, <a href="./mongodb-stitch-the-latest-and-best-way-to-build-your-app/index.html" title="MongoDB Stitch - the latest, and best way to build your app">step through building an application with MongoDB Stitch</a>.</p>
+					<div class="clear"></div>
+										<!-- <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="http://www.clusterdb.com/mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern"
+    dc:identifier="http://www.clusterdb.com/mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern"
+    dc:title="The Modern Application Stack &#8211; Part 5: Using ReactJS, ES6 &#038; JSX to Build a UI (the rise of MERN)"
+    trackback:ping="http://www.clusterdb.com/mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern/trackback" />
+</rdf:RDF> -->			
+				</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern" data-via="wpbeginner" data-text="The Modern Application Stack &#8211; Part 5: Using ReactJS, ES6 &#038; JSX to Build a UI (the rise of MERN)" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmongodb%2Fthe-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mongodb/index.html" rel="category tag">MongoDB</a> | 
+Tags: <a href="./../tag/es6/index.html" rel="tag">es6</a>, <a href="./../tag/javascript/index.html" rel="tag">javascript</a>, <a href="./../tag/mern/index.html" rel="tag">mern</a>, <a href="./../tag/mern-stack/index.html" rel="tag">mern stack</a>, <a href="./../tag/mongodb/index.html" rel="tag">mongodb</a>, <a href="./../tag/react/index.html" rel="tag">REACT</a>, <a href="./../tag/reactjs/index.html" rel="tag">reactjs</a>
+</div>
+
+			</div>
+			
+		
+<!-- You can start editing here. -->
+
+
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="./the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern/index.html#respond" style="display:none;">Cancel reply</a></small>
+</h3>
+<p class="must-log-in">You must be <a href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmongodb%2Fthe-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern">logged in</a> to post a comment.</p>	</div>
+<!-- #respond -->
+		<div class="clear"></div>
+		
+		</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://www.clusterdb.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="./building-a-collaborative-ios-minesweeper-game-with-realm/index.html">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="./using-realm-flexible-sync-in-your-app-an-ios-tutorial/index.html">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="./realm-swift-type-projections/index.html">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="./introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/index.html">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="./goodbye-nspredicate-hello-realm-swift-query-api/index.html">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments">
+<h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments">
+<li class="recentcomments">
+<span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="./../mysql-cluster/mysql-cluster-running-on-raspberry-pi/index.html#comment-787242">MySQL Cluster running on Raspberry Pi</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">andrew</span> on <a href="./../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="./../mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Sai Krishnan</span> on <a href="./../mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-661143">Get MySQL Replication up and running in 5 minutes</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Nayan</span> on <a href="./../mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-660628">Get MySQL Replication up and running in 5 minutes</a>
+</li>
+</ul>
+</li>
+<li id="categories-2" class="widget widget_categories">
+<h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2">
+<a href="./../category/me/index.html">Me</a>
+</li>
+	<li class="cat-item cat-item-146">
+<a href="./../category/mongodb/index.html">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3">
+<a href="./../category/mysql/index.html">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4">
+<a href="./../category/mysql-cluster/index.html">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131">
+<a href="./../category/mysql-fabric/index.html">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5">
+<a href="./../category/mysql-replication/index.html">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214">
+<a href="./../category/mongodb/realm/index.html">Realm</a>
+</li>
+	<li class="cat-item cat-item-1">
+<a href="./../category/uncategorized/index.html">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud">
+<h2 class="widgettitle">Tags</h2>
+<div class="tagcloud">
+<a href="./../tag/7-4/index.html" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="./../tag/apache-kafka/index.html" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="./../tag/cluster/index.html" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="./../tag/ha/index.html" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="./../tag/high-availability/index.html" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="./../tag/ios/index.html" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="./../tag/java/index.html" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="./../tag/javascript/index.html" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="./../tag/mcm/index.html" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="./../tag/mean/index.html" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="./../tag/memcached/index.html" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="./../tag/mobile/index.html" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="./../tag/mongodb/index.html" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="./../tag/mongodb-3-2/index.html" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="./../tag/mongodb-atlas/index.html" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="./../tag/mongodb-mobile/index.html" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="./../tag/mongodb-stitch/index.html" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="./../tag/mysql/index.html" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="./../tag/mysql-5-6/index.html" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="./../tag/mysql-cluster/index.html" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="./../tag/mysql-cluster-70/index.html" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="./../tag/mysql-cluster-7-1/index.html" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="./../tag/mysql-cluster-7-2/index.html" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="./../tag/mysql-cluster-7-3/index.html" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="./../tag/mysql-cluster-7-4/index.html" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="./../tag/mysql-cluster-cge/index.html" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="./../tag/mysql-cluster-manager/index.html" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="./../tag/mysql-enterprise-monitor/index.html" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="./../tag/mysql-fabric-2/index.html" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="./../tag/mysql-replication/index.html" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="./../tag/mysql-utilities/index.html" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="./../tag/ndb-api/index.html" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="./../tag/node-js/index.html" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="./../tag/nosql/index.html" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="./../tag/performance/index.html" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="./../tag/realm/index.html" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="./../tag/replication/index.html" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="./../tag/secondary/index.html" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="./../tag/serverless/index.html" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="./../tag/sharding/index.html" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="./../tag/swift/index.html" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="./../tag/swiftui/index.html" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="./../tag/webcast/index.html" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="./../tag/webinar/index.html" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="./../tag/windows/index.html" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a>
+</div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive">
+<h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="./../2022/03/index.html">March 2022</a></li>
+	<li><a href="./../2022/02/index.html">February 2022</a></li>
+	<li><a href="./../2022/01/index.html">January 2022</a></li>
+	<li><a href="./../2021/12/index.html">December 2021</a></li>
+	<li><a href="./../2021/11/index.html">November 2021</a></li>
+	<li><a href="./../2021/09/index.html">September 2021</a></li>
+	<li><a href="./../2021/08/index.html">August 2021</a></li>
+	<li><a href="./../2021/07/index.html">July 2021</a></li>
+	<li><a href="./../2021/06/index.html">June 2021</a></li>
+	<li><a href="./../2021/05/index.html">May 2021</a></li>
+	<li><a href="./../2021/04/index.html">April 2021</a></li>
+	<li><a href="./../2021/02/index.html">February 2021</a></li>
+	<li><a href="./../2021/01/index.html">January 2021</a></li>
+	<li><a href="./../2020/12/index.html">December 2020</a></li>
+	<li><a href="./../2019/03/index.html">March 2019</a></li>
+	<li><a href="./../2019/01/index.html">January 2019</a></li>
+	<li><a href="./../2018/12/index.html">December 2018</a></li>
+	<li><a href="./../2018/11/index.html">November 2018</a></li>
+	<li><a href="./../2018/10/index.html">October 2018</a></li>
+	<li><a href="./../2018/09/index.html">September 2018</a></li>
+	<li><a href="./../2017/09/index.html">September 2017</a></li>
+	<li><a href="./../2017/03/index.html">March 2017</a></li>
+	<li><a href="./../2017/02/index.html">February 2017</a></li>
+	<li><a href="./../2017/01/index.html">January 2017</a></li>
+	<li><a href="./../2016/12/index.html">December 2016</a></li>
+	<li><a href="./../2016/11/index.html">November 2016</a></li>
+	<li><a href="./../2016/09/index.html">September 2016</a></li>
+	<li><a href="./../2016/01/index.html">January 2016</a></li>
+	<li><a href="./../2015/11/index.html">November 2015</a></li>
+	<li><a href="./../2015/10/index.html">October 2015</a></li>
+	<li><a href="./../2015/09/index.html">September 2015</a></li>
+	<li><a href="./../2015/06/index.html">June 2015</a></li>
+	<li><a href="./../2015/04/index.html">April 2015</a></li>
+	<li><a href="./../2015/03/index.html">March 2015</a></li>
+	<li><a href="./../2015/02/index.html">February 2015</a></li>
+	<li><a href="./../2015/01/index.html">January 2015</a></li>
+	<li><a href="./../2014/12/index.html">December 2014</a></li>
+	<li><a href="./../2014/11/index.html">November 2014</a></li>
+	<li><a href="./../2014/10/index.html">October 2014</a></li>
+	<li><a href="./../2014/09/index.html">September 2014</a></li>
+	<li><a href="./../2014/08/index.html">August 2014</a></li>
+	<li><a href="./../2014/07/index.html">July 2014</a></li>
+	<li><a href="./../2014/06/index.html">June 2014</a></li>
+	<li><a href="./../2014/05/index.html">May 2014</a></li>
+	<li><a href="./../2014/04/index.html">April 2014</a></li>
+	<li><a href="./../2014/03/index.html">March 2014</a></li>
+	<li><a href="./../2014/02/index.html">February 2014</a></li>
+	<li><a href="./../2014/01/index.html">January 2014</a></li>
+	<li><a href="./../2013/12/index.html">December 2013</a></li>
+	<li><a href="./../2013/11/index.html">November 2013</a></li>
+	<li><a href="./../2013/09/index.html">September 2013</a></li>
+	<li><a href="./../2013/08/index.html">August 2013</a></li>
+	<li><a href="./../2013/07/index.html">July 2013</a></li>
+	<li><a href="./../2013/06/index.html">June 2013</a></li>
+	<li><a href="./../2013/05/index.html">May 2013</a></li>
+	<li><a href="./../2013/03/index.html">March 2013</a></li>
+	<li><a href="./../2013/02/index.html">February 2013</a></li>
+	<li><a href="./../2013/01/index.html">January 2013</a></li>
+	<li><a href="./../2012/12/index.html">December 2012</a></li>
+	<li><a href="./../2012/11/index.html">November 2012</a></li>
+	<li><a href="./../2012/09/index.html">September 2012</a></li>
+	<li><a href="./../2012/07/index.html">July 2012</a></li>
+	<li><a href="./../2012/06/index.html">June 2012</a></li>
+	<li><a href="./../2012/05/index.html">May 2012</a></li>
+	<li><a href="./../2012/04/index.html">April 2012</a></li>
+	<li><a href="./../2012/03/index.html">March 2012</a></li>
+	<li><a href="./../2012/02/index.html">February 2012</a></li>
+	<li><a href="./../2012/01/index.html">January 2012</a></li>
+	<li><a href="./../2011/12/index.html">December 2011</a></li>
+	<li><a href="./../2011/11/index.html">November 2011</a></li>
+	<li><a href="./../2011/10/index.html">October 2011</a></li>
+	<li><a href="./../2011/09/index.html">September 2011</a></li>
+	<li><a href="./../2011/07/index.html">July 2011</a></li>
+	<li><a href="./../2011/06/index.html">June 2011</a></li>
+	<li><a href="./../2011/05/index.html">May 2011</a></li>
+	<li><a href="./../2011/04/index.html">April 2011</a></li>
+	<li><a href="./../2011/03/index.html">March 2011</a></li>
+	<li><a href="./../2011/02/index.html">February 2011</a></li>
+	<li><a href="./../2011/01/index.html">January 2011</a></li>
+	<li><a href="./../2010/12/index.html">December 2010</a></li>
+	<li><a href="./../2010/11/index.html">November 2010</a></li>
+	<li><a href="./../2010/10/index.html">October 2010</a></li>
+	<li><a href="./../2010/09/index.html">September 2010</a></li>
+	<li><a href="./../2010/08/index.html">August 2010</a></li>
+	<li><a href="./../2010/07/index.html">July 2010</a></li>
+	<li><a href="./../2010/06/index.html">June 2010</a></li>
+	<li><a href="./../2010/05/index.html">May 2010</a></li>
+	<li><a href="./../2010/04/index.html">April 2010</a></li>
+	<li><a href="./../2010/03/index.html">March 2010</a></li>
+	<li><a href="./../2010/02/index.html">February 2010</a></li>
+	<li><a href="./../2010/01/index.html">January 2010</a></li>
+	<li><a href="./../2009/12/index.html">December 2009</a></li>
+	<li><a href="./../2009/11/index.html">November 2009</a></li>
+	<li><a href="./../2009/10/index.html">October 2009</a></li>
+	<li><a href="./../2009/09/index.html">September 2009</a></li>
+	<li><a href="./../2009/08/index.html">August 2009</a></li>
+	<li><a href="./../2009/07/index.html">July 2009</a></li>
+	<li><a href="./../2009/06/index.html">June 2009</a></li>
+	<li><a href="./../2009/05/index.html">May 2009</a></li>
+	<li><a href="./../2009/04/index.html">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 --><script type="text/javascript" src="./../wp-includes/js/comment-reply.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
+</body>
+</html>

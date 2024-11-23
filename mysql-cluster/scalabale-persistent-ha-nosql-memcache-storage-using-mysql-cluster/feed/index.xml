@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: Scalable, persistent, HA NoSQL Memcache storage using MySQL Cluster	</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 10 Mar 2015 00:41:56 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: getting error while starting memecached service with ndb engine &#124; XL-UAT		</title>
+		<link>./../scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html#comment-456304</link>
+
+		<dc:creator><![CDATA[getting error while starting memecached service with ndb engine &#124; XL-UAT]]></dc:creator>
+		<pubDate>Tue, 10 Mar 2015 00:41:56 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1616#comment-456304</guid>
+
+					<description><![CDATA[[&#8230;] now i can tryout the example from link ./../scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cl&/index.html#8230; [&#8230;]]]></description>
+			<content:encoded><![CDATA[<p>[&#8230;] now i can tryout the example from link <a href="./../scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cl&/index.html#038;#8230" rel="ugc">./../scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cl&/index.html#038;#8230</a>; [&#8230;]</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Vladimir		</title>
+		<link>./../scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html#comment-186182</link>
+
+		<dc:creator><![CDATA[Vladimir]]></dc:creator>
+		<pubDate>Wed, 16 Jul 2014 15:48:54 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1616#comment-186182</guid>
+
+					<description><![CDATA[There is something wrong with parsing but i hope you understand me.]]></description>
+			<content:encoded><![CDATA[<p>There is something wrong with parsing but i hope you understand me.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Vladimir		</title>
+		<link>./../scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html#comment-186177</link>
+
+		<dc:creator><![CDATA[Vladimir]]></dc:creator>
+		<pubDate>Wed, 16 Jul 2014 15:45:57 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1616#comment-186177</guid>
+
+					<description><![CDATA[Sorry, it must be something like this:
+
+[root@localhost ~]# mysql -u root  ndb_initialize()
+main --&#062; connect_to_primary_cluster()
+16-Jul-2014 19:36:46 MSK NDB Memcache 5.6.17-ndb-7.3.5 started [NDB 7.3.5; MySQL 5.6.17]
+Contacting primary management server (localhost:1186) ... 
+main --&#062; ClusterConnectionPool::connect()
+Connected to &quot;localhost:1186&quot; as node id 54.
+main --&#062; Configuration::fetch_meta_record()
+main --&#062; Configuration::fetch_meta_record()
+main --&#062; Configuration::fetch_meta_record()
+main --&#062; Configuration::fetch_meta_record()
+Failed to read configuration -- shutting down.
+(Did you run ndb_memcache_metadata.sql?)
+main --&#062; ndb_destroy()
+Failed to initialize instance. Error code: 255]]></description>
+			<content:encoded><![CDATA[<p>Sorry, it must be something like this:</p>
+<p>[root@localhost ~]# mysql -u root  ndb_initialize()<br />
+main &#8211;&gt; connect_to_primary_cluster()<br />
+16-Jul-2014 19:36:46 MSK NDB Memcache 5.6.17-ndb-7.3.5 started [NDB 7.3.5; MySQL 5.6.17]<br />
+Contacting primary management server (localhost:1186) &#8230;<br />
+main &#8211;&gt; ClusterConnectionPool::connect()<br />
+Connected to &#8220;localhost:1186&#8221; as node id 54.<br />
+main &#8211;&gt; Configuration::fetch_meta_record()<br />
+main &#8211;&gt; Configuration::fetch_meta_record()<br />
+main &#8211;&gt; Configuration::fetch_meta_record()<br />
+main &#8211;&gt; Configuration::fetch_meta_record()<br />
+Failed to read configuration &#8212; shutting down.<br />
+(Did you run ndb_memcache_metadata.sql?)<br />
+main &#8211;&gt; ndb_destroy()<br />
+Failed to initialize instance. Error code: 255</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Vladimir		</title>
+		<link>./../scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html#comment-186172</link>
+
+		<dc:creator><![CDATA[Vladimir]]></dc:creator>
+		<pubDate>Wed, 16 Jul 2014 15:43:51 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1616#comment-186172</guid>
+
+					<description><![CDATA[Hello. Please help me to solve this problem:
+
+[root@localhost ~]# mysql -u root   ndb_initialize()
+main --&#062; connect_to_primary_cluster()
+16-Jul-2014 19:37:54 MSK NDB Memcache 5.6.17-ndb-7.3.5 started [NDB 7.3.5; MySQL 5.6.17]
+Contacting primary management server (localhost:1186) ... 
+main --&#062; ClusterConnectionPool::connect()
+Connected to &quot;localhost:1186&quot; as node id 54.
+main --&#062; Configuration::fetch_meta_record()
+main --&#062; Configuration::fetch_meta_record()
+main --&#062; Configuration::fetch_meta_record()
+main --&#062; Configuration::fetch_meta_record()
+Failed to read configuration -- shutting down.
+(Did you run ndb_memcache_metadata.sql?)
+main --&#062; ndb_destroy()
+Failed to initialize instance. Error code: 255
+
+As you can see, i have loaded metadata, but memcached doesn&#039;t work.]]></description>
+			<content:encoded><![CDATA[<p>Hello. Please help me to solve this problem:</p>
+<p>[root@localhost ~]# mysql -u root   ndb_initialize()<br />
+main &#8211;&gt; connect_to_primary_cluster()<br />
+16-Jul-2014 19:37:54 MSK NDB Memcache 5.6.17-ndb-7.3.5 started [NDB 7.3.5; MySQL 5.6.17]<br />
+Contacting primary management server (localhost:1186) &#8230;<br />
+main &#8211;&gt; ClusterConnectionPool::connect()<br />
+Connected to &#8220;localhost:1186&#8221; as node id 54.<br />
+main &#8211;&gt; Configuration::fetch_meta_record()<br />
+main &#8211;&gt; Configuration::fetch_meta_record()<br />
+main &#8211;&gt; Configuration::fetch_meta_record()<br />
+main &#8211;&gt; Configuration::fetch_meta_record()<br />
+Failed to read configuration &#8212; shutting down.<br />
+(Did you run ndb_memcache_metadata.sql?)<br />
+main &#8211;&gt; ndb_destroy()<br />
+Failed to initialize instance. Error code: 255</p>
+<p>As you can see, i have loaded metadata, but memcached doesn&#8217;t work.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: DK		</title>
+		<link>./../scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html#comment-103239</link>
+
+		<dc:creator><![CDATA[DK]]></dc:creator>
+		<pubDate>Thu, 20 Mar 2014 00:00:39 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1616#comment-103239</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html#comment-103156&quot;&gt;DK&lt;/a&gt;.
+
+I found something at the bottom of the README:
+
+
+  -------------------------------------------------------------------------
+  LIMITATIONS
+  -------------------------------------------------------------------------
+  
+  &quot;SET&quot; and &quot;ENUM&quot; columns rely on metadata which is only properly available to
+  the MySQL server.  While they may work in some situations, they are not
+  fully supported.  Bitfields are not supported at all.  TEXT and BLOB columns
+  are also not supported, though BLOB-like large values can be stored in an
+  external values table, as described above.
+
+
+Also found this post:
+
+http://mysqlblog.lenoxway.net/blog/2012/03/30/Storing-long-values-with-NDB-and-Memcache/]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html#comment-103156">DK</a>.</p>
+<p>I found something at the bottom of the README:</p>
+<p>  &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-<br />
+  LIMITATIONS<br />
+  &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-</p>
+<p>  &#8220;SET&#8221; and &#8220;ENUM&#8221; columns rely on metadata which is only properly available to<br />
+  the MySQL server.  While they may work in some situations, they are not<br />
+  fully supported.  Bitfields are not supported at all.  TEXT and BLOB columns<br />
+  are also not supported, though BLOB-like large values can be stored in an<br />
+  external values table, as described above.</p>
+<p>Also found this post:</p>
+<p><a href="http://mysqlblog.lenoxway.net/blog/2012/03/30/Storing-long-values-with-NDB-and-Memcache/" rel="nofollow ugc">http://mysqlblog.lenoxway.net/blog/2012/03/30/Storing-long-values-with-NDB-and-Memcache/</a></p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: DK		</title>
+		<link>./../scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html#comment-103156</link>
+
+		<dc:creator><![CDATA[DK]]></dc:creator>
+		<pubDate>Wed, 19 Mar 2014 18:55:51 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1616#comment-103156</guid>
+
+					<description><![CDATA[I&#039;ve been looking and have found no info on what data types are (not) supported.  I&#039;m mapping to a TEXT column which apparently is not supported through the memcache API.  I&#039;m using &quot;5.6.15-ndb-7.3.4-cluster-gpl MySQL Cluster Community Server&quot;.   according to innodb-memcached-internals:
+
+* value_columns: Must be mapped to a CHAR, VARCHAR, or BLOB column. There is no length restriction and the value can be NULL.
+
+(from https://dev.mysql.com/doc/refman/5.6/en/innodb-memcached-internals.html)
+
+What are the supported mappings?]]></description>
+			<content:encoded><![CDATA[<p>I&#8217;ve been looking and have found no info on what data types are (not) supported.  I&#8217;m mapping to a TEXT column which apparently is not supported through the memcache API.  I&#8217;m using &#8220;5.6.15-ndb-7.3.4-cluster-gpl MySQL Cluster Community Server&#8221;.   according to innodb-memcached-internals:</p>
+<p>* value_columns: Must be mapped to a CHAR, VARCHAR, or BLOB column. There is no length restriction and the value can be NULL.</p>
+<p>(from <a href="https://dev.mysql.com/doc/refman/5.6/en/innodb-memcached-internals.html" rel="nofollow ugc">https://dev.mysql.com/doc/refman/5.6/en/innodb-memcached-internals.html</a>)</p>
+<p>What are the supported mappings?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Ashok		</title>
+		<link>./../scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html#comment-78833</link>
+
+		<dc:creator><![CDATA[Ashok]]></dc:creator>
+		<pubDate>Mon, 24 Feb 2014 09:16:54 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1616#comment-78833</guid>
+
+					<description><![CDATA[Team,
+
+I need to help to use memcache api with mysql cluster.
+
+Also let us now where should i run this command.
+
+memcached -E /usr/lib64/ndb_engine.so -e &quot;connectstring=192.168.13.240:1186;role=db-only;debug=true&quot; -vv -u root 
+
+Thanks
+Ashok]]></description>
+			<content:encoded><![CDATA[<p>Team,</p>
+<p>I need to help to use memcache api with mysql cluster.</p>
+<p>Also let us now where should i run this command.</p>
+<p>memcached -E /usr/lib64/ndb_engine.so -e &#8220;connectstring=192.168.13.240:1186;role=db-only;debug=true&#8221; -vv -u root </p>
+<p>Thanks<br />
+Ashok</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Joshua Gigg		</title>
+		<link>./../scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html#comment-535</link>
+
+		<dc:creator><![CDATA[Joshua Gigg]]></dc:creator>
+		<pubDate>Wed, 15 May 2013 10:12:37 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1616#comment-535</guid>
+
+					<description><![CDATA[I&#039;m trying to get large values to work, but the mysqlblog.lenoxway.net appears down, and there isn&#039;t any Google/Wayback Machine archive for the post about it.
+
+I can set values fine, but reading them returns an empty string.]]></description>
+			<content:encoded><![CDATA[<p>I&#8217;m trying to get large values to work, but the mysqlblog.lenoxway.net appears down, and there isn&#8217;t any Google/Wayback Machine archive for the post about it.</p>
+<p>I can set values fine, but reading them returns an empty string.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: cary		</title>
+		<link>./../scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html#comment-534</link>
+
+		<dc:creator><![CDATA[cary]]></dc:creator>
+		<pubDate>Fri, 30 Nov 2012 02:49:00 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1616#comment-534</guid>
+
+					<description><![CDATA[hi 
+
+I met a problem.When I test memcahed with memslap(eg:/usr/local/libmemcached-1.0.8/bin/memslap --server=192.168.1.204:11211  --execute-number=5s --test=get  --concurrency=20), the memcached server is not stable ,like errors 
+
+clients/execute.cc:73 Failure on read((269963072) SERVER HAS FAILED AND IS DISABLED UNTIL TIMED RETRY, host: 192.168.1.204:11211 -&#062; libmemcached/get.cc:314) of Xx8OtiRdS9cEwleBFs3YjOSOGd77by2ywAMhlhIDrmJfXxrnpmBPAfhQ9oacnSbbepGNXRSEDntlccOQMbjZFOzGCPsrtRIOHbng
+
+memslap SERVER ERROR, out of memory 
+
+another question :can I use the arch in production?can it work well under 1.5W read per second? 
+
+Please help 
+thanks very much]]></description>
+			<content:encoded><![CDATA[<p>hi </p>
+<p>I met a problem.When I test memcahed with memslap(eg:/usr/local/libmemcached-1.0.8/bin/memslap &#8211;server=192.168.1.204:11211  &#8211;execute-number=5s &#8211;test=get  &#8211;concurrency=20), the memcached server is not stable ,like errors </p>
+<p>clients/execute.cc:73 Failure on read((269963072) SERVER HAS FAILED AND IS DISABLED UNTIL TIMED RETRY, host: 192.168.1.204:11211 -&gt; libmemcached/get.cc:314) of Xx8OtiRdS9cEwleBFs3YjOSOGd77by2ywAMhlhIDrmJfXxrnpmBPAfhQ9oacnSbbepGNXRSEDntlccOQMbjZFOzGCPsrtRIOHbng</p>
+<p>memslap SERVER ERROR, out of memory </p>
+<p>another question :can I use the arch in production?can it work well under 1.5W read per second? </p>
+<p>Please help<br />
+thanks very much</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Anonymous		</title>
+		<link>./../scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/index.html#comment-533</link>
+
+		<dc:creator><![CDATA[Anonymous]]></dc:creator>
+		<pubDate>Fri, 30 Nov 2012 01:08:20 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1616#comment-533</guid>
+
+					<description><![CDATA[I have already did verified that and was able to get the INCR operation to work fine as I mentioned, however, my main problems is the behavior now of the role large is not as same as db-only role. It looks like there&#039;re some race condition letting the memcache client (PHP memcache module in my case) fail to detect that it created the session record the first time and keeps inserting and re-inserting it on and on again and again, that was not the case with the stock memcached as well as the db-role mode. The memcache PHP module creates a session-id.lock key and keeps it with values between 0 and 1, now after switching to the large role this key keeps incremented for so long and the page keeps stalled when executing for long as well, the records ends up with high values.
+
+I am not sure what is exactly the root cause, I am still debugging though it is a very hectic process but what I am very sure from is, its not something from the module itself but from the new architecture.
+
+
+Thanks!]]></description>
+			<content:encoded><![CDATA[<p>I have already did verified that and was able to get the INCR operation to work fine as I mentioned, however, my main problems is the behavior now of the role large is not as same as db-only role. It looks like there&#8217;re some race condition letting the memcache client (PHP memcache module in my case) fail to detect that it created the session record the first time and keeps inserting and re-inserting it on and on again and again, that was not the case with the stock memcached as well as the db-role mode. The memcache PHP module creates a session-id.lock key and keeps it with values between 0 and 1, now after switching to the large role this key keeps incremented for so long and the page keeps stalled when executing for long as well, the records ends up with high values.</p>
+<p>I am not sure what is exactly the root cause, I am still debugging though it is a very hectic process but what I am very sure from is, its not something from the module itself but from the new architecture.</p>
+<p>Thanks!</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

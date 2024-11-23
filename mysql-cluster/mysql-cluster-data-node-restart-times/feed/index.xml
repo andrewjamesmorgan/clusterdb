@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: MySQL Cluster Data Node restart times	</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../mysql-cluster-data-node-restart-times/index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Fri, 18 Jul 2014 15:09:05 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: andrew		</title>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-187699</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 18 Jul 2014 15:09:05 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-187699</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-data-node-restart-times/index.html#comment-174998&quot;&gt;anusha&lt;/a&gt;.
+
+The best approach is to monitor the files for a while. You&#039;ll see that the files get allocated but then as new ones are created, old ones are deleted and so you should see the overall disk usage level out.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-data-node-restart-times/index.html#comment-174998">anusha</a>.</p>
+<p>The best approach is to monitor the files for a while. You&#8217;ll see that the files get allocated but then as new ones are created, old ones are deleted and so you should see the overall disk usage level out.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: anusha		</title>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-174998</link>
+
+		<dc:creator><![CDATA[anusha]]></dc:creator>
+		<pubDate>Sat, 05 Jul 2014 10:16:04 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-174998</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-data-node-restart-times/index.html#comment-202&quot;&gt;Girish&lt;/a&gt;.
+
+&#062;&#062;&#062;&#062;&#062;&#062;&#062;
+Just to be clear, which files on my datanode should increase in size?
+
+There are files named ndb_2_* in my data dir as well as files in $datadir/
+&#062;&#062;&#062;&#062;&#062;&#062;&#062;&#062;&#062;
+
+I&#039;m also interested in knowing this. Could you please clarify]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-data-node-restart-times/index.html#comment-202">Girish</a>.</p>
+<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<br />
+Just to be clear, which files on my datanode should increase in size?</p>
+<p>There are files named ndb_2_* in my data dir as well as files in $datadir/<br />
+&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</p>
+<p>I&#8217;m also interested in knowing this. Could you please clarify</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-204</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 27 Sep 2012 09:12:26 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-204</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-data-node-restart-times/index.html#comment-203&quot;&gt;Brian&lt;/a&gt;.
+
+Brian,
+
+ first of all, I&#039;ll mention that it&#039;s worth checking the log files.
+
+ My best guess would be that when you isolated the host running one or more data nodes, those data nodes running there realised that they no longer formed a majority and so needed to check if they could continue. If 50% of the data nodes were on that host then they would attempt to contact the management node for an arbitration decision - if they can&#039;t contact the arbitrator then they will shut themselves down to avoid the potential for a split-brain scenario. You can configure the hertbeat interval and so influence how long the network can be dropped.
+
+Assuming that this is the case then you need to restart the data nodes once network connectivity has been restored.
+
+Refer to &lt;a href=&quot;./../mysql-cluster-fault-tolerance-impact-of-deployment-decisions/&quot;/index.html title=&quot;MySQL Cluster fault tolerance – impact of deployment decisions&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;MySQL Cluster fault tolerance – impact of deployment decisions&lt;/a&gt; for more details on how this works.
+
+Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-data-node-restart-times/index.html#comment-203">Brian</a>.</p>
+<p>Brian,</p>
+<p> first of all, I&#8217;ll mention that it&#8217;s worth checking the log files.</p>
+<p> My best guess would be that when you isolated the host running one or more data nodes, those data nodes running there realised that they no longer formed a majority and so needed to check if they could continue. If 50% of the data nodes were on that host then they would attempt to contact the management node for an arbitration decision &#8211; if they can&#8217;t contact the arbitrator then they will shut themselves down to avoid the potential for a split-brain scenario. You can configure the hertbeat interval and so influence how long the network can be dropped.</p>
+<p>Assuming that this is the case then you need to restart the data nodes once network connectivity has been restored.</p>
+<p>Refer to <a href="./../mysql-cluster-fault-tolerance-impact-of-deployment-decisions/index.html" title="MySQL Cluster fault tolerance – impact of deployment decisions" target="_blank" rel="nofollow">MySQL Cluster fault tolerance – impact of deployment decisions</a> for more details on how this works.</p>
+<p>Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Brian		</title>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-203</link>
+
+		<dc:creator><![CDATA[Brian]]></dc:creator>
+		<pubDate>Thu, 27 Sep 2012 06:31:38 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-203</guid>
+
+					<description><![CDATA[Hi Andrew,
+
+I am having problem with my data node &quot;reconnecting&quot; back to the network. I am running MySQL cluster on window platform.
+
+I managed to set up mySQL cluster and i pull out the cable connecting the data node to the network to simulate network failure for that particular host. However, when I try to reconnect the data node back to the network, it could not detect the data node.
+
+Could you teach me how to resolve this issue?
+
+Thanks,
+Brian]]></description>
+			<content:encoded><![CDATA[<p>Hi Andrew,</p>
+<p>I am having problem with my data node &#8220;reconnecting&#8221; back to the network. I am running MySQL cluster on window platform.</p>
+<p>I managed to set up mySQL cluster and i pull out the cable connecting the data node to the network to simulate network failure for that particular host. However, when I try to reconnect the data node back to the network, it could not detect the data node.</p>
+<p>Could you teach me how to resolve this issue?</p>
+<p>Thanks,<br />
+Brian</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Girish		</title>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-202</link>
+
+		<dc:creator><![CDATA[Girish]]></dc:creator>
+		<pubDate>Tue, 01 Nov 2011 15:36:02 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-202</guid>
+
+					<description><![CDATA[Hi Andrew,
+
+Okay thank you for this information. I don&#039;t think this is clearly stated in the documentation.
+
+Just to be clear, which files on my datanode should increase in size?
+
+There are files named ndb_2_* in my data dir as well as files in $datadir/ndbinfo/
+
+Thanks again.]]></description>
+			<content:encoded><![CDATA[<p>Hi Andrew,</p>
+<p>Okay thank you for this information. I don&#8217;t think this is clearly stated in the documentation.</p>
+<p>Just to be clear, which files on my datanode should increase in size?</p>
+<p>There are files named ndb_2_* in my data dir as well as files in $datadir/ndbinfo/</p>
+<p>Thanks again.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: admin		</title>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-201</link>
+
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Tue, 01 Nov 2011 14:10:40 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-201</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-data-node-restart-times/index.html#comment-199&quot;&gt;Girish&lt;/a&gt;.
+
+Hi Girish,
+
+ everything is in order! 
+
+ The data nodes don&#039;t have individual files for each table and so you won&#039;t see the table names there. What you&#039;re seeing with the MySQL Server directories is not the files containing the &lt;strong&gt;contents &lt;/strong&gt;of the tables but a copy of the data disctionary/schema definitions for those tables (e.g. if you add more rows to these tables then the files you see with the data nodes should increase in size but the ones with the MySQL Servers should not).
+
+Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-data-node-restart-times/index.html#comment-199">Girish</a>.</p>
+<p>Hi Girish,</p>
+<p> everything is in order! </p>
+<p> The data nodes don&#8217;t have individual files for each table and so you won&#8217;t see the table names there. What you&#8217;re seeing with the MySQL Server directories is not the files containing the <strong>contents </strong>of the tables but a copy of the data disctionary/schema definitions for those tables (e.g. if you add more rows to these tables then the files you see with the data nodes should increase in size but the ones with the MySQL Servers should not).</p>
+<p>Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Girish		</title>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-200</link>
+
+		<dc:creator><![CDATA[Girish]]></dc:creator>
+		<pubDate>Tue, 01 Nov 2011 13:44:00 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-200</guid>
+
+					<description><![CDATA[To start mysql on the mysql node I run this command, the ndbcluster option sets this engine to default:
+sudo ./mysqld_safe --user=mysql --ndbcluster &#038;]]></description>
+			<content:encoded><![CDATA[<p>To start mysql on the mysql node I run this command, the ndbcluster option sets this engine to default:<br />
+sudo ./mysqld_safe &#8211;user=mysql &#8211;ndbcluster &amp;</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Girish		</title>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-199</link>
+
+		<dc:creator><![CDATA[Girish]]></dc:creator>
+		<pubDate>Tue, 01 Nov 2011 13:39:19 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-199</guid>
+
+					<description><![CDATA[Hi Andrew, thanks for the prompt reply.
+
+When I run the SHOW ENGINES statement, ndbcluster is set to DEFAULT.
+So when I create a database and table, the table&#039;s engine is automatically set to ndbcluster.
+
+I&#039;m looking at the following log files:
+on sql node: /var/lib/mysql-cluster/ndb_1_cluster.log
+on data nodes: $BASEDIR/data/ndb_2_out.log and ndb_3_out.log
+
+The logs seem okay.
+
+But I don&#039;t see the database and table data in the datadir on the data nodes. I do see the database and table data in the datadir on the mysql node.
+
+Is it possible there is a permissions issue? Or the my.cnf is not being read properly?
+
+This is my data node my.cnf file:
+[mysqld]
+# Options for mysqld process:
+ndbcluster                      # run NDB storage engine
+ndb-connectstring=xx.xxx.xxx.xxx
+basedir=/mnt/db/mysql
+datadir=/mnt/db/mysql/data
+
+[mysql_cluster]
+# Options for ndbd process:
+ndb-connectstring=xx.xxx.xxx.xxx
+
+Any insight would be much appreciated!]]></description>
+			<content:encoded><![CDATA[<p>Hi Andrew, thanks for the prompt reply.</p>
+<p>When I run the SHOW ENGINES statement, ndbcluster is set to DEFAULT.<br />
+So when I create a database and table, the table&#8217;s engine is automatically set to ndbcluster.</p>
+<p>I&#8217;m looking at the following log files:<br />
+on sql node: /var/lib/mysql-cluster/ndb_1_cluster.log<br />
+on data nodes: $BASEDIR/data/ndb_2_out.log and ndb_3_out.log</p>
+<p>The logs seem okay.</p>
+<p>But I don&#8217;t see the database and table data in the datadir on the data nodes. I do see the database and table data in the datadir on the mysql node.</p>
+<p>Is it possible there is a permissions issue? Or the my.cnf is not being read properly?</p>
+<p>This is my data node my.cnf file:<br />
+[mysqld]<br />
+# Options for mysqld process:<br />
+ndbcluster                      # run NDB storage engine<br />
+ndb-connectstring=xx.xxx.xxx.xxx<br />
+basedir=/mnt/db/mysql<br />
+datadir=/mnt/db/mysql/data</p>
+<p>[mysql_cluster]<br />
+# Options for ndbd process:<br />
+ndb-connectstring=xx.xxx.xxx.xxx</p>
+<p>Any insight would be much appreciated!</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: admin		</title>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-198</link>
+
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Tue, 01 Nov 2011 07:56:10 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-198</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-cluster-data-node-restart-times/index.html#comment-197&quot;&gt;Girish&lt;/a&gt;.
+
+Hi Girish,
+
+ first step - check that MySQL Cluster is enabled in the MySQL Servers - from the mysql CLI run SHOW ENGINES; and check that NDBCLUSTER is enabled.
+
+ If it is then step 2 is to make sure that you&#039;re telling MySQL to use Cluster when you create your tables. For example...
+
+CREATE TABLE clusterdb.simples (id INT NOT NULL PRIMARY KEY) ENGINE=NDBCLUSTER;
+
+You can migrate an existing table using...
+
+ALTER TABLE clusterdb.existing ENGINE=NDBCLUSTER;
+
+Let me know how you get on.
+
+Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-cluster-data-node-restart-times/index.html#comment-197">Girish</a>.</p>
+<p>Hi Girish,</p>
+<p> first step &#8211; check that MySQL Cluster is enabled in the MySQL Servers &#8211; from the mysql CLI run SHOW ENGINES; and check that NDBCLUSTER is enabled.</p>
+<p> If it is then step 2 is to make sure that you&#8217;re telling MySQL to use Cluster when you create your tables. For example&#8230;</p>
+<p>CREATE TABLE clusterdb.simples (id INT NOT NULL PRIMARY KEY) ENGINE=NDBCLUSTER;</p>
+<p>You can migrate an existing table using&#8230;</p>
+<p>ALTER TABLE clusterdb.existing ENGINE=NDBCLUSTER;</p>
+<p>Let me know how you get on.</p>
+<p>Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Girish		</title>
+		<link>./../mysql-cluster-data-node-restart-times/index.html#comment-197</link>
+
+		<dc:creator><![CDATA[Girish]]></dc:creator>
+		<pubDate>Tue, 01 Nov 2011 00:12:05 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=365#comment-197</guid>
+
+					<description><![CDATA[Once MySQL Cluster is set up should I be seeing the MySQL database and table data stored in my datadir on my datanodes? Right now the data appears only in the datadir of my MySQL node, so something doesn&#039;t seem right.
+
+My setup is 2 data nodes and 1 server with the management node and sql node, 3 servers total.
+
+I run /etc/init.d/mysql.server start on the sql node, then log into mysql and create a db and tables, but the data files for the tables only appear in the sql node datadir. They do not appear in the data nodes&#039; datadir.
+
+Any help or pointers would be appreciated!]]></description>
+			<content:encoded><![CDATA[<p>Once MySQL Cluster is set up should I be seeing the MySQL database and table data stored in my datadir on my datanodes? Right now the data appears only in the datadir of my MySQL node, so something doesn&#8217;t seem right.</p>
+<p>My setup is 2 data nodes and 1 server with the management node and sql node, 3 servers total.</p>
+<p>I run /etc/init.d/mysql.server start on the sql node, then log into mysql and create a db and tables, but the data files for the tables only appear in the sql node datadir. They do not appear in the data nodes&#8217; datadir.</p>
+<p>Any help or pointers would be appreciated!</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

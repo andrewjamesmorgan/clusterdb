@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>7.3 &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Thu, 22 Jan 2015 09:49:28 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>MySQL Cluster 7.3.8 Released</title>
+		<link>./../../mysql-cluster/mysql-cluster-7-3-8-released/index.html</link>
+					<comments>./../../mysql-cluster/mysql-cluster-7-3-8-released/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 22 Jan 2015 09:49:28 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[7.3]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.3]]></category>
+		<category><![CDATA[secondary]]></category>
+		<guid isPermaLink="false">./../../index.html?p=3985</guid>
+
+					<description><![CDATA[The binary and source versions of MySQL Cluster 7.3.8 have now been made available at http://www.mysql.com/downloads/cluster/. Release notes MySQL Cluster NDB 7.3.8 is a new release of MySQL Cluster, based on MySQL Server 5.6 and including features from version 7.3 of the NDB storage engine, as well as fixing a number of recently discovered bugs]]></description>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/11/MySQL_Cluster.png"><img decoding="async" class="alignnone size-medium wp-image-2982" src="./../../wp-content/uploads/2013/11/MySQL_Cluster-300x125.png" alt="MySQL Cluster Logo" width="300" height="125" srcset="./../../wp-content/uploads/2013/11/MySQL_Cluster-300x125.png 300w, ./../../wp-content/uploads/2013/11/MySQL_Cluster.png 1004w" sizes="(max-width: 300px) 100vw, 300px" /><br />
+</a><br />
+The binary and source versions of MySQL Cluster 7.3.8 have now been made available at <a href="http://www.mysql.com/downloads/cluster/" target="_blank">http://www.mysql.com/downloads/cluster/</a>.</p>
+<h2>Release notes</h2>
+<p>MySQL Cluster NDB 7.3.8 is a new release of MySQL Cluster, based on MySQL Server 5.6 and including features from version 7.3 of the NDB storage engine, as well as fixing a number of recently discovered bugs in previous MySQL Cluster releases. Obtaining MySQL Cluster NDB 7.3. MySQL Cluster NDB 7.3 source code and binaries can be obtained from<br />
+<a title="http://dev.mysql.com/downloads/cluster/" href="http://dev.mysql.com/downloads/cluster/" target="_blank">http://dev.mysql.com/downloads/cluster/</a>.</p>
+<p>For an overview of changes made in MySQL Cluster NDB 7.3, see MySQL Cluster Development in MySQL Cluster NDB 7.3 (<br />
+<a title="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-development-5-6-ndb-7-3.html" href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-development-5-6-ndb-7-3.html" target="_blank">http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-development-5-6-ndb-7-3.html</a>).</p>
+<p>This release also incorporates all bugfixes and changes made in previous MySQL Cluster releases, as well as all bugfixes and feature changes which were added in mainline MySQL 5.6 through MySQL 5.6.22 (<a title="see Changes in MySQL 5.6.22" href="http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-22.html" target="_blank">see Changes in MySQL 5.6.22)</a>. A full description of feature changes and bug fixes in can be found in the <a title="MySQL Cluster 7.3.8 release notes" href="http://dev.mysql.com/doc/relnotes/mysql-cluster/7.3/en/mysql-cluster-news-5-6-22-ndb-7-3-8.html" target="_blank">MySQL Cluster 7.3.8 release notes</a>; for convenience, the feature changes (but not bug fixes) are listed here.</p>
+<h3>Functionality Added or Changed</h3>
+<p>&nbsp;</p>
+<ul>
+<li><strong>Performance</strong>: Recent improvements made to the multithreaded scheduler were intended to optimize the cache behavior of its internal data structures, with members of these structures placed such that those local to a given thread do not overflow into a cache line which can be accessed by another thread. Where required, extra padding bytes are inserted to isolate cache lines owned (or shared) by other threads, thus avoiding invalidation of the entire cache line if another thread writes into a cache line not entirely owned by itself. This optimization improved MT Scheduler performance by several percent.It has since been found that the optimization just described depends on the global instance of struct thr_repository starting at a cache line aligned base address as well as the compiler not rearranging or adding extra padding to the scheduler struct; it was also found that these prerequisites were not guaranteed (or even checked). Thus this cache line optimization has previously worked only when g_thr_repository (that is, the global instance) ended up being cache line aligned only by accident. In addition, on 64-bit platforms, the compiler added extra padding words in struct thr_safe_pool such that attempts to pad it to a cache line aligned size failed.
+<p>The current fix ensures that g_thr_repository is constructed on a cache line aligned address, and the constructors modified so as to verify cacheline aligned adresses where these are assumed by design.</p>
+<p>Results from internal testing show improvements in MT Scheduler read performance of up to 10% in some cases, following these changes. (Bug #18352514)</li>
+<li><strong>Cluster API</strong>: Two new example programs, demonstrating reads and writes of CHAR, VARCHAR, and VARBINARY column values, have been added to storage/ndb/ndbapi-examples in the MySQL Cluster source tree. For more information about these programs, including source code listings, see <a title="NDB API Simple Array Example" href="http://dev.mysql.com/doc/ndbapi/en/ndbapi-examples-array-simple.html" target="_blank">NDB API Simple Array Example</a>, and <a title="NDB API Simple Array Example Using Adapter" href="http://dev.mysql.com/doc/ndbapi/en/ndbapi-examples-array-adapter.html" target="_blank">NDB API Simple Array Example Using Adapter</a>.</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/mysql-cluster-7-3-8-released/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Cluster latest developments &#8211; webinar replay + Q&#038;A</title>
+		<link>./../../mysql-cluster/mysql-cluster-latest-developments-webinar-replay-qa/index.html</link>
+					<comments>./../../mysql-cluster/mysql-cluster-latest-developments-webinar-replay-qa/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 29 Jul 2014 12:05:02 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[7.3]]></category>
+		<category><![CDATA[7.4]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.3]]></category>
+		<category><![CDATA[MySQL Cluster 7.4]]></category>
+		<guid isPermaLink="false">./../../index.html?p=3931</guid>
+
+					<description><![CDATA[I recently hosted hosting a webinar which explained what MySQL Clusrter is, what it can deliver and what the latest developments were. The &#8220;Discover the latest MySQL Cluster Developments&#8221; webinar is now available to view here. At the end of this article you&#8217;ll find a full transcript of the Q&#038;A from the live session. Details:]]></description>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2014/07/MySQL_Cluster_400.png"><img decoding="async" src="./../../wp-content/uploads/2014/07/MySQL_Cluster_400-300x126.png" alt="MySQL Cluster Logo" width="300" height="126" class="aligncenter size-medium wp-image-3934" srcset="./../../wp-content/uploads/2014/07/MySQL_Cluster_400-300x126.png 300w, ./../../wp-content/uploads/2014/07/MySQL_Cluster_400.png 400w" sizes="(max-width: 300px) 100vw, 300px" /></a>I recently hosted hosting a webinar which explained what MySQL Clusrter is, what it can deliver and what the latest developments were. The <a href="http://www.mysql.com/news-and-events/web-seminars/discover-the-latest-mysql-cluster-developments/" title="Discover the latest MySQL Cluster Developments webinar" target="_blank">&#8220;Discover the latest MySQL Cluster Developments&#8221; webinar is now available to view here</a>. At the end of this article you&#8217;ll find a full transcript of the Q&#038;A from the live session.</p>
+<h3>Details:</h3>
+<p>View this webinar to learn how MySQL Cluster 7.3, the latest GA release, enables developer agility by making it far simpler and faster to build your products and web-based applications with MySQL Cluster. You&#8217;ll also learn how MySQL Cluster and its linear scalability, 99.999% uptime, real-time responsiveness, and ability to perform over 1 BILLION Writes per Minute can help your products and applications meet the needs of the most demanding markets. MySQL Cluster combines these capabilities and the affordability of open source, making it well suited for use as an embedded database.</p>
+<p>In this replay you&#8217;ll learn about the following MySQL Cluster capabilities, including the latest innovations in the 7.3 GA release:</p>
+<ul>
+<li>Auto-sharding (partitioning) across commodity hardware for extreme read and write scalability</li>
+<li>Cross-data center geographic synchronous and asynchronous replication</li>
+<li>Online scaling and schema upgrades, now with improved Connection Thread Scalability</li>
+<li>Real-time optimizations for ultra-low, predictable latency</li>
+<li>Foreign Key Support for tight referential integrity</li>
+<li>SQL and NoSQL interfaces, now with support for Node.js</li>
+<li>Support for MySQL 5.6, allowing use of the latest InnoDB and NDB engines within one database</li>
+<li>Integrated HA for 99.999% availability</li>
+<li>Auto-Installer that installs, configures, provisions and tunes a production grade cluster in minutes</li>
+</ul>
+<p>In addition, you will get a sneak preview of some of the new features planned in MySQL Cluster 7.4 Come and learn how MySQL Cluster can help you differentiate your products and extend their reach into new markets, as well as deliver highly demanding web-based applications, either on premises or in the cloud.</p>
+<h3>Q&#038;A Transcript</h3>
+<ul>
+<li><strong>When using the Memcached API, can I use my existing Memcached connector?</strong> Yes. The Memcached API actually uses the regular memcached protocol but then has a custom plugin that acesses the MySQL Cluster data nodes rather than using its local in-memory store.</li>
+<li><strong>If I&#8217;m replicating between 2 Clusters in 2 data centres and the WAN fails for a minute &#8211; what happens?</strong> Because the replication between MySQL Cluster instances is asynchronous &#8211; the application isn&#8217;t impacted (for example, there will be no extra errors or latency). The changes will be stored in the binary log of the Cluster to which they were sent and then replicated to the other site once the WAN returns.</li>
+<li><strong>Can I scale back down as well as up?</strong> It&#8217;s an online operation to reduce the number of MySQL Servers (or other application nodes) but that isn&#8217;t currently possible for the data nodes. In reality, it&#8217;s very rare that applications need to reduce the amount of data they store.</li>
+<li><strong>Are there any MySQL connectors that don&#8217;t work with MySQL Cluster?</strong> No, any connector that works with MySQL will work just as well with MySQL Cluster.</li>
+<li><strong>Do you have more details on the benchmark results?</strong> Yes &#8211; take a look at the <a href="http://www.mysql.com/why-mysql/benchmarks/mysql-cluster/" title="MySQL Cluster Benchmarks page" target="_blank">MySQL Cluster Benchmarks page</a>.</li>
+<li><strong>I&#8217;ve been hearing about MySQL Fabric &#8211; does that also allow queries and joins ot span multiple shards?</strong> Currently, the only option for cross-shard queries is to use MySQL Cluster <strong>or</strong> implement them at the application layer.</li>
+<li><strong>Is the data is partioned over diffrent cluster nodes or do all cluster nodes hold the full data set.</strong> Each node group stores a subset of the rows from each table. The 2 data nodes within the node group will store the exact same set of rows.</li>
+<li><strong>Where can I find a definition of those different kinds of Foreign Key constraints?</strong> <a href="http://en.wikipedia.org/wiki/Foreign_key#Referential_actions" title="The wikipedia definition for Foreign Keys" target="_blank">The wikipedia definition for Foreign Keys</a> is a good place to start.</li>
+<li><strong>What is the diffrence between ndbcluster and MySQL Cluster ?</strong> None &#8211; they&#8217;re one and the same. When you hear any of &#8220;Cluster&#8221;, &#8220;MySQL Cluster&#8221;, &#8220;NDB&#8221; and &#8220;NDB Cluster&#8221; the meaning is the same.</li>
+<li><strong>Do I need to have a web server installed for the Auto-Installer to work?</strong> No &#8211; the MySQL Cluster auto-installer comes with a small web server built-in.</li>
+<li><strong>Are there any dependencies to meet before installing MySQL Cluster on RHEL Liunx?</strong> It should work out of the box. My preferred way of working is to use the generic Linux tar ball for MySQL Cluster (get it from <a href="http://dev.mysql.com/downloads/cluster/" title="the MySQL Cluster download page" target="_blank">the MySQL Cluster download page</a>) &#8211; extract it and then run the auto-installer or configure it manually.</li>
+<li><strong>Is there any guide available to migrate mysql nodes to mysql cluster?</strong> Probably the closest we have is a white paper on how to get the best out of any PoC for MySQL Cluster (as it highlights what needs to be done differently in order to get the best results)&#8230; <a href="http://www.mysql.com/why-mysql/white-papers/mysql-cluster-evaluation-guide/" title="MySQL Cluster Evaluation Guide" target="_blank">MySQL Cluster Evaluation Guide</a>. Note that MySQL Cluster uses a different version of the mysqld binary and so you&#8217;ll need to stop your existing MySQL Server and start up the new one. To migrate a specific table to MySQL Cluster after that is done use &#8220;ALTER TABLE my-tab ENGINE=NDB;&#8221;.</li>
+<li><strong>Does drupal support MySQL Cluster?</strong> I&#8217;ve heard of people doing it but I suspect that minor tweaks to teh Drupal code may have been needed.</li>
+<li><strong>How do the NoSQL APIs map to the SQL database schemas?</strong> It varies slightly by API &#8211; in general, you provide some annotations or meta-data to specify how tables or columns should map to keys/objects/properties. With Memcached you have the <strong>option</strong> of being schema-less and having all data stored in one, big, generic table.</li>
+<li><strong>Where can I learn more about MySQL Fabric?</strong> The <a href="http://www.mysql.com/products/enterprise/fabric.html" title="MySQL Fabric page" target="_blank">MySQL Fabric page</a> is a good starting point; for an end-to-end example, take a look at this <a href="./../../mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql/index.html" title="tutorial on adding HA and then sharding using MySQL Fabric" target="_blank">tutorial on adding HA and then sharding using MySQL Fabric</a>.</li>
+<li><strong>What is difference between MySQL Fabric and MySQL Cluster?</strong> MySQL Fabric provides server farm management on top of &#8216;regular&#8217; MySQL Servers storing data with the InnoDB storage engine it delivers HA and sharding. MySQL Cluster works below the MySQL Server, storing data in the NDB storage engine (on the data nodes). MySQL Cluster can deliver higher levels of High Availability; better application transparency and cross-shard queries, joins and transactions <strong>but</strong> it does mean using a different storage engine which of course comes with its own limitations (see the <a href="http://www.mysql.com/why-mysql/white-papers/mysql-cluster-evaluation-guide/" title="MySQL Cluster Evaluation Guide" target="_blank">MySQL Cluster Evaluation Guide</a> for details of those).</li>
+<li><strong>So, if I have any full table scans, should I forget about MySQL Cluster></strong> Note necessarily. If every one of your high running operations is a full table scan then MySQL Cluster might not be ideal. However if most operations are simpler but you have some full table scans then that could be fine. The optimisations going into MySQL Cluster 7.4 should particularly benefit table scans.</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/mysql-cluster-latest-developments-webinar-replay-qa/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Discover the latest MySQL Cluster Developments &#8211; Upcoming webinar</title>
+		<link>./../../mysql-cluster/discover-the-latest-mysql-cluster-developments-upcoming-webinar/index.html</link>
+					<comments>./../../mysql-cluster/discover-the-latest-mysql-cluster-developments-upcoming-webinar/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 14 Jul 2014 12:40:06 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[7.3]]></category>
+		<category><![CDATA[7.4]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.3]]></category>
+		<category><![CDATA[MySQL Cluster 7.4]]></category>
+		<category><![CDATA[webinar]]></category>
+		<guid isPermaLink="false">./../../index.html?p=3926</guid>
+
+					<description><![CDATA[On Thursday 17th July I&#8217;ll be hosting a webinar which explains what MySQL Clusrter is, what it can deliver and what the latest developments are. As always the webinar is free but please register here. Details: Join this technical webinar to learn how MySQL Cluster 7.3, the latest GA release, enables developer agility by making]]></description>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/11/MySQL_Cluster.png"><img fetchpriority="high" decoding="async" src="./../../wp-content/uploads/2013/11/MySQL_Cluster.png" alt="MySQL Cluster Logo" width="1004" height="421" class="aligncenter size-full wp-image-2982" srcset="./../../wp-content/uploads/2013/11/MySQL_Cluster.png 1004w, ./../../wp-content/uploads/2013/11/MySQL_Cluster-300x125.png 300w" sizes="(max-width: 1004px) 100vw, 1004px" /></a>On Thursday 17th July I&#8217;ll be hosting a webinar which explains what MySQL Clusrter is, what it can deliver and what the latest developments are. As always the webinar is free but please <a href="http://www.mysql.com/news-and-events/web-seminars/discover-the-latest-mysql-cluster-developments/" title="Discover the latest MySQL Cluster Developments" target="_blank">register here</a>.</p>
+<h3>Details:</h3>
+<p>Join this technical webinar to learn how MySQL Cluster 7.3, the latest GA release, enables developer agility by making it far simpler and faster to build your products and web-based applications with MySQL Cluster. You&#8217;ll also learn how MySQL Cluster and its linear scalability, 99.999% uptime, real-time responsiveness, and ability to perform over 1 BILLION Writes per Minute can help your products and applications meet the needs of the most demanding markets. MySQL Cluster combines these capabilities and the affordability of open source, making it well suited for use as an embedded database.</p>
+<p>In this webcast you&#8217;ll learn about the following MySQL Cluster capabilities, including the latest innovations in the 7.3 GA release:</p>
+<ul>
+<li>Auto-sharding (partitioning) across commodity hardware for extreme read and write scalability</li>
+<li>Cross-data center geographic synchronous and asynchronous replication</li>
+<li>Online scaling and schema upgrades, now with improved Connection Thread Scalability</li>
+<li>Real-time optimizations for ultra-low, predictable latency</li>
+<li>Foreign Key Support for tight referential integrity</li>
+<li>SQL and NoSQL interfaces, now with support for Node.js</li>
+<li>Support for MySQL 5.6, allowing use of the latest InnoDB and NDB engines within one database</li>
+<li>Integrated HA for 99.999% availability</li>
+<li>Auto-Installer that installs, configures, provisions and tunes a production grade cluster in minutes</li>
+</ul>
+<p>In addition, you will get a sneak preview of some of the new features planned in MySQL Cluster 7.4 Come and learn how MySQL Cluster can help you differentiate your products and extend their reach into new markets, as well as deliver highly demanding web-based applications, either on premises or in the cloud.</p>
+<p>Even if you can&#8217;t join the live webinar, it&#8217;s worth registering as you&#8217;ll be emailed a link to the replay as soon as it&#8217;s available.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/discover-the-latest-mysql-cluster-developments-upcoming-webinar/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Cluster 7.3.6 Released</title>
+		<link>./../../mysql-cluster/mysql-cluster-7-3-6-released/index.html</link>
+					<comments>./../../mysql-cluster/mysql-cluster-7-3-6-released/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 14 Jul 2014 12:31:23 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[7.3]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.3]]></category>
+		<guid isPermaLink="false">./../../index.html?p=3923</guid>
+
+					<description><![CDATA[The binary and source versions of MySQL Cluster 7.3.6 have now been made available at http://www.mysql.com/downloads/cluster/. Release notes MySQL Cluster NDB 7.3.6 is a new release of MySQL Cluster, based on MySQL Server 5.6 and including features from version 7.3 of the NDB storage engine, as well as fixing a number of recently discovered bugs]]></description>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/11/MySQL_Cluster.png"><img loading="lazy" decoding="async" class="alignnone size-medium wp-image-2982" src="./../../wp-content/uploads/2013/11/MySQL_Cluster-300x125.png" alt="MySQL Cluster Logo" width="300" height="125" srcset="./../../wp-content/uploads/2013/11/MySQL_Cluster-300x125.png 300w, ./../../wp-content/uploads/2013/11/MySQL_Cluster.png 1004w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><br />
+The binary and source versions of MySQL Cluster 7.3.6 have now been made available at <a href="http://www.mysql.com/downloads/cluster/" target="_blank">http://www.mysql.com/downloads/cluster/</a>.</p>
+<h2>Release notes</h2>
+<p>MySQL Cluster NDB 7.3.6 is a new release of MySQL Cluster, based<br />
+on MySQL Server 5.6 and including features from version 7.3 of the<br />
+NDB storage engine, as well as fixing a number of recently<br />
+discovered bugs in previous MySQL Cluster releases.</p>
+<p>Obtaining MySQL Cluster NDB 7.3.  MySQL Cluster NDB 7.3 source<br />
+code and binaries can be obtained from<br />
+<a href="http://dev.mysql.com/downloads/cluster/" title="http://dev.mysql.com/downloads/cluster/" target="_blank">http://dev.mysql.com/downloads/cluster/</a>.</p>
+<p>For an overview of changes made in MySQL Cluster NDB 7.3, see<br />
+MySQL Cluster Development in MySQL Cluster NDB 7.3<br />
+(<a href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-development-5-6-ndb-7-3.html" title="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-development-5-6-ndb-7-3.html" target="_blank">http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-development-5-6-ndb-7-3.html</a>).</p>
+<p>This release also incorporates all bugfixes and changes made in<br />
+previous MySQL Cluster releases, as well as all bugfixes and<br />
+feature changes which were added in mainline MySQL 5.6 through<br />
+MySQL 5.6.19 (see Changes in MySQL 5.6.19 (2014-05-30)<br />
+(<a href="http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-19.html" title="http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-19.html" target="_blank">http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-19.html</a>)).</p>
+<h3>Functionality Added or Changed</h3>
+<ul>
+<li>Cluster API: Added as an aid to debugging the ability to<br />
+specify a human-readable name for a given Ndb object and later<br />
+to retrieve it. These operations are implemented,<br />
+respectively, as the setNdbObjectName() and getNdbObjectName()<br />
+methods.<br />
+To make tracing of event handling between a user application<br />
+and NDB easier, you can use the reference (from getReference()<br />
+followed by the name (if provided) in printouts; the reference<br />
+ties together the application Ndb object, the event buffer,<br />
+and the NDB storage engine&#8217;s SUMA block. (Bug #18419907)</li>
+</ul>
+<h3>Bugs Fixed</h3>
+<ul>
+<li>Cluster API: When two tables had different foreign keys with<br />
+the same name, ndb_restore considered this a name conflict and<br />
+failed to restore the schema. As a result of this fix, a slash<br />
+character (/) is now expressly disallowed in foreign key<br />
+names, and the naming format parent_id/child_id/fk_name is now<br />
+enforced by the NDB API. (Bug #18824753)</li>
+<li>Processing a NODE_FAILREP signal that contained an invalid<br />
+node ID could cause a data node to fail. (Bug #18993037, Bug<br />
+#73015)<br />
+References: This bug is a regression of Bug #16007980.</li>
+<li>When building out of source, some files were written to the<br />
+source directory instead of the build dir. These included the<br />
+manifest.mf files used for creating ClusterJ jars and the<br />
+pom.xml file used by mvn_install_ndbjtie.sh. In addition,<br />
+ndbinfo.sql was written to the build directory, but marked as<br />
+output to the source directory in CMakeLists.txt. (Bug<br />
+#18889568, Bug #72843)</li>
+<li>Adding a foreign key failed with NDB Error 208 if the parent<br />
+index was parent table&#8217;s primary key, the primary key was not<br />
+on the table&#8217;s initial attributes, and the child table was not<br />
+empty. (Bug #18825966)</li>
+<li>When an NDB table served as both the parent table and a child<br />
+table for 2 different foreign keys having the same name,<br />
+dropping the foreign key on the child table could cause the<br />
+foreign key on the parent table to be dropped instead, leading<br />
+to a situation in which it was impossible to drop the<br />
+remaining foreign key. This situation can be modelled using<br />
+the following CREATE TABLE statements:<br />
+<code>CREATE TABLE parent (<br />
+id INT NOT NULL,<br />
+PRIMARY KEY (id)<br />
+) ENGINE=NDB;<br />
+CREATE TABLE child (<br />
+id INT NOT NULL,<br />
+parent_id INT,<br />
+PRIMARY KEY (id),<br />
+INDEX par_ind (parent_id),<br />
+FOREIGN KEY (parent_id)<br />
+REFERENCES parent(id)<br />
+) ENGINE=NDB;<br />
+CREATE TABLE grandchild (<br />
+id INT,<br />
+parent_id INT,<br />
+INDEX par_ind (parent_id),<br />
+FOREIGN KEY (parent_id)<br />
+REFERENCES child(id)<br />
+) ENGINE=NDB;<br />
+</code><br />
+With the tables created as just shown, the issue occured when<br />
+executing the statement ALTER TABLE child DROP FOREIGN KEY<br />
+parent_id, because it was possible in some cases for NDB to<br />
+drop the foreign key from the grandchild table instead. When<br />
+this happened, any subsequent attempt to drop the foreign key<br />
+from either the child or from the grandchild table failed.<br />
+(Bug #18662582)</li>
+<li>ndbmtd supports multiple parallel receiver threads, each of<br />
+which performs signal reception for a subset of the remote<br />
+node connections (transporters) with the mapping of<br />
+remote_nodes to receiver threads decided at node startup.<br />
+Connection control is managed by the multi-instance TRPMAN<br />
+block, which is organized as a proxy and workers, and each<br />
+receiver thread has a TRPMAN worker running locally.<br />
+The QMGR block sends signals to TRPMAN to enable and disable<br />
+communications with remote nodes. These signals are sent to<br />
+the TRPMAN proxy, which forwards them to the workers. The<br />
+workers themselves decide whether to act on signals, based on<br />
+the set of remote nodes they manage.<br />
+The current isuue arises because the mechanism used by the<br />
+TRPMAN workers for determining which connections they are<br />
+responsible for was implemented in such a way that each worker<br />
+thought it was responsible for all connections. This resulted<br />
+in the TRPMAN actions for OPEN_COMORD, ENABLE_COMREQ, and<br />
+CLOSE_COMREQ being processed multiple times.<br />
+The fix keeps TRPMAN instances (receiver threads) executing<br />
+OPEN_COMORD, ENABLE_COMREQ and CLOSE_COMREQ requests. In<br />
+addition, the correct TRPMAN instance is now chosen when<br />
+routing from this instance for a specific remote connection.<br />
+(Bug #18518037)</li>
+<li>Executing ALTER TABLE &#8230; REORGANIZE PARTITION after<br />
+increasing the number of data nodes in the cluster from 4 to<br />
+16 led to a crash of the data nodes. This issue was shown to<br />
+be a regression caused by previous fix which added a new dump<br />
+handler using a dump code that was already in use (7019),<br />
+which caused the command to execute two different handlers<br />
+with different semantics. The new handler was assigned a new<br />
+DUMP code (7024). (Bug #18550318)<br />
+References: This bug is a regression of Bug #14220269.</li>
+<li>When running with a very slow main thread, and one or more<br />
+transaction coordinator threads, on different CPUs, it was<br />
+possible to encounter a timeout when sending a<br />
+DIH_SCAN_GET_NODESREQ signal, which could lead to a crash of<br />
+the data node. Now in such cases the timeout is avoided. (Bug<br />
+#18449222)</li>
+<li>During data node failure handling, the transaction coordinator<br />
+performing takeover gathers all known state information for<br />
+any failed TC instance transactions, determines whether each<br />
+transaction has been committed or aborted, and informs any<br />
+involved API nodes so that they can report this accurately to<br />
+their clients. The TC instance provides this information by<br />
+sending TCKEY_FAILREF or TCKEY_FAILCONF signals to the API<br />
+nodes as appropriate top each affected transaction.<br />
+In the event that this TC instance does not have a direct<br />
+connection to the API node, it attempts to deliver the signal<br />
+by routing it through another data node in the same node group<br />
+as the failing TC, and sends a GSN_TCKEY_FAILREFCONF_R signal<br />
+to TC block instance 0 in that data node. A problem arose in<br />
+the case of multiple transaction cooridnators, when this TC<br />
+instance did not have a signal handler for such signals, which<br />
+led it to fail.<br />
+This issue has been corrected by adding a handler to the TC<br />
+proxy block which in such cases forwards the signal to one of<br />
+the local TC worker instances, which in turn attempts to<br />
+forward the signal on to the API node. (Bug #18455971)</li>
+<li>A local checkpoint (LCP) is tracked using a global LCP state<br />
+(c_lcpState), and each NDB table has a status indicator which<br />
+indicates the LCP status of that table (tabLcpStatus). If the<br />
+global LCP state is LCP_STATUS_IDLE, then all the tables<br />
+should have an LCP status of TLS_COMPLETED.<br />
+When an LCP starts, the global LCP status is LCP_INIT_TABLES<br />
+and the thread starts setting all the NDB tables to<br />
+TLS_ACTIVE. If any tables are not ready for LCP, the LCP<br />
+initialization procedure continues with CONTINUEB signals<br />
+until all tables have become available and been marked<br />
+TLS_ACTIVE. When this initialization is complete, the global<br />
+LCP status is set to LCP_STATUS_ACTIVE.<br />
+This bug occurred when the following conditions were met:</p>
+<ul>
+<li>An LCP was in the LCP_INIT_TABLES state, and some but not<br />
+all tables had been set to TLS_ACTIVE.</li>
+<li>The master node failed before the global LCP state<br />
+changed to LCP_STATUS_ACTIVE; that is, before the LCP<br />
+could finish processing all tables.</li>
+<li>The NODE_FAILREP signal resulting from the node failure<br />
+was processed before the final CONTINUEB signal from the<br />
+LCP initialization process, so that the node failure was<br />
+processed while the LCP remained in the LCP_INIT_TABLES<br />
+state.<br />
+Following master node failure and selection of a new one, the<br />
+new master queries the remaining nodes with a MASTER_LCPREQ<br />
+signal to determine the state of the LCP. At this point, since<br />
+the LCP status was LCP_INIT_TABLES, the LCP status was reset<br />
+to LCP_STATUS_IDLE. However, the LCP status of the tables was<br />
+not modified, so there remained tables with TLS_ACTIVE.<br />
+Afterwards, the failed node is removed from the LCP. If the<br />
+LCP status of a given table is TLS_ACTIVE, there is a check<br />
+that the global LCP status is not LCP_STATUS_IDLE; this check<br />
+failed and caused the data node to fail.<br />
+Now the MASTER_LCPREQ handler ensures that the tabLcpStatus<br />
+for all tables is updated to TLS_COMPLETED when the global LCP<br />
+status is changed to LCP_STATUS_IDLE. (Bug #18044717)</li>
+</li>
+</ul>
+</li>
+<li>When performing a copying ALTER TABLE operation, mysqld<br />
+creates a new copy of the table to be altered. This<br />
+intermediate table, which is given a name bearing the prefix<br />
+#sql-, has an updated schema but contains no data. mysqld then<br />
+copies the data from the original table to this intermediate<br />
+table, drops the original table, and finally renames the<br />
+intermediate table with the name of the original table.<br />
+mysqld regards such a table as a temporary table and does not<br />
+include it in the output from SHOW TABLES; mysqldump also<br />
+ignores an intermediate table. However, NDB sees no difference<br />
+between such an intermediate table and any other table. This<br />
+difference in how intermediate tables are viewed by mysqld<br />
+(and MySQL client programs) and by the NDB storage engine can<br />
+give rise to problems when performing a backup and restore if<br />
+an intermediate table existed in NDB, possibly left over from<br />
+a failed ALTER TABLE that used copying. If a schema backup is<br />
+performed using mysqldump and the mysql client, this table is<br />
+not included. However, in the case where a data backup was<br />
+done using the ndb_mgm client&#8217;s BACKUP command, the<br />
+intermediate table was included, and was also included by<br />
+ndb_restore, which then failed due to attempting to load data<br />
+into a table which was not defined in the backed up schema.<br />
+To prevent such failures from occurring, ndb_restore now by<br />
+default ignores intermediate tables created during ALTER TABLE<br />
+operations (that is, tables whose names begin with the prefix<br />
+#sql-). A new option &#8211;exclude-intermediate-sql-tables is<br />
+added that makes it possible to override the new behavior. The<br />
+option&#8217;s default value is TRUE; to cause ndb_restore to revert<br />
+to the old behavior and to attempt to restore intermediate<br />
+tables, set this option to FALSE. (Bug #17882305)</li>
+<li>The logging of insert failures has been improved. This is<br />
+intended to help diagnose occasional issues seen when writing<br />
+to the mysql.ndb_binlog_index table. (Bug #17461625)</li>
+<li>The DEFINER column in the INFORMATION_SCHEMA.VIEWS table<br />
+contained erroneous values for views contained in the ndbinfo<br />
+information database. This could be seen in the result of a<br />
+query such as SELECT TABLE_NAME, DEFINER FROM<br />
+INFORMATION_SCHEMA.VIEWS WHERE TABLE_SCHEMA=&#8217;ndbinfo&#8217;. (Bug<br />
+#17018500)</li>
+<li>Employing a CHAR column that used the UTF8 character set as a<br />
+table&#8217;s primary key column led to node failure when restarting<br />
+data nodes. Attempting to restore a table with such a primary<br />
+key also caused ndb_restore to fail. (Bug #16895311, Bug<br />
+#68893)</li>
+<li>Disk Data: Setting the undo buffer size used by<br />
+InitialLogFileGroup to a value greater than that set by<br />
+SharedGlobalMemory prevented data nodes from starting; the<br />
+data nodes failed with Error 1504 Out of logbuffer memory.<br />
+While the failure itself is expected behavior, the error<br />
+message did not provide sufficient information to diagnose the<br />
+actual source of the problem; now in such cases, a more<br />
+specific error message Out of logbuffer memory (specify<br />
+smaller undo_buffer_size or increase SharedGlobalMemory) is<br />
+supplied. (Bug #11762867, Bug #55515)</li>
+<li>Cluster Replication: When using NDB$EPOCH_TRANS, conflicts<br />
+between DELETE operations were handled like conflicts between<br />
+updates, with the primary rejecting the transaction and<br />
+dependents, and realigning the secondary. This meant that<br />
+their behavior with regard to subsequent operations on any<br />
+affected row or rows depended on whether they were in the same<br />
+epoch or a different one: within the same epoch, they were<br />
+considered conflicting events; in different epochs, they were<br />
+not considered in conflict.<br />
+This fix brings the handling of conflicts between deletes by<br />
+NDB$EPOCH_TRANS with that performed when using NDB$EPOCH for<br />
+conflict detection and resolution, and extends testing with<br />
+NDB$EPOCH and NDB$EPOCH_TRANS to include &#8220;delete-delete&#8221;<br />
+conflicts, and encapsulate the expected result, with<br />
+transactional conflict handling modified so that a conflict<br />
+between DELETE operations alone is not sufficient to cause a<br />
+transaction to be considered in conflict. (Bug #18459944)</li>
+<li>Cluster API: When an NDB data node indicates a buffer overflow<br />
+via an empty epoch, the event buffer places an inconsistent<br />
+data event in the event queue. When this was consumed, it was<br />
+not removed from the event queue as expected, causing<br />
+subsequent nextEvent() calls to return 0. This caused event<br />
+consumption to stall because the inconsistency remained<br />
+flagged forever, while event data accumulated in the queue.<br />
+Event data belonging to an empty inconsistent epoch can be<br />
+found either at the beginning or somewhere in the middle.<br />
+pollEvents() returns 0 for the first case. This fix handles<br />
+the second case: calling nextEvent() call dequeues the<br />
+inconsistent event before it returns. In order to benefit from<br />
+this fix, user applications must call nextEvent() even when<br />
+pollEvents() returns 0. (Bug #18716991)</li>
+<li>Cluster API: The pollEvents() method returned 1, even when<br />
+called with a wait time equal to 0, and there were no events<br />
+waiting in the queue. Now in such cases it returns 0 as<br />
+expected. (Bug #18703871)</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/mysql-cluster-7-3-6-released/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

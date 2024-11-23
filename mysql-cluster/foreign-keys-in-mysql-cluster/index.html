@@ -1,0 +1,2204 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="./../xmlrpc.php">
+	
+	<title>Foreign Keys in MySQL Cluster | Andrew Morgan on Databases</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="./../feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="./../comments/feed/index.html">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Foreign Keys in MySQL Cluster Comments Feed" href="./feed/index.html">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="./../wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="./../wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="./../wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="./../wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="./../wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="./../wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="./../wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="./../wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="./../wp-json/index.html">
+<link rel="alternate" title="JSON" type="application/json" href="./../wp-json/wp/v2/posts/2298/index.html">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="./../xmlrpc.php?rsd">
+
+<link rel="canonical" href="./foreign-keys-in-mysql-cluster/index.html">
+<link rel="shortlink" href="./../index.html?p=2298">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="./../wp-json/oembed/1.0/embed/index.html?url=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster#038;format=xml">
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style>
+<style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style>
+<script type="text/javascript">
+				//<![CDATA[
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//]]>
+				</script><style type="text/css"></style>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style>
+</head>
+
+<body class="post-template-default single single-post postid-2298 single-format-standard custom-background">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="./../index.html"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="http://www.clusterdb.com/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu">
+<li class="page_item page-item-1011"><a href="./../about/index.html">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="./../wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+
+					<div id="post-2298" class="post-2298 post type-post status-publish format-standard has-post-thumbnail hentry category-mysql-cluster tag-foreign-keys tag-mysql-cluster tag-mysql-cluster-cge">
+			
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="./../author/andrew/index.html" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="./foreign-keys-in-mysql-cluster/index.html">June 18, 2013</a>
+			</div>
+	<div class="postcomments">
+		<a href="./foreign-keys-in-mysql-cluster/index.html#comments">48 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+				
+				<h2 class="post-title">Foreign Keys in MySQL Cluster</h2>
+				
+				<div class="entry">
+										<div id="attachment_2304" style="width: 310px" class="wp-caption alignright">
+<a href="./../wp-content/uploads/2012/05/FK_Relationship.png"><img decoding="async" aria-describedby="caption-attachment-2304" class="size-medium wp-image-2304" title="Foreign Key Constraints" src="./../wp-content/uploads/2012/05/FK_Relationship-300x103.png" alt="Foreign Key constraints between tables" width="300" height="103"></a><p id="caption-attachment-2304" class="wp-caption-text">Foreign Key constraints between tables</p>
+</div>
+<p>The newly announced GA of MySQL Cluster 7.3 (7.3.2) builds upon second DMR (7.3.1 m2) released earlier in the year which added Foreign Keys to MySQL Cluster. Foreign Keys is a feature requested by many, many people and has often been cited as the reason for not being able to replace InnoDB with MySQL Cluster when they needed the extra availability or scalability. </p>
+<p>Note that this post is an up-version of the original &#8211; and was first published with the 7.3 labs release in June 2012.</p>
+<h3>What&#8217;s a Foreign Key</h3>
+<p>The majority of readers who are already familiar with Foreign Keys can skip to the next section.</p>
+<p>Foreign Keys are a way of implementing relationships/constraints between columns in different tables. For example, in the above figure, we want to make sure that the value of the <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">county</span> column in the towns table has an associated entry in the <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">counties</span> table. In this way, no-one can place a town in a non-existent county and similarly no one can remove a county and leave orphaned towns behind.</p>
+<p>We refer to the towns table as the <em>child</em> and the counties table as the <em>parent</em>.</p>
+<p>There are different categories of constraints that influence how they&#8217;re enforced when a row is updated or deleted from the parent table:</p>
+<ul>
+<li>
+<strong>Cascade</strong>: If a row is deleted from the parent then any rows in the child table with a matching FK value will also be deleted. Similarly for changes to the value in the parent table.</li>
+<li>
+<strong>Restrict</strong>: A row cannot be deleted from the parent table if this would break a FK constraint with the child table. Similarly for changes to the value in the parent table.</li>
+<li>
+<strong>No Action</strong>: Very similar to &#8220;Restrict&#8221; except that any events/triggers on the parent table will be executed before the constraint is enforced &#8211; giving the application writer the option to resolve any FK constraint conflicts using a stored procedure.</li>
+<li>
+<strong>Set NULL</strong>: If NULL is a permitted value for the FK column in the child table then it will be set to NULL if the associated data in the parent table is updated or deleted.</li>
+<li>
+<strong>Set Default</strong>: If there is a default value for the FK column in the child table then it will be used if the associated data in the parent table is updated or deleted. Note that this is not implemented in this version &#8211; the constraint can be added to the schema but any subsequent deletion or update to the column in the parent table will fail.</li>
+</ul>
+<h3>How to use Foreign Keys with MySQL Cluster</h3>
+<p>For anyone familiar with using FKs with InnoDB, a lot of this will be very similar &#8211; that&#8217;s intentional in the design of this Cluster feature. Throughout this section we will use the tables shown in the above figure.</p>
+<p>First of all, create the tables and add some data:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">mysql&gt; CREATE DATABASE clusterdb;USE clusterdb;
+mysql&gt; CREATE TABLE counties (county VARCHAR(30) NOT NULL PRIMARY KEY, country VARCHAR(30))
+  ENGINE=ndb;
+mysql&gt; REPLACE INTO counties VALUES ('Berkshire','England'),('Shropshire','England'),
+  ('Oxfordshire','England'),('Buckinghamshire','England');
+mysql&gt; CREATE TABLE towns (town VARCHAR(30) NOT NULL PRIMARY KEY, county VARCHAR(30),
+  INDEX county_county_index (county), <strong>CONSTRAINT county_town FOREIGN KEY (county) 
+  REFERENCES counties(county) ON DELETE RESTRICT ON UPDATE RESTRICT</strong>) ENGINE=ndb;
+mysql&gt; REPLACE INTO towns VALUES ('Maidenhead','Berkshire'),('Reading','Berkshire'),
+  ('Shrewsbury','Shropshire'),('Oxford','Oxfordshire');
+mysql&gt; SELECT * FROM counties;SELECT * FROM towns;
++-----------------+---------+
+| county          | country |
++-----------------+---------+
+| Shropshire      | England |
+| Buckinghamshire | England |
+| Berkshire       | England |
+| Oxfordshire     | England |
++-----------------+---------+
+4 rows in set (0.00 sec)
+
++------------+-------------+
+| town       | county      |
++------------+-------------+
+| Reading    | Berkshire   |
+| Shrewsbury | Shropshire  |
+| Maidenhead | Berkshire   |
+| Oxford     | Oxfordshire |
++------------+-------------+
+4 rows in set (0.00 sec)</pre>
+<p>Note that the FK is actually defined as part of creating the towns table with <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">CONSTRAINT county_town FOREIGN KEY (county) REFERENCES counties(county) ON DELETE RESTRICT ON UPDATE RESTRICT</span>. <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">county_town</span> is the label assigned to the constraint (if you don&#8217;t specify one then one will be automatically created &#8211; you can see it by executing <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">SHOW CREATE TABLE towns</span>). The constraint is set up from the <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">county</span> column in the <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">towns</span> (child) table to the <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">county</span> column in the <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">counties</span> (parent) table.</p>
+<p>As a first check, we can confirm that values that are not part of the constraint can be modified in the parent table &#8211; in this case we&#8217;ll move the England/Wales border:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">mysql&gt; UPDATE counties SET country='WALES' WHERE county='Shropshire';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0</pre>
+<p>Next, to illustrate the kind of user error that can be prevented, we attempt to add a town in a county that has not yet been defined &#8211; we want this to fail as it would break the constraint we created:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">mysql&gt; INSERT towns VALUES ('Cambridge','Cambridgeshire');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails
+  (Unknown error code)
+mysql&gt; SHOW WARNINGS;
++---------+------+---------------------------------------------------------------------------------------+
+| Level   | Code | Message                                                                               |
++---------+------+---------------------------------------------------------------------------------------+
+| Warning | 1296 | Got error 255 'Foreign key constaint violated: No parent row found' from NDB          |
+| Error   | 1452 | Cannot add or update a child row: a foreign key constraint fails (Unknown error code) |
++---------+------+---------------------------------------------------------------------------------------+
+2 rows in set (0.00 sec)</pre>
+<p>We can also confirm that the constraint checking works in the opposite direction, by attempting to delete a county that has towns defined for it:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">mysql&gt; DELETE FROM counties WHERE county='Berkshire';
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (Unknown error code)
+mysql&gt; SHOW WARNINGS;
++---------+------+-------------------------------------------------------------------------------------------+
+| Level   | Code | Message                                                                                   |
++---------+------+-------------------------------------------------------------------------------------------+
+| Warning | 1296 | Got error 256 'Foreign key constaint violated: Referenced row exists' from NDB            |
+| Error   | 1451 | Cannot delete or update a parent row: a foreign key constraint fails (Unknown error code) |
++---------+------+-------------------------------------------------------------------------------------------+
+2 rows in set (0.00 sec)</pre>
+<p>It is also possible to delete FK constraints and add new ones, we do that next and at the same time we&#8217;ll switch to a <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">CASCADE</span> restriction. Note that adding and deleting FKs are on-line operations. In case you have forgotten the name of the constraint (or we had not explicitly named it) we can use the <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">SHOW CREATE TABLE</span> command to remind us:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">mysql&gt; SHOW CREATE TABLE towns;
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table | Create Table                                                                                                                                                                                                                                                                                                                 |
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| towns | CREATE TABLE `towns` (
+  `town` varchar(30) NOT NULL,
+  `county` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`town`),
+  KEY `county_county_index` (`county`),
+CONSTRAINT <strong>`county_town`</strong> FOREIGN KEY(`county`) REFERENCES `counties` (`county`)
+  ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=ndbcluster DEFAULT CHARSET=latin1 |
++-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql&gt; ALTER TABLE towns DROP FOREIGN KEY county_town;
+Query OK, 0 rows affected (0.47 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql&gt; ALTER TABLE towns ADD CONSTRAINT county_town FOREIGN KEY (county)
+  REFERENCES counties(county) ON DELETE CASCADE ON UPDATE CASCADE;</pre>
+<p>The data in the tables will not have changed as part of dropping and adding constraints and so you can always <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">DROP</span> and the re-add constraints if you need to turn FKs off for a while:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">mysql&gt; SELECT * FROM counties;SELECT * FROM towns;
++-----------------+---------+
+| county          | country |
++-----------------+---------+
+| Buckinghamshire | England |
+| Berkshire       | England |
+| Oxfordshire     | England |
+| Shropshire      | WALES   |
++-----------------+---------+
+4 rows in set (0.00 sec)
+
++------------+-------------+
+| town       | county      |
++------------+-------------+
+| Reading    | Berkshire   |
+| Shrewsbury | Shropshire  |
+| Maidenhead | Berkshire   |
+| Oxford     | Oxfordshire |
++------------+-------------+
+4 rows in set (0.00 sec)</pre>
+<p>Now if we delete the county of Berkshire then the CASCADE option will cause all of the associated towns to be deleted too:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">mysql&gt; DELETE FROM counties WHERE county='Berkshire';
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; SELECT * FROM counties;SELECT * FROM towns;
++-----------------+---------+
+| county          | country |
++-----------------+---------+
+| Shropshire      | WALES   |
+| Buckinghamshire | England |
+| Oxfordshire     | England |
++-----------------+---------+
+3 rows in set (0.00 sec)
+
++------------+-------------+
+| town       | county      |
++------------+-------------+
+| Shrewsbury | Shropshire  |
+| Oxford     | Oxfordshire |
++------------+-------------+
+2 rows in set (0.00 sec)</pre>
+<p>Note that MySQL Cluster implements FKs in the data nodes and the constraints will be enforced regardless of how the data is written (through SQL, javascript, Memcached, ClusterJ, REST or directly through the NDB API). Before illustrating this, we add back the data we have just deleted:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">mysql&gt; REPLACE INTO counties VALUES ('Berkshire','England');
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; REPLACE INTO towns VALUES ('Maidenhead','Berkshire'),('Reading','Berkshire');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql&gt; SELECT * FROM counties;SELECT * FROM towns;
++-----------------+---------+
+| county          | country |
++-----------------+---------+
+| Shropshire      | WALES   |
+| Buckinghamshire | England |
+| Berkshire       | England |
+| Oxfordshire     | England |
++-----------------+---------+
+4 rows in set (0.00 sec)
+
++------------+-------------+
+| town       | county      |
++------------+-------------+
+| Reading    | Berkshire   |
+| Shrewsbury | Shropshire  |
+| Maidenhead | Berkshire   |
+| Oxford     | Oxfordshire |
++------------+-------------+
+4 rows in set (0.00 sec)</pre>
+<p>We&#8217;ll then run a simple C++ app to delete the &#8216;Berkshire&#8217; row from the <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">counties</span> table. The <a title="Example code for testing Foreign Key constraint enforcement through the NDB API" href="http://clusterdb.com/upload/testfk.cpp" target="_blank">full source for the app is available here</a> but the key part of the code is this:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">static void do_change(Ndb &amp;myNdb)
+{
+const NdbDictionary::Dictionary* myDict= myNdb.getDictionary();
+const NdbDictionary::Table *countiesTable= myDict-&gt;getTable("counties");
+
+char royalBorough[255];
+royalBorough[0]=9;
+strcpy(royalBorough + 1, "Berkshire");
+
+if (countiesTable == NULL)
+APIERROR(myDict-&gt;getNdbError());
+
+NdbTransaction *myTransaction= myNdb.startTransaction();
+if (myTransaction == NULL) APIERROR(myNdb.getNdbError());
+
+NdbOperation *myOperation= myTransaction-&gt;getNdbOperation(countiesTable);
+if (myOperation == NULL) APIERROR(myTransaction-&gt;getNdbError());
+
+std::cout &lt;&lt; "About to delete " &lt;&lt; royalBorough &lt;&lt; "n";
+
+<strong>myOperation-&gt;deleteTuple(); </strong></pre>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;"><strong>myOperation-&gt;equal("county", (const char *) royalBorough);</strong>
+
+if (myTransaction-&gt;execute( NdbTransaction::Commit ) == -1)
+APIERROR(myTransaction-&gt;getNdbError());
+
+myNdb.closeTransaction(myTransaction);
+}</pre>
+<p>We then run this code and confirm that the cascaded delete has worked:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">billy@ws2:~/projects/fk$ ./testfk localhost:1186
+About to delete         Berkshire
+
+mysql&gt; SELECT * FROM counties;SELECT * FROM towns;
++-----------------+---------+
+| county          | country |
++-----------------+---------+
+| Shropshire      | WALES   |
+| Buckinghamshire | England |
+| Oxfordshire     | England |
++-----------------+---------+
+3 rows in set (0.00 sec)
+
++------------+-------------+
+| town       | county      |
++------------+-------------+
+| Shrewsbury | Shropshire  |
+| Oxford     | Oxfordshire |
++------------+-------------+
+2 rows in set (0.00 sec)</pre>
+<h3>Comparison with InnoDB&#8217;s Foreign Keys</h3>
+<p>As mentioned, we&#8217;ve attempted to mirror the way that InnoDB works as much as possible in the way that it implements Foreign Keys as that&#8217;s what we think will allow people to move more easily to MySQL Cluster when appropriate. There are a couple of exceptions though:</p>
+<ul>
+<li>InnoDB doesn&#8217;t support &#8220;No Action&#8221; constraints, MySQL Cluster does</li>
+<li>You cannot set up FKs between 2 tables where one is stored using MySQL Cluster and the other InnoDB.</li>
+<li>You cannot change primary keys through the NDB API which means that the MySQL Server actually has to simulate such operations by deleting and re-adding the row. If the PK in the parent table has a FK constraint on it then this causes non-ideal behaviour. With <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">Restrict</span> or <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">No Action</span> constraints, the change will result in an error. With Cascaded constraints, you&#8217;d want the rows in the child table to be updated with the new FK value but, the implicit delete of the row from the parent table would remove the associated rows from the child table and the subsequent implicit insert into the parent wouldn&#8217;t reinstate the child rows. For this reason, an attempt to add an <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">ON UPDATE CASCADE</span> where the parent column is a primary key will be rejected.</li>
+</ul>
+<h3>MySQL Workbench</h3>
+<p></p>
+<div id="attachment_2567" style="width: 310px" class="wp-caption alignright">
+<a href="./../wp-content/uploads/2012/09/WB-ndb-FKs-full.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-2567" src="./../wp-content/uploads/2012/09/WB-ndb-FKs-full-300x208.png" alt="Viewing &amp; updating Foreign Key Constraints in MySQL Workbench" title="Viewing &amp; updating Foreign Key Constraints in MySQL Workbench" width="300" height="208" class="size-medium wp-image-2567"></a><p id="caption-attachment-2567" class="wp-caption-text">Viewing and updating Foreign Key Constraints in MySQL Workbench</p>
+</div>While not really the subject of this post, MySQL Workbench is a great tool for database developers and one of the features is the creation, modification and reverse engineering of schemas. For example, you could import your existing schema, add a new table and then introduce a FK constraint between an existing table and your new one. Previously, WorkBench would only allow you to play with FKs for InnoDB tables.
+<h3>Closing remarks</h3>
+<p>We believe that this is going to enable a whole new set of applications exploit the advantages of MySQL Cluster (on-line scalability, real-time performance, NoSQL APIs, real-time performance, on-line schema changes,&#8230;) either because:</p>
+<ul>
+<li>they want to simplify their application by pushing these referential checks down into the database &#8211; letting the developer focus more of their time on extending the application;</li>
+<li>because they&#8217;re stuck with 3rd party middleware that is dependent on FKs</li>
+<li>or that the application is already so dependent on FKs that it would be too much pain to remove them.</li>
+</ul>
+<p>If you are new to MySQL Cluster then here are some useful resources to get you started:</p>
+<ul>
+<li>
+<a href="./mysql-cluster-7-3-auto-installer/index.html" title="MySQL Cluster Auto-Installer; browser based GUI to get a well configured cluster up and running within minutes" target="_blank">MySQL Cluster Auto-Installer; browser based GUI to get a well configured cluster up and running within minutes</a> </li>
+<li><a href="https://www.mysql.com/why-mysql/white-papers/mysql_cluster_eval_guide.php" title="Get the most out of your MySQL Cluster evaluation" target="_blank">Get the most out of your MySQL Cluster evaluation</a></li>
+</ul>
+					<div class="clear"></div>
+										<!-- <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="http://www.clusterdb.com/mysql-cluster/foreign-keys-in-mysql-cluster"
+    dc:identifier="http://www.clusterdb.com/mysql-cluster/foreign-keys-in-mysql-cluster"
+    dc:title="Foreign Keys in MySQL Cluster"
+    trackback:ping="http://www.clusterdb.com/mysql-cluster/foreign-keys-in-mysql-cluster/trackback" />
+</rdf:RDF> -->			
+				</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.clusterdb.com/mysql-cluster/foreign-keys-in-mysql-cluster" data-via="wpbeginner" data-text="Foreign Keys in MySQL Cluster" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="http://www.clusterdb.com/mysql-cluster/foreign-keys-in-mysql-cluster"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="http://www.clusterdb.com/mysql-cluster/foreign-keys-in-mysql-cluster" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=.%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="./../category/mysql-cluster/index.html" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="./../tag/foreign-keys/index.html" rel="tag">Foreign Keys</a>, <a href="./../tag/mysql-cluster/index.html" rel="tag">MySQL Cluster</a>, <a href="./../tag/mysql-cluster-cge/index.html" rel="tag">MySQL Cluster CGE</a>
+</div>
+
+			</div>
+			
+		
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+	<h3>48 comments</h3>
+
+		
+	<ol class="commentlist">
+			<li class="pingback even thread-even depth-1" id="comment-637">
+				<div id="div-comment-637" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://oracleidentitymanagement.wordpress.com/2012/06/05/mysql-cluster-7-3-labs-release-foreign-keys-are-in/" class="url" rel="ugc external nofollow">MySQL Cluster 7.3 Labs Release – Foreign Keys Are In! &laquo; oracleidentitymanagement</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-637">June 5, 2012 at 5:44 pm</a>		</div>
+
+		<p>[&#8230;] Read this blog for a demonstration of using Foreign Keys with MySQL Cluster.  [&#8230;]</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-638">
+				<div id="div-comment-638" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/36a122202a5f86a616408d16766f1807?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/36a122202a5f86a616408d16766f1807?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Dhanush Gopinath</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-638">July 3, 2012 at 7:49 am</a>		</div>
+
+		<p>Hi,</p>
+<p>We are evaluating mysql cluster and started with 7.2 version and moved onto 7.3 test version. 7.3 looks quite stable, and the foreigh keys are created and indexed. At times when memory limit is approached on all data nodes, the all data nodes in the cluster gets forcefully shutdown. Is this the way it behaves? I will try to post an error message next time it happens.</p>
+<p>Also we didn&#8217;t notice any significant improvement w.r.t querying. The performance improvement of the same query in 7.2 and 7.3 is negligible. How much of a performance improvement are you expecting. Or is there any more configurations which we have to do?</p>
+<p>Dhanush Gopinath</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-2" id="comment-639">
+				<div id="div-comment-639" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-639">July 4, 2012 at 7:52 am</a>		</div>
+
+		<p>Dhanush,</p>
+<p> MySQL Cluster 7.2 introduced major performance improvements for joins and when using the multi-threaded data node on servers with lots of cores.</p>
+<p> What the 7.3 DMR focussed on was showcasing Foreign Key support rather than additional performance gains.</p>
+<p> Please do post the errors/logs if you see your cluster shut down.</p>
+<p>Regards, Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-640">
+				<div id="div-comment-640" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/36a122202a5f86a616408d16766f1807?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/36a122202a5f86a616408d16766f1807?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Dhanush Gopinath</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-640">July 11, 2012 at 7:06 am</a>		</div>
+
+		<p>We figured out most of the errors was due to the lack of enough RAM in our systems. When we have increased them, we don&#8217;t see it anymore. Previously using an 8GB RAM, we have configured 5.8GB  for Data memory and 500 M for Index Memory. Whenever data used to touch more than 20 million rows, one of them will shut down.</p>
+<p>all report memory showed around 95% of usage. What is the best amount of usage in this case? Should we try adding more memory when it touches, say around 70%? Would the querying be slower if memory usage is more?</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-2" id="comment-641">
+				<div id="div-comment-641" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-641">July 11, 2012 at 7:34 am</a>		</div>
+
+		<p>If you&#8217;re using in-memory tables then performance shouldn&#8217;t be impacted by running low on RAM as all of the data is in memory anyway (though you may want to set lockpagesinmainmemory to prevent things getting swapped to disk). Having said that, it&#8217;s always good to have a bit of spare headroom!</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-642">
+				<div id="div-comment-642" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/36a122202a5f86a616408d16766f1807?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/36a122202a5f86a616408d16766f1807?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Dhanush Gopinath</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-642">July 12, 2012 at 11:56 am</a>		</div>
+
+		<p>Just when I said all is well after increasing the RAM, I got the error again. We had 2 data nodes and I was doinng a rolling restart of a node after reducing the Datamemory from 12.5 G to 6 G, I came across this error:</p>
+<p>We are facing this issue most of the times when we restart a node after adding or reducing DataMemory</p>
+<p>Time: Thursday 12 July 2012 &#8211; 16:56:09<br>
+Status: Temporary error, restart node<br>
+Message: Internal program error (failed ndbrequire) (Internal error, programming error or missing error message, please report a bug)<br>
+Error: 2341<br>
+Error data: DbtcMain.cpp<br>
+Error object: DBTC (Line: 16955) 0x00000002<br>
+Program: ndbd<br>
+Pid: 6613<br>
+Version: mysql-5.5.22 ndb-7.3.0<br>
+Trace: /rcloud/rcloud_cluster_73/ndb_data/ndb_4_trace.log.2 [t1..t1]<br>
+***EOM***</p>
+<p>I see that this is already a bug <a href="http://bugs.mysql.com/bug.php?id=64609" rel="nofollow ugc">http://bugs.mysql.com/bug.php?id=64609</a></p>
+<p>Is this an issue in 7.3 ?</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-2" id="comment-643">
+				<div id="div-comment-643" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-643">July 12, 2012 at 12:12 pm</a>		</div>
+
+		<p>Dhanush,</p>
+<p> to get some more eyes looking at this, I&#8217;d suggest that you also post the full issue description on <a href="http://forums.mysql.com/list.php?25" rel="nofollow ugc">http://forums.mysql.com/list.php?25</a></p>
+<p>Regards, Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-644">
+				<div id="div-comment-644" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/a460ece77fda0bca1269b3d7f55b252e?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/a460ece77fda0bca1269b3d7f55b252e?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">John</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-644">September 11, 2012 at 11:14 am</a>		</div>
+
+		<p>Andrew,</p>
+<p>The new MySQL Cluster 7.3 test version looks very promising. However after inserting a few thousand rows and then trying to delete part of the data it was causing data nodes to terminate.</p>
+<p>There was also a strange output from &#8220;SHOW CREATE TABLE&#8221; if an FK constraint is applied against another table, it shows against the current table. SHOW CREATE TABLE config &#8230;. CONSTRAINT `configid` FOREIGN KEY `configid` references config (configid) on delete no action on update no action. Referencing itself.</p>
+<p>Would it be possible to get a newer release of 7.3? As it&#8217;s been around three months and I&#8217;m super excited to use the new FK features which 7.3 will offer. MySQL Cluster 7.3 would be a perfect fit, so I&#8217;m very keen.</p>
+<p>Thanks, John</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-2" id="comment-645">
+				<div id="div-comment-645" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-645">September 11, 2012 at 5:56 pm</a>		</div>
+
+		<p>Hi John,</p>
+<p> Great to hear that you&#8217;re trying this stuff out!</p>
+<p> A couple of comments &#8211; the first is that yes, you can expect further versions of MySQL Cluster 7.3. The second would be that if you think you&#8217;ve found a bug then we&#8217;d really appreciate it if you could create a bug at <a href="http://bugs.mysql.com/" rel="nofollow ugc">http://bugs.mysql.com/</a> and provide as much information as possible on how we can recreate the issue. </p>
+<p>Thanks, Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-646">
+				<div id="div-comment-646" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/70aa98c180477fe685fe2af5289bc29c?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/70aa98c180477fe685fe2af5289bc29c?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Mirio</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-646">November 22, 2012 at 5:02 pm</a>		</div>
+
+		<p>Hi guys!<br>
+I have installed MySQL Cluster ver 7.3. for have foreign key support but I have two problems:</p>
+<p>1) I can&#8217;t create foreign key using ON UPDATE CASCADE option. I have this error: #150 &#8211; Cannot add foreign key constraint<br>
+My SQL comand is like this:</p>
+<p>ALTER TABLE `xxxxxxx`<br>
+  ADD CONSTRAINT `xxxxxxxx_ibfk_1` FOREIGN KEY (`groupname`) REFERENCES `HsProductsPolicy` (`Code`) ON DELETE CASCADE ON UPDATE CASCADE;</p>
+<p>If I delete ON UPDATE CASCADE all is OK: why?</p>
+<p>2) I can&#8217;t create foreign key from two tables using an index that isn&#8217;t PRIMARY KEY: is it possibile?<br>
+I have, also in this case, this error:#150 &#8211; Cannot add foreign key constraint</p>
+<p>I hope that someone help me</p>
+<p>Best regards</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-2" id="comment-647">
+				<div id="div-comment-647" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-647">November 22, 2012 at 5:26 pm</a>		</div>
+
+		<p>Mirio,</p>
+<p>You don&#8217;t show the full schema but I imagine that you&#8217;re hitting the main difference between FKs with MySQL Cluster vs. InnoDB &#8211; namely that the FK constraint isn&#8217;t allowed to update the value of a Primary Key. Is this the case?</p>
+<p>Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-648">
+				<div id="div-comment-648" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/70aa98c180477fe685fe2af5289bc29c?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/70aa98c180477fe685fe2af5289bc29c?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Mirio</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-648">November 28, 2012 at 11:02 am</a>		</div>
+
+		<p>Dear Andrew!<br>
+Thanks for your answer.<br>
+For the first case I think problem is that FK constraint is not allowed to update Primary Key value but What about my second case?<br>
+Here my table schema and FK that generate error: #150 – Cannot add foreign key constraint</p>
+<p>CREATE TABLE IF NOT EXISTS `HsProductsPolicy` (<br>
+  `HsProductsPolicyID` int(11) NOT NULL AUTO_INCREMENT COMMENT &#8216;ID della policy per i prodotti&#8217;,<br>
+  `Code` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT &#8216;Codice della policy. CorrisponderÃ  al nome del gruppo di FreeRadius&#8217;,<br>
+  `Notes` text COLLATE utf8_unicode_ci COMMENT &#8216;Note della policy&#8217;,<br>
+  `ForFreeHotSpots` tinyint(1) NOT NULL DEFAULT &#8216;0&#8217; COMMENT &#8216;Se True la policy è per prodotti da associare a HotSpots liberi&#8217;,<br>
+  `TrafficBandwidthModulation` int(11) NOT NULL DEFAULT &#8216;0&#8217; COMMENT &#8216;Abilita la modulazione della velocitÃ  in base al traffico. 0 = Non abilitato; 1 = Abilitato medio; ecc.&#8217;,<br>
+  `TrafficBandwidthModulationFromTime` int(11) NOT NULL DEFAULT &#8216;0&#8217; COMMENT &#8216;Attiva dalle ore&#8217;,<br>
+  `TrafficBandwidthModulationToTime` int(11) NOT NULL DEFAULT &#8216;0&#8217; COMMENT &#8216;Attiva fino alle ore&#8217;,<br>
+  `TrafficBandwidthModulationHours` int(20) NOT NULL DEFAULT &#8216;0&#8217; COMMENT &#8216;Periodo di tempo espresso in ore da considerare per l&#8221;analisi del traffico effettuato per la modulazione della velocitÃ &#8216;,<br>
+  `TrafficBandwidthModulationTrafficUp` int(20) NOT NULL DEFAULT &#8216;0&#8217; COMMENT &#8216;Traffico limite in upload per la modulazione della velocitÃ &#8216;,<br>
+  `TrafficBandwidthModulationTrafficDown` int(20) NOT NULL DEFAULT &#8216;0&#8217; COMMENT &#8216;Traffico limite in download per la modulazione della velocitÃ &#8216;,<br>
+  `BandwidthMinUp` int(20) NOT NULL DEFAULT &#8216;0&#8217; COMMENT &#8216;VelocitÃ  minima di upload&#8217;,<br>
+  `BandwidthMinDown` int(20) NOT NULL DEFAULT &#8216;0&#8217; COMMENT &#8216;VelocitÃ  minima di download&#8217;,<br>
+  `BandwidthMaxDown` int(20) NOT NULL DEFAULT &#8216;0&#8217; COMMENT &#8216;VelocitÃ  massima di download&#8217;,<br>
+  `BandwidthMaxUp` int(20) NOT NULL DEFAULT &#8216;0&#8217; COMMENT &#8216;VelocitÃ  massima di upload&#8217;,<br>
+  PRIMARY KEY (`HsProductsPolicyID`),<br>
+  KEY `HsProductsPolicyCode` (`Code`)<br>
+) ENGINE=NDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPRESSED COMMENT=&#8217;Tabella con l&#8221;elenco delle policy&#8217; AUTO_INCREMENT=8 ;</p>
+<p>CREATE TABLE IF NOT EXISTS `radgroupreply` (<br>
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,<br>
+  `groupname` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT &#8221;,<br>
+  `attribute` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT &#8221;,<br>
+  `op` char(2) COLLATE utf8_unicode_ci NOT NULL DEFAULT &#8216;=&#8217;,<br>
+  `value` varchar(253) COLLATE utf8_unicode_ci NOT NULL DEFAULT &#8221;,<br>
+  PRIMARY KEY (`id`),<br>
+  KEY `GroupName_IDX` (`groupname`)<br>
+) ENGINE=NDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=129 ;</p>
+<p>ALTER TABLE `radgroupreply`<br>
+  ADD CONSTRAINT `radgroupreply_ibfk_1` FOREIGN KEY (`groupname`) REFERENCES `HsProductsPolicy` (`Code`) ON DELETE CASCADE  ;</p>
+<p>Thanks in advance</p>
+<p>Best regards</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-649">
+				<div id="div-comment-649" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/70aa98c180477fe685fe2af5289bc29c?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/70aa98c180477fe685fe2af5289bc29c?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Mirio</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-649">December 24, 2012 at 2:33 pm</a>		</div>
+
+		<p>Any news????</p>
+<p>Best regards</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-650">
+				<div id="div-comment-650" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/bdfad1a53141192a5d23fba979dcaed1?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/bdfad1a53141192a5d23fba979dcaed1?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Kieran</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-650">February 5, 2013 at 11:03 am</a>		</div>
+
+		<p>Thanks for the detailed blog post, it&#8217;s great to hear that MySQL Cluster will support foreign keys soon.</p>
+<p>I&#8217;ve been playing with 7.3 and I notice that it doesn&#8217;t support foreign keys in conjuction with a custom partitioning scheme &#8211; for example:</p>
+<p>CREATE TABLE Parent (<br>
+	  id int not null PRIMARY KEY<br>
+)<br>
+ENGINE=NDB<br>
+;</p>
+<p>&#8212; NB: I&#8217;ve used a &#8220;PARTITION BY KEY&#8221; directive<br>
+&#8212; to ensure the child rows are on the same node<br>
+&#8212; as their parent row.<br>
+CREATE TABLE Child (<br>
+	  id int not null,<br>
+	  parentId int not null,<br>
+	  INDEX idxChild_parentId (parentId),<br>
+	  UNIQUE KEY (parentId, id),<br>
+	  CONSTRAINT fkChild_parentId<br>
+	    FOREIGN KEY (parentId) REFERENCES Parent (id)<br>
+	    ON DELETE RESTRICT ON UPDATE RESTRICT<br>
+)<br>
+ENGINE=NDB<br>
+PARTITION BY KEY (eventId)<br>
+;</p>
+<p>This gives &#8220;ERROR 1506 (HY000) at line 7: Foreign key clause is not yet supported in conjunction with partitioning&#8221;</p>
+<p>I wonder if the production release of 7.3 will support this? Or is what I&#8217;m trying to do achievable another way (or a bad idea, for that matter)?</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-2 parent" id="comment-651">
+				<div id="div-comment-651" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-651">February 5, 2013 at 4:53 pm</a>		</div>
+
+		<p>Hi Kieran,</p>
+<p> thanks for pointing this out &#8211; I&#8217;ve just recreated it. This appears to be a constraint that&#8217;s been inherited from InnoDB (we aim to match InnoDB behaviour but what your attempting to do makes a lot of sense for Cluster tables). I&#8217;m looking into why the restriction is needed (suspecting that it shouldn&#8217;t be needed for Cluster) and whether we can remove it for NDB tables.</p>
+<p>Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-3" id="comment-652">
+				<div id="div-comment-652" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-652">February 8, 2013 at 3:56 pm</a>		</div>
+
+		<p>Hi Kieran,</p>
+<p> just tested this scenario on the latest internal version of Cluster 7.3 (a test that failed in the same way as yours in the DMR)&#8230;</p>
+<p>mysql> CREATE TABLE parent (id INT NOT NULL PRIMARY KEY) ENGINE=NDB;<br>
+Query OK, 0 rows affected (0.78 sec)</p>
+<p>mysql> CREATE TABLE child (id INT NOT NULL,parentId INT NOT NULL,INDEX idxChild_parentId (parentId), PRIMARY KEY(parentId, id), CONSTRAINT fkChild_parentId FOREIGN KEY (parentId) REFERENCES parent (id) ON DELETE RESTRICT ON UPDATE RESTRICT) ENGINE=NDB PARTITION BY KEY(parentId);<br>
+Query OK, 0 rows affected (1.01 sec)</p>
+<p>&#8230; so I can confirm that Fks and paritions will be compatible when we release the GA version.</p>
+<p>Thanks again for the feedback.</p>
+<p>Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="pingback even thread-odd thread-alt depth-1" id="comment-653">
+				<div id="div-comment-653" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://insidemysql.com/april-engineering-news/" class="url" rel="ugc external nofollow">April MySQL Engineering News | InsideMySQL.com</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-653">May 3, 2013 at 2:46 pm</a>		</div>
+
+		<p>[&#8230;] MySQL Cluster and NoSQL I mentioned the new DMR 7.3.1 for MySQL Cluster. Our efforts to improve ease of use for Cluster continues, please learn more aboutm, and try out the autoinstaller. MySQL Cluster was there as a &#8220;NoSQL&#8221; database long before the term was coined, and was just awarded the &#8220;storage engine of the year&#8220;. This DMR also contains support for Foreign Keys which I know some of you have been waiting for. I&#8217;ll encourage the cluster engineers to write an in depth blog about the complexities in supporting foreign keys in a distributed databases. Meanwhile please learn more here. [&#8230;]</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-654">
+				<div id="div-comment-654" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3e879119537598af2288fbfc92e23a5f?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3e879119537598af2288fbfc92e23a5f?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">willy</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-654">June 10, 2013 at 8:31 pm</a>		</div>
+
+		<p>Has anyone run into problems with crossing NDB and INNODB tables Parent/Child FK issues in 7.3.1 m2? Looks like FK is only valid between NDB to NDB tables and cannot be mixed ? Can someone verify this? I assume this is not supported ? I get </p>
+<p>create table wtestinnodb(col1 int, col2 varchar(20), constraint `f1` foreign key(col1) references wtestndb(col1))engine=innodb;<br>
+ERROR 1215 (HY000): Cannot add foreign key constraint</p>
+<p>where wtestndb is ndb table.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-2" id="comment-655">
+				<div id="div-comment-655" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-655">June 17, 2013 at 3:44 pm</a>		</div>
+
+		<p>Unfortunately, you can have FK that span NDB and InnoDB tables as the constraints are implemented down in the storage engines.</p>
+<p>Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-656">
+				<div id="div-comment-656" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/f4d4789528dcc4299cda1a38ec777df7?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/f4d4789528dcc4299cda1a38ec777df7?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn"><a href="http://mash213.wordpress.com/" class="url" rel="ugc external nofollow">vishnu rao</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-656">July 24, 2013 at 5:12 pm</a>		</div>
+
+		<p>hi</p>
+<p>wanted to confirm if the FK support is present with 5.5 Mysql?</p>
+<p>the documentation of 5.5 does not mention this.</p>
+<p>thanks and regards,<br>
+ch Vishnu</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-2" id="comment-657">
+				<div id="div-comment-657" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-657">July 24, 2013 at 7:04 pm</a>		</div>
+
+		<p>Vishnu,</p>
+<p> FKs are available for InnoDB in MySQL 5.5 and earlier but for MySQL Cluster they&#8217;re not there until MySQL Cluster 7.3 (which includes MySQL 5.6 for the MySQL Server component).</p>
+<p>Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-658">
+				<div id="div-comment-658" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/98d5564dc967aaf604de82afd73c6b53?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/98d5564dc967aaf604de82afd73c6b53?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Ricky</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-658">September 26, 2013 at 10:11 pm</a>		</div>
+
+		<p>Hi Andrew/All,</p>
+<p>I am having similar problem with constraints for ndb.  I am porting an appication from innodb to ndb.  Few of the constraints dont get added on ndb.  I have noticed that constraint to a column that&#8217;s part of a composite index doesnt work on ndb.  Is there a restriction or is it a bug?  Can you please point me to the documentation as I can&#8217;t see anything relevant.</p>
+<p>Following example for innodb works very well.</p>
+<p>mysql&gt; CREATE TABLE `new_products` (<br>
+    -&gt;   `id` int(10) unsigned NOT NULL,<br>
+    -&gt;   `extension_id` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `name` varchar(255) COLLATE latin1_general_ci NOT NULL,<br>
+    -&gt;   `min_months` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `max_months` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `default_months` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `min_years` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `max_years` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `default_years` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `desctype` int(10) unsigned NOT NULL,<br>
+    -&gt;   `type` enum(&#8216;new&#8217;,&#8217;renewal&#8217;,&#8217;refund&#8217;) COLLATE latin1_general_ci DEFAULT NULL,<br>
+    -&gt;   `renewal_service` varchar(25) COLLATE latin1_general_ci DEFAULT NULL,<br>
+    -&gt;   `product_group_id` int(10) unsigned DEFAULT NULL,<br>
+    -&gt;   `navision_code` varchar(32) COLLATE latin1_general_ci DEFAULT &#8221;,<br>
+    -&gt;   `pretty_name` varchar(255) COLLATE latin1_general_ci DEFAULT &#8221;,<br>
+    -&gt;   PRIMARY KEY (`id`,`extension_id`),<br>
+    -&gt;   KEY `name` (`name`),<br>
+    -&gt;   KEY `type` (`type`),<br>
+    -&gt;   KEY `desctype` (`desctype`)<br>
+    -&gt; ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci<br>
+    -&gt; ;<br>
+Query OK, 0 rows affected (0.04 sec)</p>
+<p>mysql&gt; CREATE TABLE `customer_referral_commission` (<br>
+    -&gt;   `product_id` int(10) unsigned NOT NULL,<br>
+    -&gt;   `extension_id` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `customer_commission` decimal(9,2) unsigned DEFAULT &#8216;0.00&#8217;,<br>
+    -&gt;   `date_entered` datetime DEFAULT NULL,<br>
+    -&gt;   `last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,<br>
+    -&gt;   PRIMARY KEY (`product_id`,`extension_id`),<br>
+    -&gt;   KEY `product_id` (`product_id`),<br>
+    -&gt;   KEY `extension_id` (`extension_id`),<br>
+    -&gt;   CONSTRAINT `customer_referral_commission_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `new_products` (`id`)<br>
+    -&gt; ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;<br>
+Query OK, 0 rows affected (0.02 sec)</p>
+<p>Following for ndb doesnt work at all.</p>
+<p>mysql&gt; CREATE TABLE `new_products_ndb` (<br>
+    -&gt;   `id` int(10) unsigned NOT NULL,<br>
+    -&gt;   `extension_id` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `name` varchar(255) COLLATE latin1_general_ci NOT NULL,<br>
+    -&gt;   `min_months` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `max_months` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `default_months` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `min_years` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `max_years` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `default_years` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `desctype` int(10) unsigned NOT NULL,<br>
+    -&gt;   `type` enum(&#8216;new&#8217;,&#8217;renewal&#8217;,&#8217;refund&#8217;) COLLATE latin1_general_ci DEFAULT NULL,<br>
+    -&gt;   `renewal_service` varchar(25) COLLATE latin1_general_ci DEFAULT NULL,<br>
+    -&gt;   `product_group_id` int(10) unsigned DEFAULT NULL,<br>
+    -&gt;   `navision_code` varchar(32) COLLATE latin1_general_ci DEFAULT &#8221;,<br>
+    -&gt;   `pretty_name` varchar(255) COLLATE latin1_general_ci DEFAULT &#8221;,<br>
+    -&gt;   PRIMARY KEY (`id`,`extension_id`),<br>
+    -&gt;   KEY `name` (`name`),<br>
+    -&gt;   KEY `type` (`type`),<br>
+    -&gt;   KEY `desctype` (`desctype`)<br>
+    -&gt; ) ENGINE=ndb DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci<br>
+    -&gt; ;<br>
+Query OK, 0 rows affected (0.41 sec)</p>
+<p>mysql&gt; CREATE TABLE `customer_referral_commission_ndb` (<br>
+    -&gt;   `product_id` int(10) unsigned NOT NULL,<br>
+    -&gt;   `extension_id` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `customer_commission` decimal(9,2) unsigned DEFAULT &#8216;0.00&#8217;,<br>
+    -&gt;   `date_entered` datetime DEFAULT NULL,<br>
+    -&gt;   `last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,<br>
+    -&gt;   PRIMARY KEY (`product_id`,`extension_id`),<br>
+    -&gt;   KEY `product_id` (`product_id`),<br>
+    -&gt;   KEY `extension_id` (`extension_id`),<br>
+    -&gt;   CONSTRAINT `customer_referral_commission_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `new_products` (`id`)<br>
+    -&gt; ) ENGINE=ndb DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;<br>
+ERROR 1215 (HY000): Cannot add foreign key constraint<br>
+mysql&gt; CREATE TABLE `customer_referral_commission_ndb` (<br>
+    -&gt;   `product_id` int(10) unsigned NOT NULL,<br>
+    -&gt;   `extension_id` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `customer_commission` decimal(9,2) unsigned DEFAULT &#8216;0.00&#8217;,<br>
+    -&gt;   `date_entered` datetime DEFAULT NULL,<br>
+    -&gt;   `last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,<br>
+    -&gt;   PRIMARY KEY (`product_id`,`extension_id`),<br>
+    -&gt;   KEY `product_id` (`product_id`),<br>
+    -&gt;   KEY `extension_id` (`extension_id`),<br>
+    -&gt;   CONSTRAINT `customer_referral_commission_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `new_products` (`id`) on delete cascade on update restrict<br>
+    -&gt; ) ENGINE=ndb DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;<br>
+ERROR 1215 (HY000): Cannot add foreign key constraint</p>
+<p>Can somebody please help?<br>
+Many thanks</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-659">
+				<div id="div-comment-659" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/98d5564dc967aaf604de82afd73c6b53?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/98d5564dc967aaf604de82afd73c6b53?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Ricky</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-659">September 26, 2013 at 10:14 pm</a>		</div>
+
+		<p>Just to add there&#8217;s a small typo in the references for the foreign key but smae error.</p>
+<p>mysql&gt; CREATE TABLE `customer_referral_commission_ndb` (<br>
+    -&gt;   `product_id` int(10) unsigned NOT NULL,<br>
+    -&gt;   `extension_id` int(10) unsigned NOT NULL DEFAULT &#8216;0&#8217;,<br>
+    -&gt;   `customer_commission` decimal(9,2) unsigned DEFAULT &#8216;0.00&#8217;,<br>
+    -&gt;   `date_entered` datetime DEFAULT NULL,<br>
+    -&gt;   `last_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,<br>
+    -&gt;   PRIMARY KEY (`product_id`,`extension_id`),<br>
+    -&gt;   KEY `product_id` (`product_id`),<br>
+    -&gt;   KEY `extension_id` (`extension_id`),<br>
+    -&gt;   CONSTRAINT `customer_referral_commission_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `new_products_ndb` (`id`) on delete cascade on update restrict<br>
+    -&gt; ) ENGINE=ndb DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;<br>
+ERROR 1215 (HY000): Cannot add foreign key constraint</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-2 parent" id="comment-660">
+				<div id="div-comment-660" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-660">September 26, 2013 at 11:11 pm</a>		</div>
+
+		<p>Hi Ricky,</p>
+<p> you&#8217;ve hit a use case where InnoDB deviates from/goes beyond the SQL standard in allowing the referenced key to a non-unique key (MySQL Cluster doesn&#8217;t). Note that by referencing just part of the multi-part key it&#8217;s actually non-unique even if the full key was unique.</p>
+<p> If this isn&#8217;t clear in the documentation then please raise a bug report (we aim for Cluster to mirror InnoDB FK behaviour and so any deviations should be documented).</p>
+<p>Thanks for pointing this out.</p>
+<p>Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment even depth-3" id="comment-499535">
+				<div id="div-comment-499535" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/67eb8de8e5e86a37dddf978f0056ac9d?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/67eb8de8e5e86a37dddf978f0056ac9d?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn"><a href="http://gloCalHelp.com/" class="url" rel="ugc external nofollow">gloCalHelp</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-499535">May 25, 2015 at 10:39 am</a>		</div>
+
+		<p>Hi, Dear Andrew,</p>
+<p>    Has cluster ndb 7.4.6 totally support &#8220;referencing just part of the multi-part key &#8221; as a foreign key?</p>
+<p>    &#8220;&#8230;Note that by referencing just part of the multi-part key it’s actually non-unique even if the full key was unique &#8230;&#8221; does this means that in cluster NDB engine, the reference foreign key should be only one UNIQUE key, but cann&#8217;t be a part of multi-coloumn key?</p>
+<p>    But it is strange that some table constraint with a part of multi-coloumn key can create in NDBCluster, but  some tables doesn&#8217;t. </p>
+<p>    Such as, these tables can create:<br>
+CREATE TABLE `pz_tb_wdcash` (<br>
+  `ID` varchar(255) NOT NULL COMMENT &#8216;ID&#8217;,<br>
+  `pzAccount` varchar(32) DEFAULT NULL COMMENT &#8216;平台账户ID&#8217;,<br>
+  &#8230;<br>
+  `opratAdmin` varchar(100) DEFAULT NULL,<br>
+  PRIMARY KEY (`ID`),<br>
+  KEY `FKF70CA7C9A279E9A` (`pzAccount`) USING BTREE,<br>
+  KEY `FKF70CA7C60F7D21E` (`pzBankCard`) USING BTREE,<br>
+  KEY `FKF70CA7C6D563EAE` (`pzBankCard`) USING BTREE,<br>
+  CONSTRAINT `pz_tb_wdcash_ibfk_1` FOREIGN KEY (`pzBankCard`) REFERENCES `p2p_td_bank_card` (`ID`),<br>
+  CONSTRAINT `pz_tb_wdcash_ibfk_2` FOREIGN KEY (`pzAccount`) REFERENCES `p2p_td_user` (`ID`)<br>
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;<br>
+pz_tb_wdcash&#8217;s 1 foreign key is the below table&#8217;s one of keys &#8220;ID&#8221;.</p>
+<p>CREATE TABLE `pz_tb_bank_card` (<br>
+  `ID` varchar(255) NOT NULL,<br>
+  `C_USER` varchar(32) NOT NULL COMMENT &#8216;平台账户ID&#8217;,<br>
+  &#8230;<br>
+  `C_UPDATE_TIME` datetime DEFAULT NULL COMMENT &#8216;更新时间&#8217;,<br>
+  PRIMARY KEY (`ID`),<br>
+  KEY `FKF6C0EC392F758BDE` (`C_USER`) USING BTREE,<br>
+  KEY `FKF6C0EC392F63C0C0` (`C_BANK`) USING BTREE,<br>
+  CONSTRAINT `pz_tb_bank_card_ibfk_1` FOREIGN KEY (`C_BANK`) REFERENCES `p2p_td_bank` (`ID`),<br>
+  CONSTRAINT `pz_tb_bank_card_ibfk_2` FOREIGN KEY (`C_USER`) REFERENCES `p2p_td_user` (`ID`)<br>
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;</p>
+<p>but why  the below  table cann&#8217;t create?</p>
+<p>DROP TABLE IF EXISTS `pz_tb_pz_account`;</p>
+<p>/*Error 1215；can not add foreign key constraint*/<br>
+CREATE TABLE `pz_tb_pz_account` (<br>
+  `id` varchar(40) NOT NULL COMMENT &#8216;ID&#8217;,<br>
+  `pzid` varchar(40) DEFAULT NULL COMMENT &#8216;配资id&#8217;,<br>
+  &#8230;<br>
+  `status` varchar(5) DEFAULT &#8216;0&#8217; COMMENT &#8216;清算审批状态 0 未审批 1 审批完成&#8217;,<br>
+  PRIMARY KEY (`id`),<br>
+  KEY `FK690FB1F479E54801` (`pzid`) USING BTREE,<br>
+  CONSTRAINT `pz_tb_pz_account_ibfk_1` FOREIGN KEY (`pzid`) REFERENCES `pz_tb_pz` (`id`)<br>
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;</p>
+<p>its reference table has been created  as below:<br>
+CREATE TABLE `pz_tb_pz` (<br>
+  `id` varchar(32) NOT NULL COMMENT &#8216;ID&#8217;,<br>
+  &#8230;<br>
+  `endtype` varchar(5) DEFAULT NULL COMMENT &#8216;终止类型 1方案到期 2用户手动终止 3到达平仓线&#8217;,<br>
+  PRIMARY KEY (`id`),<br>
+  KEY `FKB62A63069A279E9A` (`pzAccount`) USING BTREE,<br>
+  KEY `FKB62A630649DB09AA` (`pzAccount`) USING BTREE<br>
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;</p>
+<p>why? and I have add MaxNoOfTriggers=5188 in config.ini, is there any good solution?</p>
+<p>Thank you.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-661">
+				<div id="div-comment-661" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/1d580206f640a73e9c4a85a3da1a165f?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/1d580206f640a73e9c4a85a3da1a165f?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn"><a href="http://www.lifechurch.tv/" class="url" rel="ugc external nofollow">Brad Coats</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-661">October 17, 2013 at 3:28 am</a>		</div>
+
+		<p>Thanks for the well-written article.  As a systems engineer supporting a dev team, I don&#8217;t often get into the weeds of this stuff and you helped me wrap my mind around some foreign key issues in NDB.  </p>
+<p>We have been developing a new application around a MySQL Cluster data engine and have been quite impressed with the solution thus far, but I&#8217;ve run into a number of issues when trying to add / modify foreign key constraints.  For example, I have two tables:</p>
+<p>CREATE TABLE `campuses` (<br>
+  `id` int(11) NOT NULL AUTO_INCREMENT,<br>
+  `name` varchar(255) NOT NULL,<br>
+  `code` varchar(30) NOT NULL,<br>
+  PRIMARY KEY (`id`),<br>
+  KEY `name` (`name`),<br>
+  KEY `code` (`code`)<br>
+) ENGINE=ndbcluster AUTO_INCREMENT=152 DEFAULT CHARSET=latin1 |</p>
+<p>CREATE TABLE `thresholdtriggers` (<br>
+  `id` int(11) NOT NULL AUTO_INCREMENT,<br>
+  `name` varchar(60) NOT NULL,<br>
+  `threshold_amount` decimal(10,2) NOT NULL,<br>
+  `emails` text NOT NULL,<br>
+  PRIMARY KEY (`id`)<br>
+) ENGINE=ndbcluster DEFAULT CHARSET=latin1 |</p>
+<p>And I&#8217;m trying to create a third table as follows:</p>
+<p>CREATE TABLE IF NOT EXISTS `thresholdtriggerstocampuses` (<br>
+  `id` int(11) NOT NULL AUTO_INCREMENT,<br>
+  `threshold_trigger_id` int(11) NOT NULL,<br>
+  `campus_code` varchar(30) NOT NULL,<br>
+  PRIMARY KEY (`id`),<br>
+  KEY `threshold_trigger_id` (`threshold_trigger_id`),<br>
+  KEY `campus_code` (`campus_code`),<br>
+  CONSTRAINT `thresholdtriggerstocampuses_ibfk_2` FOREIGN KEY (`campus_code`) REFERENCES `campuses` (`code`) ON DELETE CASCADE ON UPDATE NO ACTION,<br>
+  CONSTRAINT `thresholdtriggerstocampuses_ibfk_1` FOREIGN KEY (`threshold_trigger_id`) REFERENCES `thresholdtriggers` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION<br>
+) ENGINE=ndbcluster DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;</p>
+<p>Our lead developer on this project is working on InnoDB tables (where this works fine) and then we&#8217;re migrating out of his dev environment into our production MySQL Cluster / NDB environment.  </p>
+<p>I consistently get the following error when I try to make these changes in that environment.</p>
+<p>ERROR 1215 (HY000): Cannot add foreign key constraint</p>
+<p>Anybody have any thoughts?</p>
+<p>Thank you!<br>
+Brad</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-2" id="comment-662">
+				<div id="div-comment-662" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-662">October 17, 2013 at 4:47 pm</a>		</div>
+
+		<p>Hi Brad &#8211; the main limitation of FKs in Cluster (vs. InnoDB) is that the constraint is not allowed to modify a PK but it looks like your trying to delete one and so I&#8217;d have expected that to be OK.</p>
+<p>I&#8217;ll try this for myself as soon as I get the chance.</p>
+<p>Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-663">
+				<div id="div-comment-663" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/1d580206f640a73e9c4a85a3da1a165f?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/1d580206f640a73e9c4a85a3da1a165f?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn"><a href="http://www.lifechurch.tv/" class="url" rel="ugc external nofollow">Brad Coats</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-663">October 17, 2013 at 9:50 pm</a>		</div>
+
+		<p>Thanks, Andrew!  Sure appreciate your help!</p>
+<p>After some further poking around with it, we found we were able to complete one of the two constraints.  </p>
+<p>This one was fine:</p>
+<p>CONSTRAINT `thresholdtriggerstocampuses_ibfk_1` FOREIGN KEY (`threshold_trigger_id`) REFERENCES `thresholdtriggers` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION</p>
+<p>The other one did not work:</p>
+<p>CONSTRAINT `thresholdtriggerstocampuses_ibfk_2` FOREIGN KEY (`campus_code`) REFERENCES `campuses` (`code`) ON DELETE CASCADE ON UPDATE NO ACTION</p>
+<p>I still haven&#8217;t been able to identify precisely why this won&#8217;t work (tried it with a variety of on delete options as well), but I guess this is one step closer right?!</p>
+<p>b.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-2" id="comment-664">
+				<div id="div-comment-664" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-664">October 23, 2013 at 10:29 am</a>		</div>
+
+		<p>Brad,</p>
+<p> I was able to recreate the issue &#8211; if you issue <code>SHOW WARNINGS</code> then you get a clue &#8211; the problem is that &#8216;code&#8217; isn&#8217;t a unique key and so it breaks one of the limitations of FKs for NDB tables. I&#8217;ve raised bug h<a href="http://bugs.mysql.com/70696" target="_blank" rel="nofollow">ttp://bugs.mysql.com/70696</a> to get it documented. If you change the table definition to the following then you can add the constraint&#8230;</p>
+<p>CREATE TABLE campuses (<br>
+id int(11) NOT NULL AUTO_INCREMENT,<br>
+name varchar(255) NOT NULL,<br>
+code varchar(30) NOT NULL,<br>
+PRIMARY KEY (id),<br>
+KEY name (name),<br>
+UNIQUE KEY code (code)<br>
+) ENGINE=ndbcluster AUTO_INCREMENT=152 DEFAULT CHARSET=latin1;</p>
+<p>Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-4256">
+				<div id="div-comment-4256" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/fff60dcc6ca04667f53cd3a9d7104600?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/fff60dcc6ca04667f53cd3a9d7104600?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Naveed</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-4256">November 6, 2013 at 5:15 pm</a>		</div>
+
+		<p>Hi Andrew,</p>
+<p>We have two tables that we need to convert to ndbcluster engine with unique key added, but still fails.</p>
+<p>Below are the table:<br>
+DROP TABLE IF EXISTS `rivet_session`;<br>
+/*!40101 SET @saved_cs_client     = @@character_set_client */;<br>
+/*!40101 SET character_set_client = utf8 */;<br>
+CREATE TABLE `rivet_session` (<br>
+  `ip_address` varchar(16) DEFAULT NULL,<br>
+  `session_start_time` datetime DEFAULT NULL,<br>
+  `session_update_time` datetime DEFAULT NULL,<br>
+  `session_id` varchar(64) NOT NULL DEFAULT &#8221;,<br>
+  PRIMARY KEY (`session_id`)<br>
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;<br>
+/*!40101 SET character_set_client = @saved_cs_client */;</p>
+<p>DROP TABLE IF EXISTS `rivet_session_cache`;<br>
+/*!40101 SET @saved_cs_client     = @@character_set_client */;<br>
+/*!40101 SET character_set_client = utf8 */;<br>
+CREATE TABLE `rivet_session_cache` (<br>
+  `session_id` varchar(128) DEFAULT NULL,<br>
+  `package_` varchar(64) DEFAULT NULL,<br>
+  `key_` varchar(128) DEFAULT NULL,<br>
+  `data` varchar(255) DEFAULT NULL,<br>
+  UNIQUE KEY `riv_sess_cache_ix` (`session_id`,`package_`,`key_`),<br>
+  KEY `rivet_session_cache_idx` (`session_id`),<br>
+  CONSTRAINT `rivet_session_cache_ibfk_1` FOREIGN KEY (`session_id`) REFERENCES                `rivet_session` (`session_id`) ON DELETE CASCADE<br>
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;<br>
+/*!40101 SET character_set_client = @saved_cs_client */</p>
+<p>Both table fails with &#8220;Cannot delete or update a parent row: a foreign key constraint fails&#8221;</p>
+<p>mysql&gt; alter table rivet_session ENGINE=NDBCLUSTER;<br>
+ERROR 1217 (23000): Cannot delete or update a parent row: a foreign key constraint fails<br>
+mysql&gt; alter table rivet_session_cache  ENGINE=NDBCLUSTER;<br>
+ERROR 1217 (23000): Cannot delete or update a parent row: a foreign key constraint fails</p>
+<p>How can this be fixed ?</p>
+<p>Thanks for your help!<br>
+Naveed</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-2 parent" id="comment-4595">
+				<div id="div-comment-4595" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-4595">November 7, 2013 at 8:41 am</a>		</div>
+
+		<p>Hi Naveed,</p>
+<p> we don&#8217;t support ALTER TABLE on a table that already has FKs defined &#8211; try deleting the FK constraint, perform the ALTER TABLE and then add them back. Note that FK constraints are not allowed to change the PK on the parent table.</p>
+<p>Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment odd alt depth-3 parent" id="comment-4843">
+				<div id="div-comment-4843" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/fff60dcc6ca04667f53cd3a9d7104600?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/fff60dcc6ca04667f53cd3a9d7104600?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Naveed</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-4843">November 7, 2013 at 7:50 pm</a>		</div>
+
+		<p>Thanks Andrew for getting back to me 🙂</p>
+<p>I did as you suggested by dropping FK&#8217;s then Alter table to use engine=ndbcluster and table was saved. I then added FX constraint and still got error:</p>
+<p>ALTER TABLE `rivet_session_cache` ADD CONSTRAINT `rivet_session_cache_ibfk_1` FOREIGN KEY (`session_id`) REFERENCES `rivet_session` (`session_id`) ON DELETE CASCADE ON UPDATE RESTRICT;</p>
+<p>1215- Cannot add foreign key constraint.</p>
+<p>Thanks for your help!<br>
+Naveed</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-4 parent" id="comment-4864">
+				<div id="div-comment-4864" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-4864">November 7, 2013 at 8:32 pm</a>		</div>
+
+		<p>Naveed,</p>
+<p> could you please run <code>SHOW WARNINGS</code> in order to see why it&#8217;s failing?</p>
+<p>Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment odd alt depth-5" id="comment-12559">
+				<div id="div-comment-12559" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/fff60dcc6ca04667f53cd3a9d7104600?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/fff60dcc6ca04667f53cd3a9d7104600?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">Naveed</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-12559">November 19, 2013 at 5:07 pm</a>		</div>
+
+		<p>Hi Andrew,</p>
+<p>Thanks again for getting back me.<br>
+Warning shows:</p>
+<p> ALTER TABLE `rivet_session_cache` ADD CONSTRAINT `rivet_session_cache_ibfk_1` FOREIGN KEY (`session_id`) REFERENCES `rivet_session` (`session_id`) ON DELETE CASCADE ON UPDATE RESTRICT;<br>
+ERROR 1215 (HY000): Cannot add foreign key constraint</p>
+<p>| Warning | 1215 | Parent column rivet_session.session_id is incompatible with child column rivet_session_cache.session_id in NDB |<br>
+| Error   | 1215 | Cannot add foreign key constraint         </p>
+<p>But, Not sure why the id is incomparable ?</p>
+<p>Here are my tables:<br>
+CREATE TABLE `rivet_session_cache` (<br>
+  `session_id` varchar(128) DEFAULT NULL,<br>
+  `package_` varchar(64) DEFAULT NULL,<br>
+  `key_` varchar(128) DEFAULT NULL,<br>
+  `data` varchar(255) DEFAULT NULL,<br>
+  UNIQUE KEY `riv_sess_cache_ix` (`session_id`,`package_`,`key_`),<br>
+  KEY `rivet_session_cache_idx` (`session_id`)<br>
+) ENGINE=ndbcluster DEFAULT CHARSET=utf8;</p>
+<p>CREATE TABLE `rivet_session` (<br>
+  `ip_address` varchar(16) DEFAULT NULL,<br>
+  `session_start_time` datetime DEFAULT NULL,<br>
+  `session_update_time` datetime DEFAULT NULL,<br>
+  `session_id` varchar(64) NOT NULL DEFAULT &#8221;,<br>
+  PRIMARY KEY (`session_id`)<br>
+) ENGINE=ndbcluster DEFAULT CHARSET=utf8;</p>
+<p>Thanks,<br>
+Naveed</p>
+
+		
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-291602">
+				<div id="div-comment-291602" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/961a290319819c7a039b29c01e9609d0?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/961a290319819c7a039b29c01e9609d0?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn"><a href="http://linuxonline.co.in/" class="url" rel="ugc external nofollow">Bhairav</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-291602">October 9, 2014 at 6:00 am</a>		</div>
+
+		<p>We are able to create table. But, when we are trying to insert data in this table we showing only process is running long time. And after long time we are not getting any response from server.</p>
+<p>Also we have test same scenario with single data node it is working fine.</p>
+<p>CREATE TABLE `TB_Name` (<br>
+  `T1` BIGINT(20) NOT NULL,<br>
+  `T2` BIGINT(20) NOT NULL,<br>
+  `T3` INT(11) NOT NULL,<br>
+  `T4` SMALLINT(6) DEFAULT NULL,<br>
+  `T5` SMALLINT(6) DEFAULT NULL,<br>
+  PRIMARY KEY (`T1`),<br>
+  UNIQUE KEY `UK_CoEE` (`T2`,`T3`)<br>
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=latin1;</p>
+<p>INSERT  INTO `TB_Name`(`T1`,`T2`,`T3`,`T4`,`T5`) VALUES (325302462008513,2460,244,1,7) ,(88727112009284,1,245,1,25);</p>
+<p>+&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;<br>
+| Id | User        | Host               | db      | Command | Time | State                             | Info<br>
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;<br>
+| 4  | root        | localhost          | DB_Name   | Query   | 1519 | query end                         | REPLACE INTO `CoExtElement` VALUES (325302462008513,2460,244,1,7),(88727112009284,1,245,1,25)<br>
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;</p>
+<p> &#8212; We have 6 individual cantos 64 BIT virtual machines on XEN Server.<br>
+    Following are the configuration files.<br>
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;<br>
+[NDBD DEFAULT]<br>
+MaxBufferedEpochs=5000<br>
+BackupMaxWriteSize=54M<br>
+BackupDataBufferSize=100M<br>
+BackupLogBufferSize=50M<br>
+BackupMemory=55M<br>
+BackupReportFrequency=10<br>
+MemReportFrequency=30<br>
+LogLevelStartup=15<br>
+LogLevelShutdown=15<br>
+LogLevelCheckpoint=8<br>
+LogLevelNodeRestart=15<br>
+DataMemory=14032M<br>
+IndexMemory=1024M<br>
+MaxNoOfTables=4596<br>
+MaxNoOfSubscribers=10000<br>
+MaxNoOfTriggers=3500<br>
+NoOfReplicas=2<br>
+StringMemory=25<br>
+DiskPageBufferMemory=1048M<br>
+SharedGlobalMemory=512M<br>
+LongMessageBuffer=32M<br>
+MaxNoOfConcurrentTransactions=195000<br>
+BatchSizePerLocalScan=512<br>
+FragmentLogFileSize=256M<br>
+NoOfFragmentLogFiles=16<br>
+RedoBuffer=128M<br>
+MaxNoOfExecutionThreads=2<br>
+StopOnError=false<br>
+LockPagesInMainMemory=1<br>
+TimeBetweenEpochsTimeout=32000<br>
+TimeBetweenWatchdogCheckInitial=60000<br>
+TransactionDeadlockDetectionTimeout=8640000<br>
+TransactionInactiveTimeout=60000<br>
+HeartbeatIntervalDbDb=15000<br>
+HeartbeatIntervalDbApi=15000<br>
+MaxNoOfConcurrentOperations=510000<br>
+MaxNoOfLocalOperations=561000<br>
+MaxNoOfAttributes=314572<br>
+MaxNoOfOrderedIndexes=8000<br>
+RealtimeScheduler=1<br>
+Datadir=/home/mysql/data/</p>
+<p>[MYSQLD DEFAULT]</p>
+<p>[TCP DEFAULT]<br>
+SendBufferMemory=64M<br>
+ReceiveBufferMemory=24M</p>
+<p>[NDB_MGMD DEFAULT]<br>
+Portnumber=1186</p>
+<p>[NDB_MGMD]<br>
+NodeId=1<br>
+Hostname=192.168.0.53<br>
+LogDestination=FILE:filename=ndb_1_cluster.log,maxsize=10000000,maxfiles=6<br>
+DataDir=/var/lib/mysql-cluster/</p>
+<p>[NDB_MGMD]<br>
+NodeId=2<br>
+Hostname=192.168.0.55<br>
+LogDestination=FILE:filename=ndb_2_cluster.log,maxsize=10000000,maxfiles=6<br>
+DataDir=/var/lib/mysql-cluster/</p>
+<p>[NDBD]<br>
+NodeId=3<br>
+Hostname=192.168.0.57<br>
+datadir=/home/mysql/data/</p>
+<p>[NDBD]<br>
+NodeId=4<br>
+Hostname=192.168.0.65<br>
+datadir=/home/mysql/data/</p>
+<p>[MYSQLD]<br>
+NodeId=5<br>
+hostname=192.168.0.51</p>
+<p>[MYSQLD]<br>
+NodeId=6<br>
+hostname=192.168.0.56</p>
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;<br>
+[root@mgm ~]# ndb_mgm -e show<br>
+Connected to Management Server at: localhost:1186<br>
+Cluster Configuration<br>
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;<br>
+[ndbd(NDB)]     2 node(s)<br>
+id=3    @192.168.0.57  (mysql-5.6.19 ndb-7.3.6, Nodegroup: 0, *)<br>
+id=4    @192.168.0.65  (mysql-5.6.19 ndb-7.3.6, Nodegroup: 0)</p>
+<p>[ndb_mgmd(MGM)] 1 node(s)<br>
+id=1    @192.168.0.53  (mysql-5.6.19 ndb-7.3.6)<br>
+id=2    @192.168.0.55  (mysql-5.6.19 ndb-7.3.6)</p>
+<p>[mysqld(API)]   2 node(s)<br>
+id=5    @192.168.0.51  (mysql-5.6.19 ndb-7.3.6)<br>
+id=6    @192.168.0.56  (mysql-5.6.19 ndb-7.3.6)<br>
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</p>
+<p>[root@mysqld ~]# cat /etc/my.cnf<br>
+[client]<br>
+socket=/home/mysql-Cluster/mysql.sock<br>
+[mysqld]<br>
+max_connections=100<br>
+datadir=/home/mysql-Cluster<br>
+socket=/home/mysql-Cluster/mysql.sock<br>
+ndbcluster<br>
+ndb-connectstring=192.168.0.53, 192.168.0.55<br>
+ndb-force-send=1<br>
+ndb-use-exact-count=0<br>
+ndb-extra-logging=1<br>
+ndb-batch-size=24M<br>
+ndb-autoincrement-prefetch-sz=1024<br>
+default-storage-engine=NDB<br>
+max_allowed_packet = 5G<br>
+skip-name-resolve</p>
+<p>[mysqld_safe]<br>
+log-error=/var/log/mysqld.log<br>
+pid-file=/var/run/mysqld/mysqld.pid</p>
+<p>[mysql_cluster]<br>
+ndb-connectstring=192.168.0.53, 192.168.0.55<br>
+[root@mysqld ~]#<br>
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</p>
+<p>Also i have checked all logs but i am not getting any clue.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-2" id="comment-291838">
+				<div id="div-comment-291838" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-291838">October 9, 2014 at 9:58 am</a>		</div>
+
+		<p>This is a relatively resource &#8211; heavy config (I&#8217;m thinking of memory usage) &#8211; are your sure that there is enough physical memory on the physical server and the VM to ensure that none of the Cluster&#8217;s data will be swapped to disk? If not then performance will be very poor (note that all of the DataMemory is allocated when the data node starts up rather than it being incrementally allocated as you add rows).</p>
+<p>Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-291821">
+				<div id="div-comment-291821" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/961a290319819c7a039b29c01e9609d0?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/961a290319819c7a039b29c01e9609d0?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn"><a href="http://linuxonline.co.in/" class="url" rel="ugc external nofollow">bhairav</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-291821">October 9, 2014 at 9:44 am</a>		</div>
+
+		<p>We have 6 individual cantos 64 BIT virtual machines on XEN Server. </p>
+<p>We are able to create table. But, when we are trying to insert data in this table we showing only process is running long time. And after long time we are not getting any response from server.</p>
+<p>Also we have tested same scenario with single data node it is working fine.</p>
+<p>Data Node RAM : 19GB Both.</p>
+<p>CREATE TABLE `TB_Name` (<br>
+  `T1` BIGINT(20) NOT NULL,<br>
+  `T2` BIGINT(20) NOT NULL,<br>
+  `T3` INT(11) NOT NULL,<br>
+  `T4` SMALLINT(6) DEFAULT NULL,<br>
+  `T5` SMALLINT(6) DEFAULT NULL,<br>
+  PRIMARY KEY (`T1`),<br>
+  UNIQUE KEY `UK_CoEE` (`T2`,`T3`)<br>
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=latin1;</p>
+<p>INSERT  INTO `TB_Name`(`T1`,`T2`,`T3`,`T4`,`T5`) VALUES (325302462008513,2460,244,1,7) ,(88727112009284,1,245,1,25);</p>
+<p>+&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;<br>
+| Id | User        | Host               | db      | Command | Time | State                             | Info<br>
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;<br>
+| 4  | root        | localhost          | DB_Name   | Query   | 1519 | query end                         | REPLACE INTO `CoExtElement` VALUES (325302462008513,2460,244,1,7),(88727112009284,1,245,1,25)<br>
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;</p>
+<p>Configuration Part :</p>
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;<br>
+[NDBD DEFAULT]<br>
+MaxBufferedEpochs=5000<br>
+BackupMaxWriteSize=54M<br>
+BackupDataBufferSize=100M<br>
+BackupLogBufferSize=50M<br>
+BackupMemory=55M<br>
+BackupReportFrequency=10<br>
+MemReportFrequency=30<br>
+LogLevelStartup=15<br>
+LogLevelShutdown=15<br>
+LogLevelCheckpoint=8<br>
+LogLevelNodeRestart=15<br>
+DataMemory=14032M<br>
+IndexMemory=1024M<br>
+MaxNoOfTables=4596<br>
+MaxNoOfSubscribers=10000<br>
+MaxNoOfTriggers=3500<br>
+NoOfReplicas=2<br>
+StringMemory=25<br>
+DiskPageBufferMemory=1048M<br>
+SharedGlobalMemory=512M<br>
+LongMessageBuffer=32M<br>
+MaxNoOfConcurrentTransactions=195000<br>
+BatchSizePerLocalScan=512<br>
+FragmentLogFileSize=256M<br>
+NoOfFragmentLogFiles=16<br>
+RedoBuffer=128M<br>
+MaxNoOfExecutionThreads=2<br>
+StopOnError=false<br>
+LockPagesInMainMemory=1<br>
+TimeBetweenEpochsTimeout=32000<br>
+TimeBetweenWatchdogCheckInitial=60000<br>
+TransactionDeadlockDetectionTimeout=8640000<br>
+TransactionInactiveTimeout=60000<br>
+HeartbeatIntervalDbDb=15000<br>
+HeartbeatIntervalDbApi=15000<br>
+MaxNoOfConcurrentOperations=510000<br>
+MaxNoOfLocalOperations=561000<br>
+MaxNoOfAttributes=314572<br>
+MaxNoOfOrderedIndexes=8000<br>
+RealtimeScheduler=1<br>
+Datadir=/home/mysql/data/</p>
+<p>[MYSQLD DEFAULT]</p>
+<p>[TCP DEFAULT]<br>
+SendBufferMemory=64M<br>
+ReceiveBufferMemory=24M</p>
+<p>[NDB_MGMD DEFAULT]<br>
+Portnumber=1186</p>
+<p>[NDB_MGMD]<br>
+NodeId=1<br>
+Hostname=192.168.0.53<br>
+LogDestination=FILE:filename=ndb_1_cluster.log,maxsize=10000000,maxfiles=6<br>
+DataDir=/var/lib/mysql-cluster/</p>
+<p>[NDB_MGMD]<br>
+NodeId=2<br>
+Hostname=192.168.0.55<br>
+LogDestination=FILE:filename=ndb_2_cluster.log,maxsize=10000000,maxfiles=6<br>
+DataDir=/var/lib/mysql-cluster/</p>
+<p>[NDBD]<br>
+NodeId=3<br>
+Hostname=192.168.0.57<br>
+datadir=/home/mysql/data/</p>
+<p>[NDBD]<br>
+NodeId=4<br>
+Hostname=192.168.0.65<br>
+datadir=/home/mysql/data/</p>
+<p>[MYSQLD]<br>
+NodeId=5<br>
+hostname=192.168.0.51</p>
+<p>[MYSQLD]<br>
+NodeId=6<br>
+hostname=192.168.0.56</p>
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;<br>
+[root@mgm ~]# ndb_mgm -e show<br>
+Connected to Management Server at: localhost:1186<br>
+Cluster Configuration<br>
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;<br>
+[ndbd(NDB)]     2 node(s)<br>
+id=3    @192.168.0.57  (mysql-5.6.19 ndb-7.3.6, Nodegroup: 0, *)<br>
+id=4    @192.168.0.65  (mysql-5.6.19 ndb-7.3.6, Nodegroup: 0)</p>
+<p>[ndb_mgmd(MGM)] 1 node(s)<br>
+id=1    @192.168.0.53  (mysql-5.6.19 ndb-7.3.6)<br>
+id=2    @192.168.0.55  (mysql-5.6.19 ndb-7.3.6)</p>
+<p>[mysqld(API)]   2 node(s)<br>
+id=5    @192.168.0.51  (mysql-5.6.19 ndb-7.3.6)<br>
+id=6    @192.168.0.56  (mysql-5.6.19 ndb-7.3.6)<br>
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</p>
+<p>[root@mysqld ~]# cat /etc/my.cnf<br>
+[client]<br>
+socket=/home/mysql-Cluster/mysql.sock<br>
+[mysqld]<br>
+max_connections=100<br>
+datadir=/home/mysql-Cluster<br>
+socket=/home/mysql-Cluster/mysql.sock<br>
+ndbcluster<br>
+ndb-connectstring=192.168.0.53, 192.168.0.55<br>
+ndb-force-send=1<br>
+ndb-use-exact-count=0<br>
+ndb-extra-logging=1<br>
+ndb-batch-size=24M<br>
+ndb-autoincrement-prefetch-sz=1024<br>
+default-storage-engine=NDB<br>
+max_allowed_packet = 5G<br>
+skip-name-resolve</p>
+<p>[mysqld_safe]<br>
+log-error=/var/log/mysqld.log<br>
+pid-file=/var/run/mysqld/mysqld.pid</p>
+<p>[mysql_cluster]<br>
+ndb-connectstring=192.168.0.53, 192.168.0.55<br>
+[root@mysqld ~]#</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-2" id="comment-300093">
+				<div id="div-comment-300093" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-300093">October 15, 2014 at 8:33 am</a>		</div>
+
+		<p>Does each of the machines have plenty of RAM? For example, the data nodes for example have been configured to have 14GB of Data Memory &#8211; if any of that is swapped to disk then the performance is likely to be extremely poor and depending on settings, could cause timeouts etc.</p>
+<p>Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-494857">
+				<div id="div-comment-494857" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/67eb8de8e5e86a37dddf978f0056ac9d?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/67eb8de8e5e86a37dddf978f0056ac9d?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn"><a href="http://gloCalHelp.com/" class="url" rel="ugc external nofollow">gloCalHelp</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-494857">May 20, 2015 at 9:53 am</a>		</div>
+
+		<p>Dear mysql cluster-using pioneer,</p>
+<p>Where is the real MySQL Cluster installing package&#8217;s URL? </p>
+<p>To evaluate mysql cluster&#8217;s power, I download &#8220;mysql-cluster-gpl-7.4.6-linux-glibc2.5-x86_64&#8221; and install in Linux, but after I follow mysql.com&#8217;s quick test guide(<a href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-quick.html" rel="nofollow ugc">http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-quick.html</a>). </p>
+<p>After I start as &#8220;mysqld_safe&#8230;&#8221; but not &#8220;ndb_mgmd -f &#8230;&#8221;,I got this error message&#8221;&#8230;this binary does not contain NDBCLUSTER storage engine,InnoDB: Error: log file ./ib_logfile0 is of different size 0 50331648 bytes&#8230;&#8221;, but my.cnf has told mysqld_safe to start as NDBCLUSTER.</p>
+<p>Does this error mean my downloaded file doesn&#8217;t have NDBCLUSTER at all? then where is the cluster installing files&#8217; downloading URL which contains real NDBCLUSTER storage engine?</p>
+<p>my.cnf&#8217;s setting as below:<br>
+[mysqld]<br>
+# Options for mysqld process:<br>
+ndbcluster                      # run NDB storage engine<br>
+# provide connection string for management server host (default port: 1186)</p>
+<p>I am mysql Cluster&#8217;s lover and hope to join you and get help reply as soon as possible.</p>
+<p>P.S.: Thanks for sir Andrew&#8217;s several answer before, I have succeeded in installing &#8220;mysql-cluster-gpl-7.4.6-linux-glibc2.5-x86_64&#8221; in Linux but not windows, can you tell me the real cluster installing package&#8217;s url or help me to solve the problem?</p>
+<p>Best regards,<br>
+George Lin<br>
+Mobile:0086 180 500 42436</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-2 parent" id="comment-494964">
+				<div id="div-comment-494964" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-494964">May 20, 2015 at 2:31 pm</a>		</div>
+
+		<p>The first thing to check is that you&#8217;re running the mysqld_safe that came with the Cluster package and not one that&#8217;s already on your system &#8211; try <code>which mysqld_safe</code>.</p>
+<p>Another possibility is that it isn&#8217;t picking up your config file so try adding the explicit <code>--defaults-file=<path to my.cnf>.</path></code></p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment even depth-3" id="comment-495341">
+				<div id="div-comment-495341" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/67eb8de8e5e86a37dddf978f0056ac9d?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/67eb8de8e5e86a37dddf978f0056ac9d?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn"><a href="http://gloCalHelp.com/" class="url" rel="ugc external nofollow">gloCalHelp</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-495341">May 21, 2015 at 2:49 am</a>		</div>
+
+		<p>Dear Sir Andrew,<br>
+   Thank you very much, the safe SQL node can begin to run without error temporally now. You are great, and it seems that the default install binary is the correct one.<br>
+   As my memory, yesterday, I denifitely use the &#8220;&#8211;defaults-file=/usr/local/mysql/my.cnf&#8221; to start, after it failed, I didn&#8217;t use this option and it told me to put my.cnf to /usr/, and I did that, but it failed again.</p>
+<p>   And today, I follow your steps and denifitely use the mysqld_safe in the installing package folder of &#8220;/usr/local/mysql-cluster-gpl-7.4.6-linux-glibc2.5-x86_64/bin&#8221;. </p>
+<p>   Hope you and oracle&#8217;s  genius free MySQLCluster 7.4.6 can work greatly with real over 99.999% high availabilty and high scalabitly and realtime replication with partitioning!</p>
+<p>   Many thanks to genius Andrew and Oracle&#8217;s mysql team!</p>
+<p>   And I am one of the mysql&#8217;s lovers and hope to join your team.</p>
+<p>Best regards,<br>
+Sincerely,<br>
+Georgelin<br>
+0086 180 500 42436</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-495565">
+				<div id="div-comment-495565" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/67eb8de8e5e86a37dddf978f0056ac9d?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/67eb8de8e5e86a37dddf978f0056ac9d?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn"><a href="http://gloCalHelp.com/" class="url" rel="ugc external nofollow">gloCalHelp</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-495565">May 21, 2015 at 10:18 am</a>		</div>
+
+		<p>Dear Sir Andrew and other pioneers,</p>
+<p>   Thanks fro Andrew and others&#8217; guide, I have run MySQLCluster 7.4.6  2 data nodes, 1 mgm and 1 SQL node in linux with 1 SQL node in win7. but cluster has these two problems.</p>
+<p>1st problem: I got thrice error: &#8221; Node 3: Forced node shutdown completed. Caused by error 2305: &#8216;Node lost connection to other nodes and can not form a unpartitioned cluster, please investigate if there are error(s) on other node(s)(Arbitration error). Temporary error, restart node&#8217;.&#8221; ,<br>
+what is the cause?</p>
+<p>2nd problem: before I install 1 SQL node in win7, I have uninstalled the old community MySQL server, and through the win7 SQL node, I can see<br>
+table record created in mgm node, but the cluster&#8217;s other info, such as root passwords and other accounts info can not sync to Win7, and it is strange that the SQL node still use the win7&#8217;s old mysql password to update and connect to cluster, is this a bug?</p>
+<p>Bye.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor even depth-2 parent" id="comment-495662">
+				<div id="div-comment-495662" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-495662">May 21, 2015 at 1:00 pm</a>		</div>
+
+		<p>For the 1st problem, it looks as though one of your machines failed or you had a networking problem. Note that to avoid a single point of failure, there are some important rules to follow in terms of where the management node (which acts as the arbitrator in the event of network partitioning) resides &#8211; take a look at <a href="./mysql-cluster-fault-tolerance-impact-of-deployment-decisions/index.html" rel="nofollow">MySQL Cluster fault tolerance – impact of deployment decisions</a>.</p>
+<p>Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment odd alt depth-3" id="comment-496178">
+				<div id="div-comment-496178" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/67eb8de8e5e86a37dddf978f0056ac9d?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/67eb8de8e5e86a37dddf978f0056ac9d?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn"><a href="http://gloCalHelp.com/" class="url" rel="ugc external nofollow">gloCalHelp</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-496178">May 22, 2015 at 3:13 am</a>		</div>
+
+		<p>Dear Andrew,</p>
+<p>   Thank you for your guide, is the 2nd data node&#8217;s fail connecting after 8 hours because of being not consistent MySQLCluster-installing-package&#8217;s ownership with the 1st data node?</p>
+<p>Georgelin</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-499541">
+				<div id="div-comment-499541" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/67eb8de8e5e86a37dddf978f0056ac9d?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/67eb8de8e5e86a37dddf978f0056ac9d?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn"><a href="http://gloCalHelp.com/" class="url" rel="ugc external nofollow">gloCalHelp</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-499541">May 25, 2015 at 10:42 am</a>		</div>
+
+		<p>Dear Andrew,</p>
+<p>    In order to not let my question be more outstanding among reply, could you please forgive me to submit it as a new topic here again?<br>
+my submission reply is :</p>
+<p>Hi, Dear Andrew,</p>
+<p>    Has cluster ndb 7.4.6 totally support &#8220;referencing just part of the multi-part key &#8221; as a foreign key?</p>
+<p>    &#8220;&#8230;Note that by referencing just part of the multi-part key it’s actually non-unique even if the full key was unique &#8230;&#8221; does this means that in cluster NDB engine, the reference foreign key should be only one UNIQUE key, but cann&#8217;t be a part of multi-coloumn key?</p>
+<p>    But it is strange that some table constraint with a part of multi-coloumn key can create in NDBCluster, but  some tables doesn&#8217;t. </p>
+<p>    Such as, these tables can create:<br>
+CREATE TABLE `pz_tb_wdcash` (<br>
+  `ID` varchar(255) NOT NULL COMMENT &#8216;ID&#8217;,<br>
+  `pzAccount` varchar(32) DEFAULT NULL COMMENT &#8216;平台账户ID&#8217;,<br>
+  &#8230;<br>
+  `opratAdmin` varchar(100) DEFAULT NULL,<br>
+  PRIMARY KEY (`ID`),<br>
+  KEY `FKF70CA7C9A279E9A` (`pzAccount`) USING BTREE,<br>
+  KEY `FKF70CA7C60F7D21E` (`pzBankCard`) USING BTREE,<br>
+  KEY `FKF70CA7C6D563EAE` (`pzBankCard`) USING BTREE,<br>
+  CONSTRAINT `pz_tb_wdcash_ibfk_1` FOREIGN KEY (`pzBankCard`) REFERENCES `p2p_td_bank_card` (`ID`),<br>
+  CONSTRAINT `pz_tb_wdcash_ibfk_2` FOREIGN KEY (`pzAccount`) REFERENCES `p2p_td_user` (`ID`)<br>
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;<br>
+pz_tb_wdcash&#8217;s 1 foreign key is the below table&#8217;s one of keys &#8220;ID&#8221;.</p>
+<p>CREATE TABLE `pz_tb_bank_card` (<br>
+  `ID` varchar(255) NOT NULL,<br>
+  `C_USER` varchar(32) NOT NULL COMMENT &#8216;平台账户ID&#8217;,<br>
+  &#8230;<br>
+  `C_UPDATE_TIME` datetime DEFAULT NULL COMMENT &#8216;更新时间&#8217;,<br>
+  PRIMARY KEY (`ID`),<br>
+  KEY `FKF6C0EC392F758BDE` (`C_USER`) USING BTREE,<br>
+  KEY `FKF6C0EC392F63C0C0` (`C_BANK`) USING BTREE,<br>
+  CONSTRAINT `pz_tb_bank_card_ibfk_1` FOREIGN KEY (`C_BANK`) REFERENCES `p2p_td_bank` (`ID`),<br>
+  CONSTRAINT `pz_tb_bank_card_ibfk_2` FOREIGN KEY (`C_USER`) REFERENCES `p2p_td_user` (`ID`)<br>
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;</p>
+<p>but why  the below  table cann&#8217;t create?</p>
+<p>DROP TABLE IF EXISTS `pz_tb_pz_account`;</p>
+<p>/*Error 1215；can not add foreign key constraint*/<br>
+CREATE TABLE `pz_tb_pz_account` (<br>
+  `id` varchar(40) NOT NULL COMMENT &#8216;ID&#8217;,<br>
+  `pzid` varchar(40) DEFAULT NULL COMMENT &#8216;配资id&#8217;,<br>
+  &#8230;<br>
+  `status` varchar(5) DEFAULT &#8216;0&#8217; COMMENT &#8216;清算审批状态 0 未审批 1 审批完成&#8217;,<br>
+  PRIMARY KEY (`id`),<br>
+  KEY `FK690FB1F479E54801` (`pzid`) USING BTREE,<br>
+  CONSTRAINT `pz_tb_pz_account_ibfk_1` FOREIGN KEY (`pzid`) REFERENCES `pz_tb_pz` (`id`)<br>
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;</p>
+<p>its reference table has been created  as below:<br>
+CREATE TABLE `pz_tb_pz` (<br>
+  `id` varchar(32) NOT NULL COMMENT &#8216;ID&#8217;,<br>
+  &#8230;<br>
+  `endtype` varchar(5) DEFAULT NULL COMMENT &#8216;终止类型 1方案到期 2用户手动终止 3到达平仓线&#8217;,<br>
+  PRIMARY KEY (`id`),<br>
+  KEY `FKB62A63069A279E9A` (`pzAccount`) USING BTREE,<br>
+  KEY `FKB62A630649DB09AA` (`pzAccount`) USING BTREE<br>
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;</p>
+<p>why? and I have add MaxNoOfTriggers=5188 in config.ini, is there any good solution?</p>
+<p>Thank you.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-2" id="comment-512428">
+				<div id="div-comment-512428" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-512428">June 11, 2015 at 1:25 pm</a>		</div>
+
+		<p>Sorry for the delay – I’m not able to check at this point but it’s worth raising the question on the <a href="http://forums.mysql.com/list.php?25" rel="nofollow">MySQL Clsuter forum</a>.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-510623">
+				<div id="div-comment-510623" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/67eb8de8e5e86a37dddf978f0056ac9d?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/67eb8de8e5e86a37dddf978f0056ac9d?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn"><a href="http://gloCalHelp.com/" class="url" rel="ugc external nofollow">gloCalHelp</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-510623">June 9, 2015 at 9:33 am</a>		</div>
+
+		<p>hi, MySQL cluster pioneer,</p>
+<p>  Has the &#8220;Error Code: 1215. Cannot add foreign key constraint&#8221; been solved in MySQLCluster 7.4.6?</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				<ul class="children">
+		<li class="comment byuser comment-author-andrew bypostauthor odd alt depth-2" id="comment-512420">
+				<div id="div-comment-512420" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=48&#038;d=mm&#038;r=r" srcset="https://secure.gravatar.com/avatar/3bd9c2224a4aeb92856775d3bc5599af?s=96&#038;d=mm&#038;r=r 2x" class="avatar avatar-48 photo" height="48" width="48" loading="lazy" decoding="async">			<cite class="fn">andrew</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata">
+			<a href="./foreign-keys-in-mysql-cluster/index.html#comment-512420">June 11, 2015 at 1:21 pm</a>		</div>
+
+		<p>Sorry for the delay &#8211; I&#8217;m not able to check at this point but if you can&#8217;t find the answer in the release notes then it&#8217;s worth raising the question on the <a href="http://forums.mysql.com/list.php?25" rel="nofollow">MySQL Cluster forum</a>.</p>
+<p>Best Regards, Andrew.</p>
+
+		<div class="reply"><a rel="nofollow" class="comment-reply-login" href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">Log in to Reply</a></div>
+				</div>
+				</li>
+<!-- #comment-## -->
+</ul>
+<!-- .children -->
+</li>
+<!-- #comment-## -->
+	</ol>
+
+	</div>
+ 
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="./foreign-keys-in-mysql-cluster/index.html#respond" style="display:none;">Cancel reply</a></small>
+</h3>
+<p class="must-log-in">You must be <a href="./../wp-login.php?redirect_to=http%3A%2F%2F%2Fmysql-cluster%2Fforeign-keys-in-mysql-cluster">logged in</a> to post a comment.</p>	</div>
+<!-- #respond -->
+		<div class="clear"></div>
+		
+		</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://www.clusterdb.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="./../mongodb/building-a-collaborative-ios-minesweeper-game-with-realm/index.html">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="./../mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial/index.html">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="./../mongodb/realm-swift-type-projections/index.html">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="./../mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync/index.html">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="./../mongodb/goodbye-nspredicate-hello-realm-swift-query-api/index.html">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments">
+<h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments">
+<li class="recentcomments">
+<span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="./mysql-cluster-running-on-raspberry-pi/index.html#comment-787242">MySQL Cluster running on Raspberry Pi</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">andrew</span> on <a href="./setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="./setting-up-mysql-asynchronous-replication-for-high-availability/index.html#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Sai Krishnan</span> on <a href="./get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-661143">Get MySQL Replication up and running in 5 minutes</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Nayan</span> on <a href="./get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-660628">Get MySQL Replication up and running in 5 minutes</a>
+</li>
+</ul>
+</li>
+<li id="categories-2" class="widget widget_categories">
+<h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2">
+<a href="./../category/me/index.html">Me</a>
+</li>
+	<li class="cat-item cat-item-146">
+<a href="./../category/mongodb/index.html">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3">
+<a href="./../category/mysql/index.html">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4">
+<a href="./../category/mysql-cluster/index.html">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131">
+<a href="./../category/mysql-fabric/index.html">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5">
+<a href="./../category/mysql-replication/index.html">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214">
+<a href="./../category/mongodb/realm/index.html">Realm</a>
+</li>
+	<li class="cat-item cat-item-1">
+<a href="./../category/uncategorized/index.html">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud">
+<h2 class="widgettitle">Tags</h2>
+<div class="tagcloud">
+<a href="./../tag/7-4/index.html" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="./../tag/apache-kafka/index.html" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="./../tag/cluster/index.html" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="./../tag/ha/index.html" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="./../tag/high-availability/index.html" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="./../tag/ios/index.html" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="./../tag/java/index.html" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="./../tag/javascript/index.html" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="./../tag/mcm/index.html" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="./../tag/mean/index.html" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="./../tag/memcached/index.html" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="./../tag/mobile/index.html" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="./../tag/mongodb/index.html" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="./../tag/mongodb-3-2/index.html" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="./../tag/mongodb-atlas/index.html" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="./../tag/mongodb-mobile/index.html" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="./../tag/mongodb-stitch/index.html" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="./../tag/mysql/index.html" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="./../tag/mysql-5-6/index.html" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="./../tag/mysql-cluster/index.html" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="./../tag/mysql-cluster-70/index.html" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="./../tag/mysql-cluster-7-1/index.html" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="./../tag/mysql-cluster-7-2/index.html" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="./../tag/mysql-cluster-7-3/index.html" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="./../tag/mysql-cluster-7-4/index.html" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="./../tag/mysql-cluster-cge/index.html" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="./../tag/mysql-cluster-manager/index.html" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="./../tag/mysql-enterprise-monitor/index.html" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="./../tag/mysql-fabric-2/index.html" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="./../tag/mysql-replication/index.html" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="./../tag/mysql-utilities/index.html" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="./../tag/ndb-api/index.html" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="./../tag/node-js/index.html" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="./../tag/nosql/index.html" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="./../tag/performance/index.html" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="./../tag/realm/index.html" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="./../tag/replication/index.html" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="./../tag/secondary/index.html" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="./../tag/serverless/index.html" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="./../tag/sharding/index.html" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="./../tag/swift/index.html" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="./../tag/swiftui/index.html" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="./../tag/webcast/index.html" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="./../tag/webinar/index.html" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="./../tag/windows/index.html" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a>
+</div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="./../wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="./../wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="./../wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="./../wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="./../wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive">
+<h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="./../2022/03/index.html">March 2022</a></li>
+	<li><a href="./../2022/02/index.html">February 2022</a></li>
+	<li><a href="./../2022/01/index.html">January 2022</a></li>
+	<li><a href="./../2021/12/index.html">December 2021</a></li>
+	<li><a href="./../2021/11/index.html">November 2021</a></li>
+	<li><a href="./../2021/09/index.html">September 2021</a></li>
+	<li><a href="./../2021/08/index.html">August 2021</a></li>
+	<li><a href="./../2021/07/index.html">July 2021</a></li>
+	<li><a href="./../2021/06/index.html">June 2021</a></li>
+	<li><a href="./../2021/05/index.html">May 2021</a></li>
+	<li><a href="./../2021/04/index.html">April 2021</a></li>
+	<li><a href="./../2021/02/index.html">February 2021</a></li>
+	<li><a href="./../2021/01/index.html">January 2021</a></li>
+	<li><a href="./../2020/12/index.html">December 2020</a></li>
+	<li><a href="./../2019/03/index.html">March 2019</a></li>
+	<li><a href="./../2019/01/index.html">January 2019</a></li>
+	<li><a href="./../2018/12/index.html">December 2018</a></li>
+	<li><a href="./../2018/11/index.html">November 2018</a></li>
+	<li><a href="./../2018/10/index.html">October 2018</a></li>
+	<li><a href="./../2018/09/index.html">September 2018</a></li>
+	<li><a href="./../2017/09/index.html">September 2017</a></li>
+	<li><a href="./../2017/03/index.html">March 2017</a></li>
+	<li><a href="./../2017/02/index.html">February 2017</a></li>
+	<li><a href="./../2017/01/index.html">January 2017</a></li>
+	<li><a href="./../2016/12/index.html">December 2016</a></li>
+	<li><a href="./../2016/11/index.html">November 2016</a></li>
+	<li><a href="./../2016/09/index.html">September 2016</a></li>
+	<li><a href="./../2016/01/index.html">January 2016</a></li>
+	<li><a href="./../2015/11/index.html">November 2015</a></li>
+	<li><a href="./../2015/10/index.html">October 2015</a></li>
+	<li><a href="./../2015/09/index.html">September 2015</a></li>
+	<li><a href="./../2015/06/index.html">June 2015</a></li>
+	<li><a href="./../2015/04/index.html">April 2015</a></li>
+	<li><a href="./../2015/03/index.html">March 2015</a></li>
+	<li><a href="./../2015/02/index.html">February 2015</a></li>
+	<li><a href="./../2015/01/index.html">January 2015</a></li>
+	<li><a href="./../2014/12/index.html">December 2014</a></li>
+	<li><a href="./../2014/11/index.html">November 2014</a></li>
+	<li><a href="./../2014/10/index.html">October 2014</a></li>
+	<li><a href="./../2014/09/index.html">September 2014</a></li>
+	<li><a href="./../2014/08/index.html">August 2014</a></li>
+	<li><a href="./../2014/07/index.html">July 2014</a></li>
+	<li><a href="./../2014/06/index.html">June 2014</a></li>
+	<li><a href="./../2014/05/index.html">May 2014</a></li>
+	<li><a href="./../2014/04/index.html">April 2014</a></li>
+	<li><a href="./../2014/03/index.html">March 2014</a></li>
+	<li><a href="./../2014/02/index.html">February 2014</a></li>
+	<li><a href="./../2014/01/index.html">January 2014</a></li>
+	<li><a href="./../2013/12/index.html">December 2013</a></li>
+	<li><a href="./../2013/11/index.html">November 2013</a></li>
+	<li><a href="./../2013/09/index.html">September 2013</a></li>
+	<li><a href="./../2013/08/index.html">August 2013</a></li>
+	<li><a href="./../2013/07/index.html">July 2013</a></li>
+	<li><a href="./../2013/06/index.html">June 2013</a></li>
+	<li><a href="./../2013/05/index.html">May 2013</a></li>
+	<li><a href="./../2013/03/index.html">March 2013</a></li>
+	<li><a href="./../2013/02/index.html">February 2013</a></li>
+	<li><a href="./../2013/01/index.html">January 2013</a></li>
+	<li><a href="./../2012/12/index.html">December 2012</a></li>
+	<li><a href="./../2012/11/index.html">November 2012</a></li>
+	<li><a href="./../2012/09/index.html">September 2012</a></li>
+	<li><a href="./../2012/07/index.html">July 2012</a></li>
+	<li><a href="./../2012/06/index.html">June 2012</a></li>
+	<li><a href="./../2012/05/index.html">May 2012</a></li>
+	<li><a href="./../2012/04/index.html">April 2012</a></li>
+	<li><a href="./../2012/03/index.html">March 2012</a></li>
+	<li><a href="./../2012/02/index.html">February 2012</a></li>
+	<li><a href="./../2012/01/index.html">January 2012</a></li>
+	<li><a href="./../2011/12/index.html">December 2011</a></li>
+	<li><a href="./../2011/11/index.html">November 2011</a></li>
+	<li><a href="./../2011/10/index.html">October 2011</a></li>
+	<li><a href="./../2011/09/index.html">September 2011</a></li>
+	<li><a href="./../2011/07/index.html">July 2011</a></li>
+	<li><a href="./../2011/06/index.html">June 2011</a></li>
+	<li><a href="./../2011/05/index.html">May 2011</a></li>
+	<li><a href="./../2011/04/index.html">April 2011</a></li>
+	<li><a href="./../2011/03/index.html">March 2011</a></li>
+	<li><a href="./../2011/02/index.html">February 2011</a></li>
+	<li><a href="./../2011/01/index.html">January 2011</a></li>
+	<li><a href="./../2010/12/index.html">December 2010</a></li>
+	<li><a href="./../2010/11/index.html">November 2010</a></li>
+	<li><a href="./../2010/10/index.html">October 2010</a></li>
+	<li><a href="./../2010/09/index.html">September 2010</a></li>
+	<li><a href="./../2010/08/index.html">August 2010</a></li>
+	<li><a href="./../2010/07/index.html">July 2010</a></li>
+	<li><a href="./../2010/06/index.html">June 2010</a></li>
+	<li><a href="./../2010/05/index.html">May 2010</a></li>
+	<li><a href="./../2010/04/index.html">April 2010</a></li>
+	<li><a href="./../2010/03/index.html">March 2010</a></li>
+	<li><a href="./../2010/02/index.html">February 2010</a></li>
+	<li><a href="./../2010/01/index.html">January 2010</a></li>
+	<li><a href="./../2009/12/index.html">December 2009</a></li>
+	<li><a href="./../2009/11/index.html">November 2009</a></li>
+	<li><a href="./../2009/10/index.html">October 2009</a></li>
+	<li><a href="./../2009/09/index.html">September 2009</a></li>
+	<li><a href="./../2009/08/index.html">August 2009</a></li>
+	<li><a href="./../2009/07/index.html">July 2009</a></li>
+	<li><a href="./../2009/06/index.html">June 2009</a></li>
+	<li><a href="./../2009/05/index.html">May 2009</a></li>
+	<li><a href="./../2009/04/index.html">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 --><script type="text/javascript" src="./../wp-includes/js/comment-reply.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
+</body>
+</html>

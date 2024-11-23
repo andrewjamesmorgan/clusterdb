@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Scale &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Fri, 20 Feb 2015 14:49:01 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Choosing the right MySQL High Availability Solution – webinar replay</title>
+		<link>./../../mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/index.html</link>
+					<comments>./../../mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 20 Feb 2015 14:49:01 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[clustering]]></category>
+		<category><![CDATA[DRBD]]></category>
+		<category><![CDATA[fabric]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Replication]]></category>
+		<category><![CDATA[Scale]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4038</guid>
+
+					<description><![CDATA[Earlier this week, I presented a webinar on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application. The replay of this webinar can now be viewed here or if you just want to look at the charts then scroll down. At the end]]></description>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/10/MySQL-HA-Logo1.png"><img fetchpriority="high" decoding="async" class="aligncenter size-full wp-image-2970" src="./../../wp-content/uploads/2013/10/MySQL-HA-Logo1.png" alt="MySQL-HA-Logo1.png" width="950" height="100" srcset="./../../wp-content/uploads/2013/10/MySQL-HA-Logo1.png 950w, ./../../wp-content/uploads/2013/10/MySQL-HA-Logo1-300x31.png 300w" sizes="(max-width: 950px) 100vw, 950px" /></a>Earlier this week, I presented a webinar on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application.</p>
+<p>The <a title="Achieving MySQL High Availability, Learn to Select Your Best Option - webinar replay" href="https://event.on24.com/eventRegistration/EventLobbyServlet?target=reg20.jsp&amp;eventid=930247&amp;sessionid=1&amp;key=FF21049401BAD50579B6733B15BC9D36&amp;sourcepage=register" target="_blank">replay of this webinar can now be viewed here</a> or if you just want to look at the charts then scroll down. At the end of this post, I include a summary of the Q&amp;A from the webinar.</p>
+<p><span style="color: #333399;">How important is your data? Can you afford to lose it? What about just some of it? What would be the impact if you couldn&#8217;t access it for a minute, an hour, a day or a week?</span></p>
+<p><span style="color: #333399;">Different applications can have very different requirements for High Availability. Some need 100% data reliability with 24x7x365 read &amp; write access while many others are better served by a simpler approach with more modest HA ambitions.</span></p>
+<p><span style="color: #333399;">MySQL has an array of High Availability solutions ranging from simple backups, through replication and shared storage clustering &#8211; all the way up to 99.999% available shared nothing, geographically replicated clusters. These solutions also have different &#8216;bonus&#8217; features such as full InnoDB compatibility, in-memory real-time performance, linear scalability and SQL &amp; NoSQL APIs.</span></p>
+<p><span style="color: #333399;">The purpose of this webinar is to help you decide where your application sits in terms of HA requirements and discover which of the MySQL solutions best fit the bill. It will also cover what you need outside of the database to ensure High Availability &#8211; state of the art monitoring being a prime example.</span></p>
+<h2>The charts</h2>
+<p>&nbsp;</p>
+<p><iframe src="//www.slideshare.net/slideshow/embed_code/44927297" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></p>
+<h2></h2>
+<h2>Questions and Answers</h2>
+<ul>
+<li><strong>What does &#8220;HA&#8221; stands for?</strong> High Availability</li>
+<li><strong>What is meant by scale-out?</strong> Scale-out is where you increase the capacity or the throughput of the system by adding extra (usually commodity) machines &#8211; this is the opposite of scale-up where you buy the biggest single server that you can find. It tends to be much more economical this way and you can add extra capacity if and when you need it.</li>
+<li><strong>Most of my applications are for small businesses were the data load is not that big, is this session worth listening too?</strong> Yes &#8211; the focus of this presentation is on keeping your data safe and accessible, not on scaling to massive volumes and throughput. Scale-out is touched on as if you need that as well then it can influence your choice of High Availability solution</li>
+<li><strong>How does all this compare with Amazon Aurora?</strong> Aurora is something that&#8217;s offered by Amazon and is supported by them. Aurora can only be run on AWS &#8211; the solutions covered here can be taken to lots of different environments &#8211; whether cloud or &#8216;bare metal&#8217;</li>
+<li><strong>what amount of work would be involved in migrating actual InnoDB based DB&#8217;s into NDB?</strong> As you&#8217;d expect, it depends on the application. Changes should be minor to get it to run but you might need to make more adjustments to get the best performance. This <a title="MySQL Cluster Evaluation Guide" href="http://www.mysql.com/why-mysql/white-papers/mysql-cluster-evaluation-guide/" target="_blank">white paper</a> is a good place to start.</li>
+<li><strong>Is it possible to migrate InnoDB data to MySQL Cluster?</strong> Yes. The first thing to note is that to use MySQL Cluster, you have to use the mysqld (MySQL Server) process that comes with the MySQL Cluster package; once you&#8217;ve switched to that binary then you can run ALTER TABLE my_tab ENGINE=NDB; provided that your schema is compatible with MySQL Cluster. Alternatively you can perform a mysqldump and then load the data in.</li>
+<li><strong>Does MySQL Fabric solutions support &#8220;rolling upgrade&#8221;?</strong> Yes &#8211; you can perform a rolling upgrade of the managed MySQL Servers but you have to do it yourself, Fabric doesn&#8217;t automate it at present</li>
+<li><strong>What about master-master replication?</strong> You can use active-active replication but the application is responsibe for avoiding conflicts between the two sites unless you use MySQL Cluster/NDB (where the functionality is built into the database)</li>
+<li><strong>What&#8217;s the maximum distance that the master and slave can be apart?</strong> For MySQL Replication, there is no maximum distance; the latency of the master isn&#8217;t impacted if you stick with the default asynchronous replication. If you use semi-synchronous replication then the latency of your transactions will be impacted by the WAN latency between the master and slave site(s).</li>
+<li><strong>Is there a monetary investment to implement this or is it free?</strong> The database technology presented in this session can be used under the GPL open source license; if you buy a commercal edition then you get access to some additional tools such as MySQL Enterprise Monitor and MySQL Cluster Manager.</li>
+<li><strong>Can we check the transaction sequence in slave side?</strong> Yes, with MySQL replication, you can check which transactions have been applied on the slave.</li>
+<li><strong>Can the slave switch over to master, in case the master needs to be shut down?</strong> Yes &#8211; that&#8217;s a very common use case</li>
+<li><strong>Do we have seperate binlog for different databases (schemas)?</strong> All of the databases (schemas) within the MySQL Server use the same binary log. When that log file fills up, it&#8217;s rotated out and a new one used.</li>
+<li><strong>How can I implement &#8220;auto-failover&#8221; in mysql 5.6 replication? Are you talking abaout &#8220;mysqlfailover&#8221; script?</strong> You can use the mysqlfailover utility or MySQL Fabric</li>
+<li><strong>What are the similarties and differences between InnoDB and the NDB/MySQL Cluster engines?</strong> We&#8217;ll cover some of this in this presentation and you can find more details in this <a title="MySQL Cluster Evaluation Guide" href="http://www.mysql.com/why-mysql/white-papers/mysql-cluster-evaluation-guide/" target="_blank">white paper</a></li>
+<li><strong>With master-master replication, there were some parameters to control the autoincrement IDs so that we could avoid conflicts with active-active MySQL replication?</strong> If you ensure that the same row isn&#8217;t written to on both masters then you can avoid conflicts. One option could be to store odd primary keys on one and even on the other. You can then set the <a title="auto_increment_increment" href="http://dev.mysql.com/doc/refman/5.0/en/replication-options-master.html#sysvar_auto_increment_increment" target="_blank">auto_increment_increment</a> and <a title="auto_increment_offset" href="http://dev.mysql.com/doc/refman/5.0/en/replication-options-master.html#sysvar_auto_increment_offset" target="_blank">auto_increment_offset</a> parameters and then use auto-increment primary keys on each MySQL Server</li>
+<li><strong>Is there an online backup tool available in mysql &#8211; without locking my database?</strong> Yes &#8211; if you&#8217;re using InnoDB then you can use MySQL Enterprise Backup (part of MySQL Enterprise Edition and it&#8217;s also <em>much</em> faster than mysqldump); MySQL Cluster it has a built-in online backup tool (which can be simpler to use in conjunction with MySQL Cluter Manager which is part of MySQL Cluster Carrier Grade Edition)</li>
+<li><strong>In multi-source replication, how are data conflicts handled? If more than one master modifies the same row, which one is applied?</strong> That&#8217;s left as an exercise for the application. The application is responsible for making sure that there are no conflicting updates (if you care about the conflicts). You could also use MySQL Fabric to shard the data.</li>
+<li><strong>With MySQL Group Replication, if one master is down, will transactions still be applied?</strong> With MySQL Group Replication, updates can be sent to any of the servers and so if one is unavailable just switch to any of the others</li>
+<li><strong>what is the maximum data size MySQL can handle in it&#8217;s latest release?</strong> The maximum size of an InnoDB table[space] is four billion pages (64TB with the default 16k page size). Beyond that you start partitioning or use MySQL Fabric</li>
+<li><strong>Can you give a short definition for sharding?</strong> Sharding is where you take the data for a table and split it accross multiple MySQL Server instances. Typically you&#8217;ll choose one or more columns from the table to act as the sharding key to decide which shard a specific row should be stored in. You can also have functional sharding where you decide that the whole of table A will be in one shard and all of table B in another</li>
+<li><strong>Is there a storage engine to handle JSON documents?</strong> Here&#8217;s an <a title="JSON queries using MySQL" href="interesting blog on that topic. http://blog.ulf-wendel.de/2013/mysql-5-7-sql-functions-for-json-udf/" target="_blank">interesting blog on that topic</a></li>
+<li><strong>What algorithms are available for sharding in MySQL?</strong> With MySQL Fabric you can use a hash or define ranges for the shard key. With MySQL Cluster, the sharding is completely transparrent to the application but it uses a MD5 hashing under the covers</li>
+<li><strong>In MySQL cluster is all the data replicated to all of the data nodes?</strong> Data is synchrously replicated between the 2 data nodes forming a node group. Different node groups are responsible for different shards for any given table</li>
+<li><strong>What&#8217;s the maximum number of data nodes in MySQL Cluster?</strong> 48</li>
+<li><strong>Which it best inter-connect method between MySQL Cluster data nodes for highest performance?</strong> Infiniband and GB Ethernet have both shown great results. If you&#8217;re able to configure the behaviour then low latency will help get the best performance</li>
+<li><strong>Can I colocate MySQL Cluster data nodes with MySQL Servers in order use all posible resources?</strong> Yes, you can co-locate data nodes and MySQL Servers. Note that the management node (ndb_mgmd) should not run on the same machine as any of the data nodes &#8211; <a title="read this post for details on how to deploy MySQL Cluster nodes for High Availability" href="./../../mysql-cluster/mysql-cluster-fault-tolerance-impact-of-deployment-decisions/index.html" target="_blank">read this post for details on how to deploy MySQL Cluster nodes for High Availability</a></li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Sharding &#038; HA &#8211; MySQL Fabric Webinar</title>
+		<link>./../../mysql-fabric/sharding-ha-mysql-fabric-webinar/index.html</link>
+					<comments>./../../mysql-fabric/sharding-ha-mysql-fabric-webinar/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 16 Jun 2014 16:32:17 +0000</pubDate>
+				<category><![CDATA[MySQL Fabric]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[mysql fabric]]></category>
+		<category><![CDATA[Scale]]></category>
+		<category><![CDATA[sharding]]></category>
+		<guid isPermaLink="false">./../../index.html?p=3906</guid>
+
+					<description><![CDATA[On Thursday (19th June), Mats Kindahl and I will be presenting a free webinar on why and how you should be using MySQL Fabric to add Sharding (scaling out reads &#038; writes) and High Availability to MySQL. This product has only recently gone GA and so this is a good chance to discover it&#8217;s for]]></description>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2014/06/b12-mysql-fabric-no-button.png"><img decoding="async" src="./../../wp-content/uploads/2014/06/b12-mysql-fabric-no-button-1024x352.png" alt="MySQL Fabric - Sharding and High Availability" width="480" height="165" class="aligncenter size-large wp-image-3907" srcset="./../../wp-content/uploads/2014/06/b12-mysql-fabric-no-button-1024x352.png 1024w, ./../../wp-content/uploads/2014/06/b12-mysql-fabric-no-button-300x103.png 300w, ./../../wp-content/uploads/2014/06/b12-mysql-fabric-no-button-900x309.png 900w, ./../../wp-content/uploads/2014/06/b12-mysql-fabric-no-button.png 1280w" sizes="(max-width: 480px) 100vw, 480px" /></a></p>
+<p>On Thursday (19th June), Mats Kindahl and I will be presenting a free webinar on why and how you should be using MySQL Fabric to add Sharding (scaling out reads &#038; writes) and High Availability to MySQL. This product has only recently gone GA and so this is a good chance to discover it&#8217;s for you and to get your questions answered by the people who wrote the software! All you need to do is <a href="http://www.mysql.com/news-and-events/web-seminars/mysql-fabric-high-availability-automated-sharding-for-mysql/" title="MySQL Fabric - High Availability &#038; Automated Sharding for MySQL" target="_blank">register for the MySQL Fabric webinar here</a>.</p>
+<h3>Abstract</h3>
+<p>MySQL Fabric is built around an extensible and open source framework for managing farms of MySQL Servers. Currently two features have been implemented &#8211; High Availability (built on top of MySQL Replication) and scaling out using data sharding. These features can be used in isolation or in combination. MySQL Fabric aware connectors allow transactions and queries to be routed to the correct servers without the need for a proxy node, so operations run as quickly as ever. In this webinar you will learn what MySQL Fabric is, what it can achieve and how it is used &#8211; by DBAs, Dev-Ops and developers. You&#8217;ll also be exposed to what is happening under the covers. In addition to the presentation, there will be live on-line Q&#038;A with the engineering team. This is a great opportunity to learn about the latest developments directly from the people building them.</p>
+<h3>When</h3>
+<ul>
+<li>Thu, Jun 19: 09:00 Pacific time (America)</li>
+<li>Thu, Jun 19: 10:00 Mountain time (America)</li>
+<li>Thu, Jun 19: 11:00 Central time (America)</li>
+<li>Thu, Jun 19: 12:00 Eastern time (America)</li>
+<li>Thu, Jun 19: 13:00 São Paulo time</li>
+<li>Thu, Jun 19: 16:00 UTC</li>
+<li>Thu, Jun 19: 17:00 Western European time</li>
+<li>Thu, Jun 19: 18:00 Central European time</li>
+<li>Thu, Jun 19: 19:00 Eastern European time</li>
+<li>Thu, Jun 19: 21:30 India, Sri Lanka</li>
+<li>Fri, Jun 20: 00:00 Singapore/Malaysia/Philippines time</li>
+<li>Fri, Jun 20: 00:00 China time</li>
+<li>Fri, Jun 20: 01:00 日本</li>
+<li>Fri, Jun 20: 02:00 NSW, ACT, Victoria, Tasmania (Australia)</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-fabric/sharding-ha-mysql-fabric-webinar/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Fabric &#8211; adding Scaling to MySQL</title>
+		<link>./../../mysql-fabric/mysql-fabric-add-scaling-to-mysql/index.html</link>
+					<comments>./../../mysql-fabric/mysql-fabric-add-scaling-to-mysql/index.html#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 24 Mar 2014 16:23:27 +0000</pubDate>
+				<category><![CDATA[MySQL Fabric]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[mysql fabric]]></category>
+		<category><![CDATA[Scale]]></category>
+		<category><![CDATA[sharding]]></category>
+		<guid isPermaLink="false">./../../index.html?p=3821</guid>
+
+					<description><![CDATA[MySQL Fabric is a new framework that adds High Availability (HA) and/or scaling-out for MySQL. This is the second in a series of posts on the new MySQL Fabric framework; the first article (MySQL Fabric – adding High Availability to MySQL) explained how MySQL Fabric can deliver HA and then stepped through all of the]]></description>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2014/03/fabric3.png"><img loading="lazy" decoding="async" class="aligncenter size-full wp-image-3800" alt="MySQL Fabric - High Availability and Scalability for MySQL" src="./../../wp-content/uploads/2014/03/fabric3.png" width="725" height="352" srcset="./../../wp-content/uploads/2014/03/fabric3.png 725w, ./../../wp-content/uploads/2014/03/fabric3-300x145.png 300w" sizes="auto, (max-width: 725px) 100vw, 725px" /></a></p>
+<p>MySQL Fabric is a new framework that adds High Availability (HA) and/or scaling-out for MySQL. This is the second in a series of posts on the new MySQL Fabric framework; the first article (<a title="MySQL Fabric – adding High Availability to MySQL" href="./../../mysql-fabric/mysql-fabric-adding-high-availability-to-mysql/index.html">MySQL Fabric – adding High Availability to MySQL</a>) explained how MySQL Fabric can deliver HA and then stepped through all of the steps to configure and use it.</p>
+<p>This post focuses on using MySQL Fabric to scale out both reads and writes across multiple MySQL Servers. It starts with an introduction to scaling out (by partitioning/sharding data) and how MySQL Fabric achieves it before going on to work through a full example of configuring sharding across a farm of MySQL Servers together with the code that the application developer needs to write in order to exploit it. Note that at the time of writing, MySQL Fabric is not yet GA but is available as a public alpha.</p>
+<h3><a class="anchor" href="#scaling-out---sharding" name="scaling-out---sharding"></a>Scaling Out &#8211; Sharding</h3>
+<p>When nearing the capacity or write performance limit of a single MySQL Server (or <a title="MySQL Fabric – adding High Availability to MySQL" href="./../../mysql-fabric/mysql-fabric-adding-high-availability-to-mysql/index.html">HA group</a>), MySQL Fabric can be used to scale-out the database servers by partitioning the data across multiple MySQL Server &#8220;groups&#8221;. Note that a group could contain a single MySQL Server or it could be a HA group.</p>
+<p><a href="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-08.55.22.png"><img loading="lazy" decoding="async" class="aligncenter size-full wp-image-3825" alt="MySQL Fabric cluster" src="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-08.55.22.png" width="606" height="554" srcset="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-08.55.22.png 606w, ./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-08.55.22-300x274.png 300w" sizes="auto, (max-width: 606px) 100vw, 606px" /></a></p>
+<p>The administrator defines how data should be partitioned/sharded between these servers; this is done by creating shard mappings. A shard mapping applies to a set of tables and for each table the administrator specifies which column from those tables should be used as a shard key (the shard key will subsequently be used by MySQL Fabric to calculate which shard a specific row from one of those tables should be part of). Because all of these tables use the same shard key and mapping, the use of the same column value in those tables will result in those rows being in the same shard &#8211; allowing a single transaction to access all of them. For example, if using the subscriber-id column from multiple tables then all of the data for a specific subscriber will be in the same shard. The administrator then defines how that shard key should be used to calculate the shard number:</p>
+<ul>
+<li><strong>HASH</strong>: A hash function is run on the shard key to generate the shard number. If values held in the column used as the sharding key don&#8217;t tend to have too many repeated values then this should result in an even partitioning of rows across the shards.</li>
+<li><strong>RANGE</strong>: The administrator defines an explicit mapping between ranges of values for the sharding key and shards. This gives maximum control to the user of how data is partitioned and which rows should be co-located.</li>
+</ul>
+<p>When the application needs to access the sharded database, it sets a property for the connection that specifies the sharding key &#8211; the Fabric-aware connector will then apply the correct range or hash mapping and route the transaction to the correct shard.</p>
+<p>If further shards/groups are needed then MySQL Fabric can split an existing shard into two and then update the state-store and the caches of routing data held by the connectors. Similarly, a shard can be moved from one HA group to another.</p>
+<p>Note that a single transaction or query can only access a single shard and so it is important to select shard keys based on an understanding of the data and the application&#8217;s access patterns. It doesn&#8217;t always make sense to shard all tables as some may be relatively small and having their full contents available in each group can be beneficial given the rule about no cross-shard queries. These global tables are written to a &#8216;global group&#8217; and any additions or changes to data in those tables are automatically replicated to all of the other groups. Schema changes are also made to the global group and replicated to all of the others to ensure consistency.</p>
+<p>To get the best mapping, it may also be necessary to modify the schema if there isn&#8217;t already a &#8216;natural choice&#8217; for the sharding keys.</p>
+<h2><a class="anchor" href="#worked-example" name="worked-example"></a>Worked Example</h2>
+<p>The following steps set up the sharded MySQL configuration shown here before running some (Python) code against &#8211; with queries and transactions routed to the correct MySQL Server.</p>
+<h3><a class="anchor" href="#building-the-sharded-mysql-server-farm" name="building-the-sharded-mysql-server-farm"></a>Building the Sharded MySQL Server Farm</h3>
+<p><a href="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-12.19.22.png"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-3835" alt="Sharding using MySQL Fabric" src="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-12.19.22-289x300.png" width="289" height="300" srcset="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-12.19.22-289x300.png 289w, ./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-19-at-12.19.22.png 800w" sizes="auto, (max-width: 289px) 100vw, 289px" /></a></p>
+<p>The machines being used already have MySQL 5.6 installed (though in a custom location) and so the only software pre-requisite is to install the MySQL connector for Python from the &#8220;Development Releases&#8221; tab from the <a title="MySQL Connector/Python download page" href="http://dev.mysql.com/downloads/connector/python/">connector download page</a> and MySQL Fabric (part of MySQL Utilities) from the &#8220;Development Releases&#8221; tab on the <a title="MySQL Utilities - Including MySQL Fabric - download page" href="http://dev.mysql.com/downloads/tools/utilities/">MySQL Utilities download page</a>:</p>
+<pre>[root@fab1 mysql ~]# rpm -i mysql-connector-python-1.2.0-1.el6.noarch.rpm
+[root@fab1 mysql ~]# rpm -i mysql-utilities-1.4.1-1.el6.noarch.rpm</pre>
+<p>MySQL Fabric needs access to a MySQL Database to store state and routing information for the farm of servers; if there isn&#8217;t already a running MySQL Server instance that can be used for this then it&#8217;s simple to set one up:</p>
+<pre>[mysql@fab1 ~]$ mkdir myfab
+[mysql@fab1 ~]$ cd myfab/
+[mysql@fab1 myfab]$ mkdir data  
+[mysql@fab1 myfab]$ cat my.cnf
+[mysqld]
+datadir=/home/mysql/myfab/data
+basedir=/home/mysql/mysql
+socket=/home/mysql/myfab/mysqlfab.socket
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+enforce-gtid-consistency=true
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+sync-master-info=1
+port=3306
+report-host=fab1
+report-port=3306
+server-id=1
+log-bin=fab-bin.log
+
+[mysql@fab1 mysql]$ scripts/mysql_install_db --basedir=/home/mysql/mysql/ \
+    --datadir=/home/mysql/myfab/data/ 
+
+2014-02-12 16:55:45 1298 [Note] Binlog end
+2014-02-12 16:55:45 1298 [Note] InnoDB: FTS optimize thread exiting.
+2014-02-12 16:55:45 1298 [Note] InnoDB: Starting shutdown...
+2014-02-12 16:55:46 1298 [Note] InnoDB: Shutdown completed; log sequence number 1600607
+2014-02-12 16:55:46 1298 [Note] /home/mysql/mysql//bin/mysqld: Shutdown complete
+
+[mysql@fab1 ~]$ mysqld --defaults-file=/home/mysql/myfab/my.cnf &amp;</pre>
+<p>MySQL Fabric needs to be able to access this state store and so a dedicated user is created (note that the <code>fabric</code> database hasn&#8217;t yet been created &#8211; that will be done soon using the <code>mysqlfabric</code> command):</p>
+<pre>[mysql@fab1 ~]$ mysql -h 127.0.0.1 -P3306 -u root -e "GRANT ALL ON fabric.* \
+    TO fabric@localhost";</pre>
+<p>All of the management requests that we make for MySQL Fabric will be issued via the <code>mysqlfabric</code> command. This command is documented in the <a title="MySQL Fabric - documentation for the mysqlfabric command" href="http://dev.mysql.com/doc/mysql-utilities/1.4/en/fabric-util.html">MySQL Fabric User Guide</a> but sub-commands can be viewed from the terminal using the <code>list-commands</code> option:</p>
+<pre>[mysql@fab1 /]$ mysqlfabric list-commands
+group activate                   Activate a group.
+group import_topology            Try to figure out the replication topology 
+                                 and import it into the state store.
+group deactivate                 Deactivate a group.
+group create                     Create a group.
+group remove                     Remove a server from a group.
+group add                        Add a server into group.
+group lookup_servers             Return information on existing server(s) in a 
+                                 group.
+group check_group_availability   Check if any server within a group has failed 
+                                 and report health information.
+group destroy                    Remove a group.
+group demote                     Demote the current master if there is one.
+group promote                    Promote a server into master.
+group lookup_groups              Return information on existing group(s).
+group description                Update group's description.
+manage list-commands             List the possible commands.
+manage help                      Give help on a command.
+manage teardown                  Teardown Fabric Storage System.
+manage stop                      Stop the Fabric server.
+manage setup                     Setup Fabric Storage System.
+manage ping                      Check whether Fabric server is running or not.
+manage start                     Start the Fabric server.
+manage logging_level             Set logging level.
+server set_weight                Set a server's weight which determines the 
+                                 likelihood of a server being chosen by a 
+                                 connector to process transactions or by the 
+                                 high availability service to replace a failed 
+                                 master.
+server lookup_uuid               Return server's uuid.
+server set_mode                  Set a server's mode which determines whether 
+                                 it can process read-only, read-write or both 
+                                 transaction types.
+server set_status                Set a server's status.
+sharding move                    Move the shard represented by the shard_id to 
+                                 the destination group.
+sharding lookup_servers          Lookup a shard based on the give sharding key.
+sharding disable_shard           Disable a shard.
+sharding remove_mapping          Remove the shard mapping represented by the 
+                                 Shard Mapping object.
+sharding list_mappings           Returns all the shard mappings of a 
+                                 particular sharding_type.
+sharding add_mapping             Add a table to a shard mapping.
+sharding add_shard               Add a shard.
+sharding list_definitions        Lists all the shard mapping definitions.
+sharding enable_shard            Enable a shard.
+sharding remove_shard            Remove a Shard.
+sharding prune_shard             Given the table name prune the tables 
+                                 according to the defined sharding 
+                                 specification for the table.
+sharding lookup_mapping          Fetch the shard specification mapping for the 
+                                 given table
+sharding split                   Split the shard represented by the shard_id 
+                                 into the destination group.
+sharding define                  Define a shard mapping.
+event trigger                    Trigger an event.
+event wait_for_procedures        Wait until procedures, which are identified 
+                                 through their uuid in a list and separated by
+                                 comma, finish their execution.
+store dump_shard_maps            Return information about all shard mappings 
+                                 matching any of the provided patterns.
+store dump_shard_index           Return information about the index for all 
+                                 mappings matching any of the patterns 
+                                 provided.
+store dump_servers               Return information about all servers.
+store dump_sharding_information  Return all the sharding information about the 
+                                 tables passed as patterns.
+store dump_shard_tables          Return information about all tables belonging 
+                                 to mappings matching any of the provided 
+                                 patterns.
+store lookup_fabrics             Return a list of Fabric servers.</pre>
+<p>MySQL Fabric has its own configuration file (note that it&#8217;s location can vary depending on your platform and how MySQL Utilities were installed). The contents of this configuration file should be reviewed before starting the MySQL Fabric process (in this case, the <code>mysqldump_program</code> and <code>mysqldump_program</code> settings needed to be changed as MySQL was installed in a user&#8217;s directory):</p>
+<pre>[root@fab1 mysql]# cat /etc/mysql/fabric.cfg
+[DEFAULT]
+prefix =
+sysconfdir = /etc/mysql
+logdir = /var/log
+
+[logging]
+url = file:///var/log/fabric.log
+level = INFO
+
+[storage]
+database = fabric
+user = fabric
+address = localhost:3306
+connection_delay = 1
+connection_timeout = 6
+password =
+connection_attempts = 6
+
+[connector]
+ttl = 1
+
+[protocol.xmlrpc]
+threads = 5
+address = localhost:8080
+
+[executor]
+executors = 5
+
+[sharding]
+mysqldump_program = /home/mysql/mysql/bin/mysqldump
+mysqlclient_program = /home/mysql/mysql/bin/mysql</pre>
+<p>The final step before starting the MySQL Fabric process is to create the MySQL Fabric schema within the state store:</p>
+<pre>[mysql@fab1 ~]$ mysqlfabric manage setup --param=storage.user=fabric
+[INFO] 1392298030.100127 - MainThread - Initializing persister: \
+    user (fabric), server (localhost:3306), database (fabric).</pre>
+<p>An optional step is then to check for yourself that the schema is indeed there:</p>
+<pre>[mysql@fab1 ~]$ mysql --protocol=tcp -u root
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 5
+Server version: 5.6.16-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| fabric             |
+| mysql              |
+| performance_schema |
+| test               |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql&gt; use fabric;show tables;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
++-------------------+
+| Tables_in_fabric  |
++-------------------+
+| checkpoints       |
+| group_replication |
+| groups            |
+| servers           |
+| shard_maps        |
+| shard_ranges      |
+| shard_tables      |
+| shards            |
++-------------------+
+8 rows in set (0.00 sec)</pre>
+<p>The MySQL Fabric process can now be started; in this case the process will run from the terminal from which it&#8217;s started but the <code>--daemonize</code> option can be used to make it run as a daemon.</p>
+<pre>[mysql@fab1 ~]$ mysqlfabric manage start
+[INFO] 1392298245.888881 - MainThread - Fabric node starting.
+[INFO] 1392298245.890465 - MainThread - Initializing persister: user (fabric), server (localhost:3306), database (fabric).
+[INFO] 1392298245.890926 - MainThread - Loading Services.
+[INFO] 1392298245.898459 - MainThread - Starting Executor.
+[INFO] 1392298245.899056 - MainThread - Setting 5 executor(s).
+[INFO] 1392298245.900439 - Executor-1 - Started.
+[INFO] 1392298245.901856 - Executor-2 - Started.
+[INFO] 1392298245.903146 - Executor-0 - Started.
+[INFO] 1392298245.905488 - Executor-3 - Started.
+[INFO] 1392298245.908283 - MainThread - Executor started.
+[INFO] 1392298245.910308 - Executor-4 - Started.
+[INFO] 1392298245.936954 - MainThread - Starting failure detector.
+[INFO] 1392298245.938200 - XML-RPC-Server - XML-RPC protocol server \
+    ('127.0.0.1', 8080) started.
+[INFO] 1392298245.938614 - XML-RPC-Server - Setting 5 XML-RPC session(s).
+[INFO] 1392298245.940895 - XML-RPC-Session-0 - Started XML-RPC-Session.
+[INFO] 1392298245.942644 - XML-RPC-Session-1 - Started XML-RPC-Session.
+[INFO] 1392298245.947016 - XML-RPC-Session-2 - Started XML-RPC-Session.
+[INFO] 1392298245.949691 - XML-RPC-Session-3 - Started XML-RPC-Session.
+[INFO] 1392298245.951678 - XML-RPC-Session-4 - Started XML-RPC-Session.</pre>
+<p>If the process had been run as a daemon then it&#8217;s useful to be able to check if it&#8217;s actually running:</p>
+<pre>[mysql@fab1 ~]$ mysqlfabric manage ping
+Command :
+{ success     = True
+  return      = True
+  activities  =
+}</pre>
+<p>At this point, MySQL Fabric is up and running but it has no MySQL Servers to manage. As shown in the earlier diagram, three MySQL Servers will run on a single machine. Each of those MySQL Servers will need their own configuration settings to make sure that there are no resource conflicts &#8211; the steps are shown here but without any detailed commentary as this is standard MySQL stuff:</p>
+<pre>[mysql@fab2 myfab]$ cat my1a.cnf
+[mysqld]
+datadir=/home/mysql/myfab/data1a
+basedir=/home/mysql/mysql
+socket=/home/mysql/myfab/mysqlfab1a.socket
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+enforce-gtid-consistency=true
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+sync-master-info=1
+port=3306
+report-host=fab2
+report-port=3306
+server-id=11
+log-bin=fab1a-bin.log
+
+[mysql@fab2 myfab]$ cat my1b.cnf
+[mysqld]
+datadir=/home/mysql/myfab/data1b
+basedir=/home/mysql/mysql
+socket=/home/mysql/myfab/mysqlfab1b.socket
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+enforce-gtid-consistency=true
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+sync-master-info=1
+port=3307
+report-host=fab2
+report-port=3307
+server-id=12
+log-bin=fab1b-bin.log
+
+[mysql@fab2 myfab]$ cat my1c.cnf
+[mysqld]
+datadir=/home/mysql/myfab/data1c
+basedir=/home/mysql/mysql
+socket=/home/mysql/myfab/mysqlfab1c.socket
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+enforce-gtid-consistency=true
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+sync-master-info=1
+port=3308
+report-host=fab2
+report-port=3308
+server-id=13
+log-bin=fab1c-bin.log
+
+[mysql@fab2 myfab]$ mkdir data1a
+[mysql@fab2 myfab]$ mkdir data1b
+[mysql@fab2 myfab]$ mkdir data1c
+
+[mysql@fab2 mysql]$ scripts/mysql_install_db --basedir=/home/mysql/mysql/ \
+    --defaults-file=/home/mysql/myfab/my1a.cnf \
+    --datadir=/home/mysql/myfab/data1a/
+[mysql@fab2 mysql]$ scripts/mysql_install_db --basedir=/home/mysql/mysql/ \
+    --defaults-file=/home/mysql/myfab/my1a.cnf \
+    --datadir=/home/mysql/myfab/data1b/
+[mysql@fab2 mysql]$ scripts/mysql_install_db --basedir=/home/mysql/mysql/ \
+    --defaults-file=/home/mysql/myfab/my1a.cnf \
+    --datadir=/home/mysql/myfab/data1c/
+
+[mysql@fab2 ~]$ mysqld --defaults-file=/home/mysql/myfab/my1a.cnf &amp;
+[mysql@fab2 ~]$ mysqld --defaults-file=/home/mysql/myfab/my1b.cnf &amp;
+[mysql@fab2 ~]$ mysqld --defaults-file=/home/mysql/myfab/my1c.cnf &amp;
+
+[mysql@fab2 ~]$ mysql -h 127.0.0.1 -P3306 -u root -e "GRANT ALL ON *.* \
+    TO root@'%'""
+[mysql@fab2 ~]$ mysql -h 127.0.0.1 -P3307 -u root -e "GRANT ALL ON *.* \
+    TO root@'%'""
+[mysql@fab2 ~]$ mysql -h 127.0.0.1 -P3308 -u root -e "GRANT ALL ON *.* \
+    TO root@'%'""</pre>
+<p>At this point, the MySQL Fabric process (and its associate state store) is up and running, as are the MySQL Servers that will become part of the Fabric server farm. The next step is to define the groups (and assign a server to each one); the mappings that will be used to map from shard keys to shards and then finally the shards themselves.</p>
+<p>The first group that&#8217;s created is the global group <code>group_id-global</code> which is where all changes to the data schema or to the global tables (those tables that are duplicated in every group rather than being sharded) are sent and then replicated to all of the other groups.</p>
+<pre>[mysql@fab1 ~]$ mysqlfabric group create group_id-global
+Procedure :
+{ uuid        = 721888b2-f604-4001-94c9-5911e1a198b3,
+  finished    = True,
+  success     = True,
+  return      = True,
+  activities  =
+}</pre>
+<p>After that, the two groups that will contain the sharded table data are created &#8211; <code>group_id-1</code>&amp;<code>group_id-2</code>.</p>
+<pre>[mysql@fab1 ~]$ mysqlfabric group create group_id-1
+Procedure :
+{ uuid        = 02f0a99d-5444-4f5b-b5df-b500de5a2d96,
+  finished    = True,
+  success     = True,
+  return      = True,
+  activities  =
+}
+[mysql@fab1 ~]$ mysqlfabric group create group_id-2
+Procedure :
+{ uuid        = fb8c3638-7b2b-4106-baac-3531a4606792,
+  finished    = True,
+  success     = True,
+  return      = True,
+  activities  =
+}</pre>
+<p>The three groups have now been created but they&#8217;re all empty and so the next step is to assign a single MySQL Server to each one.</p>
+<pre>[mysql@fab1 ~]$ mysqlfabric group add group_id-global 192.168.56.102:3306 root ""
+Procedure :
+{ uuid        = 9d851625-f488-4e9a-b18f-bfb952a18be6,
+  finished    = True,
+  success     = True,
+  return      = True,
+  activities  =
+}
+
+[mysql@fab1 ~]$ mysqlfabric group add group_id-1 192.168.56.102:3307 root ""    
+Procedure :
+{ uuid        = 1e0230ce-2309-4a11-92a4-4bf9f11061c3,
+  finished    = True,
+  success     = True,
+  return      = True,
+  activities  =
+}
+
+[mysql@fab1 ~]$ mysqlfabric group add group_id-2 192.168.56.102:3308 root ""
+Procedure :
+{ uuid        = cf5cd7ae-cf47-4c10-b68d-867fbff3c597,
+  finished    = True,
+  success     = True,
+  return      = True,
+  activities  =
+}</pre>
+<p>Optionally, the <code>mysqlfabric</code> command can then be used to confirm this configuration.</p>
+<pre>[mysql@fab1 ~]$ mysqlfabric group lookup_groups
+Command :
+{ success     = True
+  return      = [['group_id-1'], ['group_id-2'], ['group_id-global']]
+  activities  =
+}
+
+[mysql@fab1 ~]$ mysqlfabric group lookup_servers group_id-global
+Command :
+{ success     = True
+  return      = [['57dc7afc-957d-11e3-91a8-08002795076a', \
+    '192.168.56.102', False, 'SECONDARY']]
+  activities  =
+}
+[mysql@fab1 ~]$ mysqlfabric group lookup_servers group_id-1
+Command :
+{ success     = True
+  return      = [['9c08ecd6-94b9-11e3-8cab-08002795076a', \
+  '192.168.56.102:3307', False, 'SECONDARY']]
+  activities  =
+}
+[mysql@fab1 ~]$ mysqlfabric group lookup_servers group_id-2
+Command :
+{ success     = True
+  return      = [['a4a963a1-94b9-11e3-8cac-08002795076a', \
+  '192.168.56.102:3308', False, 'SECONDARY']]
+  activities  =
+}</pre>
+<p>Even though each of these groups contains a single server, it&#8217;s still necessary to promote those servers to be Primaries so that the Fabric-aware connectors will send writes to them.</p>
+<pre>[mysql@fab1 ~]$ mysqlfabric group promote group_id-global
+Procedure :
+{ uuid        = fd29b5f9-97dc-4189-a7df-2d98b230a124,
+  finished    = True,
+  success     = True,
+  return      = True,
+  activities  =
+}
+[mysql@fab1 ~]$ mysqlfabric group promote group_id-1
+Procedure :
+{ uuid        = a00e1a42-3a07-4539-a86b-1f9ac8284d27,
+  finished    = True,
+  success     = True,
+  return      = True,
+  activities  =
+}
+[mysql@fab1 ~]$ mysqlfabric group promote group_id-2
+Procedure :
+{ uuid        = 32663313-8b6d-427b-8516-87539d712606,
+  finished    = True,
+  success     = True,
+  return      = True,
+  activities  =
+}
+
+[mysql@fab1 ~]$ mysqlfabric group lookup_servers group_id-1
+Command :
+{ success     = True
+  return      = [['9c08ecd6-94b9-11e3-8cab-08002795076a', \
+    '192.168.56.102:3307', True, 'PRIMARY']]
+  activities  =
+}
+[mysql@fab1 ~]$ mysqlfabric group lookup_servers group_id-2
+Command :
+{ success     = True
+  return      = [['a4a963a1-94b9-11e3-8cac-08002795076a', \
+    '192.168.56.102:3308', True, 'PRIMARY']]
+  activities  =
+}
+[mysql@fab1 ~]$ mysqlfabric group lookup_servers group_id-global
+Command :
+{ success     = True
+  return      = [['57dc7afc-957d-11e3-91a8-08002795076a', \
+    '192.168.56.102', True, 'PRIMARY']]
+  activities  =
+}</pre>
+<p>Shard mappings are used to map shard keys to shards and they can be based on ranges or on a hash of the shard key &#8211; in this example, a single mapping will be created and it will be based on ranges. When creating the shard mapping, the name of the global group must be supplied &#8211; in this case <code>group_id-global</code>.</p>
+<pre>[mysql@fab1 ~]$ mysqlfabric sharding define RANGE group_id-global
+Procedure :
+{ uuid        = d201b476-6ca2-4fd9-a3b2-619552b5fcd2,
+  finished    = True,
+  success     = True,
+  return      = 1,
+  activities  =
+}</pre>
+<p>From the return code, you can observe that the ID given to the shard mapping is 1 &#8211; that can optionally be confirmed by checking the meta data in the state store:</p>
+<pre>[mysql@fab1 ~]$ mysql --protocol=tcp -ufabric -e \
+    "SELECT * FROM test.shard_maps"   
++------------------+-----------+-----------------+
+| shard_mapping_id | type_name | global_group    |
++------------------+-----------+-----------------+
+|                1 | RANGE     | group_id-global |
++------------------+-----------+-----------------+</pre>
+<p>The next step is to define the sharding key for each of the tables that we want to be partitioned as part of this mapping. In fact, this example is only sharding one table <code>test.subscribers</code> but the command can be repeated for multiple tables. The name of the column to be used as the sharding key must also be supplied (in this case <code>sub_no</code>) as must the ID for the shard mapping (which we&#8217;ve just confirmed is <code>1</code>).</p>
+<pre>[mysql@fab1 myfab]$ mysqlfabric sharding add_mapping 1 test.subscribers sub_no
+Procedure :
+{ uuid        = 5ae7fe49-2c99-42d2-890a-8ee00c142719,
+  finished    = True,
+  success     = True,
+  return      = True,
+  activities  =
+}</pre>
+<p>Again, the state store can be checked to confirm that this has been set up correctly.</p>
+<pre>[mysql@fab1 ~]$ mysql --protocol=tcp -ufabric -e \
+    "SELECT * FROM test.shard_tables"   
++------------------+------------------+-------------+
+| shard_mapping_id | table_name       | column_name |
++------------------+------------------+-------------+
+|                1 | test.subscribers | sub_no      |
++------------------+------------------+-------------+</pre>
+<p>The next step is to define the shards themselves. In this example, all values of <code>sub_no</code> from <code>1-9999</code> will be mapped to the first shard (which will be associated with <code>group_id-1</code>) and from <code>10000 and up</code> to the second shard (<code>group_id-2</code>). Again the shard mapping ID (1) must also be provided.</p>
+<pre>[mysql@fab1 ~]$ mysqlfabric sharding add_shard 1 group_id-1 ENABLED 1
+Procedure :
+{ uuid        = 21b5c976-31ab-432b-8bf3-f19a84b2ed47,
+  finished    = True,
+  success     = True,
+  return      = True,
+  activities  =
+}
+[mysql@fab1 ~]$ mysqlfabric sharding add_shard 1 group_id-2 ENABLED 10000
+Procedure :
+{ uuid        = f837bded-825c-46a5-8edb-fe4557c53417,
+  finished    = True,
+  success     = True,
+  return      = True,
+  activities  =
+}</pre>
+<h3><a class="anchor" href="#example-application-code" name="example-application-code"></a>Example Application Code</h3>
+<p>Now that the MySQL Fabric farm is up and running we can start running some code against it. There are currently Fabric-aware connectors for PHP, Python and Java &#8211; for this post, Python is used.</p>
+<p>Note that while they must make some minor changes to work with the sharded database, they don&#8217;t need to care about what servers are part of the farm, what shards exist or where they&#8217;re located &#8211; this is all handled by MySQL Fabric and the Fabric-aware connectors. What they do need to do is provide the <em>hints</em> needed by the connector to figure out where to send the query or transaction.</p>
+<p>The first piece of example code will create the <code>subscribers</code> table within the <code>test</code> database. Most of this is fairly standard and so only the MySQL Fabric-specific pieces will be commented on:</p>
+<ul>
+<li>The <code>fabric</code> module from <code>mysql.com</code> is included</li>
+<li>The application connects to MySQL Fabric rather than any of the MySQL Servers (<code>{"host" : "localhost", "port" : 8080}</code>)</li>
+<li>The <code>scope</code> property for the connection is set to <code>fabric.SCOPE_GLOBAL</code> &#8211; in that way the operations are sent to the global group by the connector so that the schema changes will be replicated to all servers in the HA group (the same would be true if writing to a non-sharded (global) table).</li>
+</ul>
+<pre>[mysql@fab1 myfab]$ cat setup_table_shards.py
+import mysql.connector
+from mysql.connector import fabric
+
+conn = mysql.connector.connect(
+    fabric={"host" : "localhost", "port" : 8080},
+    user="root", database="test", password="",
+    autocommit=True
+    )
+
+conn.set_property(tables=["test.subscribers"], scope=fabric.SCOPE_GLOBAL)
+cur = conn.cursor()
+cur.execute(
+    "CREATE TABLE IF NOT EXISTS subscribers ("
+    "   sub_no INT, "
+    "   first_name CHAR(40), "
+    "   last_name CHAR(40)"
+    ")"
+    )</pre>
+<p>The code can then be executed:</p>
+<pre>[mysql@fab1 myfab]$ python setup_table_shards.py</pre>
+<p>The next piece of application code adds some records to the <code>test.subscribers</code> table. To ensure that the connector can route the transactions to the correct group, the following properties are set for the connection: <code>scope</code> is set to <code>fabric.SCOPE_LOCAL</code> (i.e. not global); <code>tables</code> is set to <code>"test.subscribers"</code> which allows the connector to select the correct mapping and <code>key</code> is set to the value of the <code>sub_no</code> being used for the row in the current transaction so that the connector can perform a range test on it to find the correct shard. The <code>mode</code> property is also set to <code>fabric.MODE_READWRITE</code> (if [HA groups]:(<a href="./../../mysql-fabric/mysql-fabric-adding-high-availability-to-mysql/index.html">./../../mysql-fabric/mysql-fabric-adding-high-availability-to-mysql/index.html</a> &#8220;MySQL Fabric – adding High Availability to MySQL&#8221;) were being used then this would tell the connector to send the transaction to the primary).</p>
+<pre>[mysql@fab1 myfab]$ cat add_subs_shards.py
+import mysql.connector
+from mysql.connector import fabric
+
+def add_subscriber(conn, sub_no, first_name, last_name):
+    conn.set_property(tables=["test.subscribers"], key=sub_no, \
+        mode=fabric.MODE_READWRITE)
+    cur = conn.cursor()
+    cur.execute(
+        "REPLACE INTO subscribers VALUES (%s, %s, %s)",
+        (sub_no, first_name, last_name)
+        )
+
+# Address of the Fabric node, rather than the actual MySQL Server.
+conn = mysql.connector.connect(
+    fabric={"host" : "localhost", "port" : 8080},
+    user="root", database="test", password="",
+    autocommit=True
+    )
+
+conn.set_property(tables=["test.subscribers"], scope=fabric.SCOPE_LOCAL)
+
+add_subscriber(conn, 72, "Billy", "Fish")
+add_subscriber(conn, 500, "Billy", "Joel")
+add_subscriber(conn, 1500, "Arthur", "Askey")
+add_subscriber(conn, 5000, "Billy", "Fish")
+add_subscriber(conn, 15000, "Jimmy", "White")
+add_subscriber(conn, 17542, "Bobby", "Ball")</pre>
+<p>This application code is then run and then the servers from each of the groups queried to confirm that the data has been sharded as expected (based on the 0-9999 and 10000+ range definition).</p>
+<pre>[mysql@fab1 myfab]$ python add_subs_shards.py
+
+[mysql@fab1 myfab]$ mysql -h 192.168.56.102 -P3307 -uroot –e 'SELECT * \
+    FROM test.subscribers'
++--------+------------+-----------+
+| sub_no | first_name | last_name |
++--------+------------+-----------+
+|     72 | Billy      | Fish      |
+|    500 | Billy      | Joel      |
+|   1500 | Arthur     | Askey     |
+|   5000 | Billy      | Fish      |
++--------+------------+-----------+
+[mysql@fab1 myfab]$ mysql -h 192.168.56.102 -P3308 -uroot -e 'SELECT * \
+    FROM test.subscribers'
++--------+------------+-----------+
+| sub_no | first_name | last_name |
++--------+------------+-----------+
+|  15000 | Jimmy      | White     |
+|  17542 | Bobby      | Ball      |
++--------+------------+-----------+</pre>
+<p>The final piece of application code reads back the rows. Note that in this case the connection&#8217;s <code>mode</code> property is set to <code>fabric.READONLY</code> which tells the connector that if [HA groups]:(<a href="./../../mysql-fabric/mysql-fabric-adding-high-availability-to-mysql/index.html">./../../mysql-fabric/mysql-fabric-adding-high-availability-to-mysql/index.html</a> &#8220;MySQL Fabric – adding High Availability to MySQL&#8221;) were being used then the queries could be sent to any of the Secondaries.</p>
+<pre>[mysql@fab1 myfab]$ cat read_table_shards.py
+import mysql.connector
+from mysql.connector import fabric
+
+def find_subscriber(conn, sub_no):
+    conn.set_property(tables=["test.subscribers"], key=sub_no, \
+        mode=fabric.MODE_READONLY)
+    cur = conn.cursor()
+    cur.execute(
+        "SELECT first_name, last_name FROM subscribers "
+        "WHERE sub_no = %s", (sub_no, )
+        )
+    for row in cur:
+        print rows
+
+conn = mysql.connector.connect(
+    fabric={"host" : "localhost", "port" : 8080},
+    user="root", database="test", password="",
+    autocommit=True
+    )
+
+find_subscriber(conn, 72)
+find_subscriber(conn, 500)
+find_subscriber(conn, 1500)
+find_subscriber(conn, 5000)
+find_subscriber(conn, 15000)
+find_subscriber(conn, 17542)</pre>
+<pre>[mysql@fab1 myfab]$ python read_table_shards.py
+(u'Billy', u'Fish')
+(u'Billy', u'Joel')
+(u'Arthur', u'Askey')
+(u'Billy', u'Fish')
+(u'Jimmy', u'White')
+(u'Bobby', u'Ball')</pre>
+<h2><a class="anchor" href="#mysql-fabric-architecture--extensibility" name="mysql-fabric-architecture--extensibility"></a>MySQL Fabric Architecture &amp; Extensibility</h2>
+<p>MySQL Fabric has been architected for extensibility at a number of levels. For example, in the first release the only option for implementing HA is based on MySQL Replication but in future releases we hope to add further options (for example, MySQL Cluster). We also hope to see completely new applications around the managing of farms of MySQL Servers &#8211; both from Oracle and the wider MySQL community.</p>
+<p>The following diagram illustrates how new applications and protocols can be added using the pluggable framework.</p>
+<p><a href="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03.png"><img loading="lazy" decoding="async" src="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03-1024x501.png" alt="MySQL Fabric - Extensible Architecture" width="480" height="234" class="aligncenter size-large wp-image-3818" srcset="./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03-1024x501.png 1024w, ./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03-300x146.png 300w, ./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03-900x440.png 900w, ./../../wp-content/uploads/2014/03/Screen-Shot-2014-03-18-at-15.37.03.png 1254w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a></p>
+<h2><a class="anchor" href="#next-steps" name="next-steps"></a>Next Steps</h2>
+<p>We really hope that people try out MySQL Fabric and let us know how you get on; one way is to comment on this post, another is to post to the <a title="MySQL Forums :: Fabric, Sharding, HA, Utilities" href="http://forums.mysql.com/list.php?144">MySQL Fabric forum</a> or if you think you&#8217;ve found a bug then <a title="MySQL bugs database" href="http://bugs.mysql.com/">raise a bug report</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-fabric/mysql-fabric-add-scaling-to-mysql/feed/index.html</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

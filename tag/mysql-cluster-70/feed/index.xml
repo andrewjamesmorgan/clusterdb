@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>MySQL Cluster 7.0 &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Mon, 14 Mar 2011 10:08:45 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>MySQL Cluster Database 7: Performance Benchmark</title>
+		<link>./../../mysql-cluster/mysql-cluster-database-7-performance-benchmark/index.html</link>
+					<comments>./../../mysql-cluster/mysql-cluster-database-7-performance-benchmark/index.html#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 14 Mar 2011 10:08:45 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[benchmark]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.0]]></category>
+		<category><![CDATA[Performance]]></category>
+		<guid isPermaLink="false">./../../index.html?p=1498</guid>
+
+					<description><![CDATA[(Note that this is a copy of the original article from Hasham Pathan posted on 21st April 2009). Summary of Results: We recently conducted a Performance Benchmark of the newly released version of MySQL Cluster database software version 7.0 using the DBT2 Benchmark. The results are very impressive. Highlight of the results: For 4 Node]]></description>
+										<content:encoded><![CDATA[<p>(Note that this is a copy of the <a href="http://blogs.sun.com/hasham/entry/mysql_cluster_7_performance_benchmark" target="_blank">original article from Hasham Pathan</a> posted on 21st April 2009).</p>
+<h3>Summary of Results:</h3>
+<p>We recently conducted a Performance Benchmark of the newly  released version of MySQL Cluster database software version  7.0 using the DBT2 Benchmark. The results are very impressive.</p>
+<p>Highlight of the results:</p>
+<ul>
+<li>For 4 Node Cluster, we achieved 251,000 Transactions per minute which is more than 4X improvement over the MySQL Cluster 6.3 release.</li>
+<li>For 2 Node Cluster, we achieved 143,000 Transactions per minute which is more than  4X improvement over the MySQL Cluster 6.3 release.</li>
+<li>Whether a user is looking to take advantage of the latest multi-core, multi-thread server processors, or is seeking to reduce space and energy consumption of their Cluster hardware, MySQL Cluster 7.0 provides a higher throughput, more efficient solution than previous generations of the MySQL Cluster database.</li>
+</ul>
+<p><em> Note that these results were obtained using 1GB  Gigabit Ethernet. We expect improved performance for high speed cluster interconnect like <a href="http://www.sun.com/products/networking/infiniband.jsp" target="_blank">InfiniBand </a>and <a href="http://www.dolphinics.com/" target="_blank">Dolphinics interconnect solutions</a>.</em> Testing using these interconnects is currently underway.</p>
+<p>Some of the KEY features of MySQL cluster 7.0 include &#8220;ability to add nodes and node groups online&#8221;  and &#8220;Data node multithreading support&#8221; You can look at the list of new feature available in MySQL cluster 7.0 <a href="http://www.mysql.com/why-mysql/white-papers/mysql_wp_cluster7_architecture.php" target="_blank">here</a>.</p>
+<h3>Deployment Architecture and Configuration Details:</h3>
+<div id="attachment_1497" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/03/MySQL-Cluster-Topology-2Nodes.gif"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-1497" class="size-medium wp-image-1497" title="MySQL-Cluster-Topology-2Nodes" src="./../../wp-content/uploads/2011/03/MySQL-Cluster-Topology-2Nodes-300x256.gif" alt="" width="300" height="256" /></a><p id="caption-attachment-1497" class="wp-caption-text">The topology diagram for 2 Node Scenario </p></div>
+<p>In the case of a 2 node scenario, the data node processes were running on TWO Sun Fire x4450 system with 8 processor cores per data node. The MySQL server nodes were running a combination of Sun Fire x4450 systems and Sun Fire x4600 systems as shown in the deployment diagram below.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="attachment_1496" style="width: 287px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/03/MySQL-Cluster-Topology-4Nodes.gif"><img decoding="async" aria-describedby="caption-attachment-1496" class="size-medium wp-image-1496" title="MySQL-Cluster-Topology-4Nodes" src="./../../wp-content/uploads/2011/03/MySQL-Cluster-Topology-4Nodes-277x300.gif" alt="" width="277" height="300" /></a><p id="caption-attachment-1496" class="wp-caption-text">The topology diagram for 4 Node Scenario</p></div>
+<p>In the case of a 4 node scenario, FOUR x4450 system were used to deploy the Data Nodes, each data node using 8 cores.  The MySQL Server nodes were running on a combination of TWO Sun Fire x4600, ONE Sun Fire x4240 and FOUR Sun Fire x4450 systems.(co-located with data node systems). Other relevant details are captured in the deployment topology diagram.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3>Detailed Results:</h3>
+<div id="attachment_1495" style="width: 676px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2011/03/DBT2-Benchmark-4Nodes.gif"><img decoding="async" aria-describedby="caption-attachment-1495" class="size-full wp-image-1495 " title="DBT2-Benchmark-4Nodes" src="./../../wp-content/uploads/2011/03/DBT2-Benchmark-4Nodes.gif" alt="" width="666" height="561" /></a><p id="caption-attachment-1495" class="wp-caption-text">Four Data Node Results</p></div>
+<div id="attachment_1493" style="width: 627px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2011/03/DBT2-Benchmark-2Nodes.gif"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1493" class="size-full wp-image-1493 " title="DBT2-Benchmark-2Nodes" src="./../../wp-content/uploads/2011/03/DBT2-Benchmark-2Nodes.gif" alt="" width="617" height="527" /></a><p id="caption-attachment-1493" class="wp-caption-text">Two Data Node Results</p></div>
+<h3>Important Notes:</h3>
+<ol>
+<li> Each MySQL server was bound to 3 processor cores using  &#8220;processor set&#8221; feature(to accommodate more MySQL Servers on the available hardware).  It is observed that we get increased  TPM/MySQL Server and slight decrease in the response time with 4 processor cores per MySQL server).  An example:  With 3 processor cores assigned for  the MySQL server process, we get the TPM of 12988 for 1 Server, 20 Warehouses.  With 4 processor cores, the TPM increases to 19113 with decrease in the response time from 52ms to 34ms.</li>
+<li> TPM &#8211; New-order transactions per minute. It should be noted that the each transaction comprises of about 30 queries, so average response time per query if calculated would be  ~3ms. More details on the &#8220;transaction&#8221; are available in the TPC-C specification  document and DBT2 code base.</li>
+<li>The MySQL 6.3 Cluster saturate with fewer number of MySQL servers. For comparison purpose,  we ran the tests with equal number of MySQL servers for both  MySQL Cluster 6.3 and 7.0</li>
+</ol>
+<h3>Benchmark Description</h3>
+<p>Database Test 2 (DBT-2) :  DBT2 is an open source benchmark developed by OSDL (Open Source Development Labs ). Significant updates to the benchmark were made to simplify its ability to run with a clustered database such as MySQL Cluster Carrier Grade Edition. DBT2 simulates a typical OLTP (Online Transaction Processing) application that performs transactions with around ten to twenty SQL statements per transaction within five distinct transaction types. The DBT2 benchmark can be used as a good indicator in regards to the expected performance of any application that performs fairly simple transactions and executes these transactions in a repetitive fashion.</p>
+<p>For the benchmark results above, DBT2 and MySQL Cluster were configured as an “in memory” database to simulate typical “real-time” database configurations. It should be noted that performance results are being measured as new-order transactions per minute (TPM).  The changes made to the DBT2 benchmark are documented and can be found on the SourceForge page for DBT2 downloads. It can also be downloaded from ww.iclaustron.com.</p>
+<h3>Additional Information:</h3>
+<p>More information on MySQL Cluster</p>
+<ul>
+<li><a href="http://www.mysql.com/why-mysql/white-papers/mysql_wp_cluster7_architecture.php" target="_blank">MySQL Cluster 7 Architecture and New Features</a></li>
+<li><a href="http://www.mysql.com/why-mysql/white-papers/mysql_cluster_eval_guide.php" target="_blank">MySQL Cluster Evaluation Guide</a></li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/mysql-cluster-database-7-performance-benchmark/feed/index.html</wfw:commentRss>
+			<slash:comments>4</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>On-demand-webinar &#8211; What&#8217;s New in Managing MySQL Cluster</title>
+		<link>./../../mysql-cluster/upcoming-webinar-whats-new-in-managing-mysql-cluster/index.html</link>
+					<comments>./../../mysql-cluster/upcoming-webinar-whats-new-in-managing-mysql-cluster/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 14 Jan 2011 09:57:54 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.0]]></category>
+		<category><![CDATA[MySQL Cluster 7.1]]></category>
+		<category><![CDATA[MySQL Cluster Manager]]></category>
+		<category><![CDATA[MySQL Enterprise Monitor]]></category>
+		<category><![CDATA[ndbinfo]]></category>
+		<guid isPermaLink="false">./../../index.html?p=1458</guid>
+
+					<description><![CDATA[The recording of this webinar is now available to view on-line here. There will be a live webinar on Wednesday January 12 describing the new ways that you can manage MySQL Cluster (with a bit of monitoring thrown in). As always, the webinar is free but you need to register here. The event is scheduled]]></description>
+										<content:encoded><![CDATA[<p><img loading="lazy" decoding="async" class="alignright size-full wp-image-919" title="mysql-cluster-logo-150x105" src="./../../wp-content/uploads/2010/02/mysql-cluster-logo-150x105.png" alt="" width="150" height="105" /></p>
+<p>The recording of this webinar is now available to <a href="cluster2Lecluster" target="_blank">view on-line here</a>.</p>
+<p>There will be a live webinar on Wednesday January 12 describing the new ways that you can manage MySQL Cluster (with a bit of monitoring thrown in). As always, the webinar is free but you need to <a href="http://www.mysql.com/news-and-events/web-seminars/display-599.html" target="_blank">register here</a>. The event is scheduled for 09:00 Pacific / 17:00 UK / 18:00 Central European time but if you can&#8217;t make the live webinar it&#8217;s still worth registering so that you&#8217;re emailed the replay after the event.</p>
+<p>By their very nature, clustered environments involve more effort and resource to administer than standalone systems, and the same is true of MySQL Cluster, the database designed for web-scale throughput with carrier-grade availability.</p>
+<p>In this webinar, we will present an overview of the three latest enhancements to provisioning, monitoring and managing MySQL Cluster &#8211; collectively serving to lower costs, enhance agility and reduce the risk of downtime caused by manual configuration errors.</p>
+<p>In this webinar, we will present:</p>
+<ul>
+<li><strong>NDBINFO</strong>: released with MySQL Cluster 7.1, NDBINFO presents real-time status and usage statistics, providing developers and DBAs with a simple means of pro-actively monitoring and optimizing database performance and availability.</li>
+<li><strong>MySQL Cluster Manager</strong>: available as part of the commercial MySQL Cluster Carrier Grade Edition simplifies the creation and management of MySQL Cluster by automating common management tasks, delivering higher administration productivity and enhancing cluster agility. Tasks that used to take 46 commands can be reduced to just one!</li>
+<li><strong>MySQL Cluster Advisors &amp; Graphs</strong>: part of the MySQL Enterprise Monitor and available in the commercial MySQL Cluster Carrier Grade Edition, the Enterprise Advisor includes automated best practice rules that alert on key performance and availability metrics from MySQL Cluster data nodes.</li>
+</ul>
+<p>You will also learn how you can get started evaluating and using all of these tools to simplify MySQL Cluster management.</p>
+<p>This session will be approximately 1 hour in length and will include interactive Q&amp;A throughout. Please join us for this informative webinar!</p>
+<h4>WHO:</h4>
+<ul>
+<li><strong>Andrew Morgan</strong>, MySQL Cluster Product Management, Oracle</li>
+<li><strong>Mat Keep</strong>, MySQL Cluster Product Management, Oracle</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/upcoming-webinar-whats-new-in-managing-mysql-cluster/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Cluster 7.0.13 binaries released</title>
+		<link>./../../mysql-cluster/mysql-cluster-7-0-13-binaries-released/index.html</link>
+					<comments>./../../mysql-cluster/mysql-cluster-7-0-13-binaries-released/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 16 Mar 2010 11:02:55 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.0]]></category>
+		<guid isPermaLink="false">./../../index.html?p=984</guid>
+
+					<description><![CDATA[The binary version for MySQL Cluster 7.0.13 has now been made available at http://dev.mysql.com/downloads/cluster/ under the GA tab. A description of all of the changes (fixes) that have gone into MySQL Cluster 7.0.13 (compared to 7.0.12) can be found in the MySQL Cluster 7.0.13 Change Log.]]></description>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2010/02/mysql-cluster-logo-150x105.png"><img loading="lazy" decoding="async" class="alignright size-full  wp-image-919" title="mysql-cluster-logo-150x105" src="./../../wp-content/uploads/2010/02/mysql-cluster-logo-150x105.png" alt="" width="150" height="105" /></a>The binary version for MySQL Cluster 7.0.13 has now been made available at <a href="http://dev.mysql.com/downloads/cluster/" target="_blank">http://dev.mysql.com/downloads/cluster/</a> under the GA tab.</p>
+<p>A description of all of the changes (fixes) that have gone into MySQL Cluster 7.0.13 (compared to 7.0.12) can be found in the <a href="./../../wp-content/uploads/2010/03/MySQL_Cluster_7_0_13_ChangeLog.txt" target="_blank">MySQL Cluster 7.0.13 Change Log</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/mysql-cluster-7-0-13-binaries-released/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Cluster on Windows &#8211; webinar replay available</title>
+		<link>./../../mysql-cluster/mysql-cluster-on-windows-webinar-replay-available/index.html</link>
+					<comments>./../../mysql-cluster/mysql-cluster-on-windows-webinar-replay-available/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 10 Mar 2010 09:58:13 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.0]]></category>
+		<guid isPermaLink="false">./../../index.html?p=976</guid>
+
+					<description><![CDATA[If you missed the recent webinar on running MySQL Cluster on Windows then you can watch/listen to the replay at http://www.mysql.com/news-and-events/on-demand-webinars/display-od-517.html]]></description>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2009/12/Windows_logo.jpg"><img loading="lazy" decoding="async" class="alignright size-full wp-image-809" title="Windows Logo" src="./../../wp-content/uploads/2009/12/Windows_logo.jpg" alt="" width="107" height="107" /></a>If you missed the recent webinar on running MySQL Cluster on Windows then you can watch/listen to the replay at <a href="http://www.mysql.com/news-and-events/on-demand-webinars/display-od-517.html" target="_blank">http://www.mysql.com/news-and-events/on-demand-webinars/display-od-517.html</a></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/mysql-cluster-on-windows-webinar-replay-available/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Presenting Cluster tutorial at MySQL UC (and discount code!)</title>
+		<link>./../../mysql-cluster/presenting-cluster-tutorial-at-mysql-uc-and-discount-code/index.html</link>
+					<comments>./../../mysql-cluster/presenting-cluster-tutorial-at-mysql-uc-and-discount-code/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 26 Feb 2010 19:39:15 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.0]]></category>
+		<category><![CDATA[MySQL Cluster 7.1]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<guid isPermaLink="false">./../../index.html?p=968</guid>
+
+					<description><![CDATA[Together with Geert and Andrew I&#8217;ll be teaching the MySQL Cluster tutrial at this year&#8217;s MySQL Cluster User Conference &#8211; Santa Clara, on April 12th. If you&#8217;re interested in using MySQL Cluster but aren&#8217;t sure how to get started (or you&#8217;ve used it but would like some tips) then this is a great opportunity. Check]]></description>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2010/02/mysql2010_speaking_badge_125x125.gif"><img loading="lazy" decoding="async" class="alignright size-full wp-image-969" title="mysql2010_speaking_badge_125x125" src="./../../wp-content/uploads/2010/02/mysql2010_speaking_badge_125x125.gif" alt="" width="125" height="125" /></a>Together with <a href="http://geert.vanderkelen.org/" target="_blank">Geert </a>and <a href="http://blogs.sun.com/LinuxJedi/" target="_blank">Andrew</a> I&#8217;ll be teaching the MySQL Cluster tutrial at this year&#8217;s MySQL Cluster User Conference &#8211; Santa Clara, on April 12th. If you&#8217;re interested in using MySQL Cluster but aren&#8217;t sure how to get started (or you&#8217;ve used it but would like some tips) then this is a great opportunity. Check out the <a href="http://en.oreilly.com/mysql2010/public/schedule/detail/12438" target="_blank">tutorial description</a>.</p>
+<p>If you <a href="https://en.oreilly.com/mysql2010/public/register" target="_blank">register</a> by 15 March then you get the early-bird price <strong>and</strong> if you use this &#8216;friend of a speaker&#8217; code then you get an additional 25% off: <span style="color: #800000;"><strong>mys10fsp </strong></span></p>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px;"><!--[if gte mso 9]><xml> <w:WordDocument> <w:View>Normal</w:View> <w:Zoom>0</w:Zoom> <w:TrackMoves /> <w:TrackFormatting /> <w:PunctuationKerning /> <w:ValidateAgainstSchemas /> <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid> <w:IgnoreMixedContent>false</w:IgnoreMixedContent> <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText> <w:DoNotPromoteQF /> <w:LidThemeOther>EN-GB</w:LidThemeOther> <w:LidThemeAsian>X-NONE</w:LidThemeAsian> <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript> <w:Compatibility> <w:BreakWrappedTables /> <w:SnapToGridInCell /> <w:WrapTextWithPunct /> <w:UseAsianBreakRules /> <w:DontGrowAutofit /> <w:SplitPgBreakAndParaMark /> <w:DontVertAlignCellWithSp /> <w:DontBreakConstrainedForcedTables /> <w:DontVertAlignInTxbx /> <w:Word11KerningPairs /> <w:CachedColBalance /> </w:Compatibility> <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel> <m:mathPr> <m:mathFont m:val="Cambria Math" /> <m:brkBin m:val="before" /> <m:brkBinSub m:val="&#45;-" /> <m:smallFrac m:val="off" /> <m:dispDef /> <m:lMargin m:val="0" /> <m:rMargin m:val="0" /> <m:defJc m:val="centerGroup" /> <m:wrapIndent m:val="1440" /> <m:intLim m:val="subSup" /> <m:naryLim m:val="undOvr" /> </m:mathPr></w:WordDocument> </xml><![endif]--><!--[if gte mso 9]><xml> <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"   DefSemiHidden="true" DefQFormat="false" DefPriority="99"   LatentStyleCount="267"> <w:LsdException Locked="false" Priority="0" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Normal" /> <w:LsdException Locked="false" Priority="9" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="heading 1" /> <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 2" /> <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3" /> <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4" /> <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5" /> <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6" /> <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7" /> <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8" /> <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9" /> <w:LsdException Locked="false" Priority="39" Name="toc 1" /> <w:LsdException Locked="false" Priority="39" Name="toc 2" /> <w:LsdException Locked="false" Priority="39" Name="toc 3" /> <w:LsdException Locked="false" Priority="39" Name="toc 4" /> <w:LsdException Locked="false" Priority="39" Name="toc 5" /> <w:LsdException Locked="false" Priority="39" Name="toc 6" /> <w:LsdException Locked="false" Priority="39" Name="toc 7" /> <w:LsdException Locked="false" Priority="39" Name="toc 8" /> <w:LsdException Locked="false" Priority="39" Name="toc 9" /> <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption" /> <w:LsdException Locked="false" Priority="10" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Title" /> <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font" /> <w:LsdException Locked="false" Priority="11" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Subtitle" /> <w:LsdException Locked="false" Priority="22" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Strong" /> <w:LsdException Locked="false" Priority="20" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Emphasis" /> <w:LsdException Locked="false" Priority="59" SemiHidden="false"    UnhideWhenUsed="false" Name="Table Grid" /> <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text" /> <w:LsdException Locked="false" Priority="1" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="No Spacing" /> <w:LsdException Locked="false" Priority="60" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Shading" /> <w:LsdException Locked="false" Priority="61" SemiHidden="false"    UnhideWhenUsed="false" Name="Light List" /> <w:LsdException Locked="false" Priority="62" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Grid" /> <w:LsdException Locked="false" Priority="63" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 1" /> <w:LsdException Locked="false" Priority="64" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 2" /> <w:LsdException Locked="false" Priority="65" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 1" /> <w:LsdException Locked="false" Priority="66" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 2" /> <w:LsdException Locked="false" Priority="67" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 1" /> <w:LsdException Locked="false" Priority="68" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 2" /> <w:LsdException Locked="false" Priority="69" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 3" /> <w:LsdException Locked="false" Priority="70" SemiHidden="false"    UnhideWhenUsed="false" Name="Dark List" /> <w:LsdException Locked="false" Priority="71" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Shading" /> <w:LsdException Locked="false" Priority="72" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful List" /> <w:LsdException Locked="false" Priority="73" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Grid" /> <w:LsdException Locked="false" Priority="60" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Shading Accent 1" /> <w:LsdException Locked="false" Priority="61" SemiHidden="false"    UnhideWhenUsed="false" Name="Light List Accent 1" /> <w:LsdException Locked="false" Priority="62" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Grid Accent 1" /> <w:LsdException Locked="false" Priority="63" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1" /> <w:LsdException Locked="false" Priority="64" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1" /> <w:LsdException Locked="false" Priority="65" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 1 Accent 1" /> <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision" /> <w:LsdException Locked="false" Priority="34" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="List Paragraph" /> <w:LsdException Locked="false" Priority="29" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Quote" /> <w:LsdException Locked="false" Priority="30" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Intense Quote" /> <w:LsdException Locked="false" Priority="66" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 2 Accent 1" /> <w:LsdException Locked="false" Priority="67" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1" /> <w:LsdException Locked="false" Priority="68" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1" /> <w:LsdException Locked="false" Priority="69" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1" /> <w:LsdException Locked="false" Priority="70" SemiHidden="false"    UnhideWhenUsed="false" Name="Dark List Accent 1" /> <w:LsdException Locked="false" Priority="71" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Shading Accent 1" /> <w:LsdException Locked="false" Priority="72" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful List Accent 1" /> <w:LsdException Locked="false" Priority="73" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Grid Accent 1" /> <w:LsdException Locked="false" Priority="60" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Shading Accent 2" /> <w:LsdException Locked="false" Priority="61" SemiHidden="false"    UnhideWhenUsed="false" Name="Light List Accent 2" /> <w:LsdException Locked="false" Priority="62" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Grid Accent 2" /> <w:LsdException Locked="false" Priority="63" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2" /> <w:LsdException Locked="false" Priority="64" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2" /> <w:LsdException Locked="false" Priority="65" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 1 Accent 2" /> <w:LsdException Locked="false" Priority="66" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 2 Accent 2" /> <w:LsdException Locked="false" Priority="67" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2" /> <w:LsdException Locked="false" Priority="68" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2" /> <w:LsdException Locked="false" Priority="69" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2" /> <w:LsdException Locked="false" Priority="70" SemiHidden="false"    UnhideWhenUsed="false" Name="Dark List Accent 2" /> <w:LsdException Locked="false" Priority="71" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Shading Accent 2" /> <w:LsdException Locked="false" Priority="72" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful List Accent 2" /> <w:LsdException Locked="false" Priority="73" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Grid Accent 2" /> <w:LsdException Locked="false" Priority="60" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Shading Accent 3" /> <w:LsdException Locked="false" Priority="61" SemiHidden="false"    UnhideWhenUsed="false" Name="Light List Accent 3" /> <w:LsdException Locked="false" Priority="62" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Grid Accent 3" /> <w:LsdException Locked="false" Priority="63" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3" /> <w:LsdException Locked="false" Priority="64" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3" /> <w:LsdException Locked="false" Priority="65" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 1 Accent 3" /> <w:LsdException Locked="false" Priority="66" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 2 Accent 3" /> <w:LsdException Locked="false" Priority="67" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3" /> <w:LsdException Locked="false" Priority="68" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3" /> <w:LsdException Locked="false" Priority="69" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3" /> <w:LsdException Locked="false" Priority="70" SemiHidden="false"    UnhideWhenUsed="false" Name="Dark List Accent 3" /> <w:LsdException Locked="false" Priority="71" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Shading Accent 3" /> <w:LsdException Locked="false" Priority="72" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful List Accent 3" /> <w:LsdException Locked="false" Priority="73" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Grid Accent 3" /> <w:LsdException Locked="false" Priority="60" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Shading Accent 4" /> <w:LsdException Locked="false" Priority="61" SemiHidden="false"    UnhideWhenUsed="false" Name="Light List Accent 4" /> <w:LsdException Locked="false" Priority="62" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Grid Accent 4" /> <w:LsdException Locked="false" Priority="63" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4" /> <w:LsdException Locked="false" Priority="64" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4" /> <w:LsdException Locked="false" Priority="65" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 1 Accent 4" /> <w:LsdException Locked="false" Priority="66" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 2 Accent 4" /> <w:LsdException Locked="false" Priority="67" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4" /> <w:LsdException Locked="false" Priority="68" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4" /> <w:LsdException Locked="false" Priority="69" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4" /> <w:LsdException Locked="false" Priority="70" SemiHidden="false"    UnhideWhenUsed="false" Name="Dark List Accent 4" /> <w:LsdException Locked="false" Priority="71" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Shading Accent 4" /> <w:LsdException Locked="false" Priority="72" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful List Accent 4" /> <w:LsdException Locked="false" Priority="73" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Grid Accent 4" /> <w:LsdException Locked="false" Priority="60" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Shading Accent 5" /> <w:LsdException Locked="false" Priority="61" SemiHidden="false"    UnhideWhenUsed="false" Name="Light List Accent 5" /> <w:LsdException Locked="false" Priority="62" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Grid Accent 5" /> <w:LsdException Locked="false" Priority="63" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5" /> <w:LsdException Locked="false" Priority="64" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5" /> <w:LsdException Locked="false" Priority="65" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 1 Accent 5" /> <w:LsdException Locked="false" Priority="66" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 2 Accent 5" /> <w:LsdException Locked="false" Priority="67" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5" /> <w:LsdException Locked="false" Priority="68" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5" /> <w:LsdException Locked="false" Priority="69" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5" /> <w:LsdException Locked="false" Priority="70" SemiHidden="false"    UnhideWhenUsed="false" Name="Dark List Accent 5" /> <w:LsdException Locked="false" Priority="71" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Shading Accent 5" /> <w:LsdException Locked="false" Priority="72" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful List Accent 5" /> <w:LsdException Locked="false" Priority="73" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Grid Accent 5" /> <w:LsdException Locked="false" Priority="60" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Shading Accent 6" /> <w:LsdException Locked="false" Priority="61" SemiHidden="false"    UnhideWhenUsed="false" Name="Light List Accent 6" /> <w:LsdException Locked="false" Priority="62" SemiHidden="false"    UnhideWhenUsed="false" Name="Light Grid Accent 6" /> <w:LsdException Locked="false" Priority="63" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6" /> <w:LsdException Locked="false" Priority="64" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6" /> <w:LsdException Locked="false" Priority="65" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 1 Accent 6" /> <w:LsdException Locked="false" Priority="66" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium List 2 Accent 6" /> <w:LsdException Locked="false" Priority="67" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6" /> <w:LsdException Locked="false" Priority="68" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6" /> <w:LsdException Locked="false" Priority="69" SemiHidden="false"    UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6" /> <w:LsdException Locked="false" Priority="70" SemiHidden="false"    UnhideWhenUsed="false" Name="Dark List Accent 6" /> <w:LsdException Locked="false" Priority="71" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Shading Accent 6" /> <w:LsdException Locked="false" Priority="72" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful List Accent 6" /> <w:LsdException Locked="false" Priority="73" SemiHidden="false"    UnhideWhenUsed="false" Name="Colorful Grid Accent 6" /> <w:LsdException Locked="false" Priority="19" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis" /> <w:LsdException Locked="false" Priority="21" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis" /> <w:LsdException Locked="false" Priority="31" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference" /> <w:LsdException Locked="false" Priority="32" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Intense Reference" /> <w:LsdException Locked="false" Priority="33" SemiHidden="false"    UnhideWhenUsed="false" QFormat="true" Name="Book Title" /> <w:LsdException Locked="false" Priority="37" Name="Bibliography" /> <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading" /> </w:LatentStyles> </xml><![endif]--><!--  /* Font Definitions */  @font-face 	{font-family:"Cambria Math"; 	panose-1:2 4 5 3 5 4 6 3 2 4; 	mso-font-charset:0; 	mso-generic-font-family:roman; 	mso-font-pitch:variable; 	mso-font-signature:-1610611985 1107304683 0 0 159 0;} @font-face 	{font-family:Calibri; 	panose-1:2 15 5 2 2 2 4 3 2 4; 	mso-font-charset:0; 	mso-generic-font-family:swiss; 	mso-font-pitch:variable; 	mso-font-signature:-1610611985 1073750139 0 0 159 0;}  /* Style Definitions */  p.MsoNormal, li.MsoNormal, div.MsoNormal 	{mso-style-unhide:no; 	mso-style-qformat:yes; 	mso-style-parent:""; 	margin:0cm; 	margin-bottom:.0001pt; 	mso-pagination:widow-orphan; 	font-size:11.0pt; 	font-family:"Calibri","sans-serif"; 	mso-ascii-font-family:Calibri; 	mso-ascii-theme-font:minor-latin; 	mso-fareast-font-family:Calibri; 	mso-fareast-theme-font:minor-latin; 	mso-hansi-font-family:Calibri; 	mso-hansi-theme-font:minor-latin; 	mso-bidi-font-family:"Times New Roman"; 	mso-bidi-theme-font:minor-bidi; 	mso-fareast-language:EN-US;} span.EmailStyle15 	{mso-style-type:personal; 	mso-style-noshow:yes; 	mso-style-unhide:no; 	mso-ansi-font-size:10.0pt; 	mso-bidi-font-size:10.0pt; 	font-family:"Arial","sans-serif"; 	mso-ascii-font-family:Arial; 	mso-hansi-font-family:Arial; 	mso-bidi-font-family:Arial;} .MsoChpDefault 	{mso-style-type:export-only; 	mso-default-props:yes; 	mso-ascii-font-family:Calibri; 	mso-ascii-theme-font:minor-latin; 	mso-fareast-font-family:Calibri; 	mso-fareast-theme-font:minor-latin; 	mso-hansi-font-family:Calibri; 	mso-hansi-theme-font:minor-latin; 	mso-bidi-font-family:"Times New Roman"; 	mso-bidi-theme-font:minor-bidi; 	mso-fareast-language:EN-US;} @page Section1 	{size:612.0pt 792.0pt; 	margin:72.0pt 72.0pt 72.0pt 72.0pt; 	mso-header-margin:36.0pt; 	mso-footer-margin:36.0pt; 	mso-paper-source:0;} div.Section1 	{page:Section1;} --><!--[if gte mso 10]> <mce:style><!   /* Style Definitions */  table.MsoNormalTable 	{mso-style-name:"Table Normal"; 	mso-tstyle-rowband-size:0; 	mso-tstyle-colband-size:0; 	mso-style-noshow:yes; 	mso-style-priority:99; 	mso-style-qformat:yes; 	mso-style-parent:""; 	mso-padding-alt:0cm 5.4pt 0cm 5.4pt; 	mso-para-margin:0cm; 	mso-para-margin-bottom:.0001pt; 	mso-pagination:widow-orphan; 	font-size:11.0pt; 	font-family:"Calibri","sans-serif"; 	mso-ascii-font-family:Calibri; 	mso-ascii-theme-font:minor-latin; 	mso-fareast-font-family:"Times New Roman"; 	mso-fareast-theme-font:minor-fareast; 	mso-hansi-font-family:Calibri; 	mso-hansi-theme-font:minor-latin;} --> <!--[endif]--><span style="font-size: 11pt; font-family: &amp;amp;amp;">mys10fsp </span></div>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/presenting-cluster-tutorial-at-mysql-uc-and-discount-code/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Cluster 7.0.11b source released</title>
+		<link>./../../mysql-cluster/mysql-cluster-7-0-11b-source-released/index.html</link>
+					<comments>./../../mysql-cluster/mysql-cluster-7-0-11b-source-released/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 22 Feb 2010 13:51:44 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL Cluster 7.0]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<guid isPermaLink="false">./../../index.html?p=956</guid>
+
+					<description><![CDATA[The source version for MySQL Cluster 7.0.11b has now been made available at ftp://ftp.mysql.com/pub/mysql/download/cluster_telco/mysql-5.1.41-ndb-7.0.11b/ This replaces MySQL Cluster 7.0.10 and 7.0.11. You can either wait for the binaries to be released or if you&#8217;re in a rush then you can find instructions on building the binaries for yourself in the earlier article: &#8220;MySQL Cluster 7.0.7]]></description>
+										<content:encoded><![CDATA[<p>The source version for MySQL Cluster 7.0.11b has now been made available at <a href="ftp://ftp.mysql.com/pub/mysql/download/cluster_telco/mysql-5.1.41-ndb-7.0.11b/" target="_blank">ftp://ftp.mysql.com/pub/mysql/download/cluster_telco/mysql-5.1.41-ndb-7.0.11b/</a></p>
+<p>This replaces MySQL Cluster 7.0.10 and 7.0.11.</p>
+<p>You can either wait for the binaries to be released or if you&#8217;re in a rush then you can find instructions on building the binaries for yourself in the earlier article: &#8220;<a href="./../../mysql-cluster/mysql-cluster-7-0-7-source-released/index.html">MySQL Cluster 7.0.7 source released</a>&#8220;.</p>
+<p>A description of all of the changes (fixes) that have gone into MySQL Cluster 7.0.11b (compared to 7.0.10) can be found in the <a href="./../../wp-content/uploads/2010/02/Cluster_7_0_11b_ChangeLog.txt">MySQL Cluster 7.0.11b Change Log</a></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/mysql-cluster-7-0-11b-source-released/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Cluster 7.0.11 source released</title>
+		<link>./../../mysql-cluster/mysql-cluster-7-0-11-source-released/index.html</link>
+					<comments>./../../mysql-cluster/mysql-cluster-7-0-11-source-released/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 03 Feb 2010 09:20:55 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.0]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<guid isPermaLink="false">./../../index.html?p=908</guid>
+
+					<description><![CDATA[The source version for MySQL Cluster 7.0.11 has now been made available at ftp://ftp.mysql.com/pub/mysql/download/cluster_telco/mysql-5.1.41-ndb-7.0.11/ This replaces MySQL Cluster 7.0.10. You can either wait for the binaries to be released or if you&#8217;re in a rush then you can find instructions on building the binaries for yourself in the earlier article: &#8220;MySQL Cluster 7.0.7 source released&#8220;.]]></description>
+										<content:encoded><![CDATA[<p>The source version for MySQL Cluster 7.0.11 has now been made available at <a href="ftp://ftp.mysql.com/pub/mysql/download/cluster_telco/mysql-5.1.41-ndb-7.0.11/">ftp://ftp.mysql.com/pub/mysql/download/cluster_telco/mysql-5.1.41-ndb-7.0.11/</a></p>
+<p>This replaces MySQL Cluster 7.0.10.</p>
+<p>You can either wait for the binaries to be released or if you&#8217;re in a rush then you can find instructions on building the binaries for yourself in the earlier article: &#8220;<a href="./../../mysql-cluster/mysql-cluster-7-0-7-source-released/index.html">MySQL Cluster 7.0.7 source released</a>&#8220;.</p>
+<p>A description of all of the changes (fixes) that have gone into MySQL Cluster 7.0.11 (compared to 7.0.11) can be found in the <a href="./../../wp-content/uploads/2010/02/MySQL_Cluster_7_0_11_ChangeLog.txt" target="_blank">MySQL_Cluster_7_0_11_ChangeLog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/mysql-cluster-7-0-11-source-released/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Upcoming webinar &#8211; MySQL performance tuning best practices</title>
+		<link>./../../mysql-cluster/upcoming-webinar-mysql-performance-tuning-best-practices/index.html</link>
+					<comments>./../../mysql-cluster/upcoming-webinar-mysql-performance-tuning-best-practices/index.html#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 26 Jan 2010 15:17:26 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.0]]></category>
+		<category><![CDATA[Performance]]></category>
+		<category><![CDATA[Performance Tunining]]></category>
+		<category><![CDATA[Tuning]]></category>
+		<guid isPermaLink="false">./../../index.html?p=897</guid>
+
+					<description><![CDATA[MySQL Cluster Performance Tuning Best Practices Are you experiencing current performance bottlenecks in your high availability applications ? Are you designing a new mission-critical application and want to know how best to structure your schema and index strategy for optimal performance? Interested in how to transform your SQL into faster, more efficient queries? Then this]]></description>
+										<content:encoded><![CDATA[<h3 style="font-size: 1.17em;">MySQL Cluster Performance Tuning Best Practices</h3>
+<p>Are you experiencing current performance bottlenecks in your high availability applications ? Are you designing a new mission-critical application and want to know how best to structure your schema and index strategy for optimal performance? Interested in how to transform your SQL into faster, more efficient queries?</p>
+<div id="attachment_898" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2010/01/connection_pooling_graph.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-898" class="size-medium wp-image-898" title="connection_pooling_graph" src="./../../wp-content/uploads/2010/01/connection_pooling_graph-300x77.jpg" alt="Benefits of connection pooling" width="300" height="77" srcset="./../../wp-content/uploads/2010/01/connection_pooling_graph-300x77.jpg 300w, ./../../wp-content/uploads/2010/01/connection_pooling_graph-1024x263.jpg 1024w, ./../../wp-content/uploads/2010/01/connection_pooling_graph.jpg 1464w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-898" class="wp-caption-text">Benefits of connection pooling</p></div>
+<p>Then this free web presentation is for you! You will get expert insight and learn best practices to help you identify those areas of database and application design that will give you the greatest benefits for performance when using MySQL Cluster.</p>
+<p>We will discuss guidelines and best practices covering the following areas:</p>
+<ul>
+<li>General Design Concepts and Guidelines</li>
+<li>Schema Optimization
+<ul>
+<li>BLOB/Text vs VARBINARY/VARCHAR</li>
+<li>Partition by Key</li>
+</ul>
+</li>
+<li>Index Selection and Tuning</li>
+<li>Basic Query Tuning</li>
+<li>MySQL Cluster Parameter Tuning Guidelines</li>
+<li>Tools to accelerate application development and testing</li>
+</ul>
+<p>Johan Andersson and Mat Keep will be presenting and I&#8217;ll be helping with the Q&amp;A.</p>
+<p>Tuesday, February 2, 2009: 10:00 CET (Central European Time)/ 09:00 UK/GMT.</p>
+<p><a href="http://www.mysql.com/news-and-events/web-seminars/display-480.html" target="_blank">Register here at mysql.com</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/upcoming-webinar-mysql-performance-tuning-best-practices/feed/index.html</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Running MySQL Cluster over multiple Windows servers</title>
+		<link>./../../mysql-cluster/running-mysql-cluster-over-multiple-servers/index.html</link>
+					<comments>./../../mysql-cluster/running-mysql-cluster-over-multiple-servers/index.html#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 20 Jan 2010 17:57:30 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.0]]></category>
+		<category><![CDATA[Windows]]></category>
+		<guid isPermaLink="false">./../../index.html?p=807</guid>
+
+					<description><![CDATA[Following on from the earlier article on running MySQL Cluster on a single Windows host, this one looks at installing and running over multiple Windows machines. In this post, the MySQL Cluster database will be split over 3 Windows machines: 2 hosts with each running 1 data node 3rd host running management node and 2]]></description>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2009/12/Windows_logo.jpg"><img loading="lazy" decoding="async" class="alignright size-full wp-image-809" title="Windows Logo" src="./../../wp-content/uploads/2009/12/Windows_logo.jpg" alt="Windows Logo" width="107" height="107" /></a><br />
+Following on from the earlier article on <a href="./../../mysql-cluster/my-first-cluster-running-on-windows/index.html" target="_blank">running MySQL Cluster on a single Windows host</a>, this one looks at installing and running over multiple Windows machines.</p>
+<div id="attachment_800" style="width: 264px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2009/12/windows.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-800" class="size-medium wp-image-800" title="MySQL Cluster Running on Windows" src="./../../wp-content/uploads/2009/12/windows-254x300.jpg" alt="Target Deployment" width="254" height="300" srcset="./../../wp-content/uploads/2009/12/windows-254x300.jpg 254w, ./../../wp-content/uploads/2009/12/windows.jpg 618w" sizes="auto, (max-width: 254px) 100vw, 254px" /></a><p id="caption-attachment-800" class="wp-caption-text">Target Deployment</p></div>
+<p>In this post, the MySQL Cluster database will be split over 3 Windows machines:</p>
+<ul>
+<li>2 hosts with each running 1 data node</li>
+<li>3rd host running management node and 2 MySQL Servers</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="attachment_814" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2009/12/download.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-814" class="size-medium wp-image-814" title="MySQL Cluster Downloads" src="./../../wp-content/uploads/2009/12/download-300x236.jpg" alt="MySQL Cluster Downloads" width="300" height="236" srcset="./../../wp-content/uploads/2009/12/download-300x236.jpg 300w, ./../../wp-content/uploads/2009/12/download.jpg 745w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-814" class="wp-caption-text">MySQL Cluster Downloads</p></div>
+<p>The first step is to download and install the software on each of the Windows hosts. There are 2 main ways that you can install MySQL Cluster on Windows &#8211; the first is an MSI installer and the second is extracting the files from a Zip archive &#8211; this article focuses on using the Zip file as the <a href="./../../mysql-cluster/my-first-cluster-running-on-windows/index.html" target="_blank">single host article</a> used the MSI installer. You can get the Zip archive from the <a href="http://dev.mysql.com/downloads/cluster/" target="_blank">Cluster downloads page on mysql.com</a></p>
+<p>Make sure that you choose the correct file MSI vs. Zip, 32 bit vs. 64 bit. Also make sure that you don&#8217;t download the source code rather than the binaries (you can tell the source archive as it&#8217;s a much smaller file).</p>
+<p>Repeat this on each of the hosts that will run a Cluster node (or download it once and then copy it to each of the hosts).</p>
+<div id="attachment_832" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2009/12/zip.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-832" class="size-medium wp-image-832" title="zip" src="./../../wp-content/uploads/2009/12/zip-300x212.jpg" alt="Extract Zip archive" width="300" height="212" srcset="./../../wp-content/uploads/2009/12/zip-300x212.jpg 300w, ./../../wp-content/uploads/2009/12/zip.jpg 512w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-832" class="wp-caption-text">Extract Zip archive</p></div>
+<p>Extract the contents of the Zip archive to &#8220;c:mysqlcluster&#8221;.</p>
+<p>I prefer to keep the configuration and data files separate from the software and so I create a new folder &#8220;MySQL_ClusterMy_Cluster&#8221; in my home directory and in there create &#8220;conf&#8221; and &#8220;data&#8221; folders. Within the &#8220;data&#8221; folder on 192.168.0.19, create a sub-folder for each of the 2 MySQL Server (mysqld) processes and then copy &#8220;c:mysqlclusterdatamysql&#8221; to each &#8211; this creates the mysql database for each of the MySQL nodes containing data such as privileges and password.</p>
+<div id="attachment_834" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2009/12/path.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-834" class="size-medium wp-image-834" title="path" src="./../../wp-content/uploads/2009/12/path-300x275.jpg" alt="Add MySQL executables to PATH" width="300" height="275" srcset="./../../wp-content/uploads/2009/12/path-300x275.jpg 300w, ./../../wp-content/uploads/2009/12/path.jpg 561w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-834" class="wp-caption-text">Add MySQL executables to PATH</p></div>
+<p>To get access to the executables from the command line, add &#8220;c:mysqlclusterbin&#8221; to the PATH environment variable.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Create a &#8220;config.ini&#8221; file within the &#8220;conf&#8221; folder that was created on the host to run the management node (ndb_mgmd) &#8211; which in this example is 192.168.0.19:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;">[ndbd default]
+noofreplicas=2
+datadir=E:am233268DocumentsMySQL_ClusterMy_Clusterdata
+
+[ndbd]
+hostname=192.168.0.201
+id=2
+
+[ndbd]
+hostname=192.168.0.4
+id=3
+
+[ndb_mgmd]
+id=1
+hostname=192.168.0.19
+
+mysqld]
+id=101
+hostname=192.168.0.19
+
+[mysqld]
+id=102
+hostname=192.168.0.19
+</span></pre>
+<p>As both of the MySQL Server nodes will also run on 192.168.0.19, we create a cnf file for each of them in that same &#8220;conf&#8221; folder:</p>
+<p>my.101.cnf</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;">[mysqld]
+ndb-nodeid=101
+ndbcluster
+datadir=E:am233268DocumentsMySQL_ClusterMy_Clusterdatamysqld_1
+port=3306
+ndb-connectstring=192.168.0.19:1186</span></pre>
+<p>my.102.cnf</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;">[mysqld]
+ndb-nodeid=102
+ndbcluster
+datadir=E:am233268DocumentsMySQL_ClusterMy_Clusterdatamysqld_2
+port=3307
+ndb-connectstring=192.168.0.19:1186</span></pre>
+<p>Note that the &#8220;ndb-connectstring&#8221; is not strictly needed as the MySQL Servers happen to be on the same host as the management node but they&#8217;ve been included to make it clearer what to change if you moved those nodes to another machine.</p>
+<div id="attachment_838" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2009/12/ports.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-838" class="size-medium wp-image-838" title="ports" src="./../../wp-content/uploads/2009/12/ports-300x121.jpg" alt="Ports to open for MySQL Cluster nodes" width="300" height="121" srcset="./../../wp-content/uploads/2009/12/ports-300x121.jpg 300w, ./../../wp-content/uploads/2009/12/ports.jpg 389w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-838" class="wp-caption-text">Ports to open for MySQL Cluster nodes</p></div>
+<p>The information from this table can help you set up the firewall rules to allow the nodes to communitcate with each other but if possible, turn off the firewall for connections between these 3 nodes.</p>
+<p>The next step is to start the nodes (processes) but before then, a hint.</p>
+<p>If you run each command from a different command prompt then your screen will quickly fill with Windows. Instead, rather than just typing &#8220;c: &lt;command&gt;&#8221; use &#8220;c: start /B &lt;command&gt;&#8221; (for example &#8220;c: start /B ndbd &#8211;initial&#8221;) so that multiple processes can be run from the same Window. To keep things simple, the &#8220;start /B&#8221; has been skipped for the rest of this article.</p>
+<p>The first process to start is the management node; run the following from the &#8220;&lt;home&gt;DocumentsMySQL_ClusterMy_Cluster&#8221; folder on 192.168.0.19:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;">192.168.0.19: ndb_mgmd --initial -f conf/config.ini --configdir=./conf</span></pre>
+<p>Next, start the data nodes on 192.168.0.201 and 192.168.0.4:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;">192.168.0.201: ndbd -c 192.168.0.19:1186 --initial
+
+192.168.0.4: ndbd -c 192.168.0.19:1186 --initial</span></pre>
+<p>and then finally start the MySQL Server nodes on 192.168.0.19:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;">192.168.0.19: mysqld --defaults-file=confmy.101.cnf
+192.168.0.19: mysqld --defaults-file=confmy.102.cnf</span></pre>
+<p>Finally, check that all of the nodes are up and running:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;">192.168.0.19: ndb_mgm
+-- NDB Cluster -- Management Client --
+ndb_mgm&gt; show
+Connected to Management Server at: localhost:1186
+Cluster Configuration
+---------------------
+[ndbd(NDB)]     2 node(s)
+id=2    @192.168.0.201  (mysql-5.1.39 ndb-7.0.9, Nodegroup: 0, Master)
+id=3    @192.168.0.4  (mysql-5.1.39 ndb-7.0.9, Nodegroup: 0)
+
+[ndb_mgmd(MGM)] 1 node(s)
+id=1    @192.168.0.19  (mysql-5.1.39 ndb-7.0.9)
+
+[mysqld(API)]   2 node(s)
+id=101  @192.168.0.19  (mysql-5.1.39 ndb-7.0.9)
+id=102  @192.168.0.19  (mysql-5.1.39 ndb-7.0.9)</span></pre>
+<h3>Known limitation of running MySQL Cluster on Windows:</h3>
+<ul>
+<li>No angel process for data nodes -&gt; processes will not be automatically restarted even if you set StopOnError to FALSE</li>
+<li>Running nodes as Windows services is not really practical (as well as software limitations, would still need to activate processes through ndb_mgm)</li>
+<li>Safe to run management node or MySQL Servers (or NDB API Apps) on Windows in production: will soon be supported</li>
+<li>See open <a href="http://bugs.mysql.com/search.php?search_for=&amp;status=Active&amp;severity=&amp;limit=10&amp;order_by=&amp;cmd=display&amp;direction=ASC&amp;bug_type=Server:+Cluster&amp;assign=&amp;os=7&amp;phpver=&amp;bug_age=0 " target="_blank">MySQL Cluster bugs reported for Windows:</a></li>
+<li>You tell us! Help us get to GA quality on Windows:
+<ul>
+<li><a href="http://bugs.mysql.com/" target="_blank">bugs.mysql.com</a>
+<ul>
+<li>Category = MySQL Cluster</li>
+<li>OS = Microsoft Windows</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/running-mysql-cluster-over-multiple-servers/feed/index.html</wfw:commentRss>
+			<slash:comments>114</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Cluster 7.0.10 source released</title>
+		<link>./../../mysql-cluster/mysql-cluster-7-0-10-source-released/index.html</link>
+					<comments>./../../mysql-cluster/mysql-cluster-7-0-10-source-released/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 16 Dec 2009 11:26:16 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.0]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<guid isPermaLink="false">./../../index.html?p=790</guid>
+
+					<description><![CDATA[The source version for MySQL Cluster 7.0.10 has now been made available at ftp://ftp://ftp.mysql.com/pub/mysql/download/cluster_telco/mysql-5.1.39-ndb-7.0.10// This replaces MySQL Cluster 7.0.9. You can either wait for the binaries to be released or if you&#8217;re in a rush then you can find instructions on building the binaries for yourself in the earlier article: &#8220;MySQL Cluster 7.0.7 source released&#8220;.]]></description>
+										<content:encoded><![CDATA[<p>The source version for MySQL Cluster 7.0.10 has now been made available at <a href="ftp://ftp.mysql.com/pub/mysql/download/cluster_telco/mysql-5.1.39-ndb-7.0.10/">ftp://ftp://ftp.mysql.com/pub/mysql/download/cluster_telco/mysql-5.1.39-ndb-7.0.10//</a></p>
+<p>This replaces MySQL Cluster 7.0.9.</p>
+<p>You can either wait for the binaries to be released or if you&#8217;re in a rush then you can find instructions on building the binaries for yourself in the earlier article: &#8220;<a href="./../../mysql-cluster/mysql-cluster-7-0-7-source-released/index.html">MySQL Cluster 7.0.7 source released</a>&#8220;.</p>
+<p>A description of all of the changes (fixes) that have gone into MySQL Cluster 7.0.10 (compared to 7.0.9) can be found in the <a href="./../../wp-content/uploads/2009/12/MySQL_Cluster_7_0_10_ChangeLog.txt">MySQL_Cluster_7_0_10_ChangeLog</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql-cluster/mysql-cluster-7-0-10-source-released/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: MySQL now provides support for DRBD	</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../mysql-now-provides-support-for-drbd/index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Wed, 03 Oct 2012 12:32:18 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: andrew		</title>
+		<link>./../mysql-now-provides-support-for-drbd/index.html#comment-672</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 03 Oct 2012 12:32:18 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2437#comment-672</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../mysql-now-provides-support-for-drbd/index.html#comment-671&quot;&gt;Beekhof&lt;/a&gt;.
+
+Thanks for the tip on the obsolete commands in the paper; updated version has been submitted for publishing.
+
+Rather than STONITH, the paper describes an alternate approach whereby the node shoots itself if it becomes isolated (when pings to reference IP addresses fail.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../mysql-now-provides-support-for-drbd/index.html#comment-671">Beekhof</a>.</p>
+<p>Thanks for the tip on the obsolete commands in the paper; updated version has been submitted for publishing.</p>
+<p>Rather than STONITH, the paper describes an alternate approach whereby the node shoots itself if it becomes isolated (when pings to reference IP addresses fail.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Beekhof		</title>
+		<link>./../mysql-now-provides-support-for-drbd/index.html#comment-671</link>
+
+		<dc:creator><![CDATA[Beekhof]]></dc:creator>
+		<pubDate>Mon, 01 Oct 2012 12:30:15 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=2437#comment-671</guid>
+
+					<description><![CDATA[Is Oracle seriously suggesting people not configure fencing?
+
+I know turning it off simplifies the whitepaper, since there are so many devices out there, but it should at least be mentioned that it needs to be configured before putting the cluster into production.
+
+Btw. you don&#039;t need the ais_* env variables.  They were only used for the sed scripts which updated corosync.conf  ;-)]]></description>
+			<content:encoded><![CDATA[<p>Is Oracle seriously suggesting people not configure fencing?</p>
+<p>I know turning it off simplifies the whitepaper, since there are so many devices out there, but it should at least be mentioned that it needs to be configured before putting the cluster into production.</p>
+<p>Btw. you don&#8217;t need the ais_* env variables.  They were only used for the sed scripts which updated corosync.conf  😉</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

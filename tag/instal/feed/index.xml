@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Instal &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Fri, 25 Jun 2010 08:18:07 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Download, install, configure, run and test MySQL Cluster in under 15 minutes</title>
+		<link>./../../mysql/download-install-configure-run-and-test-mysql-cluster-in-under-15-minutes/index.html</link>
+					<comments>./../../mysql/download-install-configure-run-and-test-mysql-cluster-in-under-15-minutes/index.html#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 25 Jun 2010 08:18:07 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[Instal]]></category>
+		<category><![CDATA[MySQL CGE]]></category>
+		<category><![CDATA[MySQL Cluster]]></category>
+		<guid isPermaLink="false">./../../index.html?p=1125</guid>
+
+					<description><![CDATA[A series of quick-start guides are now available to get you up and running with MySQL Cluster in as little time as possible; they are available for LINUX/Mac OS X, Windows and Solaris. The configuration is intentionally a simple one &#8211; 2 data nodes, 1 management node and 1 MySQL Server. Once you have this]]></description>
+										<content:encoded><![CDATA[<div id="attachment_1127" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2010/06/simple_cluster.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-1127" class="size-full wp-image-1127" title="simple_cluster" src="./../../wp-content/uploads/2010/06/simple_cluster.jpg" alt="" width="300" height="242" /></a><p id="caption-attachment-1127" class="wp-caption-text">Single host Cluster</p></div>
+<p>A series of quick-start guides are now available to get you up and running with MySQL Cluster in as little time as possible; they are available for LINUX/Mac OS X, Windows and Solaris. The configuration is intentionally a simple one &#8211; 2 data nodes, 1 management node and 1 MySQL Server. Once you have this up and running, your next experiment may be to <a href="./../../mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/index.html" target="_blank">extend this over multiple hosts</a>.</p>
+<p>Download the Quick Start Guide for your platform below:</p>
+<ul>
+<li><a href="http://downloads.mysql.com/tutorials/cluster/mysql_wp_cluster_quickstart_linux.pdf">MySQL Cluster Quick Start for Linux</a> &#8211; also works for Mac OS X</li>
+<li><a href="http://downloads.mysql.com/tutorials/cluster/mysql_wp_cluster_quickstart_windows.pdf">MySQL Cluster Quick Start for Windows</a></li>
+<li><a href="http://downloads.mysql.com/tutorials/cluster/mysql_wp_cluster_quickstart_solaris.pdf">MySQL Cluster Quick Start for Solaris</a></li>
+</ul>
+<p>These links are also available from the <a href="http://dev.mysql.com/downloads/cluster/" target="_blank">MySQL Cluster download page</a>.</p>
+<p>The intent is that these guides should be simple to follow even if you have never tried MySQL Cluster (or even MySQL) before. Any comments or suggested improvements would be appreciated.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql/download-install-configure-run-and-test-mysql-cluster-in-under-15-minutes/feed/index.html</wfw:commentRss>
+			<slash:comments>15</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

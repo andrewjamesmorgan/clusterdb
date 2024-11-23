@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Express &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 05 Sep 2017 13:17:54 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Webinar Replay: Developing with the modern App Stack: MEAN and MERN (with Angular2 and ReactJS)</title>
+		<link>./../../mongodb/webinar-replay-developing-with-the-modern-app-stack-mean-and-mern-with-angular2-and-reactjs/index.html</link>
+					<comments>./../../mongodb/webinar-replay-developing-with-the-modern-app-stack-mean-and-mern-with-angular2-and-reactjs/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 31 Mar 2017 16:03:46 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[angular]]></category>
+		<category><![CDATA[Express]]></category>
+		<category><![CDATA[expressjs]]></category>
+		<category><![CDATA[mean stack]]></category>
+		<category><![CDATA[mern stack]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[node.js]]></category>
+		<category><![CDATA[REACT]]></category>
+		<category><![CDATA[reactjs]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4444</guid>
+
+					<description><![CDATA[Earlier this week, I presented a webinar on developing web and mobile applications using the MERN and MEAN stacks – the replay and slides are now available. Details Users increasingly demand a far richer experience from web applications – expecting the same level of performance and interactivity they get with native desktop and mobile apps.]]></description>
+										<content:encoded><![CDATA[<p>Earlier this week, I presented a webinar on developing web and mobile applications using the MERN and MEAN stacks – the <a href="https://www.mongodb.com/presentations/webinar-developing-with-the-modern-app-stack-mean-and-mern-with-angular2-and-reactjs" title="developing web and mobile applications using the MERN and MEAN stacks">replay and slides are now available</a>.</p>
+<p><a href="./../../wp-content/uploads/2017/03/Logo.png"><img fetchpriority="high" decoding="async" src="./../../wp-content/uploads/2017/03/Logo.png" alt="MEAN and MERN Stacks" width="570" height="293" class="aligncenter size-full wp-image-4442" srcset="./../../wp-content/uploads/2017/03/Logo.png 570w, ./../../wp-content/uploads/2017/03/Logo-300x154.png 300w" sizes="(max-width: 570px) 100vw, 570px" /></a></p>
+<h3>Details</h3>
+<p>Users increasingly demand a far richer experience from web applications – expecting the same level of performance and interactivity they get with native desktop and mobile apps.</p>
+<p>At the same time, there&#8217;s pressure on developers to deliver new applications faster and continually roll-out enhancements, while ensuring that the application is highly available and can be scaled appropriately when needed.</p>
+<p>Fortunately, there’s a set of open source technologies using JavaScript that make all of this possible.</p>
+<p>Join this webinar to learn about the two dominant JavaScript web app stacks – MEAN (MongoDB, Express, Angular, Node.js) and MERN (MongoDB, Express, React, Node.js).</p>
+<p>These technologies are also used outside of the browser – delivering the best user experience, regardless of whether accessing your application from the desktop, from a mobile app, or even using your voice.</p>
+<p>By attending the webinar, you will learn:</p>
+<ul>
+<li>What these technologies and how they’re used in combination:
+<ul>
+<li>NodeJS</li>
+<li>MongoDB</li>
+<li>Express</li>
+<li>Angular2</li>
+<li>ReactJS</li>
+</ul>
+</li>
+<li>How to get started building your own apps using these stacks</li>
+<li>Some of the decisions to take:
+<ul>
+<li>Angular vs Angular2 vs ReactJS</li>
+<li>Javascript vs ES6 vs Typescript</li>
+<li>What should be implemented in the front-end vs the back-end</li>
+</ul>
+</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/webinar-replay-developing-with-the-modern-app-stack-mean-and-mern-with-angular2-and-reactjs/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>The Modern Application Stack – Part 3: Building a REST API Using Express.js</title>
+		<link>./../../mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js/index.html</link>
+					<comments>./../../mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 08 Feb 2017 18:32:27 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[Express]]></category>
+		<category><![CDATA[MEAN]]></category>
+		<category><![CDATA[mean stack]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[promises]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4371</guid>
+
+					<description><![CDATA[Introduction This is the third in a series of blog posts examining the technologies that are driving the development of modern web and mobile applications. Part 1: Introducing The MEAN Stack (and the young MERN upstart) introduced the technologies making up the MEAN (MongoDB, Express, Angular, Node.js) and MERN (MongoDB, Express, React, Node.js) Stacks, why]]></description>
+										<content:encoded><![CDATA[<h4>Introduction</h4>
+<p>This is the third in a series of blog posts examining the technologies that are driving the development of modern web and mobile applications.</p>
+<p><a href="./../../mongodb/modern-application-stack-part-1-introducing-the-mean-stack/index.html" title="MEAN Stack and MERN Stack"><em>Part 1: Introducing The MEAN Stack (and the young MERN upstart</em>)</a> introduced the technologies making up the MEAN (<em>M</em>ongoDB, <em>E</em>xpress, <em>A</em>ngular, <em>N</em>ode.js) and MERN (<em>M</em>ongoDB, <em>E</em>xpress, <em>R</em>eact, <em>N</em>ode.js) Stacks, why you might want to use them, and how to combine them to build your web application (or your native mobile or desktop app).</p>
+<p>The remainder of the series is focused on working through the end to end steps of building a real (albeit simple) application. – <em>MongoPop</em>. <a href="./../../mongodb/mean_stack_2_mongodb_node_js/index.html" title="Using MongoDB With Node.js"><em>Part 2: Using MongoDB With Node.js</em></a> created an environment where we could work with a MongoDB database from Node.js; it also created a simplified interface to the MongoDB Node.js Driver.</p>
+<p>This post builds on from those first posts by using Express to build a REST API so that a remote client can work with MongoDB. You will be missing a lot of context if you have skipped those posts – it&#8217;s recommended to follow through those first.</p>
+<h4>The REST API</h4>
+<p>A Representational State Transfer (REST) interface provides a set of operations that can be invoked by a remote client (which could be another service) over a network, using the HTTP protocol. The client will typically provide parameters such as a string to search for or the name of a resource to be deleted.</p>
+<p>Many services provide a REST API so that clients (their own and those of 3rd parties) and other services can use the service in a well defined, loosely coupled manner. As an example, the <a href="https://developers.google.com/places/" title="Google's API for working with Google Places">Google Places API</a> can be used to search for information about a specific location:</p>
+<p><script src="https://gist.github.com/am-MongoDB/6671d3e23e3596e876c0328965b274c2.js"></script></p>
+<p>Breaking down the URI used in that <code>curl</code> request:</p>
+<ul>
+<li>No <em>method</em> is specified and so the <code>curl</code> command defaults to a HTTP <code>GET</code>.</li>
+<li><code>maps.googleapis.com</code> is the address of the Google APIs service.</li>
+<li><code>/maps/api/place/details/json</code> is the <em>route path</em> to the specific operation that&#8217;s being requested.</li>
+<li><code>placeid=ChIJKxSwWSZgAUgR0tWM0zAkZBc</code> is a <em>parameter</em> (passed to the function bound to this route path), identifying which place we want to read the data for.</li>
+<li><code>key=AIzaSyC53qhhXAmPOsxc34WManoorp7SVN_Qezo</code> is a parameter indicating the Google API key, verifying that it&#8217;s a registered application making the request (Google will also cap, or bill for, the number of requests made using this key).</li>
+</ul>
+<p>There&#8217;s a convention as to which HTTP method should be used for which types of operation:</p>
+<ul>
+<li><strong>GET</strong>: Fetches data</li>
+<li><strong>POST</strong>: Adds new data</li>
+<li><strong>PUT</strong>: Updates data</li>
+<li><strong>DELETE</strong>: Removes data</li>
+</ul>
+<p>Mongopop&#8217;s REST API breaks this convention and uses <code>POST</code> for some read requests (as it&#8217;s simpler passing arguments than with <code>GET</code>).</p>
+<p>These are the REST operations that will be implemented in Express for Mongopop:</p>
+<table class='table table-bordered' summary="Express route paths implemented for the Mongopop REST API">
+<caption><strong>Express routes implemented for the Mongopop REST API</strong></caption>
+<thead>
+<tr>
+<th>Route Path</th>
+<th>HTTP Method</th>
+<th>Parameters</th>
+<th>Response</th>
+<th>Purpose</p>
+<pre style="border:0px; background-color:#fff; height:0px">                      </pre>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/</pre>
+</td>
+<td>GET</td>
+<td></td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+"AppName": "MongoPop",
+"Version": 1.0
+}
+        </pre>
+</td>
+<td>Returns the version of the API.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/ip</pre>
+</td>
+<td>GET</td>
+<td></td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">{"ip": string}</pre>
+</td>
+<td>Fetches the IP Address of the server running the Mongopop backend.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/config</pre>
+</td>
+<td>GET</td>
+<td></td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+mongodb: {
+    defaultDatabase: string,
+    defaultCollection: string,
+    defaultUri: string
+},
+mockarooUrl: string
+}
+        </pre>
+</td>
+<td>Fetches client-side defaults from the back-end config file.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/addDocs</pre>
+</td>
+<td>POST</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+MongoDBURI: string;
+collectionName: string;
+dataSource: string;
+numberDocs: number;
+unique: boolean;
+}
+        </pre>
+</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+success: boolean;
+count: number;
+error: string;
+}
+        </pre>
+</td>
+<td>Add `numberDocs` batches of documents, using documents fetched from `dataSource`</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/sampleDocs</pre>
+</td>
+<td>POST</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+MongoDBURI: string;
+collectionName: string;
+numberDocs: number;
+}
+        </pre>
+</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+success: boolean;   
+documents: string;
+error: string;
+}
+        </pre>
+</td>
+<td>Read a sample of the documents from a collection.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/countDocs</pre>
+</td>
+<td>POST</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+MongoDBURI: string; 
+collectionName: string;
+}
+        </pre>
+</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+success: boolean;   
+count: number;
+error: string;
+}
+        </pre>
+</td>
+<td>Counts the number of documents in the collection.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/updateDocs</pre>
+</td>
+<td>POST</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+MongoDBURI: string;
+collectionName: string;
+matchPattern: Object;
+dataChange: Object;
+threads: number;
+}
+        </pre>
+</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+success: boolean;
+count: number;
+error: string;
+}
+        </pre>
+</td>
+<td>Apply an update to all documents in a collection<br />
+    which match a given pattern</td>
+</tr>
+</tbody>
+</table>
+<h4>Express</h4>
+<p><a href="http://expressjs.com/" title="Express.js web application framework for Node.js">Express</a> is the web application framework that runs your back-end application (JavaScript) code. Express runs as a module within the Node.js environment.</p>
+<p>Express can handle the routing of requests to the right functions within your application (or to different apps running in the same environment).</p>
+<p>You can run the app&#8217;s full business logic within Express and even use an optional <em>view engine</em> to generate the final HTML to be rendered by the user&#8217;s browser. At the other extreme, Express can be used to simply provide a <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST API</a> – giving the front-end app access to the resources it needs e.g., the database.</p>
+<p>The Mongopop application uses Express to perform two functions:</p>
+<ul>
+<li>Send the front-end application code to the remote client when the user browses to our app</li>
+<li>Provide a REST API that the front-end can access using HTTP network calls, in order to access the database</li>
+</ul>
+<h4>Downloading, running, and using the application</h4>
+<p>The application&#8217;s Express code is included as part of the Mongopop package installed in <a href="./../../mongodb/mean_stack_2_mongodb_node_js/index.html" title="Using MongoDB With Node.js">Part 2: Using MongoDB With Node.js</a>.</p>
+<h4>What are all of these files?</h4>
+<p>A reminder of the files described in <a href="./../../mongodb/mean_stack_2_mongodb_node_js/index.html" title="Using MongoDB With Node.js">Part 2</a>:</p>
+<ul>
+<li><strong><code>package.json</code></strong>: Instructs the Node.js package manager (<code>npm</code>) on what it needs to do; including which dependency packages should be installed</li>
+<li><strong><code>node_modues</code></strong>: Directory where <code>npm</code> will install packages</li>
+<li><strong><code>node_modues/mongodb</code></strong>: The <a href="https://mongodb.github.io/node-mongodb-native/" title="MongoDB JavaScript driver for Node.js">MongoDB driver for Node.js</a></li>
+<li><strong><code>node_modues/mongodb-core</code></strong>: Low-level MongoDB driver library; available for framework developers (application developers should avoid using it directly)</li>
+<li><strong><code>javascripts/db.js</code></strong>: A JavaScript module we&#8217;ve created for use by our Node.js apps (in this series, it will be Express) to access MongoDB; this module in turn uses the MongoDB Node.js driver.</li>
+</ul>
+<p>Other files and directories that are relevant to our Express application:</p>
+<ul>
+<li><strong><code>config.js</code></strong>: Contains the application–specific configuration options</li>
+<li><strong><code>bin/www</code></strong>: The script that starts an Express application; this is invoked by the <code>npm start</code> script within the <code>package.json</code> file. Starts the HTTP server, pointing it to the <code>app</code> module in <code>app.js</code></li>
+<li><strong><code>app.js</code></strong>: Defines the main application module (<code>app</code>). Configures:
+<ul>
+<li>That the application will be run by Express</li>
+<li>Which routes there will be &amp; where they are located in the file system (<code>routes</code> directory)</li>
+<li>What view engine to use (Jade in this case)</li>
+<li>Where to find the /views/ to be used by the view engine (<code>views</code> directory)</li>
+<li>What middleware to use (e.g. to parse the JSON received in requests)</li>
+<li>Where the static files (which can be read by the remote client) are located (<code>public</code> directory)</li>
+<li>Error handler for queries sent to an undefined route</li>
+</ul>
+</li>
+<li><strong><code>views</code></strong>: Directory containing the templates that will be used by the Jade view engine to create the HTML for any pages generated by the Express application (for this application, this is just the error page that&#8217;s used in cases such as mistyped routes (&#8220;404 Page not found&#8221;))</li>
+<li><strong><code>routes</code></strong>: Directory containing one JavaScript file for each Express route
+<ul>
+<li><strong><code>routes/pop.js</code></strong>: Contains the Express application for the <code>/pop</code> route; this is the implementation of the Mongopop REST API. This defines methods for all of the supported route paths.</li>
+</ul>
+</li>
+<li><strong><code>public</code></strong>: Contains all of the static files that must be accessible by a remote client (e.g., our Angular to React apps). This is not used for the REST API and so can be ignored until Parts 4 and 5.</li>
+</ul>
+<p>The rest of the files and directories can be ignored for now – they will be covered in later posts in this series.</p>
+<h4>Architecture</h4>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/02/REST_API.png" alt="REST AIP implemented in Express.js" title="Rest API implemented in Express.js" /></p>
+<p>The new REST API (implemented in <code>routes/pop.js</code>) uses the <code>javascripts/db.js</code> database layer implemented in <a href="./../../mongodb/mean_stack_2_mongodb_node_js/index.html" title="Node.js and MongoDB as part of the MEAN stack">Part 2</a> to access the MongoDB database via the <a href="https://mongodb.github.io/node-mongodb-native/" title="MongoDB JavaScript Node.js driver API">MongoDB Node.js Driver</a>. As we don&#8217;t yet have either the Angular or React clients, we will user the <code>curl</code> command-line tool to manually test the REST API.</p>
+<h4>Code highlights</h4>
+<h4><code>config.js</code></h4>
+<p><script src="https://gist.github.com/am-MongoDB/d6f71c9342f0b04fd077a6101368faf4.js"></script></p>
+<p>The <code>config</code> module can be imported by other parts of the application so that your preferences can be taken into account.</p>
+<p><code>expressPort</code> is used by <code>bin/www</code> to decide what port the web server should listen on; change this if that port is already in use.</p>
+<p><code>client</code> contains defaults to be used by the client (Angular or React). It&#8217;s important to create your own schema at <a href="https://www.mockaroo.com/" title="Generate JSON data sets using Mockaroo">Mockaroo.com</a> and replace <code>client.mockarooUrl</code> with your custom URL (the one included here will fail if used too often).</p>
+<h4><code>bin/www</code></h4>
+<p>This is mostly boiler-plate code to start Express with your application. This code ensures that it is our application, <code>app.js</code>, that is run by the Express server:</p>
+<p><script src="https://gist.github.com/am-MongoDB/895e18af7cf757e379787e238535dba6.js"></script></p>
+<p>This code uses the <code>expressPort</code> from <code>config.js</code> as the port for the server to listen on; it will be overruled if the user sets the <code>PORT</code> environment variable:</p>
+<p><script src="https://gist.github.com/am-MongoDB/cdd015a34e639798c92fa5391591c972.js"></script></p>
+<h4><code>app.js</code></h4>
+<p>This <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/app.js" title="app.js file for the Mockaroo MongoDB MEAN/MERN stack app">file</a> defines the <code>app</code> module ; much of the contents are boilerplate (and covered by comments in the code) but we look here at a few of the lines that are particular to this application.</p>
+<p>Make this an Express application:</p>
+<p><script src="https://gist.github.com/am-MongoDB/b7c0afd975e8d9a00d7f3504f950f5d7.js"></script></p>
+<p>Define where the views (templates used by the Jade view engine to generate the HTML code) and static files (files that must be accessible by a remote client) are located:</p>
+<p><script src="https://gist.github.com/am-MongoDB/00b713272a703500507d07d501e608f7.js"></script></p>
+<p>Create the <code>/pop</code> route and associate it with the file containing its code (<code>routes/pop.js</code>):</p>
+<p><script src="https://gist.github.com/am-MongoDB/f869436734576d82ebbb2bbefb4dd9e3.js"></script></p>
+<h4><code>routes/pop.js</code></h4>
+<p>This <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/routes/pop.js" title="Implementation of REST API for Mockaroo MongoDB population app">file</a> implements each of the operations provided by the Mongopop REST API. Because of the the <code>/pop</code> route defined in <code>app.js</code> Express will direct any URL of the form <code>http://&lt;mongopop-server&gt;:3000/pop/X</code> here. Within this file a route handler is created in order direct incoming requests to <code>http://&lt;mongopop-server&gt;:3000/pop/X</code> to the appropriate function:</p>
+<p><script src="https://gist.github.com/am-MongoDB/8f755926a46dc716b189b2508b499279.js"></script></p>
+<p>As the <code>/pop</code> route is only intended for the REST API, end users shouldn&#8217;t be browsing here but we create a top level handler for the <code>GET</code> method in case they do:</p>
+<p><script src="https://gist.github.com/am-MongoDB/ddcfff4375d14e156e6c8fe8910e54f8.js"></script></p>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/02/top_of_pop_route.png" alt="Results of browsing to the top-route for the Mongopop MongoDB application" title="Results of browsing to the top-route for the Mongopop MongoDB Application" /></p>
+<p>This is the first time that we see how to send a response to a request; <code>res.json(testObject);</code> converts <code>testObject</code> into a JSON document and sends it back to the requesting client as part of the response message.</p>
+<p>The simplest useful route path is for the <code>GET</code> method on <code>/pop/ip</code> which sends a response containing the IP address of the back-end server. This is useful to the Mongopop client as it means the user can see it and add it to the <a href="https://www.mongodb.com/cloud" title="MongoDB Atlas - MongoDB as a cloud service">MongoDB Atlas</a> whitelist. The code to determine and store <code>publicIP</code> is left out here but can be found in the <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/routes/pop.js" title="Implementation of MongoDB MongoPop REST API">full source file for <code>pop.js</code></a>.</p>
+<p><script src="https://gist.github.com/am-MongoDB/cd3ce3a68574562330010bf3f9a5b93f.js"></script></p>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/02/ip_route.png" alt="Fetching the IP address for the MongoDB Mongopop back-end using REST API" title="Fetching the IP address for the MongoDB Mongopop back-end using REST API" /></p>
+<p>We&#8217;ve seen that it&#8217;s possible to test <code>GET</code> methods from a browser&#8217;s address bar; that isn&#8217;t possible for <code>POST</code> methods and so it&#8217;s useful to be able to test using the <code>curl</code> command-line command:</p>
+<p><script src="https://gist.github.com/am-MongoDB/480520ac8dba6989fc0f0b43c2106257.js"></script></p>
+<p>The <code>GET</code> method for <code>/pop/config</code> is just as simple – responding with the client-specific configuration data:</p>
+<p><script src="https://gist.github.com/am-MongoDB/c48e0d2c94667303d6ba7e4da82aa14a.js"></script></p>
+<p><script src="https://gist.github.com/am-MongoDB/b5348fea74155be8289feedb8bdb2555.js"></script></p>
+<p>The results of the request are still very simple but the output from <code>curl</code> is already starting to get messy; piping it through <code>python -mjson.tool</code> makes it easier to read:</p>
+<p><script src="https://gist.github.com/am-MongoDB/d690566ecedccc7e1d24087d97b3a607.js"></script></p>
+<p>The simplest operation that actually accesses the database is the <code>POST</code> method for the <code>/pop/countDocs</code> route path:</p>
+<p><script src="https://gist.github.com/am-MongoDB/db488a9f9866f5a91adddba3fe1f694f.js"></script></p>
+<p><code>database</code> is an instance of the object prototype defined in <code>javascripts/db</code> (see <a href="./../../mongodb/mean_stack_2_mongodb_node_js/index.html" title="The Modern Application Stack – Part 2: Using MongoDB With Node.js">The Modern Application Stack – Part 2: Using MongoDB With Node.js</a>) and so all this method needs to do is use that object to:</p>
+<ul>
+<li>Connect to the database (using the address of the MongoDB server provided in the request body). The results from the promise returned by <code>database.connect</code> is passed to the function(s) in the first <code>.then</code> clause. Refer back to <a href="./../../mongodb/mean_stack_2_mongodb_node_js/index.html" title="Using MongoDB With Node.js">Part 2: Using MongoDB With Node.js</a> if you need a recap on using <em>promises</em>.</li>
+<li>The function in the <code>.then</code> clause handles the case where the <code>database.connect</code> promise is resolved (success). This function requests a count of the documents – the database connection information is now stored within the <code>database</code> object and so only the collection name needs to be passed. The promise returned by <code>database.countDocuments</code> is passed to the next <code>.then</code> clause. Note that there is no second (error) function provided, and so if the promise from <code>database.connect</code> is rejected, then that failure passes through to the next <code>.then</code> clause in the chain.</li>
+<li>The second <code>.then</code> clause has two functions:
+<ul>
+<li>The first is invoked if and when the promise is resolved (success) and it returns a success response (which is automatically converted into a resolved promise that it passed to the final <code>.then</code> clause in the chain). <code>count</code> is the value returned when the promise from the call to <code>database.countDocuments</code> was resolved.</li>
+<li>The second function handles the failure case (could be from either <code>database.connect</code> or <code>database.countDocuments</code>) by returning an error response object (which is converted to a resolved promise).</li>
+</ul>
+</li>
+<li>The final <code>.then</code> clause closes the database connection and then sends the HTTP response back to the client; the response is built by converting the <code>resultObject</code> (which could represent success or failure) to a JSON string.</li>
+</ul>
+<p>Once more, <code>curl</code> can be used from the command-line to test this operation; as this is a <code>POST</code> request, the <code>--data</code> option is used to pass the JSON document to be included in the request:</p>
+<p><script src="https://gist.github.com/am-MongoDB/bcfe2d25cc5cca3f541f33d6e10395f7.js"></script></p>
+<p><code>curl</code> can also be used to test the error paths. Cause the database connection to fail by using the wrong port number in the MongoDB URI:</p>
+<p><script src="https://gist.github.com/am-MongoDB/c1870ed519d3c984233ec0cb58f06586.js"></script></p>
+<p>Cause the count to fail by using the name of a non-existent collection:</p>
+<p><script src="https://gist.github.com/am-MongoDB/2eb854b3ee2aa967acb1a66f8d00640f.js"></script></p>
+<p>The <code>POST</code> method for the <code>pop/sampleDocs</code> route path works in a very similar way:</p>
+<p><script src="https://gist.github.com/am-MongoDB/48ff297002eceb8201f67fe58e7d1d71.js"></script></p>
+<p>Testing this new operation:</p>
+<p><script src="https://gist.github.com/am-MongoDB/8a27a81809e2cd98baf9c29ccadd2381.js"></script></p>
+<p>The <code>POST</code> method for <code>pop/updateDocs</code> is a little more complex as the caller can request multiple update operations be performed. The simplest way to process multiple asynchronous, promise-returning function calls in parallel is to build an array of the tasks and pass it to the <code>Promise.all</code> method which returns a promise that either resolves after all of the tasks have succeeded or is rejected if any of the tasks fail:</p>
+<p><script src="https://gist.github.com/am-MongoDB/523c077b067da17bcca7919a35961a8a.js"></script></p>
+<p>Testing with <code>curl</code>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/0efee82247ea652b5ecf367b465b139d.js"></script></p>
+<p>The final method uses example data from a service such as <a href="https://www.mockaroo.com/">Mockaroo</a> to populate a MongoDB collection. A helper function is created that makes the call to that external service:</p>
+<p><script src="https://gist.github.com/am-MongoDB/d988ff3dba646151ea4118473b3dc4c4.js"></script></p>
+<p>That function is then used in the <code>POST</code> method for <code>/pop/addDocs</code>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/76dd46d05f9472bdbe19104a5fc19c42.js"></script></p>
+<p>This method is longer than the previous ones – mostly because there are two paths:</p>
+<ul>
+<li>In the first path, the client has requested that a fresh set of 1,000 example documents be used for each pass at adding a batch of documents. This path is much slower and will eat through your Mockaroo quota much faster.</li>
+<li>In the second path, just one batch of 1,000 example documents is fetched from Mockaroo and then those same documents are repeatedly added. This path is faster but it results in duplicate documents (apart from a MongoDB-created <code>_id</code> field). This path cannot be used if the <code>_id</code> is part of the example documents generated by Mockaroo.</li>
+</ul>
+<p>So far, we&#8217;ve used the Chrome browser and the <code>curl</code> command-line tool to test the REST API. A third approach is to use the <a href="https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop">Postman Chrome app</a>:</p>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/02/Test_REST_API_with_Postman.png" alt="Testing MongoDB Mongopop REST API with Postman Chrome app" title="Testing MongoDB Mongopop REST API with Postman Chrome app" /></p>
+<h4>Debugging Tips</h4>
+<p>One way to debug a Node.js application is to liberally sprinkle <code>console.log</code> messages throughout your code but that takes extra effort and bloats your code base. Every time you want to understand something new, you must add extra logging to your code and then restart your application.</p>
+<p>Developers working with browser-side JavaScript benefit from the excellent tools built into modern browsers – for example, Google&#8217;s <a href="https://developer.chrome.com/devtools" title="Chrome Developer Tools">Chrome Developer Tools</a> which let you:</p>
+<ul>
+<li>Browse code (e.g. HTML and JavaScript)</li>
+<li>Add breakpoints</li>
+<li>View &amp; alter contents of variables</li>
+<li>View and modify css styles</li>
+<li>View network messages</li>
+<li>Access the console (view output and issue commands)</li>
+<li>Check security details</li>
+<li>Audit memory use, CPU, etc.</li>
+</ul>
+<p>You open the Chrome DevTools within the Chrome browser using &#8220;View/Developer/Developer Tools&#8221;.</p>
+<p>Fortunately, you can use the <code>node-debug</code> command of <a href="https://github.com/node-inspector/node-inspector"><code>node-inspector</code></a> to get a very similar experience for Node.js back-end applications. To install <code>node-inspector</code>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/a4e8beffc4944a1661a41a1142e8aa27.js"></script></p>
+<p><code>node-inspector</code> can be used to debug the Mongopop Express application by starting it with <code>node-debug</code> via the <code>express-debug</code> script in <code>package.json</code>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/e2e9bb6c5817bbbc3244ec1bf668e001.js"></script></p>
+<p>To run the Mongopop REST API with <code>node-debug</code>, kill the Express app if it&#8217;s already running and then execute:</p>
+<p><script src="https://gist.github.com/am-MongoDB/ac8ea737900ca517545786b558a01cfa.js"></script></p>
+<p>Note that this automatically adds a breakpoint at the start of the app and so you will need to skip over that to run the application.</p>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/02/Node_Inspector.png" alt="Using Chrome Developer Tools with MongoDB Express Node.js application" title="Using Chrome Developer Tools with MongoDB Express Node.js application" /></p>
+<p>Depending on your version of Node.js, you may see this error:</p>
+<p><script src="https://gist.github.com/am-MongoDB/813df5e59e4f68224fcc2e3853df7e83.js"></script></p>
+<p>If you do, apply <a href="https://github.com/node-inspector/node-inspector/pull/938/files">this patch</a> to <code>/usr/local/lib/node_modules/node-inspector/lib/InjectorClient.js</code>.</p>
+<h4>Summary &amp; what&#8217;s next in the series</h4>
+<p><a href="./../../mongodb/modern-application-stack-part-1-introducing-the-mean-stack/index.html" title="Introducing the MEAN stack and MERN stack">Part 1: Introducing The MEAN Stack</a> provided an overview of the technologies that are used by modern application developers – in particular, the MERN and MEAN stacks. <a href="./../../mongodb/mean_stack_2_mongodb_node_js/index.html" title="Using MongoDB with Node.js">Part 2: Using MongoDB With Node.js</a> set up Node.js and the MongoDB Driver and then used them to build a new Node.js module to provide a simplified interface to the database.</p>
+<p>This post built upon the first two of the series by stepping through how to implement a REST API using Express. We also looked at three different ways to test this API and how to debug Node.js applications. This REST API is required by both the Angular (Part 4) and React (Part 5) web app clients, as well as by the alternative UIs explored in Part 6.</p>
+<p>The next part of this series implements the Angular client that makes use of the REST API – at the end of that post, you will understand the end-to-end steps required to implement an application using the MEAN stack.</p>
+<p>Continue to follow this blog series to step through building the remaining stages of the <a href="https://github.com/am-MongoDB/MongoDB-Mongopop" title="Mongopop – MongoDB data population app">MongoPop</a> application:</p>
+<ul>
+<li><a href="./../../mongodb/modern-application-stack-part-1-introducing-the-mean-stack/index.html" title="MEAN stack, MERN stack">Part 1: Introducing The MEAN Stack (and the young MERN upstart)</a></li>
+<li><a href="./../../mongodb/mean_stack_2_mongodb_node_js/index.html" title="Using MongoDB With Node.js">Part 2: Using MongoDB With Node.js</a></li>
+<li><a href="./../../mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js/index.html" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a></li>
+<li><a href="./../../mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript/index.html" title="Completing the MEAN stack – Mongopop Angular2 client">Part 4: Building a Client UI Using Angular 2 (formerly AngularJS) &amp; TypeScript</a></li>
+<li><a href="./../../mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern/index.html" title="Building an application front-end with ReactJS and ES6">Part 5: Using ReactJS, ES6 &amp; JSX to Build a UI (the rise of MERN)</a></li>
+<li><a href="./../../mongodb/rest-mobile-app-amazon-alexa-cloud-services/index.html" title="Using REST APIs from mobile applications and Amazon Alexa">Part 6: Browsers Aren&#8217;t the Only UI – Mobile Apps, Amazon Alexa, Cloud Services&#8230;</a></li>
+</ul>
+<h4>A simpler way to build your app – MongoDB Stitch, Backend as a Service</h4>
+<p><a href="https://www.mongodb.com/cloud/stitch">MongoDB Stitch</a> is a backend as a service (BaaS), giving developers a REST-like API to MongoDB, and composability with other services, backed by a robust system for configuring fine-grained data access controls. Stitch provides native SDKs for JavaScript, iOS, and Android.</p>
+<p>Built-in integrations give your application frontend access to your favorite third party services: Twilio, AWS S3, Slack, Mailgun, PubNub, Google, and more. For ultimate flexibility, you can add custom integrations using MongoDB Stitch&#8217;s HTTP service.</p>
+<p>MongoDB Stitch allows you to compose multi-stage pipelines that orchestrate data across multiple services; where each stage acts on the data before passing its results on to the next.</p>
+<p>Unlike other BaaS offerings, MongoDB Stitch works with your existing as well as new MongoDB clusters, giving you access to the full power and scalability of the database. By defining appropriate data access rules, you can selectively expose your existing MongoDB data to other applications through MongoDB Stitch&#8217;s API.</p>
+<p>If you&#8217;d like to try it out, <a href="./../../mongodb/mongodb-stitch-the-latest-and-best-way-to-build-your-app/index.html" title="MongoDB Stitch - the latest, and best way to build your app">step through building an application with MongoDB Stitch</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>The Modern Application Stack – Part 1: Introducing The MEAN Stack</title>
+		<link>./../../mongodb/modern-application-stack-part-1-introducing-the-mean-stack/index.html</link>
+					<comments>./../../mongodb/modern-application-stack-part-1-introducing-the-mean-stack/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 27 Jan 2017 16:29:03 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[angular]]></category>
+		<category><![CDATA[es6]]></category>
+		<category><![CDATA[Express]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[MEAN]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[REACT]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4344</guid>
+
+					<description><![CDATA[Introducing the MEAN and MERN stacks This is the first in a series of blog posts examining the technologies that are driving the development of modern web and mobile applications, notably the MERN and MEAN stacks. The series will go on to step through tutorials to build all layers of an application. Users increasingly demand]]></description>
+										<content:encoded><![CDATA[<h4>Introducing the MEAN and MERN stacks</h4>
+<p>This is the first in a series of blog posts examining the technologies that are driving the development of modern web and mobile applications, notably the <strong>MERN</strong> and <strong>MEAN</strong> stacks. The series will go on to step through tutorials to build all layers of an application.</p>
+<p>Users increasingly demand a far richer experience from web sites – expecting the same level of performance and interactivity they get with native desktop and mobile apps. At the same time, there&#8217;s pressure on developers to deliver new applications faster and continually roll-out enhancements, while ensuring that the application is highly available and can be scaled appropriately when needed. Fortunately, there&#8217;s a (sometimes bewildering) set of enabling technologies that make all of this possible.</p>
+<p>If there&#8217;s one thing that ties these technologies together, it&#8217;s JavaScript  and its successors (ES6, TypeScript, JSX, etc.) together with the JSON data format. The days when the role of JavaScript was limited to adding visual effects like flashing headers or pop-up windows are past. Developers now use JavaScript to implement the front-end experience as well as the application logic and even to access the database. There are two dominant JavaScript web app stacks – MEAN (<strong>M</strong>ongoDB, <strong>E</strong>xpress, <strong>A</strong>ngular, <strong>N</strong>ode.js) and MERN (<strong>M</strong>ongoDB, <strong>E</strong>xpress, <strong>R</strong>eact, <strong>N</strong>ode.js) and so we&#8217;ll use those as paths to guide us through the ever-expanding array of tools and frameworks.</p>
+<p>This first post serves as a primer for many of these technologies. Subsequent posts in the series take a deep dive into specific topics – working through the end-to-end development of <em>Mongopop</em> &#8211; an application to populate a MongoDB database with realistic data and then perform other operations on that data.</p>
+<h4>The MEAN Stack</h4>
+<p>We&#8217;ll start with MEAN as it&#8217;s the more established stack but most of what&#8217;s covered here is applicable to <strong>MERN</strong> (swap Angular with React).</p>
+<p>MEAN is a set of Open Source components that together, provide an end-to-end framework for building dynamic web applications; starting from top (code running in the browser) to the bottom (database). The stack is made up of:</p>
+<ul>
+<li><a href="https://angular.io/"><strong>A</strong>ngular</a> (formerly Angular.js, now also known as Angular 2): Front-end web app framework; runs your JavaScript code in the users browser, allowing your application UI to be dynamic</li>
+<li><a href="http://expressjs.com/"><strong>E</strong>xpress</a> (sometimes referred to as Express.js): Back-end web application framework running on top of Node.js</li>
+<li><a href="https://nodejs.org/en/"><strong>N</strong>ode.js</a> : JavaScript runtime environment – lets you implement your application back-end in JavaScript</li>
+<li><a href="https://www.mongodb.com/"><strong>M</strong>ongoDB</a> : Document database – used by your back-end application to store its data as <a href="https://www.mongodb.com/json-and-bson" title="Format of JSON/BSON documents">JSON (JavaScript Object Notation)</a> documents</li>
+</ul>
+<p>A common theme in the MEAN stack is JavaScript – every line of code you write can be in the same language. You even access the database using MongoDB&#8217;s native, <em>Idiomatic</em> <a href="https://mongodb.github.io/node-mongodb-native/">JavaScript/Node.js driver</a>. What do we mean by idiomatic? Using the driver feels natural to a JavaScript developer as all interaction is performed using familiar concepts such as JavaScript objects and asynchronous execution using either callback functions or promises (explained later). Here&#8217;s an example of inserting an array of 3 JavaScript objects:</p>
+<pre><code class="js">myCollection.insertMany([
+    {name: {first: "Andrew", last: "Morgan"},
+    {name: {first: "Elvis"}, died: 1977},
+    {name: {last: "Mainwaring", title: "Captain"}, born: 1885}
+])
+.then(
+    function(results) {
+        resolve(results.insertedCount);
+    },
+    function(err) {
+        console.log("Failed to insert Docs: " + err.message);
+        reject(err);
+    }
+)
+</code></pre>
+<h4>Angular 2</h4>
+<p><strong>Angular</strong>, originally created and maintained by Google, runs your JavaScript code within the user&#8217;s web browsers to implement a <em>reactive</em> user interface (UI).  A reactive UI gives the user immediate feedback as they give their input (in contrast to static web forms where you enter all of your data, hit &#8220;Submit&#8221; and wait.</p>
+<p><center><img decoding="async" src="./../../wp-content/uploads/2017/01/Reactive_UI.gif" alt="Reactive web application" title="Reactive Angular web application" /></center></p>
+<p>Version 1 of Angular was called AngularJS but it was shortened to Angular in  Angular 2 after it was completely rewritten in <a href="https://www.typescriptlang.org/">Typescript</a> (a superset of JavaScript) – Typescript is now also the recommended language for Angular apps to use.</p>
+<p>You implement your application front-end as a set of <em>components</em> – each of which consists of your JavaScript (TypeScript) code and an HTML template that includes hooks to execute and use the results from your TypeScript functions. Complex application front-ends can be crafted from many simple (optionally nested) components.</p>
+<p>Angular application code can also be executed on the back-end server rather than in a browser, or as a native desktop or mobile application.</p>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/01/MEAN_Stack.png" alt="MEAN Stack architecture" title="MEAN Stack architecture" /></p>
+<h4>Express</h4>
+<p><a href="http://expressjs.com/"><strong>Express</strong></a> is the web application framework that runs your back-end application (JavaScript) code.  Express runs as a module within the Node.js environment.</p>
+<p>Express can handle the routing of requests to the right parts of your application (or to different apps running in the same environment).</p>
+<p>You can run the app&#8217;s full business logic within Express and even generate the final HTML to be rendered by the user&#8217;s browser. At the other extreme, Express can be used to simply provide a <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST API</a> – giving the front-end app access to the resources it needs e.g., the database.</p>
+<p>In this blog series, we will use Express to perform two functions:</p>
+<ul>
+<li>Send the front-end application code to the remote browser when the user browses to our app</li>
+<li>Provide a REST API that the front-end can access using HTTP network calls, in order to access the database</li>
+</ul>
+<h4>Node.js</h4>
+<p><a href="https://nodejs.org/">Node.js</a> is a JavaScript runtime environment that runs your back-end application (via Express).</p>
+<p>Node.js is based on Google&#8217;s V8 JavaScript engine which is used in the Chrome browsers. It also includes a number of modules that provides features essential for implementing web applications – including networking protocols such as HTTP.  Third party modules, including the MongoDB driver, can be installed, using the <code>npm</code> tool.</p>
+<p>Node.js is an asynchronous, event-driven engine where the application makes a request and then continues working on other useful tasks rather than stalling while it waits for a response. On completion of the requested task, the application is informed of the results via a callback. This enables large numbers of operations to be performed in parallel which is essential when scaling applications. MongoDB was also designed to be used asynchronously and so it works well with Node.js applications.</p>
+<h4>MongoDB</h4>
+<p>MongoDB is an open-source, document database that provides persistence for your application data and is designed with both scalability and developer agility in mind. MongoDB bridges the gap between key-value stores, which are fast and scalable, and relational databases, which have rich functionality. Instead of storing data in rows and columns as one would with a relational database, MongoDB stores JSON documents in collections with dynamic schemas.</p>
+<p>MongoDB&#8217;s document data model makes it easy for you to store and combine data of any structure, without giving up sophisticated validation rules, flexible data access, and rich indexing functionality. You can dynamically modify the schema without downtime – vital for rapidly evolving applications.</p>
+<p>It can be scaled within and across geographically distributed data centers, providing high levels of availability and scalability. As your deployments grow, the database scales easily with no downtime, and without changing your application.</p>
+<p><a href="https://www.mongodb.com/cloud/atlas">MongoDB Atlas</a> is a database as a service for MongoDB, letting you focus on apps instead of ops. With MongoDB Atlas, you only pay for what you use with a convenient hourly billing model. With the click of a button, you can scale up and down when you need to, with no downtime, full security, and high performance.</p>
+<p>Our application will access MongoDB via the <a href="https://mongodb.github.io/node-mongodb-native/">JavaScript/Node.js driver</a> which we install as a Node.js module.</p>
+<h4>What&#8217;s Done Where?</h4>
+<p><em>tl;dr – it&#8217;s flexible.</em></p>
+<p>There is clear overlap between the features available in the technologies making up the MEAN stack and it&#8217;s important to decide &#8220;who does what&#8221;.</p>
+<p>Perhaps the biggest decision is where the application&#8217;s &#8220;hard work&#8221; will be performed. Both Express and Angular include features to route to pages, run application code, etc. and either can be used to implement the business logic for sophisticated applications. The more traditional approach would be to do it in the back-end in Express. This has several advantages:</p>
+<ul>
+<li>Likely to be closer to the database and other resources and so can minimise latency if lots of database calls are made</li>
+<li>Sensitive data can be kept within this more secure environment</li>
+<li>Application code is hidden from the user, protecting your intellectual property</li>
+<li>Powerful servers can be used – increasing performance</li>
+</ul>
+<p>However, there&#8217;s a growing trend to push more of the functionality to Angular running in the user&#8217;s browser. Reasons for this can include:</p>
+<ul>
+<li>Use the processing power of your users&#8217; machines; reducing the need for expensive resources to power your back-end. This provides a more scalable architecture, where every new user brings their own computing resources with them.</li>
+<li>Better response times (assuming that there aren&#8217;t too many trips to the back-end to access the database or other resources)</li>
+<li><em>Progressive Applications</em>. Continue to provide (probably degraded) service when the client application cannot contact the back-end (e.g. when the user has no internet connection). Modern browsers allow the application to store data locally and then sync with the back-end when connectivity is restored. </li>
+</ul>
+<p>Perhaps, a more surprising option for running part of the application logic is within the database. MongoDB has a sophisticated <a href="https://docs.mongodb.com/manual/aggregation/">aggregation framework</a> which can perform a lot of analytics – often more efficiently than in Express or Angular as all of the required data is local.</p>
+<p>Another decision is where to validate any data that the user supplies. Ideally, this would be as close to the user as possible – using Angular to check that a provided password meets security rules allows for instantaneous feedback to the user. That doesn&#8217;t mean that there isn&#8217;t value in validating data in the back-end as well, and using <a href="./../../mongodb/adding-document-validation-rules-using-mongodb-compass-1-5/index.html" title="Adding MongoDB document validation rules using MongoDB Compass">MongoDB&#8217;s document validation</a> functionality can guard against buggy software writing erroneous data.</p>
+<h4>ReactJS – Rise of the MERN Stack</h4>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/01/MERN_Stack.png" alt="MERN Stack architecture with React" title="MERN Stack architecture with React" /></p>
+<p>An alternative to Angular is <a href="https://facebook.github.io/react/">React</a> (sometimes referred to as ReactJS), a JavaScript library developed by Facebook to build interactive/reactive user interfaces. Like Angular, React breaks the front-end application down into components. Each component can hold its own state and a parent can pass its state down to its child components and those components can pass changes back to the parent through the use of callback functions.</p>
+<p>React components are typically implemented using <a href="https://facebook.github.io/jsx/">JSX</a> – an extension of JavaScript that allows HTML syntax to be embedded within the code:</p>
+<pre><code>class HelloMessage extends React.Component {
+  render() {
+    return &lt;div&gt;Hello {this.props.name}&lt;/div&gt;;
+  }
+}
+</code></pre>
+<p>React is most commonly executed within the browser but it can also be run on the back-end server within Node.js, or as a mobile app using <em>React Native</em>.</p>
+<p>So should you use Angular 2 or React for your new web application? A quick google search will find you some fairly deep comparisons of the two technologies but in summary, Angular 2 is a little more powerful while React is easier for developers to get up to speed with and use. This blog series will build a near-identical web app using first the MEAN and then the MERN stack – hopefully these posts will help you find a favorite.</p>
+<p>The following snapshot from Google Trends suggests that Angular has been much more common for a number of years but that React is gaining ground:</p>
+<p><img decoding="async" src="./../../wp-content/uploads/2017/01/ReactJS_vs_Angular.png" alt="Comparing React/ReactJS popularity vs. Angular and Angular 2" title="Comparing React/ReactJS popularity vs. Angular and Angular 2" /></p>
+<h4>Why are these stacks important?</h4>
+<p>Having a standard application stack makes it much easier and faster to bring in new developers and get them up to speed as there&#8217;s a good chance that they&#8217;ve used the technology elsewhere. For those new to these technologies, there exist some great resources to get you up and running.</p>
+<p>From MongoDB upwards, these technologies share a common aim – look after the critical but repetitive stuff in order to free up developers to work where they can really add value: building your killer app in record time.</p>
+<p>These are the technologies that are revolutionising the web, building web-based services that look, feel, and perform just as well as native desktop or mobile applications.</p>
+<p>The separation of layers, and especially the REST APIs, has led to the breaking down of application silos. Rather than an application being an isolated entity, it can now interact with multiple services through public APIs:</p>
+<ol>
+<li>Register and log into the application using my Twitter account</li>
+<li>Identify where I want to have dinner using Google Maps and Foursquare</li>
+<li>Order an Uber to get me there</li>
+<li>Have Hue turn my lights off and Nest turn my heating down</li>
+<li>Check in on Facebook</li>
+<li>&#8230;</li>
+</ol>
+<h4>Variety &amp; Constant Evolution</h4>
+<p>Even when constraining yourself to the JavaScript ecosystem, the ever-expanding array of frameworks, libraries, tools, and languages is both impressive and intimidating at the same time. The great thing is that if you&#8217;re looking for some middleware to perform a particular role, then the chances are good that someone has already built it – the hardest part is often figuring out which of the 5 competing technologies is the best fit for you.</p>
+<p>To further complicate matters, it&#8217;s rare for the introduction of one technology not to drag in others for you to get up to speed on: Node.js brings in <code>npm</code>; Angular 2 brings in Typescript, which brings in <code>tsc</code>; React brings in ES6, which brings in Babel; &#8230;.</p>
+<p>And of course, none of these technologies are standing still and new versions can require a lot of up-skilling to use – Angular 2 even moved to a different programming language!</p>
+<h4>The Evolution of JavaScript</h4>
+<p>The JavaScript language itself hasn&#8217;t been immune to change.</p>
+<p><a href="https://www.ecma-international.org/">Ecma International</a> was formed to standardise the language specification for JavaScript (and similar language forks) to increase portability – the ideal being that any &#8220;JavaScript&#8221; code can run in any browser or other JavaScript runtime environment.</p>
+<p>The most recent, widely supported version is ECMAScript 6 – normally referred to as <a href="http://es6-features.org/#Constants"><em>ES6</em></a>. ES6 is supported by recent versions of Chrome, Opera, Safari, and Node.js). Some platforms (e.g. Firefox and Microsoft Edge) do not yet support all features of ES6. These are some of the key features added in ES6:</p>
+<ul>
+<li>Classes &amp; modules</li>
+<li>Promises – a more convenient way to handle completion or failure of synchronous function calls (compared to callbacks)</li>
+<li>Arrow functions –  a concise syntax for writing function expressions</li>
+<li>Generators – functions that can yield to allow others to execute</li>
+<li>Iterators</li>
+<li>Typed arrays</li>
+</ul>
+<p><a href="https://www.typescriptlang.org/">Typescript</a> is a superset of ES6 (JavaScript); adding static type checking. Angular 2 is written in Typescript and Typescript is the primary language to be used when writing code to run in Angular 2.</p>
+<p>Because ES6 and Typescript are not supported in all environments, it is common to transpile the code into an earlier version of JavaScript to make it more portable. In this series&#8217; Angular post, <code>tsc</code> is used to transpile Typescript into JavaScript while the React post uses Babel (via <code>react-script</code>) to transpile our ES6 code.</p>
+<p>And of course, JavaScript is augmented by numerous libraries. The Angular 2 post in this series uses <em>Observables</em> from the <a href="https://github.com/Reactive-Extensions/RxJS">RxJS reactive libraries</a> which greatly simplify making asynchronous calls to the back-end (a pattern historically referred to as AJAX).</p>
+<h4>Summary &amp; What&#8217;s Next in the Series</h4>
+<p>This post has introduced some of the technologies used to build modern, reactive, web applications – most notably the MEAN and MERN stacks. If you want to learn exactly how to use these then please continue to follow this blog series which steps through building the <a href="https://github.com/am-MongoDB/MongoDB-Mongopop">MongoPop</a> application:</p>
+<ul>
+<li><a href="./../../mongodb/modern-application-stack-part-1-introducing-the-mean-stack/index.html" title="MEAN stack, MERN stack">Part 1: Introducing The MEAN Stack (and the young MERN upstart)</a></li>
+<li><a href="./../../mongodb/mean_stack_2_mongodb_node_js/index.html" title="Using MongoDB With Node.js">Part 2: Using MongoDB With Node.js</a></li>
+<li><a href="./../../mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js/index.html" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a></li>
+<li><a href="./../../mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript/index.html" title="Completing the MEAN stack – Mongopop Angular2 client">Part 4: Building a Client UI Using Angular 2 (formerly AngularJS) &amp; TypeScript</a></li>
+<li><a href="./../../mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern/index.html" title="Building an application front-end with ReactJS and ES6">Part 5: Using ReactJS, ES6 &amp; JSX to Build a UI (the rise of MERN)</a></li>
+<li><a href="./../../mongodb/rest-mobile-app-amazon-alexa-cloud-services/index.html" title="Using REST APIs from mobile applications and Amazon Alexa">Part 6: Browsers Aren&#8217;t the Only UI – Mobile Apps, Amazon Alexa, Cloud Services&#8230;</a></li>
+</ul>
+<p>As already covered in this post, the MERN and MEAN stacks are evolving rapidly and new JavaScript frameworks are being added all of the time. Inevitably, some of the details in this series will become dated but the concepts covered will remain relevant.</p>
+<h4>A simpler way to build your app – MongoDB Stitch, Backend as a Service</h4>
+<p><a href="https://www.mongodb.com/cloud/stitch">MongoDB Stitch</a> is a backend as a service (BaaS), giving developers a REST-like API to MongoDB, and composability with other services, backed by a robust system for configuring fine-grained data access controls. Stitch provides native SDKs for JavaScript, iOS, and Android.</p>
+<p>Built-in integrations give your application frontend access to your favorite third party services: Twilio, AWS S3, Slack, Mailgun, PubNub, Google, and more. For ultimate flexibility, you can add custom integrations using MongoDB Stitch&#8217;s HTTP service.</p>
+<p>MongoDB Stitch allows you to compose multi-stage pipelines that orchestrate data across multiple services; where each stage acts on the data before passing its results on to the next.</p>
+<p>Unlike other BaaS offerings, MongoDB Stitch works with your existing as well as new MongoDB clusters, giving you access to the full power and scalability of the database. By defining appropriate data access rules, you can selectively expose your existing MongoDB data to other applications through MongoDB Stitch&#8217;s API.</p>
+<p>If you&#8217;d like to try it out, <a href="./../../mongodb/mongodb-stitch-the-latest-and-best-way-to-build-your-app/index.html" title="MongoDB Stitch - the latest, and best way to build your app">step through building an application with MongoDB Stitch</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/modern-application-stack-part-1-introducing-the-mean-stack/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MongoDB Atlas as The Data Store for Apostrophe</title>
+		<link>./../../mongodb/atlas_apostrophe/index.html</link>
+					<comments>./../../mongodb/atlas_apostrophe/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 15 Sep 2016 16:45:04 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[apostrophe]]></category>
+		<category><![CDATA[Express]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Atlas]]></category>
+		<category><![CDATA[node.js]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4190</guid>
+
+					<description><![CDATA[Apostrophe is a Content Management Systems that&#8217;s designed to build content-driven web sites. Because of their ease of use, Apostrophe is built upon MongoDB and Node.js. This post explains why MongoDB Atlas is an ideal choice for Apostrophe and then goes on to show how to configure Apostrophe to use it. Why MongoDB Atlas is]]></description>
+										<content:encoded><![CDATA[<p>Apostrophe is a Content Management Systems that&#8217;s designed to build content-driven web sites. Because of their ease of use, Apostrophe is built upon MongoDB and Node.js.</p>
+<p>This post explains why MongoDB Atlas is an ideal choice for Apostrophe and then goes on to show how to configure Apostrophe to use it.</p>
+<h4>Why MongoDB Atlas is the Ideal Database for Apostrophe</h4>
+<p>MongoDB delivers flexible schemas, rich queries, an idiomatic Node.js driver, and simple to use high availability and scaling. This makes it the go-to database for anyone looking to build applications on Node.js.</p>
+<p><a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> provides all of the features of MongoDB, without the operational heavy lifting required for any new application. MongoDB Atlas is available on demand through a pay-as-you-go model and billed on an hourly basis, letting you focus on what you do best.</p>
+<p>It’s easy to get started – use a simple GUI to select the instance size, region, and features you need. MongoDB Atlas provides:</p>
+<ul>
+<li>Security features to protect access to your data</li>
+<li>Built in replication for always-on availability, tolerating complete data center failure</li>
+<li>Backups and point in time recovery to protect against data corruption</li>
+<li>Fine-grained monitoring to let you know when to scale. Additional instances can be provisioned with the push of a button</li>
+<li>Automated patching and one-click upgrades for new major versions of the database, enabling you to take advantage of the latest and greatest MongoDB features</li>
+<li>A choice of cloud providers, regions, and billing options</li>
+</ul>
+<p>Like Apostrophe, MongoDB Atlas is a natural fit for users looking to simplify their development and operations work, letting them focus on what makes their application unique rather than commodity (albeit essential) plumbing.</p>
+<h4>Installing Apostrophe and Setting it up to Use MongoDB Atlas</h4>
+<p>Before starting with Apostrophe, you should launch your MongoDB cluster using <a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> and then (optionally) create a user with read and write privileges for just the database that will be used for this project, as shown in Figure 1. You must also add the IP address of your application server to the IP Whitelist in the MongoDB Atlas security tab.</p>
+<div id="attachment_4192" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/Apostrophe_Create_DB_user.png"><img decoding="async" aria-describedby="caption-attachment-4192" class="size-large wp-image-4192" src="./../../wp-content/uploads/2016/09/Apostrophe_Create_DB_user-983x1024.png" alt="Creating an Apostrophe user in MongoDB Atlas" width="480" height="500" srcset="./../../wp-content/uploads/2016/09/Apostrophe_Create_DB_user-983x1024.png 983w, ./../../wp-content/uploads/2016/09/Apostrophe_Create_DB_user-288x300.png 288w, ./../../wp-content/uploads/2016/09/Apostrophe_Create_DB_user-768x800.png 768w, ./../../wp-content/uploads/2016/09/Apostrophe_Create_DB_user.png 1672w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4192" class="wp-caption-text">Figure 1:Creating an Apostrophe user in MongoDB Atlas</p></div>
+<p>If it isn&#8217;t already installed on your system, download and install Node.js:</p>
+<p><script src="https://gist.github.com/am-MongoDB/3bbb946bb35fd8054e95adf92b96f103.js"></script></p>
+<p>You should then add the <code>bin</code> sub-folder to your <code>.bash_profile</code> file and then install ImageMagick (used by Apostrophe to handle image files); clone the Apostrophe Sandbox project; and then install its dependencies:</p>
+<p><script src="https://gist.github.com/am-MongoDB/676b16c5fdeaa650a448378c1a0bbdac.js"></script></p>
+<p>Before starting Apostrophe you need to configure it with details on how to connect to your specific MongoDB Atlas cluster. This is done by cloning the configuration file to <code>data/local.js</code>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/14d6019b0333b351685f3b077a93864d.js"></script></p>
+<p>You should then edit the <code>data/local.js</code> file and set the <code>uri</code> parameter using the specific connection information provided for your MongoDB Atlas group:</p>
+<p><script src="https://gist.github.com/am-MongoDB/2fdcb8c954ac831e8970543afbf5a1e4.js"></script></p>
+<p>The URI contains these components:</p>
+<ul>
+<li><code>apostrophe_user</code> is the name of the user you created in the MongoDB Atlas UI</li>
+<li><code>my_password</code> is the password you chose when creating the user in MongoDB Atlas</li>
+<li><code>cluster0-shard-00-00-qfovx.mongodb.net</code>, <code>cluster0-shard-00-01-qfovx.mongodb.net</code>, &amp; <code>cluster0-shard-00-02-qfovx.mongodb.net</code> are the hostnames of the instances in your MongoDB Atlas replica set (click on the &#8220;CONNECT&#8221; button in the MongoDB Atlas UI if you don&#8217;t have these)</li>
+<li><code>27017</code> is the standard MongoDB port number</li>
+<li><code>clusterdb</code> is the name of the database (schema) that Apostrophe will use (note that this must match the project name used when installing Apostrophe as well as the database you granted the user access to</li>
+<li>To enforce security, MongoDB Atlas mandates that the <code>ssl</code> option is used</li>
+<li><code>admin</code> is the database that&#8217;s being used to store the credentials for <code>apostrophe_user</code></li>
+</ul>
+<p>Clients connect to Apostrophe through port 3000 and so you must open that port in your firewall.</p>
+<p>You can then create the database and start Apostrophe:</p>
+<p><script src="https://gist.github.com/am-MongoDB/000e19868892d5865a90a0e339286609.js"></script></p>
+<h2>Testing the Application</h2>
+<p>Browse to the application at <code>http://address-of-app-server:3000/</code> as shown in Figure 2 and then login using the username <code>admin</code> and the password <code>demo</code>.</p>
+<div id="attachment_4194" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/Apostrophe.png"><img decoding="async" aria-describedby="caption-attachment-4194" src="./../../wp-content/uploads/2016/09/Apostrophe-1024x498.png" alt="Apostrophe Running on MongoDB Atlas" width="480" height="233" class="size-large wp-image-4194" srcset="./../../wp-content/uploads/2016/09/Apostrophe-1024x498.png 1024w, ./../../wp-content/uploads/2016/09/Apostrophe-300x146.png 300w, ./../../wp-content/uploads/2016/09/Apostrophe-768x373.png 768w, ./../../wp-content/uploads/2016/09/Apostrophe.png 1138w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4194" class="wp-caption-text">Figure 2: Apostrophe Running on MongoDB Atlas</p></div>
+<p>Now, go ahead and add some content (Figure 3).</p>
+<div id="attachment_4195" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/create_Apostrophe_post_on_MongoDB_Atlas.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4195" src="./../../wp-content/uploads/2016/09/create_Apostrophe_post_on_MongoDB_Atlas-1024x668.png" alt="Edit Apostrophe Home Page with Data Stored in MongoDB Atlas" width="480" height="313" class="size-large wp-image-4195" srcset="./../../wp-content/uploads/2016/09/create_Apostrophe_post_on_MongoDB_Atlas-1024x668.png 1024w, ./../../wp-content/uploads/2016/09/create_Apostrophe_post_on_MongoDB_Atlas-300x196.png 300w, ./../../wp-content/uploads/2016/09/create_Apostrophe_post_on_MongoDB_Atlas-768x501.png 768w, ./../../wp-content/uploads/2016/09/create_Apostrophe_post_on_MongoDB_Atlas.png 1136w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4195" class="wp-caption-text">Figure 3: Edit Apostrophe Home Page with Data Stored in MongoDB Atlas</p></div>
+<p>Upload some images as shown in Figure 4.</p>
+<div id="attachment_4196" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/Apostrophe_add_images.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4196" src="./../../wp-content/uploads/2016/09/Apostrophe_add_images-1024x673.png" alt="Upload Images to Apostrophe on MongoDB Atlas" width="480" height="315" class="size-large wp-image-4196" srcset="./../../wp-content/uploads/2016/09/Apostrophe_add_images-1024x673.png 1024w, ./../../wp-content/uploads/2016/09/Apostrophe_add_images-300x197.png 300w, ./../../wp-content/uploads/2016/09/Apostrophe_add_images-768x505.png 768w, ./../../wp-content/uploads/2016/09/Apostrophe_add_images.png 1142w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4196" class="wp-caption-text">Figure 4: Upload Images to Apostrophe on MongoDB Atlas</p></div>
+<p>Optionally, to confirm that, MongoDB Atlas really is being used by Apostrophe, you can connect using the MongoDB shell:</p>
+<p><script src="https://gist.github.com/am-MongoDB/6c3f3ff8df99ee12e1b963f6851f9441.js"></script></p>
+<p>To visually navigate through the schema and data created by Apostrophe, <a href="https://www.mongodb.com/download-center?jmp=nav#compass">download and install MongoDB Compass</a>. Use your MongoDB Atlas credentials to connect Compass to your MongoDB database – Figure 5.</p>
+<div id="attachment_4197" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/Connect_Compass_to_MongoDB_Atlas.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4197" src="./../../wp-content/uploads/2016/09/Connect_Compass_to_MongoDB_Atlas-1024x839.png" alt="Connect MongoDB Compass to MongoDB Atlas" width="480" height="393" class="size-large wp-image-4197" srcset="./../../wp-content/uploads/2016/09/Connect_Compass_to_MongoDB_Atlas-1024x839.png 1024w, ./../../wp-content/uploads/2016/09/Connect_Compass_to_MongoDB_Atlas-300x246.png 300w, ./../../wp-content/uploads/2016/09/Connect_Compass_to_MongoDB_Atlas-768x629.png 768w, ./../../wp-content/uploads/2016/09/Connect_Compass_to_MongoDB_Atlas.png 1802w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4197" class="wp-caption-text">Figure 5: Connect MongoDB Compass to MongoDB Atlas</p></div>
+<p>Navigate through the structure of the data in the <code>clusterdb</code> database (Figure 6) and view the JSON documents (Figure 7).</p>
+<div id="attachment_4198" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/Compass_Apostrophe_Schema.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4198" src="./../../wp-content/uploads/2016/09/Compass_Apostrophe_Schema-1024x631.png" alt="Explore Apostrophe Schema Using MongoDB Compass" width="480" height="296" class="size-large wp-image-4198" srcset="./../../wp-content/uploads/2016/09/Compass_Apostrophe_Schema-1024x631.png 1024w, ./../../wp-content/uploads/2016/09/Compass_Apostrophe_Schema-300x185.png 300w, ./../../wp-content/uploads/2016/09/Compass_Apostrophe_Schema-768x473.png 768w, ./../../wp-content/uploads/2016/09/Compass_Apostrophe_Schema.png 1282w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4198" class="wp-caption-text">Figure 6: Explore Apostrophe Schema Using MongoDB Compass</p></div>
+<div id="attachment_4199" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/Compass_Apostrophe_Data.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4199" src="./../../wp-content/uploads/2016/09/Compass_Apostrophe_Data-1024x630.png" alt="View Apostrophe Documents in MongoDB Compass" width="480" height="295" class="size-large wp-image-4199" srcset="./../../wp-content/uploads/2016/09/Compass_Apostrophe_Data-1024x630.png 1024w, ./../../wp-content/uploads/2016/09/Compass_Apostrophe_Data-300x185.png 300w, ./../../wp-content/uploads/2016/09/Compass_Apostrophe_Data-768x473.png 768w, ./../../wp-content/uploads/2016/09/Compass_Apostrophe_Data.png 1279w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4199" class="wp-caption-text">Figure 7: View Apostrophe Documents in MongoDB Compass</p></div>
+<h4>What Next?</h4>
+<p>While MongoDB Atlas radically simplifies the operation of MongoDB there are still some decisions to take to ensure the best performance and reliability for your application. The <a href="https://www.mongodb.com/collateral/mongodb-atlas-best-practices">MongoDB Atlas Best Practices white paper</a> provides guidance on best practices for deploying, managing, and optimizing the performance of your database with MongoDB Atlas.</p>
+<p>The guide outlines considerations for achieving performance at scale with MongoDB Atlas across a number of key dimensions, including instance size selection, application patterns, schema design and indexing, and disk I/O. While this guide is broad in scope, it is not exhaustive. Following the recommendations in the guide will provide a solid foundation for ensuring optimal application performance.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/atlas_apostrophe/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>KeystoneJS &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Fri, 16 Sep 2016 08:48:27 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Configuring KeystoneJS to Use MongoDB Atlas</title>
+		<link>./../../mongodb/configuring-keystonejs-to-use-mongodb-atlas/index.html</link>
+					<comments>./../../mongodb/configuring-keystonejs-to-use-mongodb-atlas/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 16 Sep 2016 08:48:27 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[CMS]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[KeystoneJS]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Atlas]]></category>
+		<category><![CDATA[node.js]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4239</guid>
+
+					<description><![CDATA[KeystoneJS is an open source framework for building web applications and Content Management Systems. It&#8217;s built on top of MongoDB, Express, and Node.js &#8211; key components of the ubiquitous MEAN stack. This post explains why MongoDB Atlas is an ideal choice for KeystoneJS and then goes on to show how to configure KeystoneJS to use]]></description>
+										<content:encoded><![CDATA[<p>KeystoneJS is an open source framework for building web applications and Content Management Systems. It&#8217;s built on top of MongoDB, Express, and Node.js &#8211; key components of the ubiquitous MEAN stack.</p>
+<p>This post explains why MongoDB Atlas is an ideal choice for KeystoneJS and then goes on to show how to configure KeystoneJS to use it.</p>
+<h1>Why are KeystoneJS and MongoDB Atlas a Good Match</h1>
+<p>The MEAN stack is extremely popular and well supported and it&#8217;s the go to platform when developing modern applications. For its part, MongoDB brings flexible schemas, rich queries, an idiomatic Node.js driver, and simple to use high availability and scaling.</p>
+<p><a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> provides all of the features of MongoDB, without the operational heavy lifting required for any new application. MongoDB Atlas is available on demand through a pay-as-you-go model and billed on an hourly basis, letting you focus on what you do best.</p>
+<p>It’s easy to get started – use a simple GUI to select the instance size, region, and features you need. MongoDB Atlas provides:</p>
+<ul>
+<li>Security features to protect access to your data</li>
+<li>Built in replication for always-on availability, tolerating complete data center failure</li>
+<li>Backups and point in time recovery to protect against data corruption</li>
+<li>Fine-grained monitoring to let you know when to scale. Additional instances can be provisioned with the push of a button</li>
+<li>Automated patching and one-click upgrades for new major versions of the database, enabling you to take advantage of the latest and greatest MongoDB features</li>
+<li>A choice of cloud providers, regions, and billing options</li>
+</ul>
+<p>Like KeystoneJS, MongoDB Atlas is a natural fit for users looking to simplify their development and operations work, letting them focus on what makes their application unique rather than commodity (albeit essential) plumbing.</p>
+<h1>Installing KeystoneJS and Configuring it to Use MongoDB Atlas</h1>
+<p>Before starting with KeystoneJS, you should launch your MongoDB cluster using <a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> and then (optionally) create a user with read and write privileges for just the database that will be used for this project, as shown in Figure 1. You must also add the IP address of your application server to the IP Whitelist in the MongoDB Atlas security tab.</p>
+<div id="attachment_4240" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/Add_KeystoneJS_user.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-4240" src="./../../wp-content/uploads/2016/09/Add_KeystoneJS_user-1024x891.png" alt="Creating KeystoneJS user in MongoDB Atlas" width="480" height="418" class="size-large wp-image-4240" srcset="./../../wp-content/uploads/2016/09/Add_KeystoneJS_user-1024x891.png 1024w, ./../../wp-content/uploads/2016/09/Add_KeystoneJS_user-300x261.png 300w, ./../../wp-content/uploads/2016/09/Add_KeystoneJS_user-768x668.png 768w, ./../../wp-content/uploads/2016/09/Add_KeystoneJS_user.png 2010w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4240" class="wp-caption-text">Figure 1: Creating KeystoneJS user in MongoDB Atlas</p></div>
+<p>If it isn&#8217;t already installed on your system, download and install Node.js:</p>
+<p><script src="https://gist.github.com/am-MongoDB/3bbb946bb35fd8054e95adf92b96f103.js"></script><br />
+You should then add the <code>bin</code> sub-folder to your <code>.bash_profile</code> file and then install KeystoneJS:</p>
+<p><script src="https://gist.github.com/am-MongoDB/ada983d4879a3439751da83044644790.js"></script></p>
+<p>Before starting KeystoneJS you need to configure it with details on how to connect to your specific MongoDB Atlas cluster. This is done by updating the <code>MONGO_URI</code> value within the <code>.env</code> file:</p>
+<p><script src="https://gist.github.com/am-MongoDB/2b40abeec5e34a9443a26012507417d6.js"></script></p>
+<p>The URI contains these components:</p>
+<ul>
+<li><code>keystonejs_user</code> is the name of the user you created in the MongoDB Atlas UI</li>
+<li><code>my_password</code> is the password you chose when creating the user in MongoDB Atlas</li>
+<li><code>cluster0-shard-00-00-qfovx.mongodb.net</code>, <code>cluster0-shard-00-01-qfovx.mongodb.net</code>, &amp; <code>cluster0-shard-00-02-qfovx.mongodb.net</code> are the hostnames of the instances in your MongoDB Atlas replica set (click on the &#8220;CONNECT&#8221; button in the MongoDB Atlas UI if you don&#8217;t have these)</li>
+<li><code>27017</code> is the standard MongoDB port number</li>
+<li><code>clusterdb</code> is the name of the database (schema) that KeystoneJS will use (note that this must match the project name used when installing KeystoneJS as well as the database you granted the user access to)</li>
+<li>To enforce security, MongoDB Atlas mandates that the <code>ssl</code> option is used</li>
+<li><code>admin</code> is the database that&#8217;s being used to store the credentials for <code>keystonejs_user</code></li>
+</ul>
+<p>Clients connect to KeystoneJS through port 3000 and so you must open that port in your firewall.</p>
+<p>You can then start KeystoneJS:</p>
+<pre><code>$ node keystone
+</code></pre>
+<p><script src="https://gist.github.com/am-MongoDB/7e0305ec2a8acf6a9891a44da048987a.js"></script></p>
+<h1>Testing the Configuration</h1>
+<p>Browse to the application at <code>http://address-of-app-server:3000/</code> as shown in Figure 2.</p>
+<div id="attachment_4241" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/KeystoneJS.png"><img decoding="async" aria-describedby="caption-attachment-4241" src="./../../wp-content/uploads/2016/09/KeystoneJS-1024x648.png" alt="KeystoneJS Running on MongoDB Atlas" width="480" height="304" class="size-large wp-image-4241" srcset="./../../wp-content/uploads/2016/09/KeystoneJS-1024x648.png 1024w, ./../../wp-content/uploads/2016/09/KeystoneJS-300x190.png 300w, ./../../wp-content/uploads/2016/09/KeystoneJS-768x486.png 768w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4241" class="wp-caption-text">Figure 2: KeystoneJS Running on MongoDB Atlas</p></div>
+<p>Sign in using the credentials shown and then confirm that you can upload some images to a gallery and create a new page as shown in Figure 3.</p>
+<div id="attachment_4242" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/create_KeystoneJS_post_on_MongoDB_Atlas.png"><img decoding="async" aria-describedby="caption-attachment-4242" src="./../../wp-content/uploads/2016/09/create_KeystoneJS_post_on_MongoDB_Atlas-1024x943.png" alt="Create a Page in KeystoneJS with Data Stored in MongoDB Atlas" width="480" height="442" class="size-large wp-image-4242" srcset="./../../wp-content/uploads/2016/09/create_KeystoneJS_post_on_MongoDB_Atlas-1024x943.png 1024w, ./../../wp-content/uploads/2016/09/create_KeystoneJS_post_on_MongoDB_Atlas-300x276.png 300w, ./../../wp-content/uploads/2016/09/create_KeystoneJS_post_on_MongoDB_Atlas-768x707.png 768w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4242" class="wp-caption-text">Figure 3: Create a Page in KeystoneJS with Data Stored in MongoDB Atlas</p></div>
+<p>After saving the page, confirm that you can browse to the newly created post (Figure 4).</p>
+<div id="attachment_4243" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/view_KeystoneJS_post_on_MongoDB_Atlas.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4243" src="./../../wp-content/uploads/2016/09/view_KeystoneJS_post_on_MongoDB_Atlas-1024x905.png" alt="View KeystoneJS Post with Data Read from MongoDB Atlas" width="480" height="424" class="size-large wp-image-4243" srcset="./../../wp-content/uploads/2016/09/view_KeystoneJS_post_on_MongoDB_Atlas-1024x905.png 1024w, ./../../wp-content/uploads/2016/09/view_KeystoneJS_post_on_MongoDB_Atlas-300x265.png 300w, ./../../wp-content/uploads/2016/09/view_KeystoneJS_post_on_MongoDB_Atlas-768x679.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4243" class="wp-caption-text">Figure 4: View KeystoneJS Post with Data Read from MongoDB Atlas</p></div>
+<p>Optionally, confirm that, MongoDB Atlas really is being used by KeystoneJS, you can connect using the MongoDB shell:</p>
+<p><script src="https://gist.github.com/am-MongoDB/ec422d08c7a5560f776b5638f06185d6.js"></script></p>
+<p>To visually navigate through the schema and data created by KeystoneJS, <a href="https://www.mongodb.com/download-center?jmp=nav#compass">download and install MongoDB Compass</a>. The same credentials can be used to connect Compass to your MongoDB database – Figure 5.</p>
+<div id="attachment_4244" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-1.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4244" src="./../../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-1-1024x794.png" alt="Connect MongoDB Compass to MongoDB Atlas Database" width="480" height="372" class="size-large wp-image-4244" srcset="./../../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-1-1024x794.png 1024w, ./../../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-1-300x233.png 300w, ./../../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-1-768x595.png 768w, ./../../wp-content/uploads/2016/09/Connect_MongoDB_Compass_to_MongoDB_Atlas-1.png 1798w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4244" class="wp-caption-text">Figure 5: Connect MongoDB Compass to MongoDB Atlas Database</p></div>
+<p>Navigate through the structure of the data in the <code>clusterdb</code> database (Figure 6) and view the JSON documents (Figure 7).</p>
+<div id="attachment_4245" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/Compass_KeystoneJS_Schema.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4245" src="./../../wp-content/uploads/2016/09/Compass_KeystoneJS_Schema-1024x712.png" alt="Explore KeystoneJS Schema Using MongoDB Compass" width="480" height="334" class="size-large wp-image-4245" srcset="./../../wp-content/uploads/2016/09/Compass_KeystoneJS_Schema-1024x712.png 1024w, ./../../wp-content/uploads/2016/09/Compass_KeystoneJS_Schema-300x209.png 300w, ./../../wp-content/uploads/2016/09/Compass_KeystoneJS_Schema-768x534.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4245" class="wp-caption-text">Figure 6: Explore KeystoneJS Schema Using MongoDB Compass</p></div>
+<div id="attachment_4246" style="width: 490px" class="wp-caption aligncenter"><a href="./../../wp-content/uploads/2016/09/Compass_KeystoneJS_Data.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4246" src="./../../wp-content/uploads/2016/09/Compass_KeystoneJS_Data-1024x435.png" alt="View Documents Stored by KeystoneJS Using MongoDB Atlas" width="480" height="204" class="size-large wp-image-4246" srcset="./../../wp-content/uploads/2016/09/Compass_KeystoneJS_Data-1024x435.png 1024w, ./../../wp-content/uploads/2016/09/Compass_KeystoneJS_Data-300x128.png 300w, ./../../wp-content/uploads/2016/09/Compass_KeystoneJS_Data-768x327.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4246" class="wp-caption-text">Figure 7: View Documents Stored by KeystoneJS Using MongoDB Atlas</p></div>
+<h1>Next Steps</h1>
+<p>While MongoDB Atlas radically simplifies the operation of MongoDB there are still some decisions to take to ensure the best performance and reliability for your application. The <a href="https://www.mongodb.com/collateral/mongodb-atlas-best-practices">MongoDB Atlas Best Practices white paper</a> provides guidance on best practices for deploying, managing, and optimizing the performance of your database with MongoDB Atlas.</p>
+<p>The guide outlines considerations for achieving performance at scale with MongoDB Atlas across a number of key dimensions, including instance size selection, application patterns, schema design and indexing, and disk I/O. While this guide is broad in scope, it is not exhaustive. Following the recommendations in the guide will provide a solid foundation for ensuring optimal application performance.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/configuring-keystonejs-to-use-mongodb-atlas/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

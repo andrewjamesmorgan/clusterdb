@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>serverless &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Thu, 28 Mar 2019 09:54:35 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>How to create Dynamic Custom Roles with MongoDB Stitch</title>
+		<link>./../../mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch/index.html</link>
+					<comments>./../../mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 28 Mar 2019 09:54:35 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Stitch]]></category>
+		<category><![CDATA[serverless]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4566</guid>
+
+					<description><![CDATA[None of us want to write lots of code to control what data each user can access. In most cases, you can set up your data access controls in seconds by using Stitch&#8217;s built-in templates, e.g., &#8220;Users can read and write their own data&#8221; or &#8220;Users can read and write their own data. Users that]]></description>
+										<content:encoded><![CDATA[<p>None of us want to write lots of code to control what data each user can access. In most cases, you can set up your data access controls in seconds by using <a href="https://docs.mongodb.com/stitch/mongodb/define-roles-and-permissions/#select-a-collection-rule-template" title="Stitch includes templates to control what data a user can access">Stitch&#8217;s built-in templates</a>, e.g., &#8220;Users can read and write their own data&#8221; or &#8220;Users can read and write their own data. Users that belong to a sharing list can read that data&#8221;. Stitch also lets you create <a href="https://docs.mongodb.com/stitch/mongodb/define-roles-and-permissions/#define-the-role-s-apply-when-condition" title="Define your own criteria to identify a MongoDB Stitch role">custom roles</a> that you tailor to your application and schema – this post creates such a rule, querying a second collection when deciding whether to allow a user to insert a document.</p>
+<p>The application is a troll-free timeline where you can only tag another user in a post if that user has labeled you as a trusted friend. I&#8217;ve already created a database called <code>safeplace</code> for the collections.</p>
+<p>The <code>users</code> collection includes a list of usernames for their trusted friends (<code>peopleWhoCanTagMe</code>):</p>
+<pre><code class="js">{
+    "_id" : ObjectId("5c9273127558d01d93f53dc0"),
+    "username" : "alovelace",
+    "name" : {
+        "first" : "Ada",
+        "last" : "Lovelace"
+    },
+    "peopleWhoCanTagMe" : [
+        "jeckert",
+        "jmauchly"
+    ]
+}
+</code></pre>
+<p>You then need to create a data access rule for the <code>posts</code> collection, consisting of 2 roles, which Stitch evaluates in sequence:</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/Create-Rules-nzrr0dasb3.png" alt="Creating custom roles for Stitch data access control rules" /></p>
+<p>The second, <code>anyReader</code>, role lets anyone read any post, but the role we care about is <code>allowedTagger</code> which controls what the application can write to the collection.</p>
+<p>The <code>allowedTagger</code> role is defined using this <a href="https://docs.mongodb.com/stitch/services/json-expressions/" title="JSON expressions to identify MongoDB Stitch roles">JSON expression</a>:</p>
+<pre><code class="js">{
+  "%%true": {
+    "%function": {
+      "name": "canTheyTag",
+      "arguments": [
+        "%%root.poster",
+        "%%root.tagged"
+      ]
+    }
+  }
+}
+</code></pre>
+<p><code>%%root</code> represents the document that the user is attempting to insert. The <code>poster</code> and <code>tagged</code> attributes of the document to be written are the usernames of the author and their claimed friend. The JSON expression passes them as parameters to a <a href="https://docs.mongodb.com/stitch/functions/" title="Creating a serverless function in MongoDB Stitch">Stitch function</a> named <code>canTheyTag</code>:</p>
+<pre><code class="js">exports = function(poster, tagged){
+  var collection = context.services.get("mongodb-atlas")
+    .db("safeplace").collection("users");
+  return collection.findOne({username: tagged})
+  .then ( userDoc =&gt; { 
+    return (userDoc.peopleWhoCanTagMe.indexOf(poster) &gt; -1);
+  }).catch( e =&gt; { console.log(e); return false; }); 
+};
+</code></pre>
+<p>This searches the <code>users</code> collection for the tagged user and then checks that the poster&#8217;s username appears in the <code>peopleWhoCanTagMe</code> array in the retrieved document.</p>
+<p>You can test this new rule using the <code>mongo</code> shell (courtesy of <a href="https://docs.mongodb.com/stitch/mongodb/connect-over-the-wire-protocol/" title="Connect to MongoDB Stitch using any MongoDB tool or connector using the MongoDB wire protocol">Stitch&#8217;s MongoDB Connection String feature</a>). Initially, I&#8217;m not included in Ada&#8217;s list of friends and so trying to tag her in a post fails:</p>
+<pre><code class="js">db.posts.insert({ 
+    poster: "amorgan", 
+    tagged: "alovelace", 
+    post: "Just sent you a pull request" })
+
+WriteCommandError({ "ok" : 0, "errmsg" : "insert not permitted" })
+</code></pre>
+<p>The logs show that the insert didn&#8217;t match our customer role but that it did match the second (<code>anyReader</code>), but that inserts aren&#8217;t allowed for that role:</p>
+<pre><code>Logs:
+[
+  "uncaught promise rejection: StitchError: insert not permitted"
+]
+Error:
+role anyReader does not have insert permission
+Stack Trace:
+StitchError: insert not permitted
+{
+  "name": "insertOne",
+  "service": "mongodb-atlas"
+}
+Compute Used: 936719 bytes•ms
+</code></pre>
+<p>Ada then adds me as a trusted friend:</p>
+<pre><code class="js">db.users.update(
+    {username: "alovelace"}, 
+    {$push: {peopleWhoCanTagMe: "amorgan"}}
+)
+</code></pre>
+<p>My second attempt to tag her in a post succeeds:</p>
+<pre><code class="js">db.posts.insert({
+    poster: "amorgan", 
+    tagged: "alovelace", 
+    post: "Just sent you a pull request" })
+
+WriteResult({ "nInserted" : 1 })
+</code></pre>
+<p>I recently had someone ask me how to implement &#8220;traditional database roles&#8221; using Stitch, i.e. an administrator explicitly defines which user ids belong to a specific role, and then use that role to determine whether they can access a collection. You can use this same approach for that use case – have a collection that assigns users to roles and then find the user id in that collection from a Stitch function that&#8217;s used in roles for the collections you want to protect. You could then optimize the rules by including the users&#8217; roles as an attribute in their authentication token – but I&#8217;ll save that for a future post!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Stitch &#038; Mobile Webinar Questions &#038; Replay</title>
+		<link>./../../mongodb/stitch-mobile-webinar-questions-replay/index.html</link>
+					<comments>./../../mongodb/stitch-mobile-webinar-questions-replay/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 22 Nov 2018 12:22:32 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[mobile]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Mobile]]></category>
+		<category><![CDATA[MongoDB Stitch]]></category>
+		<category><![CDATA[serverless]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4541</guid>
+
+					<description><![CDATA[How do you test MongoDB Stitch functions, how do you store Stitch triggers, and what services can you integrate Stitch with? These were some of the great questions that were asked and answered in my recent webinar. You can watch the replay of &#8220;MongoDB Mobile and MongoDB Stitch – Introduction and Latest Developments&#8221; here, or]]></description>
+										<content:encoded><![CDATA[<p>How do you test MongoDB <a href="https://docs.mongodb.com/stitch/functions/" title="MongoDB Stitch serverless functions">Stitch functions</a>, how do you store <a href="https://docs.mongodb.com/stitch/triggers/database-triggers/" title="MongoDB database triggers using MongoDB Stitch"> Stitch triggers</a>, and what services can you integrate Stitch with? These were some of the great questions that were asked and answered in my recent webinar. You can watch the replay of <a href="https://www.mongodb.com/presentations/mongodb-mobile-and-mongodb-stitch-introduction" title="Building mobile and IoT apps with MongoDB, MongoDB Stitch, and MongoDB Mobile">&#8220;MongoDB Mobile and MongoDB Stitch – Introduction and Latest Developments&#8221; here</a>, or read on as I share the answers to those questions here.</p>
+<p>For those new to MongoDB Stitch, it&#8217;s the serverless platform from MongoDB that isolates complexity and ‘plumbing’ so you can build applications faster. Stitch went GA in June 2018, and we recently added a set of new capabilities, including global Stitch apps, more AWS services, a React Native SDK, and the beta for Stitch Mobile Sync. MongoDB Mobile is an embedded version of the MongoDB database that you can embed in your mobile or IoT apps.</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/Mobile_Stitch_Architecture_v2-am9l8s8m2o.png" alt="Building mobile apps with MongoDB Mobile, MongoDB Stitch, and MongoDB Atlas" /></p>
+<p>These are some of the questions I thought might be of interest:</p>
+<h4>How do you test Stitch functions?</h4>
+<p>The <a href="https://www.mongodb.com/blog/post/testing--debugging-mongodb-stitch-functions" title="Testing MongoDB Stitch functions using the Stitch UI console">Stitch UI includes a console</a> which can be used to test your <a href="https://docs.mongodb.com/stitch/functions/" title="MongoDB Stitch serverless functions">Stitch functions</a>; you can include <code>console.log</code> statements to add extra debug output to the console (they also get added to the log files for every function invoked from an <a href="https://docs.mongodb.com/stitch/services/http/#incoming-webhooks" title="MongoDB Stitch incoming http webhooks">incoming webhook</a>, <a href="https://docs.mongodb.com/stitch/triggers/database-triggers/" title="MongoDB database triggers using MongoDB Stitch">trigger</a>, or the <a href="https://docs.mongodb.com/stitch/procedures/init-stitchclient/" title="MongoDB Stitch client SDKs">Stitch SDK</a>).</p>
+<p>You can also <a href="https://www.mongodb.com/blog/post/working-with-mongodb-stitch-through-the-mongo-shell" title="Testing MongoDB Stitch functions using the mongo shell and the Stitch connection string">invoke your Stitch functions through the mongo shell</a>. To do that, you&#8217;ll need to enable the MongoDB wire protocol so that the shell can talk to your Stitch app, then use the Stitch connection string provided. Once connected, you can call Stitch functions explicitly like this:</p>
+<pre><code class="js">mongo&gt; db.runCommand({callFunction: "morning", arguments: ["Billy"]})
+
+{"ok" : 1,
+ "response" : {"message" : "Good Morning Billy from andrew.morgan@mongodb.com"}
+}
+</code></pre>
+<p>You can read more about this in <a href="https://www.mongodb.com/blog/post/working-with-mongodb-stitch-through-the-mongo-shell" title="Testing MongoDB Stitch functions using the mongo shell and the Stitch connection string">this post</a> which takes you through the process.</p>
+<h4>How do you store stitch triggers in your Git repo?</h4>
+<p>You can <a href="https://docs.mongodb.com/stitch/import-export/export-stitch-app/" title="Exporting apps from MongoDB Stitch">export</a> your Stitch application from the Stitch UI or the Stitch CLI; the exported app is represented by a directory structure containing JSON and JavaScript files:</p>
+<pre><code>yourStitchApp/
+├── stitch.json
+├── secrets.json
+├── variables.json
+├── auth_providers/
+│   └── &lt;provider name&gt;.json
+├── functions/
+│   └── &lt;function name&gt;/
+│       ├── config.json
+│       └── source.js
+├── services/
+│   └── &lt;service name&gt;/
+│       ├── config.json
+│       ├── incoming_webhooks/
+│       │   ├── config.json
+│       │   └── source.js
+│       └── rules/
+│           └── &lt;rule name&gt;.json
+├── triggers/
+│   └── &lt;trigger name&gt;/
+│       ├── config.json
+│       └── source.js
+└── values/
+    └── &lt;value name&gt;.json
+</code></pre>
+<p>You can then work on the trigger configuration and the associated function locally, source control the app using Git, or <a href="https://docs.mongodb.com/stitch/import-export/" title="Importing a MongoDB Stitch app">import it into a new App</a>.</p>
+<h4>We saw a few integration provider logos in the presentation. Is there a page on the MongoDB site with the comprehensive list?</h4>
+<p>You can find the list of Stitch’s built-in service integrations in the <a href="https://docs.mongodb.com/stitch/services/" title="MongoDB Stitch documentation">Stitch documentation</a>.</p>
+<p>Note that if we don’t have a built-in integration for a particular service, then you can easily integrate it yourself, using the <a href="https://docs.mongodb.com/stitch/services/http/" title="MongoDB Stitch generic http service">Stitch HTTP service</a> and <a href="https://docs.mongodb.com/stitch/services/http/#incoming-webhooks" title="MongoDB Stitch incoming http webhooks">incoming webhooks</a>. You can even <a href="https://docs.mongodb.com/stitch/import-export/export-stitch-app/" title="Exporting apps from MongoDB Stitch">export your new service integration</a> to share with others.</p>
+<h4>Is MongoDB Mobile + Stitch Mobile Sync the same as a cache in a progressive app?</h4>
+<p>It certainly removes the need to have a separate cache, but it does much more. With MongoDB Mobile, the data is persistently stored on your device. You also have the full power of the MongoDB Query Language to perform sophisticated queries and aggregations on that local data. Changes made to the local database are pushed back to MongoDB Atlas, and from there to any other mobile devices configured to sync the same documents (e.g., for the same user running the app on another device).</p>
+<h4>How do I download &amp; embed MongoDB Mobile?</h4>
+<p>You simply need to <a href="https://docs.mongodb.com/stitch/mongodb/mobile/getting-started/" title="How to embed MongoDB Mobile in your application">add 1 line to your Android or Xcode project</a> to have access to the entire Stitch SDK, including the Stitch Local Database service (i.e.,the MongoDB Mobile database). The Stitch SDK includes the entire mobile and makes it very easy to use and consume, even if you&#8217;re just using the local MongoDB Mobile database and not Stitch.</p>
+<hr />
+<p>Creating your first Stitch app? Start with one of the <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch serverless platform – tutorials">Stitch tutorials</a>.</p>
+<p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/stitch-mobile-webinar-questions-replay/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Working with MongoDB Stitch Through the mongo Shell – MongoDB Wire Protocol Support</title>
+		<link>./../../mongodb/working-with-mongodb-stitch-through-the-mongo-shell-mongodb-wire-protocol-support/index.html</link>
+					<comments>./../../mongodb/working-with-mongodb-stitch-through-the-mongo-shell-mongodb-wire-protocol-support/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 03 Oct 2018 09:41:01 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Stitch]]></category>
+		<category><![CDATA[serverless]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4529</guid>
+
+					<description><![CDATA[The Stitch SDK is the best way to access MongoDB Stitch from your frontend application code – getting to your data and accessing your Stitch Services and Functions becomes child&#8217;s&#8217; play. However, those already using MongoDB may have existing backend code and tools that work with MongoDB. MongoDB Stitch now supports the MongoDB wire protocol]]></description>
+										<content:encoded><![CDATA[<p>The <a href="https://docs.mongodb.com/stitch/client-sdks/" title="MongoDB Stitch client SDK">Stitch SDK</a> is the best way to access <a href="https://docs.mongodb.com/stitch/" title="MongoDB Stitch serverless platform">MongoDB Stitch</a> from your frontend application code – getting to your data and accessing your Stitch Services and Functions becomes child&#8217;s&#8217; play.</p>
+<p>However, those already using MongoDB may have existing backend code and tools that work with MongoDB. MongoDB Stitch now supports the <a href="https://docs.mongodb.com/stitch/wire-protocol/" title="MongoDB wire protocol for MongoDB Stitch serverless platform">MongoDB wire protocol</a> – meaning that you can continue to work with your favorite tools (including the <code>mongo</code> shell) and drivers while benefiting from Stitch&#8217;s quick and simple data access control and hosted JavaScript functions.</p>
+<p>After enabling connection string access, connecting to your Stitch app from the <code>mongo</code> shell is business as usual – just use the connection string you&#8217;re shown in the Stitch UI:</p>
+<pre><code>mongo "mongodb://andrewjamXXXXX%40gmail.com:gXXXX@stitch.mongodb.com:27020\
+    /?authMechanism=PLAIN&amp;authSource=%24external&amp;ssl=true&amp;\
+    appName=imported_trackme-xxxxz:mongodb-atlas:local-userpass" --norc
+</code></pre>
+<p>Once connected, adding a document through Stitch should feel very familiar:</p>
+<pre><code class="js">db.comments.insert({
+    owner_id: "5bacd4e7698a67f72dfdb44c",
+    author: "Andrew Morgan",
+    comment: "Stitch wire protocol support rocks!"
+})
+</code></pre>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/MongoDB_Wire_Protocol-gttmsmca03.png" alt="MongoDB Stitch wire protocol" /></p>
+<p>However, Stitch is about more than accessing MongoDB data. I&#8217;ve created a (stupidly) simple Stitch (<code>morning</code>) Function to show how you can test your Stitch app:</p>
+<pre><code class="js">exports = function(name){
+  return {message: "Good Morning " + name + " from " 
+             + context.user.data.email};
+};
+</code></pre>
+<p>From the <code>mongo</code> shell, I can now test that function:</p>
+<pre><code class="js">db.runCommand({ callFunction: "morning", arguments: ["Billy"] })
+{
+    "ok" : 1,
+    "response" : {
+        "message" : "Good Morning Billy from greetings@clusterdb.com"
+    }
+}
+</code></pre>
+<p>Creating your first Stitch app? Start with one of the <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch serverless platform – tutorials">Stitch tutorials</a>.</p>
+<p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/working-with-mongodb-stitch-through-the-mongo-shell-mongodb-wire-protocol-support/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Sending Text Messages with MongoDB Stitch &#038; Twilio</title>
+		<link>./../../mongodb/sending-text-messages-with-mongodb-stitch-twilio/index.html</link>
+					<comments>./../../mongodb/sending-text-messages-with-mongodb-stitch-twilio/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 26 Sep 2018 12:05:16 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Stitch]]></category>
+		<category><![CDATA[serverless]]></category>
+		<category><![CDATA[twilio]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4524</guid>
+
+					<description><![CDATA[When creating a well-rounded app, there are lots of table stakes features that make the app more useful but have already been implemented thousands of times before. Having the application backend send a text message informing your customer of an event is a classic example of such a “commodity” feature. Think about using a website]]></description>
+										<content:encoded><![CDATA[<p>When creating a well-rounded app, there are lots of table stakes features that make the app more useful but have already been implemented thousands of times before. Having the application backend send a text message informing your customer of an event is a classic example of such a “commodity” feature.</p>
+<p>Think about using a website or app to book a taxi, where you give your phone number so that you get sent a text message when the taxi’s on its way. Why would the writers of that taxi app want to waste time writing text messaging code? There’s nothing extra they can do to differentiate it from other apps – so why not just consume it as a service from something like <a href="https://www.twilio.com/">Twilio</a>?</p>
+<p>MongoDB Stitch makes it even less work to add this kind of feature. Rather than standing up an app server, figuring out how to use the <a href="https://www.twilio.com/docs/api">Twilio API</a>, writing the code, and possibly creating a <a href="https://www.mongodb.com/blog/post/building-a-rest-api-with-mongodb-stitch" title="Create a REST API with MongoDB Stitch Functions">REST API</a>, just configure the <a href="https://docs.mongodb.com/stitch/reference/partner-services/twilio/" title="Working with SMS text messages with MongoDB Stitch and Twilio">Twilio service</a> in Stitch.</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/Sending_text_with_MongoDB_Stitch_and_Twilio-7glbv13odr.png" alt="Using MongoDB Stitch to send SMS text messages via Twilio" /></p>
+<p>When configuring the Stitch Twilio serving, you supply the <em>Account ID</em> and <em>Auth Token</em> from your Twilio account. All that&#8217;s left is to write the <a href="https://docs.mongodb.com/stitch/functions/" title="MongoDB Stitch serverless functions">Stitch function</a> to invoke the service:</p>
+<pre><code class="js">exports = function(trip, user){
+  const twilio = context.services.get("twilio");
+
+  twilio.send({
+    to: user.phone,
+    from: context.values.get("twilioNumber"),
+    body: "Hi " 
+      + user.firstname 
+      + " - just to let you know that your taxi to " 
+      + trip.destination + " will be with you at " 
+      + trip.pickupTime + "."
+  });
+};
+</code></pre>
+<p>You can also have your application react when receiving a text message by configuring <a href="https://docs.mongodb.com/stitch/reference/partner-services/twilio/#incoming-webhooks" title="Act on received SMS text messages using MongoDB Stitch Twilio incoming web hooks">incoming webhooks for the Twilio service</a>.</p>
+<p>Creating your first Stitch app? Start with one of the <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch serverless platform – tutorials">Stitch tutorials</a>.</p>
+<p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/sending-text-messages-with-mongodb-stitch-twilio/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Testing &#038; Debugging MongoDB Stitch Functions</title>
+		<link>./../../mongodb/testing-debugging-mongodb-stitch-functions/index.html</link>
+					<comments>./../../mongodb/testing-debugging-mongodb-stitch-functions/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 25 Sep 2018 14:07:03 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Stitch]]></category>
+		<category><![CDATA[serverless]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4522</guid>
+
+					<description><![CDATA[When discussing serverless computing (Functions as a Service) with developers, a common concern that arises is the complexity of testing and debugging your functions. Fortunately, the MongoDB Stitch UI makes this simple. It&#8217;s a bit old school, but if you want to display debug info from your functions, then it&#8217;s as simple as adding console.log()]]></description>
+										<content:encoded><![CDATA[<p>When discussing serverless computing (Functions as a Service) with developers, a common concern that arises is the complexity of testing and debugging your functions. Fortunately, the <a href="https://docs.mongodb.com/stitch/functions/#debug-console" title="Documentation from the MongoDB Stitch debug console">MongoDB Stitch UI</a> makes this simple.</p>
+<p>It&#8217;s a bit old school, but if you want to display debug info from your functions, then it&#8217;s as simple as adding <code>console.log()</code> commands to your code. If testing the function through the Stitch UI, the output appears in the <em>Results</em> panel. When executed normally, the output appears in the Stitch logs.</p>
+<p>To test a Stitch function from the UI, select a user for the function to run as (that way the function can access whatever data the user is entitled to). In the <em>Console</em> panel, call <code>exports(&lt;parameters&gt;)</code>, including any parameters that the function expects – these could be simple values or complex documents.</p>
+<p>The results of the function call (the returned data + any <code>console.log()</code> output) appear in the <em>Results</em> panel.</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/Debugging_functions-am4c17877v.gif" alt="Demo of testing a MongoDB Stitch Function" /></p>
+<p>If you want to check on what&#8217;s happening in your production apps, check out the <em>Logs</em> panel in the Stitch UI.</p>
+<p>Creating your first Stitch app? Start with one of the <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch serverless platform – tutorials">Stitch tutorials</a>.</p>
+<p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/testing-debugging-mongodb-stitch-functions/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Recording sensor data with MongoDB Stitch &#038; Electric Imp</title>
+		<link>./../../mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp/index.html</link>
+					<comments>./../../mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 18 Sep 2018 10:31:31 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[IoT]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Stitch]]></category>
+		<category><![CDATA[serverless]]></category>
+		<guid isPermaLink="false">./../../index.html?p=4517</guid>
+
+					<description><![CDATA[My early experiments with IoT involved standalone sensors, breakout boards, Arduinos, Raspberry Pis, and a soldering iron. It was a lot of fun, but it took ages to build even the simplest of projects. Therefore, I was super excited when I discovered that Electric Imp had a self-contained IoT hardware developer kit and a library]]></description>
+										<content:encoded><![CDATA[<p>My early experiments with IoT involved standalone sensors, breakout boards, Arduinos, Raspberry Pis, and a soldering iron. It was a lot of fun, but it took ages to build even the simplest of projects.</p>
+<p>Therefore, I was super excited when I discovered that Electric Imp had a self-contained <a href="https://store.electricimp.com/products/impexplorer-developer-kit?variant=31118866130">IoT hardware developer kit</a> <strong>and</strong> a <a href="https://developer.electricimp.com/libraries/webservices/mongodbstitch">library</a> to access <a href="https://www.mongodb.com/cloud/stitch" title="MongoDB Stitch Serverless Platform">MongoDB Stitch</a> directly.</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/impExplorer-opi47819wd.jpg" alt="Electric Imp impExplorer IoT development kit" /></p>
+<p>My first experiment with Electric Imp took sensor data (temperature, humidity, air pressure, light level, and orientation) from the device, and stored it in MongoDB.</p>
+<p>The Electric Imp code (written in <a href="http://www.squirrel-lang.org/" title="Squirrel programming language">Squirrel</a>) is split into 2 parts:<br />
+&#8211; On-device code – sends sensor data to the agent<br />
+&#8211; Agent code, running in Electric Imp&#8217;s cloud – forwards the data to Stitch</p>
+<p>This post focuses on the integration between the Electric Imp agent code and Stitch, but those interested can <a href="https://github.com/am-MongoDB/MongoDB-Stitch-Imp_IoT/blob/master/electricImp/device.nut" title="Send data from Electric Imp impExplorer to agent">view the device code</a>.</p>
+<p>The agent code receives the readings from the device, and then it uses the Electric Imp MongoDB Stitch library to forward them to Stitch:</p>
+<pre><code class="squirel">#require "MongoDBStitch.agent.lib.nut:1.0.0"
+
+//Create the connection to Stitch
+stitch &lt;- MongoDBStitch("imptemp-sobpa");
+
+//Add an API key to link this device to a specific Stitch User
+const API_KEY = "hNErDmBw1zYGOfpaSv4Pf5kaNQrIaxOHLZgj0vExzDcxWf9GAEX055l1mXXX";
+
+//Ensure you are authenticated to Stitch
+stitch.loginWithApiKey(API_KEY);
+
+function log(data) {
+    stitch.executeFunction("Imp_Write", [data], function (error, response) {
+        if (error) {
+            server.log("error: " + error.details);
+        } else {
+            server.log("temperature sent");
+        }
+    });
+}
+
+// Register a function to receive sensor data from the device
+device.on("reading.sent", log);
+</code></pre>
+<p>Note that you will need to create the <code>API_KEY</code> through the Stitch UI.</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/electricImp_MongoDB_Stitch-a9ibd5y5ki.png" alt="impExplorer sends readings to Electric Imp agent which sends them to MongoDB Stitch to store in MongoDB Atlas" /></p>
+<p>The <code>Imp_Write</code> function receives the readings from the agent, retrieves outside weather data from <a href="http://www.darksky.net/">DarkSky.net</a>, and stores the data in the <code>TempData</code> <a href="https://www.mongodb.com/cloud/atlas" title="MongoDB Atlas database as a service">MongoDB Atlas</a> collection:</p>
+<pre><code class="js">exports = function(data){
+
+  //Get the current time
+  var now = new Date();
+
+  var darksky = context.services.get("darksky");
+  var mongodb = context.services.get("mongodb-atlas");
+  var TempData = mongodb.db("Imp").collection("TempData");
+
+  // Fetch the current weather from darksky.net
+
+  darksky.get({"url": "https://api.darksky.net/forecast/" + 
+    context.values.get("DarkSkyKey") + '/' + 
+    context.values.get("DeviceLocation") +
+    "?exclude=minutely,hourly,daily,alerts,flags&amp;units=auto"
+  }).then(response =&gt; {
+    var darkskyJSON = EJSON.parse(response.body.text()).currently;
+
+    var status =
+      {
+        "Timestamp": now.getTime(),
+        "Date": now,
+        "Readings": data,
+        "External": darkskyJSON,
+      };
+    status.Readings.light = (100*(data.light/65536));
+    context.functions.execute("controlHumidity", data.temp, data.humid);
+    TempData.insertOne(status).then(
+      results =&gt; {
+        console.log("Successfully wrote document to TempData");
+      },
+      error =&gt; {
+        console.log("Error writing to TempData collection: " + error);
+      });
+  });
+};
+</code></pre>
+<p><code>ImpWrite</code> also calls the <code>controlHumidity</code> method – find more on that in <a href="https://www.mongodb.com/blog/post/controlling-humidity-with-a-mongodb-stitch-http-service-and-ifttt" title="Controlling humidity with a MongoDB Stitch HTTP service and IFTTT">this post</a>.</p>
+<p>You can recreate the Stitch app for yourself by <a href="https://github.com/am-MongoDB/MongoDB-Stitch-Imp_IoT" title="MongoDB Stitch app to control a dehumidifier using IFTTT and ElectricImp">downloading the app from GitHub</a> and <a href="https://docs.mongodb.com/stitch/import-export/create-stitch-app/" title="Import an application into MongoDB Stitch">importing it into Stitch</a>. You&#8217;ll need to set some of your own keys first (including the details of your IFTTT webhook address) – details are in the <a href="https://github.com/am-MongoDB/MongoDB-Stitch-Imp_IoT/blob/master/README.md">README</a>. The repo also includes the Electric Imp code for the agent and device.</p>
+<p>Creating your first Stitch app? Start with one of the <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch serverless platform – tutorials">Stitch tutorials</a>.</p>
+<p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">MongoDB Stitch white paper</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

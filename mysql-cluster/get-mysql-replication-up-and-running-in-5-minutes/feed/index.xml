@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: Get MySQL Replication up and running in 5 minutes	</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../get-mysql-replication-up-and-running-in-5-minutes/index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 07 Mar 2017 16:59:05 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: Sai Krishnan		</title>
+		<link>./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-661143</link>
+
+		<dc:creator><![CDATA[Sai Krishnan]]></dc:creator>
+		<pubDate>Tue, 07 Mar 2017 16:59:05 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1293#comment-661143</guid>
+
+					<description><![CDATA[Can you please tell me how do we bind our mysql server with two different Ip Adresses as u have mentioned above i am not able to do that]]></description>
+			<content:encoded><![CDATA[<p>Can you please tell me how do we bind our mysql server with two different Ip Adresses as u have mentioned above i am not able to do that</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Nayan		</title>
+		<link>./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-660628</link>
+
+		<dc:creator><![CDATA[Nayan]]></dc:creator>
+		<pubDate>Tue, 28 Feb 2017 06:07:54 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1293#comment-660628</guid>
+
+					<description><![CDATA[Master.cnf and slave.cnf are separate files which present on two different computer? 
+Can we test replication process with two separate systems which is connected to same LAN ?]]></description>
+			<content:encoded><![CDATA[<p>Master.cnf and slave.cnf are separate files which present on two different computer?<br />
+Can we test replication process with two separate systems which is connected to same LAN ?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-658782</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 10 Feb 2017 10:39:31 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1293#comment-658782</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-658344&quot;&gt;karthik&lt;/a&gt;.
+
+Thanks for your question but I&#039;m afraid that I no longer work for Oracle (I&#039;m now working for MongoDB) and so am not current on MySQL technology. I&#039;d suggest checking the &lt;a href=&quot;http://forums.mysql.com/list.php?25&quot; rel=&quot;nofollow&quot;&gt;MySQL Cluster forum&lt;/a&gt;.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-658344">karthik</a>.</p>
+<p>Thanks for your question but I&#8217;m afraid that I no longer work for Oracle (I&#8217;m now working for MongoDB) and so am not current on MySQL technology. I&#8217;d suggest checking the <a href="http://forums.mysql.com/list.php?25" rel="nofollow">MySQL Cluster forum</a>.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: karthik		</title>
+		<link>./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-658344</link>
+
+		<dc:creator><![CDATA[karthik]]></dc:creator>
+		<pubDate>Sat, 04 Feb 2017 07:48:14 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1293#comment-658344</guid>
+
+					<description><![CDATA[where will i find my.cnf files in windows  and u can please update screeshots of 
+the processs]]></description>
+			<content:encoded><![CDATA[<p>where will i find my.cnf files in windows  and u can please update screeshots of<br />
+the processs</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-640534</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 20 Sep 2016 14:52:33 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1293#comment-640534</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-640383&quot;&gt;Srikanth G&lt;/a&gt;.
+
+You can use &lt;code&gt;stop slave&lt;/code&gt; and then &lt;code&gt;start slave&lt;/code&gt; on the slave to suspend replication. Provided you&#039;ve configured your binary log to be big enough, it will queue up all of the writes while replication is suspended.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-640383">Srikanth G</a>.</p>
+<p>You can use <code>stop slave</code> and then <code>start slave</code> on the slave to suspend replication. Provided you&#8217;ve configured your binary log to be big enough, it will queue up all of the writes while replication is suspended.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Srikanth G		</title>
+		<link>./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-640383</link>
+
+		<dc:creator><![CDATA[Srikanth G]]></dc:creator>
+		<pubDate>Mon, 19 Sep 2016 12:14:15 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1293#comment-640383</guid>
+
+					<description><![CDATA[Hello Andrew,
+
+I have a query in Mysql Replication on Windows box. Cant we create replication which transfers the all events(The objectives which are to be replicated) to slave in a time intervals instead of continuous flow of all the objects to salve? I meant to say is , i don&#039;t want to send the modifications continuously to the Slave from master , wanted to set a time to move copy all the records to slave at that particular point of time. Is it possible ? If so , could you please give a brief about it ?]]></description>
+			<content:encoded><![CDATA[<p>Hello Andrew,</p>
+<p>I have a query in Mysql Replication on Windows box. Cant we create replication which transfers the all events(The objectives which are to be replicated) to slave in a time intervals instead of continuous flow of all the objects to salve? I meant to say is , i don&#8217;t want to send the modifications continuously to the Slave from master , wanted to set a time to move copy all the records to slave at that particular point of time. Is it possible ? If so , could you please give a brief about it ?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-631253</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 31 May 2016 17:13:38 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1293#comment-631253</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-631251&quot;&gt;Henry&lt;/a&gt;.
+
+I&#039;ve now moved to MongoDB and so you may have better luck checking with the MySQL forum.
+
+Best Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-631251">Henry</a>.</p>
+<p>I&#8217;ve now moved to MongoDB and so you may have better luck checking with the MySQL forum.</p>
+<p>Best Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Henry		</title>
+		<link>./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-631251</link>
+
+		<dc:creator><![CDATA[Henry]]></dc:creator>
+		<pubDate>Tue, 31 May 2016 17:05:59 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1293#comment-631251</guid>
+
+					<description><![CDATA[Nice replication steps. My question is, I do have a replication set up (master/slave). I stopped the replication as per managers request and dropped the replication user. Now, I have to set up replication again, do I have to restart the server since binlog has been enabled already?
+
+Henry]]></description>
+			<content:encoded><![CDATA[<p>Nice replication steps. My question is, I do have a replication set up (master/slave). I stopped the replication as per managers request and dropped the replication user. Now, I have to set up replication again, do I have to restart the server since binlog has been enabled already?</p>
+<p>Henry</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: MySQL Replication &#124; ﻿System Admins Lab		</title>
+		<link>./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-608584</link>
+
+		<dc:creator><![CDATA[MySQL Replication &#124; ﻿System Admins Lab]]></dc:creator>
+		<pubDate>Thu, 14 Jan 2016 05:25:49 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1293#comment-608584</guid>
+
+					<description><![CDATA[[&#8230;] ./../get-mysql-replication-up-and-running-in-5-minutes/index.html [&#8230;]]]></description>
+			<content:encoded><![CDATA[<p>[&#8230;] <a href="./../get-mysql-replication-up-and-running-in-5-minutes/index.html" rel="ugc">./../get-mysql-replication-up-and-running-in-5-minutes/index.html</a> [&#8230;]</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-133316</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 19 May 2014 08:27:12 +0000</pubDate>
+		<guid isPermaLink="false">./../../index.html?p=1293#comment-133316</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-132492&quot;&gt;Ubunter&lt;/a&gt;.
+
+(Unless using MysQL Cluster) replication is normally in one direction: Master (server A) -&gt; Slave (server B). In this scenario, any write that was made to a slave would not make it back to the master. You &lt;strong&gt;can&lt;/strong&gt; also make server A be a slave of server B but it is then the applications responsibility that there are no conflicting writes (e.g. don&#039;t update the same rows on different servers).
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="./../get-mysql-replication-up-and-running-in-5-minutes/index.html#comment-132492">Ubunter</a>.</p>
+<p>(Unless using MysQL Cluster) replication is normally in one direction: Master (server A) -> Slave (server B). In this scenario, any write that was made to a slave would not make it back to the master. You <strong>can</strong> also make server A be a slave of server B but it is then the applications responsibility that there are no conflicting writes (e.g. don&#8217;t update the same rows on different servers).</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>MySQL Workbench &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="./feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../../index.html</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 16 Jul 2013 12:50:09 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>MySQL Utilities Webinar</title>
+		<link>./../../mysql/mysql-utilities-webinar/index.html</link>
+					<comments>./../../mysql/mysql-utilities-webinar/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 16 Jul 2013 12:50:09 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Replication]]></category>
+		<category><![CDATA[MySQL 5.6]]></category>
+		<category><![CDATA[MySQL Utilities]]></category>
+		<category><![CDATA[MySQL Workbench]]></category>
+		<guid isPermaLink="false">./../../index.html?p=2876</guid>
+
+					<description><![CDATA[On Thursday, Dr Charles Bell and I will be presenting a webinar on MySQL Utilities; there will be a heavy focus on what you can acheive with them and how you should use them. As well as listening to the presentation, this is a great chance to get your questions answered by the experts (Israel]]></description>
+										<content:encoded><![CDATA[<p><a href="./../../wp-content/uploads/2013/07/MySQL_Utilities.png"><img decoding="async" src="./../../wp-content/uploads/2013/07/MySQL_Utilities-300x125.png" alt="MySQL Utilities logo" width="300" height="125" class="alignright size-medium wp-image-2875" /></a>On Thursday, Dr Charles Bell and I will be presenting a webinar on MySQL Utilities; there will be a heavy focus on what you can acheive with them and how you should use them. As well as listening to the presentation, this is a great chance to get your questions answered by the experts (Israel Gomez from the engineering team will also be on-line to help with the questions). As always, the webinar is free but you should <a href="http://www.mysql.com/news-and-events/web-seminars/focus-on-mysql-utilities/" title="MySQL Utilities webinar - registration" target="_blank">register in advance here</a>. If the time isn&#8217;t convenient, register anyway and you&#8217;ll be sent a link to the replay when it&#8217;s available.</p>
+<h3>Abstract:</h3>
+<p>MySQL Utilities provide a collection of command-line utilities that are used for maintaining and administering MySQL databases, including:</p>
+<ul>
+<li>Admin Utilities (Clone, Copy, Compare, Diff, Export, Import)</li>
+<li>Replication Utilities (Setup, Configuration, Automated Slave Promotion)</li>
+<li>General Utilities (Disk Usage, Redundant Indexes, Search Meta Data)</li>
+</ul>
+<p>Andrew Morgan and Chuck Bell will guide you through these utilities, and many more, explaining what you can gain from these tools and how to use them (for example how a single command repeatedly checks your master server and in the event it fails, automatically promotes one of the slaves to be the new master). This is your opportunity to listen to the development lead describe what he and his team have created, and to get your questions answered by the experts.</p>
+<p>WHO:<br />
+Andrew Morgan, Principal Product Manager<br />
+Chuck Bell, Software Development Manager</p>
+<p>WHEN:<br />
+Thu, Jul 18: 09:00 Pacific time (America)<br />
+Thu, Jul 18: 10:00 Mountain time (America)<br />
+Thu, Jul 18: 11:00 Central time (America)<br />
+Thu, Jul 18: 12:00 Eastern time (America)<br />
+Thu, Jul 18: 16:00 UTC<br />
+Thu, Jul 18: 17:00 Western European time<br />
+Thu, Jul 18: 18:00 Central European time<br />
+Thu, Jul 18: 19:00 Eastern European time<br />
+Thu, Jul 18: 21:30 India, Sri Lanka<br />
+Fri, Jul 19: 00:00 Singapore/Malaysia/Philippines time<br />
+Fri, Jul 19: 00:00 China time<br />
+Fri, Jul 19: 01:00 日本<br />
+Fri, Jul 19: 02:00 NSW, ACT, Victoria, Tasmania (Australia) </p>
+<p>The presentation will be approximately 60 minutes long followed by Q&#038;A. </p>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql/mysql-utilities-webinar/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Workbench 5.2 goes GA &#8211; partial support for MySQL Cluster</title>
+		<link>./../../mysql/mysql-workbench-5-2-goes-ga-partial-support-for-mysql-cluster/index.html</link>
+					<comments>./../../mysql/mysql-workbench-5-2-goes-ga-partial-support-for-mysql-cluster/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 01 Jul 2010 16:48:24 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<category><![CDATA[MySQL Workbench]]></category>
+		<guid isPermaLink="false">./../../index.html?p=1146</guid>
+
+					<description><![CDATA[The new version of MySQL Workbench (5.2.25) has just gone GA &#8211; see the Workbench BLOG for details. So what&#8217;s the relevance to MySQL Cluster? If you have a Cluster that uses MySQL Servers to provide SQL access then you can now use MySQL Workbench to manage those nodes: Start &#38; stop the mysqld processes]]></description>
+										<content:encoded><![CDATA[<div id="attachment_1147" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2010/07/wb_config.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-1147" class="size-medium wp-image-1147" title="wb_config" src="./../../wp-content/uploads/2010/07/wb_config-300x249.jpg" alt="" width="300" height="249" /></a><p id="caption-attachment-1147" class="wp-caption-text">Configure MySQL Server nodes for MySQL Cluster</p></div>
+<p>The new version of MySQL Workbench (5.2.25) has just gone GA &#8211; see the <a href="http://wb.mysql.com/?p=611" target="_blank">Workbench BLOG for details</a>.</p>
+<p>So what&#8217;s the relevance to MySQL Cluster? If you have a Cluster that uses MySQL Servers to provide SQL access then you can now use MySQL Workbench to manage those nodes:</p>
+<ul>
+<li>Start &amp; stop the mysqld processes</li>
+<li>Configure the per-mysqld configuration data held in my.cnf or my.ini</li>
+</ul>
+<p>The reason that I describe the support as &#8216;partial&#8217; is that these MySQL Servers are treated as independent entities (no concept of them being part of a Cluster) and there is currently no way to use it to configure or manage the other Cluster processes (data and management nodes). Having said that, what is there provides a lot of value and Workbench is designed to be very extensible  and so hopefully there can be further MySQL Cluster support in the future.</p>
+<div id="attachment_1148" style="width: 310px" class="wp-caption alignright"><a href="./../../wp-content/uploads/2010/07/wb_variables.jpg"><img decoding="async" aria-describedby="caption-attachment-1148" class="size-medium wp-image-1148" title="wb_variables" src="./../../wp-content/uploads/2010/07/wb_variables-300x249.jpg" alt="" width="300" height="249" /></a><p id="caption-attachment-1148" class="wp-caption-text">View MySQL Cluster status variables</p></div>
+<p>In addition to MySQL Cluster-specific configuration parameters, you can also access the Cluster-specific status variables (these are the ones starting with ndb).</p>
+<p>While I&#8217;ve focussed on what&#8217;s unique to MySQL Cluster, you can of course use the other Workbench features with MySQL Cluster &#8211; for example:</p>
+<ul>
+<li>Creating (or reverse-engineering) your data model</li>
+<li>Define your schema</li>
+<li>View/write data to your tables</li>
+<li>Create your SQL queries</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql/mysql-workbench-5-2-goes-ga-partial-support-for-mysql-cluster/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Breakfast seminar on what&#8217;s new with MySQL &#8211; London</title>
+		<link>./../../mysql/breakast-seminar-on-whats-new-with-mysql-london/index.html</link>
+					<comments>./../../mysql/breakast-seminar-on-whats-new-with-mysql-london/index.html#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 17 Jun 2010 12:58:27 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL Cluster 7.1]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<category><![CDATA[MySQL Enterprise Monitor]]></category>
+		<category><![CDATA[MySQL Workbench]]></category>
+		<guid isPermaLink="false">./../../index.html?p=1111</guid>
+
+					<description><![CDATA[If you&#8217;re in London on Thursday 24th June then there&#8217;s a great chance to find out what&#8217;s new in MySQL. Join us for an Oracle MySQL Breakfast Seminar to better understand Oracle’s MySQL strategy and what’s new with MySQL! Agenda: 09:00 a.m.    Welcome Coffee/Tea 09:30 a.m.    Oracle&#8217;s MySQL Strategy 10:00 a.m.    What&#8217;s New &#8211; The]]></description>
+										<content:encoded><![CDATA[<p>If you&#8217;re in London on Thursday 24th June then there&#8217;s a great chance to find out what&#8217;s new in MySQL. <a href="./../../wp-content/uploads/2010/06/London.jpg"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-1112" title="London" src="./../../wp-content/uploads/2010/06/London-300x234.jpg" alt="" width="300" height="234" /></a></p>
+<p>Join us for an Oracle MySQL Breakfast Seminar to better understand Oracle’s MySQL strategy and what’s new with MySQL!<br />
+Agenda:<br />
+09:00 a.m.    Welcome Coffee/Tea<br />
+09:30 a.m.    Oracle&#8217;s MySQL Strategy<br />
+10:00 a.m.    What&#8217;s New &#8211; The MySQL Server &amp; MySQL Cluster<br />
+10.45 a.m.    Coffee/Tea Break<br />
+11:00 a.m.    What&#8217;s New &#8211; MySQL Enterprise &amp; MySQL Workbench<br />
+11:45 a.m.    Q&amp;A<br />
+12:00 noon    End of the Breakfast Seminar</p>
+<p>Cost?<br />
+None, it’s a free event! But places are limited and the seminar is held on a first come first served basis, so <a href="http://www.oracle.com/webapps/events/EventsDetail.jsp?p_eventId=114010&amp;src=7011252&amp;src=7011252&amp;Act=16&amp;evite=16" target="_blank">register quickly</a>!</p>
+<p>Location:</p>
+<p><span style="border-collapse: separate; color: #000000; font-family: arial,helvetica,sans-serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; line-height: 12px;"><strong>Sun Microsystem’s Customer Briefing Center</strong><br />
+Regis House<br />
+45 King William Street<br />
+London EC4R 9AN<br />
+<strong>Tel: (020) 7628 3000</strong></span></span></p>
+<p><span style="border-collapse: separate; color: #000000; font-family: arial,helvetica,sans-serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><span style="font-family: Arial,Helvetica,sans-serif; font-size: 11px; line-height: 12px;"><a href="http://www.flickr.com/photos/anirudhkoul/" target="_blank">Image courtesy of Anirudh Koul</a>.<br />
+</span></span></p>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow: hidden;">
+<p><span style="border-collapse: separate; color: #000000; font-family: arial,helvetica,sans-serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: normal; orphans: 2; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px;"><span style="font-family: Arial,Helvetica,sans-serif; line-height: 14px;">Join us for an Oracle MySQL Breakfast Seminar in London, Thursday June 24th 2010, to better understand Oracle’s MySQL strategy and what’s new with MySQL!</span></span></p>
+<table class="bodycopy" style="color: #000000; font-size: 12px; font-family: Arial,Helvetica,sans-serif; line-height: 14px; text-decoration: none;" border="0" cellspacing="0" cellpadding="4" width="100%">
+<tbody>
+<tr>
+<td style="font-family: arial,helvetica,sans-serif; font-size: 12px; color: #000000;" colspan="3"><strong>Agenda:</strong></td>
+</tr>
+<tr valign="top" bgcolor="#f5f5f5">
+<td style="font-family: arial,helvetica,sans-serif; font-size: 12px; color: #000000;" width="78">09:00 a.m.</td>
+<td style="font-family: arial,helvetica,sans-serif; font-size: 12px; color: #000000;" colspan="2" width="406">Welcome Coffee/Tea</td>
+</tr>
+<tr>
+<td style="font-family: arial,helvetica,sans-serif; font-size: 12px; color: #000000;" valign="top">09:30 a.m.</td>
+<td style="font-family: arial,helvetica,sans-serif; font-size: 12px; color: #000000;" colspan="2" valign="top">Oracle&#8217;s MySQL Strategy</td>
+</tr>
+<tr valign="top" bgcolor="#f5f5f5">
+<td style="font-family: arial,helvetica,sans-serif; font-size: 12px; color: #000000;" width="78">10:00 a.m.</td>
+<td style="font-family: arial,helvetica,sans-serif; font-size: 12px; color: #000000;" colspan="2">What&#8217;s New &#8211; The MySQL Server &amp; MySQL Cluster</td>
+</tr>
+<tr>
+<td style="font-family: arial,helvetica,sans-serif; font-size: 12px; color: #000000;" valign="top">10.45 a.m.</td>
+<td style="font-family: arial,helvetica,sans-serif; font-size: 12px; color: #000000;" colspan="2" valign="top">Coffee/Tea Break</td>
+</tr>
+<tr valign="top" bgcolor="#f5f5f5">
+<td style="font-family: arial,helvetica,sans-serif; font-size: 12px; color: #000000;" width="78">11:00 a.m.</td>
+<td style="font-family: arial,helvetica,sans-serif; font-size: 12px; color: #000000;" colspan="2">What&#8217;s New &#8211; MySQL Enterprise &amp; MyQL Workbench</td>
+</tr>
+<tr>
+<td style="font-family: arial,helvetica,sans-serif; font-size: 12px; color: #000000;" valign="top">11:45 a.m.</td>
+<td style="font-family: arial,helvetica,sans-serif; font-size: 12px; color: #000000;" colspan="2" valign="top">Q&amp;A</td>
+</tr>
+<tr valign="top" bgcolor="#f5f5f5">
+<td style="font-family: arial,helvetica,sans-serif; font-size: 12px; color: #000000;" width="78">12:00 noon</td>
+<td style="font-family: arial,helvetica,sans-serif; font-size: 12px; color: #000000;" colspan="2">End of the Breakfast Seminar</td>
+</tr>
+</tbody>
+</table>
+<p>* Agenda subject to change</p>
+<p><strong>Cost?</strong><br />
+None, it’s a free event! But places are limited and the seminar is held on a first come first served basis, so register quickly!</p>
+</div>
+]]></content:encoded>
+					
+					<wfw:commentRss>./../../mysql/breakast-seminar-on-whats-new-with-mysql-london/feed/index.html</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
