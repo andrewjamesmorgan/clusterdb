@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="/xmlrpc.php">
+	
+	<title>Stored Procedures | Andrew Morgan on Databases</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Stored Procedures Tag Feed" href="/tag/stored-procedures/feed">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/*  */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/*  */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="/wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="/wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="/wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="/wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="/wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/tags/112"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style><style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style><script type="text/javascript">//
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//</script><style type="text/css"></style><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style></head>
+
+<body class="archive tag tag-stored-procedures tag-112 custom-background">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="/"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu"><li class="page_item page-item-1011"><a href="/about">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="/wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+		
+		<h2 class="arh">Tag Archive for Stored Procedures</h2>
+				
+					<div id="post-779" class="post-779 post type-post status-publish format-standard hentry category-mysql-cluster tag-mysql tag-mysql-cluster tag-mysql-cluster-70 tag-mysql-cluster-cge tag-ndb-api tag-replication tag-stored-procedures tag-white-paper">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database">December 7, 2009</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database#comments">2 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database" rel="bookmark">New white paper: Guide to Optimizing Performance of the MySQL Cluster Database</a></h2>
+				
+				<div class="entry">
+										<div id="attachment_780" style="width: 215px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/12/connection_pooling.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-780" class="size-full wp-image-780" title="Connection Pooling" src="/wp-content/uploads/2009/12/connection_pooling.jpg" alt="MySQL Cluster Connection Pooling" width="205" height="302" srcset="/wp-content/uploads/2009/12/connection_pooling.jpg 205w, /wp-content/uploads/2009/12/connection_pooling-203x300.jpg 203w" sizes="(max-width: 205px) 100vw, 205px"></a><p id="caption-attachment-780" class="wp-caption-text">MySQL Cluster Connection Pooling</p></div>
+<p>This guide explores how to tune and optimize the MySQL Cluster database to handle diverse workload requirements. It discusses data access patterns and how to build distribution awareness into applications, before exploring schema and query optimization, tuning of parameters and how to get the best out of the latest innovations in hardware design.</p>
+<p>The Guide concludes with recent performance benchmarks conducted with the MySQL Cluster database, an overview of how MySQL Cluster can be integrated with other MySQL storage engines, before summarizing additional resources that will enable you to optimize MySQL Cluster performance with your applications.</p>
+<p>Download the white paper (as always, for free) from:<a href="http://www.mysql.com/why-mysql/white-papers/mysql_wp_cluster_perfomance.php" target="_blank"> http://www.mysql.com/why-mysql/white-papers/mysql_wp_cluster_perfomance.php</a></p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database" data-via="wpbeginner" data-text="New white paper: Guide to Optimizing Performance of the MySQL Cluster Database" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fnew-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-70" rel="tag">MySQL Cluster 7.0</a>, <a href="/tag/mysql-cluster-cge" rel="tag">MySQL Cluster CGE</a>, <a href="/tag/ndb-api" rel="tag">NDB API</a>, <a href="/tag/replication" rel="tag">Replication</a>, <a href="/tag/stored-procedures" rel="tag">Stored Procedures</a>, <a href="/tag/white-paper" rel="tag">White Paper</a></div>
+
+			</div>			<div id="post-451" class="post-451 post type-post status-publish format-standard hentry category-mysql tag-mysql tag-mysql-cluster tag-shared-library tag-stored-procedures tag-time tag-timestamp">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql/creating-a-mysql-plugin-to-produce-an-interger-timestamp">August 12, 2009</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql/creating-a-mysql-plugin-to-produce-an-interger-timestamp#comments">3 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql/creating-a-mysql-plugin-to-produce-an-interger-timestamp" rel="bookmark">Creating a MySQL plugin to produce an integer timestamp</a></h2>
+				
+				<div class="entry">
+										<p>This article shows how to create a MySQL-plugin that can be used to create a function which can in turn be used in stored procedures. The function will produce an integer value representing the time (to the nearest usec).</p>
+<p>I&#8217;m working on an article for conflict detection/resolution when using MySQL Cluster asynchronous replication which requires an integer column to store a timestamp for comparison purposes. In fact, it doesn&#8217;t actually need the timestamp to represent an absolute or even a relative point in time &#8211; all it cares about is that the if the function is called twice on 2 different hosts that the 2nd call will always result in a larger number than the 1st. Obviously, in a production environment the times on the 2 hosts would need to be kept in sync.</p>
+<h3>The c code (inttime.c)</h3>
+<pre style="padding-left: 30px;color: #993300;font-size: 11px">#include &lt;mysql.h&gt;
+#include &lt;sys/time.h&gt;
+
+my_bool inttime_init(UDF_INIT *initid,UDF_ARGS *args, char *message) {
+  return 0;
+}
+
+void inttime_deinit(UDF_INIT *initid) {};
+
+unsigned long int inttime(UDF_INIT *initid, UDF_ARGS *args, char *result,
+                          unsigned long  *length, char *is_null, char *error)
+{
+  struct timeval tv;
+  gettimeofday(&amp;tv,(void *)0);
+  return ((double)tv.tv_usec)+tv.tv_sec*1000000;
+}</pre>
+<h3>Compiling and deploying the shared library</h3>
+<pre style="padding-left: 30px;color: #993300;font-size: 11px">[billy@ws1 timestamp]$ gcc -I/usr/local/mysql/include/ -fPIC -shared -o inttime.so inttime.c
+[billy@ws1 timestamp]$ cp inttime.so /usr/local/mysql/lib/plugin/</pre>
+<h3>Creating the function</h3>
+<pre style="padding-left: 30px;color: #993300;font-size: 11px">mysql&gt; create function inttime RETURNS REAL SONAME 'inttime.so';</pre>
+<h3>Test the function</h3>
+<pre style="padding-left: 30px;color: #993300;font-size: 11px">mysql&gt; select inttime();select inttime();
++------------------+
+| inttime()        |
++------------------+
+| 1250080524270706 |
++------------------+
+1 row in set (0.00 sec)
+
++------------------+
+| inttime()        |
++------------------+
+| 1250080524270833 |
++------------------+
+1 row in set (0.00 sec)</pre>
+<p>Note that the results are different and the second result is always larger than the first &#8211; function is fit for purpose 🙂</p>
+<h3>Using the function from a stored procedure</h3>
+<pre style="padding-left: 30px;color: #993300;font-size: 11px">mysql&gt; CREATE TRIGGER updateTAB1 BEFORE UPDATE ON TAB1 FOR EACH ROW SET NEW.ts = inttime();</pre>
+<h3>Acknowledgements</h3>
+<p>I used the c code found at http://lists.mysql.com/internals/33702 as the starting point.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql/creating-a-mysql-plugin-to-produce-an-interger-timestamp" data-via="wpbeginner" data-text="Creating a MySQL plugin to produce an integer timestamp" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql/creating-a-mysql-plugin-to-produce-an-interger-timestamp"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql/creating-a-mysql-plugin-to-produce-an-interger-timestamp" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql%2Fcreating-a-mysql-plugin-to-produce-an-interger-timestamp&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql" rel="category tag">MySQL</a> | 
+Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/shared-library" rel="tag">shared library</a>, <a href="/tag/stored-procedures" rel="tag">Stored Procedures</a>, <a href="/tag/time" rel="tag">time</a>, <a href="/tag/timestamp" rel="tag">timestamp</a></div>
+
+			</div>			<div id="post-72" class="post-72 post type-post status-publish format-standard hentry category-mysql-cluster tag-cluster-database tag-mysql-cluster tag-ndb-api tag-stored-procedures tag-triggers">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/are-stored-procedures-available-with-mysql-cluster">May 1, 2009</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/are-stored-procedures-available-with-mysql-cluster#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/are-stored-procedures-available-with-mysql-cluster" rel="bookmark">Are Stored Procedures available with MySQL Cluster?</a></h2>
+				
+				<div class="entry">
+										<p>The answer is yes – kind of.</p>
+<p>Stored procedures are implemented in a MySQL Server and can be used regardless of the storage engine being used for a specific table. One inference from this is that they won’t work when accessing the Cluster database directly through the NDB API.</p>
+<p>This leads to the question of whether or not that limitation actually restricts what you can achieve. This article gives a brief introduction to stored procedures and looks at how the same results can be achieved using the NDB API.</p>
+<p>Stored procedures provide a rudimentary way of implementing functionality within the database (rather than in the application code). They are implemented by the database designer and have the ability to perform computations as well as make changes to the data in the database. A typical use of stored procedures would be to control all access to the data by a user or application – for example, to impose extra checks on the data or make sure that all linked data is updated rather than leaving it to the user or application designer to always remember to do it. To impose this, the DBA could grant permission to users to call the stored procedures but not write to the tables directly.</p>
+<p>This functionality can be very useful when the data is being accessed through the SQL interface. If using the NDB API then you have the full power of the C++ language at your disposal and so a designer can code whatever checks and side effects are needed within a wrapper method and then have applications use those methods rather than accessing the raw NDB API directly for those changes.</p>
+<p>There is one piece of functionality available using stored procedures which could be very helpful to applications using the NDB API – triggers. The rest of this article explains what triggers are; how they’re used and how that same results can be achieved using the NDB API.</p>
+<h2><span style="color: #333399;">Triggers</span></h2>
+<p>Triggers allow stored code to be invoked as a side effect of SQL commands being executed on the database through a MySQL Server. The database designer can implement a stored procedure and then register it to be invoked when specific actions (INSERT, DELETE etc.) are performed on a table.</p>
+<p>The following example shows how a simple stored procedure can be implemented and then registered against a table.</p>
+<pre><span style="color: #800000;">mysql&gt; USE test;
+Database changed
+mysql&gt; create table ASSETS (NAME varchar(30) not null primary key,VALUE int) engine=ndb;
+Query OK, 0 rows affected (0.67 sec)
+mysql&gt; create table AUDIT_LOG (NOTE varchar(30) not NULL primary key) engine=ndb;
+Query OK, 0 rows affected (0.56 sec)
+mysql&gt; delimiter //
+mysql&gt; create procedure log_it (log_string varchar(30))
+    -&gt; begin
+    -&gt; insert into AUDIT_LOG values(log_string);
+    -&gt; end
+    -&gt; //
+Query OK, 0 rows affected (0.00 sec)
+mysql&gt; delimiter ;
+mysql&gt; create trigger ins_asset before insert on ASSETS
+    -&gt; for each row call log_it(new.name);
+Query OK, 0 rows affected (0.00 sec</span></pre>
+<p>The stored procedure in this example is triggered whenever a new tuple is inserted into the ASSETS table. The procedure then inserts the asset’s name into the AUDIT_LOG table. If the tuple is deleted from the ASSETS table then the entry in the AUDIT_LOG table remains intact.</p>
+<p>The following screen capture shows the results when adding a tuple to the table that contains the trigger.</p>
+<pre><span style="color: #800000;">mysql&gt; insert into ASSETS values ('Computer',350);
+Query OK, 1 row affected (0.01 sec)
+mysql&gt; select * from AUDIT_LOG;
++----------+
+| NOTE     |
++----------+
+| Computer |
++----------+
+1 row in set (0.00 sec)</span></pre>
+<p>Note that as the trigger and stored procedure are implemented in the MySQL Server, they need to be separately defined in all of the MySQL Server instances where they are needed.</p>
+<p>The following NDB API code adds a new tuple to the ASSETS table in much the same way as was done through SQL above (Note: my C++ is very rusty and so there will be glitches in this code &#8211; especially for string handling).</p>
+<pre><span style="color: #800000;">#include &lt;NdbApi.hpp&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+
+static void run_application(Ndb_cluster_connection &amp;, char*);
+
+#define PRINT_ERROR(code,msg) 
+std::cout &lt;&lt; "Error in " &lt;&lt; __FILE__ &lt;&lt; ", line: " &lt;&lt; __LINE__ 
+          &lt;&lt; ", code: " &lt;&lt; code 
+          &lt;&lt; ", msg: " &lt;&lt; msg &lt;&lt; "." &lt;&lt; std::endl
+
+#define APIERROR(error) { 
+  PRINT_ERROR(error.code,error.message); 
+  exit(-1); }
+
+int main(int argc, char** argv)
+{
+  if (argc != 3)
+  {
+    std::cout &lt;&lt; "Arguments are &lt;connect_string cluster&gt;&lt;asset_name&gt;.n";
+    exit(-1);
+  }
+  ndb_init();
+
+  // connect to cluster and run application
+  {
+    const char *connectstring = argv[1];
+    char *asset_name = argv[2];
+    // Object representing the cluster
+    Ndb_cluster_connection cluster_connection(connectstring);
+
+    // Connect to cluster management server (ndb_mgmd)
+    if (cluster_connection.connect(4 /* retries               */,
+                                   5 /* delay between retries */,
+                                   1 /* verbose               */))
+    {
+      std::cout &lt;&lt; "Cluster management server was not ready within 30 secs.n";
+      exit(-1);
+    }
+
+    // Connect and wait for the storage nodes (ndbd's)
+    if (cluster_connection.wait_until_ready(30,0) &lt; 0)
+    {
+      std::cout &lt;&lt; "Cluster was not ready within 30 secs.n";
+      exit(-1);
+    }
+    // run the application code
+    run_application(cluster_connection, asset_name);
+  }
+  ndb_end(0);
+  return 0;
+}
+
+static void do_insert(Ndb &amp;, char*);
+
+static void run_application(Ndb_cluster_connection &amp;cluster_connection,
+char *asset_name)
+{
+  /********************************************
+  * Connect to database via NdbApi           *
+  ********************************************/
+  // Object representing the database
+  Ndb myNdb( &amp;cluster_connection, "test" );
+  if (myNdb.init()) APIERROR(myNdb.getNdbError());
+  do_insert(myNdb, asset_name);
+}
+
+static void do_insert(Ndb &amp;myNdb, char *asset_name)
+{
+  const NdbDictionary::Dictionary* myDict= myNdb.getDictionary();
+  const NdbDictionary::Table *myTable= myDict-&gt;getTable("ASSETS");
+  char str[20];
+  str[0] = strlen(asset_name);
+  strcpy(str +1, asset_name);
+
+  if (myTable == NULL) APIERROR(myDict-&gt;getNdbError());
+  NdbTransaction *myTransaction= myNdb.startTransaction();
+  if (myTransaction == NULL) APIERROR(myNdb.getNdbError());
+  NdbOperation *myOperation= myTransaction-&gt;getNdbOperation(myTable);
+  if (myOperation == NULL) APIERROR(myTransaction-&gt;getNdbError());
+  myOperation-&gt;insertTuple();
+  myOperation-&gt;setValue("NAME", str);
+  myOperation-&gt;setValue("VALUE", 555);
+  if (myTransaction-&gt;execute( NdbTransaction::Commit ) == -1)
+    APIERROR(myTransaction-&gt;getNdbError());
+  myNdb.closeTransaction(myTransaction);
+}
+</span></pre>
+<p>This code can then be executed and then the effects verified using SQL commands through the MySQL Server – note that the stored procedure has not been triggered and so the name has not been copied into the AUDIT_LOG table.</p>
+<pre><span style="color: #800000;">[billy@ws1 stored]$ ./test_stored_procedures localhost:1186 Monitor
+
+mysql&gt; select * from ASSETS;
++----------+-------+
+| NAME     | VALUE |
++----------+-------+
+| Monitor  |   555 |
+| Computer |   350 |
++----------+-------+
+2 rows in set (0.01 sec)</span>
+
+<span style="color: #800000;">mysql&gt; select * from AUDIT_LOG;
++----------+
+| NOTE     |
++----------+
+| Computer |
++----------+
+1 row in set (0.00 sec)</span></pre>
+<p>It could easily be argued that triggers are not required when using the NDB API – simply code a wrapper method that also applies the required side effects. However, it is possible to come up with scenarios where triggers would be much more convenient – for example if the application is already littered with accesses to the data and you want to retrofit the side effect.</p>
+<p>Fortunately, the NDB API includes the ability to register triggers against operations for a specific table. The code that follows implements a process that waits for an INSERT to be performed on the ASSETS table and then creates an entry in the AUDIT_LOG table just as the earlier stored procedure did.</p>
+<pre><span style="color: #800000;">#include &lt;NdbApi.hpp&gt;
+#include &lt;stdio.h&gt;
+#include &lt;iostream&gt;
+#include &lt;unistd.h&gt;
+#include &lt;cstdlib&gt;
+#include &lt;string.h&gt;</span>
+
+<span style="color: #800000;">#define APIERROR(error) 
+{ std::cout &lt;&lt; "Error in " &lt;&lt; __FILE__ &lt;&lt; ", line:" &lt;&lt; __LINE__ &lt;&lt; ", code:" 
+            &lt;&lt; error.code &lt;&lt; ", msg: " &lt;&lt; error.message &lt;&lt; "." &lt;&lt; std::endl; 
+  exit(-1); }</span>
+
+<span style="color: #800000;">int myCreateEvent(Ndb* myNdb,
+                  const char *eventName,
+                  const char *eventTableName,
+                  const char **eventColumnName,
+                  const int noEventColumnName);</span>
+
+<span style="color: #800000;">static void do_insert(Ndb*, char*);</span>
+
+<span style="color: #800000;">int main(int argc, char** argv)
+{
+  if (argc &lt; 2)
+  {
+    std::cout &lt;&lt; "Arguments are &lt;connect_string cluster&gt; &lt;timeout&gt;].n";
+    exit(-1);
+  }
+  const char *connectstring = argv[1];
+  int timeout = atoi(argv[2]);
+  ndb_init();
+  Ndb_cluster_connection *cluster_connection=
+  new Ndb_cluster_connection(connectstring);</span>
+
+<span style="color: #800000;">  int r= cluster_connection-&gt;connect(5 /* retries               */,
+                                     3 /* delay between retries */,
+                                     1 /* verbose               */);
+  if (r &gt; 0)
+  {
+    std::cout
+       &lt;&lt; "Cluster connect failed, possibly resolved with more retries.n";
+    exit(-1);
+  }
+  else if (r &lt; 0)
+  {
+    std::cout
+       &lt;&lt; "Cluster connect failed.n";
+    exit(-1);
+  }
+  if (cluster_connection-&gt;wait_until_ready(30,30))
+  {
+    std::cout &lt;&lt; "Cluster was not ready within 30 secs." &lt;&lt; std::endl;
+    exit(-1);
+  }
+  Ndb* myNdb= new Ndb(cluster_connection,
+                      "test");  // Object representing the database
+  if (myNdb-&gt;init() == -1) APIERROR(myNdb-&gt;getNdbError());
+  const char *eventName= "CHNG_IN_ASSETS";
+  const char *eventTableName= "ASSETS";
+  const int noEventColumnName= 2;
+  const char *eventColumnName[noEventColumnName]=
+    {"NAME",
+     "VALUE"};</span>
+
+<span style="color: #800000;">  // Create events
+  myCreateEvent(myNdb,
+  eventName,
+  eventTableName,
+  eventColumnName,
+  noEventColumnName);</span>
+
+<span style="color: #800000;">  // Normal values and blobs are unfortunately handled differently..
+  typedef union { NdbRecAttr* ra; NdbBlob* bh; } RA_BH;</span>
+
+<span style="color: #800000;">  int i, j;
+  j = 0;
+  while (j &lt; timeout) {
+    // Start "transaction" for handling events
+    NdbEventOperation* op;
+  if ((op = myNdb-&gt;createEventOperation(eventName)) == NULL)
+    APIERROR(myNdb-&gt;getNdbError());
+  RA_BH recAttr[noEventColumnName];
+  RA_BH recAttrPre[noEventColumnName];
+  for (i = 0; i &lt; noEventColumnName; i++) {
+    recAttr[i].ra    = op-&gt;getValue(eventColumnName[i]);
+    recAttrPre[i].ra = op-&gt;getPreValue(eventColumnName[i]);
+  }
+  if (op-&gt;execute())
+    APIERROR(op-&gt;getNdbError());
+  NdbEventOperation* the_op = op;
+  i= 0;
+  while (i &lt; timeout) {
+    int r = myNdb-&gt;pollEvents(1000); // wait for event or 1000 ms
+    if (r &gt; 0) {
+    while ((op= myNdb-&gt;nextEvent())) {
+      i++;
+      NdbRecAttr* ra = recAttr[0].ra;
+      if (ra-&gt;isNULL() &gt;= 0) { // we have a value
+        if (ra-&gt;isNULL() == 0) { // we have a non-null value
+          printf("NAME: %s ", ra-&gt;aRef());
+          do_insert(myNdb, ra-&gt;aRef());
+        } else
+          printf("%-5s", "NULL");
+        } else
+        printf("%-5s", "-"); // no value
+        ra = recAttr[1].ra;
+        printf("n");
+      }
+    }
+  }
+  if (myNdb-&gt;dropEventOperation(the_op)) APIERROR(myNdb-&gt;getNdbError());
+  the_op = 0;
+  j++;
+  }
+  {
+    NdbDictionary::Dictionary *myDict = myNdb-&gt;getDictionary();
+    if (!myDict) APIERROR(myNdb-&gt;getNdbError());
+    if (myDict-&gt;dropEvent(eventName)) APIERROR(myDict-&gt;getNdbError());
+  }
+  delete myNdb;
+  delete cluster_connection;
+  ndb_end(0);
+  return 0;
+}</span>
+
+<span style="color: #800000;">int myCreateEvent(Ndb* myNdb,
+const char *eventName,
+const char *eventTableName,
+const char **eventColumnNames,
+const int noEventColumnNames)
+{
+  NdbDictionary::Dictionary *myDict= myNdb-&gt;getDictionary();
+  if (!myDict) APIERROR(myNdb-&gt;getNdbError());
+  const NdbDictionary::Table *table= myDict-&gt;getTable(eventTableName);
+  if (!table) APIERROR(myDict-&gt;getNdbError());
+  NdbDictionary::Event myEvent(eventName, *table);
+  myEvent.addTableEvent(NdbDictionary::Event::TE_INSERT);
+  myEvent.addEventColumns(noEventColumnNames, eventColumnNames);</span>
+
+<span style="color: #800000;">  // Add event to database
+  if (myDict-&gt;createEvent(myEvent) == 0)
+    myEvent.print();
+  else if (myDict-&gt;getNdbError().classification ==
+    NdbError::SchemaObjectExists) {
+    printf("Event creation failed, event existsn");
+    printf("dropping Event...n");
+    if (myDict-&gt;dropEvent(eventName)) APIERROR(myDict-&gt;getNdbError());
+    // try again
+    // Add event to database
+    if ( myDict-&gt;createEvent(myEvent)) APIERROR(myDict-&gt;getNdbError());
+  } else
+    APIERROR(myDict-&gt;getNdbError());
+    return 0;</span><span style="color: #800000;">
+}
+static void do_insert(Ndb* myNdb, char *asset_name)
+{
+  const NdbDictionary::Dictionary* myDict= myNdb-&gt;getDictionary();
+  const NdbDictionary::Table *myTable= myDict-&gt;getTable("AUDIT_LOG");
+  char str[30];
+  str[0] = strlen(asset_name);
+  strcpy(str +1, asset_name);
+  printf("Storing %i characters: %sn", strlen(asset_name), asset_name);
+  if (myTable == NULL) APIERROR(myDict-&gt;getNdbError());
+  NdbTransaction *myTransaction= myNdb-&gt;startTransaction();
+  if (myTransaction == NULL) APIERROR(myNdb-&gt;getNdbError());
+  myOperation-&gt;insertTuple();
+  myOperation-&gt;setValue("NOTE", str);
+  if (myTransaction-&gt;execute( NdbTransaction::Commit ) == -1)
+    APIERROR(myTransaction-&gt;getNdbError());
+  myNdb-&gt;closeTransaction(myTransaction);
+ }</span></pre>
+<p>We can then use the code to make the addition through the NDB API. We use one terminal to run the listener and then another to run the code to add the tuple.</p>
+<pre><span style="color: #800000;">[billy@ws1 stored]$ ./trigger_listener localhost:1186 100</span>
+<span style="color: #800000;">[billy@ws1 stored]$ ./test_stored_procedures localhost:1186 Keyboard</span>
+
+<span style="color: #800000;">mysql&gt; select * from ASSETS;
++----------+-------+
+| NAME     | VALUE |
++----------+-------+
+| Keyboard |   555 |
+| Computer |   350 |
+| Monitor  |   555 |
++----------+-------+
+3 rows in set (0.00 sec)</span>
+
+<span style="color: #800000;">mysql&gt; select * from AUDIT_LOG;
++-----------+
+| NOTE      |
++-----------+
+| Computer  |
+| Keyboard  |
++-----------+
+2 rows in set (0.00 sec)</span><span style="color: #ff0000;">
+</span></pre>
+<p>A major advantage of this approach is that the trigger is implemented within the Cluster database and so is invoked regardless of where the INSERT is requested – whether it be through the NDB API or through <strong>any</strong> of the MySQL Servers. This is shown in the results that follow.</p>
+<pre><span style="color: #800000;">mysql&gt; drop trigger ins_asset;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; drop procedure log_it;
+Query OK, 0 rows affected (0.00 sec)
+mysql&gt; insert into ASSETS values("Printers", 200);
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; select * from ASSETS;
++----------+-------+
+| NAME     | VALUE |
++----------+-------+
+| Keyboard |   555 |
+| Computer |   350 |
+| Monitor  |   555 |
+| Printers |   200 |
++----------+-------+
+4 rows in set (0.00 sec)</span>
+
+<span style="color: #800000;">mysql&gt; select * from AUDIT_LOG;
++-----------+
+| NOTE      |
++-----------+
+| Printers  |
+| Keyboard  |
+| Computer  |
++-----------+
+4 rows in set (0.00 sec)</span></pre>
+<p>Note that I first removed the original trigger and stored procedure that were defined in the MySQL Server.</p>
+<p>There is another key difference between MySQL triggers and NDB events &#8211; triggers are executed as part of the MySQL transaction making the main database change whereas NDB events happen asynchronously. The effect of this is:</p>
+<ul>
+<li>The original transaction will commit succesfully before the side effects have been processed</li>
+<li>If the process waiting for the event disappears then the side effect will not be processed &#8211; for this reson, you may want to consider an audit/clean-up scripts  to cover these cases.</li>
+</ul>
+<h2><span style="color: #333399;">Conclusion</span></h2>
+<p>Stored procedures are fully supported for users or applications which access a Cluster database through a MySQL Server (whether directly using SQL or through any of the numerous connectors that are available). Applications which access the database through the NDB API have the full flexibility of C++ to implement functionality that can achieve the same results. Triggers are available whichever method is used to access the database – albeit with different implementations and slightly different functionality.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/are-stored-procedures-available-with-mysql-cluster" data-via="wpbeginner" data-text="Are Stored Procedures available with MySQL Cluster?" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/are-stored-procedures-available-with-mysql-cluster"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/are-stored-procedures-available-with-mysql-cluster" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fare-stored-procedures-available-with-mysql-cluster&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/cluster-database" rel="tag">Cluster Database</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/ndb-api" rel="tag">NDB API</a>, <a href="/tag/stored-procedures" rel="tag">Stored Procedures</a>, <a href="/tag/triggers" rel="tag">Triggers</a></div>
+
+			</div>      
+							<div class="more_posts">
+					<span class="post_links"> &nbsp; </span>
+				</div>
+						
+
+					
+	</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="/mongodb/realm-swift-type-projections">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="/mongodb/goodbye-nspredicate-hello-realm-swift-query-api">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script></div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-787242">MySQL Cluster running on Raspberry Pi</a></li><li class="recentcomments"><span class="comment-author-link">andrew</span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link">Sai Krishnan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-661143">Get MySQL Replication up and running in 5 minutes</a></li><li class="recentcomments"><span class="comment-author-link">Nayan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-660628">Get MySQL Replication up and running in 5 minutes</a></li></ul></li>
+<li id="categories-2" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2"><a href="/category/me">Me</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="/category/mongodb">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/mysql">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/mysql-cluster">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131"><a href="/category/mysql-fabric">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="/category/mysql-replication">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214"><a href="/category/mongodb/realm">Realm</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="/category/uncategorized">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div class="tagcloud"><a href="/tag/7-4" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="/tag/apache-kafka" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="/tag/cluster" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="/tag/ha" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="/tag/high-availability" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="/tag/ios" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="/tag/java" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="/tag/javascript" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="/tag/mcm" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="/tag/mean" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="/tag/memcached" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="/tag/mobile" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="/tag/mongodb" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="/tag/mongodb-3-2" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="/tag/mongodb-atlas" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="/tag/mongodb-mobile" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="/tag/mongodb-stitch" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="/tag/mysql" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="/tag/mysql-5-6" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="/tag/mysql-cluster" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="/tag/mysql-cluster-70" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="/tag/mysql-cluster-7-1" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="/tag/mysql-cluster-7-2" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="/tag/mysql-cluster-7-3" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="/tag/mysql-cluster-7-4" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="/tag/mysql-cluster-cge" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="/tag/mysql-cluster-manager" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="/tag/mysql-enterprise-monitor" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="/tag/mysql-fabric-2" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="/tag/mysql-replication" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="/tag/mysql-utilities" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="/tag/ndb-api" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="/tag/node-js" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="/tag/nosql" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="/tag/performance" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="/tag/realm" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="/tag/replication" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="/tag/secondary" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="/tag/serverless" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="/tag/sharding" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="/tag/swift" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="/tag/swiftui" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="/tag/webcast" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="/tag/webinar" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="/tag/windows" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a></div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="/2022/03">March 2022</a></li>
+	<li><a href="/2022/02">February 2022</a></li>
+	<li><a href="/2022/01">January 2022</a></li>
+	<li><a href="/2021/12">December 2021</a></li>
+	<li><a href="/2021/11">November 2021</a></li>
+	<li><a href="/2021/09">September 2021</a></li>
+	<li><a href="/2021/08">August 2021</a></li>
+	<li><a href="/2021/07">July 2021</a></li>
+	<li><a href="/2021/06">June 2021</a></li>
+	<li><a href="/2021/05">May 2021</a></li>
+	<li><a href="/2021/04">April 2021</a></li>
+	<li><a href="/2021/02">February 2021</a></li>
+	<li><a href="/2021/01">January 2021</a></li>
+	<li><a href="/2020/12">December 2020</a></li>
+	<li><a href="/2019/03">March 2019</a></li>
+	<li><a href="/2019/01">January 2019</a></li>
+	<li><a href="/2018/12">December 2018</a></li>
+	<li><a href="/2018/11">November 2018</a></li>
+	<li><a href="/2018/10">October 2018</a></li>
+	<li><a href="/2018/09">September 2018</a></li>
+	<li><a href="/2017/09">September 2017</a></li>
+	<li><a href="/2017/03">March 2017</a></li>
+	<li><a href="/2017/02">February 2017</a></li>
+	<li><a href="/2017/01">January 2017</a></li>
+	<li><a href="/2016/12">December 2016</a></li>
+	<li><a href="/2016/11">November 2016</a></li>
+	<li><a href="/2016/09">September 2016</a></li>
+	<li><a href="/2016/01">January 2016</a></li>
+	<li><a href="/2015/11">November 2015</a></li>
+	<li><a href="/2015/10">October 2015</a></li>
+	<li><a href="/2015/09">September 2015</a></li>
+	<li><a href="/2015/06">June 2015</a></li>
+	<li><a href="/2015/04">April 2015</a></li>
+	<li><a href="/2015/03">March 2015</a></li>
+	<li><a href="/2015/02">February 2015</a></li>
+	<li><a href="/2015/01">January 2015</a></li>
+	<li><a href="/2014/12">December 2014</a></li>
+	<li><a href="/2014/11">November 2014</a></li>
+	<li><a href="/2014/10">October 2014</a></li>
+	<li><a href="/2014/09">September 2014</a></li>
+	<li><a href="/2014/08">August 2014</a></li>
+	<li><a href="/2014/07">July 2014</a></li>
+	<li><a href="/2014/06">June 2014</a></li>
+	<li><a href="/2014/05">May 2014</a></li>
+	<li><a href="/2014/04">April 2014</a></li>
+	<li><a href="/2014/03">March 2014</a></li>
+	<li><a href="/2014/02">February 2014</a></li>
+	<li><a href="/2014/01">January 2014</a></li>
+	<li><a href="/2013/12">December 2013</a></li>
+	<li><a href="/2013/11">November 2013</a></li>
+	<li><a href="/2013/09">September 2013</a></li>
+	<li><a href="/2013/08">August 2013</a></li>
+	<li><a href="/2013/07">July 2013</a></li>
+	<li><a href="/2013/06">June 2013</a></li>
+	<li><a href="/2013/05">May 2013</a></li>
+	<li><a href="/2013/03">March 2013</a></li>
+	<li><a href="/2013/02">February 2013</a></li>
+	<li><a href="/2013/01">January 2013</a></li>
+	<li><a href="/2012/12">December 2012</a></li>
+	<li><a href="/2012/11">November 2012</a></li>
+	<li><a href="/2012/09">September 2012</a></li>
+	<li><a href="/2012/07">July 2012</a></li>
+	<li><a href="/2012/06">June 2012</a></li>
+	<li><a href="/2012/05">May 2012</a></li>
+	<li><a href="/2012/04">April 2012</a></li>
+	<li><a href="/2012/03">March 2012</a></li>
+	<li><a href="/2012/02">February 2012</a></li>
+	<li><a href="/2012/01">January 2012</a></li>
+	<li><a href="/2011/12">December 2011</a></li>
+	<li><a href="/2011/11">November 2011</a></li>
+	<li><a href="/2011/10">October 2011</a></li>
+	<li><a href="/2011/09">September 2011</a></li>
+	<li><a href="/2011/07">July 2011</a></li>
+	<li><a href="/2011/06">June 2011</a></li>
+	<li><a href="/2011/05">May 2011</a></li>
+	<li><a href="/2011/04">April 2011</a></li>
+	<li><a href="/2011/03">March 2011</a></li>
+	<li><a href="/2011/02">February 2011</a></li>
+	<li><a href="/2011/01">January 2011</a></li>
+	<li><a href="/2010/12">December 2010</a></li>
+	<li><a href="/2010/11">November 2010</a></li>
+	<li><a href="/2010/10">October 2010</a></li>
+	<li><a href="/2010/09">September 2010</a></li>
+	<li><a href="/2010/08">August 2010</a></li>
+	<li><a href="/2010/07">July 2010</a></li>
+	<li><a href="/2010/06">June 2010</a></li>
+	<li><a href="/2010/05">May 2010</a></li>
+	<li><a href="/2010/04">April 2010</a></li>
+	<li><a href="/2010/03">March 2010</a></li>
+	<li><a href="/2010/02">February 2010</a></li>
+	<li><a href="/2010/01">January 2010</a></li>
+	<li><a href="/2009/12">December 2009</a></li>
+	<li><a href="/2009/11">November 2009</a></li>
+	<li><a href="/2009/10">October 2009</a></li>
+	<li><a href="/2009/09">September 2009</a></li>
+	<li><a href="/2009/08">August 2009</a></li>
+	<li><a href="/2009/07">July 2009</a></li>
+	<li><a href="/2009/06">June 2009</a></li>
+	<li><a href="/2009/05">May 2009</a></li>
+	<li><a href="/2009/04">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 --></body>
+</html>

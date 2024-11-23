@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Memcached &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/memcached/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Fri, 03 Oct 2014 17:18:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>SQL/NoSQL and MySQL Cluster 7.4 Presentations now available</title>
+		<link>/mysql/sqlnosql-and-mysql-cluster-7-4-presentations-now-available</link>
+					<comments>/mysql/sqlnosql-and-mysql-cluster-7-4-presentations-now-available#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 03 Oct 2014 17:18:53 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Cluster]]></category>
+		<category><![CDATA[Memcached]]></category>
+		<category><![CDATA[node.js]]></category>
+		<category><![CDATA[NoSQL]]></category>
+		<category><![CDATA[secondary]]></category>
+		<category><![CDATA[sql]]></category>
+		<guid isPermaLink="false">/?p=3963</guid>
+
+					<description><![CDATA[My 2 sessions from 2014&#8217;s MySQL Central at Oracle OpenWorld are now available: NoSQL and SQL: The Best of Both Worlds [CON2853] There’s a lot of excitement about NoSQL data stores, with the promise of simple access patterns, flexible schemas, scalability, and high availability. The downside comes in the form of losing ACID transactions, consistency,]]></description>
+										<content:encoded><![CDATA[<p>My 2 sessions from 2014&#8217;s MySQL Central at Oracle OpenWorld are now available:</p>
+<h2><a href="https://oracleus.activeevents.com/2014/connect/sessionDetail.ww?SESSION_ID=2853" title="NoSQL and SQL: The Best of Both Worlds [CON2853]" target="_blank">NoSQL and SQL: The Best of Both Worlds [CON2853]</a></h2>
+<p>There’s a lot of excitement about NoSQL data stores, with the promise of simple access patterns, flexible schemas, scalability, and high availability. The downside comes in the form of losing ACID transactions, consistency, flexible queries, and data integrity checks. What if you could have the best of both worlds? This session shows how MySQL Cluster provides simultaneous SQL and native NoSQL access to your data—whether it’s in a simple key-value API (memcached) or REST, JavaScript, Java, or C++. You will hear how the MySQL Cluster architecture delivers in-memory real-time performance; 99.999 percent availability; online maintenance; and linear, horizontal scalability through transparent autosharding.</p>
+<p><iframe src="//www.slideshare.net/slideshow/embed_code/39848914" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></p>
+<h2><a href="https://oracleus.activeevents.com/2014/connect/sessionDetail.ww?SESSION_ID=3815" title="MySQL Cluster: Dive into the Latest Developments [CON3815]" target="_blank">MySQL Cluster: Dive into the Latest Developments [CON3815]</a></h2>
+<p>Wednesday, Oct 1, 3:30 PM &#8211; 4:15 PM &#8211; Moscone South &#8211; 250</p>
+<p>I&#8217;ll be co-presenting this session with <a href="https://oracleus.activeevents.com/2014/connect/speakerDetail.ww?PERSON_ID=90A0D4EEB0B047DE9D2C77FB01BF5D04&#038;tclass=popup" title="Bernd Ocklin - Director MySQL Cluster, Oracle" target="_blank">Bernd Ocklin &#8211; Director MySQL Cluster, Oracle</a></p>
+<p>MySQL Cluster does more than scale beyond a billion transactions per minute. It’s also the in-memory database at the heart of mobile phone networks and online games. Scaling for the masses. A touch of your mobile phone’s green button likely has already gotten you in contact with MySQL Cluster. Driven by these extreme use cases, this session covers how to build business-critical scalable solutions with MySQL Cluster.</p>
+<p><iframe src="//www.slideshare.net/slideshow/embed_code/39848913" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql/sqlnosql-and-mysql-cluster-7-4-presentations-now-available/feed</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Direct access to MySQL Cluster through Memcached API &#8211; free webinar</title>
+		<link>/mysql-cluster/direct-access-to-mysql-cluster-through-memcached-api-free-webinar</link>
+					<comments>/mysql-cluster/direct-access-to-mysql-cluster-through-memcached-api-free-webinar#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 18 Jul 2011 09:21:38 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Memcached]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.2]]></category>
+		<category><![CDATA[NoSQL]]></category>
+		<guid isPermaLink="false">/?p=1901</guid>
+
+					<description><![CDATA[As described in an earlier post Memcached is an extremely popular caching layer used in most big web properties and we&#8217;re adding the ability to access MySQL Cluster directly using the familiar Memcached key-value/NoSQL API without needing to go through the MySQL Server. There is a huge amount of flexibility built into this solution &#8211; including:]]></description>
+										<content:encoded><![CDATA[<div id="attachment_1704" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/04/Memcached_layer1.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-1704" class="size-medium wp-image-1704" title="Memcached_layer" src="/wp-content/uploads/2011/04/Memcached_layer1-300x224.jpg" alt="" width="300" height="224" /></a><p id="caption-attachment-1704" class="wp-caption-text">Memcached access to MySQL Cluster</p></div>
+<p>As described in an <a href="/mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster/" target="_blank">earlier post</a> Memcached is an extremely popular caching layer used in most big web properties and we&#8217;re adding the ability to access MySQL Cluster directly using the familiar Memcached key-value/NoSQL API without needing to go through the MySQL Server. There is a huge amount of flexibility built into this solution &#8211; including:</p>
+<ul>
+<li>Decide what data should be held only in the Memcached server; what should be written straight through to MySQL Cluster and then discarded  and what data should be cached in Memcached but persisted in MySQL Cluster</li>
+<li>Where data is held both in Cluster and the Memcached server, they can automatically be kept in sync</li>
+<li>By default it&#8217;s completely schema-less, all key-value pairs will be transparently stored in a single table within MySQL Cluster behind the scenes</li>
+<li>Can map key-prefixes to columns in MySQL Cluster tables &#8211; allowing simultaneous access to the same data using SQL.</li>
+</ul>
+<div>Mat Keep along with JD Duncan (lead developer for this functionality) will be hosting a free webinar on this topic (and I&#8217;ll be helping with the Q&amp;A) on Wednesday (20th July 2011) at 9:00 am Pacific (17:00 UK, 18:00 CET). As always, please <a href="http://www.mysql.com/news-and-events/web-seminars/display-643.html?p=twitter" target="_blank">register for the event</a> even if you can&#8217;t make this time as you&#8217;ll be sent a link to the recording.</div>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/direct-access-to-mysql-cluster-through-memcached-api-free-webinar/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Webinar: MySQL Cluster, Scaling Web Databases with Auto-Partitioning and SQL/NoSQL Access</title>
+		<link>/mysql-cluster/upcoming-webinar-mysql-cluster-scaling-web-databases-with-auto-partitioning-and-sqlnosql-access</link>
+					<comments>/mysql-cluster/upcoming-webinar-mysql-cluster-scaling-web-databases-with-auto-partitioning-and-sqlnosql-access#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 06 Jun 2011 16:00:13 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Memcached]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.1]]></category>
+		<category><![CDATA[MySQL Cluster 7.2]]></category>
+		<category><![CDATA[NoSQL]]></category>
+		<guid isPermaLink="false">/?p=1817</guid>
+
+					<description><![CDATA[Update: webinar replay is now available from http://event.on24.com/r.htm?e=311660&#38;s=1&#38;k=3DCFE1CB3E1CF3F0FD0969DC66D93989 On Thursday 26th May Mat Keep and I will be presenting a webinar on how MySQL Cluster can deliver linear scalability &#8211; together with some tips on how to achieve it. As always the webinar is free but you need to register here. &#160; The session starts on]]></description>
+										<content:encoded><![CDATA[<div id="attachment_1816" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/05/Scale-out.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1816" class="size-medium wp-image-1816" title="Scale-out" src="/wp-content/uploads/2011/05/Scale-out-300x225.jpg" alt="" width="300" height="225" /></a><p id="caption-attachment-1816" class="wp-caption-text">Scale-out with MySQL Cluster</p></div>
+<p>Update: webinar replay is now available from <a href="http://event.on24.com/r.htm?e=311660&amp;s=1&amp;k=3DCFE1CB3E1CF3F0FD0969DC66D93989" target="_blank">http://event.on24.com/r.htm?e=311660&amp;s=1&amp;k=3DCFE1CB3E1CF3F0FD0969DC66D93989</a></p>
+<p><a href="http://www.mysql.com/news-and-events/on-demand-webinars/display-od-613.html" target="_blank"></a>On Thursday 26th May Mat Keep and I will be presenting a webinar on how MySQL Cluster can deliver linear scalability &#8211; together with some tips on how to achieve it. As always the webinar is free but you need to <a href="http://www.mysql.com/news-and-events/web-seminars/display-633.html" target="_blank">register here</a>.</p>
+<p>&nbsp;</p>
+<p>The session starts on Thu, May 26 at	17:00 UK time, 18:00 Central European Time, 09:00 Pacific.</p>
+<p>This webinar will discuss best practices in scaling services on-demand for high volumes of reads and writes, and provide insight on the range of NoSQL and SQL access methods available to developers, specifically covering:</p>
+<ul>
+<li>Automatic partitioning (sharding) for high scalability</li>
+<li>On-line scaling of the cluster across commodity hardware</li>
+<li>SQL and NoSQL interfaces, and what should be used when</li>
+<li>On-line updating of schema design to accommodate rapidly evolving applications</li>
+<li>Resources to get started</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/upcoming-webinar-mysql-cluster-scaling-web-databases-with-auto-partitioning-and-sqlnosql-access/feed</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Webinar today &#8211; Scaling Web Services with MySQL Cluster, Part 1: An Alternative to MySQL Server &#038; memcached</title>
+		<link>/mysql-cluster/webinar-today-scaling-web-services-with-mysql-cluster-part-1-an-alternative-to-mysql-server-memcached</link>
+					<comments>/mysql-cluster/webinar-today-scaling-web-services-with-mysql-cluster-part-1-an-alternative-to-mysql-server-memcached#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Sat, 26 Jun 2010 10:05:42 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Memcached]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[web]]></category>
+		<category><![CDATA[webinar]]></category>
+		<guid isPermaLink="false">/?p=1097</guid>
+
+					<description><![CDATA[The replay of this webinar is now available from http://www.mysql.com/news-and-events/on-demand-webinars/display-od-545.html MySQL and memcached has become, and will remain, the foundation for many dynamic web services with proven deployments in some of the largest and most prolific names on the web. There are classes of web services however that are update-intensive, demanding real-time responsiveness and continuous]]></description>
+										<content:encoded><![CDATA[<p>The replay of this webinar is now available from <a href="http://www.mysql.com/news-and-events/on-demand-webinars/display-od-545.html" target="_blank">http://www.mysql.com/news-and-events/on-demand-webinars/display-od-545.html</a></p>
+<p>MySQL and memcached has become, and will remain, the foundation for many dynamic web services with proven deployments in some of the largest and most prolific names on the web. There are classes of web services however that are update-intensive, demanding real-time responsiveness and continuous availability. In these cases, MySQL Cluster provides the familiarity and ease-of-use of the regular MySQL Server, while delivering significantly higher levels of write performance with less complexity, lower latency and 99.999% availability. This webinar will discuss the use-cases for both approaches, and provide an insight into how MySQL Cluster is enabling users to scale their update-intensive web services.</p>
+<p>The webinar starts at 09:00 Pacific/17:00 UK/18:00 CET today (June 9th 2010).</p>
+<p>Still time to register (for free) at <a href="http://www.mysql.com/news-and-events/web-seminars/display-545.html" target="_blank">http://www.mysql.com/news-and-events/web-seminars/display-545.html</a> &#8211; even if you can&#8217;t attend, this way you&#8217;ll get sent a link to the charts and replay.</p>
+<p>EAVB_ZZDDGVLWJR</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/webinar-today-scaling-web-services-with-mysql-cluster-part-1-an-alternative-to-mysql-server-memcached/feed</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Scaling Web Services with MySQL Cluster: An Alternative Approach to MySQL &#038; memcached</title>
+		<link>/mysql-cluster/scaling-web-services-with-mysql-cluster-an-alternative-approach-to-mysql-memcached</link>
+					<comments>/mysql-cluster/scaling-web-services-with-mysql-cluster-an-alternative-approach-to-mysql-memcached#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 24 May 2010 10:56:10 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Memcached]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<guid isPermaLink="false">/?p=1093</guid>
+
+					<description><![CDATA[A new white paper is available from http://www.mysql.com/why-mysql/white-papers/mysql_wp_cluster_ScalingWebServices.php MySQL and memcached has become, and will remain, the foundation for many dynamic web services with proven deployments in some of the largest and most prolific names on the web. There are classes of web services however that are highly transactional and update-intensive, demanding real-time responsiveness and]]></description>
+										<content:encoded><![CDATA[<p>A new white paper is available from <a href="http://www.mysql.com/why-mysql/white-papers/mysql_wp_cluster_ScalingWebServices.php" target="_blank">http://www.mysql.com/why-mysql/white-papers/mysql_wp_cluster_ScalingWebServices.php</a></p>
+<p>MySQL and memcached has become, and will remain, the foundation for many dynamic web services with proven deployments in some of the largest and most prolific names on the web.</p>
+<p>There are classes of web services however that are highly transactional and update-intensive, demanding real-time responsiveness and continuous availability. In these cases, MySQL Cluster provides the familiarity and ease-of-use of the regular MySQL Server, while delivering significantly higher levels of write performance with less complexity, lower latency and 99.999% availability.</p>
+<p>This whitepaper will discuss the use-cases for both approaches, and provides an insight into how MySQL Cluster is enabling users to scale update-intensive web services.</p>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow: hidden;">Scaling Web Services with MySQL Cluster: An Alternative Approach to MySQL &amp; memcached</div>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/scaling-web-services-with-mysql-cluster-an-alternative-approach-to-mysql-memcached/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

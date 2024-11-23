@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>angular2 &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/angular2/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 05 Sep 2017 13:15:53 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>The Modern Application Stack – Part 4: Building a Client UI Using Angular 2 (formerly AngularJS) &#038; TypeScript</title>
+		<link>/mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript</link>
+					<comments>/mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 17 Feb 2017 08:58:40 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[angular]]></category>
+		<category><![CDATA[angular.js]]></category>
+		<category><![CDATA[angular2]]></category>
+		<category><![CDATA[MEAN]]></category>
+		<category><![CDATA[mean stack]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[mongopop]]></category>
+		<category><![CDATA[observables]]></category>
+		<category><![CDATA[typescript]]></category>
+		<guid isPermaLink="false">/?p=4387</guid>
+
+					<description><![CDATA[Introduction This is the fourth in a series of blog posts examining technologies such as Angular that are driving the development of modern web and mobile applications. &#8220;Modern Application Stack – Part 1: Introducing The MEAN Stack&#8221; introduced the technologies making up the MEAN (MongoDB, Express, Angular, Node.js) and MERN (MongoDB, Express, React, Node.js) Stacks,]]></description>
+										<content:encoded><![CDATA[<h2>Introduction</h2>
+<p>This is the fourth in a series of blog posts examining technologies such as Angular that are driving the development of modern web and mobile applications.</p>
+<p><a href="/mongodb/modern-application-stack-part-1-introducing-the-mean-stack" title="The MEAN Stack - with MongoDB">&#8220;Modern Application Stack – Part 1: Introducing The MEAN Stack&#8221;</a> introduced the technologies making up the <strong>MEAN</strong> (<strong>M</strong>ongoDB, <strong>E</strong>xpress, <strong>A</strong>ngular, <strong>N</strong>ode.js) and <strong>MERN</strong> (<strong>M</strong>ongoDB, <strong>E</strong>xpress, <strong>R</strong>eact, <strong>N</strong>ode.js) Stacks, why you might want to use them, and how to combine them to build your web application (or your native mobile or desktop app).</p>
+<p>The remainder of the series is focussed on working through the end to end steps of building a real (albeit simple) application. – <em>MongoPop</em>. <a href="/mongodb/mean_stack_2_mongodb_node_js" title="MEAN Stack MERN Stack - Node.js &amp; MongoDB"><em>Part 2: Using MongoDB With Node.js</em></a> created an environment where we could work with a MongoDB database from Node.js; it also created a simplified interface to the MongoDB Node.js Driver. <a href="/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a> built on Part 2 by using Express.js to add a REST API which will be used by the clients that we implement in the final posts.</p>
+<p>This post demonstrates how to use Angular 2 (the evolution of Angular.js) to implement a remote web-app client for the <em>Mongopop</em> application.</p>
+<h2>Angular 2 (recap)</h2>
+<p><strong>Angular</strong>, originally created and maintained by Google, runs your JavaScript code within the user&#8217;s web browsers to implement a <em>reactive</em> user interface (UI). A reactive UI gives the user immediate feedback as they give their input (in contrast to static web forms where you enter all of your data, hit &#8220;Submit&#8221; and wait.</p>
+<p><center><img decoding="async" src="/wp-content/uploads/2017/02/Reactive_MongoDB_URI.gif" alt="Reactive Angular 2 application" title="Reactive Angular 2 application" /></center></p>
+<p>Version 1 of Angular was called AngularJS but it was shortened to Angular in Angular 2 after it was completely rewritten in <a href="https://www.typescriptlang.org/">Typescript</a> (a superset of JavaScript) – Typescript is now also the recommended language for Angular apps to use.</p>
+<p>You implement your application front-end as a set of <em>components</em> – each of which consists of your JavaScript (Typescript) code and an HTML template that includes hooks to execute and use the results from your Typescript functions. Complex application front-ends can be crafted from many simple (optionally nested) components.</p>
+<p>Angular application code can also be executed on the back-end server rather than in a browser, or as a native desktop or mobile application.</p>
+<p><img decoding="async" src="/wp-content/uploads/2017/02/MEAN_Stack.png" alt="MEAN Stack Architecture" title="MEAN Stack Architecture" /></p>
+<h2>Downloading, running, and using the Mongopop application</h2>
+<p>The Angular client code is included as part if the Mongopop package installed in <a href="/mongodb/mean_stack_2_mongodb_node_js" title="Using MongoDB With Node.js">Part 2: Using MongoDB With Node.js</a>.</p>
+<p>The back-end application should be run in the same way as in parts 2 &amp; 3. The client software needs to be <em>transpiled</em> from Typescript to JavaScript – the client software running in a remote browser can then download the JavaScript files and execute them.</p>
+<p>The existing <code>package.json</code> file includes a script for transpiling the Angular 2 code:</p>
+<pre><code class="js">  "scripts": {
+        ...
+    "tsc:w": "cd public &amp;&amp; npm run tsc:w",
+        ...  
+},
+</code></pre>
+<p>That <code>tsc:w</code> delegates the work to a script of the same name defined in <code>public/package.json</code>;</p>
+<pre><code class="js">  "scripts": {
+        ...
+    "tsc:w": "tsc -w",
+        ...  
+},
+</code></pre>
+<p><code>tsc -w</code> continually monitors the client app&#8217;s Typescript files and reruns the transpilation every time they are edited.</p>
+<p>To start the continual transpilation of the Angular 2 code:</p>
+<pre><code class="js">npm run rsc:w
+</code></pre>
+<h2>Component architecture of the Mongopop Angular UI</h2>
+<p>Angular applications (both AngularJS and Angular2) are built from one or more, nested components – Mongopop is no exception:</p>
+<p><img decoding="async" src="/wp-content/uploads/2017/02/AngularComponents.png" alt="Mongopop Angular2 Components" title="MEAN Stack Angular Components" /></p>
+<p>The main component (<code>AppComponent)</code>contains the HTML and logic for connecting to the database and orchestrating its sub-components. Part of the definition of <code>AppComponent</code> is meta data/decoration to indicate that it should be loaded at the point that a <code>my-app</code> element (<code>&lt;my-app&gt;&lt;/my-app&gt;</code>) appears in the <code>index.html</code> file (once the component is running, its output replaces whatever holding content sits between <code>&lt;my-app&gt;</code> and <code>&lt;/my-app&gt;</code>). <code>AppComponent</code> is implemented by:</p>
+<ul>
+<li>A Typescript file containing the <code>AppComponent</code> class (including the data members, initialization code, and member functions</li>
+<li>A HTML file containing
+<ul>
+<li>HTML layout</li>
+<li>Rendering of data members</li>
+<li>Elements to be populated by sub-components</li>
+<li>Data members to be passed down for use by sub-components</li>
+<li>Logic (e.g. what to do when the user changes the value in a form)</li>
+</ul>
+</li>
+<li>(Optionally) a <em>CSS</em> file to customise the appearance of the rendered content</li>
+</ul>
+<p>Mongopop is a reasonably flat application with only one layer of sub-components below <code>AppComponent</code>, but more complex applications may nest deeper.</p>
+<p>Changes to a data value by a parent component will automatically be propagated to a child – it&#8217;s best practice to have data flow in this direction as much as possible. If a data value is changed by a child <em>and</em> the parent (either directly or as a proxy for one of its other child components) needs to know of the change, then the child triggers an event. That event is processed by a handler registered by the parent – the parent may then explicitly act on the change, but even if it does nothing explicit, the change flows to the other child components.</p>
+<p>This table details what data is passed from <code>AppComponent</code> down to each of its children and what data change events are sent back up to <code>AppComponent</code> (and from there, back down to the other children):</p>
+<table class='table table-bordered' summary="Angular components for Mongopop Angular client application">
+<caption><strong>Flow of data between Angular components</strong></caption>
+<thead>
+<tr>
+<th>Child component</th>
+<th>Data passed down</th>
+<th>Data changes passed back up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="3">
+<pre style="border:0px; background-color:#fff">AddComponent</pre>
+</td>
+<td>Data service</td>
+<td rowspan="3">Collection name</td>
+</tr>
+<tr>
+<td>Collection name</td>
+</tr>
+<tr>
+<td>Mockaroo URL</td>
+</tr>
+<tr>
+<td rowspan="2">
+<pre style="border:0px; background-color:#fff">CountComponent</pre>
+</td>
+<td>Data service</td>
+<td rowspan="2">Collection name</td>
+</tr>
+<tr>
+<td>Collection name</td>
+</tr>
+<tr>
+<td rowspan="2">
+<pre style="border:0px; background-color:#fff">UpdateComponent</pre>
+</td>
+<td>Data service</td>
+<td rowspan="2">Collection name</td>
+</tr>
+<tr>
+<td>Collection name</td>
+</tr>
+<tr>
+<td rowspan="2">
+<pre style="border:0px; background-color:#fff">SampleComponent</pre>
+</td>
+<td>Data service</td>
+<td rowspan="2">Collection name</td>
+</tr>
+<tr>
+<td>Collection name</td>
+</tr>
+</tbody>
+</table>
+<h2>What are all of these files?</h2>
+<p>To recap, the files and folders covered earlier in this series:</p>
+<ul>
+<li><strong><code>package.json</code></strong>: Instructs the Node.js package manager (<code>npm</code>) what it needs to do; including which dependency packages should be installed</li>
+<li><strong><code>node_modues</code></strong>: Directory where <code>npm</code> will install packages</li>
+<li><strong><code>node_modues/mongodb</code></strong>: The <a href="https://mongodb.github.io/node-mongodb-native/">MongoDB driver for Node.js</a></li>
+<li><strong><code>node_modues/mongodb-core</code></strong>: Low-level MongoDB driver library; available for framework developers (application developers should avoid using it directly)</li>
+<li><strong><code>javascripts/db.js</code></strong>: A JavaScript module we&#8217;ve created for use by our Node.js apps (in this series, it will be Express) to access MongoDB; this module in turn uses the MongoDB Node.js driver.</li>
+<li><strong><code>config.js</code></strong>: Contains the application–specific configuration options</li>
+<li><strong><code>bin/www</code></strong>: The script that starts an Express application; this is invoked by the <code>npm start</code> script within the <code>package.json</code> file. Starts the HTTP server, pointing it to the <code>app</code> module in <code>app.js</code></li>
+<li><strong><code>app.js</code></strong>: Defines the main back-end application module (<code>app</code>). Configures:
+<ul>
+<li>That the application will be run by Express</li>
+<li>Which routes there will be &amp; where they are located in the file system (<code>routes</code> directory)</li>
+<li>What view engine to use (Jade in this case)</li>
+<li>Where to find the <em>views</em> to be used by the view engine (<code>views</code> directory)</li>
+<li>What middleware to use (e.g. to parse the JSON received in requests)</li>
+<li>Where the static files (which can be read by the remote client) are located (<code>public</code> directory)</li>
+<li>Error handler for queries sent to an undefined route</li>
+</ul>
+</li>
+<li><strong><code>views</code></strong>: Directory containing the templates that will be used by the Jade view engine to create the HTML for any pages generated by the Express application (for this application, this is just the error page that&#8217;s used in cases such as mistyped routes (&#8220;404 Page not found&#8221;))</li>
+<li><strong><code>routes</code></strong>: Directory containing one JavaScript file for each Express route
+<ul>
+<li><strong><code>routes/pop.js</code></strong>: Contains the Express application for the <code>/pop</code> route; this is the implementation of the Mongopop REST API. This defines methods for all of the supported route paths.</li>
+</ul>
+</li>
+<li><strong><code>public</code></strong>: Contains all of the static files that must be accessible by a remote client (e.g., our Angular to React apps).</li>
+</ul>
+<p>Now for the <em>new files</em> that implement the Angular client (note that because it must be downloaded by a remote browser, it is stored under the <code>public</code> folder):</p>
+<ul>
+<li><strong><code>public/package.json</code></strong>: Instructs the Node.js package manager (<code>npm</code>) what it needs to do; including which dependency packages should be installed (i.e. the same as <code>/package.json</code> but this is for the Angular client app)</li>
+<li><strong><code>public/index.html</code></strong>: Entry point for the application; served up when browsing to <code>http://&lt;backend-server&gt;/</code>. Imports <code>public/system.config.js</code></li>
+<li><strong><code>public/system.config.js</code></strong>: Configuration information for the Angular client app; in particular defining the remainder of the directories and files:
+<ul>
+<li><strong><code>public/app</code></strong>: Source files for the client application – including the Typescript files (and the transpiled JavaScript files) together the HTML and any custom CSS files. Combined, these define the Angular components.
+<ul>
+<li><strong><code>public/app/main.ts</code></strong>: Entry point for the Angular app. Bootstraps <code>public/app/app.module.ts</code></li>
+<li><strong><code>public/app/app.module.ts</code></strong>: Imports required modules, declares the application components and any services. Declares which component to bootstrap (<code>AppComponent</code> which is implemented in <code>public/app/app.component.*</code>)</li>
+<li><strong><code>public/app/app.component.html</code></strong>: HTML template for the top-level component. Includes elements that are replaced by sub-components</li>
+<li><strong><code>public/app/app.component.ts</code></strong>: Implements the <code>AppComponent</code> class for the top-level component</li>
+<li><strong><code>public/app/X.component.html</code></strong>: HTML template for sub-component <em>X</em></li>
+<li><strong><code>public/app/X.component.ts</code></strong>: Implements the class for sub-component <em>X</em></li>
+<li><strong><code>AddDocsRequest.ts</code></strong>, <strong><code>ClientConfig.ts</code></strong>, <strong><code>CountDocsRequest.ts</code></strong>, <strong><code>MongoResult.ts</code></strong>, <strong><code>MongoReadResult.ts</code></strong>, <strong><code>SampleDocsRequest.ts</code></strong>, &amp; <strong><code>UpdateDocsRequest.ts</code></strong>: Classes that match the request parameters and response formats of the REST API that&#8217;s used to access the back-end</li>
+<li><strong><code>data.service.ts</code></strong>: Service used to access the back-end REST API (mostly used to access the database)</li>
+<li><strong><code>X.js*</code> &amp; *<code>X.js.map</code></strong>: Files which are generated by the transpilation of the Typescript files.</li>
+</ul>
+</li>
+<li><strong><code>public/node-modules</code></strong>: Node.js modules used by the Angular app (as opposed to the Express, server-side Node.js modules)</li>
+<li><strong><code>public/styles.css</code></strong>: CSS style sheet (imported by <code>public/index.html)</code> – applies to all content in the home page, not just content added by the components</li>
+<li><strong><code>public/stylesheets/styles.css</code></strong>: CSS style sheet (imported by <code>public/app/app.component.ts</code> and the other components) – note that each component could have their own, specialized style sheet instead</li>
+</ul>
+</li>
+</ul>
+<h2>&#8220;Boilerplate&#8221; files and how they get invoked</h2>
+<p>This is an imposing number of new files and this is one of the reasons that Angular is often viewed as the more complex layer in the application stack. One of the frustrations for many developers, is the number of files that need to be created and edited on the client side before your first line of component/application code is executed. The good news is that there is a consistent pattern and so it&#8217;s reasonable to fork you app from an existing project – the <a href="https://github.com/am-MongoDB/MongoDB-Mongopop">Mongopop app can be cloned from GitHub</a> or, the <a href="https://angular.io/docs/ts/latest/cli-quickstart.html">Angular QuickStart</a> can be used as your starting point.</p>
+<p>As a reminder, here is the relationship between these common files (and our application-specific components):</p>
+<p><img decoding="async" src="/wp-content/uploads/2017/02/Angular-file-links.png" alt="Angular2 boilerplate files" title="Angular2 boilerplate files" /></p>
+<h2>Contents of the &#8220;boilerplate&#8221; files</h2>
+<p>This section includes the contents for each of the non-component files and then remarks on some of the key points.</p>
+<p><em><code>public/package.json</code></em></p>
+<p><script src="https://gist.github.com/am-MongoDB/9f68574012cc11d1945426ea0d5b7f2b.js"></script></p>
+<p>The <code>scripts</code> section defines what <code>npm</code> should do when you type <code>npm run &lt;command-name&gt;</code> from the command line. Of most interest is the <code>tsc:w</code> script – this is how the transpiler is launched. After transpiling all of the <code>.ts</code> Typescript files, it watches them for changes – retranspiling as needed.</p>
+<p>Note that the <code>dependencies</code> are for this Angular client. They will be installed in <code>public/node_modules</code> when <code>npm install</code> is run (for Mongopop, this is done automatically when building the <a href="https://github.com/am-MongoDB/MongoDB-Mongopop" title="Mongopop – MEAN application for populating MongoDB">full project</a> ).</p>
+<p><em><code>public/index.html</code></em></p>
+<p><script src="https://gist.github.com/am-MongoDB/55538a628996f34ccbf4949493e716a9.js"></script></p>
+<p>Focussing on the key lines, the application is started using the <code>app</code> defined in <code>systemjs.config.js</code>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/0ad4193353ecfa6678980deed8c5bffc.js"></script></p>
+<p><script src="systemjs.config.js"></script></p>
+<p><script>
+  System.import('app').catch(function(err){ console.error(err); });
+</script></p>
+<p>And the output from the application replaces the placeholder text in the <code>my-app</code> element:</p>
+<pre><code class="html">&lt;my-app&gt;Loading MongoPop client app...&lt;/my-app&gt;
+</code></pre>
+<p><em><code>public/systemjs.config.js</code></em></p>
+<p><script src="https://gist.github.com/am-MongoDB/ef2a2dd2627f0ca8c25c91f937658188.js"></script></p>
+<p><code>packages.app.main</code> is mapped to <code>public/app/main.js</code> – note that <code>main.js</code>  is referenced rather than <code>main.ts</code> as it is always the transpiled code that is executed. This is what causes <code>main.ts</code> to be run.</p>
+<p><em><code>public/app/main.ts</code></em></p>
+<p><script src="https://gist.github.com/am-MongoDB/c0051df45939be6b09166bde5021eebe.js"></script></p>
+<p>This simply imports and bootstraps the <code>AppModule</code> class from <code>public/app/app.module.ts</code> (actually <code>app.module.js</code>)</p>
+<p><em><code>public/app/app.module.ts</code></em></p>
+<p><script src="https://gist.github.com/am-MongoDB/fbea98f7a6f983cd169eaaa8ec861bc3.js"></script></p>
+<p>This is the first file to actually reference the components which make up the Mongopop application!</p>
+<p>Note that <code>NgModule</code> is the core module for Angular and must always be imported; for this application <code>BrowserModule</code>, <code>HttpModule</code>, and <code>FormsModule</code> are also needed.</p>
+<p>The <code>import</code> commands also bring in the (<code>.js</code>) files for each of the components as well as the data service.</p>
+<p>Following the imports, the <code>@NgModule</code> <em>decorator function</em> takes a JSON object that tells Angular how to run the code for this module (<code>AppModule</code>) – including the list of imported modules, components, and services as well as the module/component needed to bootstrap the actual application (<code>AppComponent</code>).</p>
+<h2>Typescript &amp; Observables (before getting into component code)</h2>
+<p>As a reminder from <a href="/mongodb/modern-application-stack-part-1-introducing-the-mean-stack" title="MEAN stack, MERN stack">Part 1: Introducing The MEAN Stack (and the young MERN upstart)</a>; the most recent, widely supported version is ECMAScript 6 – normally referred to as <a href="http://es6-features.org/#Constants">/ES6/</a>. ES6 is supported by recent versions of Chrome, Opera, Safari, and Node.js). Some platforms (e.g. Firefox and Microsoft Edge) do not yet support all features of ES6. These are some of the key features added in ES6:</p>
+<ul>
+<li>Classes &amp; modules</li>
+<li>Promises – a more convenient way to handle completion or failure of synchronous function calls (compared to callbacks)</li>
+<li>Arrow functions – a concise syntax for writing function expressions</li>
+<li>Generators – functions that can yield to allow others to execute</li>
+<li>Iterators</li>
+<li>Typed arrays</li>
+</ul>
+<p><a href="https://www.typescriptlang.org/">Typescript</a> is a superset of ES6 (JavaScript); adding static type checking. Angular 2 is written in Typescript and Typescript is the primary language to be used when writing code to run in Angular 2.</p>
+<p>Because ES6 and Typescript are not supported in all environments, it is common to <em>transpile</em> the code into an earlier version of JavaScript to make it more portable. <code>tsc</code> is used to transpile Typescript into JavaScript.</p>
+<p>And of course, JavaScript is augmented by numerous libraries. The Mongopop Angular 2 client uses <strong>Observables</strong> from the <a href="https://github.com/Reactive-Extensions/RxJS">RxJS reactive libraries</a> which greatly simplify making asynchronous calls to the back-end (a pattern historically referred to as AJAX).</p>
+<p><a href="http://reactivex.io/documentation/observable.html">RxJS Observables</a> fulfil a similar role to ES6 promises in that they simplify the code involved with asynchronous function calls (removing the need to explicitly pass callback functions). Promises are more contained than Observables, they make a call and later receive a single signal that the asynchronous activity triggered by the call succeeded or failed. Observables can have a more complex lifecycle, including the caller receiving multiple sets of results and the caller being able to cancel the Observable.</p>
+<p>The Mongopop application uses two simple patterns when calling functions that return an Observable; the first is used within the components to digest the results from our own data service:</p>
+<p><script src="https://gist.github.com/am-MongoDB/f718ae55373d3901b2caebd523d26b12.js"></script></p>
+<p>In Mongopop&#8217;s use of Observables, we don&#8217;t have anything to do in the final arrow function and so don&#8217;t use it (and so it could have used the second pattern instead – but it&#8217;s interesting to see both).</p>
+<p>The second pattern is used within the data service when making calls to the Angular 2 <code>http</code> module (this example also shows how we return an Observable back to the components):</p>
+<p><script src="https://gist.github.com/am-MongoDB/4cd344f9d827e301b9d4e7512e5ff4ce.js"></script></p>
+<h2>Calling the REST API</h2>
+<p>The <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/public/app/data.service.ts" title="MongoPop DataService class from GitHub"><code>DataService</code> class</a> hides the communication with the back-end REST API; serving two purposes:</p>
+<ul>
+<li>Simplifying all of the components&#8217; code</li>
+<li>Shielding the components&#8217; code from any changes in the REST API signature or behavior – that can all be handled within the DataService</li>
+</ul>
+<p>By adding the <code>@Injectable</code> decorator to the class definition, any member variables defined in the arguments to the class constructor function will be automatically instantiated (i.e. there is no need to explicitly request a <code>new Http</code> object):</p>
+<p><script src="https://gist.github.com/am-MongoDB/bdd1585280e0334ab7f7b08655600c31.js"></script></p>
+<p>After the constructor has been called, methods within the class can safely make use of the <code>http</code> data member.</p>
+<p>As a reminder from <a href="/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a>, this is the REST API we have to interact with:</p>
+<table class='table table-bordered' summary="Express route paths implemented for the Mongopop REST API">
+<caption><strong>Express routes implemented for the Mongopop REST API</strong></caption>
+<thead>
+<tr>
+<th>Route Path</th>
+<th>HTTP Method</th>
+<th>Parameters</th>
+<th>Response</th>
+<th>Purpose</p>
+<pre style="border:0px; background-color:#fff; height:0px">                      </pre>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/</pre>
+</td>
+<td>GET</td>
+<td></td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+"AppName": "MongoPop",
+"Version": 1.0
+}
+        </pre>
+</td>
+<td>Returns the version of the API.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/ip</pre>
+</td>
+<td>GET</td>
+<td></td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">{"ip": string}</pre>
+</td>
+<td>Fetches the IP Address of the server running the Mongopop backend.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/config</pre>
+</td>
+<td>GET</td>
+<td></td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+mongodb: {
+    defaultDatabase: string,
+    defaultCollection: string,
+    defaultUri: string
+},
+mockarooUrl: string
+}
+        </pre>
+</td>
+<td>Fetches client-side defaults from the back-end config file.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/addDocs</pre>
+</td>
+<td>POST</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+MongoDBURI: string;
+collectionName: string;
+dataSource: string;
+numberDocs: number;
+unique: boolean;
+}
+        </pre>
+</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+success: boolean;
+count: number;
+error: string;
+}
+        </pre>
+</td>
+<td>Add `numberDocs` batches of documents, using documents fetched from `dataSource`</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/sampleDocs</pre>
+</td>
+<td>POST</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+MongoDBURI: string;
+collectionName: string;
+numberDocs: number;
+}
+        </pre>
+</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+success: boolean;   
+documents: string;
+error: string;
+}
+        </pre>
+</td>
+<td>Read a sample of the documents from a collection.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/countDocs</pre>
+</td>
+<td>POST</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+MongoDBURI: string; 
+collectionName: string;
+}
+        </pre>
+</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+success: boolean;   
+count: number;
+error: string;
+}
+        </pre>
+</td>
+<td>Counts the number of documents in the collection.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/updateDocs</pre>
+</td>
+<td>POST</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+MongoDBURI: string;
+collectionName: string;
+matchPattern: Object;
+dataChange: Object;
+threads: number;
+}
+        </pre>
+</td>
+<td>
+<pre style="border:0px; font-size:11px; background-color:#fff">
+{
+success: boolean;
+count: number;
+error: string;
+}
+        </pre>
+</td>
+<td>Apply an update to all documents in a collection<br />
+    which match a given pattern</td>
+</tr>
+</tbody>
+</table>
+<p>Most of the methods follow a very similar pattern and so only a few are explained here; refer to the <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/public/app/data.service.ts" title="MongoPop DataService class from GitHub"><code>DataService</code> class</a> to review the remainder.</p>
+<p>The simplest method retrieves a count of the documents for a given collection:</p>
+<p><script src="https://gist.github.com/am-MongoDB/45a69032a8c9c168e3cc3554ff0b652f.js"></script></p>
+<p>This method returns an Observable, which in turn delivers an object of type <code>MongoResult</code>. <code>MongoResult</code> is defined in <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/public/app/MongoResult.ts"><code>MongoResult.ts</code></a>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/2e67ad27f5f94552ff7a4e187a941a89.js"></script></p>
+<p>The <code>pop/count</code> PUT method expects the request parameters to be in a specific format (see earlier table); to avoid coding errors, another Typescript class is used to ensure that the correct parameters are always included – <code>CountDocsRequest</code>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/9e323989feec41af2b01eb412acf1b0f.js"></script></p>
+<p><code>http.post</code> returns an Observable. If the Observable achieves a positive outcome then the <code>map</code> method is invoked to convert the resulting data (in this case, simply parsing the result from a JSON string into a Typescript/JavaScript object) before automatically passing that updated result through this method&#8217;s own returned Observable.</p>
+<p>The <code>timeout</code> method causes an error if the HTTP request doesn&#8217;t succeed or fail within 6 minutes.</p>
+<p>The <code>catch</code> method passes on any error from the HTTP request (or a generic error if <code>error.toString()</code> is <code>null</code>) if none exists.</p>
+<p>The <code>updateDBDocs</code> method is a little more complex – before sending the request, it must first parse the user-provided strings representing:</p>
+<ul>
+<li>The pattern identifying which documents should be updated</li>
+<li>The change that should be applied to each of the matching documents</li>
+</ul>
+<p>This helper function is used to parse the (hopefully) JSON string:</p>
+<p><script src="https://gist.github.com/am-MongoDB/7ca639fdf99af6977b9ec769b5f7c75d.js"></script></p>
+<p>If the string is a valid JSON document then <code>tryParseJSON</code> returns an object representation of it; if not then it returns an error.</p>
+<p>A new class (<code>UpdateDocsRequest</code>) is used for the update request:</p>
+<p><script src="https://gist.github.com/am-MongoDB/935678471b89d091d920545550de9f15.js"></script></p>
+<p><code>updateDBDocs</code> is the method that is invoked from the component code:</p>
+<p><script src="https://gist.github.com/am-MongoDB/0352559fd042355184a9481b63d849b9.js"></script></p>
+<p>After converting the received string into objects, it delegates the actual sending of the HTTP request to <code>sendUpdateDocs</code>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/df01ad0ecf30cc5e7b5c86ea4dcb594d.js"></script></p>
+<h2>A simple component that accepts data from its parent</h2>
+<p>Recall that the application consists of five components: the top-level application which contains each of the add, count, update, and sample components.</p>
+<p>When building a new application, you would typically start by designing the the top-level container and then work downwards. As the top-level container is the most complex one to understand, we&#8217;ll start at the bottom and then work up.</p>
+<p>A simple sub-component to start with is the count component:</p>
+<p><img decoding="async" src="/wp-content/uploads/2017/02/Count_Component.png" alt="Mongopop Angular2 component" title="Mongopop Angular2 component" /><br />
+<code>public/app/count.component.html</code> defines the elements that define what&#8217;s rendered for this component:</p>
+<p><script src="https://gist.github.com/am-MongoDB/ed99c1a5d8e96d0882e0d023b325589d.js"></script></p>
+<p>You&#8217;ll recognise most of this as standard HTML code.</p>
+<p>The first Angular extension is for the single <code>input</code> element, where the initial <code>value</code> (what&#8217;s displayed in the input box) is set to <code>{{MongoDBCollectionName}}</code>. Any name contained within a double pair of braces refers to a data member of the component&#8217;s class (<code>public/app/count.component.ts</code>).</p>
+<p>When the button is clicked, <code>countDocs</code> (a method of the component&#8217;s class) is invoked with <code>CountCollName.value</code> (the current contents of the input field) passed as a parameter.</p>
+<p>Below the button, the class data members of <code>DocumentCount</code> and <code>CountDocError</code> are displayed – nothing is actually rendered unless one of these has been given a non-empty value. Note that these are placed below the button in the code, but they would still display the resulting values if they were moved higher up – position within the HTML file doesn&#8217;t impact logic flow. Each of those messages is given a class so that they can be styled differently within the component&#8217;s CSS file:</p>
+<p><script src="https://gist.github.com/am-MongoDB/d22b7725f9dc764b1445771f3d32d116.js"></script></p>
+<p><img decoding="async" src="/wp-content/uploads/2017/02/Count_Success.png" alt="Angular 2 success message" title="Angular 2 success message" /></p>
+<p><img decoding="async" src="/wp-content/uploads/2017/02/Count_Error.png" alt="Angular 2 error message" title="Angular 2 error message" /></p>
+<p>The data and processing behind the component is defined in <code>public/app/count.component.ts</code>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/0f679598352ae900d193d14d7d2ea38e.js"></script></p>
+<p>Starting with the <code>@component</code> decoration for the class:</p>
+<p><script src="https://gist.github.com/am-MongoDB/230cc3627b2b60257e2ed52751848e87.js"></script></p>
+<p>This provides meta data for the component:</p>
+<ul>
+<li><code>selector</code>: The position of the component within the parent&#8217;s HTML should be defined by a <code>&lt;my-count&gt;&lt;/my-count&gt;</code> element.</li>
+<li><code>templateUrl</code>: The HMTL source file for the template (<code>public/app/count.component.ts</code> in this case – <code>public</code> is dropped as the path is relative)</li>
+<li><code>styleUrls</code>: The CSS file for this component – all components in this application reference the same file: <code>public/stylesheets/style.css</code></li>
+</ul>
+<p>The class definition declares that it implements the <code>OnInit</code> interface; this means that its <code>ngOnInit()</code> method will be called after the browser has loaded the component; it&#8217;s a good place to perform any initialization steps. In this component, it&#8217;s empty and could be removed.</p>
+<p>The two data members used for displaying success/failure messages are initialized to empty strings:</p>
+<pre><code class="js">this.DocumentCount = "";
+this.CountDocError = "";
+</code></pre>
+<p>Recall that data is passed back and forth between the count component and its parent:</p>
+<table class='table table-bordered' summary="Angular components for Mongopop Angular client application">
+<caption><strong>Flow of data between Angular components</strong></caption>
+<thead>
+<tr>
+<th>Child component</th>
+<th>Data passed down</th>
+<th>Data changes pased back up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="2">
+<pre style="border:0px; background-color:#fff">CountComponent</pre>
+</td>
+<td>Data service</td>
+<td rowspan="2">Collection name</td>
+</tr>
+<tr>
+<td>Collection name</td>
+</tr>
+</tbody>
+</table>
+<p>To that end, two class members are inherited from the parent component – indicated by the <code>@Input()</code> decoration:</p>
+<pre><code class="js">// Parameters sent down from the parent component (AppComponent)
+@Input() dataService: DataService;
+@Input() MongoDBCollectionName: string;
+</code></pre>
+<p>The first is an instance of the data service (which will be used to request the document count); the second is the collection name that we used in the component&#8217;s HTML code. Note that if either of these are changed in the parent component then the instance within this component will automatically be updated.</p>
+<p>When the name of the collection is changed within this component, the change needs to be pushed back up to the parent component. This is achieved by declaring an event emitter (<code>onCollection</code>):</p>
+<p><script src="https://gist.github.com/am-MongoDB/50195e2d042d4635105a22875db1f748.js"></script></p>
+<p>Recall that the HTML for this component invokes a member function: <code>countDocs(CountCollName.value)</code> when the button is clicked; that function is implemented in the component class:</p>
+<p><script src="https://gist.github.com/am-MongoDB/15dd5c3e97f7be099495934bf9ffb3e7.js"></script></p>
+<p>After using the data service to request the document count, either the success or error messages are sent – depending on the success/failure of the requested operation. Note that there are two layers to the error checking:</p>
+<ol>
+<li>Was the network request successful? Errors such as a bad URL, out of service back-end, or loss of a network connection would cause this check to fail.</li>
+<li>Was the back-end application able to execute the request successfully? Errors such as a non-existent collection would cause this check to fail.</li>
+</ol>
+<p>Note that when <code>this.CountDocError</code> or <code>this.DocumentCount</code> are written to, Angular will automatically render the new values in the browser.</p>
+<h2>Passing data down to a sub-component (and receiving changes back)</h2>
+<p>We&#8217;ve seen how <code>CountComponent</code> can accept data from its parent and so the next step is to look at that parent – <code>AppComponent</code>.</p>
+<p>The HTML template <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/public/app/app.component.html"><code>app.component.html</code></a> includes some of its own content, such as collecting database connection information, but most of it is delegation to other components. For example, this is the section that adds in <code>CountComponent</code>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/541245e2817d80975db6ec5dbe8ae821.js"></script></p>
+<p>Angular will replace the <code>&lt;my-count&gt;&lt;/my-count&gt;</code> element with <code>CountComponent</code>; the extra code within that element passes data down to that sub-component. For passing data members down, the syntax is:</p>
+<pre><code class="js">[name-of-data-member-in-child-component]="name-of-data-member-in-this-component"
+</code></pre>
+<p>As well as the two data members, a reference to the <code>onCollection</code> event handler is passed down (to allow <code>CountComponent</code> to propagate changes to the collection name back up to this component). The syntax for this is:</p>
+<pre><code class="js">(name-of-event-emitter-in-child-component)="name-of-event-handler-in-this-component($event)"
+</code></pre>
+<p>As with the count component, the main app component has a Typescript class – defined in <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/public/app/add.component.ts"><code>app.component.ts</code></a> – in addition to the HTML file. The two items that must be passed down are the data service (so that the count component can make requests of the back-end) and the collection name – these are both members of the <code>AppComponent</code> class.</p>
+<p>The <code>dataService</code> object is implicitly created and initialized because it is a parameter of the class&#8217;s constructor, and because the class is decorated with <code>@Injectable</code>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/ca892e28cc3a292372df8c4b11ecef2e.js"></script></p>
+<p><code>MongoDBCollectionName</code> is set during component initialization within the <code>ngOnInit()</code> method by using the data service to fetch the default client configuration information from the back-end:</p>
+<p><script src="https://gist.github.com/am-MongoDB/eae1bf9663f079171ee11b77f382af5c.js"></script></p>
+<p>Finally, when the collection name is changed in the count component, the event that it emits gets handled by the event handler called, <code>onCollection</code>, which uses the new value to update its own data member:</p>
+<p><script src="https://gist.github.com/am-MongoDB/31bb2702952987a0d42ddd9eb03ee16e.js"></script></p>
+<h2>Conditionally including a component</h2>
+<p>It&#8217;s common that a certain component should only be included if a particular condition is met. Mongopop includes a feature to allow the user to apply a bulk change to a set of documents &#8211; selected using a pattern specified by the user. If they don&#8217;t know the typical document structure for the collection then it&#8217;s unlikely that they&#8217;ll make a sensible change. Mongopop forces them to first retrieve a sample of the documents before they&#8217;re given the option to make any changes.</p>
+<p>The <a href="https://angular.io/docs/ts/latest/api/common/index/NgIf-directive.html"><code>ngIf</code></a> directive can be placed within the opening part of an element (in this case a <code>&lt;div&gt;</code>) to make that element conditional. This approach is used within <code>app.component.html</code> to only include the update component if the <code>DataToPlayWith</code> data member is TRUE:</p>
+<p><script src="https://gist.github.com/am-MongoDB/15b2bc542799332308b8a6aa86a2ebea.js"></script></p>
+<p>Note that, as with the count component, if the update component is included then it&#8217;s passed the data service and collection name and that it also passes back changes to the collection name.</p>
+<p>Angular includes other <a href="https://angular.io/docs/ts/latest/api/#!?type=directive">directives</a> that can be used to control content; <a href="https://angular.io/docs/ts/latest/api/common/index/NgFor-directive.html"><code>ngFor</code></a> being a common one as it allows you to iterate through items such as arrays:</p>
+<p><script src="https://gist.github.com/am-MongoDB/216098b193c5f40f9b48a094c4d7eea0.js"></script></p>
+<p>Returning to <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/public/app/app.component.html"><code>app.component.html</code></a>, an extra handler (<code>onSample</code>) is passed down to the sample component:</p>
+<p><script src="https://gist.github.com/am-MongoDB/0a3e27b4d058e0f2e8b9e30e73c479a4.js"></script></p>
+<p><a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/public/app/sample.component.html"><code>sample.component.html</code></a> is similar to the HTML code for the count component but there is an extra input for how many documents should be sampled from the collection:</p>
+<p><script src="https://gist.github.com/am-MongoDB/181d3bdd10116d6f1fa014ba3ea19799.js"></script></p>
+<p>On clicking the button, the collection name and sample size are passed to the <code>sampleDocs</code> method in <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/public/app/sample.component.ts"><code>sample.component.ts</code></a> which (among other things) emits an event back to the <code>AppComponent</code>&#8216;s event handler using the <code>onSample</code> event emitter:</p>
+<p><script src="https://gist.github.com/am-MongoDB/2306f3cb61734d2bc4f26fc117438741.js"></script></p>
+<h2>Other code highlights</h2>
+<p>Returning to <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/public/app/app.component.html"><code>app.component.html</code></a>; there is some content there in addition to the sub-components:</p>
+<p><script src="https://gist.github.com/am-MongoDB/3b54145980126d6b62680c344bfce3aa.js"></script></p>
+<p>Most of this code is there to allow a full MongoDB URI/connection string to be built based on some user-provided attributes. Within the input elements, two event types (<code>keyup</code> &amp; <code>change</code>) make immediate changes to other values (without the need for a page refresh or pressing a button):</p>
+<p><img decoding="async" src="/wp-content/uploads/2017/02/Reactive_MongoDB_URI.gif" alt="Reactive Angular 2 Component" title="Reactive Angular 2 Component" /></p>
+<p>The actions attached to each of these events call methods from the AppComponent class to set the data members – for example the <code>setDBName</code> method (from <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/public/app/add.component.ts"><code>app.component.ts</code></a>):</p>
+<p><script src="https://gist.github.com/am-MongoDB/e8c47296fb7bc7497d56e604ddcf375b.js"></script></p>
+<p>In addition to setting the <code>dBInputs.MongoDBDatabaseName</code> value, it also invokes the data service method <code>calculateMongoDBURI</code> (taken from <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/public/app/app.component.ts"><code>data.service.ts</code></a> ):</p>
+<p><script src="https://gist.github.com/am-MongoDB/54af5d9b8189ea94731544a5304bd428.js"></script></p>
+<p>This method is run by the handler associated with any data member that affects the MongoDB URI (base URI, database name, socket timeout, connection pool size, or password). Its purpose is to build a full URI which will then be used for accessing MongoDB; if the URI contains a password then a second form of the URI, <code>MongoDBURIRedacted</code> has the password replaced with <code>**********</code>.</p>
+<p>It starts with a test as to whether the URI has been left to the default <code>localhost:27017</code> – in which case it&#8217;s assumed that there&#8217;s no need for a username or password (obviously, this shouldn&#8217;t be used in production). If not, it assumes that the URI has been provided by the <a href="https://cloud.mongodb.com/" title="MongoDB Atlas – MongoDB as a service in the cloud">MongoDB Atlas GUI</a> and applies these changes:</p>
+<ul>
+<li>Change the database name from <code>&lt;DATATBASE&gt;</code> to the one chosen by the user.</li>
+<li>Replace <code>&lt;PASSWORD&gt;</code> with the real password (and with <code>**********</code> for the redacted URI).</li>
+<li>Add the socket timeout parameter.</li>
+<li>Add the connection pool size parameter.</li>
+</ul>
+<h2>Testing &amp; debugging the Angular application</h2>
+<p>Now that the full MEAN stack application has been implemented, you can test it from within your browser:</p>
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/z7IE1NHh6FE?rel=0" frameborder="0" allowfullscreen></iframe></p>
+<p>Debugging the Angular 2 client is straightforward using the <a href="https://developer.chrome.com/devtools">Google Chrome Developer Tools</a> which are built into the Chrome browser. Despite the browser executing the transpiled JavaScript the Dev Tools allows you to browse and set breakpoints in your Typescript code:</p>
+<p><img decoding="async" src="/wp-content/uploads/2017/02/Debugging_Angular2_Typescript_withGoogle_Chrom_DevTools.png" alt="" title="Debugging Angular2 and Typescript with Chrome Developer Tools" /></p>
+<h2>Summary &amp; what&#8217;s next in the series</h2>
+<p>Previous posts stepped through building the Mongopop application back-end. This post describes how to build a front-end client using Angular 2. At this point, we have a complete, working, MEAN stack application.</p>
+<p>The coupling between the front and back-end is loose; the client simply makes remote, HTTP requests to the back-end service – using the interface created in <a href="/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a>.</p>
+<p>This series will finish out by demonstrating alternate methods to implement front-ends; using ReactJS for another browser-based UI (completing the <strong>MERN stack</strong>) and then more alternative methods.</p>
+<p>Continue following this blog series to step through building the remaining stages of the <a href="https://github.com/am-MongoDB/MongoDB-Mongopop">Mongopop</a> application:</p>
+<ul>
+<li><a href="/mongodb/modern-application-stack-part-1-introducing-the-mean-stack" title="MEAN stack, MERN stack">Part 1: Introducing The MEAN Stack (and the young MERN upstart)</a></li>
+<li><a href="/mongodb/mean_stack_2_mongodb_node_js" title="Using MongoDB With Node.js">Part 2: Using MongoDB With Node.js</a></li>
+<li><a href="/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a></li>
+<li><a href="/mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript" title="Completing the MEAN stack – Mongopop Angular2 client">Part 4: Building a Client UI Using Angular 2 (formerly AngularJS) &amp; TypeScript</a></li>
+<li><a href="/mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern" title="Building an application front-end with ReactJS and ES6">Part 5: Using ReactJS, ES6 &amp; JSX to Build a UI (the rise of MERN)</a></li>
+<li><a href="/mongodb/rest-mobile-app-amazon-alexa-cloud-services" title="Using REST APIs from mobile applications and Amazon Alexa">Part 6: Browsers Aren&#8217;t the Only UI – Mobile Apps, Amazon Alexa, Cloud Services&#8230;</a></li>
+</ul>
+<h2>A simpler way to build your app – MongoDB Stitch, Backend as a Service</h2>
+<p><a href="https://www.mongodb.com/cloud/stitch">MongoDB Stitch</a> is a backend as a service (BaaS), giving developers a REST-like API to MongoDB, and composability with other services, backed by a robust system for configuring fine-grained data access controls. Stitch provides native SDKs for JavaScript, iOS, and Android.</p>
+<p>Built-in integrations give your application frontend access to your favorite third party services: Twilio, AWS S3, Slack, Mailgun, PubNub, Google, and more. For ultimate flexibility, you can add custom integrations using MongoDB Stitch&#8217;s HTTP service.</p>
+<p>MongoDB Stitch allows you to compose multi-stage pipelines that orchestrate data across multiple services; where each stage acts on the data before passing its results on to the next.</p>
+<p>Unlike other BaaS offerings, MongoDB Stitch works with your existing as well as new MongoDB clusters, giving you access to the full power and scalability of the database. By defining appropriate data access rules, you can selectively expose your existing MongoDB data to other applications through MongoDB Stitch&#8217;s API.</p>
+<p>If you&#8217;d like to try it out, <a href="/mongodb/mongodb-stitch-the-latest-and-best-way-to-build-your-app" title="MongoDB Stitch - the latest, and best way to build your app">step through building an application with MongoDB Stitch</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

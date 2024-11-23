@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>twilio &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/twilio/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 25 Sep 2018 14:33:09 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Sending Text Messages with MongoDB Stitch &#038; Twilio</title>
+		<link>/mongodb/sending-text-messages-with-mongodb-stitch-twilio</link>
+					<comments>/mongodb/sending-text-messages-with-mongodb-stitch-twilio#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 26 Sep 2018 12:05:16 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Stitch]]></category>
+		<category><![CDATA[serverless]]></category>
+		<category><![CDATA[twilio]]></category>
+		<guid isPermaLink="false">/?p=4524</guid>
+
+					<description><![CDATA[When creating a well-rounded app, there are lots of table stakes features that make the app more useful but have already been implemented thousands of times before. Having the application backend send a text message informing your customer of an event is a classic example of such a “commodity” feature. Think about using a website]]></description>
+										<content:encoded><![CDATA[<p>When creating a well-rounded app, there are lots of table stakes features that make the app more useful but have already been implemented thousands of times before. Having the application backend send a text message informing your customer of an event is a classic example of such a “commodity” feature.</p>
+<p>Think about using a website or app to book a taxi, where you give your phone number so that you get sent a text message when the taxi’s on its way. Why would the writers of that taxi app want to waste time writing text messaging code? There’s nothing extra they can do to differentiate it from other apps – so why not just consume it as a service from something like <a href="https://www.twilio.com/">Twilio</a>?</p>
+<p>MongoDB Stitch makes it even less work to add this kind of feature. Rather than standing up an app server, figuring out how to use the <a href="https://www.twilio.com/docs/api">Twilio API</a>, writing the code, and possibly creating a <a href="https://www.mongodb.com/blog/post/building-a-rest-api-with-mongodb-stitch" title="Create a REST API with MongoDB Stitch Functions">REST API</a>, just configure the <a href="https://docs.mongodb.com/stitch/reference/partner-services/twilio/" title="Working with SMS text messages with MongoDB Stitch and Twilio">Twilio service</a> in Stitch.</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/Sending_text_with_MongoDB_Stitch_and_Twilio-7glbv13odr.png" alt="Using MongoDB Stitch to send SMS text messages via Twilio" /></p>
+<p>When configuring the Stitch Twilio serving, you supply the <em>Account ID</em> and <em>Auth Token</em> from your Twilio account. All that&#8217;s left is to write the <a href="https://docs.mongodb.com/stitch/functions/" title="MongoDB Stitch serverless functions">Stitch function</a> to invoke the service:</p>
+<pre><code class="js">exports = function(trip, user){
+  const twilio = context.services.get("twilio");
+
+  twilio.send({
+    to: user.phone,
+    from: context.values.get("twilioNumber"),
+    body: "Hi " 
+      + user.firstname 
+      + " - just to let you know that your taxi to " 
+      + trip.destination + " will be with you at " 
+      + trip.pickupTime + "."
+  });
+};
+</code></pre>
+<p>You can also have your application react when receiving a text message by configuring <a href="https://docs.mongodb.com/stitch/reference/partner-services/twilio/#incoming-webhooks" title="Act on received SMS text messages using MongoDB Stitch Twilio incoming web hooks">incoming webhooks for the Twilio service</a>.</p>
+<p>Creating your first Stitch app? Start with one of the <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch serverless platform – tutorials">Stitch tutorials</a>.</p>
+<p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mongodb/sending-text-messages-with-mongodb-stitch-twilio/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

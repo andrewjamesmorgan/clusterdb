@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: MySQL Fabric &#8211; adding High Availability to MySQL	</title>
+	<atom:link href="/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql/feed" rel="self" type="application/rss+xml" />
+	<link>/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Mon, 18 May 2015 17:14:52 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: Sterling Cox		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql#comment-493647</link>
+
+		<dc:creator><![CDATA[Sterling Cox]]></dc:creator>
+		<pubDate>Mon, 18 May 2015 17:14:52 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3807#comment-493647</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql#comment-238696&quot;&gt;Shen Longxing&lt;/a&gt;.
+
+Hi, Shen;
+
+This may be a little late, but it might also help others:
+
+gtid_purged can in fact only be set on a slave right after running &quot;reset master;&quot; What&#039;s more, some slave information is carried over that will prevent this from working correctly in some circumstances (when you use an xtrabackup snapshot taken from a live slave, for example) - in that case, you will also need to run &quot;reset slave all;&quot; (on the slave) before you finish preparing the slave to join the fabric group by issuing the &quot;set global gtid_purged&quot; command.
+
+Most importantly: I have noticed in some circumstances that removing a server from a fabric group does not correctly stop replication. Depending on your configuration, replication may start automatically on server restart as well. If replication was running while you tried to set the global gtid_purged id, the command is not applied - just try issuing a &quot;stop slave;&quot; before the &quot;reset slave all; reset master; set global gtid_purged=&#039;x&#039;;&quot;.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql#comment-238696">Shen Longxing</a>.</p>
+<p>Hi, Shen;</p>
+<p>This may be a little late, but it might also help others:</p>
+<p>gtid_purged can in fact only be set on a slave right after running &#8220;reset master;&#8221; What&#8217;s more, some slave information is carried over that will prevent this from working correctly in some circumstances (when you use an xtrabackup snapshot taken from a live slave, for example) &#8211; in that case, you will also need to run &#8220;reset slave all;&#8221; (on the slave) before you finish preparing the slave to join the fabric group by issuing the &#8220;set global gtid_purged&#8221; command.</p>
+<p>Most importantly: I have noticed in some circumstances that removing a server from a fabric group does not correctly stop replication. Depending on your configuration, replication may start automatically on server restart as well. If replication was running while you tried to set the global gtid_purged id, the command is not applied &#8211; just try issuing a &#8220;stop slave;&#8221; before the &#8220;reset slave all; reset master; set global gtid_purged=&#8217;x&#8217;;&#8221;.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Cory		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql#comment-483447</link>
+
+		<dc:creator><![CDATA[Cory]]></dc:creator>
+		<pubDate>Sun, 03 May 2015 04:10:19 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3807#comment-483447</guid>
+
+					<description><![CDATA[I am so tempted to try this. I was setting up my home based development server in OpenSUSE 13.2 within virtualbox on a win7 machine. I stumbled on mysql-fabric-doctrine-1.4.0.zip inside /etc/mysql folder. Opened it up and asked myself, what the heck is this? Did it come with mysql-utilities package? Googled MySQLFabric and this is the first page I found.
+
+I have always setup 4 MySQL server when on windows. 3306-3309 I found myself very disappointed 3 years ago when I started playing with linux os and setting up my own LAMP servers. Simply because even till today I did not know how to create more than one instance of MySQL on a single linux machine. So fricken easy to do on windows. But the whole Linux rpm yast2 concept just does not allow multiple instances. 
+
+So anyway, once I a lil reading of what MySQLFabric is about I instantly thought there may be something here about setting up more than one instance. So, not only wass this true, but it was even better. Turns out its about having multiple instances and how to make them work together. Even better. Better yet, how to work together when physically on different machines.
+
+I am seriously thinking about giving this a try. Anyway, very nice work goes out to the developer responsible for fabric. Awesome job. Hope this goes somewhere for you.
+
+Good Job, Cory in Bradenton]]></description>
+			<content:encoded><![CDATA[<p>I am so tempted to try this. I was setting up my home based development server in OpenSUSE 13.2 within virtualbox on a win7 machine. I stumbled on mysql-fabric-doctrine-1.4.0.zip inside /etc/mysql folder. Opened it up and asked myself, what the heck is this? Did it come with mysql-utilities package? Googled MySQLFabric and this is the first page I found.</p>
+<p>I have always setup 4 MySQL server when on windows. 3306-3309 I found myself very disappointed 3 years ago when I started playing with linux os and setting up my own LAMP servers. Simply because even till today I did not know how to create more than one instance of MySQL on a single linux machine. So fricken easy to do on windows. But the whole Linux rpm yast2 concept just does not allow multiple instances. </p>
+<p>So anyway, once I a lil reading of what MySQLFabric is about I instantly thought there may be something here about setting up more than one instance. So, not only wass this true, but it was even better. Turns out its about having multiple instances and how to make them work together. Even better. Better yet, how to work together when physically on different machines.</p>
+<p>I am seriously thinking about giving this a try. Anyway, very nice work goes out to the developer responsible for fabric. Awesome job. Hope this goes somewhere for you.</p>
+<p>Good Job, Cory in Bradenton</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Shen Longxing		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql#comment-238696</link>
+
+		<dc:creator><![CDATA[Shen Longxing]]></dc:creator>
+		<pubDate>Fri, 29 Aug 2014 08:42:20 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3807#comment-238696</guid>
+
+					<description><![CDATA[Hi,
+
+I met a problem when I split a existing shard. Here is the detail:
+
+I create 3 groups, global-group, group_id-1 and group_id-2, then built a shard.
+Till now, everything is OK. But when I split the shard with a new group named group_id-3, there is an error occurred.
+The message is as follows:
+
+# mysqlfabric sharding split_shard 2 group_id-3 –split_value=100000
+Password for admin:
+Procedure :
+{ uuid = a0eaff93-f6fe-4a7d-9c44-e7e53882fbfe,
+finished = True,
+success = False,
+return = BackupError: (‘Error while restoring the backup using the mysql client\n, %s’, “ERROR 1840 (HY000) at line 24 in file: ‘MySQL_132.228.239.19_3316.sql’: @@GLOBAL.GTID_PURGED can only be set when @@GLOBAL.GTID_EXECUTED is empty.\n”),
+activities =
+}
+I run the “reset master” command first, but the error is still there.what is this error? 
+
+Regards
+Longxing]]></description>
+			<content:encoded><![CDATA[<p>Hi,</p>
+<p>I met a problem when I split a existing shard. Here is the detail:</p>
+<p>I create 3 groups, global-group, group_id-1 and group_id-2, then built a shard.<br />
+Till now, everything is OK. But when I split the shard with a new group named group_id-3, there is an error occurred.<br />
+The message is as follows:</p>
+<p># mysqlfabric sharding split_shard 2 group_id-3 –split_value=100000<br />
+Password for admin:<br />
+Procedure :<br />
+{ uuid = a0eaff93-f6fe-4a7d-9c44-e7e53882fbfe,<br />
+finished = True,<br />
+success = False,<br />
+return = BackupError: (‘Error while restoring the backup using the mysql client\n, %s’, “ERROR 1840 (HY000) at line 24 in file: ‘MySQL_132.228.239.19_3316.sql’: @@GLOBAL.GTID_PURGED can only be set when @@GLOBAL.GTID_EXECUTED is empty.\n”),<br />
+activities =<br />
+}<br />
+I run the “reset master” command first, but the error is still there.what is this error? </p>
+<p>Regards<br />
+Longxing</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql#comment-187704</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 18 Jul 2014 15:15:29 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3807#comment-187704</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql#comment-181168&quot;&gt;Stefan&lt;/a&gt;.
+
+Hi Stefan,
+
+ I can certainly see your point. I&#039;ve taken the decision to go for the low security approach in the examples I use as that allows me to focus on what&#039;s unique to the functionality that I&#039;m blogging about rather than fine tuning firewall settings, user privileges etc. I realise that this may be setting a bad example but hope that people will recognise that they need to apply their normal security procedures.
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql#comment-181168">Stefan</a>.</p>
+<p>Hi Stefan,</p>
+<p> I can certainly see your point. I&#8217;ve taken the decision to go for the low security approach in the examples I use as that allows me to focus on what&#8217;s unique to the functionality that I&#8217;m blogging about rather than fine tuning firewall settings, user privileges etc. I realise that this may be setting a bad example but hope that people will recognise that they need to apply their normal security procedures.</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Stefan		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql#comment-181168</link>
+
+		<dc:creator><![CDATA[Stefan]]></dc:creator>
+		<pubDate>Fri, 11 Jul 2014 00:48:08 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3807#comment-181168</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql#comment-144679&quot;&gt;Greg&lt;/a&gt;.
+
+Greg &#038; MWM,
+
+Your client is likely failing because it does not have sufficient  privileges for the &#039;fabric&#039; user. This appears to be a signifigant omission in the documentation above.
+
+The MySQL Fabric Whitepaper ( mysql_wp_fabric.pdf ) asks you to do run the following grants on all nodes. 
+
+mysql -h 127.0.0.1 -P3306 -u root -e &#039;GRANT ALL ON *.* TO fabric@&quot;%&quot;&#039;
+
+This is also mentioned at /mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql 
+
+However, this is a horrible example because it grants global privileges to everything on your database, which is highly insecure; not to mention it doesn&#039;t tell us what tables we need to grant access to. 
+
+
+I don&#039;t understand why so many examples from mysql.com gloss over privileges like this. It&#039;s very frustrating when key details like this are skipped, and it demonstrates poor security practices. I mean, sure they say &quot;Don&#039;t do this because it&#039;s bad&quot;, but then what privileges do we actually need to be granting?]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql#comment-144679">Greg</a>.</p>
+<p>Greg &amp; MWM,</p>
+<p>Your client is likely failing because it does not have sufficient  privileges for the &#8216;fabric&#8217; user. This appears to be a signifigant omission in the documentation above.</p>
+<p>The MySQL Fabric Whitepaper ( mysql_wp_fabric.pdf ) asks you to do run the following grants on all nodes. </p>
+<p>mysql -h 127.0.0.1 -P3306 -u root -e &#8216;GRANT ALL ON *.* TO fabric@&#8221;%&#8221;&#8216;</p>
+<p>This is also mentioned at <a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql" rel="ugc">/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql</a> </p>
+<p>However, this is a horrible example because it grants global privileges to everything on your database, which is highly insecure; not to mention it doesn&#8217;t tell us what tables we need to grant access to. </p>
+<p>I don&#8217;t understand why so many examples from mysql.com gloss over privileges like this. It&#8217;s very frustrating when key details like this are skipped, and it demonstrates poor security practices. I mean, sure they say &#8220;Don&#8217;t do this because it&#8217;s bad&#8221;, but then what privileges do we actually need to be granting?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Greg		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql#comment-144679</link>
+
+		<dc:creator><![CDATA[Greg]]></dc:creator>
+		<pubDate>Tue, 03 Jun 2014 17:43:42 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3807#comment-144679</guid>
+
+					<description><![CDATA[Hi,
+I have the same issue.
+&#062; mysqlfabric group add group_sh1 172.16.154.120:6612
+
+  return = ServerError: Error accessing server (172.16.154.120:6612).,
+
+I tried with:
+
+[servers]
+user = fabric
+password = 123456
+
+but still get the same error 
+The connection using mysql client works fine
+
+mysql -ufabric -h172.16.154.120 -P6612 -p123456
+mysql&#062;
+
+Thanks in advance
+Greg]]></description>
+			<content:encoded><![CDATA[<p>Hi,<br />
+I have the same issue.<br />
+&gt; mysqlfabric group add group_sh1 172.16.154.120:6612</p>
+<p>  return = ServerError: Error accessing server (172.16.154.120:6612).,</p>
+<p>I tried with:</p>
+<p>[servers]<br />
+user = fabric<br />
+password = 123456</p>
+<p>but still get the same error<br />
+The connection using mysql client works fine</p>
+<p>mysql -ufabric -h172.16.154.120 -P6612 -p123456<br />
+mysql&gt;</p>
+<p>Thanks in advance<br />
+Greg</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: MWM		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql#comment-141878</link>
+
+		<dc:creator><![CDATA[MWM]]></dc:creator>
+		<pubDate>Fri, 30 May 2014 13:41:52 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3807#comment-141878</guid>
+
+					<description><![CDATA[Hi,
+
+i am stuck at this point: What is reason of this error
+
+[ahsan@mysqls ~]$ mysqlfabric group add group-1 192.168.0.213:3306
+Procedure :
+{ uuid        = cb9bb4ca-718e-455f-8c67-69e78d6ef16f,
+  finished    = True,
+  success     = False,
+  return      = ServerError: Error accessing server (192.168.0.213:3306).,
+  activities  = 
+}
+
+Reagrds
+MWM]]></description>
+			<content:encoded><![CDATA[<p>Hi,</p>
+<p>i am stuck at this point: What is reason of this error</p>
+<p>[ahsan@mysqls ~]$ mysqlfabric group add group-1 192.168.0.213:3306<br />
+Procedure :<br />
+{ uuid        = cb9bb4ca-718e-455f-8c67-69e78d6ef16f,<br />
+  finished    = True,<br />
+  success     = False,<br />
+  return      = ServerError: Error accessing server (192.168.0.213:3306).,<br />
+  activities  =<br />
+}</p>
+<p>Reagrds<br />
+MWM</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: MySQL Fabric Release Candidate – adding High Availability and Scaling to MySQL &#124; InsideMySQL		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql#comment-109147</link>
+
+		<dc:creator><![CDATA[MySQL Fabric Release Candidate – adding High Availability and Scaling to MySQL &#124; InsideMySQL]]></dc:creator>
+		<pubDate>Mon, 31 Mar 2014 17:52:29 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3807#comment-109147</guid>
+
+					<description><![CDATA[[&#8230;] MySQL. This is the third in a series of posts on the new MySQL Fabric framework; the first article (MySQL Fabric – adding High Availability to MySQL) explains how MySQL Fabric can deliver HA and then stepped through all of the steps to configure [&#8230;]]]></description>
+			<content:encoded><![CDATA[<p>[&#8230;] MySQL. This is the third in a series of posts on the new MySQL Fabric framework; the first article (MySQL Fabric – adding High Availability to MySQL) explains how MySQL Fabric can deliver HA and then stepped through all of the steps to configure [&#8230;]</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Tom Diederich		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-to-mysql#comment-103111</link>
+
+		<dc:creator><![CDATA[Tom Diederich]]></dc:creator>
+		<pubDate>Wed, 19 Mar 2014 16:11:34 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3807#comment-103111</guid>
+
+					<description><![CDATA[On a related note, Oracle&#039;s Mats Kindahl, who is spearheading MySQL Fabric development, will be speaking on “Sharding and Scale-out using MySQL Fabric” at the Percona Live MySQL conference April 3 at 11 a.m. 
+
+The summary of his talk here: https://www.percona.com/live/mysql-conference-2014/sessions/sharding-and-scale-out-using-mysql-fabric]]></description>
+			<content:encoded><![CDATA[<p>On a related note, Oracle&#8217;s Mats Kindahl, who is spearheading MySQL Fabric development, will be speaking on “Sharding and Scale-out using MySQL Fabric” at the Percona Live MySQL conference April 3 at 11 a.m. </p>
+<p>The summary of his talk here: <a href="https://www.percona.com/live/mysql-conference-2014/sessions/sharding-and-scale-out-using-mysql-fabric" rel="nofollow ugc">https://www.percona.com/live/mysql-conference-2014/sessions/sharding-and-scale-out-using-mysql-fabric</a></p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

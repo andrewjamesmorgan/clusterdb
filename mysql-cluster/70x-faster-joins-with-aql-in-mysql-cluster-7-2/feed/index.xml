@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: 70x Faster Joins with AQL now GA with MySQL Cluster 7.2	</title>
+	<atom:link href="/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2/feed" rel="self" type="application/rss+xml" />
+	<link>/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Mon, 22 Feb 2016 17:44:32 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: Koushik's Blog on Open Source on Azure		</title>
+		<link>/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-616305</link>
+
+		<dc:creator><![CDATA[Koushik's Blog on Open Source on Azure]]></dc:creator>
+		<pubDate>Mon, 22 Feb 2016 17:44:32 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2027#comment-616305</guid>
+
+					<description><![CDATA[&lt;strong&gt;MySQL Cluster IaaS best practices for Azure - High Availability, Fault Tolerance, Scalability&lt;/strong&gt;
+
+Introduction MySQL Cluster, if used correctly, has proven to be one of the most fault tolerant, scalable]]></description>
+			<content:encoded><![CDATA[<p><strong>MySQL Cluster IaaS best practices for Azure &#8211; High Availability, Fault Tolerance, Scalability</strong></p>
+<p>Introduction MySQL Cluster, if used correctly, has proven to be one of the most fault tolerant, scalable</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: admin		</title>
+		<link>/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-557</link>
+
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 17 Feb 2012 12:05:29 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2027#comment-557</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-554&quot;&gt;Kompas&lt;/a&gt;.
+
+Hi Kompas,
+
+ see earlier comment - using bare metal for the mysqld I&#039;m seeing a 230x speedup over Cluster 7.1 - down to 0.15 seconds.
+
+ Note that distributed databases aren&#039;t really designed for complex inter-shard joins (this is one reason why NoSQL solutions tend to jettison any ability to do them at all). With Cluster 7.2 we&#039;ve made orders of magnitude improvements to the speed of these joins - taking Cluster from a position where (in many cases) you&#039;d have to avoid use cases that required big, complex joins to one where it&#039;s now very practical.
+
+Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-554">Kompas</a>.</p>
+<p>Hi Kompas,</p>
+<p> see earlier comment &#8211; using bare metal for the mysqld I&#8217;m seeing a 230x speedup over Cluster 7.1 &#8211; down to 0.15 seconds.</p>
+<p> Note that distributed databases aren&#8217;t really designed for complex inter-shard joins (this is one reason why NoSQL solutions tend to jettison any ability to do them at all). With Cluster 7.2 we&#8217;ve made orders of magnitude improvements to the speed of these joins &#8211; taking Cluster from a position where (in many cases) you&#8217;d have to avoid use cases that required big, complex joins to one where it&#8217;s now very practical.</p>
+<p>Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: admin		</title>
+		<link>/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-556</link>
+
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 17 Feb 2012 12:00:29 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2027#comment-556</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-552&quot;&gt;Brendan Gregg&lt;/a&gt;.
+
+See above comment - I&#039;ve repeated on bare metal for the mysqld and saw a 230x speedup over Cluster7.1.
+
+Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-552">Brendan Gregg</a>.</p>
+<p>See above comment &#8211; I&#8217;ve repeated on bare metal for the mysqld and saw a 230x speedup over Cluster7.1.</p>
+<p>Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: admin		</title>
+		<link>/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-555</link>
+
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 17 Feb 2012 11:59:36 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2027#comment-555</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-553&quot;&gt;Bryan Cantrill&lt;/a&gt;.
+
+As there was some scepticism over the use of a Virtual Machine in the original tests, I&#039;ve repeated them using bare metal.
+
+I took a slightly different approach this time so that I could compare with Cluster 7.1 as well (I used 7.1.15a) as well as Cluster 7.2.4 (much more recent than the load used for the original test).
+
+So here are the results:
+
+Baseline (7.1.15a) = 35 seconds
+7.2.4 (no analyze table, no AQL) = 26.75 sec = 1.3x baseline
+7.2.4 (analyze table, no AQL) = 10.1 sec = 3.5x baseline
+7.2.4 (analyze table, AQL) = 0.15 sec = 230x baseline!
+
+Note that the reason I&#039;ve included with/without analyze table is that 7.2 made this work for Cluster tables.
+
+In terms of it being an arbitrary test - this is a real customer query that we&#039;ve used as the internal benchmark for years.
+
+I&#039;ll repeat myself in saying that people should (as always) run their own application in their own environment to see what results they get but I believe that these results are still useful in giving people a flavour of what they might see.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-553">Bryan Cantrill</a>.</p>
+<p>As there was some scepticism over the use of a Virtual Machine in the original tests, I&#8217;ve repeated them using bare metal.</p>
+<p>I took a slightly different approach this time so that I could compare with Cluster 7.1 as well (I used 7.1.15a) as well as Cluster 7.2.4 (much more recent than the load used for the original test).</p>
+<p>So here are the results:</p>
+<p>Baseline (7.1.15a) = 35 seconds<br />
+7.2.4 (no analyze table, no AQL) = 26.75 sec = 1.3x baseline<br />
+7.2.4 (analyze table, no AQL) = 10.1 sec = 3.5x baseline<br />
+7.2.4 (analyze table, AQL) = 0.15 sec = 230x baseline!</p>
+<p>Note that the reason I&#8217;ve included with/without analyze table is that 7.2 made this work for Cluster tables.</p>
+<p>In terms of it being an arbitrary test &#8211; this is a real customer query that we&#8217;ve used as the internal benchmark for years.</p>
+<p>I&#8217;ll repeat myself in saying that people should (as always) run their own application in their own environment to see what results they get but I believe that these results are still useful in giving people a flavour of what they might see.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Kompas		</title>
+		<link>/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-554</link>
+
+		<dc:creator><![CDATA[Kompas]]></dc:creator>
+		<pubDate>Fri, 17 Feb 2012 10:34:23 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2027#comment-554</guid>
+
+					<description><![CDATA[For me query over 33.5K records which takes 1.2s is not big deal - rather same query taking almost 90s is big loose. Don&#039;t you think so?]]></description>
+			<content:encoded><![CDATA[<p>For me query over 33.5K records which takes 1.2s is not big deal &#8211; rather same query taking almost 90s is big loose. Don&#8217;t you think so?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Bryan Cantrill		</title>
+		<link>/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-553</link>
+
+		<dc:creator><![CDATA[Bryan Cantrill]]></dc:creator>
+		<pubDate>Thu, 16 Feb 2012 20:34:23 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2027#comment-553</guid>
+
+					<description><![CDATA[Andrew,
+
+I appreciate the response -- but given that this is essentially a cobbled-together experiment, you probably shouldn&#039;t treat it as a benchmark.  Right now &quot;70X faster&quot; is appearing everywhere -- and that number starts here and with this environment.  In my experience, when you have big wins like this, you should just call it that:  a big win.  How big?  Really big -- perhaps many multiples of performance.  By being more specific but with such a polluted experiment, you only serve to raise doubts where perhaps they are not warranted...]]></description>
+			<content:encoded><![CDATA[<p>Andrew,</p>
+<p>I appreciate the response &#8212; but given that this is essentially a cobbled-together experiment, you probably shouldn&#8217;t treat it as a benchmark.  Right now &#8220;70X faster&#8221; is appearing everywhere &#8212; and that number starts here and with this environment.  In my experience, when you have big wins like this, you should just call it that:  a big win.  How big?  Really big &#8212; perhaps many multiples of performance.  By being more specific but with such a polluted experiment, you only serve to raise doubts where perhaps they are not warranted&#8230;</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Brendan Gregg		</title>
+		<link>/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-552</link>
+
+		<dc:creator><![CDATA[Brendan Gregg]]></dc:creator>
+		<pubDate>Thu, 16 Feb 2012 20:31:24 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2027#comment-552</guid>
+
+					<description><![CDATA[Thanks for the response; given that a bare-metal environment better approximates the production MySQL servers that I work with, I&#039;m most interested in the &quot;far higher speed ups&quot; you&#039;ve mentioned for these.  Was that far higher than 70x?]]></description>
+			<content:encoded><![CDATA[<p>Thanks for the response; given that a bare-metal environment better approximates the production MySQL servers that I work with, I&#8217;m most interested in the &#8220;far higher speed ups&#8221; you&#8217;ve mentioned for these.  Was that far higher than 70x?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: admin		</title>
+		<link>/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-551</link>
+
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Thu, 16 Feb 2012 20:16:17 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2027#comment-551</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-550&quot;&gt;Bryan Cantrill&lt;/a&gt;.
+
+Hi Brian,
+
+ I don&#039;t have the exact spec of the machines to hand but the data nodes were running on 3 year old desktops that had very modest CPUs even when they were new; the MySQL server was running on a Core i7 machine with fast memory and SSD. In other words the mysqld wasn&#039;t running in too constrained an environment. In any event, the speed up from AQL doesn&#039;t really come from lightening the  CPU load on the mysqld, it comes from reducing the messaging between the nodes. 
+
+Why this environment? This is the environment I had to hand - 2 identical machines to run the data nodes and a much more powerful machine that I could run a VM within for the mysqld. 
+
+The engineering team have run many tests on pure bare-metal environments and have seen far higher speed ups. Mileage definitely does vary. 
+
+As always the true test is for people to run their own queries in their own environments and see what results they get (note that the query may need to be tweaked in order to be suitable for pushing down to the data node).
+
+Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-550">Bryan Cantrill</a>.</p>
+<p>Hi Brian,</p>
+<p> I don&#8217;t have the exact spec of the machines to hand but the data nodes were running on 3 year old desktops that had very modest CPUs even when they were new; the MySQL server was running on a Core i7 machine with fast memory and SSD. In other words the mysqld wasn&#8217;t running in too constrained an environment. In any event, the speed up from AQL doesn&#8217;t really come from lightening the  CPU load on the mysqld, it comes from reducing the messaging between the nodes. </p>
+<p>Why this environment? This is the environment I had to hand &#8211; 2 identical machines to run the data nodes and a much more powerful machine that I could run a VM within for the mysqld. </p>
+<p>The engineering team have run many tests on pure bare-metal environments and have seen far higher speed ups. Mileage definitely does vary. </p>
+<p>As always the true test is for people to run their own queries in their own environments and see what results they get (note that the query may need to be tweaked in order to be suitable for pushing down to the data node).</p>
+<p>Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Bryan Cantrill		</title>
+		<link>/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-550</link>
+
+		<dc:creator><![CDATA[Bryan Cantrill]]></dc:creator>
+		<pubDate>Thu, 16 Feb 2012 19:56:42 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2027#comment-550</guid>
+
+					<description><![CDATA[Impressive results, but it seems dodgy that your MySQL server is in a VirtualBox VM running on Windows 7.  Given that the win here is from offloading work from the server to the data nodes, aren&#039;t you maximizing the win by having an incredibly crippled server to begin with?  Why not just run that server on metal similar to the data nodes?  (That is, why the virtualized environment at all?)  Regardless, what&#039;s the hardware specification for the MySQL server?  If that&#039;s also a Core 2, it doesn&#039;t have EPT -- which will grossly magnify any work that&#039;s offloaded simply by avoiding the hefty tax of pre-EPT virtualization.  At the very least, this aspect should be called out with a huge asterisk; you&#039;re making a huge deal about the 70X win, and it&#039;s entirely unclear how much of that is due to the odd (rigged?) nature of the configuration...]]></description>
+			<content:encoded><![CDATA[<p>Impressive results, but it seems dodgy that your MySQL server is in a VirtualBox VM running on Windows 7.  Given that the win here is from offloading work from the server to the data nodes, aren&#8217;t you maximizing the win by having an incredibly crippled server to begin with?  Why not just run that server on metal similar to the data nodes?  (That is, why the virtualized environment at all?)  Regardless, what&#8217;s the hardware specification for the MySQL server?  If that&#8217;s also a Core 2, it doesn&#8217;t have EPT &#8212; which will grossly magnify any work that&#8217;s offloaded simply by avoiding the hefty tax of pre-EPT virtualization.  At the very least, this aspect should be called out with a huge asterisk; you&#8217;re making a huge deal about the 70X win, and it&#8217;s entirely unclear how much of that is due to the odd (rigged?) nature of the configuration&#8230;</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Daniël van Eeden		</title>
+		<link>/mysql-cluster/70x-faster-joins-with-aql-in-mysql-cluster-7-2#comment-549</link>
+
+		<dc:creator><![CDATA[Daniël van Eeden]]></dc:creator>
+		<pubDate>Wed, 12 Oct 2011 10:05:43 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2027#comment-549</guid>
+
+					<description><![CDATA[The explain output in this blog post is not very readable.
+
+It looks like a really nice feature!]]></description>
+			<content:encoded><![CDATA[<p>The explain output in this blog post is not very readable.</p>
+<p>It looks like a really nice feature!</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

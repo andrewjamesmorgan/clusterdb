@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="/xmlrpc.php">
+	
+	<title>MySQL Utilities | Andrew Morgan on Databases</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; MySQL Utilities Tag Feed" href="/tag/mysql-utilities/feed">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/*  */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/*  */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="/wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="/wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="/wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="/wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="/wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/tags/78"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style><style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style><script type="text/javascript">//
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//</script><style type="text/css"></style><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style></head>
+
+<body class="archive tag tag-mysql-utilities tag-78 custom-background">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="/"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu"><li class="page_item page-item-1011"><a href="/about">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="/wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+		
+		<h2 class="arh">Tag Archive for MySQL Utilities</h2>
+				
+					<div id="post-3936" class="post-3936 post type-post status-publish format-standard hentry category-mysql-fabric tag-ha tag-mysql tag-mysql-fabric-2 tag-mysql-utilities">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-fabric/mysql-fabricmysql-utilities-1-4-4-released">August 4, 2014</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-fabric/mysql-fabricmysql-utilities-1-4-4-released#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-fabric/mysql-fabricmysql-utilities-1-4-4-released" rel="bookmark">MySQL Fabric/MySQL Utilities 1.4.4 released</a></h2>
+				
+				<div class="entry">
+										<p><a href="/wp-content/uploads/2014/08/MySQL_Utilities_Fabric.png"><img fetchpriority="high" decoding="async" class="aligncenter size-full wp-image-3938" src="/wp-content/uploads/2014/08/MySQL_Utilities_Fabric.png" alt="MySQL Utilities &amp; Fabric" width="420" height="352" srcset="/wp-content/uploads/2014/08/MySQL_Utilities_Fabric.png 420w, /wp-content/uploads/2014/08/MySQL_Utilities_Fabric-300x251.png 300w" sizes="(max-width: 420px) 100vw, 420px"></a> The binary and source versions of MySQL Utilities/MySQL Fabric have now been made available at <a href="http://dev.mysql.com/downloads/utilities/" target="_blank">http://dev.mysql.com/downloads/utilities/</a>.</p>
+<p>This release contains bug fixes and minor enhancements &#8211; full details can be found in the <a title="MySQL Fabric/MySQL Utilities release notes" href="http://dev.mysql.com/doc/relnotes/mysql-utilities/en/wb-utils-news-1-4-4.html" target="_blank">MySQL Fabric/MySQL Utilities release notes</a>.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-fabric/mysql-fabricmysql-utilities-1-4-4-released" data-via="wpbeginner" data-text="MySQL Fabric/MySQL Utilities 1.4.4 released" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-fabric/mysql-fabricmysql-utilities-1-4-4-released"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-fabric/mysql-fabricmysql-utilities-1-4-4-released" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-fabric%2Fmysql-fabricmysql-utilities-1-4-4-released&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-fabric" rel="category tag">MySQL Fabric</a> | 
+Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-fabric-2" rel="tag">mysql fabric</a>, <a href="/tag/mysql-utilities" rel="tag">MySQL Utilities</a></div>
+
+			</div>			<div id="post-2931" class="post-2931 post type-post status-publish format-standard has-post-thumbnail hentry category-mysql tag-ha tag-high-availability tag-mysql tag-mysql-replication tag-mysql-utilities">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql/new-replication-ha-white-papers">August 14, 2013</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql/new-replication-ha-white-papers#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql/new-replication-ha-white-papers" rel="bookmark">New replication &#038; HA white papers</a></h2>
+				
+				<div class="entry">
+										<p><a href="/wp-content/uploads/2013/08/MySQL_Replication_and_HA.png"><img decoding="async" class="alignright size-medium wp-image-2932" alt="MySQLReplication and High Availability logo" src="/wp-content/uploads/2013/08/MySQL_Replication_and_HA-300x101.png" width="300" height="101"></a>With the <a title="Standalone MySQL Utilities Now GA! Includes running mysqlfailover as a daemon" href="/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon/" target="_blank">General Availability of the standalone MySQL Utilities</a> it now makes sense to use these to simplify (and optionally automate) your MySQL Replication and High Availability solutions. In light of that, 4 of our MySQL white papers have been updated to reflect the new opportunities:</p>
+<p><strong><a title="MySQL Guide to High Availability Solutions" href="http://www.mysql.com/why-mysql/white-papers/mysql-guide-to-high-availability-solutions/" target="_blank">MySQL Guide to High Availability Solutions</a></strong>. Data is the currency of today&#8217;s web, mobile, social, enterprise and cloud applications. Ensuring data is always available is a top priority for any organization &#8211; minutes of downtime will result in significant loss of revenue and reputation.</p>
+<p>This Guide is designed to assist Developers, Architects and DBAs in navigating the complex waters of HA. It presents:</p>
+<ul>
+<li>A methodology for selecting the right HA solution to meet Service Level Agreements</li>
+<li>A tour of the leading certified HA solutions for MySQL</li>
+<li>Operational best practices to implement and support HA</li>
+</ul>
+<p><strong><a title="MySQL Replication: High Availability - Building a Self-Healing Replication Topology" href="http://www.mysql.com/why-mysql/white-papers/mysql-replication-high-availability/" target="_blank">MySQL Replication: High Availability &#8211; Building a Self-Healing Replication Topology</a></strong>. Download the whitepaper to learn how to improve user-experience, reduce cost and innovate faster using MySQL replication.</p>
+<p>Global Transaction Identifiers (GTIDs) are one of the core new features of MySQL 5.6 replication, providing a foundation to building self-healing, highly available data clusters.</p>
+<p>By reading this whitepaper, you will be able to:</p>
+<ul>
+<li>Illustrate use-cases and implementation of MySQL replication</li>
+<li>Learn how High Availability (HA) with MySQL replication is achieved using GTIDs</li>
+<li>Gain an overview of MySQL replication utilities</li>
+<li>Discover resources for achieving HA with MySQL replication</li>
+</ul>
+<p>The paper concludes with an overview of operational best practices.</p>
+<p><strong><a title="MySQL Replication: An Introduction" href="http://www.mysql.com/why-mysql/white-papers/mysql-replication-introduction/" target="_blank">MySQL Replication: An Introduction</a></strong>. Download the whitepaper to learn how MySQL replication enables the largest web, cloud, mobile and social applications to scale-out on commodity hardware, while reducing the risks of downtime.</p>
+<p>The whitepaper discusses:</p>
+<ul>
+<li>Replication concepts</li>
+<li>Replication enhancements in MySQL 5.6</li>
+<li>Replication use-cases</li>
+<li>Replication topologies</li>
+<li>Replication monitoring and management</li>
+</ul>
+<p>The paper concludes with resources to get started with MySQL replication in building next generation services.</p>
+<p><strong><a title="MySQL Replication Tutorial: Configuration, Provisioning and Management" href="http://www.mysql.com/why-mysql/white-papers/mysql-replication-tutorial/" target="_blank">MySQL Replication Tutorial: Configuration, Provisioning and Management</a></strong>. Download the whitepaper for practical examples and best practices in building highly available services using MySQL replication as well as MySQL Utilities.</p>
+<p>By reading this paper, you will be able to:</p>
+<ul>
+<li>Configure and provision MySQL replication (with or without MySQL Utilities)</li>
+<li>Migrate to semi-synchronous replication</li>
+<li>Administer and trouble-shoot MySQL replication (with or without MySQL Utilities)</li>
+<li>Promote a slave to be the new master in the event of a failed Master (manual or automatic, with or without MySQL Utilities</li>
+</ul>
+<p>The paper concludes with additional resources to tune and optimize MySQL replication for your environment.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql/new-replication-ha-white-papers" data-via="wpbeginner" data-text="New replication &#038; HA white papers" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql/new-replication-ha-white-papers"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql/new-replication-ha-white-papers" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql%2Fnew-replication-ha-white-papers&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql" rel="category tag">MySQL</a> | 
+Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="tag">High Availability</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>, <a href="/tag/mysql-utilities" rel="tag">MySQL Utilities</a></div>
+
+			</div>			<div id="post-2905" class="post-2905 post type-post status-publish format-standard has-post-thumbnail hentry category-mysql-replication tag-ha tag-high-availability tag-mysql tag-mysql-5-6 tag-mysql-replication tag-mysql-utilities">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon">August 5, 2013</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon#comments">3 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon" rel="bookmark">Standalone MySQL Utilities Now GA! Includes running mysqlfailover as a daemon</a></h2>
+				
+				<div class="entry">
+										<p><a href="/wp-content/uploads/2013/08/MySQL_Utilities-GA.png"><img decoding="async" class="alignright size-medium wp-image-2906" alt="MySQL Utilities are now GA - logo" src="/wp-content/uploads/2013/08/MySQL_Utilities-GA-300x125.png" width="300" height="125"></a>With the release of MySQL Utilities 1.3.4, the standalone (not bundled with the MySQL WorkBench GUI) package is now Generally Available and fully supported. This post will focus on a very important change (the ability to run as a daemon rather than in a terminal) to the <span style="color: #008080;">mysqlfailover </span>utility which allows you to build a light-weight HA database solution using MySQL Replication.</p>
+<p>For a general overview of MySQL Utilities, <a title="MySQL Utilities Webinar – Q&amp;A + replay" href="/mysql/mysql-utilities-webinar-qa-replay-now-available/" target="_blank">take a look at this recent webinar</a> or for a deeper dive into using them to setup replication and adding auto-failover of the master function to slaves <a title="Replication and auto-failover made easy with MySQL Utilities" href="/mysql/replication-and-auto-failover-made-easy-with-mysql-utilities/" target="_blank">watch this video and worked example</a>.</p>
+<p>When we first released the <span style="color: #008080;">mysqlfailover</span> utility, the reaction was very positive but the feedback also told us that to really use this to provide High Availability in a production system two enhancements were critical:</p>
+<ol>
+<li>The ability to not have the database password visible when someone queries the status of the process (for example, using the <span style="color: #008080;">ps</span> command). This was addressed by allowing the connection string to be specified using a <span style="color: #008080;">login-path</span> (referring to an entry in .mylogin.cnf &#8211; see <a title="Setting up .mylogin.cnf using  mysql_config_editor utility" href="https://dev.mysql.com/doc/refman/5.6/en/mysql-config-editor.html" target="_blank">https://dev.mysql.com/doc/refman/5.6/en/mysql-config-editor.html</a>) in place of <span style="color: #008080;">&lt;user&gt;[:&lt;passwd&gt;]@&lt;host&gt;</span>. This is a vital security enhancement added in MySQL Utilities 1.3.1.</li>
+<li>Allowing <span style="color: #008080;">mysqlfailover</span> to be run as a daemon rather than being tied to the terminal from where it had to be manually launched. This option is key to enabling the user to build a reslient HA system that doesn&#8217;t rely on mysqlfailover being launched from a terminal and that terminal then never going away.</li>
+</ol>
+<p>The rest of this post focuses on how to run <span style="color: #008080;">mysqlfailover</span> as a daemon.</p>
+<p>By default, <span style="color: #008080;">mysqlfailover </span>runs as an interactive program within the terminal it was run from; it constantly refreshes, providing a summary of the status of the replication topology as shown below.</p>
+<pre><span style="color: #008080;">mysql@mini servers]$ mysqlfailover --master=root@192.168.1.101:5001 
+  --discover-slaves-login=root --rediscover
+
+MySQL Replication Failover Utility
+Failover Mode = auto     Next Interval = Thu Aug  1 23:34:56 2013
+
+Master Information
+------------------
+Binary Log File   Position  Binlog_Do_DB  Binlog_Ignore_DB
+mini1-bin.000001  581
+
+GTID Executed Set
+1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+
+WARNING: Errant transaction(s) found on slave(s).
+Replication Health Status
++----------------+-------+---------+--------+------------+---------+
+| host           | port  | role    | state  | gtid_mode  | health  |
++----------------+-------+---------+--------+------------+---------+
+| 192.168.1.101  | 5001  | MASTER  | UP     | ON         | OK      |
+| 192.168.1.101  | 5002  | SLAVE   | UP     | ON         | OK      |
+| 192.168.1.101  | 5003  | SLAVE   | UP     | ON         | OK      |
+| 192.168.1.101  | 5004  | SLAVE   | UP     | ON         | OK      |
++----------------+-------+---------+--------+------------+---------+
+
+Q-quit R-refresh H-health G-GTID Lists U-UUIDs
+</span></pre>
+<p>To run <span style="color: #008080;">mysqlfailover</span> as a daemon, the first new command-line option you must provide is <span style="color: #008080;">&#8211;daemon=start</span>; as you&#8217;d expect this runs the process as a daemon. In this mode, you won&#8217;t get to see the output from <span style="color: #008080;">mysqlfailover</span> at your terminal and so you should make sure that you know what log file is being used &#8211; so it&#8217;s best to specify it with <span style="color: #008080;">&#8211;log=&lt;path-to-log-file&gt;</span>. You can also control what information is periodically written to the log file using <span style="color: #008080;">&#8211;report-values=&lt;list-of-attributes from health,gtid,uuid&gt;</span>.  As you&#8217;ll likely to want to be able to manage the daemon without having to be in the same directory (and also likely to manage it from scripts that are automatically run when the server starts and stops) it makes sense to specify where the process ID file should be stored using <span style="color: #008080;">&#8211;pid=&lt;path-to-pid-file&gt;</span>.</p>
+<p>The final incantation might look something like the following:</p>
+<pre><span style="color: #008080;">mysqlfailover --master=root@192.168.1.101:5001 
+  --discover-slaves-login=root 
+  --rediscover 
+  --log=/home/mysql/servers/mysqlfailover.log 
+  --pidfile=/home/mysql/servers/mysqlfailover.pid 
+  --daemon=start 
+  --report-values=health,gtid,uuid
+</span></pre>
+<p>and the resulting log file could then contain information such as this:</p>
+<pre><span style="color: #008080;">2013-08-02 01:10:34 AM INFO Getting health for master: 192.168.1.101:5001.
+2013-08-02 01:10:35 AM INFO Health Status:
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5001, role: MASTER, state: UP, gtid_mode: ON, health: OK
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5002, role: SLAVE, state: UP, gtid_mode: ON, health: OK
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5003, role: SLAVE, state: UP, gtid_mode: ON, health: OK
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5004, role: SLAVE, state: UP, gtid_mode: ON, health: OK
+2013-08-02 01:10:35 AM INFO GTID Status - Transactions executed on the servers:
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5001, role: MASTER, gtid: 1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5002, role: SLAVE, gtid: 1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5002, role: SLAVE, gtid: 1db19050-faf9-11e2-a214-0800272b8804:1
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5003, role: SLAVE, gtid: 1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5003, role: SLAVE, gtid: 200f8139-faf9-11e2-a214-0800272b8804:1
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5004, role: SLAVE, gtid: 1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5004, role: SLAVE, gtid: 22842441-faf9-11e2-a214-0800272b8804:1
+2013-08-02 01:10:35 AM INFO UUID Status:
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5001, role: MASTER, uuid: 1aca3d80-faf9-11e2-a214-0800272b8804
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5002, role: SLAVE, uuid: 1db19050-faf9-11e2-a214-0800272b8804
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5003, role: SLAVE, uuid: 200f8139-faf9-11e2-a214-0800272b8804
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5004, role: SLAVE, uuid: 22842441-faf9-11e2-a214-0800272b8804
+</span></pre>
+<p>As you&#8217;d expect, you can also stop the daemon:</p>
+<pre><span style="color: #008080;">mysqlfailover 
+    --log=/home/mysql/servers/mysqlfailover.log 
+    --pidfile=/home/mysql/servers/mysqlfailover.pid 
+    --daemon=stop
+</span></pre>
+<p>and restart it:</p>
+<pre><span style="color: #008080;">mysqlfailover 
+    --log=/home/mysql/servers/mysqlfailover.log 
+    --pidfile=/home/mysql/servers/mysqlfailover.pid 
+    --daemon=restart
+</span></pre>
+<p>The final option for <span style="color: #008080;">daemon=</span> is <span style="color: #008080;">daemon=nodetach</span> which is like start but the terminal that it&#8217;s run from will continue to view the output from the daemon.</p>
+<p>One thing to note is that when the server is restarted, <span style="color: #008080;">mysqlfailover</span> needs to be started again and this is not something that is automatically configured when you run it as a daemon &#8211; rather, it&#8217;s your responsibility to ensure that it&#8217;s restarted (for example, including it in an <span style="color: #008080;">init</span> script.</p>
+<p>Please try it out and (as always) let us know how you get on &#8211; the addition of these extra options is a direct result of the user feedback received for the earlier versions.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon" data-via="wpbeginner" data-text="Standalone MySQL Utilities Now GA! Includes running mysqlfailover as a daemon" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-replication%2Fstandalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="tag">High Availability</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-5-6" rel="tag">MySQL 5.6</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>, <a href="/tag/mysql-utilities" rel="tag">MySQL Utilities</a></div>
+
+			</div>			<div id="post-2896" class="post-2896 post type-post status-publish format-standard hentry category-mysql tag-mysql tag-mysql-utilities tag-replication">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql/mysql-utilities-webinar-qa-replay-now-available">July 29, 2013</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql/mysql-utilities-webinar-qa-replay-now-available#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql/mysql-utilities-webinar-qa-replay-now-available" rel="bookmark">MySQL Utilities Webinar &#8211; Q&#038;A + replay now available</a></h2>
+				
+				<div class="entry">
+										<p><a href="/wp-content/uploads/2013/07/MySQL_Utilities.png"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-2875" alt="MySQL Utilities logo" src="/wp-content/uploads/2013/07/MySQL_Utilities-300x125.png" width="300" height="125"></a>Dr Charles Bell and I recently presented a webinar on MySQL Utilities; there was a heavy focus on what you can acheive with them and how you should use them. In case you couldn&#8217;t attend or want to listen to some of the details again, the <a title="MySQL Utilities webinar replay" href="http://w.on24.com/r.htm?e=655548&amp;s=1&amp;k=EEBAC76AC407E0017ABF67F4686C7B2F" target="_blank">replay from that webinar is available here</a>.</p>
+<h3>Abstract:</h3>
+<p>MySQL Utilities provide a collection of command-line utilities that are used for maintaining and administering MySQL databases, including:</p>
+<ul>
+<li>Admin Utilities (Clone, Copy, Compare, Diff, Export, Import)</li>
+<li>Replication Utilities (Setup, Configuration, Automated Slave Promotion)</li>
+<li>General Utilities (Disk Usage, Redundant Indexes, Search Meta Data)</li>
+</ul>
+<p>Andrew Morgan and Chuck Bell will guide you through these utilities, and many more, explaining what you can gain from these tools and how to use them (for example how a single command repeatedly checks your master server and in the event it fails, automatically promotes one of the slaves to be the new master).</p>
+<h3>Question &amp; Answer Summary:</h3>
+<ul>
+<li><strong>Using these utilities, can we export/import routines&#8217; source as well?</strong> Yes.</li>
+<li><strong>I generally run multi-master behind a proxy (haproxy). I was wondering if the replication check would work. But I guess mysql still does not support multi-master or ring replcation.</strong> It depends on want you intend to do exactly. There are some limitation, but we intend to improve the utilities over time. So, just test the utilities on your environment and your are welcome to share your feedback with us.</li>
+<li><strong>Do you need the python connector if you have the utilities on workbench?</strong> No, it is bundled as part of WB.</li>
+<li><strong>What does &#8220;mysqluserclone&#8221; do that &#8220;SHOW GRANTS FOR USER&#8221; doesn&#8217;t do?</strong> It actually creates the users, clone them and not simply show its privileges like SHOW GRANTS. You can find more details <a href="http://dev.mysql.com/doc/workbench/en/mysqluserclone.html" title="mysqluserclone manual" target="_blank">here</a>.</li>
+<li><strong>With mysqlfailover can I set a sequence to swith specific order if a fail occurs with the master?</strong>  Yes, you can. It will follow the sequence of the defined candidates.</li>
+<li><strong>Can I run mysqlfailover on a independent server that check the master and their slave servers or it can run on the master or slave servers (mandatory)?</strong> Running on an independent server is ideal. After all, you don&#8217;t want it to disappear when the master&#8217;s host fails.</li>
+<li><strong>How many MySQL instances can I manage with mysqlfailover, I mean there is possible to check more than one array with the same independent server?</strong> With one mysqlfailover instance you can monitor one topology, i.e. one master and all its slaves. If you have more than one topology (using a different master) you can use a mysqlfailover instance to monitor each one.
+</li>
+<li><strong>If a master goes down and replication failover is successful, how hard is it to bring that old master back into the fold, assuming it was just a network disruption?</strong> You can use mysqlreplicate to set the old master as a slave of the new master resulted by the failover, that will update the old master. then you can use mysqlrpladmin to switchover the just added slave, to make it a master again, that back your original replication setup.</li>
+<li><strong>Can mysqlprocgrep log what it kills?</strong> There is no option to log what it is done. But you can redirect the utility output if it contains the information you need.</li>
+<li><strong>How does mysqldbcompare handle auto-increment columns?</strong> It will find the difference between auto_increment values. So, currently if it is different it will identify the difference. You will get the difference, as: changed or missing rows are shown in a standard format of GRID, CSV, TAB, or VERTICAL. you can choose in which format you want to get the difference.</li>
+<li><strong>I use Pacemaker/Corosync to achieve failover. Is mysqlfailover suitable for use in that context? Do I need to add extra logic around it, some wrapper script? If so, does Oracle provide a ready-made scripts for Pacemaker/Corosync?</strong> mysqlfailover was designed to work independently, and provides some functionalities that may help with the integration with other systems (like the possibility to execute external pre- pos- failover scripts). We do not have a ready-made script for Pacemaker/Corosync. For more information <a href="http://dev.mysql.com/doc/workbench/en/mysqlfailover.html" title="mysqlfailover manual" target="_blank">check here</a>.</li>
+<li><strong>How long are the frm files kept if the database is corrupt or was deleted.</strong> The .frm files are not removed in any way. So there is no deletion or removal of the .frm files. The .frm files are an integral part of the server and stored in the datadir.</li>
+<li><strong>Can mysqlserverclone clone instances between separate servers? Using SSH?</strong> mysqlserverclone, starts a new instance, that mimics a running server or a offline server by taking a look to his configuration, but to copy objects like tables, to another instance you need to use mysqldbcopy. We do not currently support SSH. If you see this as a much needed feature, please open a feature request via bugs.mysql.com. That will help us understand the need and urgency.</li>
+</ul>
+<p>&nbsp;</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql/mysql-utilities-webinar-qa-replay-now-available" data-via="wpbeginner" data-text="MySQL Utilities Webinar &#8211; Q&#038;A + replay now available" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql/mysql-utilities-webinar-qa-replay-now-available"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql/mysql-utilities-webinar-qa-replay-now-available" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql%2Fmysql-utilities-webinar-qa-replay-now-available&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql" rel="category tag">MySQL</a> | 
+Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-utilities" rel="tag">MySQL Utilities</a>, <a href="/tag/replication" rel="tag">Replication</a></div>
+
+			</div>			<div id="post-2876" class="post-2876 post type-post status-publish format-standard has-post-thumbnail hentry category-mysql category-mysql-replication tag-mysql tag-mysql-5-6 tag-mysql-replication tag-mysql-utilities tag-mysql-workbench">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql/mysql-utilities-webinar">July 16, 2013</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql/mysql-utilities-webinar#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql/mysql-utilities-webinar" rel="bookmark">MySQL Utilities Webinar</a></h2>
+				
+				<div class="entry">
+										<p><a href="/wp-content/uploads/2013/07/MySQL_Utilities.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2013/07/MySQL_Utilities-300x125.png" alt="MySQL Utilities logo" width="300" height="125" class="alignright size-medium wp-image-2875"></a>On Thursday, Dr Charles Bell and I will be presenting a webinar on MySQL Utilities; there will be a heavy focus on what you can acheive with them and how you should use them. As well as listening to the presentation, this is a great chance to get your questions answered by the experts (Israel Gomez from the engineering team will also be on-line to help with the questions). As always, the webinar is free but you should <a href="http://www.mysql.com/news-and-events/web-seminars/focus-on-mysql-utilities/" title="MySQL Utilities webinar - registration" target="_blank">register in advance here</a>. If the time isn&#8217;t convenient, register anyway and you&#8217;ll be sent a link to the replay when it&#8217;s available.</p>
+<h3>Abstract:</h3>
+<p>MySQL Utilities provide a collection of command-line utilities that are used for maintaining and administering MySQL databases, including:</p>
+<ul>
+<li>Admin Utilities (Clone, Copy, Compare, Diff, Export, Import)</li>
+<li>Replication Utilities (Setup, Configuration, Automated Slave Promotion)</li>
+<li>General Utilities (Disk Usage, Redundant Indexes, Search Meta Data)</li>
+</ul>
+<p>Andrew Morgan and Chuck Bell will guide you through these utilities, and many more, explaining what you can gain from these tools and how to use them (for example how a single command repeatedly checks your master server and in the event it fails, automatically promotes one of the slaves to be the new master). This is your opportunity to listen to the development lead describe what he and his team have created, and to get your questions answered by the experts.</p>
+<p>WHO:<br>
+Andrew Morgan, Principal Product Manager<br>
+Chuck Bell, Software Development Manager</p>
+<p>WHEN:<br>
+Thu, Jul 18: 09:00 Pacific time (America)<br>
+Thu, Jul 18: 10:00 Mountain time (America)<br>
+Thu, Jul 18: 11:00 Central time (America)<br>
+Thu, Jul 18: 12:00 Eastern time (America)<br>
+Thu, Jul 18: 16:00 UTC<br>
+Thu, Jul 18: 17:00 Western European time<br>
+Thu, Jul 18: 18:00 Central European time<br>
+Thu, Jul 18: 19:00 Eastern European time<br>
+Thu, Jul 18: 21:30 India, Sri Lanka<br>
+Fri, Jul 19: 00:00 Singapore/Malaysia/Philippines time<br>
+Fri, Jul 19: 00:00 China time<br>
+Fri, Jul 19: 01:00 日本<br>
+Fri, Jul 19: 02:00 NSW, ACT, Victoria, Tasmania (Australia) </p>
+<p>The presentation will be approximately 60 minutes long followed by Q&#038;A. </p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql/mysql-utilities-webinar" data-via="wpbeginner" data-text="MySQL Utilities Webinar" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql/mysql-utilities-webinar"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql/mysql-utilities-webinar" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql%2Fmysql-utilities-webinar&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql" rel="category tag">MySQL</a>, <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-5-6" rel="tag">MySQL 5.6</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>, <a href="/tag/mysql-utilities" rel="tag">MySQL Utilities</a>, <a href="/tag/mysql-workbench" rel="tag">MySQL Workbench</a></div>
+
+			</div>      
+							<div class="more_posts">
+					<span class="post_links"> &nbsp; </span>
+				</div>
+						
+
+					
+	</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="/mongodb/realm-swift-type-projections">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="/mongodb/goodbye-nspredicate-hello-realm-swift-query-api">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script></div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-787242">MySQL Cluster running on Raspberry Pi</a></li><li class="recentcomments"><span class="comment-author-link">andrew</span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link">Sai Krishnan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-661143">Get MySQL Replication up and running in 5 minutes</a></li><li class="recentcomments"><span class="comment-author-link">Nayan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-660628">Get MySQL Replication up and running in 5 minutes</a></li></ul></li>
+<li id="categories-2" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2"><a href="/category/me">Me</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="/category/mongodb">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/mysql">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/mysql-cluster">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131"><a href="/category/mysql-fabric">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="/category/mysql-replication">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214"><a href="/category/mongodb/realm">Realm</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="/category/uncategorized">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div class="tagcloud"><a href="/tag/7-4" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="/tag/apache-kafka" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="/tag/cluster" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="/tag/ha" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="/tag/high-availability" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="/tag/ios" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="/tag/java" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="/tag/javascript" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="/tag/mcm" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="/tag/mean" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="/tag/memcached" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="/tag/mobile" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="/tag/mongodb" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="/tag/mongodb-3-2" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="/tag/mongodb-atlas" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="/tag/mongodb-mobile" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="/tag/mongodb-stitch" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="/tag/mysql" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="/tag/mysql-5-6" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="/tag/mysql-cluster" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="/tag/mysql-cluster-70" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="/tag/mysql-cluster-7-1" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="/tag/mysql-cluster-7-2" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="/tag/mysql-cluster-7-3" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="/tag/mysql-cluster-7-4" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="/tag/mysql-cluster-cge" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="/tag/mysql-cluster-manager" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="/tag/mysql-enterprise-monitor" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="/tag/mysql-fabric-2" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="/tag/mysql-replication" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="/tag/mysql-utilities" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="/tag/ndb-api" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="/tag/node-js" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="/tag/nosql" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="/tag/performance" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="/tag/realm" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="/tag/replication" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="/tag/secondary" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="/tag/serverless" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="/tag/sharding" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="/tag/swift" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="/tag/swiftui" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="/tag/webcast" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="/tag/webinar" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="/tag/windows" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a></div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="/2022/03">March 2022</a></li>
+	<li><a href="/2022/02">February 2022</a></li>
+	<li><a href="/2022/01">January 2022</a></li>
+	<li><a href="/2021/12">December 2021</a></li>
+	<li><a href="/2021/11">November 2021</a></li>
+	<li><a href="/2021/09">September 2021</a></li>
+	<li><a href="/2021/08">August 2021</a></li>
+	<li><a href="/2021/07">July 2021</a></li>
+	<li><a href="/2021/06">June 2021</a></li>
+	<li><a href="/2021/05">May 2021</a></li>
+	<li><a href="/2021/04">April 2021</a></li>
+	<li><a href="/2021/02">February 2021</a></li>
+	<li><a href="/2021/01">January 2021</a></li>
+	<li><a href="/2020/12">December 2020</a></li>
+	<li><a href="/2019/03">March 2019</a></li>
+	<li><a href="/2019/01">January 2019</a></li>
+	<li><a href="/2018/12">December 2018</a></li>
+	<li><a href="/2018/11">November 2018</a></li>
+	<li><a href="/2018/10">October 2018</a></li>
+	<li><a href="/2018/09">September 2018</a></li>
+	<li><a href="/2017/09">September 2017</a></li>
+	<li><a href="/2017/03">March 2017</a></li>
+	<li><a href="/2017/02">February 2017</a></li>
+	<li><a href="/2017/01">January 2017</a></li>
+	<li><a href="/2016/12">December 2016</a></li>
+	<li><a href="/2016/11">November 2016</a></li>
+	<li><a href="/2016/09">September 2016</a></li>
+	<li><a href="/2016/01">January 2016</a></li>
+	<li><a href="/2015/11">November 2015</a></li>
+	<li><a href="/2015/10">October 2015</a></li>
+	<li><a href="/2015/09">September 2015</a></li>
+	<li><a href="/2015/06">June 2015</a></li>
+	<li><a href="/2015/04">April 2015</a></li>
+	<li><a href="/2015/03">March 2015</a></li>
+	<li><a href="/2015/02">February 2015</a></li>
+	<li><a href="/2015/01">January 2015</a></li>
+	<li><a href="/2014/12">December 2014</a></li>
+	<li><a href="/2014/11">November 2014</a></li>
+	<li><a href="/2014/10">October 2014</a></li>
+	<li><a href="/2014/09">September 2014</a></li>
+	<li><a href="/2014/08">August 2014</a></li>
+	<li><a href="/2014/07">July 2014</a></li>
+	<li><a href="/2014/06">June 2014</a></li>
+	<li><a href="/2014/05">May 2014</a></li>
+	<li><a href="/2014/04">April 2014</a></li>
+	<li><a href="/2014/03">March 2014</a></li>
+	<li><a href="/2014/02">February 2014</a></li>
+	<li><a href="/2014/01">January 2014</a></li>
+	<li><a href="/2013/12">December 2013</a></li>
+	<li><a href="/2013/11">November 2013</a></li>
+	<li><a href="/2013/09">September 2013</a></li>
+	<li><a href="/2013/08">August 2013</a></li>
+	<li><a href="/2013/07">July 2013</a></li>
+	<li><a href="/2013/06">June 2013</a></li>
+	<li><a href="/2013/05">May 2013</a></li>
+	<li><a href="/2013/03">March 2013</a></li>
+	<li><a href="/2013/02">February 2013</a></li>
+	<li><a href="/2013/01">January 2013</a></li>
+	<li><a href="/2012/12">December 2012</a></li>
+	<li><a href="/2012/11">November 2012</a></li>
+	<li><a href="/2012/09">September 2012</a></li>
+	<li><a href="/2012/07">July 2012</a></li>
+	<li><a href="/2012/06">June 2012</a></li>
+	<li><a href="/2012/05">May 2012</a></li>
+	<li><a href="/2012/04">April 2012</a></li>
+	<li><a href="/2012/03">March 2012</a></li>
+	<li><a href="/2012/02">February 2012</a></li>
+	<li><a href="/2012/01">January 2012</a></li>
+	<li><a href="/2011/12">December 2011</a></li>
+	<li><a href="/2011/11">November 2011</a></li>
+	<li><a href="/2011/10">October 2011</a></li>
+	<li><a href="/2011/09">September 2011</a></li>
+	<li><a href="/2011/07">July 2011</a></li>
+	<li><a href="/2011/06">June 2011</a></li>
+	<li><a href="/2011/05">May 2011</a></li>
+	<li><a href="/2011/04">April 2011</a></li>
+	<li><a href="/2011/03">March 2011</a></li>
+	<li><a href="/2011/02">February 2011</a></li>
+	<li><a href="/2011/01">January 2011</a></li>
+	<li><a href="/2010/12">December 2010</a></li>
+	<li><a href="/2010/11">November 2010</a></li>
+	<li><a href="/2010/10">October 2010</a></li>
+	<li><a href="/2010/09">September 2010</a></li>
+	<li><a href="/2010/08">August 2010</a></li>
+	<li><a href="/2010/07">July 2010</a></li>
+	<li><a href="/2010/06">June 2010</a></li>
+	<li><a href="/2010/05">May 2010</a></li>
+	<li><a href="/2010/04">April 2010</a></li>
+	<li><a href="/2010/03">March 2010</a></li>
+	<li><a href="/2010/02">February 2010</a></li>
+	<li><a href="/2010/01">January 2010</a></li>
+	<li><a href="/2009/12">December 2009</a></li>
+	<li><a href="/2009/11">November 2009</a></li>
+	<li><a href="/2009/10">October 2009</a></li>
+	<li><a href="/2009/09">September 2009</a></li>
+	<li><a href="/2009/08">August 2009</a></li>
+	<li><a href="/2009/07">July 2009</a></li>
+	<li><a href="/2009/06">June 2009</a></li>
+	<li><a href="/2009/05">May 2009</a></li>
+	<li><a href="/2009/04">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 --></body>
+</html>

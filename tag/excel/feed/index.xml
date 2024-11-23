@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Excel &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/excel/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Fri, 22 Jan 2016 09:41:58 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Analyzing Data in Microsoft Excel with the MongoDB Connector for BI</title>
+		<link>/mongodb/analyzing-data-in-microsoft-excel-with-the-mongodb-connector-for-bi</link>
+					<comments>/mongodb/analyzing-data-in-microsoft-excel-with-the-mongodb-connector-for-bi#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 22 Jan 2016 09:41:58 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[3.2]]></category>
+		<category><![CDATA[Excel]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB 3.2]]></category>
+		<category><![CDATA[ODBC]]></category>
+		<category><![CDATA[sql]]></category>
+		<category><![CDATA[Windows]]></category>
+		<guid isPermaLink="false">/?p=4155</guid>
+
+					<description><![CDATA[There are many great BI tools out there that enable powerful analytics and data visualization but sometimes the right tool for the job is the one you already have sitting on your laptop. MongoDB 3.2 introduced the MongoDB Connector for BI which presents an SQL API to allow BI tools to read data from your]]></description>
+										<content:encoded><![CDATA[<p>There are many great BI tools out there that enable powerful analytics and data visualization but sometimes the right tool for the job is the one you already have sitting on your laptop.</p>
+<p>MongoDB 3.2 introduced the <a href="https://www.mongodb.com/products/bi-connector">MongoDB Connector for BI</a> which presents an SQL API to allow BI tools to read data from your database in real-time. Typically, this functionality will be showcased with specialized tools such as <a href="https://www.mongodb.com/webinar/live-data-visualisation-with-tableau-and-mongodb">Tableau</a> but it’s equally applicable to Microsoft’s ubiquitous Excel.</p>
+<p>This video demonstrates how to connect Excel running on Microsoft Windows to the BI connector and then fetch data from MongoDB.</p>
+<div style="width: 480px;" class="wp-video"><!--[if lt IE 9]><script>document.createElement('video');</script><![endif]-->
+<video class="wp-video-shortcode" id="video-4155-1" width="480" height="270" preload="metadata" controls="controls"><source type="video/mp4" src="http://clusterdb.com/upload/BI_Connector_with_Excel.mp4?_=1" /><a href="http://clusterdb.com/upload/BI_Connector_with_Excel.mp4">http://clusterdb.com/upload/BI_Connector_with_Excel.mp4</a></video></div>
+<p>&nbsp;</p>
+<p>The instructions in the demo assume that you already have a MongoDB database running together with a configured instance of the MongoDB Connector for BI – the <a href="https://docs.mongodb.org/manual/products/bi-connector/">documentation</a> explains how to set that up.</p>
+<p>Note that Excel is not able to handle the &#8220;.&#8221; character or capital letters in table of column names. To overcome this, it was necessary to edit the DRDL file produced by the mongodrdl tool to map names to lowercase equivalents and to replace each &#8220;.&#8221; (used to flatten embedded documents) with a &#8220;_&#8221;; this requires v1.1 or later of the BI connector.</p>
+<p>The MongoDB Connector for BI is part of <a href="https://www.mongodb.com/products/mongodb-enterprise-advanced">MongoDB Enterprise Advanced</a>; it can be freely downloaded for evaluation – why not <a href="https://www.mongodb.com/download-center#bi-connector">try it out for yourself</a>.</p>
+<p>More information on the BI connector as well as other MongoDB 3.2 features can be found in <a href="https://www.mongodb.com/collateral/mongodb-3-2-whats-new">MongoDB 3.2: What’s New</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mongodb/analyzing-data-in-microsoft-excel-with-the-mongodb-connector-for-bi/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		<enclosure url="http://clusterdb.com/upload/BI_Connector_with_Excel.mp4" length="231116948" type="video/mp4" />
+
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: MySQL Cluster 7.3 GA &#8211; webinar replay + Q&#038;A now available	</title>
+	<atom:link href="/mysql-cluster/mysql-cluster-7-3-ga-webinar-replay-qa-now-available/feed" rel="self" type="application/rss+xml" />
+	<link>/mysql-cluster/mysql-cluster-7-3-ga-webinar-replay-qa-now-available</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Wed, 09 Oct 2013 13:29:28 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: vijay		</title>
+		<link>/mysql-cluster/mysql-cluster-7-3-ga-webinar-replay-qa-now-available#comment-767</link>
+
+		<dc:creator><![CDATA[vijay]]></dc:creator>
+		<pubDate>Wed, 09 Oct 2013 13:29:28 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2866#comment-767</guid>
+
+					<description><![CDATA[can i install mysql cluster 7.3 on mysql 5.6.19 ? how?]]></description>
+			<content:encoded><![CDATA[<p>can i install mysql cluster 7.3 on mysql 5.6.19 ? how?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/mysql-cluster-7-3-ga-webinar-replay-qa-now-available#comment-766</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 08 Jul 2013 16:52:41 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2866#comment-766</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-3-ga-webinar-replay-qa-now-available#comment-765&quot;&gt;Nemanja Dubravac&lt;/a&gt;.
+
+The upgrade procedure is to run a rolling restart of the Cluster where you start each node with the new version of the software - see &lt;a href=&quot;http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-rolling-restart.html&quot; title=&quot;Rolling restarts in MySQL Cluster&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-rolling-restart.html&lt;/a&gt; for details.
+
+If you&#039;re using MySQL Cluster Manager then there&#039;s an upgrade command you can use... &lt;a href=&quot;http://dev.mysql.com/doc/mysql-cluster-manager/1.2/en/mcm-upgrade-cluster.html&quot; title=&quot;MySQL Cluster Manager - upgrade command&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;http://dev.mysql.com/doc/mysql-cluster-manager/1.2/en/mcm-upgrade-cluster.html&lt;/a&gt;
+
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-3-ga-webinar-replay-qa-now-available#comment-765">Nemanja Dubravac</a>.</p>
+<p>The upgrade procedure is to run a rolling restart of the Cluster where you start each node with the new version of the software &#8211; see <a href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-rolling-restart.html" title="Rolling restarts in MySQL Cluster" target="_blank" rel="nofollow">http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-rolling-restart.html</a> for details.</p>
+<p>If you&#8217;re using MySQL Cluster Manager then there&#8217;s an upgrade command you can use&#8230; <a href="http://dev.mysql.com/doc/mysql-cluster-manager/1.2/en/mcm-upgrade-cluster.html" title="MySQL Cluster Manager - upgrade command" target="_blank" rel="nofollow">http://dev.mysql.com/doc/mysql-cluster-manager/1.2/en/mcm-upgrade-cluster.html</a></p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Nemanja Dubravac		</title>
+		<link>/mysql-cluster/mysql-cluster-7-3-ga-webinar-replay-qa-now-available#comment-765</link>
+
+		<dc:creator><![CDATA[Nemanja Dubravac]]></dc:creator>
+		<pubDate>Mon, 08 Jul 2013 09:44:35 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2866#comment-765</guid>
+
+					<description><![CDATA[What&#039;s the upgrade procedure from 7.2? I can&#039;t find any useful documentation on dev.mysql.com. Thanks]]></description>
+			<content:encoded><![CDATA[<p>What&#8217;s the upgrade procedure from 7.2? I can&#8217;t find any useful documentation on dev.mysql.com. Thanks</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

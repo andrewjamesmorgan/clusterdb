@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>apostrophe &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/apostrophe/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Thu, 15 Sep 2016 16:45:04 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>MongoDB Atlas as The Data Store for Apostrophe</title>
+		<link>/mongodb/atlas_apostrophe</link>
+					<comments>/mongodb/atlas_apostrophe#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 15 Sep 2016 16:45:04 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[apostrophe]]></category>
+		<category><![CDATA[Express]]></category>
+		<category><![CDATA[javascript]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Atlas]]></category>
+		<category><![CDATA[node.js]]></category>
+		<guid isPermaLink="false">/?p=4190</guid>
+
+					<description><![CDATA[Apostrophe is a Content Management Systems that&#8217;s designed to build content-driven web sites. Because of their ease of use, Apostrophe is built upon MongoDB and Node.js. This post explains why MongoDB Atlas is an ideal choice for Apostrophe and then goes on to show how to configure Apostrophe to use it. Why MongoDB Atlas is]]></description>
+										<content:encoded><![CDATA[<p>Apostrophe is a Content Management Systems that&#8217;s designed to build content-driven web sites. Because of their ease of use, Apostrophe is built upon MongoDB and Node.js.</p>
+<p>This post explains why MongoDB Atlas is an ideal choice for Apostrophe and then goes on to show how to configure Apostrophe to use it.</p>
+<h4>Why MongoDB Atlas is the Ideal Database for Apostrophe</h4>
+<p>MongoDB delivers flexible schemas, rich queries, an idiomatic Node.js driver, and simple to use high availability and scaling. This makes it the go-to database for anyone looking to build applications on Node.js.</p>
+<p><a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> provides all of the features of MongoDB, without the operational heavy lifting required for any new application. MongoDB Atlas is available on demand through a pay-as-you-go model and billed on an hourly basis, letting you focus on what you do best.</p>
+<p>It’s easy to get started – use a simple GUI to select the instance size, region, and features you need. MongoDB Atlas provides:</p>
+<ul>
+<li>Security features to protect access to your data</li>
+<li>Built in replication for always-on availability, tolerating complete data center failure</li>
+<li>Backups and point in time recovery to protect against data corruption</li>
+<li>Fine-grained monitoring to let you know when to scale. Additional instances can be provisioned with the push of a button</li>
+<li>Automated patching and one-click upgrades for new major versions of the database, enabling you to take advantage of the latest and greatest MongoDB features</li>
+<li>A choice of cloud providers, regions, and billing options</li>
+</ul>
+<p>Like Apostrophe, MongoDB Atlas is a natural fit for users looking to simplify their development and operations work, letting them focus on what makes their application unique rather than commodity (albeit essential) plumbing.</p>
+<h4>Installing Apostrophe and Setting it up to Use MongoDB Atlas</h4>
+<p>Before starting with Apostrophe, you should launch your MongoDB cluster using <a href="https://www.mongodb.com/cloud">MongoDB Atlas</a> and then (optionally) create a user with read and write privileges for just the database that will be used for this project, as shown in Figure 1. You must also add the IP address of your application server to the IP Whitelist in the MongoDB Atlas security tab.</p>
+<div id="attachment_4192" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2016/09/Apostrophe_Create_DB_user.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-4192" class="size-large wp-image-4192" src="/wp-content/uploads/2016/09/Apostrophe_Create_DB_user-983x1024.png" alt="Creating an Apostrophe user in MongoDB Atlas" width="480" height="500" srcset="/wp-content/uploads/2016/09/Apostrophe_Create_DB_user-983x1024.png 983w, /wp-content/uploads/2016/09/Apostrophe_Create_DB_user-288x300.png 288w, /wp-content/uploads/2016/09/Apostrophe_Create_DB_user-768x800.png 768w, /wp-content/uploads/2016/09/Apostrophe_Create_DB_user.png 1672w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4192" class="wp-caption-text">Figure 1:Creating an Apostrophe user in MongoDB Atlas</p></div>
+<p>If it isn&#8217;t already installed on your system, download and install Node.js:</p>
+<p><script src="https://gist.github.com/am-MongoDB/3bbb946bb35fd8054e95adf92b96f103.js"></script></p>
+<p>You should then add the <code>bin</code> sub-folder to your <code>.bash_profile</code> file and then install ImageMagick (used by Apostrophe to handle image files); clone the Apostrophe Sandbox project; and then install its dependencies:</p>
+<p><script src="https://gist.github.com/am-MongoDB/676b16c5fdeaa650a448378c1a0bbdac.js"></script></p>
+<p>Before starting Apostrophe you need to configure it with details on how to connect to your specific MongoDB Atlas cluster. This is done by cloning the configuration file to <code>data/local.js</code>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/14d6019b0333b351685f3b077a93864d.js"></script></p>
+<p>You should then edit the <code>data/local.js</code> file and set the <code>uri</code> parameter using the specific connection information provided for your MongoDB Atlas group:</p>
+<p><script src="https://gist.github.com/am-MongoDB/2fdcb8c954ac831e8970543afbf5a1e4.js"></script></p>
+<p>The URI contains these components:</p>
+<ul>
+<li><code>apostrophe_user</code> is the name of the user you created in the MongoDB Atlas UI</li>
+<li><code>my_password</code> is the password you chose when creating the user in MongoDB Atlas</li>
+<li><code>cluster0-shard-00-00-qfovx.mongodb.net</code>, <code>cluster0-shard-00-01-qfovx.mongodb.net</code>, &amp; <code>cluster0-shard-00-02-qfovx.mongodb.net</code> are the hostnames of the instances in your MongoDB Atlas replica set (click on the &#8220;CONNECT&#8221; button in the MongoDB Atlas UI if you don&#8217;t have these)</li>
+<li><code>27017</code> is the standard MongoDB port number</li>
+<li><code>clusterdb</code> is the name of the database (schema) that Apostrophe will use (note that this must match the project name used when installing Apostrophe as well as the database you granted the user access to</li>
+<li>To enforce security, MongoDB Atlas mandates that the <code>ssl</code> option is used</li>
+<li><code>admin</code> is the database that&#8217;s being used to store the credentials for <code>apostrophe_user</code></li>
+</ul>
+<p>Clients connect to Apostrophe through port 3000 and so you must open that port in your firewall.</p>
+<p>You can then create the database and start Apostrophe:</p>
+<p><script src="https://gist.github.com/am-MongoDB/000e19868892d5865a90a0e339286609.js"></script></p>
+<h2>Testing the Application</h2>
+<p>Browse to the application at <code>http://address-of-app-server:3000/</code> as shown in Figure 2 and then login using the username <code>admin</code> and the password <code>demo</code>.</p>
+<div id="attachment_4194" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2016/09/Apostrophe.png"><img decoding="async" aria-describedby="caption-attachment-4194" src="/wp-content/uploads/2016/09/Apostrophe-1024x498.png" alt="Apostrophe Running on MongoDB Atlas" width="480" height="233" class="size-large wp-image-4194" srcset="/wp-content/uploads/2016/09/Apostrophe-1024x498.png 1024w, /wp-content/uploads/2016/09/Apostrophe-300x146.png 300w, /wp-content/uploads/2016/09/Apostrophe-768x373.png 768w, /wp-content/uploads/2016/09/Apostrophe.png 1138w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4194" class="wp-caption-text">Figure 2: Apostrophe Running on MongoDB Atlas</p></div>
+<p>Now, go ahead and add some content (Figure 3).</p>
+<div id="attachment_4195" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2016/09/create_Apostrophe_post_on_MongoDB_Atlas.png"><img decoding="async" aria-describedby="caption-attachment-4195" src="/wp-content/uploads/2016/09/create_Apostrophe_post_on_MongoDB_Atlas-1024x668.png" alt="Edit Apostrophe Home Page with Data Stored in MongoDB Atlas" width="480" height="313" class="size-large wp-image-4195" srcset="/wp-content/uploads/2016/09/create_Apostrophe_post_on_MongoDB_Atlas-1024x668.png 1024w, /wp-content/uploads/2016/09/create_Apostrophe_post_on_MongoDB_Atlas-300x196.png 300w, /wp-content/uploads/2016/09/create_Apostrophe_post_on_MongoDB_Atlas-768x501.png 768w, /wp-content/uploads/2016/09/create_Apostrophe_post_on_MongoDB_Atlas.png 1136w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4195" class="wp-caption-text">Figure 3: Edit Apostrophe Home Page with Data Stored in MongoDB Atlas</p></div>
+<p>Upload some images as shown in Figure 4.</p>
+<div id="attachment_4196" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2016/09/Apostrophe_add_images.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4196" src="/wp-content/uploads/2016/09/Apostrophe_add_images-1024x673.png" alt="Upload Images to Apostrophe on MongoDB Atlas" width="480" height="315" class="size-large wp-image-4196" srcset="/wp-content/uploads/2016/09/Apostrophe_add_images-1024x673.png 1024w, /wp-content/uploads/2016/09/Apostrophe_add_images-300x197.png 300w, /wp-content/uploads/2016/09/Apostrophe_add_images-768x505.png 768w, /wp-content/uploads/2016/09/Apostrophe_add_images.png 1142w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4196" class="wp-caption-text">Figure 4: Upload Images to Apostrophe on MongoDB Atlas</p></div>
+<p>Optionally, to confirm that, MongoDB Atlas really is being used by Apostrophe, you can connect using the MongoDB shell:</p>
+<p><script src="https://gist.github.com/am-MongoDB/6c3f3ff8df99ee12e1b963f6851f9441.js"></script></p>
+<p>To visually navigate through the schema and data created by Apostrophe, <a href="https://www.mongodb.com/download-center?jmp=nav#compass">download and install MongoDB Compass</a>. Use your MongoDB Atlas credentials to connect Compass to your MongoDB database – Figure 5.</p>
+<div id="attachment_4197" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2016/09/Connect_Compass_to_MongoDB_Atlas.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4197" src="/wp-content/uploads/2016/09/Connect_Compass_to_MongoDB_Atlas-1024x839.png" alt="Connect MongoDB Compass to MongoDB Atlas" width="480" height="393" class="size-large wp-image-4197" srcset="/wp-content/uploads/2016/09/Connect_Compass_to_MongoDB_Atlas-1024x839.png 1024w, /wp-content/uploads/2016/09/Connect_Compass_to_MongoDB_Atlas-300x246.png 300w, /wp-content/uploads/2016/09/Connect_Compass_to_MongoDB_Atlas-768x629.png 768w, /wp-content/uploads/2016/09/Connect_Compass_to_MongoDB_Atlas.png 1802w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4197" class="wp-caption-text">Figure 5: Connect MongoDB Compass to MongoDB Atlas</p></div>
+<p>Navigate through the structure of the data in the <code>clusterdb</code> database (Figure 6) and view the JSON documents (Figure 7).</p>
+<div id="attachment_4198" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2016/09/Compass_Apostrophe_Schema.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4198" src="/wp-content/uploads/2016/09/Compass_Apostrophe_Schema-1024x631.png" alt="Explore Apostrophe Schema Using MongoDB Compass" width="480" height="296" class="size-large wp-image-4198" srcset="/wp-content/uploads/2016/09/Compass_Apostrophe_Schema-1024x631.png 1024w, /wp-content/uploads/2016/09/Compass_Apostrophe_Schema-300x185.png 300w, /wp-content/uploads/2016/09/Compass_Apostrophe_Schema-768x473.png 768w, /wp-content/uploads/2016/09/Compass_Apostrophe_Schema.png 1282w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4198" class="wp-caption-text">Figure 6: Explore Apostrophe Schema Using MongoDB Compass</p></div>
+<div id="attachment_4199" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2016/09/Compass_Apostrophe_Data.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4199" src="/wp-content/uploads/2016/09/Compass_Apostrophe_Data-1024x630.png" alt="View Apostrophe Documents in MongoDB Compass" width="480" height="295" class="size-large wp-image-4199" srcset="/wp-content/uploads/2016/09/Compass_Apostrophe_Data-1024x630.png 1024w, /wp-content/uploads/2016/09/Compass_Apostrophe_Data-300x185.png 300w, /wp-content/uploads/2016/09/Compass_Apostrophe_Data-768x473.png 768w, /wp-content/uploads/2016/09/Compass_Apostrophe_Data.png 1279w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4199" class="wp-caption-text">Figure 7: View Apostrophe Documents in MongoDB Compass</p></div>
+<h4>What Next?</h4>
+<p>While MongoDB Atlas radically simplifies the operation of MongoDB there are still some decisions to take to ensure the best performance and reliability for your application. The <a href="https://www.mongodb.com/collateral/mongodb-atlas-best-practices">MongoDB Atlas Best Practices white paper</a> provides guidance on best practices for deploying, managing, and optimizing the performance of your database with MongoDB Atlas.</p>
+<p>The guide outlines considerations for achieving performance at scale with MongoDB Atlas across a number of key dimensions, including instance size selection, application patterns, schema design and indexing, and disk I/O. While this guide is broad in scope, it is not exhaustive. Following the recommendations in the guide will provide a solid foundation for ensuring optimal application performance.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mongodb/atlas_apostrophe/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

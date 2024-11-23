@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>alexa &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/alexa/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 05 Sep 2017 13:14:26 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>The Modern Application Stack &#8211; Part 6: Browsers Aren&#8217;t the Only UI – Mobile Apps, Amazon Alexa, Cloud Services</title>
+		<link>/mongodb/rest-mobile-app-amazon-alexa-cloud-services</link>
+					<comments>/mongodb/rest-mobile-app-amazon-alexa-cloud-services#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 17 Mar 2017 08:29:37 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[alexa]]></category>
+		<category><![CDATA[amazon alexa]]></category>
+		<category><![CDATA[MEAN]]></category>
+		<category><![CDATA[mern]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[node.js]]></category>
+		<category><![CDATA[reactjs]]></category>
+		<category><![CDATA[rest api]]></category>
+		<guid isPermaLink="false">/?p=4413</guid>
+
+					<description><![CDATA[This is the sixth and final blog post in a series examining technologies such as MongoDB and REST APIs that are driving the development of modern web and mobile applications. Modern Application Stack – Part 1: Introducing The MEAN Stack introduced the technologies making up the MEAN (MongoDB, Express, Angular, Node.js) and MERN (MongoDB, Express,]]></description>
+										<content:encoded><![CDATA[<p>This is the sixth and final blog post in a series examining technologies such as <strong>MongoDB</strong> and <strong>REST APIs</strong> that are driving the development of modern web and mobile applications.</p>
+<p><a href="/mongodb/modern-application-stack-part-1-introducing-the-mean-stack" title="Bulding the MEAN stack and MERN stack for web and mobile apps"><em>Modern Application Stack – Part 1: Introducing The MEAN Stack</em></a> introduced the technologies making up the MEAN (MongoDB, Express, Angular, Node.js) and MERN (MongoDB, Express, React, Node.js) stacks: why you might want to use them, and how to combine them to build your web application (or your native mobile or desktop app).</p>
+<p>Subsequent posts focused on working through the end to end steps of building a real (albeit simple) application – <em>MongoPop</em>.</p>
+<p><a href="/mongodb/mean_stack_2_mongodb_node_js" title="Using MongoDB with Node.js"><em>Part 2: Using MongoDB With Node.js</em></a> created an environment where we could work with a MongoDB database from Node.js; it also created a simplified interface to the MongoDB Node.js Driver.</p>
+<p><a href="/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building a REST API using Express"><em>Part 3: Building a REST API with Express.js</em></a> built on Part 2 by using Express.js to add a REST API which is used by the clients that we implement in the final 3 posts.</p>
+<p><a href="/mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript" title="Build an app front-end with Angular2 and Typescript"><em>Part 4: Building a Client UI Using Angular 2 (formerly AngularJS) &amp; TypeScript</em></a> completed the MEAN stack by adding an Angular 2 client.</p>
+<p><a href="/mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern" title="Building an application front-end with ReactJS and ES6">Part 5: Using ReactJS, ES6 &amp; JSX to Build a UI (the rise of MERN)</a> does the same but replaces Angular with ReactJS to complete the MERN stack.</p>
+<p>Once your application back-end exposes a REST API, there are limitless ways that you or other developers can access it:</p>
+<ul>
+<li>A dedicated browser-based client, as seen in posts 4 and 5</li>
+<li>A standalone native iOS or Android mobile app</li>
+<li>Voice controlled appliances, such as Amazon&#8217;s Echo</li>
+<li>IoT-enabled devices, such as remote sensors</li>
+<li>Integrations with 3rd party applications</li>
+</ul>
+<p>This post takes a look at some of these approaches. Unlike some of the earlier posts, this one aims to go wide rather than deep – touching on many technologies rather than diving too deeply into any one.</p>
+<h4>Prerequisite – the REST API</h4>
+<p>Everything that follows assumes that you have the <em>Mongopop REST API</em> running – if not, skip back to <a href="/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js"><em>Part 3: Building a REST API with Express.js</em></a>. Additionally, that API has been extended with 3 new routes (already included in the latest <a href="https://github.com/am-MongoDB/MongoDB-Mongopop" title="A web tool to populate a MongoDB Atlas instance with sample data using the MEAN and MERN stacks">GitHub repository</a>):</p>
+<table class='table table-bordered' summary="Additional Express routes implemented for the Mongopop REST API">
+<caption><strong>Additional Express routes implemented for the Mongopop REST API</strong></caption>
+<thead>
+<tr>
+<th>Route</th>
+<th>HTTP Method</th>
+<th>Parameters</th>
+<th>Response</th>
+<th>Purpose</p>
+<pre style="border:0px; background-color:#fff; height:0px">                      </pre>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/checkIn</pre>
+</td>
+<td>POST</td>
+<td>
+<pre style="border:0px; background-color:#fff">
+{       
+    venue: string,
+    date: string,
+    url: string,
+    location: string
+}
+        </pre>
+</td>
+<td>
+<pre style="border:0px; background-color:#fff">
+{
+    success: boolean,
+    error: string
+}
+        </pre>
+</td>
+<td>Stores the checkin data as a document in a collection.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/checkInCount</pre>
+</td>
+<td>GET</td>
+<td></td>
+<td>
+<pre style="border:0px; background-color:#fff">
+{
+    success: boolean,
+    count: number,
+    error: string
+}
+        </pre>
+</td>
+<td>Returns a count for the total number of checkins.</td>
+</tr>
+<tr>
+<td>
+<pre style="border:0px; background-color:#fff">/pop/latestCheckIn</pre>
+</td>
+<td>GET</td>
+<td></td>
+<td>
+<pre style="border:0px; background-color:#fff">
+{
+    success: boolean,
+    venue: string,
+    date: string,
+    url: string,
+    location: string,
+    error: string
+}
+        </pre>
+</td>
+<td>Retrieves the most recent checkin.</td>
+</tr>
+</tbody>
+</table>
+<p>These route paths are implemented in the <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/routes/pop.js" title="Mongopop Express route implementation"><code>pop.js</code></a> module in the <a href="https://github.com/am-MongoDB/MongoDB-Mongopop" title="MEAN and MERN stack repo – Mongopop">Mongopop repository</a>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/af586eec19d752aee544324d3f280e9c.js"></script></p>
+<p><code>/pop/lastCheckIn</code> depends on a new method that has been added to <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/javascripts/db.js" title="MongoDB helper services for Express"><code>javascripts/db.js</code></a>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/347e1eb5496978d9d08f15f4147ee8c7.js"></script></p>
+<p>The configuration file <a href="https://github.com/am-MongoDB/MongoDB-Mongopop/blob/master/config.js" title="Configuration file for Mongopop applications"><code>config.js</code></a> is also extended – note that you should replace the value associated with the <code>makerMongoDBURI</code> field if you&#8217;re not running MongoDB on your local machine (e.g. with the URI provided by <a href="https://cloud.mongodb.com/" title="MongoDB as a service">MongoDB Atlas</a>:</p>
+<p><script src="https://gist.github.com/am-MongoDB/ddc536f78ad54b1c29f32e1f1cb58141.js"></script></p>
+<p>The implementation of these methods follows the same pattern as already seen – refer back to <a href="/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building a REST API for MongoDB with ExpressJS">Part 3</a> for details – and so is not explained here.</p>
+<h4>Repurposing Angular &amp; ReactJS code for native applications</h4>
+<p>There are frameworks for both <a href="https://angular.io/" title="Angular for JavaScript application clients">Angular</a> and <a href="https://facebook.github.io/react/" title="ReactJS for JavaScript application clients">ReactJS</a> that enable web client application designs (and in some cases, code) to be reused for creating <em>native</em> iOS and Android apps.</p>
+<p>One option for Angular is <a href="https://www.nativescript.org/" title="NativeScript for native Angular apps"><strong>NativeScript</strong></a>, in which you use Typescript/JavaScript with Angular to build native apps for multiple platforms from the same source code. Of course, to get the most out of those platforms, you may want or need to add platform-specific code.</p>
+<p>React developers will find <a href="https://facebook.github.io/react-native/" title="React Native  for native ReactJS apps"><strong>React Native</strong></a> code very familiar, and applications are built from declarative components in the same way. The most obvious difference is that React Native code uses its own native components (e.g. <code>&lt;View&gt;</code> and <code>&lt;Text&gt;</code> rather that HTML elements such as <code>&lt;div&gt;</code> and <code>&lt;p&gt;</code>):</p>
+<p><script src="https://gist.github.com/am-MongoDB/9d45645c7429ddfe699fa36944880ac2.js"></script></p>
+<p>React Native provides the <a href="https://facebook.github.io/react-native/docs/network.html" title="Fetch API for React Native front-end apps">Fetch API</a> to make network requests; it follows a similar patter to <code>XMLHttpRequest</code> (React Native also includes <code>XMLHttpRequest</code> which can be used directly).</p>
+<p>While it&#8217;s not as simple as just rebuilding your ReactJS or Angular code to produce native apps, the reuse of designs, skills and (some) code make it much more efficient than starting from scratch.</p>
+<h4>Combining cloud services – IFTTT</h4>
+<p><a href="https://ifttt.com/discover" title="IF This Then That – combine cloud services">IFTTT</a> (IF This Then That) is a free cloud service which allows you to automate tasks by combining existing services (Google Docs, Facebook, Instagram, Hue lights, Nest thermostats, GitHub, Trello, Dropbox,&#8230;). The name of the service comes from the simple pattern used for each Applet (automation rule): &#8220;<strong>IF T</strong>his event occurs in service x <strong>T</strong>hen trigger <strong>T</strong>hat action in service y&#8221;.</p>
+<p>IFTTT includes a <a href="https://ifttt.com/maker" title="Accept HTTP triggers and make HTTP requests with IFTTT">Maker</a> service which can handle web requests (triggers) or send web requests (actions). In this case, I use it to invoke the <code>pop/checkIn</code> POST method from the Mongopop REST API whenever I check in using the <a href="https://www.swarmapp.com/">Swarm</a> (<a href="https://foursquare.com/">Foursquare</a>) app:</p>
+<div id="attachment_4416" style="width: 323px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/03/FourSquare-Mongopop-IFTTT-Applet.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-4416" src="/wp-content/uploads/2017/03/FourSquare-Mongopop-IFTTT-Applet-313x1024.png" alt="Create Foursquare applet to make HTTP POST over REST API in IFTTT" width="313" height="1024" class="size-large wp-image-4416" srcset="/wp-content/uploads/2017/03/FourSquare-Mongopop-IFTTT-Applet-313x1024.png 313w, /wp-content/uploads/2017/03/FourSquare-Mongopop-IFTTT-Applet-92x300.png 92w, /wp-content/uploads/2017/03/FourSquare-Mongopop-IFTTT-Applet.png 326w" sizes="(max-width: 313px) 100vw, 313px" /></a><p id="caption-attachment-4416" class="wp-caption-text">Create Foursquare applet to make HTTP POST over REST API in IFTTT</p></div>
+<p>Note that the applet makes a POST request to the <code>http://your-mongopop-ip:3000/pop/checkIn</code> route. The body of the POST includes the required parameters – provided as a JSON document. Each of the <code>VenueName</code>, <code>CheckinDate</code>, <code>VenueUrl</code>, and <code>VenueMapImageURL</code> values are /ingredients/ from the trigger (Foursquare) event.</p>
+<div id="attachment_4417" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/03/IFTTT_Stack.png"><img decoding="async" aria-describedby="caption-attachment-4417" src="/wp-content/uploads/2017/03/IFTTT_Stack-1024x530.png" alt="IFTTT Stack - making REST calls" width="480" height="248" class="size-large wp-image-4417" srcset="/wp-content/uploads/2017/03/IFTTT_Stack-1024x530.png 1024w, /wp-content/uploads/2017/03/IFTTT_Stack-300x155.png 300w, /wp-content/uploads/2017/03/IFTTT_Stack-768x398.png 768w, /wp-content/uploads/2017/03/IFTTT_Stack.png 1825w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4417" class="wp-caption-text">IFTTT Stack &#8211; making REST calls</p></div>
+<p>Using the <a href="https://www.swarmapp.com/">Swarm app</a> I check into FourSquare:</p>
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/M5u-fudNEfA?rel=0" frameborder="0" allowfullscreen></iframe></p>
+<p>We can confirm that the MongoDB collection has been updated after this check-in:</p>
+<pre><code class="js">Cluster0-shard-0:PRIMARY&gt; use maker
+switched to db maker
+
+Cluster0-shard-0:PRIMARY&gt; db.foursq.find().sort({_id: -1}).limit(1).pretty()
+{
+    "_id" : ObjectId("58c272f842067a03283be544"),
+    "venueName" : "Redroofs Theatre School",
+    "date" : "March 10, 2017 at 09:23AM",
+    "url" : "http://4sq.com/htwamV",
+    "mapRef" : "http://maps.google.com/maps/api/staticmap?center=51.52212258991317,-0.7358344376428089&amp;zoom=16&amp;size=710x440&amp;maptype=roadmap&amp;sensor=false&amp;markers=color:red%7C51.52212258991317,-0.7358344376428089"
+}
+</code></pre>
+<h4>Constructing an iOS/Apple Watch App to automate workflows</h4>
+<p>The first example showed how to record a check-in into our own service as a side effect of checking into an existing service (Foursquare).</p>
+<p>What if we wanted to create new, independent check-ins, from a mobile device? What if we also wanted to augment the check-ins with additional data? Another requirement could be to let our team know of the check-in through a <a href="https://slack.com/">Slack</a> channel.</p>
+<p>A valid approach would be to build a new mobile client using React Native or NativeScript. Slack and Google Maps have their own REST APIs and so the new App could certainly integrate with them in addition to our Mongopop API. Before investing in that development work, it would be great to prototype the concept and see if it proves useful.</p>
+<p>This is where we turn to the iOS <a href="https://workflow.is/" title="Integrate iOS apps using Workflow"><strong>Workflow</strong> app</a>. Workflow has a number of similarities to IFTTT but there are also some significant differences:</p>
+<ul>
+<li>Workflow runs on your iOS device rather than in the cloud.</li>
+<li>Workflows are triggered by events on your iOS device (e.g. pressing a button) rather than an event in some cloud service.</li>
+<li>Workflow allows much more complex patterns than &#8220;<strong>IF T</strong>his event occurs in service A <strong>T</strong>hen trigger <strong>T</strong>hat action in service B&#8221;; it can loop, invoke multiple services, perform calculations, access local resources (e.g. camera and location information) on your device, and much more.</li>
+</ul>
+<p>Both applications/Workflows that we build here can be run on an iPad, iPhone, or Apple Watch.</p>
+<p>The first Workflow, <em>CheckIn</em>, performs these steps:</p>
+<ul>
+<li>Fetch the device&#8217;s current location</li>
+<li>Retrieve any URL associated with that location
+<ul>
+<li>If none exists, fetch a map URL from Apple Maps</li>
+</ul>
+</li>
+<li>Fetch a Google Street View image for the location
+<ul>
+<li>Upload this image to <a href="http://imgur.com/">Imgur</a></li>
+<li>Send the image URL to <a href="https://slack.com/">Slack</a></li>
+</ul>
+</li>
+<li>Send a POST request to the <code>/pop/checkIn</code> Mongopop route
+<ul>
+<li>The request includes the location, date/time, URL (either from the venue or Apple Maps), and the StreetView image</li>
+</ul>
+</li>
+<li>Post the location and URL to Slack</li>
+<li>Display error messages if anything fails</li>
+</ul>
+<div id="attachment_4419" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/03/Workflow_stack.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4419" src="/wp-content/uploads/2017/03/Workflow_stack-1024x607.png" alt="iOS Workflow stack to make REST API calls" width="480" height="285" class="size-large wp-image-4419" srcset="/wp-content/uploads/2017/03/Workflow_stack-1024x607.png 1024w, /wp-content/uploads/2017/03/Workflow_stack-300x178.png 300w, /wp-content/uploads/2017/03/Workflow_stack-768x455.png 768w, /wp-content/uploads/2017/03/Workflow_stack.png 1880w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4419" class="wp-caption-text">iOS Workflow stack to make REST API calls</p></div>
+<p>Implementing a Workflow involves dragging actions into the work area and then adding attributes to those actions (such as the address of the Mongopop API). The result of one action is automatically used as the input to the next action in the workflow. Results can also be stored in variables for use by later actions.</p>
+<p>This is the <em>Check In</em> workflow:</p>
+<div id="attachment_4420" style="width: 160px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/03/Workflow_Checkin_Code.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4420" src="/wp-content/uploads/2017/03/Workflow_Checkin_Code-150x1024.png" alt="iOS Workflow check-in code for REST API call" width="150" height="1024" class="size-large wp-image-4420" srcset="/wp-content/uploads/2017/03/Workflow_Checkin_Code-150x1024.png 150w, /wp-content/uploads/2017/03/Workflow_Checkin_Code-44x300.png 44w, /wp-content/uploads/2017/03/Workflow_Checkin_Code-768x5246.png 768w, /wp-content/uploads/2017/03/Workflow_Checkin_Code.png 1303w" sizes="auto, (max-width: 150px) 100vw, 150px" /></a><p id="caption-attachment-4420" class="wp-caption-text">iOS Workflow check-in code for REST API call</p></div>
+<p>This video demonstrates the use of the app when run on an iPhone:</p>
+<p><iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/lowpybR4zSA?rel=0" frameborder="0" allowfullscreen></iframe></p>
+<p>The same app/workflow can be run from an Apple Watch:</p>
+<div id="attachment_4421" style="width: 322px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/03/Checking_into_MongoDB_from_Apple_Watch.gif"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4421" src="/wp-content/uploads/2017/03/Checking_into_MongoDB_from_Apple_Watch.gif" alt="Check-in via REST API with Apple Watch and iOS Workflow app" width="312" height="390" class="size-full wp-image-4421" /></a><p id="caption-attachment-4421" class="wp-caption-text">Check-in via REST API with Apple Watch and iOS Workflow app</p></div>
+<p>We can confirm that check-in record has been stored as a document in MongoDB Atlas (note that the database and collection names are defined in <code>config.js</code>):</p>
+<pre><code class="js">Cluster0-shard-0:PRIMARY&gt; use maker
+switched to db maker
+Cluster0-shard-0:PRIMARY&gt; db.foursq.find().sort({_id: -1}).limit(1).pretty()
+{
+    "_id" : ObjectId("58c1505742067a03283be541"),
+    "venueName" : "77-79 King St, Maidenhead SL6 1DU, UK",
+    "date" : "9 Mar 2017, 12:53",
+    "url" : "http://maps.apple.com/?q=77-79%20King%20St,%20Maidenhead%20SL6%201DU,%20UK&amp;ll=51.520409,-0.722196",
+    "mapRef" : "http://i.imgur.com/w3KyIVU.jpg"
+}
+</code></pre>
+<p>The second app/workflow retrieves and displays details of the most recent check-in. It performs these steps:</p>
+<ul>
+<li>Read from the <code>/pop/latestCheckIn</code> Mongopop REST API Route using GET. </li>
+<li>If the results indicate a successful operation then:
+<ul>
+<li>Extract the location from the results</li>
+<li>Display the location and prompt the user if they&#8217;d like to:
+<ul>
+<li>See the location data (image)</li>
+<li>Follow the location&#8217;s URL (typically an Apple Maps link)</li>
+<li>Finish</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>If the Mongopop operation fails, display an appropriate error. </li>
+</ul>
+<p>The full workflow is shown here:</p>
+<div id="attachment_4422" style="width: 194px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/03/Workflow_Find_Code.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4422" src="/wp-content/uploads/2017/03/Workflow_Find_Code-184x1024.png" alt="Find the latest check-in using REST API using Apple Watch" width="184" height="1024" class="size-large wp-image-4422" srcset="/wp-content/uploads/2017/03/Workflow_Find_Code-184x1024.png 184w, /wp-content/uploads/2017/03/Workflow_Find_Code-54x300.png 54w" sizes="auto, (max-width: 184px) 100vw, 184px" /></a><p id="caption-attachment-4422" class="wp-caption-text">Find the latest check-in using REST API using Apple Watch</p></div>
+<p>Running the app on an iPad produces these results:</p>
+<p><iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/IEuDkZ-9ZXc?rel=0" frameborder="0" allowfullscreen></iframe></p>
+<p>Again, the same app can be run from an Apple Watch:</p>
+<div id="attachment_4423" style="width: 322px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/03/Apple_Watch_reading_from_MongoDB.gif"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4423" src="/wp-content/uploads/2017/03/Apple_Watch_reading_from_MongoDB.gif" alt="Find the latest check-in using REST API from Apple Watch" width="312" height="390" class="size-full wp-image-4423" /></a><p id="caption-attachment-4423" class="wp-caption-text">Find the latest check-in using REST API from Apple Watch</p></div>
+<h4>Hands-free – Amazon Alexa Skills</h4>
+<p>Two of today&#8217;s biggest industry trends are <strong>machine learning</strong> and <strong>serverless computing</strong>. Amazon&#8217;s <strong>Alexa</strong> service (typically accessed through Amazon&#8217;s <strong>Echo</strong> device) is at the forefront of both. In addition to interpreting voice commands for Amazon&#8217;s own services (e.g. ordering more coffee beans or playing a particular song), developers can implement their own <em>skills</em>. Many are publicly available from 3rd parties such as Nest, Harmony, and Spotify, but you&#8217;re free to implement and test your own – submitting it for review and public use when ready.</p>
+<p>The business logic behind Alexa skills are typically run within Amazon&#8217;s serverless computing service – <strong>AWS Lambda</strong>. Lambda is a great product for services that handle low or bursty levels of traffic – rather than paying a flat rate for a physical or virtual server, you pay a small fee for every event handled (and you even get a low-medium level of throughput for free). If your service really takes off then Lambda automatically scales out.</p>
+<p>Assuming that you decide to use Lambda, there are three main components to your skill:</p>
+<ul>
+<li>The set of <strong>intents</strong> – instructions that a user can give to Alexa</li>
+<li>For each intent, a set of <em>utterances</em> that the user might say in order to signal that intent</li>
+<li>The actual logic which is invoked whenever the user signals an intent – implemented as a Lambda function</li>
+</ul>
+<p>The <strong>Mongo</strong> Alexa skill has 3 intents/commands:</p>
+<ul>
+<li><strong>WhereIntent</strong>: Find the most recent location that I checked in to</li>
+<li><strong>CountIntent</strong>: Count how many times I&#8217;ve checked in</li>
+<li><strong>HelpIntent</strong>: Explain what the available commands/intents are</li>
+</ul>
+<p>The intents are defined as a JSON document:</p>
+<pre><code class="js">{"intents": [
+    {"intent": "WhereIntent"},
+    {"intent": "CountIntent"},
+    {"intent": "AMAZON.HelpIntent"},
+  ]
+}
+</code></pre>
+<p>The utterances for each of those intents must also be defined:</p>
+<pre><code class="js">WhereIntent where is andrew
+WhereIntent where is he
+WhereIntent where am i
+WhereIntent where did he last check in
+WhereIntent where did Andrew last check in
+WhereIntent where did i last check in
+WhereIntent last check in
+
+CountIntent how many checkins
+CountIntent how many times have I checked in
+CountIntent how many times has Andrew checked in
+CountIntent how many times has he checked in
+CountIntent how many check ins
+CountIntent check in count
+</code></pre>
+<p>Note that no utterances need to be added for the <code>AMAZON.HelpIntent</code> as that intent is built in.</p>
+<p>The skill is created in the <a href="https://developer.amazon.com/">Amazon Developer Console</a> using the Alexa wizard; where the intentions and utterances can be added:</p>
+<div id="attachment_4424" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/03/Add-Alexa-Intentions-Utterances.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4424" src="/wp-content/uploads/2017/03/Add-Alexa-Intentions-Utterances-1024x842.png" alt="Add Alexa intentions and utterances" width="480" height="395" class="size-large wp-image-4424" srcset="/wp-content/uploads/2017/03/Add-Alexa-Intentions-Utterances-1024x842.png 1024w, /wp-content/uploads/2017/03/Add-Alexa-Intentions-Utterances-300x247.png 300w, /wp-content/uploads/2017/03/Add-Alexa-Intentions-Utterances-768x632.png 768w, /wp-content/uploads/2017/03/Add-Alexa-Intentions-Utterances.png 1364w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4424" class="wp-caption-text">Add Alexa intentions and utterances</p></div>
+<p>In the next screen, you indicate where the the skill&#8217;s business logic runs; in this case, I provide the Amazon Resource Name (ARN) of my Lambda function:</p>
+<div id="attachment_4425" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/03/alexa-skill-business-logic.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4425" src="/wp-content/uploads/2017/03/alexa-skill-business-logic-1024x825.png" alt="Locate Amazon Alexa&#039;s skill code" width="480" height="387" class="size-large wp-image-4425" srcset="/wp-content/uploads/2017/03/alexa-skill-business-logic-1024x825.png 1024w, /wp-content/uploads/2017/03/alexa-skill-business-logic-300x242.png 300w, /wp-content/uploads/2017/03/alexa-skill-business-logic-768x619.png 768w, /wp-content/uploads/2017/03/alexa-skill-business-logic.png 1153w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4425" class="wp-caption-text">Locate Amazon Alexa&#8217;s skill code</p></div>
+<p>The logic for the Mongo skill is implemented in the <a href="https://github.com/am-MongoDB/MongoDB-Alexa/blob/master/index.js" title="Amazon Alexa skill – using Mongopop REST API"><code>index.js</code></a> file (part of the <a href="https://github.com/am-MongoDB/MongoDB-Alexa" title="Read and write to MongoDB from Amazon Alexa skill">MongoDB-Alexa GitHub repository</a>):</p>
+<p><script src="https://gist.github.com/am-MongoDB/8bf49fd414d92ed00f021bafe4ba2c71.js"></script></p>
+<p>As explained earlier, the aim of this post is to cover a broad set of technologies rather than going too deeply into any one but explaining a few concepts may help you understand what this code is doing:</p>
+<ul>
+<li>A <strong>handler</strong> is implemented for each of the intents; that handler is invoked when the user speaks one of the utterances associated with that intent</li>
+<li>The handlers for the <code>CountIntent</code> and <code>WhereIntent</code> makes calls to the Mongopop REST API using the <code>request</code> function</li>
+<li>The <strong>emit</strong> method is how the handlers can send results or errors back to the user (via Alexa)</li>
+<li>The <strong>card</strong>, referred to by <code>tellWithCard</code>, is visual content (text and images) that are displayed in the Alexa app</li>
+</ul>
+<p>Note that this is a simple skill which receives a request and sends a single response. It is also possible to implement an interactive state machine where there&#8217;s a conversation between the user and Alexa &#8211; in those skills, the logic uses both the latest intent and the past context in deciding how to respond. Note that the Lambda function is always stateless and so all data should be stored in a database such as MongoDB.</p>
+<p>The skill is deployed to AWS Lambda through the <a href="https://aws.amazon.com/">AWS Management Console</a>. The <a href="https://github.com/am-MongoDB/MongoDB-Alexa/blob/master/index.js" title="Amazon Alexa skill to access MongoDB"><code>index.js</code></a>, <a href="https://github.com/am-MongoDB/MongoDB-Alexa/blob/master/config_template.js">config.js</a> and <code>node_modules</code> directory (created by running <code>npm install</code>) should be archived into a single Zip file which is then uploaded to AWS:</p>
+<div id="attachment_4426" style="width: 696px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/03/Archive-files.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4426" src="/wp-content/uploads/2017/03/Archive-files.png" alt="Create zip file for Alexa skill to upload to AWS Lambda" width="686" height="393" class="size-full wp-image-4426" srcset="/wp-content/uploads/2017/03/Archive-files.png 686w, /wp-content/uploads/2017/03/Archive-files-300x172.png 300w" sizes="auto, (max-width: 686px) 100vw, 686px" /></a><p id="caption-attachment-4426" class="wp-caption-text">Create zip file for Alexa skill to upload to AWS Lambda</p></div>
+<div id="attachment_4427" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/03/Upload-alexa-skill-lambda.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4427" src="/wp-content/uploads/2017/03/Upload-alexa-skill-lambda-1024x577.png" alt="Upload zip file for Alexa skill to AWS Lambda" width="480" height="270" class="size-large wp-image-4427" srcset="/wp-content/uploads/2017/03/Upload-alexa-skill-lambda-1024x577.png 1024w, /wp-content/uploads/2017/03/Upload-alexa-skill-lambda-300x169.png 300w, /wp-content/uploads/2017/03/Upload-alexa-skill-lambda-768x433.png 768w, /wp-content/uploads/2017/03/Upload-alexa-skill-lambda.png 1067w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4427" class="wp-caption-text">Upload zip file for Alexa skill to AWS Lambda</p></div>
+<p>There are a number of extra configuration options – such as the runtime environment to use (Node.js), the user role, the amount of memory to be made available to the function, and how long each invocation of the function should be allowed to run (the function is making external HTTP requests and so it may need a few seconds):</p>
+<div id="attachment_4428" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/03/lambda-configuration.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4428" src="/wp-content/uploads/2017/03/lambda-configuration-903x1024.png" alt="Configure AWS Lambda function for Amazon Alexa skill" width="480" height="544" class="size-large wp-image-4428" srcset="/wp-content/uploads/2017/03/lambda-configuration-903x1024.png 903w, /wp-content/uploads/2017/03/lambda-configuration-264x300.png 264w, /wp-content/uploads/2017/03/lambda-configuration-768x871.png 768w, /wp-content/uploads/2017/03/lambda-configuration.png 990w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4428" class="wp-caption-text">Configure AWS Lambda function for Amazon Alexa skill</p></div>
+<p>As a reminder, the user speaks to the Amazon Echo device, then the Alexa application invokes an AWS Lambda function, which implements the business logic for the Mongo skill, which then interacts with the MongoDB database via the Mongopop REST API:</p>
+<div id="attachment_4429" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/03/Alexa_stack.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4429" src="/wp-content/uploads/2017/03/Alexa_stack-1024x607.png" alt="Stack to have Alexa make REST API calls to Mongopop" width="480" height="285" class="size-large wp-image-4429" srcset="/wp-content/uploads/2017/03/Alexa_stack-1024x607.png 1024w, /wp-content/uploads/2017/03/Alexa_stack-300x178.png 300w, /wp-content/uploads/2017/03/Alexa_stack-768x455.png 768w, /wp-content/uploads/2017/03/Alexa_stack.png 1880w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4429" class="wp-caption-text">Stack to have Alexa make REST API calls to Mongopop</p></div>
+<p>To start, test the simplest intent – asking the Mongo skill for help:</p>
+<p><iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/Du_Ta3hyDFI?rel=0" frameborder="0" allowfullscreen></iframe></p>
+<p>Note that the visual card can contain more information than Alexa&#8217;s spoken response. For example, if there is an error in the Mongopop back-end, the returned error message is displayed on the card.</p>
+<p>Next, we can ask Alexa how many times I&#8217;ve checked in and where my last check-in was. Note that I could have used any of the utterances associated with these intents (and Alexa will automatically convert similar phrases):</p>
+<p><iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/plMxxOeYquw?rel=0" frameborder="0" allowfullscreen></iframe></p>
+<h4>Summary</h4>
+<p>Previous posts stepped through building the Mongopop application back-end and then the creation of web client applications using Angular 2 and ReactJS.</p>
+<p>This post explored some alternative ways to build client applications; in particular, it showed how to combine existing cloud services with a bit of new logic to create something brand new. We looked at a number of technologies to help build applications quickly and efficiently:</p>
+<ul>
+<li>IFTTT: Make events in one cloud service trigger actions in another</li>
+<li>Workflow: Automate complex tasks involving multiple services on an iOS device</li>
+<li>Amazon Alexa: Implement your own voice-controlled skills</li>
+<li>AWS Lambda: Host and scale your business logic in the cloud while only paying for the transactions you process</li>
+</ul>
+<p>Increasingly, applications leverage multiple services (if only to allow the user to share their efforts on different social media networks). The key to all of these integrations is the REST APIs provided by each service. If you&#8217;ve jumped straight to this post then consider reading parts 1 through 3 to learn how to build your own REST API:</p>
+<ul>
+<li><a href="/mongodb/modern-application-stack-part-1-introducing-the-mean-stack" title="MEAN stack, MERN stack">Part 1: Introducing The MEAN Stack (and the young MERN upstart)</a></li>
+<li><a href="/mongodb/mean_stack_2_mongodb_node_js" title="Using MongoDB With Node.js">Part 2: Using MongoDB With Node.js</a></li>
+<li><a href="/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building REST API for MongoDB using Express JS">Part 3: Building a REST API with Express.js</a></li>
+<li><a href="/mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript" title="Completing the MEAN stack – Mongopop Angular2 client">Part 4: Building a Client UI Using Angular 2 (formerly AngularJS) &amp; TypeScript</a></li>
+<li><a href="/mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern" title="Building an application front-end with ReactJS and ES6">Part 5: Using ReactJS, ES6 &amp; JSX to Build a UI (the rise of MERN)</a></li>
+<li><a href="/mongodb/rest-mobile-app-amazon-alexa-cloud-services" title="Using REST APIs from mobile applications and Amazon Alexa">Part 6: Browsers Aren&#8217;t the Only UI – Mobile Apps, Amazon Alexa, Cloud Services&#8230;</a></li>
+</ul>
+<h2>A simpler way to build your app – MongoDB Stitch, Backend as a Service</h2>
+<p><a href="https://www.mongodb.com/cloud/stitch">MongoDB Stitch</a> is a backend as a service (BaaS), giving developers a REST-like API to MongoDB, and composability with other services, backed by a robust system for configuring fine-grained data access controls. Stitch provides native SDKs for JavaScript, iOS, and Android.</p>
+<p>Built-in integrations give your application frontend access to your favorite third party services: Twilio, AWS S3, Slack, Mailgun, PubNub, Google, and more. For ultimate flexibility, you can add custom integrations using MongoDB Stitch&#8217;s HTTP service.</p>
+<p>MongoDB Stitch allows you to compose multi-stage pipelines that orchestrate data across multiple services; where each stage acts on the data before passing its results on to the next.</p>
+<p>Unlike other BaaS offerings, MongoDB Stitch works with your existing as well as new MongoDB clusters, giving you access to the full power and scalability of the database. By defining appropriate data access rules, you can selectively expose your existing MongoDB data to other applications through MongoDB Stitch&#8217;s API.</p>
+<p>If you&#8217;d like to try it out, <a href="/mongodb/mongodb-stitch-the-latest-and-best-way-to-build-your-app" title="MongoDB Stitch - the latest, and best way to build your app">step through building an application with MongoDB Stitch</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mongodb/rest-mobile-app-amazon-alexa-cloud-services/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

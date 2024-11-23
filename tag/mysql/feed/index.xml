@@ -1,0 +1,1103 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>MySQL &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/mysql/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 12 May 2015 13:03:09 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>MySQL Cluster 7.4 New Features Webinar Replay</title>
+		<link>/mysql-cluster/mysql-cluster-7-4-new-features-webinar-replay</link>
+					<comments>/mysql-cluster/mysql-cluster-7-4-new-features-webinar-replay#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 16 Apr 2015 15:45:40 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.4]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<guid isPermaLink="false">/?p=4069</guid>
+
+					<description><![CDATA[I recently hosted a webinar introducing MySQL Cluster and then looking into what&#8217;s new in the latest version (MySQL Cluster 7.4) in some more detail. The replay of the MySQL Cluster 7.4 webinar is now available here. Alternatively if just want to skim through the charts then scroll down. Abstract MySQL Cluster powers the subscriber]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2015/02/MySQL-Cluster-7.4-GA-banner.jpg"><img fetchpriority="high" decoding="async" src="/wp-content/uploads/2015/02/MySQL-Cluster-7.4-GA-banner.jpg" alt="MySQL Cluster 7.4 GA" width="960" height="330" class="aligncenter size-full wp-image-4021" srcset="/wp-content/uploads/2015/02/MySQL-Cluster-7.4-GA-banner.jpg 960w, /wp-content/uploads/2015/02/MySQL-Cluster-7.4-GA-banner-300x103.jpg 300w, /wp-content/uploads/2015/02/MySQL-Cluster-7.4-GA-banner-900x309.jpg 900w" sizes="(max-width: 960px) 100vw, 960px" /></a>I recently hosted a webinar introducing MySQL Cluster and then looking into what&#8217;s new in the latest version (MySQL Cluster 7.4) in some more detail. The <a href="http://www.mysql.com/news-and-events/web-seminars/whats-new-in-mysql-cluster-7-4/" title="replay of the MySQL Cluster 7.4 webinar " target="_blank">replay of the MySQL Cluster 7.4 webinar is now available here</a>. Alternatively if just want to skim through the charts then scroll down.</p>
+<h3>Abstract</h3>
+<p>MySQL Cluster powers the subscriber databases of major communication services providers as well as next generation web, cloud, social and mobile applications. It is designed to deliver:</p>
+<ul>
+<li>Real-time, in-memory performance for both OLTP and analytics workloads</li>
+<li>Linear scale-out for both reads and writes</li>
+<li>99.999% High Availability</li>
+<li>Transparent, cross-shard transactions and joins</li>
+<li>Update-Anywhere Geographic replication</li>
+<li>SQL or native NoSQL APIs</li>
+<li>All that while still providing full ACID transactions.</li>
+</ul>
+<p>Understand some of the highlights of MySQL Cluster 7.4:</p>
+<ul>
+<li>200 Million queries per minute</li>
+<li>Active-Active geographic replication with conflict detection and resolution</li>
+<li>5x faster on-line maintenance activities</li>
+<li>Enhanced reporting for memory and database operations</li>
+</ul>
+<h3>Charts</h3>
+<p><iframe src="//www.slideshare.net/slideshow/embed_code/47076434" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></p>
+<h2>Questions and Answers</h2>
+<ul>
+<li><strong>Can all data be stored on disk rather than in memory?</strong> Any column that isn&#8217;t part of an index can be stored on disk if you want it to be. There is then an in-memory cache for the disk-based data.</li>
+<li><strong>Is in-memory data safe from the whole system shutting down (e.g. power loss for the whole data center)?</strong> The in-memory data is (asynchronously) checkpointed to disk (so that there is persistence but latency isn&#8217;t impacted).</li>
+<li><strong>I need to store more than 14K non BLOB/TEXT data in a single row &#8211; has this been addressed?</strong> As you say the options are to use TEXT/BLOB columns (or of course to split the data over multiple rows).</li>
+<li><strong>Can you comment on improvements of virtualized deploymets regarding the 7.4 version?</strong> Only to say that more and more people are deploying on VMs and we&#8217;re not seeing issues caused &#8211; if we do then they&#8217;ll be fixed</li>
+<li><strong>Can I upgrage from the previous version (7.3) to MySQL Cluster 7.4 or do I have to reinstall the product of the new version (7.4)?</strong> You can perform a rolling upgarade from MySQL Cluster 7.3 to MySQL Cluster 7.4 &#8211; the database stays uo throughout the process and you don&#8217;t lose any data or have to stop writing changes.</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/mysql-cluster-7-4-new-features-webinar-replay/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Cluster Manager 1.3.5 Released</title>
+		<link>/mysql-cluster/mysql-cluster-manager-1-3-5-released</link>
+					<comments>/mysql-cluster/mysql-cluster-manager-1-3-5-released#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 16 Apr 2015 15:13:47 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<category><![CDATA[MySQL Cluster Manager]]></category>
+		<category><![CDATA[secondary]]></category>
+		<guid isPermaLink="false">/?p=4067</guid>
+
+					<description><![CDATA[MySQL Cluster Manager 1.3.5 is now available to download from My Oracle Support. Details are available in the the MCM 1.3.5 Release Notes. Note that this version of MCM now supports MySQL Cluster 7.4 (as well as earlier versions or MySQL Cluster). Documentation is available here.]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/06/MySQL_Cluster_Manager2.png"><img decoding="async" src="/wp-content/uploads/2013/06/MySQL_Cluster_Manager2-300x106.png" alt="MySQL Cluster Manager logo" width="300" height="106" class="alignright size-medium wp-image-2846" /></a>MySQL Cluster Manager 1.3.5 is now available to <a href="https://support.oracle.com/" title="Download MySQL Cluster Manager" target="_blank">download from My Oracle Support</a>.</p>
+<p>Details are available in the the <a title="MySQL Cluster Manager - change history" href="http://dev.mysql.com/doc/relnotes/mysql-cluster-manager/1.3/en/mcm-news-1-3-5.html" target="_blank">MCM 1.3.5 Release Notes</a>. Note that this version of MCM now supports MySQL Cluster 7.4 (as well as earlier versions or MySQL Cluster).</p>
+<p><a title="MySQL Cluster Manager documentation" href="http://dev.mysql.com/doc/mysql-cluster-manager/1.3/en/" target="_blank">Documentation is available here</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/mysql-cluster-manager-1-3-5-released/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Cluster 7.4.6 is now available</title>
+		<link>/mysql-cluster/mysql-cluster-7-4-6-is-now-available</link>
+					<comments>/mysql-cluster/mysql-cluster-7-4-6-is-now-available#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 14 Apr 2015 16:12:43 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.4]]></category>
+		<category><![CDATA[secondary]]></category>
+		<guid isPermaLink="false">/?p=4064</guid>
+
+					<description><![CDATA[The binary and source versions of MySQL Cluster 7.4.6 have now been made available at http://www.mysql.com/downloads/cluster/. MySQL Cluster NDB 7.4.6 is a new maintenance release of MySQL Cluster, based on MySQL Server 5.6 and including features from version 7.4 of the NDB storage engine, as well as fixing a number of recently discovered bugs in]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/11/MySQL_Cluster.png"><img loading="lazy" decoding="async" class="alignnone size-medium wp-image-2982" src="/wp-content/uploads/2013/11/MySQL_Cluster-300x125.png" alt="MySQL Cluster Logo" width="300" height="125" srcset="/wp-content/uploads/2013/11/MySQL_Cluster-300x125.png 300w, /wp-content/uploads/2013/11/MySQL_Cluster.png 1004w" sizes="auto, (max-width: 300px) 100vw, 300px" /><br />
+</a><br />
+The binary and source versions of MySQL Cluster 7.4.6 have now been made available at <a href="http://www.mysql.com/downloads/cluster/" target="_blank">http://www.mysql.com/downloads/cluster/</a>.</p>
+<p>MySQL Cluster NDB 7.4.6 is a new maintenance release of MySQL Cluster, based on MySQL Server 5.6 and including features from version 7.4 of the NDB storage engine, as well as fixing a number of recently discovered bugs in previous MySQL Cluster releases. </p>
+<p>This release also incorporates all bugfixes and changes made in previous MySQL Cluster releases, as well as all bugfixes and feature changes which were added in mainline <a href="http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-24.html" title="MySQL 5.6.24 Release Notes" target="_blank">MySQL 5.6 through MySQL 5.6.24</a>.</p>
+<p>The <a href="http://dev.mysql.com/doc/relnotes/mysql-cluster/7.4/en/mysql-cluster-news-7-4-6.html" title="MySQL Cluster 7.4.6 Release Notes" target="_blank">MySQL Cluster 7.4.6 Release Notes are available here</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/mysql-cluster-7-4-6-is-now-available/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Cluster 7.4 New Features &#8211; upcoming webinar</title>
+		<link>/mysql-cluster/mysql-cluster-7-4-new-features-webinar</link>
+					<comments>/mysql-cluster/mysql-cluster-7-4-new-features-webinar#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 01 Apr 2015 14:22:11 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[7.4]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.4]]></category>
+		<category><![CDATA[NoSQL]]></category>
+		<category><![CDATA[secondary]]></category>
+		<guid isPermaLink="false">/?p=4054</guid>
+
+					<description><![CDATA[On Thursday I&#8217;ll be hosting a webinar introducing MySQL Cluster and then looking into what&#8217;s new in the latest version (MySQL Cluster 7.4) in some more detail. As always the webinar is free but please register here. I&#8217;ll be answering on-line Q&#038;A during the presentation. Even if you can&#8217;t join the live webinar, it&#8217;s worth]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2015/02/MySQL-Cluster-7.4-GA-banner.jpg"><img loading="lazy" decoding="async" src="/wp-content/uploads/2015/02/MySQL-Cluster-7.4-GA-banner.jpg" alt="MySQL Cluster 7.4 GA" width="960" height="330" class="aligncenter size-full wp-image-4021" srcset="/wp-content/uploads/2015/02/MySQL-Cluster-7.4-GA-banner.jpg 960w, /wp-content/uploads/2015/02/MySQL-Cluster-7.4-GA-banner-300x103.jpg 300w, /wp-content/uploads/2015/02/MySQL-Cluster-7.4-GA-banner-900x309.jpg 900w" sizes="auto, (max-width: 960px) 100vw, 960px" /></a>On Thursday I&#8217;ll be hosting a webinar introducing MySQL Cluster and then looking into what&#8217;s new in the latest version (MySQL Cluster 7.4) in some more detail. As always the webinar is free but please <a href="http://www.mysql.com/news-and-events/web-seminars/whats-new-in-mysql-cluster-7-4/" title="What’s New in MySQL Cluster 7.4" target="blank">register here</a>. I&#8217;ll be answering on-line Q&#038;A during the presentation.</p>
+<p>Even if you can&#8217;t join the live webinar, it&#8217;s worth registering as you&#8217;ll be emailed a link to the replay as soon as it&#8217;s available.</p>
+<h3>Abstract</h3>
+<p>MySQL Cluster powers the subscriber databases of major communication services providers as well as next generation web, cloud, social and mobile applications. It is designed to deliver:</p>
+<ul>
+<li>Real-time, in-memory performance for both OLTP and analytics workloads</li>
+<li>Linear scale-out for both reads and writes</li>
+<li>99.999% High Availability</li>
+<li>Transparent, cross-shard transactions and joins</li>
+<li>Update-Anywhere Geographic replication</li>
+<li>SQL or native NoSQL APIs</li>
+<li>All that while still providing full ACID transactions.</li>
+</ul>
+<p>Understand some of the highlights of MySQL Cluster 7.4:</p>
+<ul>
+<li>200 Million queries per minute</li>
+<li>Active-Active geographic replication with conflict detection and resolution</li>
+<li>5x faster on-line maintenance activities</li>
+<li>Enhanced reporting for memory and database operations</li>
+</ul>
+<h3>When</h3>
+<ul>
+<li>Thu, Apr 09: 09:00 Pacific time (America)</li>
+<li>Thu, Apr 09: 10:00 Mountain time (America)</li>
+<li>Thu, Apr 09: 11:00 Central time (America)</li>
+<li>Thu, Apr 09: 12:00 Eastern time (America)</li>
+<li>Thu, Apr 09: 13:00 São Paulo time</li>
+<li>Thu, Apr 09: 16:00 UTC</li>
+<li>Thu, Apr 09: 17:00 Western European time</li>
+<li>Thu, Apr 09: 18:00 Central European time</li>
+<li>Thu, Apr 09: 19:00 Eastern European time</li>
+<li>Thu, Apr 09: 21:30 India, Sri Lanka</li>
+<li>Fri, Apr 10: 00:00 Singapore/Malaysia/Philippines time</li>
+<li>Fri, Apr 10: 00:00 China time</li>
+<li>Fri, Apr 10: 01:00 日本</li>
+<li>Fri, Apr 10: 02:00 NSW, ACT, Victoria, Tasmania (Australia)</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/mysql-cluster-7-4-new-features-webinar/feed</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>SQL/NoSQL &#8211; Best of Both Worlds; webinar replay available</title>
+		<link>/mysql-cluster/sqlnosql-best-of-both-worlds-webinar-replay-available</link>
+					<comments>/mysql-cluster/sqlnosql-best-of-both-worlds-webinar-replay-available#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 01 Apr 2015 07:00:53 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[NoSQL]]></category>
+		<category><![CDATA[secondary]]></category>
+		<guid isPermaLink="false">/?p=4052</guid>
+
+					<description><![CDATA[Last week I hosted a webinar explaining how you can get the best from the NoSQL world while still getting all of the benefits of a proven RDBMS. The webinar replay is now available to view here. Abstract There’s a lot of excitement about NoSQL data stores, with the promise of simple access patterns, flexible]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/11/MySQL_Cluster.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2013/11/MySQL_Cluster.png" alt="MySQL Cluster Logo" width="1004" height="421" class="aligncenter size-full wp-image-2982" srcset="/wp-content/uploads/2013/11/MySQL_Cluster.png 1004w, /wp-content/uploads/2013/11/MySQL_Cluster-300x125.png 300w" sizes="auto, (max-width: 1004px) 100vw, 1004px" /></a>Last week I hosted a webinar explaining how you can get the best from the NoSQL world while still getting all of the benefits of a proven RDBMS. The <a href="http://www.mysql.com/news-and-events/web-seminars/sql-nosql-the-best-of-both-worlds-with-mysql-cluster/" title="NoSQL and SQL, The Best of Both Worlds" target="_blank"> webinar replay is now available to view here</a>.</p>
+<h3>Abstract</h3>
+<p>There’s a lot of excitement about NoSQL data stores, with the promise of simple access patterns, flexible schemas, scalability, and high availability. The downside comes in the form of losing ACID transactions, consistency, flexible queries, and data integrity checks. What if you could have the best of both worlds? Join this webinar to learn how MySQL Cluster provides simultaneous SQL and native NoSQL access to your data—whether it’s in a simple key-value API (memcached) or REST, JavaScript, Java, or C++. You will hear how the MySQL Cluster architecture delivers in-memory real-time performance; 99.999 percent availability; online maintenance; and linear, horizontal scalability through transparent autosharding.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/sqlnosql-best-of-both-worlds-webinar-replay-available/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Upcoming webinar &#8211; SQL &#038; NoSQL &#8211; the best of both worlds</title>
+		<link>/mysql-cluster/upcoming-webinar-sql-nosql-the-best-of-both-worlds</link>
+					<comments>/mysql-cluster/upcoming-webinar-sql-nosql-the-best-of-both-worlds#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 24 Mar 2015 18:14:01 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.4]]></category>
+		<category><![CDATA[NoSQL]]></category>
+		<category><![CDATA[webinar]]></category>
+		<guid isPermaLink="false">/?p=4050</guid>
+
+					<description><![CDATA[On Thursday I&#8217;ll be hosting a webinar explaining how you can get the best from the NoSQL world while still getting all of the benefits of a proven RDBMS. As always the webinar is free but please register here. Even if you can&#8217;t join the live webinar, it&#8217;s worth registering as you&#8217;ll be emailed a]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/11/MySQL_Cluster.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2013/11/MySQL_Cluster.png" alt="MySQL Cluster Logo" width="1004" height="421" class="aligncenter size-full wp-image-2982" srcset="/wp-content/uploads/2013/11/MySQL_Cluster.png 1004w, /wp-content/uploads/2013/11/MySQL_Cluster-300x125.png 300w" sizes="auto, (max-width: 1004px) 100vw, 1004px" /></a>On Thursday I&#8217;ll be hosting a webinar explaining how you can get the best from the NoSQL world while still getting all of the benefits of a proven RDBMS. As always the webinar is free but please <a href="http://www.mysql.com/news-and-events/web-seminars/nosql-sql-the-best-of-both-worlds/" title="NoSQL &#038; SQL, The Best of Both Worlds" target="blank">register here</a>.</p>
+<p>Even if you can&#8217;t join the live webinar, it&#8217;s worth registering as you&#8217;ll be emailed a link to the replay as soon as it&#8217;s available.</p>
+<h3>Abstract</h3>
+<p>There’s a lot of excitement about NoSQL data stores, with the promise of simple access patterns, flexible schemas, scalability, and high availability. The downside comes in the form of losing ACID transactions, consistency, flexible queries, and data integrity checks. What if you could have the best of both worlds? Join this webinar to learn how MySQL Cluster provides simultaneous SQL and native NoSQL access to your data—whether it’s in a simple key-value API (memcached) or REST, JavaScript, Java, or C++. You will hear how the MySQL Cluster architecture delivers in-memory real-time performance; 99.999 percent availability; online maintenance; and linear, horizontal scalability through transparent autosharding.</p>
+<h3>When</h3>
+<ul>
+<li>Thu, Mar 26: 09:00 Pacific time (America)</li>
+<li>Thu, Mar 26: 10:00 Mountain time (America)</li>
+<li>Thu, Mar 26: 11:00 Central time (America)</li>
+<li>Thu, Mar 26: 12:00 Eastern time (America)</li>
+<li>Thu, Mar 26: 13:00 São Paulo time</li>
+<li>Thu, Mar 26: 16:00 UTC</li>
+<li>Thu, Mar 26: 16:00 Western European time</li>
+<li>Thu, Mar 26: 17:00 Central European time</li>
+<li>Thu, Mar 26: 18:00 Eastern European time</li>
+<li>Thu, Mar 26: 21:30 India, Sri Lanka</li>
+<li>Fri, Mar 27: 00:00 Singapore/Malaysia/Philippines time</li>
+<li>Fri, Mar 27: 00:00 China time</li>
+<li>Fri, Mar 27: 01:00 日本</li>
+<li>Fri, Mar 27: 03:00 NSW, ACT, Victoria, Tasmania (Australia) </li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/upcoming-webinar-sql-nosql-the-best-of-both-worlds/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Cluster 7.4.5 Released</title>
+		<link>/mysql-cluster/mysql-cluster-7-4-5-released</link>
+					<comments>/mysql-cluster/mysql-cluster-7-4-5-released#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 24 Mar 2015 18:02:19 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Maintenance Release]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.4]]></category>
+		<category><![CDATA[secondary]]></category>
+		<guid isPermaLink="false">/?p=4048</guid>
+
+					<description><![CDATA[The binary and source versions of MySQL Cluster 7.4.5 have now been made available at http://www.mysql.com/downloads/cluster/. Release notes MySQL Cluster NDB 7.4.5 is a new maintenance release of MySQL Cluster, based on MySQL Server 5.6 and including features from version 7.4 of the NDB storage engine, as well as fixing a number of recently discovered]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/11/MySQL_Cluster.png"><img loading="lazy" decoding="async" class="alignnone size-medium wp-image-2982" src="/wp-content/uploads/2013/11/MySQL_Cluster-300x125.png" alt="MySQL Cluster Logo" width="300" height="125" srcset="/wp-content/uploads/2013/11/MySQL_Cluster-300x125.png 300w, /wp-content/uploads/2013/11/MySQL_Cluster.png 1004w" sizes="auto, (max-width: 300px) 100vw, 300px" /><br />
+</a><br />
+The binary and source versions of MySQL Cluster 7.4.5 have now been made available at <a href="http://www.mysql.com/downloads/cluster/" target="_blank">http://www.mysql.com/downloads/cluster/</a>.</p>
+<h2>Release notes</h2>
+<p>MySQL Cluster NDB 7.4.5 is a new maintenance release of MySQL Cluster, based on MySQL Server 5.6 and including features from version 7.4 of the NDB storage engine, as well as fixing a number of recently discovered bugs in previous MySQL Cluster releases. </p>
+<p>This release also incorporates all bugfixes and changes made in previous MySQL Cluster releases, as well as all bugfixes and feature changes which were added in mainline <a href="http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-23.html" title="MySQL 5.6.23 Release Notes" target="_blank">MySQL 5.6 through MySQL 5.6.23</a>.</p>
+<h3>Bugs Fixed</h3>
+<ul>
+<li class="listitem">
+<p>
+        It was found during testing that problems could arise when the<br />
+        node registered as the arbitrator disconnected or failed during<br />
+        the arbitration process.
+      </p>
+<p>
+        In this situation, the node requesting arbitration could never<br />
+        receive a positive acknowledgement from the registered<br />
+        arbitrator; this node also lacked a stable set of members and<br />
+        could not initiate selection of a new arbitrator.
+      </p>
+<p>
+        Now in such cases, when the arbitrator fails or loses contact<br />
+        during arbitration, the requesting node immediately fails rather<br />
+        than waiting to time out.<br />
+       (Bug #20538179)</p>
+</li>
+<li class="listitem">
+<p>
+        <a class="ulink" href="http://dev.mysql.com/doc/refman/5.6/en/drop-database.html" target="_top"><code class="literal">DROP DATABASE</code></a> failed to remove<br />
+        the database when the database directory contained a<br />
+        <code class="filename">.ndb</code> file which had no corresponding table<br />
+        in <a class="ulink" href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster.html" target="_top"><code class="literal">NDB</code></a>. Now, when executing<br />
+        <code class="literal">DROP DATABASE</code>, <code class="literal">NDB</code><br />
+        performs an check specifically for leftover<br />
+        <code class="filename">.ndb</code> files, and deletes any that it finds.<br />
+       (Bug #20480035)</p>
+<p>References: See also Bug #44529.</p>
+</li>
+<li class="listitem">
+<p>
+        The maximum failure time calculation used to ensure that normal<br />
+        node failure handling mechanisms are given time to handle<br />
+        survivable cluster failures (before global checkpoint watchdog<br />
+        mechanisms start to kill nodes due to GCP delays) was<br />
+        excessively conservative, and neglected to consider that there<br />
+        can be at most <em class="replaceable"><code>number_of_data_nodes</code></em> /<br />
+        <a class="ulink" href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-ndbd-definition.html#ndbparam-ndbd-noofreplicas" target="_top"><code class="literal">NoOfReplicas</code></a> node<br />
+        failures before the cluster can no longer survive. Now the value<br />
+        of <code class="literal">NoOfReplicas</code> is properly taken into<br />
+        account when performing this calculation.<br />
+       (Bug #20069617, Bug #20069624)</p>
+<p>References: See also Bug #19858151, Bug #20128256, Bug #20135976.</p>
+</li>
+<li class="listitem">
+<p>
+        During a node restart, if there was no global checkpoint<br />
+        completed between the <code class="literal">START_LCP_REQ</code> for a<br />
+        local checkpoint and its <code class="literal">LCP_COMPLETE_REP</code> it<br />
+        was possible for a comparison of the LCP ID sent in the<br />
+        <code class="literal">LCP_COMPLETE_REP</code> signal with the internal<br />
+        value <code class="literal">SYSFILE-&gt;latestLCP_ID</code> to fail.<br />
+       (Bug #76113, Bug #20631645)</p>
+</li>
+<li class="listitem">
+<p>
+        When sending <code class="literal">LCP_FRAG_ORD</code> signals as part of<br />
+        master takeover, it is possible that the master not is not<br />
+        synchronized with complete accuracy in real time, so that some<br />
+        signals must be dropped. During this time, the master can send a<br />
+        <code class="literal">LCP_FRAG_ORD</code> signal with its<br />
+        <code class="literal">lastFragmentFlag</code> set even after the local<br />
+        checkpoint has been completed. This enhancement causes this flag<br />
+        to persist until the statrt of the next local checkpoint, which<br />
+        causes these signals to be dropped as well.
+      </p>
+<p>
+        This change affects <span class="command"><strong>ndbd</strong></span> only; the issue<br />
+        described did not occur with <span class="command"><strong>ndbmtd</strong></span>.<br />
+       (Bug #75964, Bug #20567730)</p>
+</li>
+<li class="listitem">
+<p>
+        When reading and copying transporter short signal data, it was<br />
+        possible for the data to be copied back to the same signal with<br />
+        overlapping memory.<br />
+       (Bug #75930, Bug #20553247)</p>
+</li>
+<li class="listitem">
+<p>
+        NDB node takeover code made the assumption that there would be<br />
+        only one takeover record when starting a takeover, based on the<br />
+        further assumption that the master node could never perform<br />
+        copying of fragments. However, this is not the case in a system<br />
+        restart, where a master node can have stale data and so need to<br />
+        perform such copying to bring itself up to date.<br />
+       (Bug #75919, Bug #20546899)</p>
+</li>
+<li class="listitem">
+<p><span class="bold"><strong>Cluster API:</strong></span><br />
+        A scan operation, whether it is a single table scan or a query<br />
+        scan used by a pushed join, stores the result set in a buffer.<br />
+        This maximum size of this buffer is calculated and preallocated<br />
+        before the scan operation is started. This buffer may consume a<br />
+        considerable amount of memory; in some cases we observed a 2 GB<br />
+        buffer footprint in tests that executed 100 parallel scans with<br />
+        2 single-threaded (<span class="command"><strong>ndbd</strong></span>) data nodes. This<br />
+        memory consumption was found to scale linearly with additional<br />
+        fragments.
+      </p>
+<p>
+        A number of root causes, listed here, were discovered that led<br />
+        to this problem:
+      </p>
+<div class="itemizedlist">
+<ul class="itemizedlist" type="circle">
+<li class="listitem">
+<p>
+            Result rows were unpacked to full<br />
+            <a class="ulink" href="http://dev.mysql.com/doc/ndbapi/en/ndb-ndbrecord.html" target="_top"><code class="literal">NdbRecord</code></a> format before<br />
+            they were stored in the buffer. If only some but not all<br />
+            columns of a table were selected, the buffer contained empty<br />
+            space (essentially wasted).
+          </p>
+</li>
+<li class="listitem">
+<p>
+            Due to the buffer format being unpacked,<br />
+            <a class="ulink" href="http://dev.mysql.com/doc/refman/5.6/en/char.html" target="_top"><code class="literal">VARCHAR</code></a> and<br />
+            <a class="ulink" href="http://dev.mysql.com/doc/refman/5.6/en/binary-varbinary.html" target="_top"><code class="literal">VARBINARY</code></a> columns always had<br />
+            to be allocated for the maximum size defined for such<br />
+            columns.
+          </p>
+</li>
+<li class="listitem">
+<p>
+            <a class="ulink" href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-api-definition.html#ndbparam-api-batchbytesize" target="_top"><code class="literal">BatchByteSize</code></a> and<br />
+            <a class="ulink" href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-api-definition.html#ndbparam-api-maxscanbatchsize" target="_top"><code class="literal">MaxScanBatchSize</code></a><br />
+            values were not taken into consideration as a limiting<br />
+            factor when calculating the maximum buffer size.
+          </p>
+</li>
+</ul>
+</div>
+<p>
+        These issues became more evident in NDB 7.2 and later MySQL<br />
+        Cluster release series. This was due to the fact buffer size is<br />
+        scaled by <a class="ulink" href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-api-definition.html#ndbparam-api-batchsize" target="_top"><code class="literal">BatchSize</code></a>, and<br />
+        that the default value for this parameter was increased fourfold<br />
+        (from 64 to 256) beginning with MySQL Cluster NDB 7.2.1.
+      </p>
+<p>
+        This fix causes result rows to be buffered using the packed<br />
+        format instead of the unpacked format; a buffered scan result<br />
+        row is now not unpacked until it becomes the current row. In<br />
+        addition, <code class="literal">BatchByteSize</code> and<br />
+        <code class="literal">MaxScanBatchSize</code> are now used as limiting<br />
+        factors when calculating the required buffer size.
+      </p>
+<p>
+        Also as part of this fix, refactoring has been done to separate<br />
+        handling of buffered (packed) from handling of unbuffered result<br />
+        sets, and to remove code that had been unused since NDB 7.0 or<br />
+        earlier. The <code class="literal">NdbRecord</code> class declaration has<br />
+        also been cleaned up by removing a number of unused or redundant<br />
+        member variables.<br />
+       (Bug #73781, Bug #75599, Bug #19631350, Bug #20408733)</p>
+</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/mysql-cluster-7-4-5-released/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Cluster Manager 1.3.4 Released</title>
+		<link>/mysql-cluster/mysql-cluster-manager-1-3-4-released</link>
+					<comments>/mysql-cluster/mysql-cluster-manager-1-3-4-released#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 17 Mar 2015 06:08:24 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[7.4]]></category>
+		<category><![CDATA[Cluster]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster Manager]]></category>
+		<category><![CDATA[secondary]]></category>
+		<guid isPermaLink="false">/?p=4044</guid>
+
+					<description><![CDATA[MySQL Cluster Manager 1.3.4 is now available to download from My Oracle Support and from the Oracle Software Delivery Cloud. Details are available in the the MCM 1.3.4 Release Notes. Note that this version of MCM now supports MySQL Cluster 7.4 (as well as earlier versions or MySQL Cluster). Documentation is available here.]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/06/MySQL_Cluster_Manager2.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2013/06/MySQL_Cluster_Manager2-300x106.png" alt="MySQL Cluster Manager logo" width="300" height="106" class="alignright size-medium wp-image-2846" /></a>MySQL Cluster Manager 1.3.4 is now available to <a href="https://support.oracle.com/" title="Download MySQL Cluster Manager" target="_blank">download from My Oracle Support</a> and from the <a href="https://edelivery.oracle.com/" title="Oracle Software Delivery Cloud" target="_blank">Oracle Software Delivery Cloud</a>.</p>
+<p>Details are available in the the <a title="MySQL Cluster Manager - change history" href="http://dev.mysql.com/doc/relnotes/mysql-cluster-manager/1.3/en/mcm-news-1-3-4.html" target="_blank">MCM 1.3.4 Release Notes</a>. Note that this version of MCM now supports MySQL Cluster 7.4 (as well as earlier versions or MySQL Cluster).</p>
+<p><a title="MySQL Cluster Manager documentation" href="http://dev.mysql.com/doc/mysql-cluster-manager/1.3/en/" target="_blank">Documentation is available here</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/mysql-cluster-manager-1-3-4-released/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Cluster 7.4 is GA!</title>
+		<link>/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor</link>
+					<comments>/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 26 Feb 2015 16:00:47 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[7.4]]></category>
+		<category><![CDATA[GA]]></category>
+		<category><![CDATA[Geographic Replication]]></category>
+		<category><![CDATA[Multi-Master Replication]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.4]]></category>
+		<category><![CDATA[NoSQL]]></category>
+		<category><![CDATA[Performance]]></category>
+		<category><![CDATA[Replication]]></category>
+		<category><![CDATA[sql]]></category>
+		<guid isPermaLink="false">/?p=4005</guid>
+
+					<description><![CDATA[The General Availability of MySQL Cluster 7.4 has just been announced by Oracle. The MySQL team at Oracle are excited to announce the General Availability of MySQL Cluster 7.4, ready for production workloads. MySQL Cluster 7.4.4 can be downloaded from mysql.com and the release notes viewed in the MySQL docs. Figure 1 provides a summary of the]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2015/02/MySQL-Cluster-7.4-GA-banner.jpg"><img decoding="async" class="aligncenter size-full wp-image-4021" src="/wp-content/uploads/2015/02/MySQL-Cluster-7.4-GA-banner.jpg" alt="MySQL Cluster 7.4 GA banner" width="600" srcset="/wp-content/uploads/2015/02/MySQL-Cluster-7.4-GA-banner.jpg 960w, /wp-content/uploads/2015/02/MySQL-Cluster-7.4-GA-banner-300x103.jpg 300w, /wp-content/uploads/2015/02/MySQL-Cluster-7.4-GA-banner-900x309.jpg 900w" sizes="(max-width: 960px) 100vw, 960px" /></a></p>
+<p>The<b> General Availability of MySQL Cluster 7.4</b> has just been <a href="http://www.oracle.com/us/corporate/press/2431648" title="Oracle announces General Availability of MySQL Cluster 7.4 with 200 Million QPS" target="_blank">announced by Oracle</a>.</p>
+<p>The MySQL team at Oracle are excited to announce the General Availability of MySQL Cluster 7.4, ready for production workloads.</p>
+<p>MySQL Cluster 7.4.4 can be <a title="Download MySQL Cluster 7.4.4 - the GA release" href="http://dev.mysql.com/downloads/cluster/" target="_blank">downloaded from mysql.com</a> and the <a title="Changes in MySQL Cluster NDB 7.4.4 (5.6.22-ndb-7.4.4)" href="http://dev.mysql.com/doc/relnotes/mysql-cluster/7.4/en/mysql-cluster-news-5-6-22-ndb-7-4-4.html" target="_blank">release notes viewed in the MySQL docs</a>.</p>
+<p>Figure 1 provides a summary of the enhancements delivered in this release:</p>
+<ul>
+<li>Performance
+<ul>
+<li>200M NoSQL Reads/Sec</li>
+<li>2.5M SQL Ops/Sec</li>
+<li>50% Faster Reads</li>
+<li>40% Faster Mixed</li>
+</ul>
+</li>
+<li>Active-Active
+<ul>
+<li>Active-Active Geographic Redundancy</li>
+<li>Conflict Detection/Resolution</li>
+</ul>
+</li>
+<li>Management
+<ul>
+<li>5X Faster Maintenance Ops</li>
+<li>Detailed Reporting</li>
+</ul>
+</li>
+</ul>
+<div id="attachment_4007" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2015/02/MySQL-Cluster-7.4-summary.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4007" class="wp-image-4007 size-large" src="/wp-content/uploads/2015/02/MySQL-Cluster-7.4-summary-1024x395.png" alt="MySQL Cluster 7.4 content summary" width="480" height="185" srcset="/wp-content/uploads/2015/02/MySQL-Cluster-7.4-summary-1024x395.png 1024w, /wp-content/uploads/2015/02/MySQL-Cluster-7.4-summary-300x116.png 300w, /wp-content/uploads/2015/02/MySQL-Cluster-7.4-summary-900x347.png 900w, /wp-content/uploads/2015/02/MySQL-Cluster-7.4-summary.png 1405w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4007" class="wp-caption-text">Figure 1: MySQL Cluster 7.4 content summary</p></div>
+<p>The sections that follow delve into some more details.</p>
+<h3>Performance</h3>
+<div id="attachment_3952" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-3952" class="wp-image-3952 size-medium" src="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23-300x197.png" alt="MySQL CLuster 7.4.1 Read-Write Performance" width="300" height="197" srcset="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23-300x197.png 300w, /wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.23.png 864w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-3952" class="wp-caption-text">Figure 2: Read/Writes 40% Faster than MySQL Cluster 7.3</p></div>
+<div id="attachment_3951" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-3951" class="wp-image-3951 size-medium" src="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15-300x199.png" alt="MySQL CLuster 7.4 Read Performance" width="300" height="199" srcset="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15-300x199.png 300w, /wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.35.15.png 842w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-3951" class="wp-caption-text">Figure 3: Reads 50% Faster than MySQL Cluster 7.3</p></div>
+<h4>50% Faster Reads than MySQL Cluster 7.3</h4>
+<p>Being a scaled-out, in-memory, real-time database, MySQL Cluster performance has always been great but we continue to work on making it faster each release. In particular, we want to keep pace with the trend of having more and more cores rather than faster ones. 7.4 continues along the path of better exploiting multiple cores &#8211; as can be seen from these benchmark results:</p>
+<ul>
+<li>Figure 3 shows that for reads, MySQL Cluster 7.4 is 50% faster than last release</li>
+<li>Figure 2 shows that for mixed traffic, MySQL Cluster 7.4 is 50% faster than last release</li>
+</ul>
+<p>Just make sure that you&#8217;re using the multi-threaded data node (ndbmtd rather than ndbd) and have <a title="MySQL Cluster - configuring multi-threaded datanodes" href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-programs-ndbmtd.html" target="_blank">configured how many threads it should use</a>.</p>
+<p>The tests were performed using a 48 core/96 thread machine (also demonstrating how well MySQL Cluster can now scale up with large numbers of cores).</p>
+<p>So, the sysbench benchmark results show how much faster MySQL Cluster 7.4 is compared to the previous 2 releases (a nice apples-to-apples test but on a very small cluster without any scale-out) but we now have some even more interesting <a title="MySQL Cluster Benchmark Results" href="http://www.mysql.com/why-mysql/benchmarks/mysql-cluster/" target="_blank">benchmark results</a> showing just how well MySQL Cluster can scale out to deliver incredible results&#8230;</p>
+<h4>200 Million NoSQL NoSQL QPS!</h4>
+<div id="attachment_4015" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2015/02/200-Million-NoSQL-QPS.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4015" class="size-medium wp-image-4015" src="/wp-content/uploads/2015/02/200-Million-NoSQL-QPS-300x179.png" alt="200 Million NoSQL Queries Per Second with MySQL Cluster 7.4" width="300" height="179" srcset="/wp-content/uploads/2015/02/200-Million-NoSQL-QPS-300x179.png 300w, /wp-content/uploads/2015/02/200-Million-NoSQL-QPS-1024x612.png 1024w, /wp-content/uploads/2015/02/200-Million-NoSQL-QPS-900x538.png 900w, /wp-content/uploads/2015/02/200-Million-NoSQL-QPS.png 1157w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-4015" class="wp-caption-text">Figure 4: 200 Million NoSQL Queries Per Second</p></div>
+<p>Using the <a title="Download MySQL Bechmark tools" href="http://dev.mysql.com/downloads/benchmarks.html%20" target="_blank">flexAsynch benchmark tool</a> and a pool of 32 data nodes (with each data node running on a dedicated 56 thread Intel E5-2697 v3 (Haswell) machine) the cluster was able to process 200,000,000 reads per second. These results are shown in Figure 4, where the number of data nodes are scaled on the x-axis &#8211; as you&#8217;ll observe, performance scales virtually linearly with the number of data nodes. Note that MySQL Cluster supports up to 48 data nodes and so there&#8217;s still plenty of scope to scale out even further.</p>
+<h4>2.5 Million SQL Operation per Second</h4>
+<div id="attachment_4017" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2015/02/2.5-Million-SQL-operations-per-second.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4017" class="size-medium wp-image-4017" src="/wp-content/uploads/2015/02/2.5-Million-SQL-operations-per-second-300x175.png" alt="2.5 Million SQL operations per second with MySQL Cluster" width="300" height="175" srcset="/wp-content/uploads/2015/02/2.5-Million-SQL-operations-per-second-300x175.png 300w, /wp-content/uploads/2015/02/2.5-Million-SQL-operations-per-second-1024x598.png 1024w, /wp-content/uploads/2015/02/2.5-Million-SQL-operations-per-second-900x526.png 900w, /wp-content/uploads/2015/02/2.5-Million-SQL-operations-per-second.png 1164w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-4017" class="wp-caption-text">Figure 5: 2.5 Million SQL operations per second</p></div>
+<p>Using a smaller cluster (just 16 data nodes running on the same 56 thread machines), the DBT2 Benchmark has been used to assess how well SQL performance scales as more data nodes are added. SQL performance was measured at 2,500,000 SQL read opeations per minute. This equates to around 5 Million Transactions Per Minutes or 2.2 Million NewOnly TPM.</p>
+<p>As can be in Figure 5 the scaling of SQL reads is again almost linear.</p>
+<h3>Active-Active (Multi-Master) Replication</h3>
+<p>MySQL Cluster allows bi-directional replication between two (or more) clusters. Replication within each cluster is synchronous but between clusters it is asynchronous which means the following scenario is possible:</p>
+<table border="1" summary="Active-Active asynchronous replication can lead to inconsistencies between databases" width="260" align="center">
+<caption align="center">Conflict with asynchronous replication</caption>
+<tbody>
+<tr>
+<th scope="col" align="center" width="80">Site A</th>
+<th scope="col" align="center" width="100">Replication</th>
+<th scope="col" align="center" width="80">Site B</th>
+</tr>
+<tr>
+<td align="center">x == 10</td>
+<td></td>
+<td align="center">x == 10</td>
+</tr>
+<tr>
+<td align="center">x = 11</td>
+<td></td>
+<td align="center">x = 20</td>
+</tr>
+<tr>
+<td></td>
+<td align="center">&#8212; x=11 &#8211;&gt;</td>
+<td align="center">x == 11</td>
+</tr>
+<tr>
+<td align="center">x==20</td>
+<td align="center">&lt;&#8211; x=20 &#8212;</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>In this example a value (column for a row in a table) is set to 11 on site A and the change is queued for replication to site B. In the mean time, an application sets the value to 20 on site B and that change is queued for replication to site A. Once both sites have received and applied the replicated change from the other cluster site A contains the value 20 while site B contains 11 &#8211; in other words the databases are now inconsistent.</p>
+<h4>How MySQL Cluster implements eventual consistency</h4>
+<p>There are two phases to establishing consistency between both clusters after an inconsistency has been introduced:</p>
+<ol>
+<li>Detect that a conflict has happened</li>
+<li>Resolve the inconsistency</li>
+</ol>
+<p>The following animation illustrates how MySQL Cluster 7.2 detects that an inconsistency has been introduced by the asynchronous, active-active replication:</p>
+<div id="attachment_2149" style="width: 610px" class="wp-caption alignnone"><a href="/wp-content/uploads/2011/11/ReflectingGCI1.gif"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2149" class="size-full wp-image-2149" title="ReflectingGCI" src="/wp-content/uploads/2011/11/ReflectingGCI1.gif" alt="" width="600" height="463" /></a><p id="caption-attachment-2149" class="wp-caption-text">Figure 6: Detecting conflicts</p></div>
+<p>While we typically consider the 2 clusters in an active-active replication configuration to be peers, in this case we designate one to be the primary and the other the secondary. Reads and writes can still be sent to either cluster but it is the responsibility of the primary to identify that a conflict has arisen and then remove the inconsistency.</p>
+<p>A logical clock is used to identify (in relative terms) when a change is made on the primary &#8211; for those who know something of the MySQL Cluster internals, we use the index of the Global Checkpoint that the update is contained in. For all tables that have this feature turned on, an extra, hidden column is automatically added on the primary &#8211; this represents the value of the logical clock when the change was made.</p>
+<p>Once the change has been applied on the primary, there is a &#8220;window of conflict&#8221; for the effected row(s) during which if a different change is made to the same row(s) on the secondary then there will be an inconsistency. Once the slave on the secondary has applied the change from the primary, it will send a replication event back to the slave on the primary, containing the primary&#8217;s clock value associated with the changes that have just been applied on the secondary. (Remember that the clock is actually the Global Checkpoint Index and so this feature is sometimes referred to as Reflected GCI). Once the slave on the primary has received this event, it knows that all changes tagged with a clock value no later than the reflected GCI are now safe &#8211; the window of conflict has closed.</p>
+<p>If an application modifies this same row on the secondary before the replication event from the primary was applied then it will send an associated replication event to the slave on the primary <strong>before</strong> it reflects the new GCI. The slave on the primary will process this replication event and compare the clock value recorded with the effected rows with the latest reflected GCI; as the clock value for the conflicting row is higher the primary recognises that a conflict has occured and will launch the algorithm to resolve the inconsistency.</p>
+<div id="attachment_3950" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-3950" class="wp-image-3950 size-large" src="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-1024x372.png" alt="Options for MySQL Cluster replication conflict detection/resolution" width="480" height="174" srcset="/wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-1024x372.png 1024w, /wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-300x109.png 300w, /wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15-900x327.png 900w, /wp-content/uploads/2014/09/Screen-Shot-2014-09-25-at-13.34.15.png 1728w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-3950" class="wp-caption-text">Figure 7: Options for MySQL Cluster replication conflict detection/resolution</p></div>
+<p>&nbsp;</p>
+<p>After a conflict has been detected, you have the option of having the database simply report the conflict to the application or have it roll back just the conflicting row or the entire transaction and all subsequent transactions that were dependent on it.</p>
+<p style="text-align: left;">So &#8211; what&#8217;s new in 7.4?</p>
+<ul>
+<li>Selective tracking of transaction reads for improved transaction dependency tracking</li>
+<li>Improved NDB Exceptions table format : Non-PK columns, operation type, transaction id, before and after values</li>
+<li>Improved manageability: Online conflict role change, improved visibility into system state, operations, current and historic consistency</li>
+</ul>
+<h4>Configuring Active-Active Replication with Transactional Conflict Resolution</h4>
+<div id="attachment_4026" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2015/02/Screen-Shot-2015-02-11-at-17.36.17.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4026" class="size-medium wp-image-4026" src="/wp-content/uploads/2015/02/Screen-Shot-2015-02-11-at-17.36.17-300x181.png" alt="MySQL Replication Configuration" width="300" height="181" srcset="/wp-content/uploads/2015/02/Screen-Shot-2015-02-11-at-17.36.17-300x181.png 300w, /wp-content/uploads/2015/02/Screen-Shot-2015-02-11-at-17.36.17.png 795w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-4026" class="wp-caption-text">Figure 8: MySQL Replication Configuration</p></div>
+<p>This section assumes that replication has already been set up between two clusters as shown in Figure 8. For more details on how to set up that configuration then refer to the blog: <a title="Enhanced conflict resolution with MySQL Cluster active-active replication" href="/mysql-cluster/enhanced-conflict-resolution-with-mysql-cluster-active-active-replication/%20" target="_blank">Enhanced conflict resolution with MySQL Cluster active-active replication</a>.</p>
+<p>To keep things simple, just two hosts are used; 192.168.56.101 contains all nodes for the primary cluster and 192.168.56.102 will contain all nodes for the secondary. A single MySQL Server in each cluster acts as both the master and the slave.</p>
+<p>The first step is to identify the tables that need conflict detection enabling. Each of those tables then has to have an entry in the mysql.ndb_replication table where they&#8217;re tagged as using the new NDB$EPOCH2_TRANS() function &#8211; you could also choose to use NDB$EPOCH(), in which case only the changes to conflicting rows will be rolled-back rather than the full transactions. A few things to note:</p>
+<ul>
+<li>This must be done before creating the application tables themselves</li>
+<li>Should only be done on the primary</li>
+<li>By default the table doesn&#8217;t exist and so the very first step is to create it</li>
+</ul>
+<pre style="font: normal normal normal 9px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">PRIMARY&gt; CREATE TABLE mysql.ndb_replication (
+-&gt;     db VARBINARY(63),
+-&gt;     table_name VARBINARY(63),
+-&gt;     server_id INT UNSIGNED,
+-&gt;     binlog_type INT UNSIGNED,
+-&gt;     conflict_fn VARBINARY(128),
+-&gt;     PRIMARY KEY USING HASH (db, table_name, server_id)
+-&gt; )   ENGINE=NDB
+-&gt; PARTITION BY KEY(db,table_name);
+
+PRIMARY&gt; REPLACE INTO mysql.ndb_replication VALUES ('clusterdb', 'simple1', 0, 0,  'NDB$EPOCH2_TRANS()');
+PRIMARY&gt; REPLACE INTO mysql.ndb_replication VALUES ('clusterdb', 'simple2', 0, 0,'NDB$EPOCH2_TRANS()');
+PRIMARY&gt; REPLACE INTO mysql.ndb_replication VALUES ('clusterdb', 'simple3', 0, 0,'NDB$EPOCH2_TRANS()');
+
+SECONDARY&gt; SELECT * FROM mysql.ndb_replication;
++-----------+------------+-----------+-------------+--------------------+
+| db        | table_name | server_id | binlog_type | conflict_fn        |
++-----------+------------+-----------+-------------+--------------------+
+| clusterdb | simple2    |         0 |           0 | NDB$EPOCH2_TRANS() |
+| clusterdb | simple1    |         0 |           0 | NDB$EPOCH2_TRANS() |
+| clusterdb | simple3    |         0 |           0 | NDB$EPOCH2_TRANS() |
++-----------+------------+-----------+-------------+--------------------+
+</pre>
+<p>Refer to the <a title="Documentation for mysql.ndb_replication table" href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-replication-conflict-resolution.html#mysql-cluster-ndb-replication-table" target="_blank">MySQL Cluster documentation</a> for details on the contents of the mysql.ndb_replication table.</p>
+<p>The next step is to define which MySQL Cluster instance is to act as the PRIMARY and which as the SECONDARY (note that the slave SQL thread must be halted to make this change):</p>
+<pre style="font: normal normal normal 9px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">PRIMARY&gt; STOP SLAVE SQL_THREAD;
+SECONDARY&gt; STOP SLAVE SQL_THREAD;
+PRIMARY&gt; SET GLOBAL ndb_slave_conflict_role='PRIMARY';
+SECONDARY&gt; SET GLOBAL ndb_slave_conflict_role='SECONDARY';
+SECONDARY&gt; START SLAVE SQL_THREAD;
+PRIMARY&gt; START SLAVE SQL_THREAD;
+</pre>
+<p>For each of these tables you should also create an exceptions table which will record any conflicts that have resulted in changes being rolled back; the format of these tables is rigidly defined and so take care to copy the types exactly; again this only needs doing on the primary:</p>
+<pre style="font: normal normal normal 9px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">PRIMARY&gt; CREATE DATABASE clusterdb;USE clusterdb;
+
+PRIMARY&gt; CREATE TABLE simple1$EX (
+NDB$server_id INT UNSIGNED,
+NDB$master_server_id INT UNSIGNED,
+NDB$master_epoch BIGINT UNSIGNED,
+NDB$count INT UNSIGNED,
+NDB$OP_TYPE ENUM('WRITE_ROW','UPDATE_ROW', 'DELETE_ROW', 'REFRESH_ROW', 'READ_ROW') NOT NULL,
+NDB$CFT_CAUSE ENUM('ROW_DOES_NOT_EXIST', 'ROW_ALREADY_EXISTS', 'DATA_IN_CONFLICT', 'TRANS_IN_CONFLICT') NOT NULL,
+NDB$ORIG_TRANSID BIGINT UNSIGNED NOT NULL,
+id INT NOT NULL,
+value$OLD INT,
+value$NEW INT,
+PRIMARY KEY(NDB$server_id, NDB$master_server_id, NDB$master_epoch, NDB$count)) ENGINE=NDB;
+
+PRIMARY&gt; CREATE TABLE simple2$EX (
+NDB$server_id INT UNSIGNED,
+NDB$master_server_id INT UNSIGNED,
+NDB$master_epoch BIGINT UNSIGNED,
+NDB$count INT UNSIGNED,
+NDB$OP_TYPE ENUM('WRITE_ROW','UPDATE_ROW', 'DELETE_ROW', 'REFRESH_ROW', 'READ_ROW') NOT NULL,
+NDB$CFT_CAUSE ENUM('ROW_DOES_NOT_EXIST', 'ROW_ALREADY_EXISTS', 'DATA_IN_CONFLICT', 'TRANS_IN_CONFLICT') NOT NULL,
+NDB$ORIG_TRANSID BIGINT UNSIGNED NOT NULL,
+id INT NOT NULL,
+value$OLD INT,
+value$NEW INT,
+PRIMARY KEY(NDB$server_id, NDB$master_server_id, NDB$master_epoch, NDB$count)) ENGINE=NDB;
+
+PRIMARY&gt; CREATE TABLE simple3$EX (
+NDB$server_id INT UNSIGNED,
+NDB$master_server_id INT UNSIGNED,
+NDB$master_epoch BIGINT UNSIGNED,
+NDB$count INT UNSIGNED,
+NDB$OP_TYPE ENUM('WRITE_ROW','UPDATE_ROW', 'DELETE_ROW', 'REFRESH_ROW', 'READ_ROW') NOT NULL,
+NDB$CFT_CAUSE ENUM('ROW_DOES_NOT_EXIST', 'ROW_ALREADY_EXISTS', 'DATA_IN_CONFLICT', 'TRANS_IN_CONFLICT') NOT NULL,
+NDB$ORIG_TRANSID BIGINT UNSIGNED NOT NULL,
+id INT NOT NULL,
+value$OLD INT,
+value$NEW INT,
+PRIMARY KEY(NDB$server_id, NDB$master_server_id, NDB$master_epoch, NDB$count)) ENGINE=NDB;
+</pre>
+<p>Refer to the <a title="Documentation for MySQL Cluster exception tables" href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-replication-conflict-resolution.html#mysql-cluster-replication-exceptions-table" target="_blank">MySQL Cluster documentation</a> for details on the format of the exception tables.</p>
+<p>Finally, the application tables themselves can be created (this only needs doing on the primary as they&#8217;ll be replicated to the secondary):</p>
+<pre style="font: normal normal normal 9px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">PRIMARY&gt; CREATE TABLE simple1 (id INT NOT NULL PRIMARY KEY, value INT) ENGINE=ndb;
+PRIMARY&gt; CREATE TABLE simple2 (id INT NOT NULL PRIMARY KEY, value INT) ENGINE=ndb;
+PRIMARY&gt; CREATE TABLE simple3 (id INT NOT NULL PRIMARY KEY, value INT) ENGINE=ndb;
+</pre>
+<p>Everything is now set up and the new configuration can be tested to ensure that conflicts are detected and the correct updates are rolled back.</p>
+<h4>Testing Active-Active Replication with Transactional Conflict Resolution</h4>
+<p>The first step is to add some data to our new tables (note that at this point replication is running and so they only need to be created on the primary) and confirm that everything is replicated to the secondary:</p>
+<pre style="font: normal normal normal 9px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">PRIMARY&gt; REPLACE INTO simple1 VALUES (1,10);
+PRIMARY&gt; REPLACE INTO simple2 VALUES (1,10);
+PRIMARY&gt; REPLACE INTO simple3 VALUES (1,10);
+
+SECONDARY&gt; SELECT * FROM simple1;
++----+-------+
+| id | value |
++----+-------+
+|  1 |    10 |
++----+-------+
+
+SECONDARY&gt; SELECT * FROM simple2;
++----+-------+
+| id | value |
++----+-------+
+|  1 |    10 |
++----+-------+
+
+SECONDARY&gt; SELECT * FROM simple3;
++----+-------+
+| id | value |
++----+-------+
+|  1 |    10 |
++----+-------+
+</pre>
+<p>It is important that the NDB$EPOCH2_TRANS() function rolls back any transactions on the secondary that involve a conflict (as well as subsequent, dependent transactions that modify the same rows); to intentionally trigger this, the simplest approach is to stop the slave IO thread on the secondary Cluster in order to increase the size of the window of conflict (which is otherwise very short). Once the slave IO thread has been stopped a change is made to table simple1 on the primary and then the secondary makes a (conflicting) change to the same row as well as making a change to table simple2 in the same transaction. A second transaction on the primary will change a row in simple3 &#8211; as it doesn&#8217;t touch any rows that have been involved in a conflict then that change should stand.</p>
+<pre style="font: normal normal normal 9px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">SECONDARY&gt; STOP SLAVE IO_THREAD;
+
+PRIMARY&gt; UPDATE simple1 SET value=13 WHERE id=1;
+
+SECONDARY&gt; BEGIN; # conflicting transaction
+SECONDARY&gt; UPDATE simple1 SET value=20 WHERE id=1;
+SECONDARY&gt; UPDATE simple2 SET value=20 WHERE id=1;
+SECONDARY&gt; COMMIT;
+SECONDARY&gt; UPDATE simple3 SET value=20 WHERE id=1; # non conflicting
+
+SECONDARY&gt; SELECT * FROM simple1; SELECT * FROM simple2; SELECT * FROM simple3;
++----+-------+
+| id | value |
++----+-------+
+|  1 |    20 |
++----+-------+
+
++----+-------+
+| id | value |
++----+-------+
+|  1 |    20 |
++----+-------+
+
++----+-------+
+| id | value |
++----+-------+
+|  1 |    20 |
++----+-------+
+</pre>
+<p>If you now check the exception tables then you can see that the primary has received the changes from the secondary and because the first transaction updated the same row in simple1 during its window of conflict it has recorded that the change needs to be rolled back &#8211; this will happen as soon as the replication thread is restarted on the secondary:</p>
+<pre style="font: normal normal normal 9px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">PRIMARY&gt; SELECT * FROM simple1$EX\G
+*************************** 1. row ***************************
+NDB$server_id: 9
+NDB$master_server_id: 20
+NDB$master_epoch: 31344671326216
+NDB$count: 3
+NDB$OP_TYPE: UPDATE_ROW
+NDB$CFT_CAUSE: TRANS_IN_CONFLICT
+NDB$ORIG_TRANSID: 193282978304
+id: 1
+value$OLD: 10
+value$NEW: 20
+1 row in set (0.00 sec)
+
+PRIMARY&gt; SELECT * FROM simple2$EX\G
+*************************** 1. row ***************************
+NDB$server_id: 9
+NDB$master_server_id: 20
+NDB$master_epoch: 31344671326216
+NDB$count: 1
+NDB$OP_TYPE: UPDATE_ROW
+NDB$CFT_CAUSE: TRANS_IN_CONFLICT
+NDB$ORIG_TRANSID: 193282978304
+id: 1
+value$OLD: 10
+value$NEW: 20
+
+PRIMARY&gt; SELECT * FROM simple3$EX\G
+Empty set (0.01 sec)
+
+SECONDARY&gt; START SLAVE IO_THREAD;
+
+SECONDARY&gt; SELECT * FROM simple1; SELECT * FROM simple2; SELECT * FROM simple3;
++----+-------+
+| id | value |
++----+-------+
+|  1 |    13 |
++----+-------+
+
++----+-------+
+| id | value |
++----+-------+
+|  1 |    10 |
++----+-------+
+
++----+-------+
+| id | value |
++----+-------+
+|  1 |    20 |
++----+-------+
+</pre>
+<p>These are the results we expect &#8211; simple1 has the value set by the primary with the subsequent change on the secondary rolled back; simple2 was not updated by the primary but the change on the secondary was rolled back as it was made in the same transaction as the conflicting update to simple1. The change on the secondary to simple3 has survived as it was made outside of any conflicting transaction and the change was not dependent on any conflicting changes. Finally just confirm that the data is identical on the primary:</p>
+<pre style="font: normal normal normal 9px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">PRIMARY&gt; SELECT * FROM simple1; SELECT * FROM simple2; SELECT * FROM simple3;
++----+-------+
+| id | value |
++----+-------+
+|  1 |    13 |
++----+-------+
+
++----+-------+
+| id | value |
++----+-------+
+|  1 |    10 |
++----+-------+
+
++----+-------+
+| id | value |
++----+-------+
+|  1 |    20 |
++----+-------+
+</pre>
+<p>Statistics are provided on the primary that record that 1 conflict has been detected, effecting 1 transaction and that it resulted in 2 row changes being rolled back:</p>
+<pre style="font: normal normal normal 9px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">PRIMARY&gt; SHOW STATUS LIKE 'ndb_conflict%';
++------------------------------------------+----------------+
+| Variable_name                            | Value          |
++------------------------------------------+----------------+
+| Ndb_conflict_fn_max                      | 0              |
+| Ndb_conflict_fn_old                      | 0              |
+| Ndb_conflict_fn_max_del_win              | 0              |
+| Ndb_conflict_fn_epoch                    | 0              |
+| Ndb_conflict_fn_epoch_trans              | 0              |
+| Ndb_conflict_fn_epoch2                   | 0              |
+| Ndb_conflict_fn_epoch2_trans             | 1              |
+| Ndb_conflict_trans_row_conflict_count    | 1              |
+| Ndb_conflict_trans_row_reject_count      | 2              |
+| Ndb_conflict_trans_reject_count          | 1              |
+| Ndb_conflict_trans_detect_iter_count     | 1              |
+| Ndb_conflict_trans_conflict_commit_count | 1              |
+| Ndb_conflict_epoch_delete_delete_count   | 0              |
+| Ndb_conflict_reflected_op_prepare_count  | 0              |
+| Ndb_conflict_reflected_op_discard_count  | 0              |
+| Ndb_conflict_refresh_op_count            | 0              |
+| Ndb_conflict_last_conflict_epoch         | 37391985278995 |
+| Ndb_conflict_last_stable_epoch           | 37417755082760 |
++------------------------------------------+----------------+
+
+SECONDARY&gt; SHOW STATUS LIKE 'ndb_conflict%';
++------------------------------------------+----------------+
+| Variable_name                            | Value          |
++------------------------------------------+----------------+
+| Ndb_conflict_fn_max                      | 0              |
+| Ndb_conflict_fn_old                      | 0              |
+| Ndb_conflict_fn_max_del_win              | 0              |
+| Ndb_conflict_fn_epoch                    | 0              |
+| Ndb_conflict_fn_epoch_trans              | 0              |
+| Ndb_conflict_fn_epoch2                   | 0              |
+| Ndb_conflict_fn_epoch2_trans             | 0              |
+| Ndb_conflict_trans_row_conflict_count    | 0              |
+| Ndb_conflict_trans_row_reject_count      | 0              |
+| Ndb_conflict_trans_reject_count          | 0              |
+| Ndb_conflict_trans_detect_iter_count     | 0              |
+| Ndb_conflict_trans_conflict_commit_count | 0              |
+| Ndb_conflict_epoch_delete_delete_count   | 0              |
+| Ndb_conflict_reflected_op_prepare_count  | 1              |
+| Ndb_conflict_reflected_op_discard_count  | 1              |
+| Ndb_conflict_refresh_op_count            | 2              |
+| Ndb_conflict_last_conflict_epoch         | 32280974196749 |
+| Ndb_conflict_last_stable_epoch           | 18897856102416 |
++------------------------------------------+----------------+
+</pre>
+<p>These status variables are described in the <a title="MySQL Cluster conflict detecion/resoultion status variables" href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-status-variables.html" target="_blank">MySQL Cluster documentation</a>.</p>
+<h3>Faster Restarts</h3>
+<p>You can restart MySQL Cluster processes (nodes) without losing database service (for example if adding extra memory to a server) and so on the face of it, the speed of the restarts isn&#8217;t that important. Having said that, while the node is restarting you&#8217;ve lost some of your high-availability which for super-critical applications can make you nervous. Additionally, faster restarts mean that you can complete maintenance activities faster &#8211; for example, a software upgrade requires a rolling restart of all of the nodes &#8211; if you have 48 data nodes then you want each of the data nodes to restart as quickly as possible.</p>
+<p>MySQL 7.4 includes a number of optimisations to the restart code and so if you&#8217;re already using MySQL Cluster, it might be interesting to see how much faster it gets for your application.</p>
+<h3>Enhanced Reporting</h3>
+<p>MySQL Cluster presents a lot of monitoring information through the ndbinfo database and in 7.4 we&#8217;ve added some extra information on how memory is used for individual tables and how operations are distributed.</p>
+<h4>Extra Memory Reporting</h4>
+<p>MySQL Cluster allocates all of the required memory when a data node starts and so any information on memory usage from the operating system is of limited use and provides no clues as to how memory is used with the data nodes &#8211; for example, which tables are using the most memory. Also, as this is a distributed database, it is helpful to understand whether a particular table is using a similar amount of memory in each data node (if not then it could be that a better partitioning/sharding key could be used). Finally, when rows are deleted from a table, the memory for those rows would typically remain allocated against that table and so it is helpful to understand how many of these ‘empty slots’ are available for use by new rows in that table. MySQL Cluster 7.4 introduces a new table – <a title="Understanding how memory is used in mmc" href="%20http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-ndbinfo-memory-per-fragment.html" target="_blank">ndbinfo.memory_per_fragment</a> &#8211; that provides that information.</p>
+<p>For example; to see how much memory is being used by each data node for a particular table&#8230;</p>
+<pre style="font: normal normal normal 9px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">mysql&gt; CREATE DATABASE clusterdb;USE clusterdb;
+mysql&gt; CREATE TABLE simples (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY) ENGINE=NDB;
+mysql&gt; SELECT node_id AS node, fragment_num AS frag, \
+        fixed_elem_alloc_bytes alloc_bytes, \
+        fixed_elem_free_bytes AS free_bytes, \
+        fixed_elem_free_rows AS spare_rows \
+        FROM ndbinfo.memory_per_fragment \
+        WHERE fq_name LIKE '%simples%';
++------+------+-------------+------------+------------+
+| node | frag | alloc_bytes | free_bytes | spare_rows |
++------+------+-------------+------------+------------+
+|    1 |    0 |      131072 |       5504 |        172 |
+|    1 |    2 |      131072 |       1280 |         40 |
+|    2 |    0 |      131072 |       5504 |        172 |
+|    2 |    2 |      131072 |       1280 |         40 |
+|    3 |    1 |      131072 |       3104 |         97 |
+|    3 |    3 |      131072 |       4256 |        133 |
+|    4 |    1 |      131072 |       3104 |         97 |
+|    4 |    3 |      131072 |       4256 |        133 |
++------+------+-------------+------------+------------+
+</pre>
+<p>When you delete rows from a MySQL Cluster table, the memory is not actually freed up and so if you check the existing <a title="memoryusage table" href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-ndbinfo-memoryusage.html" target="_blank">memoryusage table</a> you won&#8217;t see a change. This memory will be reused when you add new rows to that same table. In MySQL Cluster 7.4, it&#8217;s possible to see how much memory is in that state for a table&#8230;</p>
+<pre style="font: normal normal normal 9px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">mysql&gt; SELECT node_id AS node, fragment_num AS frag, \
+        fixed_elem_alloc_bytes alloc_bytes, \
+        fixed_elem_free_bytes AS free_bytes, \
+        fixed_elem_free_rows AS spare_rows \
+        FROM ndbinfo.memory_per_fragment \
+        WHERE fq_name LIKE '%simples%';
++------+------+-------------+------------+------------+
+| node | frag | alloc_bytes | free_bytes | spare_rows |
++------+------+-------------+------------+------------+
+|    1 |    0 |      131072 |       5504 |        172 |
+|    1 |    2 |      131072 |       1280 |         40 |
+|    2 |    0 |      131072 |       5504 |        172 |
+|    2 |    2 |      131072 |       1280 |         40 |
+|    3 |    1 |      131072 |       3104 |         97 |
+|    3 |    3 |      131072 |       4256 |        133 |
+|    4 |    1 |      131072 |       3104 |         97 |
+|    4 |    3 |      131072 |       4256 |        133 |
++------+------+-------------+------------+------------+
+mysql&gt; DELETE FROM clusterdb.simples LIMIT 1;
+mysql&gt; SELECT node_id AS node, fragment_num AS frag, \
+        fixed_elem_alloc_bytes alloc_bytes, \
+        fixed_elem_free_bytes AS free_bytes, \
+        fixed_elem_free_rows AS spare_rows \
+        FROM ndbinfo.memory_per_fragment \
+        WHERE fq_name LIKE '%simples%';
++------+------+-------------+------------+------------+
+| node | frag | alloc_bytes | free_bytes | spare_rows |
++------+------+-------------+------------+------------+
+|    1 |    0 |      131072 |       5504 |        172 |
+|    1 |    2 |      131072 |       1312 |         41 |
+|    2 |    0 |      131072 |       5504 |        172 |
+|    2 |    2 |      131072 |       1312 |         41 |
+|    3 |    1 |      131072 |       3104 |         97 |
+|    3 |    3 |      131072 |       4288 |        134 |
+|    4 |    1 |      131072 |       3104 |         97 |
+|    4 |    3 |      131072 |       4288 |        134 |
++------+------+-------------+------------+------------+
+</pre>
+<p>As a final example, we can check whether a table is being evenly sharded accross the data nodes (in this case a realy bad sharding key was chosen)&#8230;</p>
+<pre style="font: normal normal normal 9px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">mysql&gt; CREATE TABLE simples (id INT NOT NULL AUTO_INCREMENT, \
+        species VARCHAR(20) DEFAULT "Human", 
+        PRIMARY KEY(id, species)) engine=ndb PARTITION BY KEY(species);
+
+// Add some data
+
+mysql&gt; SELECT node_id AS node, fragment_num AS frag, \
+        fixed_elem_alloc_bytes alloc_bytes, \
+        fixed_elem_free_bytes AS free_bytes, \
+        fixed_elem_free_rows AS spare_rows \
+        FROM ndbinfo.memory_per_fragment \
+        WHERE fq_name LIKE '%simples%';
++------+------+-------------+------------+------------+
+| node | frag | alloc_bytes | free_bytes | spare_rows |
++------+------+-------------+------------+------------+
+|    1 |    0 |           0 |          0 |          0 |
+|    1 |    2 |      196608 |      11732 |        419 |
+|    2 |    0 |           0 |          0 |          0 |
+|    2 |    2 |      196608 |      11732 |        419 |
+|    3 |    1 |           0 |          0 |          0 |
+|    3 |    3 |           0 |          0 |          0 |
+|    4 |    1 |           0 |          0 |          0 |
+|    4 |    3 |           0 |          0 |          0 |
++------+------+-------------+------------+------------+
+</pre>
+<h4>Extra Operations Reporting</h4>
+<p>To ensure that resources are being used effectively, it is very helpful to understand the how each table is being access (how frequently and for what types of operations). To support this, the ndbinfo. operations_per_fragment table is provided. For example, the data in this table would let you identify that a large number of full table scans are performed on a particular table.</p>
+<p>It is also important to identify if there are any hotspots where a disproportionate share of the queries for a table are hitting a particular fragment/data node. Again, <a title="Monitoring the distributed nature of operations in MySQL Cluster" href="http://dev.mysql.com/doc/refman/5.6/en/mysql-cluster-ndbinfo-operations-per-fragment.html" target="_blank">ndbinfo. operations_per_fragment</a> provides this information.</p>
+<p>As an example of how to use some of the data from this table, a simple table is created and populated and then ndbinfo.operations_per_fragment is used to monitor how many Primary Key reads and table scans are performed[1]:</p>
+<pre style="font: normal normal normal 9px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">mysql&gt; CREATE TABLE simples (id INT AUTO_INCREMENT PRIMARY KEY, time TIMESTAMP) ENGINE=NDB;
+
+mysql&gt; SELECT fq_name AS 'Table', node_id AS 'Data Node', tot_key_reads AS 'Reads', tot_frag_scans AS 'Scans' FROM ndbinfo.operations_per_fragment WHERE fq_name LIKE '%simples';
++-----------------------+-----------+-------+-------+
+| Table                 | Data Node | Reads | Scans |
++-----------------------+-----------+-------+-------+
+| clusterdb/def/simples |         3 |     0 |     1 |
+| clusterdb/def/simples |         3 |     0 |     0 |
+| clusterdb/def/simples |         4 |     0 |     0 |
+| clusterdb/def/simples |         4 |     0 |     1 |
++-----------------------+-----------+-------+-------+
+
+mysql&gt; REPLACE INTO simples VALUES ();  # Repeated several times
+mysql&gt; SELECT * FROM simples;
++----+---------------------+
+| id | time                |
++----+---------------------+
+|  7 | 2015-01-22 15:12:42 |
+…
+|  8 | 2015-01-22 15:12:58 |
++----+---------------------+
+23 rows in set (0.00 sec)
+
+mysql&gt; SELECT fq_name AS 'Table', node_id AS 'Data Node', tot_key_reads AS 'Reads', tot_frag_scans AS 'Scans' FROM ndbinfo.operations_per_fragment WHERE fq_name LIKE '%simples';
++-----------------------+-----------+-------+-------+
+| Table                 | Data Node | Reads | Scans |
++-----------------------+-----------+-------+-------+
+| clusterdb/def/simples |         3 |     0 |     2 |
+| clusterdb/def/simples |         3 |     0 |     0 |
+| clusterdb/def/simples |         4 |     0 |     0 |
+| clusterdb/def/simples |         4 |     0 |     2 |
++-----------------------+-----------+-------+-------+
+
+mysql&gt; SELECT * FROM simples WHERE id=11;
++----+---------------------+
+| id | time                |
++----+---------------------+
+| 11 | 2015-01-22 15:12:59 |
++----+---------------------+
+
+mysql&gt; SELECT fq_name AS 'Table', node_id AS 'Data Node', tot_key_reads AS 'Reads', tot_frag_scans AS 'Scans' FROM ndbinfo.operations_per_fragment WHERE fq_name LIKE '%simples';
++-----------------------+-----------+-------+-------+
+| Table                 | Data Node | Reads | Scans |
++-----------------------+-----------+-------+-------+
+| clusterdb/def/simples |         3 |     0 |     2 |
+| clusterdb/def/simples |         3 |     0 |     0 |
+| clusterdb/def/simples |         4 |     0 |     0 |
+| clusterdb/def/simples |         4 |     1 |     2 |
++-----------------------+-----------+-------+-------+
+</pre>
+<p>Note that there are two rows listed for each data node but only one row for each has non-zero values; this is because each data node holds the primary fragment for one of the partitions and the secondary fragment for the other – all operations are performed only on the active fragments. This is made clearer if the fragment number is included in the query:</p>
+<pre style="font: normal normal normal 9px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">mysql&gt; SELECT fq_name AS 'Table', node_id AS 'Data Node', fragment_num AS 'Fragment', tot_key_reads AS 'Reads', tot_frag_scans AS 'Scans' FROM ndbinfo.operations_per_fragment WHERE fq_name LIKE '%simples';
++-----------------------+-----------+----------+-------+-------+
+| Table                 | Data Node | Fragment | Reads | Scans |
++-----------------------+-----------+----------+-------+-------+
+| clusterdb/def/simples |         3 |        0 |     0 |     2 |
+| clusterdb/def/simples |         3 |        1 |     0 |     0 |
+| clusterdb/def/simples |         4 |        0 |     0 |     0 |
+| clusterdb/def/simples |         4 |        1 |     1 |     2 |
++-----------------------+-----------+----------+-------+-------+
+</pre>
+<h3>Conclusion</h3>
+<p>We&#8217;re really excited about the GA for this new MySQL Cluster release; if you get chance to try it out then please let us know how you get on &#8211; either through a comment on this blog, a <a title="MySQL bug report" href="http://bugs.mysql.com/" target="_blank">MySQL bug report</a> or a post to the <a title="MySQL Cluster Forum" href="http://forums.mysql.com/list.php?25" target="_blank">MySQL Cluster Forum</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/mysql-cluster-7-4-is-ga-200-million-qps-and-active-active-geor/feed</wfw:commentRss>
+			<slash:comments>8</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Choosing the right MySQL High Availability Solution – webinar replay</title>
+		<link>/mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay</link>
+					<comments>/mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 20 Feb 2015 14:49:01 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[clustering]]></category>
+		<category><![CDATA[DRBD]]></category>
+		<category><![CDATA[fabric]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Replication]]></category>
+		<category><![CDATA[Scale]]></category>
+		<guid isPermaLink="false">/?p=4038</guid>
+
+					<description><![CDATA[Earlier this week, I presented a webinar on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application. The replay of this webinar can now be viewed here or if you just want to look at the charts then scroll down. At the end]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png"><img loading="lazy" decoding="async" class="aligncenter size-full wp-image-2970" src="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png" alt="MySQL-HA-Logo1.png" width="950" height="100" srcset="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png 950w, /wp-content/uploads/2013/10/MySQL-HA-Logo1-300x31.png 300w" sizes="auto, (max-width: 950px) 100vw, 950px" /></a>Earlier this week, I presented a webinar on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application.</p>
+<p>The <a title="Achieving MySQL High Availability, Learn to Select Your Best Option - webinar replay" href="https://event.on24.com/eventRegistration/EventLobbyServlet?target=reg20.jsp&amp;eventid=930247&amp;sessionid=1&amp;key=FF21049401BAD50579B6733B15BC9D36&amp;sourcepage=register" target="_blank">replay of this webinar can now be viewed here</a> or if you just want to look at the charts then scroll down. At the end of this post, I include a summary of the Q&amp;A from the webinar.</p>
+<p><span style="color: #333399;">How important is your data? Can you afford to lose it? What about just some of it? What would be the impact if you couldn&#8217;t access it for a minute, an hour, a day or a week?</span></p>
+<p><span style="color: #333399;">Different applications can have very different requirements for High Availability. Some need 100% data reliability with 24x7x365 read &amp; write access while many others are better served by a simpler approach with more modest HA ambitions.</span></p>
+<p><span style="color: #333399;">MySQL has an array of High Availability solutions ranging from simple backups, through replication and shared storage clustering &#8211; all the way up to 99.999% available shared nothing, geographically replicated clusters. These solutions also have different &#8216;bonus&#8217; features such as full InnoDB compatibility, in-memory real-time performance, linear scalability and SQL &amp; NoSQL APIs.</span></p>
+<p><span style="color: #333399;">The purpose of this webinar is to help you decide where your application sits in terms of HA requirements and discover which of the MySQL solutions best fit the bill. It will also cover what you need outside of the database to ensure High Availability &#8211; state of the art monitoring being a prime example.</span></p>
+<h2>The charts</h2>
+<p>&nbsp;</p>
+<p><iframe loading="lazy" src="//www.slideshare.net/slideshow/embed_code/44927297" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></p>
+<h2></h2>
+<h2>Questions and Answers</h2>
+<ul>
+<li><strong>What does &#8220;HA&#8221; stands for?</strong> High Availability</li>
+<li><strong>What is meant by scale-out?</strong> Scale-out is where you increase the capacity or the throughput of the system by adding extra (usually commodity) machines &#8211; this is the opposite of scale-up where you buy the biggest single server that you can find. It tends to be much more economical this way and you can add extra capacity if and when you need it.</li>
+<li><strong>Most of my applications are for small businesses were the data load is not that big, is this session worth listening too?</strong> Yes &#8211; the focus of this presentation is on keeping your data safe and accessible, not on scaling to massive volumes and throughput. Scale-out is touched on as if you need that as well then it can influence your choice of High Availability solution</li>
+<li><strong>How does all this compare with Amazon Aurora?</strong> Aurora is something that&#8217;s offered by Amazon and is supported by them. Aurora can only be run on AWS &#8211; the solutions covered here can be taken to lots of different environments &#8211; whether cloud or &#8216;bare metal&#8217;</li>
+<li><strong>what amount of work would be involved in migrating actual InnoDB based DB&#8217;s into NDB?</strong> As you&#8217;d expect, it depends on the application. Changes should be minor to get it to run but you might need to make more adjustments to get the best performance. This <a title="MySQL Cluster Evaluation Guide" href="http://www.mysql.com/why-mysql/white-papers/mysql-cluster-evaluation-guide/" target="_blank">white paper</a> is a good place to start.</li>
+<li><strong>Is it possible to migrate InnoDB data to MySQL Cluster?</strong> Yes. The first thing to note is that to use MySQL Cluster, you have to use the mysqld (MySQL Server) process that comes with the MySQL Cluster package; once you&#8217;ve switched to that binary then you can run ALTER TABLE my_tab ENGINE=NDB; provided that your schema is compatible with MySQL Cluster. Alternatively you can perform a mysqldump and then load the data in.</li>
+<li><strong>Does MySQL Fabric solutions support &#8220;rolling upgrade&#8221;?</strong> Yes &#8211; you can perform a rolling upgrade of the managed MySQL Servers but you have to do it yourself, Fabric doesn&#8217;t automate it at present</li>
+<li><strong>What about master-master replication?</strong> You can use active-active replication but the application is responsibe for avoiding conflicts between the two sites unless you use MySQL Cluster/NDB (where the functionality is built into the database)</li>
+<li><strong>What&#8217;s the maximum distance that the master and slave can be apart?</strong> For MySQL Replication, there is no maximum distance; the latency of the master isn&#8217;t impacted if you stick with the default asynchronous replication. If you use semi-synchronous replication then the latency of your transactions will be impacted by the WAN latency between the master and slave site(s).</li>
+<li><strong>Is there a monetary investment to implement this or is it free?</strong> The database technology presented in this session can be used under the GPL open source license; if you buy a commercal edition then you get access to some additional tools such as MySQL Enterprise Monitor and MySQL Cluster Manager.</li>
+<li><strong>Can we check the transaction sequence in slave side?</strong> Yes, with MySQL replication, you can check which transactions have been applied on the slave.</li>
+<li><strong>Can the slave switch over to master, in case the master needs to be shut down?</strong> Yes &#8211; that&#8217;s a very common use case</li>
+<li><strong>Do we have seperate binlog for different databases (schemas)?</strong> All of the databases (schemas) within the MySQL Server use the same binary log. When that log file fills up, it&#8217;s rotated out and a new one used.</li>
+<li><strong>How can I implement &#8220;auto-failover&#8221; in mysql 5.6 replication? Are you talking abaout &#8220;mysqlfailover&#8221; script?</strong> You can use the mysqlfailover utility or MySQL Fabric</li>
+<li><strong>What are the similarties and differences between InnoDB and the NDB/MySQL Cluster engines?</strong> We&#8217;ll cover some of this in this presentation and you can find more details in this <a title="MySQL Cluster Evaluation Guide" href="http://www.mysql.com/why-mysql/white-papers/mysql-cluster-evaluation-guide/" target="_blank">white paper</a></li>
+<li><strong>With master-master replication, there were some parameters to control the autoincrement IDs so that we could avoid conflicts with active-active MySQL replication?</strong> If you ensure that the same row isn&#8217;t written to on both masters then you can avoid conflicts. One option could be to store odd primary keys on one and even on the other. You can then set the <a title="auto_increment_increment" href="http://dev.mysql.com/doc/refman/5.0/en/replication-options-master.html#sysvar_auto_increment_increment" target="_blank">auto_increment_increment</a> and <a title="auto_increment_offset" href="http://dev.mysql.com/doc/refman/5.0/en/replication-options-master.html#sysvar_auto_increment_offset" target="_blank">auto_increment_offset</a> parameters and then use auto-increment primary keys on each MySQL Server</li>
+<li><strong>Is there an online backup tool available in mysql &#8211; without locking my database?</strong> Yes &#8211; if you&#8217;re using InnoDB then you can use MySQL Enterprise Backup (part of MySQL Enterprise Edition and it&#8217;s also <em>much</em> faster than mysqldump); MySQL Cluster it has a built-in online backup tool (which can be simpler to use in conjunction with MySQL Cluter Manager which is part of MySQL Cluster Carrier Grade Edition)</li>
+<li><strong>In multi-source replication, how are data conflicts handled? If more than one master modifies the same row, which one is applied?</strong> That&#8217;s left as an exercise for the application. The application is responsible for making sure that there are no conflicting updates (if you care about the conflicts). You could also use MySQL Fabric to shard the data.</li>
+<li><strong>With MySQL Group Replication, if one master is down, will transactions still be applied?</strong> With MySQL Group Replication, updates can be sent to any of the servers and so if one is unavailable just switch to any of the others</li>
+<li><strong>what is the maximum data size MySQL can handle in it&#8217;s latest release?</strong> The maximum size of an InnoDB table[space] is four billion pages (64TB with the default 16k page size). Beyond that you start partitioning or use MySQL Fabric</li>
+<li><strong>Can you give a short definition for sharding?</strong> Sharding is where you take the data for a table and split it accross multiple MySQL Server instances. Typically you&#8217;ll choose one or more columns from the table to act as the sharding key to decide which shard a specific row should be stored in. You can also have functional sharding where you decide that the whole of table A will be in one shard and all of table B in another</li>
+<li><strong>Is there a storage engine to handle JSON documents?</strong> Here&#8217;s an <a title="JSON queries using MySQL" href="interesting blog on that topic. http://blog.ulf-wendel.de/2013/mysql-5-7-sql-functions-for-json-udf/" target="_blank">interesting blog on that topic</a></li>
+<li><strong>What algorithms are available for sharding in MySQL?</strong> With MySQL Fabric you can use a hash or define ranges for the shard key. With MySQL Cluster, the sharding is completely transparrent to the application but it uses a MD5 hashing under the covers</li>
+<li><strong>In MySQL cluster is all the data replicated to all of the data nodes?</strong> Data is synchrously replicated between the 2 data nodes forming a node group. Different node groups are responsible for different shards for any given table</li>
+<li><strong>What&#8217;s the maximum number of data nodes in MySQL Cluster?</strong> 48</li>
+<li><strong>Which it best inter-connect method between MySQL Cluster data nodes for highest performance?</strong> Infiniband and GB Ethernet have both shown great results. If you&#8217;re able to configure the behaviour then low latency will help get the best performance</li>
+<li><strong>Can I colocate MySQL Cluster data nodes with MySQL Servers in order use all posible resources?</strong> Yes, you can co-locate data nodes and MySQL Servers. Note that the management node (ndb_mgmd) should not run on the same machine as any of the data nodes &#8211; <a title="read this post for details on how to deploy MySQL Cluster nodes for High Availability" href="/mysql-cluster/mysql-cluster-fault-tolerance-impact-of-deployment-decisions" target="_blank">read this post for details on how to deploy MySQL Cluster nodes for High Availability</a></li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

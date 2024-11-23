@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>data streaming &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/data-streaming/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Fri, 16 Sep 2016 08:27:25 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>MongoDB &#038; Data Streaming – Implementing a MongoDB Kafka Consumer</title>
+		<link>/mongodb/mongodb-data-streaming-implementing-a-mongodb-kafka-consumer</link>
+					<comments>/mongodb/mongodb-data-streaming-implementing-a-mongodb-kafka-consumer#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 16 Sep 2016 08:27:25 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[Apache Kafka]]></category>
+		<category><![CDATA[data streaming]]></category>
+		<category><![CDATA[Kafka]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<guid isPermaLink="false">/?p=4230</guid>
+
+					<description><![CDATA[Data Streaming In today&#8217;s data landscape, no single system can provide all of the required perspectives to deliver real insight. Deriving the full meaning from data requires mixing huge volumes of information from many sources. At the same time, we&#8217;re impatient to get answers instantly; if the time to insight exceeds 10s of milliseconds then]]></description>
+										<content:encoded><![CDATA[<h1>Data Streaming</h1>
+<p>In today&#8217;s data landscape, no single system can provide all of the required perspectives to deliver real insight. Deriving the full meaning from data requires mixing huge volumes of information from many sources.</p>
+<p>At the same time, we&#8217;re impatient to get answers instantly; if the time to insight exceeds 10s of milliseconds then the value is lost – applications such as high frequency trading, fraud detection, and recommendation engines can&#8217;t afford to wait. This often means analyzing the inflow of data before it even makes it to the database of record. Add in zero tolerance for data loss and the challenge gets even more daunting.</p>
+<p>Kafka and data streams are focused on ingesting the massive flow of data from multiple fire-hoses and then routing it to the systems that need it – filtering, aggregating, and analyzing en-route.</p>
+<p>This blog introduces Apache Kafka and then illustrates how to use MongoDB as a source (producer) and destination (consumer) for the streamed data. A more complete study of this topic can be found in the <a href="https://www.mongodb.com/collateral/data-streaming-with-apache-kafka-and-mongodb" title="Data Streaming with Kafka &amp; MongoDB">Data Streaming with Kafka &amp; MongoDB</a> white paper.</p>
+<h1>Apache Kafka</h1>
+<p>Kafka provides a flexible, scalable, and reliable method to communicate streams of event data from one or more <strong>producers</strong> to one or more <strong>consumers</strong>. Examples of <strong>events</strong> include:</p>
+<ul>
+<li>A periodic sensor reading such as the current temperature</li>
+<li>A user adding an item to the shopping cart in an online store</li>
+<li>A Tweet being sent with a specific hashtag</li>
+</ul>
+<p>Streams of Kafka events are organized into <strong>topics</strong>. A producer chooses a topic to send a given event to, and consumers select which topics they pull events from. For example, a financial application could pull NYSE stock trades from one topic, and company financial announcements from another in order to look for trading opportunities.</p>
+<p>In Kafka, topics are further divided into <strong>partitions</strong> to support scale out. Each Kafka node (<strong>broker</strong>) is responsible for receiving, storing, and passing on all of the events from one or more partitions for a given topic. In this way, the processing and storage for a topic can be linearly scaled across many brokers. Similarly, an application may scale out by using many consumers for a given topic, with each pulling events from a discrete set of partitions.</p>
+<div id="attachment_4231" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2016/09/Kafka_topic.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-4231" src="/wp-content/uploads/2016/09/Kafka_topic-1024x720.png" alt="Kafka Producers, Consumers, Topics, and Partitions" width="480" height="338" class="size-large wp-image-4231" srcset="/wp-content/uploads/2016/09/Kafka_topic-1024x720.png 1024w, /wp-content/uploads/2016/09/Kafka_topic-300x211.png 300w, /wp-content/uploads/2016/09/Kafka_topic-768x540.png 768w, /wp-content/uploads/2016/09/Kafka_topic.png 1464w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4231" class="wp-caption-text">Figure 1: Kafka Producers, Consumers, Topics, and Partitions</p></div>
+<h1>MongoDB As A Kafka Consumer – A Java Example</h1>
+<p>In order to use MongoDB as a Kafka consumer, the received events must be converted into BSON documents before they are stored in the database. In this example, the events are strings representing JSON documents. The strings are converted to Java objects so that they are easy for Java developers to work with; those objects are then transformed into BSON documents.</p>
+<p>Complete source code, Maven configuration, and test data can be found further down, but here are some of the highlights; starting with the main loop for receiving and processing event messages from the Kafka topic:</p>
+<p><script src="https://gist.github.com/am-MongoDB/c802bcd43fec731d219ee8ace58dd880.js"></script></p>
+<p>The <code>Fish</code> class includes helper methods to hide how the objects are converted into BSON documents:</p>
+<p><script src="https://gist.github.com/am-MongoDB/432ffc15d4f95209da70123c9d752826.js"></script></p>
+<p>In a real application more would be done with the received messages – they could be combined with reference data read from MongoDB, acted on and then passed along the pipeline by publishing to additional topics. In this example, the final step is to confirm from the <code>mongo</code> shell that the data has been added to the database:</p>
+<p><script src="https://gist.github.com/2fd1f4a7ecaf5dd6a426fc8b53e9b4c0.js"></script></p>
+<h2>Full Java Code for MongoDB Kafka Consumer</h2>
+<h3>Business Object – <code>Fish.java</code></h3>
+<p><script src="https://gist.github.com/217f007071922dc2d7d37eed9fe7a789.js"></script></p>
+<h3>Kafka Consumer for MongoDB – <code>MongoDBSimpleConsumer.java</code></h3>
+<p>Note that this example consumer is written using the Kafka <em>Simple Consumer API</em> – there is also a Kafka <em>High Level Consumer API</em> which hides much of the complexity – including managing the offsets. The Simple API provides more control to the application but at the cost of writing extra code.<br />
+<script src="https://gist.github.com/77eb68a6af50f93453a7c316dbe1c6b5.js"></script></p>
+<h3>Maven Dependencies – <code>pom.xml</code></h3>
+<p><script src="https://gist.github.com/03f9bfbbedfe4fa015854c9a39ba4bbc.js"></script></p>
+<h3>Test Data – <code>Fish.json</code></h3>
+<p>A sample of the test data injected into Kafka is shown below:</p>
+<p><script src="https://gist.github.com/5e74c8913119107936f9a5594b7dd149.js"></script></p>
+<p>For simple testing, this data can be injected into the <code>clusterdb-topic1</code> topic using the <code>kafka-console-producer.sh</code> command.</p>
+<h1>Next Steps</h1>
+<p>To learn much more about data streaming and how MongoDB fits in (including Apache Kafka and competing and complementary technologies) read the <a href="https://www.mongodb.com/collateral/data-streaming-with-apache-kafka-and-mongodb" title="Data Streaming with Kafka &amp; MongoDB">Data Streaming with Kafka &amp; MongoDB</a> white paper and watch the <a href="https://www.mongodb.com/presentations/webinar-data-streaming-with-apache-kafka-and-mongodb">webinar replay</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mongodb/mongodb-data-streaming-implementing-a-mongodb-kafka-consumer/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

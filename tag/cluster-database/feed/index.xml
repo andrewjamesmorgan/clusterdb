@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Cluster Database &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/cluster-database/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Thu, 30 Jul 2009 12:46:00 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>MySQL Cluster Data Node restart times</title>
+		<link>/mysql-cluster/mysql-cluster-data-node-restart-times</link>
+					<comments>/mysql-cluster/mysql-cluster-data-node-restart-times#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 30 Jul 2009 12:46:00 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Cluster]]></category>
+		<category><![CDATA[Cluster 7.0]]></category>
+		<category><![CDATA[Cluster Database]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.0]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<category><![CDATA[recovery]]></category>
+		<category><![CDATA[restart]]></category>
+		<guid isPermaLink="false">/?p=365</guid>
+
+					<description><![CDATA[Restart times have been reduced in MySQL Cluster 6.3.28a &#38; 7.0.9a &#8211; refer to that article for the new timings: /mysql-cluster/mysql-cluster-restarts-get-faster/ Restarts are required for certain, infrequent maintenance activities. Note that there is no loss of service while a single node restarts. When a data node restarts, it first attempts to load the data into memory]]></description>
+										<content:encoded><![CDATA[<p><strong>Restart times have been reduced in MySQL Cluster 6.3.28a &amp; 7.0.9a &#8211; refer to that article for the new timings:</strong> <a href="/mysql-cluster/mysql-cluster-restarts-get-faster/" target="_self">/mysql-cluster/mysql-cluster-restarts-get-faster/</a></p>
+<p>Restarts are required for certain, infrequent maintenance activities. Note that there is no loss of service while a single node restarts.</p>
+<p>When a data node restarts, it first attempts to load the data into memory from the local log files and then it will catch up with any subsequent changes by retrieveing them from the surviving node(s) in its node group.</p>
+<p> Based on this, you would expect the time taken to restart a data node to be influenced by:</p>
+<ol>
+<li>The amount of data that was stored on the data node before the restart</li>
+<li>Rate of updates being made to the data during the restart</li>
+<li>Network performance (assuming the data is being updated during recovery)</li>
+</ol>
+<p>The times will also be influenced bycertain configuration parameters, performance of the host machine and whether the multi-threaded data node (ndbmtd) is being used.</p>
+<p>To provide some insight into how these factors impact restart times, tests have been performed where the following factors are varied:</p>
+<ul>
+<li>Database size (Each Gbyte is made up of 1,000,000 tuples in each of 5 tables)</li>
+<li>Whether traffic is running or not (a single thread using the NDB API to send in up to 2K tps (10K updates/second))</li>
+<li>Whether the 2 data nodes in the node group are on the same host or separated by a Gbit Ethernet network</li>
+</ul>
+<p>The following factors are kept constant:</p>
+<ul>
+<li>Physical hosts: Intel Core 2 Quad Q8200@2.33 GHz; 7.7 GBytes RAM</li>
+<li>NoOfFragmentLogFiles: 300</li>
+<li>MaxNoOfExecutionThreads=4</li>
+</ul>
+<p>Here are the observed results:</p>
+<div id="attachment_369" style="width: 597px" class="wp-caption alignnone"><a href="/wp-content/uploads/2009/07/restart_times.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-369" class="size-full wp-image-369" title="Data Node restart times" src="/wp-content/uploads/2009/07/restart_times.jpg" alt="Data Node restart times" width="587" height="168" srcset="/wp-content/uploads/2009/07/restart_times.jpg 587w, /wp-content/uploads/2009/07/restart_times-300x85.jpg 300w" sizes="(max-width: 587px) 100vw, 587px" /></a><p id="caption-attachment-369" class="wp-caption-text">Data Node restart times</p></div>
+<p>There are a couple of things to note from these results:</p>
+<ul>
+<li>Using the multi-threaded data node (ndbmtd) greatly improves the restart time (in this case, 4 threads were available, improvements could be even greater on an 8 core/thread system)</li>
+<li>Results become less predictable when heavy update traffic is being processed (in this case, up to 10,000 updated rows/second on a single node group). In the tests, no attempt was made to regulate this traffic and the test application was run on the same host as the one of the data nodes. Changes to the rate of updates will vary how long it takes for the restarting node to catch-up as it&#8217;s a moving target.</li>
+</ul>
+<p>There is another recovery/restart scenario. The measurements shown above assumed that the file system on the data node&#8217;s host was intact and could be used to recover the in-memory copy &#8211; if that were not the case (or the data nodes were restarted with the &#8220;initial&#8221; option) then all of the data would have to be recovered from the surviving data node(s) in the same node group. As a comparison restarting a 6 Gbyte data node with the &#8220;initial&#8221; option took 20 minutes compared to 8 minutes without it (ndbmtd, over Gbit n/w).</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/mysql-cluster-data-node-restart-times/feed</wfw:commentRss>
+			<slash:comments>12</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Webinar replay available: What’s New in the Next Generation of MySQL Cluster?</title>
+		<link>/mysql-cluster/webinar-replay-available-whats-new-in-the-next-generation-of-mysql-cluster</link>
+					<comments>/mysql-cluster/webinar-replay-available-whats-new-in-the-next-generation-of-mysql-cluster#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 12 May 2009 09:40:43 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Andrew Morgan]]></category>
+		<category><![CDATA[Cluster Database]]></category>
+		<category><![CDATA[MySQL Cluster 7.0]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<guid isPermaLink="false">/?p=112</guid>
+
+					<description><![CDATA[There is another live webinar on MySQL Cluster 7.0 scheduled for 27th May 09:00 (Western European time) / 08:00 (UK time) / 11:00 (Eastern European time) and you can register here. Alternatively, if you can&#8217;t wait that long then you can watch/listen to the play-back of the original webinar. Note that you may need to]]></description>
+										<content:encoded><![CDATA[<p>There is another live webinar on MySQL Cluster 7.0 scheduled for 27th May 09:00 (Western European time) / 08:00 (UK time) / 11:00 (Eastern European time) and you can <a title="MySQL Cluster 7.0 Webinar" href="http://www.mysql.com/news-and-events/web-seminars/display-350.html" target="_blank">register here</a>.</p>
+<p>Alternatively, if you can&#8217;t wait that long then you can <a href="http://www.mysql.com/news-and-events/on-demand-webinars/display-od-320.html">watch/listen to the play-back of the original webinar</a>.</p>
+<p>Note that you may need to <a title="WebEx Installer" href="http://www.webex.com/downloadplayer.html" target="_blank">install the WebEx Player</a> (Windows and Mac) &#8211; unfortunately, there doesn&#8217;t seem to be a simple, supported solution for LINUX users but you can always download the slides (PDF format) from the same link or else wait until 27th May and view it live.</p>
+<p><span><span style="font-weight: bold;">What’s New in the Next Generation of MySQL Cluster?</span></span><span><br />
+Thursday, April 30, 2009</span></p>
+<p>Whether you’re racing to introduce a new service, or trying to manage an avalanche of data in real time, your database has to be scalable, fast and highly available to meet ever-changing market conditions and stringent SLAs.</p>
+<p>By attending this webinar, you will learn more about MySQL Cluster 7, and how it enables you to deliver 99.999% database availability, with real time performance and linear scalability, while slashing TCO.</p>
+<p>Boasting a range of breakthrough capabilities, the MySQL Cluster 7 will enable you to stay ahead of your most demanding, mission-critical application requirements. Enhanced scalability delivers higher database performance with fewer nodes to simplify deployment and administration. Expanded platform support and interoperability delivers more choice in both the development and deployment of MySQL Cluster. Simplified cluster monitoring tools reduce DBA administration overhead and operational costs.</p>
+<p>Presented by:</p>
+<ul>
+<li>Andrew Morgan, MySQL Product Management</li>
+<li>Matthew Keep, MySQL Product Management</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/webinar-replay-available-whats-new-in-the-next-generation-of-mysql-cluster/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Are Stored Procedures available with MySQL Cluster?</title>
+		<link>/mysql-cluster/are-stored-procedures-available-with-mysql-cluster</link>
+					<comments>/mysql-cluster/are-stored-procedures-available-with-mysql-cluster#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 01 May 2009 15:34:45 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Cluster Database]]></category>
+		<category><![CDATA[NDB API]]></category>
+		<category><![CDATA[Stored Procedures]]></category>
+		<category><![CDATA[Triggers]]></category>
+		<guid isPermaLink="false">/?p=72</guid>
+
+					<description><![CDATA[The answer is yes – kind of. Stored procedures are implemented in a MySQL Server and can be used regardless of the storage engine being used for a specific table. One inference from this is that they won’t work when accessing the Cluster database directly through the NDB API. This leads to the question of]]></description>
+										<content:encoded><![CDATA[<p>The answer is yes – kind of.</p>
+<p>Stored procedures are implemented in a MySQL Server and can be used regardless of the storage engine being used for a specific table. One inference from this is that they won’t work when accessing the Cluster database directly through the NDB API.</p>
+<p>This leads to the question of whether or not that limitation actually restricts what you can achieve. This article gives a brief introduction to stored procedures and looks at how the same results can be achieved using the NDB API.</p>
+<p>Stored procedures provide a rudimentary way of implementing functionality within the database (rather than in the application code). They are implemented by the database designer and have the ability to perform computations as well as make changes to the data in the database. A typical use of stored procedures would be to control all access to the data by a user or application – for example, to impose extra checks on the data or make sure that all linked data is updated rather than leaving it to the user or application designer to always remember to do it. To impose this, the DBA could grant permission to users to call the stored procedures but not write to the tables directly.</p>
+<p>This functionality can be very useful when the data is being accessed through the SQL interface. If using the NDB API then you have the full power of the C++ language at your disposal and so a designer can code whatever checks and side effects are needed within a wrapper method and then have applications use those methods rather than accessing the raw NDB API directly for those changes.</p>
+<p>There is one piece of functionality available using stored procedures which could be very helpful to applications using the NDB API – triggers. The rest of this article explains what triggers are; how they’re used and how that same results can be achieved using the NDB API.</p>
+<h2><span style="color: #333399;">Triggers</span></h2>
+<p>Triggers allow stored code to be invoked as a side effect of SQL commands being executed on the database through a MySQL Server. The database designer can implement a stored procedure and then register it to be invoked when specific actions (INSERT, DELETE etc.) are performed on a table.</p>
+<p>The following example shows how a simple stored procedure can be implemented and then registered against a table.</p>
+<pre><span style="color: #800000;">mysql&gt; USE test;
+Database changed
+mysql&gt; create table ASSETS (NAME varchar(30) not null primary key,VALUE int) engine=ndb;
+Query OK, 0 rows affected (0.67 sec)
+mysql&gt; create table AUDIT_LOG (NOTE varchar(30) not NULL primary key) engine=ndb;
+Query OK, 0 rows affected (0.56 sec)
+mysql&gt; delimiter //
+mysql&gt; create procedure log_it (log_string varchar(30))
+    -&gt; begin
+    -&gt; insert into AUDIT_LOG values(log_string);
+    -&gt; end
+    -&gt; //
+Query OK, 0 rows affected (0.00 sec)
+mysql&gt; delimiter ;
+mysql&gt; create trigger ins_asset before insert on ASSETS
+    -&gt; for each row call log_it(new.name);
+Query OK, 0 rows affected (0.00 sec</span></pre>
+<p>The stored procedure in this example is triggered whenever a new tuple is inserted into the ASSETS table. The procedure then inserts the asset’s name into the AUDIT_LOG table. If the tuple is deleted from the ASSETS table then the entry in the AUDIT_LOG table remains intact.</p>
+<p>The following screen capture shows the results when adding a tuple to the table that contains the trigger.</p>
+<pre><span style="color: #800000;">mysql&gt; insert into ASSETS values ('Computer',350);
+Query OK, 1 row affected (0.01 sec)
+mysql&gt; select * from AUDIT_LOG;
++----------+
+| NOTE     |
++----------+
+| Computer |
++----------+
+1 row in set (0.00 sec)</span></pre>
+<p>Note that as the trigger and stored procedure are implemented in the MySQL Server, they need to be separately defined in all of the MySQL Server instances where they are needed.</p>
+<p>The following NDB API code adds a new tuple to the ASSETS table in much the same way as was done through SQL above (Note: my C++ is very rusty and so there will be glitches in this code &#8211; especially for string handling).</p>
+<pre><span style="color: #800000;">#include &lt;NdbApi.hpp&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+
+static void run_application(Ndb_cluster_connection &amp;, char*);
+
+#define PRINT_ERROR(code,msg) 
+std::cout &lt;&lt; "Error in " &lt;&lt; __FILE__ &lt;&lt; ", line: " &lt;&lt; __LINE__ 
+          &lt;&lt; ", code: " &lt;&lt; code 
+          &lt;&lt; ", msg: " &lt;&lt; msg &lt;&lt; "." &lt;&lt; std::endl
+
+#define APIERROR(error) { 
+  PRINT_ERROR(error.code,error.message); 
+  exit(-1); }
+
+int main(int argc, char** argv)
+{
+  if (argc != 3)
+  {
+    std::cout &lt;&lt; "Arguments are &lt;connect_string cluster&gt;&lt;asset_name&gt;.n";
+    exit(-1);
+  }
+  ndb_init();
+
+  // connect to cluster and run application
+  {
+    const char *connectstring = argv[1];
+    char *asset_name = argv[2];
+    // Object representing the cluster
+    Ndb_cluster_connection cluster_connection(connectstring);
+
+    // Connect to cluster management server (ndb_mgmd)
+    if (cluster_connection.connect(4 /* retries               */,
+                                   5 /* delay between retries */,
+                                   1 /* verbose               */))
+    {
+      std::cout &lt;&lt; "Cluster management server was not ready within 30 secs.n";
+      exit(-1);
+    }
+
+    // Connect and wait for the storage nodes (ndbd's)
+    if (cluster_connection.wait_until_ready(30,0) &lt; 0)
+    {
+      std::cout &lt;&lt; "Cluster was not ready within 30 secs.n";
+      exit(-1);
+    }
+    // run the application code
+    run_application(cluster_connection, asset_name);
+  }
+  ndb_end(0);
+  return 0;
+}
+
+static void do_insert(Ndb &amp;, char*);
+
+static void run_application(Ndb_cluster_connection &amp;cluster_connection,
+char *asset_name)
+{
+  /********************************************
+  * Connect to database via NdbApi           *
+  ********************************************/
+  // Object representing the database
+  Ndb myNdb( &amp;cluster_connection, "test" );
+  if (myNdb.init()) APIERROR(myNdb.getNdbError());
+  do_insert(myNdb, asset_name);
+}
+
+static void do_insert(Ndb &amp;myNdb, char *asset_name)
+{
+  const NdbDictionary::Dictionary* myDict= myNdb.getDictionary();
+  const NdbDictionary::Table *myTable= myDict-&gt;getTable("ASSETS");
+  char str[20];
+  str[0] = strlen(asset_name);
+  strcpy(str +1, asset_name);
+
+  if (myTable == NULL) APIERROR(myDict-&gt;getNdbError());
+  NdbTransaction *myTransaction= myNdb.startTransaction();
+  if (myTransaction == NULL) APIERROR(myNdb.getNdbError());
+  NdbOperation *myOperation= myTransaction-&gt;getNdbOperation(myTable);
+  if (myOperation == NULL) APIERROR(myTransaction-&gt;getNdbError());
+  myOperation-&gt;insertTuple();
+  myOperation-&gt;setValue("NAME", str);
+  myOperation-&gt;setValue("VALUE", 555);
+  if (myTransaction-&gt;execute( NdbTransaction::Commit ) == -1)
+    APIERROR(myTransaction-&gt;getNdbError());
+  myNdb.closeTransaction(myTransaction);
+}
+</span></pre>
+<p>This code can then be executed and then the effects verified using SQL commands through the MySQL Server – note that the stored procedure has not been triggered and so the name has not been copied into the AUDIT_LOG table.</p>
+<pre><span style="color: #800000;">[billy@ws1 stored]$ ./test_stored_procedures localhost:1186 Monitor
+
+mysql&gt; select * from ASSETS;
++----------+-------+
+| NAME     | VALUE |
++----------+-------+
+| Monitor  |   555 |
+| Computer |   350 |
++----------+-------+
+2 rows in set (0.01 sec)</span>
+
+<span style="color: #800000;">mysql&gt; select * from AUDIT_LOG;
++----------+
+| NOTE     |
++----------+
+| Computer |
++----------+
+1 row in set (0.00 sec)</span></pre>
+<p>It could easily be argued that triggers are not required when using the NDB API – simply code a wrapper method that also applies the required side effects. However, it is possible to come up with scenarios where triggers would be much more convenient – for example if the application is already littered with accesses to the data and you want to retrofit the side effect.</p>
+<p>Fortunately, the NDB API includes the ability to register triggers against operations for a specific table. The code that follows implements a process that waits for an INSERT to be performed on the ASSETS table and then creates an entry in the AUDIT_LOG table just as the earlier stored procedure did.</p>
+<pre><span style="color: #800000;">#include &lt;NdbApi.hpp&gt;
+#include &lt;stdio.h&gt;
+#include &lt;iostream&gt;
+#include &lt;unistd.h&gt;
+#include &lt;cstdlib&gt;
+#include &lt;string.h&gt;</span>
+
+<span style="color: #800000;">#define APIERROR(error) 
+{ std::cout &lt;&lt; "Error in " &lt;&lt; __FILE__ &lt;&lt; ", line:" &lt;&lt; __LINE__ &lt;&lt; ", code:" 
+            &lt;&lt; error.code &lt;&lt; ", msg: " &lt;&lt; error.message &lt;&lt; "." &lt;&lt; std::endl; 
+  exit(-1); }</span>
+
+<span style="color: #800000;">int myCreateEvent(Ndb* myNdb,
+                  const char *eventName,
+                  const char *eventTableName,
+                  const char **eventColumnName,
+                  const int noEventColumnName);</span>
+
+<span style="color: #800000;">static void do_insert(Ndb*, char*);</span>
+
+<span style="color: #800000;">int main(int argc, char** argv)
+{
+  if (argc &lt; 2)
+  {
+    std::cout &lt;&lt; "Arguments are &lt;connect_string cluster&gt; &lt;timeout&gt;].n";
+    exit(-1);
+  }
+  const char *connectstring = argv[1];
+  int timeout = atoi(argv[2]);
+  ndb_init();
+  Ndb_cluster_connection *cluster_connection=
+  new Ndb_cluster_connection(connectstring);</span>
+
+<span style="color: #800000;">  int r= cluster_connection-&gt;connect(5 /* retries               */,
+                                     3 /* delay between retries */,
+                                     1 /* verbose               */);
+  if (r &gt; 0)
+  {
+    std::cout
+       &lt;&lt; "Cluster connect failed, possibly resolved with more retries.n";
+    exit(-1);
+  }
+  else if (r &lt; 0)
+  {
+    std::cout
+       &lt;&lt; "Cluster connect failed.n";
+    exit(-1);
+  }
+  if (cluster_connection-&gt;wait_until_ready(30,30))
+  {
+    std::cout &lt;&lt; "Cluster was not ready within 30 secs." &lt;&lt; std::endl;
+    exit(-1);
+  }
+  Ndb* myNdb= new Ndb(cluster_connection,
+                      "test");  // Object representing the database
+  if (myNdb-&gt;init() == -1) APIERROR(myNdb-&gt;getNdbError());
+  const char *eventName= "CHNG_IN_ASSETS";
+  const char *eventTableName= "ASSETS";
+  const int noEventColumnName= 2;
+  const char *eventColumnName[noEventColumnName]=
+    {"NAME",
+     "VALUE"};</span>
+
+<span style="color: #800000;">  // Create events
+  myCreateEvent(myNdb,
+  eventName,
+  eventTableName,
+  eventColumnName,
+  noEventColumnName);</span>
+
+<span style="color: #800000;">  // Normal values and blobs are unfortunately handled differently..
+  typedef union { NdbRecAttr* ra; NdbBlob* bh; } RA_BH;</span>
+
+<span style="color: #800000;">  int i, j;
+  j = 0;
+  while (j &lt; timeout) {
+    // Start "transaction" for handling events
+    NdbEventOperation* op;
+  if ((op = myNdb-&gt;createEventOperation(eventName)) == NULL)
+    APIERROR(myNdb-&gt;getNdbError());
+  RA_BH recAttr[noEventColumnName];
+  RA_BH recAttrPre[noEventColumnName];
+  for (i = 0; i &lt; noEventColumnName; i++) {
+    recAttr[i].ra    = op-&gt;getValue(eventColumnName[i]);
+    recAttrPre[i].ra = op-&gt;getPreValue(eventColumnName[i]);
+  }
+  if (op-&gt;execute())
+    APIERROR(op-&gt;getNdbError());
+  NdbEventOperation* the_op = op;
+  i= 0;
+  while (i &lt; timeout) {
+    int r = myNdb-&gt;pollEvents(1000); // wait for event or 1000 ms
+    if (r &gt; 0) {
+    while ((op= myNdb-&gt;nextEvent())) {
+      i++;
+      NdbRecAttr* ra = recAttr[0].ra;
+      if (ra-&gt;isNULL() &gt;= 0) { // we have a value
+        if (ra-&gt;isNULL() == 0) { // we have a non-null value
+          printf("NAME: %s ", ra-&gt;aRef());
+          do_insert(myNdb, ra-&gt;aRef());
+        } else
+          printf("%-5s", "NULL");
+        } else
+        printf("%-5s", "-"); // no value
+        ra = recAttr[1].ra;
+        printf("n");
+      }
+    }
+  }
+  if (myNdb-&gt;dropEventOperation(the_op)) APIERROR(myNdb-&gt;getNdbError());
+  the_op = 0;
+  j++;
+  }
+  {
+    NdbDictionary::Dictionary *myDict = myNdb-&gt;getDictionary();
+    if (!myDict) APIERROR(myNdb-&gt;getNdbError());
+    if (myDict-&gt;dropEvent(eventName)) APIERROR(myDict-&gt;getNdbError());
+  }
+  delete myNdb;
+  delete cluster_connection;
+  ndb_end(0);
+  return 0;
+}</span>
+
+<span style="color: #800000;">int myCreateEvent(Ndb* myNdb,
+const char *eventName,
+const char *eventTableName,
+const char **eventColumnNames,
+const int noEventColumnNames)
+{
+  NdbDictionary::Dictionary *myDict= myNdb-&gt;getDictionary();
+  if (!myDict) APIERROR(myNdb-&gt;getNdbError());
+  const NdbDictionary::Table *table= myDict-&gt;getTable(eventTableName);
+  if (!table) APIERROR(myDict-&gt;getNdbError());
+  NdbDictionary::Event myEvent(eventName, *table);
+  myEvent.addTableEvent(NdbDictionary::Event::TE_INSERT);
+  myEvent.addEventColumns(noEventColumnNames, eventColumnNames);</span>
+
+<span style="color: #800000;">  // Add event to database
+  if (myDict-&gt;createEvent(myEvent) == 0)
+    myEvent.print();
+  else if (myDict-&gt;getNdbError().classification ==
+    NdbError::SchemaObjectExists) {
+    printf("Event creation failed, event existsn");
+    printf("dropping Event...n");
+    if (myDict-&gt;dropEvent(eventName)) APIERROR(myDict-&gt;getNdbError());
+    // try again
+    // Add event to database
+    if ( myDict-&gt;createEvent(myEvent)) APIERROR(myDict-&gt;getNdbError());
+  } else
+    APIERROR(myDict-&gt;getNdbError());
+    return 0;</span><span style="color: #800000;">
+}
+static void do_insert(Ndb* myNdb, char *asset_name)
+{
+  const NdbDictionary::Dictionary* myDict= myNdb-&gt;getDictionary();
+  const NdbDictionary::Table *myTable= myDict-&gt;getTable("AUDIT_LOG");
+  char str[30];
+  str[0] = strlen(asset_name);
+  strcpy(str +1, asset_name);
+  printf("Storing %i characters: %sn", strlen(asset_name), asset_name);
+  if (myTable == NULL) APIERROR(myDict-&gt;getNdbError());
+  NdbTransaction *myTransaction= myNdb-&gt;startTransaction();
+  if (myTransaction == NULL) APIERROR(myNdb-&gt;getNdbError());
+  myOperation-&gt;insertTuple();
+  myOperation-&gt;setValue("NOTE", str);
+  if (myTransaction-&gt;execute( NdbTransaction::Commit ) == -1)
+    APIERROR(myTransaction-&gt;getNdbError());
+  myNdb-&gt;closeTransaction(myTransaction);
+ }</span></pre>
+<p>We can then use the code to make the addition through the NDB API. We use one terminal to run the listener and then another to run the code to add the tuple.</p>
+<pre><span style="color: #800000;">[billy@ws1 stored]$ ./trigger_listener localhost:1186 100</span>
+<span style="color: #800000;">[billy@ws1 stored]$ ./test_stored_procedures localhost:1186 Keyboard</span>
+
+<span style="color: #800000;">mysql&gt; select * from ASSETS;
++----------+-------+
+| NAME     | VALUE |
++----------+-------+
+| Keyboard |   555 |
+| Computer |   350 |
+| Monitor  |   555 |
++----------+-------+
+3 rows in set (0.00 sec)</span>
+
+<span style="color: #800000;">mysql&gt; select * from AUDIT_LOG;
++-----------+
+| NOTE      |
++-----------+
+| Computer  |
+| Keyboard  |
++-----------+
+2 rows in set (0.00 sec)</span><span style="color: #ff0000;">
+</span></pre>
+<p>A major advantage of this approach is that the trigger is implemented within the Cluster database and so is invoked regardless of where the INSERT is requested – whether it be through the NDB API or through <strong>any</strong> of the MySQL Servers. This is shown in the results that follow.</p>
+<pre><span style="color: #800000;">mysql&gt; drop trigger ins_asset;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; drop procedure log_it;
+Query OK, 0 rows affected (0.00 sec)
+mysql&gt; insert into ASSETS values("Printers", 200);
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; select * from ASSETS;
++----------+-------+
+| NAME     | VALUE |
++----------+-------+
+| Keyboard |   555 |
+| Computer |   350 |
+| Monitor  |   555 |
+| Printers |   200 |
++----------+-------+
+4 rows in set (0.00 sec)</span>
+
+<span style="color: #800000;">mysql&gt; select * from AUDIT_LOG;
++-----------+
+| NOTE      |
++-----------+
+| Printers  |
+| Keyboard  |
+| Computer  |
++-----------+
+4 rows in set (0.00 sec)</span></pre>
+<p>Note that I first removed the original trigger and stored procedure that were defined in the MySQL Server.</p>
+<p>There is another key difference between MySQL triggers and NDB events &#8211; triggers are executed as part of the MySQL transaction making the main database change whereas NDB events happen asynchronously. The effect of this is:</p>
+<ul>
+<li>The original transaction will commit succesfully before the side effects have been processed</li>
+<li>If the process waiting for the event disappears then the side effect will not be processed &#8211; for this reson, you may want to consider an audit/clean-up scripts  to cover these cases.</li>
+</ul>
+<h2><span style="color: #333399;">Conclusion</span></h2>
+<p>Stored procedures are fully supported for users or applications which access a Cluster database through a MySQL Server (whether directly using SQL or through any of the numerous connectors that are available). Applications which access the database through the NDB API have the full flexibility of C++ to implement functionality that can achieve the same results. Triggers are available whichever method is used to access the database – albeit with different implementations and slightly different functionality.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/are-stored-procedures-available-with-mysql-cluster/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

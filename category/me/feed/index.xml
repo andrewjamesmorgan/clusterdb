@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Me &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/category/me/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Thu, 04 Feb 2021 17:24:39 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Building a Mobile Chat App Using Realm – Data Architecture</title>
+		<link>/uncategorized/building-a-mobile-chat-app-using-realm-data-architecture</link>
+					<comments>/uncategorized/building-a-mobile-chat-app-using-realm-data-architecture#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 07 Jan 2021 08:09:00 +0000</pubDate>
+				<category><![CDATA[Me]]></category>
+		<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[Realm]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[ios]]></category>
+		<category><![CDATA[mobile]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<guid isPermaLink="false">/?p=4580</guid>
+
+					<description><![CDATA[I&#8217;ve just built an iOS chat app using SwiftUI, Realm, and Realm Sync. I decided on a chat app as it makes an interesting case study for designing a data model and controlling who can access what data: A chat message needs to be viewable by all members of a chat room and no one else.]]></description>
+										<content:encoded><![CDATA[<p>I&#8217;ve just built an <a href="https://github.com/ClusterDB/RChat" target="_blank" rel="noopener">iOS chat app</a> using SwiftUI, Realm, and Realm Sync. I decided on a chat app as it makes an interesting case study for designing a data model and controlling who can access what data:</p>
+<ul>
+<li>A chat message needs to be viewable by all members of a chat room and no one else.</li>
+<li>New messages must be pushed to the chat room for all online members in real-time.</li>
+<li>The app should notify a user that there are new messages even when they don&#8217;t have that chat room open.</li>
+<li>Users should be able to observe the &#8220;presence&#8221; of other users (e.g., whether they&#8217;re currently logged into the app).</li>
+<li>There&#8217;s no limit on how many messages users send in a chat room, and so the data structures must allow them to grow indefinitely.</li>
+</ul>
+<p>Because this app&#8217;s data model (and the decisions taken when designing) serve as a great starting point for many different types of apps, I wrote it up in this <a href="https://developer.mongodb.com/how-to/realm-swiftui-ios-chat-app">HowTo article</a>.</p>
+<p>You can download all of the code from the <a href="https://github.com/ClusterDB/RChat">GitHub repo</a>.</p>
+<p>Checkout <a href="https://developer.mongodb.com/how-to/realm-swiftui-ios-chat-app">Building a Mobile Chat App Using Realm – Data Architecture</a> for all of the details.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/uncategorized/building-a-mobile-chat-app-using-realm-data-architecture/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Building an iOS app with Realm, SwiftUI, &#038; Combine</title>
+		<link>/me/building-an-ios-app-with-realm-swiftui-combine</link>
+					<comments>/me/building-an-ios-app-with-realm-swiftui-combine#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 01 Dec 2020 16:42:00 +0000</pubDate>
+				<category><![CDATA[Me]]></category>
+		<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[Realm]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<guid isPermaLink="false">/?p=4573</guid>
+
+					<description><![CDATA[I&#8217;m relatively new to building iOS apps (a little over a year&#8217;s experience), and so I prefer using the latest technologies that make me a more productive developer. That means my preferred app stack looks like this: In &#x1f525; Out &#x2744;&#xfe0f; Swift Objective C SwiftUI UIKit Combine RxSwift Realm Core Data MongoDB Realm Sync (where]]></description>
+										<content:encoded><![CDATA[
+I&#8217;m relatively new to building iOS apps (a little over a year&#8217;s experience), and so I prefer using the latest technologies that make me a more productive developer. That means my preferred app stack looks like this:
+
+<table>
+<thead>
+<tr>
+  <th align="left"><strong>In <img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f525.png" alt="🔥" class="wp-smiley" style="height: 1em; max-height: 1em;" /></strong></th>
+  <th align="left"><strong>Out <img src="https://s.w.org/images/core/emoji/15.0.3/72x72/2744.png" alt="❄" class="wp-smiley" style="height: 1em; max-height: 1em;" /></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td align="left">Swift</td>
+  <td align="left">Objective C</td>
+</tr>
+<tr>
+  <td align="left">SwiftUI</td>
+  <td align="left">UIKit</td>
+</tr>
+<tr>
+  <td align="left">Combine</td>
+  <td align="left">RxSwift</td>
+</tr>
+<tr>
+  <td align="left">Realm</td>
+  <td align="left">Core Data</td>
+</tr>
+<tr>
+  <td align="left">MongoDB Realm Sync (where needed)</td>
+  <td align="left">Home-baked cross-platform data sync</td>
+</tr>
+</tbody>
+</table>
+
+I built a simple, distributed task management app on that stack, and wrote it up in <a href="https://developer.mongodb.com/how-to/realm-swiftui-combine-first-app">&#8220;Build Your First iOS Mobile App Using Realm, SwiftUI, &amp; Combine&#8221;</a>. To continue my theme on being productive, I borrowed heavily from MongoDB&#8217;s official iOS Swift tutorial:
+
+<ul>
+<li>I refactored the <a href="https://docs.mongodb.com/realm/tutorial/ios-swift/">original (UIKit) front end</a>, adding Combine for event management, and replacing the UIKit ViewControllers with Swift views.</li>
+<li>The <a href="https://docs.mongodb.com/realm/tutorial/realm-app/#tutorial-task-tracker-create-realm-app">back end Realm app</a> is entirely unchanged. Note that once you&#8217;ve stood up this back end, then this app can share its data with the equivalent <a href="https://docs.mongodb.com/realm/tutorial/android-kotlin/">Android</a>, <a href="https://docs.mongodb.com/realm/tutorial/react-native/">React/JavaScript</a>, and <a href="https://docs.mongodb.com/realm/tutorial/nodejs-cli/">Node.js</a> apps with no changes.</li>
+</ul>
+
+You can download all of the code for the front end app from the <a href="https://github.com/ClusterDB/task-tracker-swiftui">GitHub repo</a>.
+
+Checkout <a href="https://developer.mongodb.com/how-to/realm-swiftui-combine-first-app">Build Your First iOS Mobile App Using Realm, SwiftUI, &amp; Combine</a> for all of the details.
+]]></content:encoded>
+					
+					<wfw:commentRss>/me/building-an-ios-app-with-realm-swiftui-combine/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Introduction</title>
+		<link>/me/introduction</link>
+					<comments>/me/introduction#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 08 Apr 2009 09:00:55 +0000</pubDate>
+				<category><![CDATA[Me]]></category>
+		<category><![CDATA[Andrew Morgan]]></category>
+		<category><![CDATA[Database]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Replication]]></category>
+		<guid isPermaLink="false">http://clusterdb.com/?p=3</guid>
+
+					<description><![CDATA[Just a quick introduction to begin with. I joined Sun Microsystems in Feb 2009 to look after the product management for MySQL Cluster and MySQL replication. I started my career with Nortel (technically BNR which was the R&#38;D arm of Northern Telecom but everything later got merged and rebranded as Nortel). I was responsible for]]></description>
+										<content:encoded><![CDATA[<p>Just a quick introduction to begin with.</p>
+<p><img fetchpriority="high" decoding="async" width="544" height="507" class="alignleft size-full wp-image-7" title="Me with my kids" src="http://clusterdb.com/wp-content/uploads/2009/04/kids_small.jpg" alt="Me with my kids" srcset="/wp-content/uploads/2009/04/kids_small.jpg 544w, /wp-content/uploads/2009/04/kids_small-300x279.jpg 300w" sizes="(max-width: 544px) 100vw, 544px" /></p>
+<p>I joined Sun Microsystems in Feb 2009 to look after the product management for MySQL Cluster and MySQL replication.</p>
+<p>I started my career with Nortel (technically BNR which was the R&amp;D arm of Northern Telecom but everything later got merged and rebranded as Nortel). I was responsible for writing the original proprietary, in-memory database for Nortel&#8217;s HLR product. Later on, we used a number of 3rd party databases for the HLR (provisioning rather than real-time) and then HSS &#8211; starting with Oracle for the HLR and then SOLID but then settling on MySQL Cluster as the scaleable real-time database for the HSS.</p>
+<p>When I left Nortel (via an IBM rebadging) I moved to Sun, hoping to use my experience as a MySQL Cluster customer to help the team build upon their strong product.</p>
+<p>So far, so good &#8211; I&#8217;ve been really impressed both with the MySQL team and with how well the product is doing both with telco companies and others.</p>
+<p>I&#8217;m planning on using this blog to publish technical content, publicise product information as well as anything else that crops up.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/me/introduction/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

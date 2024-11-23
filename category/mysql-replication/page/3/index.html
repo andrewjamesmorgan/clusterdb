@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="/xmlrpc.php">
+	
+	<title>MySQL Replication | Andrew Morgan on Databases | Page 3</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; MySQL Replication Category Feed" href="/category/mysql-replication/feed">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="/wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="/wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="/wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="/wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="/wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="/wp-json/">
+<link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/categories/5">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style>
+<style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style>
+<script type="text/javascript">
+				//<![CDATA[
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//]]>
+				</script><style type="text/css"></style>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style>
+</head>
+
+<body class="archive paged category category-mysql-replication category-5 custom-background paged-3 category-paged-3">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="/"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu">
+<li class="page_item page-item-1011"><a href="/about">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="/wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+		
+		<h2 class="arh">Archive for MySQL Replication</h2>
+				
+					<div id="post-527" class="post-527 post type-post status-publish format-standard hentry category-mysql category-mysql-cluster category-mysql-replication tag-mysql tag-mysql-cluster tag-mysql-cluster-70 tag-mysql-cluster-cge tag-mysql-replication tag-webinar">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql/free-mysql-webinar-today-high-availability-architectures-for-online-applications">September 29, 2009</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql/free-mysql-webinar-today-high-availability-architectures-for-online-applications#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql/free-mysql-webinar-today-high-availability-architectures-for-online-applications" rel="bookmark">Free MySQL webinar today &#8211; High Availability Architectures for Online Applications</a></h2>
+				
+				<div class="entry">
+										<p><strong>Update: </strong>You can now download a recording of the webinar and the slides from <a href="http://www.mysql.com/news-and-events/on-demand-webinars/display-od-403.html" target="_blank">http://www.mysql.com/news-and-events/on-demand-webinars/display-od-403.html</a></p>
+<p>I&#8217;ll be presenting the fourth (and final) session of the <a href="http://www.mysql.com/news-and-events/web-seminars/online-apps.html" target="_blank">MySQL for Online Applications webinar series</a> today (29 September). Today&#8217;s <a href="http://www.mysql.com/news-and-events/web-seminars/display-403.html">High Availability Architectures for Online Applications</a> webinar covers:</p>
+<ul>
+<li>MySQL Replication</li>
+<li>MySQL Cluster</li>
+<li>Distributed Replicated Block Device (DRBD)</li>
+<li>Other high-availability technologies</li>
+</ul>
+<p><a href="http://www.mysql.com/news-and-events/web-seminars/display-403.html">Register here</a>.</p>
+<p>This session starts at 10:00 am Pacific Time but will be <a href="http://www.mysql.com/news-and-events/web-seminars/display-412.html">rerun tomorrow</a> at 10:00 am CET (9:00 am UK) with Ivan Zoratti presenting (I&#8217;ll be handling questions).</p>
+<p>More details for today&#8217;s webinar:</p>
+<p><span style="font-family: verdana, arial, helvetica, sans-serif; line-height: 23px; font-size: small; color: #202020;"> </span></p>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px;"><strong>Tuesday, September 29, 2009</strong></p>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px;">Join us for the last of our 4 part webinar series exploring the different aspects of using MySQL as the backend database for online applications. With real life experience gained working with MySQL Customers such as Facebook, Alcatel Lucent and Google, this webinar series will give you the information you need to run scalable, highly available online applications.</p>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px;">In this last installment we look at MySQL high availability technologies and architectures. We will explore the uses cases for implementing:</p>
+<ul>
+<li><span style="line-height: 18px;">MySQL Replication</span></li>
+<li><span style="line-height: 18px;">MySQL Cluster</span></li>
+<li><span style="line-height: 18px;">Distributed Replicated Block Device (DRBD)</span></li>
+<li><span style="line-height: 18px;">Other high-availability technologies</span></li>
+</ul>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px;">Also, covered will be the fundamentals of how these technologies work and how they can be combined to create a more scalable and highly available database infrastructure. Several case studies will be presented to show how these technologies have been implemented in the real world.</p>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px;">Whether you are already using MySQL for your online application or considering it for a new project then register today to learn how you can make best use of the world&#8217;s most popular database for online applications.</p>
+<h4 style="font-weight: bold; font-size: 13px; margin-top: 14px; margin-right: 0px; margin-bottom: 2px; margin-left: 0px;">WHO:</h4>
+<p style="padding-left: 30px;"><span style="font-weight: normal; line-height: 18px; font-size: 12px;"><strong>Andrew Morgan</strong>, Senior Product Manager, MySQL</span></p>
+<h4 style="font-weight: bold; font-size: 13px; margin-top: 14px; margin-right: 0px; margin-bottom: 2px; margin-left: 0px;">WHAT:</h4>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 15px; padding: 0px;"><strong>High Availability Architectures for Online Applications</strong> web presentation.</p>
+<h4 style="font-weight: bold; font-size: 13px; margin-top: 14px; margin-right: 0px; margin-bottom: 2px; margin-left: 0px;">WHEN:</h4>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 15px; padding: 0px;">
+</p>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px;"><strong>Tuesday, September 29, 2009: 10:00 Pacific time (America)</strong></p>
+<table border="0">
+<tbody>
+<tr>
+<td>Tue, Sep 29:</td>
+<td>07:00 Hawaii time</td>
+</tr>
+<tr>
+<td>Tue, Sep 29:</td>
+<td>11:00 Mountain time (America)</td>
+</tr>
+<tr>
+<td>Tue, Sep 29:</td>
+<td>12:00 Central time (America)</td>
+</tr>
+<tr>
+<td>Tue, Sep 29:</td>
+<td>13:00 Eastern time (America)</td>
+</tr>
+<tr>
+<td>Tue, Sep 29:</td>
+<td>17:00 UTC</td>
+</tr>
+<tr>
+<td>Tue, Sep 29:</td>
+<td>18:00 Western European time</td>
+</tr>
+<tr>
+<td>Tue, Sep 29:</td>
+<td>19:00 Central European time</td>
+</tr>
+<tr>
+<td>Tue, Sep 29:</td>
+<td>20:00 Eastern European time</td>
+</tr>
+</tbody>
+</table>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 0px; width: 1px; height: 1px; overflow-x: hidden; overflow-y: hidden;">High Availability Architectures for Online Applications</div>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql/free-mysql-webinar-today-high-availability-architectures-for-online-applications" data-via="wpbeginner" data-text="Free MySQL webinar today &#8211; High Availability Architectures for Online Applications" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql/free-mysql-webinar-today-high-availability-architectures-for-online-applications"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql/free-mysql-webinar-today-high-availability-architectures-for-online-applications" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql%2Ffree-mysql-webinar-today-high-availability-architectures-for-online-applications&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql" rel="category tag">MySQL</a>, <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a>, <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-70" rel="tag">MySQL Cluster 7.0</a>, <a href="/tag/mysql-cluster-cge" rel="tag">MySQL Cluster CGE</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>, <a href="/tag/webinar" rel="tag">webinar</a>
+</div>
+
+			</div>			<div id="post-483" class="post-483 post type-post status-publish format-standard hentry category-mysql-cluster category-mysql-replication tag-mysql tag-mysql-cluster tag-mysql-cluster-cge tag-mysql-replication">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/mysql-cluster-geographic-replication-deep-dive">September 1, 2009</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/mysql-cluster-geographic-replication-deep-dive#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/mysql-cluster-geographic-replication-deep-dive" rel="bookmark">MySQL Cluster: Geographic Replication Deep-Dive</a></h2>
+				
+				<div class="entry">
+										<p>Following requests received during earlier MySQL Cluster webinars, a new (and as always, free) webinar has been scheduled which focuses on MySQL Cluster Replication. The webinar is scheduled for Thursday 10 September and you can register at <a href="http://www.mysql.com/news-and-events/web-seminars/display-415.html">http://www.mysql.com/news-and-events/web-seminars/display-415.html</a></p>
+<p>I&#8217;ll be on-line during the webinar, answering questions.</p>
+<p>Details&#8230;.</p>
+<h1 style="font-weight: bold; font-size: 21px; margin-top: 8px; margin-right: 0px; margin-bottom: 12px; margin-left: 0px; line-height: 29px; color: #015a84; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #e0e0e0;">MySQL Cluster: Geographic Replication Deep-Dive</h1>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px;"><strong>Thursday, September 10, 2009</strong></p>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px;">MySQL Cluster has been deployed into some of the most demanding web, telecoms and enterprise / government workloads, supporting 99.999% availability with real time performance and linear write scalability.</p>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px;">Tune into this webinar where you can hear from the Director of MySQL Server Engineering provide a detailed &#8220;deep dive&#8221; into one of MySQL Cluster&#8217;s key capabilities &#8211; Geographic Replication.</p>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px;">In this session, you will learn how using Geographic Replication enables your applications to :</p>
+<ul style="margin-top: 0px; margin-right: 4px; margin-bottom: 8px; margin-left: 16px; list-style-image: url(http://www.mysql.com/common/img/list-orange-disc.png); list-style-type: initial; list-style-position: initial; padding: 0px;">
+<li style="margin-bottom: 5px; margin-left: 8px; font-size: 12px; line-height: 18px;">achieve higher levels of availability within a data center or across a WAN</li>
+<li style="margin-bottom: 5px; margin-left: 8px; font-size: 12px; line-height: 18px;">locate data closer to users, providing lower latency access</li>
+<li style="margin-bottom: 5px; margin-left: 8px; font-size: 12px; line-height: 18px;">replicate to other MySQL storage engines for complex data analysis and reporting of real time data</li>
+<li style="margin-bottom: 5px; margin-left: 8px; font-size: 12px; line-height: 18px;">how to get started with Geographic Replication</li>
+</ul>
+<h4 style="font-weight: bold; font-size: 13px; margin-top: 14px; margin-right: 0px; margin-bottom: 2px; margin-left: 0px;">WHO:</h4>
+<ul style="margin-top: 0px; margin-right: 4px; margin-bottom: 8px; margin-left: 35px; list-style-image: url(http://www.mysql.com/common/img/list-orange-disc.png); list-style-type: initial; list-style-position: initial; padding: 0px;">
+<li style="margin-bottom: 5px; margin-left: 8px; font-size: 12px; line-height: 18px;">
+<strong>Tomas Ulin</strong>, Director, MySQL Server Technologies</li>
+<li style="margin-bottom: 5px; margin-left: 8px; font-size: 12px; line-height: 18px;">
+<strong>Matthew Keep</strong>, MySQL Cluster Product Management</li>
+</ul>
+<h4 style="font-weight: bold; font-size: 13px; margin-top: 14px; margin-right: 0px; margin-bottom: 2px; margin-left: 0px;">WHAT:</h4>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 15px; padding: 0px;"><strong>MySQL Cluster: Geographic Replication Deep-Dive</strong> web presentation.</p>
+<h4 style="font-weight: bold; font-size: 13px; margin-top: 14px; margin-right: 0px; margin-bottom: 2px; margin-left: 0px;">WHEN:</h4>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 15px; padding: 0px;">
+</p>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px;"><strong>Thursday, September 10, 2009: 09:30 Pacific time (America)</strong></p>
+<table border="0">
+<tbody>
+<tr>
+<td>Thu, Sep 10:</td>
+<td>06:30 Hawaii time</td>
+</tr>
+<tr>
+<td>Thu, Sep 10:</td>
+<td>10:30 Mountain time (America)</td>
+</tr>
+<tr>
+<td>Thu, Sep 10:</td>
+<td>11:30 Central time (America)</td>
+</tr>
+<tr>
+<td>Thu, Sep 10:</td>
+<td>12:30 Eastern time (America)</td>
+</tr>
+<tr>
+<td>Thu, Sep 10:</td>
+<td>16:30 UTC</td>
+</tr>
+<tr>
+<td>Thu, Sep 10:</td>
+<td>17:30 Western European time</td>
+</tr>
+<tr>
+<td>Thu, Sep 10:</td>
+<td>18:30 Central European time</td>
+</tr>
+<tr>
+<td>Thu, Sep 10:</td>
+<td>19:30 Eastern European time</td>
+</tr>
+</tbody>
+</table>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; padding: 0px;">The presentation will be approximately 45 minutes long followed by Q&amp;A.</p>
+<h4 style="font-weight: bold; font-size: 13px; margin-top: 14px; margin-right: 0px; margin-bottom: 2px; margin-left: 0px;">WHERE:</h4>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 15px; padding: 0px;">Simply access the web seminar from the comfort of your own office.</p>
+<h4 style="font-weight: bold; font-size: 13px; margin-top: 14px; margin-right: 0px; margin-bottom: 2px; margin-left: 0px;">WHY:</h4>
+<p style="font-size: 12px; line-height: 21px; margin-top: 0px; margin-right: 0px; margin-bottom: 10px; margin-left: 15px; padding: 0px;">To learn more about how you can use Geographic Replication in MySQL Cluster 7.0 to build real time, high performance applications delivering continuously available database services.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/mysql-cluster-geographic-replication-deep-dive" data-via="wpbeginner" data-text="MySQL Cluster: Geographic Replication Deep-Dive" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/mysql-cluster-geographic-replication-deep-dive"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/mysql-cluster-geographic-replication-deep-dive" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fmysql-cluster-geographic-replication-deep-dive&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a>, <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-cge" rel="tag">MySQL Cluster CGE</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>
+</div>
+
+			</div>			<div id="post-479" class="post-479 post type-post status-publish format-standard hentry category-mysql-cluster category-mysql-replication tag-mysql tag-mysql-cluster tag-mysql-replication tag-ndb-api">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating">August 13, 2009</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating" rel="bookmark">Using NDB API Events to mask/hide colum data when replicating</a></h2>
+				
+				<div class="entry">
+										<p>If you  have asynchronous replication where the slave database is using MySQL Cluster then you can use the NDB API events functionality to mask/overwrite data. You might do this for example if the replica is to be used for generating reports where some of the data is sensitive and not relevant to those reports. Unlike stored procedures, NDB API events will be triggered on the slave.</p>
+<p>The first step is to set up replication (master-&gt;slave rather than multi-master) as described in <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/" target="_blank">Setting up MySQL Asynchronous Replication for High Availability</a>).</p>
+<p>In this example, the following table definition is used:</p>
+<pre style="padding-left: 30px;color: #993300;font-size: 11px">mysql&gt; use clusterdb;
+mysql&gt; create table ASSETS (CODE int not null primary key, VALUE int) engine=ndb;</pre>
+<p>The following code should be compiled and then executed on a node within the slave Cluster:</p>
+<pre style="padding-left: 30px;color: #993300;font-size: 11px">#include &lt;NdbApi.hpp&gt;
+#include &lt;stdio.h&gt;
+#include &lt;iostream&gt;
+#include &lt;unistd.h&gt;
+#include &lt;cstdlib&gt;
+#include &lt;string.h&gt;
+
+#define APIERROR(error) 
+  { std::cout &lt;&lt; "Error in " &lt;&lt; __FILE__ &lt;&lt; ", line:" &lt;&lt; __LINE__ &lt;&lt; ", code:" 
+  &lt;&lt; error.code &lt;&lt; ", msg: " &lt;&lt; error.message &lt;&lt; "." &lt;&lt; std::endl; 
+  exit(-1); }
+
+int myCreateEvent(Ndb* myNdb,
+const char *eventName,
+const char *eventTableName,
+const char **eventColumnName,
+const int noEventColumnName);
+
+static void do_blank(Ndb*, int);
+
+int main(int argc, char** argv)
+{
+  if (argc &lt; 1)
+ {
+    std::cout &lt;&lt; "Arguments are &lt;connect_string cluster&gt;.n";
+    exit(-1);
+  }
+  const char *connectstring = argv[1];
+
+  ndb_init();
+
+  Ndb_cluster_connection *cluster_connection=
+  new Ndb_cluster_connection(connectstring); // Object representing the cluster
+
+  int r= cluster_connection-&gt;connect(5 /* retries               */,
+  3 /* delay between retries */,
+  1 /* verbose               */);
+  if (r &gt; 0)
+  {
+    std::cout &lt;&lt; "Cluster connect failed, possibly resolved with more retries.n";
+    exit(-1);
+  }
+  else if (r &lt; 0)
+  {
+    std::cout &lt;&lt; "Cluster connect failed.n";
+    exit(-1);
+  }
+
+  if (cluster_connection-&gt;wait_until_ready(30,30))
+  {
+    std::cout &lt;&lt; "Cluster was not ready within 30 secs." &lt;&lt; std::endl;
+    exit(-1);
+  }
+
+  Ndb* myNdb= new Ndb(cluster_connection,
+                      "clusterdb");  // Object representing the database
+
+  if (myNdb-&gt;init() == -1) APIERROR(myNdb-&gt;getNdbError());
+
+  const char *eventName= "CHNG_IN_ASSETS";
+  const char *eventTableName= "ASSETS";
+  const int noEventColumnName= 2;
+  const char *eventColumnName[noEventColumnName]=
+  {"CODE",
+   "VALUE"};
+
+  // Create events
+  myCreateEvent(myNdb,
+  eventName,
+  eventTableName,
+  eventColumnName,
+  noEventColumnName);
+
+  // Normal values and blobs are unfortunately handled differently..
+  typedef union { NdbRecAttr* ra; NdbBlob* bh; } RA_BH;
+
+  int i;
+
+  // Start "transaction" for handling events
+  NdbEventOperation* op;
+  printf("create EventOperationn");
+  if ((op = myNdb-&gt;createEventOperation(eventName)) == NULL)
+    APIERROR(myNdb-&gt;getNdbError());
+
+  printf("get valuesn");
+  RA_BH recAttr[noEventColumnName];
+  RA_BH recAttrPre[noEventColumnName];
+
+  for (i = 0; i &lt; noEventColumnName; i++) {
+    recAttr[i].ra    = op-&gt;getValue(eventColumnName[i]);
+    recAttrPre[i].ra = op-&gt;getPreValue(eventColumnName[i]);
+  }
+
+  // set up the callbacks
+  // This starts changes to "start flowing"
+  if (op-&gt;execute())
+    APIERROR(op-&gt;getNdbError());
+
+  while (true) {
+    int r = myNdb-&gt;pollEvents(1000); // wait for event or 1000 ms
+    if (r &gt; 0) {
+      while ((op= myNdb-&gt;nextEvent())) {
+        NdbRecAttr* ra = recAttr[0].ra;
+        if (ra-&gt;isNULL() &gt;= 0) { // we have a value
+          if (ra-&gt;isNULL() == 0) { // we have a non-null value
+            printf("CODE: %d ", ra-&gt;u_32_value());
+            do_blank(myNdb, ra-&gt;u_32_value());
+          } else 
+            printf("%-5s", "NULL");
+          } else
+            printf("%-5s", "-"); // no value
+            ra = recAttr[1].ra;
+            printf("n");
+          }
+        }
+      }
+    }
+
+int myCreateEvent(Ndb* myNdb,
+                  const char *eventName,
+                  const char *eventTableName,
+                  const char **eventColumnNames,
+                  const int noEventColumnNames)
+{
+  NdbDictionary::Dictionary *myDict= myNdb-&gt;getDictionary();
+  if (!myDict) APIERROR(myNdb-&gt;getNdbError());
+
+  const NdbDictionary::Table *table= myDict-&gt;getTable(eventTableName);
+  if (!table) APIERROR(myDict-&gt;getNdbError());
+
+  NdbDictionary::Event myEvent(eventName, *table);
+  myEvent.addTableEvent(NdbDictionary::Event::TE_INSERT);
+
+  myEvent.addEventColumns(noEventColumnNames, eventColumnNames);
+
+  // Add event to database
+  if (myDict-&gt;createEvent(myEvent) == 0)
+    myEvent.print();
+  else if (myDict-&gt;getNdbError().classification ==
+            NdbError::SchemaObjectExists) {
+    printf("Event creation failed, event existsn");
+    printf("dropping Event...n");
+    if (myDict-&gt;dropEvent(eventName)) APIERROR(myDict-&gt;getNdbError());
+    // try again
+    // Add event to database
+    if ( myDict-&gt;createEvent(myEvent)) APIERROR(myDict-&gt;getNdbError());
+  } else
+    APIERROR(myDict-&gt;getNdbError());
+
+    return 0;
+}
+
+static void do_blank(Ndb* myNdb, int code)
+{
+  const NdbDictionary::Dictionary* myDict= myNdb-&gt;getDictionary();
+  const NdbDictionary::Table *myTable= myDict-&gt;getTable("ASSETS");
+
+  if (myTable == NULL)
+  APIERROR(myDict-&gt;getNdbError());
+
+  NdbTransaction *myTransaction= myNdb-&gt;startTransaction();
+  if (myTransaction == NULL) APIERROR(myNdb-&gt;getNdbError());
+
+  printf("Replacing VALUE with 0 for CODE: %d ", code);
+
+  NdbOperation *myOperation= myTransaction-&gt;getNdbOperation(myTable);
+  if (myOperation == NULL) APIERROR(myTransaction-&gt;getNdbError());
+
+  myOperation-&gt;updateTuple();
+  myOperation-&gt;equal("CODE", code);
+  myOperation-&gt;setValue("VALUE", 0);
+
+  if (myTransaction-&gt;execute( NdbTransaction::Commit ) == -1)
+    APIERROR(myTransaction-&gt;getNdbError());
+
+  myNdb-&gt;closeTransaction(myTransaction);
+}
+
+shell&gt; slave_filter 127.0.0.1:1186</pre>
+<p>From the master Cluster, insert some values (note that the example can easily be extended to cover updates too):</p>
+<pre style="padding-left: 30px;color: #993300;font-size: 11px">mysql&gt; insert into ASSETS values (101, 50),(102, 40), (103, 99);</pre>
+<p>and then check that on the slave the value has been set to 0 for each of the entries:</p>
+<pre style="padding-left: 30px;color: #993300;font-size: 11px">mysql&gt; select * from ASSETS;
++------+-------+
+| CODE | VALUE |
++------+-------+
+|  100 |     0 |
+|  103 |     0 |
+|  101 |     0 |
+|  102 |     0 |
++------+-------+</pre>
+<p>How this works&#8230;. The table data is replicated as normal and the real values are stored in the slave. The &#8220;slave_filter&#8221; process has registered against insert operations on this table and when it&#8217;s triggered it sets the VALUE field to 0. The event is processes asynchronously from the replication and so there will be some very narrow window during which the true values would be stored in the slave.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating" data-via="wpbeginner" data-text="Using NDB API Events to mask/hide colum data when replicating" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fusing-ndb-api-events-to-maskhide-colum-data-when-replicating&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a>, <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>, <a href="/tag/ndb-api" rel="tag">NDB API</a>
+</div>
+
+			</div>			<div id="post-401" class="post-401 post type-post status-publish format-standard hentry category-mysql-cluster category-mysql-replication">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability">August 3, 2009</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comments">13 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability" rel="bookmark">Setting up MySQL Asynchronous Replication for High Availability</a></h2>
+				
+				<div class="entry">
+										<div id="attachment_397" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2009/08/async_replication.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-397" class="size-medium wp-image-397" title="async_replication" src="/wp-content/uploads/2009/08/async_replication-300x185.jpg" alt="Asynchronous Replication for High Availability" width="300" height="185" srcset="/wp-content/uploads/2009/08/async_replication-300x185.jpg 300w, /wp-content/uploads/2009/08/async_replication.jpg 493w" sizes="(max-width: 300px) 100vw, 300px"></a><p id="caption-attachment-397" class="wp-caption-text">Asynchronous Replication for High Availability</p>
+</div>
+<p>MySQL replication is often positioned as a solution to provide extra throughput for your database (especially when dealing with high numbers of read operations). What tends to be overlooked is how it can be used to provide high availability (HA) &#8211; no matter how much redundancy you have at a local level, your system remains at risk from a single catastrophic failure &#8211; loss of power, earthquake, terrorist attack etc. By using MySQL asynchronous replication to maintain a geographically remote copy of that data, service can be maintained through any single site failure.</p>
+<p>As this replication is asynchronous, there are no low latency demands on the network and so the two sites can be thousands of miles apart while utilising low-cost connections.</p>
+<p>This article provides a simple example of how to set up asynchronous replication between 2 MySQL databases in order to provide a Highly Available solution. First of all, it will be 2 databases where the tables will be stored in the MyISAM storage engine and then between 2 MySQL Cluster databases where I also configure it for Multi-master replication where changes can be made at either site.</p>
+<p>Subsequent articles will build on this to show:</p>
+<ul>
+<li> Collision detection and resolution when using MySQL Cluster multi-master asynchronous replication</li>
+<li> Introducing asynchronous replication to a running MySQL Cluster database</li>
+</ul>
+<p>Throughout this article, two machines are used: <span style="color: #993300;font-size: 11px">ws1 (192.168.0.3)</span> and <span style="color: #008000;font-size: 11px">ws2 (192.168.0.4)</span>. <span style="color: #993300;font-size: 11px">ws1</span> will be set up as the master and <span style="color: #008000;font-size: 11px">ws2</span> as the slave (in the multi-master configuration, both act as both master and slave).</p>
+<h3>Setting up replication for non-Cluster databases</h3>
+<p>Replication is performed from one MySQL Server to another; the master makes the changes available and then one or more other Servers pick up those changes and apply them to their own databases. In this example, both databases will store the table data using the same storage engine (MyISAM) but it&#8217;s possible to mix and match (for example, take a look at  <a href="/mysql-cluster/mysql-cluster-flexibility-of-replication/" target="_blank">MySQL Cluster – flexibility of replication</a>). As this is intended as a simple introduction to replication, <strong>I&#8217;m keeping life simple by assuming that this is all being set up before the database goes into production &#8211; if that isn&#8217;t the case for you and you need to cope with existing data then check out the <a href="http://dev.mysql.com/doc/refman/5.1/en/replication-howto-masterstatus.html" target="_blank">MySQL documentation</a></strong> <strong>or subsequent articles on this site</strong>.</p>
+<p>The my.cnf files can be set up as normal but the one for the MySQL Server that will act as the Master needs to have binary-logging enabled. Also, each of the server needs to have a unique server-id. Here are the my.cnf files used for this example:</p>
+<p style="padding-left: 30px;"><span style="color: #993300;font-size: 11px">my.cnf (Master)</span></p>
+<pre style="padding-left: 60px;"><span style="color: #993300;font-size: 11px">[mysqld]
+datadir=/home/billy/mysql/myisam/data
+basedir=/usr/local/mysql
+port=3306
+server-id=1
+log-bin</span></pre>
+<p style="padding-left: 30px;"><span style="color: #008000;font-size: 11px">my.cnf (Slave)</span></p>
+<pre style="padding-left: 60px;"><span style="color: #008000;font-size: 11px">[mysqld]
+datadir=/home/billy/mysql/myisam/data
+basedir=/usr/local/mysql
+port=3306
+server-id=2</span></pre>
+<p>Fire up the Master MySQL Server:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;font-size: 11px">[billy@ws1 myisam]$ mysqld --defaults-file=my.cnf&amp;</span></pre>
+<p>The slave needs a userid/password in order to access the master server &#8211; best practice is to create a dedicated user with just the required privileges:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;font-size: 11px">[billy@ws1 myisam]$ mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or g.
+Your MySQL connection id is 1
+Server version: 5.1.34-ndb-7.0.6-cluster-gpl-log MySQL Cluster Server (GPL)
+
+Type 'help;' or 'h' for help. Type 'c' to clear the current input statement.
+
+mysql&gt; grant replication slave on *.* to 'repl'@'192.168.0.4'
+ -&gt; identified by 'repl';
+Query OK, 0 rows affected (0.00 sec)</span></pre>
+<p>The slave can now be told to start processing the replication data that will be staged by the master server:</p>
+<pre style="padding-left: 30px;"><span style="color: #008000;font-size: 11px">[billy@ws2 myisam]$ mysqld --defaults-file=my.cnf&amp;
+[billy@ws2 myisam]$ mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or g.
+Your MySQL connection id is 2
+Server version: 5.1.34-ndb-7.0.6-cluster-gpl MySQL Cluster Server (GPL)
+
+Type 'help;' or 'h' for help. Type 'c' to clear the current input statement.
+mysql&gt; CHANGE MASTER TO
+-&gt; MASTER_HOST='192.168.0.3',
+-&gt; MASTER_PORT=3306,
+-&gt; MASTER_USER='repl',
+-&gt; MASTER_PASSWORD='repl',
+-&gt; MASTER_LOG_FILE='',
+-&gt; MASTER_LOG_POS=4;
+090803 15:48:09 [Warning] Neither --relay-log nor --relay-log-index were used; so replication may break when this MySQL server acts as a slave and has his hostname changed!! Please use '--relay-log=ws2-relay-bin' to avoid this problem.
+Query OK, 0 rows affected (0.01 sec)
+mysql&gt; start slave;
+090803 15:51:24 [Note] Slave SQL thread initialized, starting replication in log 'FIRST' at position 0, relay log './ws2-relay-bin.000001' position: 4
+Query OK, 0 rows affected (0.00 sec)
+090803 15:51:24 [Note] Slave I/O thread: connected to master 'repl@192.168.0.3:3306',replication started in log 'FIRST' at position 4</span></pre>
+<p>Now to test that replication is up and running, create a table on the master, add some data and then check that the table and data can be read from the slave:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;font-size: 11px">[billy@ws1 myisam]$ mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or g.
+Your MySQL connection id is 3
+Server version: 5.1.34-ndb-7.0.6-cluster-gpl-log MySQL Cluster Server (GPL)
+
+Type 'help;' or 'h' for help. Type 'c' to clear the current input statement.
+
+mysql&gt; use test
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql&gt; create table numbers (num1 int, num2 int);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; insert into numbers values (1,10),(2,20),(3,30);
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #008000;font-size: 11px">[billy@ws2 myisam]$ mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or g.
+Your MySQL connection id is 5
+Server version: 5.1.34-ndb-7.0.6-cluster-gpl MySQL Cluster Server (GPL)
+
+Type 'help;' or 'h' for help. Type 'c' to clear the current input statement.
+
+mysql&gt; use test;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql&gt; select * from numbers;
++------+------+
+| num1 | num2 |
++------+------+
+|    1 |   10 |
+|    2 |   20 |
+|    3 |   30 |
++------+------+
+3 rows in set (0.00 sec)</span></pre>
+<h3>Multi-Master Replication with MySQL Cluster</h3>
+<div id="attachment_409" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2009/08/multi_master_replication2.jpg"><img decoding="async" aria-describedby="caption-attachment-409" class="size-medium wp-image-409" title="multi_master_replication2" src="/wp-content/uploads/2009/08/multi_master_replication2-300x158.jpg" alt="Multi-Master Replication for HA with MySQL Cluster" width="300" height="158" srcset="/wp-content/uploads/2009/08/multi_master_replication2-300x158.jpg 300w, /wp-content/uploads/2009/08/multi_master_replication2.jpg 670w" sizes="(max-width: 300px) 100vw, 300px"></a><p id="caption-attachment-409" class="wp-caption-text">Multi-Master Replication for HA with MySQL Cluster</p>
+</div>
+<p>There are a few asynchronous replication capabilities that are unique to MySQL Cluster &#8211; one of those is that changes are replicated even if they are made directly to the data nodes using the NDB API, another is that replication can be performed in both directions i.e. multi-master. One of the advantages of this is you can share both read and write operations across both sites so that no capacity is wasted &#8211; it also gives you the confidence that either site is sane and ready to take over for the other at any point. You should aim to minimise how often the same rows are modified at the same time on both sites &#8211; conflict detection/resolution has been implemented but it can only roll-back the rows changes that conflict with other row changes rather than the full transaction.</p>
+<p>It&#8217;s important to note that in this article, I&#8217;m not talking about the synchronous replication that takes place between data nodes within a single MySQL Cluster site (that happens in parallel and is orthogonal to the asynchronous replication to a remote site).</p>
+<p>When performing multi-master asynchronous replication between 2 Clusters, 1 (or more) MySQL Servers in each Cluster is nominated as a master and 1 or more as slaves (it can be the same server that takes on both roles and you can have multiple channels set up in case a channel or MySQL Server is lost). Changes made to the data at either site through any of their MySQL Servers (or directly to the data nodes using the NDB API) will be replicated to the other site.</p>
+<p>I will focus on setting up the replication, you can refer to <a href="/mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/" target="_blank">Deploying MySQL Cluster over multiple hosts </a>for the steps to configure and run each MySQL Cluster site.</p>
+<p>Most of the steps are very similar to those in the first example &#8211; the main differences would come when introducing asynchronous replication to  a MySQL Cluster instance that already contains data and is up and running (processing updates) which will be covered in a subsequent article.</p>
+<p>Binary logging needs to be enabled on the MySQL Server(s) at each site that will act as a replication master:</p>
+<p style="padding-left: 30px;"><span style="color: #993300;font-size: 11px">my1.cnf (Master)</span></p>
+<pre style="padding-left: 60px;"><span style="color: #993300;font-size: 11px">[mysqld]
+ndb-nodeid=4
+ndbcluster
+datadir=/home/billy/mysql/replication/7_0_6/data
+basedir=/home/billy/mysql/replication/7_0_6
+port=3306
+server-id=1
+log-bin</span></pre>
+<p style="padding-left: 30px;"><span style="color: #008000;font-size: 11px">my1.cnf (Slave)</span></p>
+<pre style="padding-left: 60px;"><span style="color: #008000;font-size: 11px">[mysqld]
+ndb-nodeid=4
+ndbcluster
+datadir=/home/billy/mysql/replication/7_0_6/data
+basedir=/home/billy/mysql/replication/7_0_6
+port=3306
+server-id=2
+log-bin</span></pre>
+<p>The MySQL Cluster nodes (including the MySQL Servers (mysqld) from both sites should be started up as normal.</p>
+<p>In this case, the replication users should be set up for both Clusters:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300; font-size: 11px;">
+[billy@ws1 7_0_6]$ mysqld --defaults-file=my.cnf&amp;
+[billy@ws1 7_0_6]$ mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or g.
+
+Your MySQL connection id is 2
+
+Server version: 5.1.34-ndb-7.0.6-cluster-gpl-log MySQL Cluster Server (GPL)
+Type 'help;' or 'h' for help. Type 'c' to clear the current input statement.
+mysql&gt; grant replication slave on *.* to 'repl'@'192.168.0.4'
+-&gt; identified by 'repl';
+
+Query OK, 0 rows affected (0.01 sec)
+</span>
+<span style="color: #008000;font-size: 11px;">[billy@ws2 7_0_6]$ mysqld --defaults-file=my.cnf&amp;
+[billy@ws2 7_0_6]$ mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or g.
+
+Your MySQL connection id is 3
+
+Server version: 5.1.34-ndb-7.0.6-cluster-gpl-log MySQL Cluster Server (GPL)
+Type 'help;' or 'h' for help. Type 'c' to clear the current input statement.
+mysql&gt; grant replication slave on *.* to 'repl'@'192.168.0.3'
+-&gt; identified by 'repl';
+
+Query OK, 0 rows affected (0.00 sec)</span></pre>
+<p>Replication can then be setup and started on each of the MySQL Servers (those acting as slaves for each Cluster):</p>
+<pre style="padding-left: 30px"><span style="color: #993300;font-size: 11px">[billy@ws1 7_0_6]$ mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or g.
+Your MySQL connection id is 3
+Server version: 5.1.34-ndb-7.0.6-cluster-gpl-log MySQL Cluster Server (GPL)
+
+Type 'help;' or 'h' for help. Type 'c' to clear the current input statement.
+
+mysql&gt; CHANGE MASTER TO
+ -&gt; MASTER_HOST='192.168.0.4',
+ -&gt; MASTER_PORT=3306,
+ -&gt; MASTER_USER='repl',
+ -&gt; MASTER_PASSWORD='repl',
+ -&gt; MASTER_LOG_FILE='',
+ -&gt; MASTER_LOG_POS=4;
+090803 17:25:00 [Warning] Neither --relay-log nor --relay-log-index were used; so replication may break when this MySQL server acts as a slave and has his hostname changed!! Please use '--relay-log=ws1-relay-bin' to avoid this problem.
+Query OK, 0 rows affected (0.01 sec)
+mysql&gt; start slave;
+090803 17:27:20 [Note] Slave SQL thread initialized, starting replication in log 'FIRST' at position 0, relay log './ws1-relay-bin.000001' position: 4
+Query OK, 0 rows affected (0.02 sec)
+090803 17:27:20 [Note] Slave I/O thread: connected to master 'repl@192.168.0.4:3306',replication started in log 'FIRST' at position 4
+</span>
+<span style="color: #008000;font-size: 11px">[billy@ws2 7_0_6]$ mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or g.
+Your MySQL connection id is 4
+Server version: 5.1.34-ndb-7.0.6-cluster-gpl-log MySQL Cluster Server (GPL)
+
+Type 'help;' or 'h' for help. Type 'c' to clear the current input statement.
+
+mysql&gt; CHANGE MASTER TO
+ -&gt; MASTER_HOST='192.168.0.3',
+ -&gt; MASTER_PORT=3306,
+ -&gt; MASTER_USER='repl',
+ -&gt; MASTER_PASSWORD='repl',
+ -&gt; MASTER_LOG_FILE='',
+ -&gt; MASTER_LOG_POS=4;
+090803 17:25:56 [Warning] Neither --relay-log nor --relay-log-index were used; so replication may break when this MySQL server acts as a slave and has his hostname changed!! Please use '--relay-log=ws2-relay-bin' to avoid this problem.
+Query OK, 0 rows affected (0.01 sec)
+mysql&gt; start slave;
+090803 17:27:25 [Note] Slave SQL thread initialized, starting replication in log 'FIRST' at position 0, relay log './ws2-relay-bin.000001' position: 4
+Query OK, 0 rows affected (0.00 sec)
+090803 17:27:25 [Note] Slave I/O thread: connected to master 'repl@192.168.0.3:3306',replication started in log 'FIRST' at position 4</span></pre>
+<p>This time, to make sure that replication is working in both directions, I make changes to both Clusters and then check that they appear at the other site:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;font-size: 11px">[billy@ws1 7_0_6]$ mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or g.
+Your MySQL connection id is 8
+Server version: 5.1.34-ndb-7.0.6-cluster-gpl-log MySQL Cluster Server (GPL)
+
+Type 'help;' or 'h' for help. Type 'c' to clear the current input statement.
+
+mysql&gt; use test;
+Database changed
+mysql&gt; create table numbers (num1 int, num2 int) engine=ndb;
+090803 17:32:10 [Note] NDB Binlog: CREATE TABLE Event: REPL$test/numbers
+090803 17:32:10 [Note] NDB Binlog: logging ./test/numbers (UPDATED,USE_WRITE)
+Query OK, 0 rows affected (0.62 sec)
+
+mysql&gt; insert into numbers values (1,10),(2,20),(3,30);
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #008000;font-size: 11px">billy@ws2 7_0_6]$ mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or g.
+Your MySQL connection id is 8
+Server version: 5.1.34-ndb-7.0.6-cluster-gpl-log MySQL Cluster Server (GPL)
+
+Type 'help;' or 'h' for help. Type 'c' to clear the current input statement.
+
+mysql&gt; use test
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql&gt; select * from numbers;
++------+------+
+| num1 | num2 |
++------+------+
+|    2 |   20 |
+|    3 |   30 |
+|    1 |   10 |
++------+------+
+3 rows in set (0.01 sec)
+
+mysql&gt; insert into numbers values (4,40),(5,50),(6,60);
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #993300;font-size: 11px">[billy@ws1 7_0_6]$ mysql -u root
+Welcome to the MySQL monitor.  Commands end with ; or g.
+Your MySQL connection id is 9
+Server version: 5.1.34-ndb-7.0.6-cluster-gpl-log MySQL Cluster Server (GPL)
+
+Type 'help;' or 'h' for help. Type 'c' to clear the current input statement.
+
+mysql&gt; use test
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql&gt; select * from numbers;
++------+------+
+| num1 | num2 |
++------+------+
+|    1 |   10 |
+|    6 |   60 |
+|    3 |   30 |
+|    5 |   50 |
+|    2 |   20 |
+|    4 |   40 |
++------+------+
+6 rows in set (0.02 sec)</span></pre>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability" data-via="wpbeginner" data-text="Setting up MySQL Asynchronous Replication for High Availability" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fsetting-up-mysql-asynchronous-replication-for-high-availability&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a>, <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
+</div>
+
+			</div>			<div id="post-120" class="post-120 post type-post status-publish format-standard hentry category-mysql-cluster category-mysql-replication tag-ha tag-high-availability tag-mysql-cluster tag-mysql-cluster-cge tag-mysql-replication">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/mysql-cluster-flexibility-of-replication">May 26, 2009</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/mysql-cluster-flexibility-of-replication#comments">9 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/mysql-cluster-flexibility-of-replication" rel="bookmark">MySQL Cluster &#8211; flexibility of replication</a></h2>
+				
+				<div class="entry">
+										<p>One of the better kept secrets about MySQL Cluster appears to be the flexibility available when setting up replication. Rather than being constrained to implementing a single replication scheme, you can mix and match approaches.</p>
+<p>Just about every Cluster deployment will use synchronous replication between the data nodes within a node group to implement High Availability (HA) by making sure that at the point a transaction is committed, the new data is stored in at least 2 physical hosts. Given that MySQL Cluster is usually used to store the data in main memory rather than on disk, this is pretty much mandatory (note that the data changes are still written to disk but that&#8217;s done asynchronously to avoid slowing down the database).</p>
+<div id="attachment_119" style="width: 410px" class="wp-caption alignleft">
+<a href="/wp-content/uploads/2009/05/cluster-replication.jpg"><img decoding="async" aria-describedby="caption-attachment-119" class="size-medium wp-image-119" title="MySQL_Cluster_Replication" src="/wp-content/uploads/2009/05/cluster-replication-300x241.jpg" alt="MySQL Cluster Replication" width="300" height="241" srcset="/wp-content/uploads/2009/05/cluster-replication-300x241.jpg 300w, /wp-content/uploads/2009/05/cluster-replication.jpg 550w" sizes="(max-width: 300px) 100vw, 300px"></a><p id="caption-attachment-119" class="wp-caption-text">MySQL Cluster Replication</p>
+</div>
+<p>MySQL asynchronous replication is often used for MySQL Cluster deployments in order to provide Geographic Redundancy. At the same time as the synchronous replication within a Cluster, the changes can be replicated asynchronously to a second Cluster (or to more than one) at a remote location. Asynchronous rather than synchronous replication is used so that the transaction commit is not delayed while waiting for the remote (could be thousands of miles away, connected by a high latency WAN) Cluster to receive, apply and acknowledge the change. A common misconception is that changes being made through the NDB API will not be replicated to the remote site as this replication is handled by a MySQL Server instance &#8211; the reality is that the MySQL Replication implementation will pick up the changes even when they&#8217;re written directly to the data nodes through the NDB API.</p>
+<p>A third use of replication is to store the Cluster&#8217;s data in a seperate database &#8211; for example to have a read-only, up-to-date copy of the data stored within the MyISAM storage engine so that complex reports can be generated from it. And the best news is that this can be done at the same time as the local HA and remote Geographic Redundancy replication!</p>
+<p><a title="Johan's MySQL Cluster BLOG" href="http://johanandersson.blogspot.com/" target="_blank">Johan&#8217;s Blog</a> provides the technical details around <a title="HA MySQL, write scaling using Cluster to non-cluster replication " href="http://johanandersson.blogspot.com/2009/05/ha-mysql-write-scaling-using-cluster-to.html" target="_blank">configuring replication in order to provide some extra scaling by setting up non-Cluster slave databases </a>that pick up all changes from the Cluster database.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/mysql-cluster-flexibility-of-replication" data-via="wpbeginner" data-text="MySQL Cluster &#8211; flexibility of replication" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/mysql-cluster-flexibility-of-replication"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/mysql-cluster-flexibility-of-replication" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fmysql-cluster-flexibility-of-replication&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a>, <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="tag">High Availability</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-cge" rel="tag">MySQL Cluster CGE</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>
+</div>
+
+			</div>      
+							<div class="more_posts">
+					<span class="post_links"> &nbsp; <a href="/category/mysql-replication/page/2">Recent Entries &raquo;</a></span>
+				</div>
+						
+
+					
+	</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="/mongodb/realm-swift-type-projections">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="/mongodb/goodbye-nspredicate-hello-realm-swift-query-api">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments">
+<h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments">
+<li class="recentcomments">
+<span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-787242">MySQL Cluster running on Raspberry Pi</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">andrew</span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Sai Krishnan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-661143">Get MySQL Replication up and running in 5 minutes</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Nayan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-660628">Get MySQL Replication up and running in 5 minutes</a>
+</li>
+</ul>
+</li>
+<li id="categories-2" class="widget widget_categories">
+<h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2">
+<a href="/category/me">Me</a>
+</li>
+	<li class="cat-item cat-item-146">
+<a href="/category/mongodb">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3">
+<a href="/category/mysql">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4">
+<a href="/category/mysql-cluster">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131">
+<a href="/category/mysql-fabric">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5 current-cat">
+<a aria-current="page" href="/category/mysql-replication">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214">
+<a href="/category/mongodb/realm">Realm</a>
+</li>
+	<li class="cat-item cat-item-1">
+<a href="/category/uncategorized">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud">
+<h2 class="widgettitle">Tags</h2>
+<div class="tagcloud">
+<a href="/tag/7-4" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="/tag/apache-kafka" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="/tag/cluster" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="/tag/ha" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="/tag/high-availability" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="/tag/ios" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="/tag/java" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="/tag/javascript" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="/tag/mcm" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="/tag/mean" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="/tag/memcached" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="/tag/mobile" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="/tag/mongodb" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="/tag/mongodb-3-2" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="/tag/mongodb-atlas" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="/tag/mongodb-mobile" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="/tag/mongodb-stitch" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="/tag/mysql" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="/tag/mysql-5-6" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="/tag/mysql-cluster" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="/tag/mysql-cluster-70" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="/tag/mysql-cluster-7-1" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="/tag/mysql-cluster-7-2" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="/tag/mysql-cluster-7-3" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="/tag/mysql-cluster-7-4" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="/tag/mysql-cluster-cge" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="/tag/mysql-cluster-manager" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="/tag/mysql-enterprise-monitor" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="/tag/mysql-fabric-2" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="/tag/mysql-replication" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="/tag/mysql-utilities" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="/tag/ndb-api" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="/tag/node-js" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="/tag/nosql" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="/tag/performance" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="/tag/realm" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="/tag/replication" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="/tag/secondary" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="/tag/serverless" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="/tag/sharding" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="/tag/swift" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="/tag/swiftui" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="/tag/webcast" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="/tag/webinar" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="/tag/windows" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a>
+</div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive">
+<h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="/2022/03">March 2022</a></li>
+	<li><a href="/2022/02">February 2022</a></li>
+	<li><a href="/2022/01">January 2022</a></li>
+	<li><a href="/2021/12">December 2021</a></li>
+	<li><a href="/2021/11">November 2021</a></li>
+	<li><a href="/2021/09">September 2021</a></li>
+	<li><a href="/2021/08">August 2021</a></li>
+	<li><a href="/2021/07">July 2021</a></li>
+	<li><a href="/2021/06">June 2021</a></li>
+	<li><a href="/2021/05">May 2021</a></li>
+	<li><a href="/2021/04">April 2021</a></li>
+	<li><a href="/2021/02">February 2021</a></li>
+	<li><a href="/2021/01">January 2021</a></li>
+	<li><a href="/2020/12">December 2020</a></li>
+	<li><a href="/2019/03">March 2019</a></li>
+	<li><a href="/2019/01">January 2019</a></li>
+	<li><a href="/2018/12">December 2018</a></li>
+	<li><a href="/2018/11">November 2018</a></li>
+	<li><a href="/2018/10">October 2018</a></li>
+	<li><a href="/2018/09">September 2018</a></li>
+	<li><a href="/2017/09">September 2017</a></li>
+	<li><a href="/2017/03">March 2017</a></li>
+	<li><a href="/2017/02">February 2017</a></li>
+	<li><a href="/2017/01">January 2017</a></li>
+	<li><a href="/2016/12">December 2016</a></li>
+	<li><a href="/2016/11">November 2016</a></li>
+	<li><a href="/2016/09">September 2016</a></li>
+	<li><a href="/2016/01">January 2016</a></li>
+	<li><a href="/2015/11">November 2015</a></li>
+	<li><a href="/2015/10">October 2015</a></li>
+	<li><a href="/2015/09">September 2015</a></li>
+	<li><a href="/2015/06">June 2015</a></li>
+	<li><a href="/2015/04">April 2015</a></li>
+	<li><a href="/2015/03">March 2015</a></li>
+	<li><a href="/2015/02">February 2015</a></li>
+	<li><a href="/2015/01">January 2015</a></li>
+	<li><a href="/2014/12">December 2014</a></li>
+	<li><a href="/2014/11">November 2014</a></li>
+	<li><a href="/2014/10">October 2014</a></li>
+	<li><a href="/2014/09">September 2014</a></li>
+	<li><a href="/2014/08">August 2014</a></li>
+	<li><a href="/2014/07">July 2014</a></li>
+	<li><a href="/2014/06">June 2014</a></li>
+	<li><a href="/2014/05">May 2014</a></li>
+	<li><a href="/2014/04">April 2014</a></li>
+	<li><a href="/2014/03">March 2014</a></li>
+	<li><a href="/2014/02">February 2014</a></li>
+	<li><a href="/2014/01">January 2014</a></li>
+	<li><a href="/2013/12">December 2013</a></li>
+	<li><a href="/2013/11">November 2013</a></li>
+	<li><a href="/2013/09">September 2013</a></li>
+	<li><a href="/2013/08">August 2013</a></li>
+	<li><a href="/2013/07">July 2013</a></li>
+	<li><a href="/2013/06">June 2013</a></li>
+	<li><a href="/2013/05">May 2013</a></li>
+	<li><a href="/2013/03">March 2013</a></li>
+	<li><a href="/2013/02">February 2013</a></li>
+	<li><a href="/2013/01">January 2013</a></li>
+	<li><a href="/2012/12">December 2012</a></li>
+	<li><a href="/2012/11">November 2012</a></li>
+	<li><a href="/2012/09">September 2012</a></li>
+	<li><a href="/2012/07">July 2012</a></li>
+	<li><a href="/2012/06">June 2012</a></li>
+	<li><a href="/2012/05">May 2012</a></li>
+	<li><a href="/2012/04">April 2012</a></li>
+	<li><a href="/2012/03">March 2012</a></li>
+	<li><a href="/2012/02">February 2012</a></li>
+	<li><a href="/2012/01">January 2012</a></li>
+	<li><a href="/2011/12">December 2011</a></li>
+	<li><a href="/2011/11">November 2011</a></li>
+	<li><a href="/2011/10">October 2011</a></li>
+	<li><a href="/2011/09">September 2011</a></li>
+	<li><a href="/2011/07">July 2011</a></li>
+	<li><a href="/2011/06">June 2011</a></li>
+	<li><a href="/2011/05">May 2011</a></li>
+	<li><a href="/2011/04">April 2011</a></li>
+	<li><a href="/2011/03">March 2011</a></li>
+	<li><a href="/2011/02">February 2011</a></li>
+	<li><a href="/2011/01">January 2011</a></li>
+	<li><a href="/2010/12">December 2010</a></li>
+	<li><a href="/2010/11">November 2010</a></li>
+	<li><a href="/2010/10">October 2010</a></li>
+	<li><a href="/2010/09">September 2010</a></li>
+	<li><a href="/2010/08">August 2010</a></li>
+	<li><a href="/2010/07">July 2010</a></li>
+	<li><a href="/2010/06">June 2010</a></li>
+	<li><a href="/2010/05">May 2010</a></li>
+	<li><a href="/2010/04">April 2010</a></li>
+	<li><a href="/2010/03">March 2010</a></li>
+	<li><a href="/2010/02">February 2010</a></li>
+	<li><a href="/2010/01">January 2010</a></li>
+	<li><a href="/2009/12">December 2009</a></li>
+	<li><a href="/2009/11">November 2009</a></li>
+	<li><a href="/2009/10">October 2009</a></li>
+	<li><a href="/2009/09">September 2009</a></li>
+	<li><a href="/2009/08">August 2009</a></li>
+	<li><a href="/2009/07">July 2009</a></li>
+	<li><a href="/2009/06">June 2009</a></li>
+	<li><a href="/2009/05">May 2009</a></li>
+	<li><a href="/2009/04">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 -->
+</body>
+</html>

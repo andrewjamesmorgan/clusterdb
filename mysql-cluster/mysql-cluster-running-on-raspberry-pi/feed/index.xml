@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: MySQL Cluster running on Raspberry Pi	</title>
+	<atom:link href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi/feed" rel="self" type="application/rss+xml" />
+	<link>/mysql-cluster/mysql-cluster-running-on-raspberry-pi</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 03 Dec 2019 16:16:55 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: Mikael Ronström		</title>
+		<link>/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-787242</link>
+
+		<dc:creator><![CDATA[Mikael Ronström]]></dc:creator>
+		<pubDate>Tue, 03 Dec 2019 16:16:55 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2365#comment-787242</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-659345&quot;&gt;changs&lt;/a&gt;.
+
+MySQL Cluster 8.0.18 now compiles on ARM CPUs and there is a
+community version for ARM on Red Hat.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-659345">changs</a>.</p>
+<p>MySQL Cluster 8.0.18 now compiles on ARM CPUs and there is a<br />
+community version for ARM on Red Hat.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: changs		</title>
+		<link>/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-659345</link>
+
+		<dc:creator><![CDATA[changs]]></dc:creator>
+		<pubDate>Thu, 16 Feb 2017 11:46:51 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2365#comment-659345</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-446383&quot;&gt;Sebastian&lt;/a&gt;.
+
+Hi Sebastian
+I have the same error as you, &#039;rmb was not declared in this scope&#039;,could you tell me your solution? 
+thank you very munch.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-446383">Sebastian</a>.</p>
+<p>Hi Sebastian<br />
+I have the same error as you, &#8216;rmb was not declared in this scope&#8217;,could you tell me your solution?<br />
+thank you very munch.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Damian		</title>
+		<link>/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-494485</link>
+
+		<dc:creator><![CDATA[Damian]]></dc:creator>
+		<pubDate>Tue, 19 May 2015 18:25:51 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2365#comment-494485</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-446383&quot;&gt;Sebastian&lt;/a&gt;.
+
+Hi Sebastian,
+Forgot which version it was, but it was ndb.  It was stable for basic playing around.  I didn&#039;t invest more time into it due to low RAM on the PI.
+However, I just picked up 10 PI 2s, so will try to do 8 node cluster (paired with another 8 nodes on the xen for redundancy)
+I currently use 2x4 set up with 4 old laptops (1GB ram each) and 4 VMs.  PI 2s come with 1GB or ram so might get somewhere with that.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-446383">Sebastian</a>.</p>
+<p>Hi Sebastian,<br />
+Forgot which version it was, but it was ndb.  It was stable for basic playing around.  I didn&#8217;t invest more time into it due to low RAM on the PI.<br />
+However, I just picked up 10 PI 2s, so will try to do 8 node cluster (paired with another 8 nodes on the xen for redundancy)<br />
+I currently use 2&#215;4 set up with 4 old laptops (1GB ram each) and 4 VMs.  PI 2s come with 1GB or ram so might get somewhere with that.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Sebastian		</title>
+		<link>/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-448238</link>
+
+		<dc:creator><![CDATA[Sebastian]]></dc:creator>
+		<pubDate>Mon, 23 Feb 2015 15:09:14 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2365#comment-448238</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-80409&quot;&gt;andrew&lt;/a&gt;.
+
+And it was package(tar.gz) with mysql-cluster sources? Not Mysql Server?]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-80409">andrew</a>.</p>
+<p>And it was package(tar.gz) with mysql-cluster sources? Not Mysql Server?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Sebastian		</title>
+		<link>/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-448236</link>
+
+		<dc:creator><![CDATA[Sebastian]]></dc:creator>
+		<pubDate>Mon, 23 Feb 2015 15:07:59 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2365#comment-448236</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-80409&quot;&gt;andrew&lt;/a&gt;.
+
+what version did you took?]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-80409">andrew</a>.</p>
+<p>what version did you took?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Sebastian		</title>
+		<link>/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-446383</link>
+
+		<dc:creator><![CDATA[Sebastian]]></dc:creator>
+		<pubDate>Wed, 18 Feb 2015 14:38:22 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2365#comment-446383</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-81973&quot;&gt;Damian&lt;/a&gt;.
+
+Hi Damian
+
+Could you share with us some information about stability of your solution to error:  &#039;rmb was not declared in this scope&#039;
+
+I have the same error as you and i will do the same thing you did ;)]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-81973">Damian</a>.</p>
+<p>Hi Damian</p>
+<p>Could you share with us some information about stability of your solution to error:  &#8216;rmb was not declared in this scope&#8217;</p>
+<p>I have the same error as you and i will do the same thing you did 😉</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Damian		</title>
+		<link>/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-81973</link>
+
+		<dc:creator><![CDATA[Damian]]></dc:creator>
+		<pubDate>Sat, 01 Mar 2014 09:10:24 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2365#comment-81973</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-78540&quot;&gt;Damian&lt;/a&gt;.
+
+Hi Andrew,
+
+Did some more digging, and this turns out to be the &quot;memory barrier&quot; assembly functions, wich are only defined for the x86 architecture. w and r stand for write and read respectively. 
+I got around the problem by bascially commenting out these calls in the mt.cpp .  Not sure how stable/reliable this will make the ndb, but at least it compiled and it is working.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-78540">Damian</a>.</p>
+<p>Hi Andrew,</p>
+<p>Did some more digging, and this turns out to be the &#8220;memory barrier&#8221; assembly functions, wich are only defined for the x86 architecture. w and r stand for write and read respectively.<br />
+I got around the problem by bascially commenting out these calls in the mt.cpp .  Not sure how stable/reliable this will make the ndb, but at least it compiled and it is working.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-80409</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 26 Feb 2014 18:56:23 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2365#comment-80409</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-78540&quot;&gt;Damian&lt;/a&gt;.
+
+Sorry - not seen that error. You could try the MySQL Cluster forum at http://forums.mysql.com/list.php?25]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-78540">Damian</a>.</p>
+<p>Sorry &#8211; not seen that error. You could try the MySQL Cluster forum at <a href="http://forums.mysql.com/list.php?25" rel="nofollow ugc">http://forums.mysql.com/list.php?25</a></p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Damian		</title>
+		<link>/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-78540</link>
+
+		<dc:creator><![CDATA[Damian]]></dc:creator>
+		<pubDate>Sun, 23 Feb 2014 21:38:24 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2365#comment-78540</guid>
+
+					<description><![CDATA[Hello,
+
+I keep getting compile errors at the storage/ndb/src/kernel/mv/mt.cpp step. (About 45% into the compile process).  Errors are wmb, mb, rmb was not declared in this scope.
+Any ideas?]]></description>
+			<content:encoded><![CDATA[<p>Hello,</p>
+<p>I keep getting compile errors at the storage/ndb/src/kernel/mv/mt.cpp step. (About 45% into the compile process).  Errors are wmb, mb, rmb was not declared in this scope.<br />
+Any ideas?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Rudy		</title>
+		<link>/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-1861</link>
+
+		<dc:creator><![CDATA[Rudy]]></dc:creator>
+		<pubDate>Thu, 31 Oct 2013 14:46:08 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2365#comment-1861</guid>
+
+					<description><![CDATA[Hi,
+
+  Very interesting.
+  You can also check :http://wiki.ryayon.com/doku.php?id=mysql:howto:how_i_installed_mysql_cluster_on_my_raspberry_pi
+
+Regards,
+Rudy]]></description>
+			<content:encoded><![CDATA[<p>Hi,</p>
+<p>  Very interesting.<br />
+  You can also check :<a href="http://wiki.ryayon.com/doku.php?id=mysql:howto:how_i_installed_mysql_cluster_on_my_raspberry_pi" rel="nofollow ugc">http://wiki.ryayon.com/doku.php?id=mysql:howto:how_i_installed_mysql_cluster_on_my_raspberry_pi</a></p>
+<p>Regards,<br />
+Rudy</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

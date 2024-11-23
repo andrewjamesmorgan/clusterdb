@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>mobile &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/mobile/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Fri, 17 Dec 2021 17:21:40 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Goodbye NSPredicate, hello Realm Swift Query API</title>
+		<link>/mongodb/goodbye-nspredicate-hello-realm-swift-query-api</link>
+					<comments>/mongodb/goodbye-nspredicate-hello-realm-swift-query-api#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 17 Dec 2021 17:21:40 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[Realm]]></category>
+		<category><![CDATA[ios]]></category>
+		<category><![CDATA[mobile]]></category>
+		<category><![CDATA[Swift]]></category>
+		<guid isPermaLink="false">/?p=4647</guid>
+
+					<description><![CDATA[Introduction I&#8217;m not a fan of writing code using pseudo-English text strings. It&#8217;s a major context switch when you&#8217;ve been writing &#8220;native&#8221; code. Compilers don&#8217;t detect errors in the strings, whether syntax errors or mismatched types, leaving you to learn of your mistakes when your app crashes. I spent more than seven years working at]]></description>
+										<content:encoded><![CDATA[<h2>Introduction</h2>
+<p>I&#8217;m not a fan of writing code using pseudo-English text strings. It&#8217;s a major context switch when you&#8217;ve been writing &#8220;native&#8221; code. Compilers don&#8217;t detect errors in the strings, whether syntax errors or mismatched types, leaving you to learn of your mistakes when your app crashes.</p>
+<p>I spent more than seven years working at MySQL and Oracle, and still wasn&#8217;t comfortable writing anything but the simplest of SQL queries. I left to join MongoDB because I knew that the object/document model was the way that developers should work with their data. I also knew that idiomatic queries for each programming language were the way to go.</p>
+<p>That&#8217;s why I was really excited when MongoDB acquired Realm—a leading mobile <strong>object</strong> database. You work with Realm objects in your native language (in this case, Swift) to manipulate your data.</p>
+<p>However, there was one area that felt odd in Realm&#8217;s Swift SDK. You had to use <code>NSPredicate</code> when searching for Realm objects that match your criteria. <code>NSPredicate</code>s are strings with variable substitution. <img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f926-200d-2642-fe0f.png" alt="🤦‍♂️" class="wp-smiley" style="height: 1em; max-height: 1em;" /></p>
+<p><code>NSPredicate</code>s are used when searching for data in Apple&#8217;s Core Data database, and so it was a reasonable design decision. It meant that iOS developers could reuse the skills they&#8217;d developed while working with Core Data.</p>
+<p>But, I hate writing code as strings.</p>
+<p>The good news is that the Realm SDK for Swift has added the option to use type-safe queries through the Realm Swift Query API. <img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f973.png" alt="🥳" class="wp-smiley" style="height: 1em; max-height: 1em;" />.</p>
+<p>You now have the option whether to filter using <code>NSPredicate</code>s:</p>
+<pre><code class="swift">let predicate = NSPredicate(format: "isSoft == %@", NSNumber(value: wantSoft)
+let decisions = unfilteredDecisions.filter(predicate)
+</code></pre>
+<p>or with the new Realm Swift Query API:</p>
+<pre><code class="swift">let decisions = unfilteredDecisions.where { $0.isSoft == wantSoft }
+</code></pre>
+<p>In this article, I&#8217;m going to show you some examples of how to use the Realm Swift Query API. I&#8217;ll also show you an example where wrangling with <code>NSPredicate</code> strings has frustrated me.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li><a href="https://github.com/realm/realm-cocoa/releases/tag/v10.19.0">Realm-Cocoa 10.19.0</a>+</li>
+</ul>
+<h2>Using The Realm Swift Query API</h2>
+<p>I have a number of existing Realm iOS apps using <code>NSPredicate</code>s. When I learnt of the new query API, the first thing I wanted to do was try to replace some of &#8220;legacy&#8221; queries. I&#8217;ll start by describing that experience, and then show what other type-safe queries are possible.</p>
+<h3>Replacing an NSPredicate</h3>
+<p>I&#8217;ll start with the example I gave in the introduction (and how the <code>NSPredicate</code> version had previously frustrated me).</p>
+<p>I have an <a href="https://github.com/mongodb-developer/BlackJackTrainer">app to train you on what decisions to make in Black Jack</a> (based on the cards you&#8217;ve been dealt and the card that the dealer is showing). There are three different decision matrices based on the cards you&#8217;ve been dealt:</p>
+<ul>
+<li>Whether you have the option to split your hand (you&#8217;ve been dealt two cards with the same value)</li>
+<li>Your hand is &#8220;soft&#8221; (you&#8217;ve been dealt an ace, which can take the value of either one or eleven)</li>
+<li>Any other hand</li>
+</ul>
+<p>All of the decision-data for the app is held in <a href="https://github.com/mongodb-developer/BlackJackTrainer/blob/main/Black%20Jack%20Trainer/Black%20Jack%20Trainer/Model/Decisions.swift"><code>Decisions</code></a> objects:</p>
+<pre><code class="swift">class Decisions: Object, ObjectKeyIdentifiable {
+   @Persisted var decisions = List&lt;DecisionList&gt;()
+   @Persisted var isSoft = false
+   @Persisted var isSplit = false
+   ...
+}
+</code></pre>
+<p><a href="https://github.com/mongodb-developer/BlackJackTrainer/blob/main/Black%20Jack%20Trainer/Black%20Jack%20Trainer/Views/Decision%20Matrix/SoftDecisionView.swift"><code>SoftDecisionView</code></a> needs to find the <code>Decisions</code> object where <code>isSoft</code> is set to <code>true</code>. That requires a simple <code>NSPredicate</code>:</p>
+<pre><code class="swift">struct SoftDecisionView: View {
+   @ObservedResults(Decisions.self, filter: NSPredicate(format: "isSoft == YES")) var decisions
+   ...
+}
+</code></pre>
+<p>But, what if I&#8217;d mistyped the attribute name? There&#8217;s no Xcode auto-complete to help when writing code within a string, and this code builds with no errors or warnings:</p>
+<pre><code class="swift">struct SoftDecisionView: View {
+   @ObservedResults(Decisions.self, filter: NSPredicate(format: "issoft == YES")) var decisions
+   ...
+}
+</code></pre>
+<p>When I run the code, it works initially. But, when I&#8217;m dealt a soft hand, I get this runtime crash:</p>
+<pre><code>Terminating app due to uncaught exception 'Invalid property name', reason: 'Property 'issoft' not found in object of type 'Decisions''
+</code></pre>
+<p>Rather than having a dedicated view for each of the three types of hand, I want to experiment with having a single view to handle all three.</p>
+<p>SwiftUI doesn&#8217;t allow me to use variables (or even named constants) as part of the filter criteria for <code>@ObservedResults</code>. This is because the <code>struct</code> hasn&#8217;t been initialized until after the <code>@ObservedResults</code> is defined. To live within SwitfUIs constraints, the filtering is moved into the view&#8217;s body:</p>
+<pre><code class="swift">struct SoftDecisionView: View {
+   @ObservedResults(Decisions.self) var unfilteredDecisions
+   let isSoft = true
+
+   var body: some View {
+       let predicate = NSPredicate(format: "isSoft == %@", isSoft)
+       let decisions = unfilteredDecisions.filter(predicate)
+   ...
+}
+</code></pre>
+<p>Again, this builds, but the app crashes as soon as I&#8217;m dealt a soft hand. This time, the error is much more cryptic:</p>
+<pre><code>Thread 1: EXC_BAD_ACCESS (code=1, address=0x1)
+</code></pre>
+<p>It turns out that, you need to convert the boolean value to an <code>NSNumber</code> before substituting it into the <code>NSPredicate</code> string:</p>
+<pre><code class="swift">struct SoftDecisionView: View {
+   @ObservedResults(Decisions.self) var unfilteredDecisions
+
+
+   let isSoft = true
+
+
+   var body: some View {
+       let predicate = NSPredicate(format: "isSoft == %@", NSNumber(value: isSoft))
+       let decisions = unfilteredDecisions.filter(predicate)
+   ...
+}
+</code></pre>
+<p>Who knew? OK, StackOverflow did, but it took me quite a while to find the solution.</p>
+<p>Hopefully, this gives you a feeling for why I don&#8217;t like writing strings in place of code.</p>
+<p>This is the same code using the new (type-safe) Realm Swift Query API:</p>
+<pre><code class="swift">struct SoftDecisionView: View {
+   @ObservedResults(Decisions.self) var unfilteredDecisions
+   let isSoft = true
+
+   var body: some View {
+       let decisions = unfilteredDecisions.where { $0.isSoft == isSoft }
+   ...
+}
+</code></pre>
+<p>The code&#8217;s simpler, and (even better) Xcode won&#8217;t let me use the wrong field name or type—giving me this error before I even try running the code:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/xcode_type_warning_5e1c3b18e6.png" alt="Xcode showing the error &quot;Binary operator '==' cannot be applied to operands of type 'Query<Boo>&#8216; and &#8216;Int'&#8221; title=&#8221;Xcode showing the error Binary operator &#8216;==&#8217; cannot be applied to operands of type &#8216;Query<Bool>&#8216; and &#8216;Int'&#8221; /></p>
+<h3>Experimenting With Other Sample Queries</h3>
+<p>In my <a href="https://github.com/realm/RCurrency">RCurrency app</a>, I was able to replace this <code>NSPredicate</code>-based code:</p>
+<pre><code class="swift">struct CurrencyRowContainerView: View {
+   @ObservedResults(Rate.self) var rates
+   let baseSymbol: String
+   let symbol: String
+
+   var rate: Rate? {
+       NSPredicate(format: "query.from = %@ AND query.to = %@", baseSymbol, symbol)).first
+   }
+   ...
+}
+</code></pre>
+<p>With this:</p>
+<pre><code class="swift">struct CurrencyRowContainerView: View {
+   @ObservedResults(Rate.self) var rates
+   let baseSymbol: String
+   let symbol: String
+
+   var rate: Rate? {
+       rates.where { $0.query.from == baseSymbol &amp;&amp; $0.query.to == symbol }.first
+   }
+   ...
+}
+</code></pre>
+<p>Again, I find this more Swift-like, and bugs will get caught as I type/build rather than when the app crashes.</p>
+<p>I&#8217;ll use this simple <code>Task</code> <code>Object</code> to show a few more example queries:</p>
+<pre><code class="swift">class Task: Object, ObjectKeyIdentifiable {
+   @Persisted var name = ""
+   @Persisted var isComplete = false
+   @Persisted var assignee: String?
+   @Persisted var priority = 0
+   @Persisted var progressMinutes = 0
+}
+</code></pre>
+<p>All in-progress tasks assigned to name:</p>
+<pre><code class="swift">let myStartedTasks = realm.objects(Task.self).where {
+   ($0.progressMinutes &gt; 0) &amp;&amp; ($0.assignee == name)
+}
+</code></pre>
+<p>All tasks where the <code>priority</code> is higher than <code>minPriority</code>:</p>
+<pre><code class="swift">let highPriorityTasks = realm.objects(Task.self).where {
+   $0.priority &gt;= minPriority
+}
+</code></pre>
+<p>All tasks that have a <code>priority</code> that&#8217;s an integer between <code>-1</code> and <code>minPriority</code>:</p>
+<pre><code class="swift">let lowPriorityTasks = realm.objects(Task.self).where {
+   $0.priority.contains(-1...minPriority)
+}
+</code></pre>
+<p>All tasks where the <code>assignee</code> name string includes <code>namePart</code>:</p>
+<pre><code class="swift">let tasksForName = realm.objects(Task.self).where {
+   $0.assignee.contains(namePart)
+}
+</code></pre>
+<h3>Filtering on Sub-Objects</h3>
+<p>You may need to filter your Realm objects on values within their sub-objects. Those sub-object may be <code>EmbeddedObject</code>s or part of a <code>List</code>.</p>
+<p>I&#8217;ll use the <code>Project</code> class to illustrate filtering on the attributes of sub-documents:</p>
+<pre><code class="swift">class Project: Object, ObjectKeyIdentifiable {
+   @Persisted var name = ""
+   @Persisted var tasks: List&lt;Task&gt;
+}
+</code></pre>
+<p>All projects that include a task that&#8217;s in-progress, and is assigned to a given user:</p>
+<pre><code class="swift">let myActiveProjects = realm.objects(Project.self).where {
+   ($0.tasks.progressMinutes &gt;= 1) &amp;&amp; ($0.tasks.assignee == name)
+}
+</code></pre>
+<h3>Including the Query When Creating the Original Results (SwiftUI)</h3>
+<p>At the time of writing, this feature wasn&#8217;t released, but it can be tested using <a href="https://github.com/realm/realm-cocoa/pull/7518">this PR</a>.</p>
+<p>You can include the where modifier directly in your <code>@ObservedResults</code> call. That avoids the need to refine your results inside your view&#8217;s body:</p>
+<pre><code class="swift">@ObservedResults(Decisions.self, where: { $0.isSoft == true }) var decisions
+</code></pre>
+<p>Unfortunately, SwiftUI rules still mean that you can&#8217;t use variables or named constants in your <code>where</code> block for <code>@ObservedResults</code>.</p>
+<h2>Conclusion</h2>
+<p>Realm type-safe queries provide a simple, idiomatic way to filter results in Swift. If you have a bug in your query, it should be caught by Xcode rather than at run-time.</p>
+<p>You can find more information in the <a href="https://docs.mongodb.com/realm/sdk/ios/examples/filter-data/#std-label-ios-realm-swift-query-api">docs</a>. If you want to see hundreds of examples, and how they map to equivalent <code>NSPredicate</code> queries, then take a look at the <a href="https://github.com/realm/realm-cocoa/blob/v10.19.0/RealmSwift/Tests/QueryTests.swift">test cases</a>.</p>
+<p>For those that prefer working with <code>NSPredicate</code>s, you can continue to do so. In fact, the Realm Swift Query API runs on top of the <code>NSPredicate</code> functionality, so they&#8217;re not going anywhere soon.</p>
+<p>Please provide feedback and ask any questions in the <a href="https://www.mongodb.com/community/forums/c/realm-sdks/58">Realm Community Forum</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mongodb/goodbye-nspredicate-hello-realm-swift-query-api/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Using Maps and Location Data in Your SwiftUI (+Realm) App</title>
+		<link>/mongodb/realm/maps</link>
+					<comments>/mongodb/realm/maps#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 12 Jul 2021 12:46:04 +0000</pubDate>
+				<category><![CDATA[Realm]]></category>
+		<category><![CDATA[ios]]></category>
+		<category><![CDATA[mobile]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[SwiftUI]]></category>
+		<guid isPermaLink="false">/?p=4620</guid>
+
+					<description><![CDATA[Introduction Embedding Apple Maps and location functionality in SwiftUI apps used to be a bit of a pain. It required writing your own SwiftUI wrapper around UIKit code—see these examples from the O-FISH app: Location helper Map views If you only need to support iOS14 and later, then you can forget most of that messy]]></description>
+										<content:encoded><![CDATA[<h2>Introduction</h2>
+<p>Embedding Apple Maps and location functionality in SwiftUI apps used to be a bit of a pain. It required writing your own SwiftUI wrapper around UIKit code—see these examples from the O-FISH app:</p>
+<ul>
+<li><a href="https://github.com/WildAid/o-fish-ios/blob/main/o-fish-ios/Helpers/LocationHelper.swift">Location helper</a></li>
+<li><a href="https://github.com/WildAid/o-fish-ios/tree/main/o-fish-ios/Views/Components/Maps">Map views</a></li>
+</ul>
+<p>If you only need to support iOS14 and later, then you can <strong>forget most of that messy code <img src="https://s.w.org/images/core/emoji/15.0.3/72x72/1f60a.png" alt="😊" class="wp-smiley" style="height: 1em; max-height: 1em;" /></strong>. If you need to support iOS13—sorry, you need to go the O-FISH route!</p>
+<p>iOS14 introduced the <a href="https://developer.apple.com/documentation/mapkit/map">Map</a> SwiftUI view (part of <a href="https://developer.apple.com/documentation/mapkit/map">Mapkit</a>) allowing you to embed maps directly into your SwiftUI apps without messy wrapper code.</p>
+<p>This article shows you how to embed Apple Maps into your app views using Mapkit&#8217;s Map view. We&#8217;ll then look at how you can fetch the user&#8217;s current location—with their permission, of course!</p>
+<p>Finally, we&#8217;ll see how to store the location data in Realm in a format that lets MongoDB Realm sync it to MongoDB Atlas. Once in Atlas, you can add a <a href="https://docs.mongodb.com/manual/core/2dsphere/">geospatial index</a> and use <a href="https://www.mongodb.com/products/charts">MongoDB Charts</a> to plot the data on a map—we&#8217;ll look at that too.</p>
+<p>Most of the code snippets have been extracted from the <a href="https://github.com/realm/RChat">RChat app</a>. That app is a good place to see maps and location data in action. <a href="https://developer.mongodb.com/how-to/building-a-mobile-chat-app-using-realm-new-way/">Building a Mobile Chat App Using Realm – The New and Easier Way</a> is a good place to learn more about the RChat app—including how to enable <a href="https://docs.mongodb.com/realm/sync/">MongoDB Realm Sync</a>.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li><a href="https://github.com/realm/realm-cocoa/releases">Realm-Cocoa 10.8.0</a>+ (may work with some 10.7.X versions)</li>
+<li>iOS 14.5+ (<a href="https://developer.apple.com/documentation/mapkit/map">Mapkit</a> was introduced in iOS 14.0 and so most features should work with earlier iOS 14.X versions)</li>
+<li><a href="https://developer.apple.com/xcode/">XCode12+</a></li>
+</ul>
+<h2>How to Add an Apple Map to Your SwiftUI App</h2>
+<p>To begin, let&#8217;s create a simple view that displays a map, the coordinates of the center of that map, and the zoom level:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/realm_map1_7ea7ecbf15.gif" alt="Gif of scrolling around an embedded Apple Map and seeing the reported coordinates changing" /></p>
+<p>With Mapkit and SwiftUI, this only takes a few lines of code:</p>
+<pre><code class="swift">import MapKit
+import SwiftUI
+
+struct MyMapView: View {
+    @State private var region: MKCoordinateRegion = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: MapDefaults.latitude, longitude: MapDefaults.longitude),
+        span: MKCoordinateSpan(latitudeDelta: MapDefaults.zoom, longitudeDelta: MapDefaults.zoom))
+
+    private enum MapDefaults {
+        static let latitude = 45.872
+        static let longitude = -1.248
+        static let zoom = 0.5
+    }
+
+    var body: some View {
+        VStack {
+            Text("lat: \(region.center.latitude), long: \(region.center.longitude). Zoom: \(region.span.latitudeDelta)")
+            .font(.caption)
+            .padding()
+            Map(coordinateRegion: $region,
+                interactionModes: .all,
+                showsUserLocation: true)
+        }
+    }
+}
+</code></pre>
+<p>Note that <code>showsUserLocation</code> won&#8217;t work unless the user has already given the app permission to use their location—we&#8217;ll get to that.</p>
+<p><code>region</code> is initialized to a starting location, but it&#8217;s updated by the <code>Map</code> view as the user scrolls and zooms in and out.</p>
+<h3>Adding Bells and Whistles to Your Maps (Pins at Least)</h3>
+<p>Pins can be added to a map in the form of &#8220;annotations.&#8221; Let&#8217;s start with a single pin:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/realm_map2_3812086195.png" alt="Embedded Apple Map showing a red pin" /></p>
+<p>Annotations are provided as an array of structs where each instance must contain the coordinates of the pin. The struct must also conform to the <a href="https://developer.apple.com/documentation/swift/identifiable">Identifiable</a> protocol:</p>
+<pre><code class="swift">struct MyAnnotationItem: Identifiable {
+    var coordinate: CLLocationCoordinate2D
+    let id = UUID()
+}
+</code></pre>
+<p>We can now create an array of <code>MyAnnotationItem</code> structs:</p>
+<pre><code class="swift">let annotationItems = [
+    MyAnnotationItem(coordinate: CLLocationCoordinate2D(
+        latitude: MapDefaults.latitude,
+        longitude: MapDefaults.longitude))]
+</code></pre>
+<p>We then pass <code>annotationItems</code> to the <code>MapView</code> and indicate that we want a <code>MapMarker</code> at the contained coordinates:</p>
+<pre><code class="swift">Map(coordinateRegion: $region,
+    interactionModes: .all,
+    showsUserLocation: true,
+    annotationItems: annotationItems) { item in
+        MapMarker(coordinate: item.coordinate)
+    }
+</code></pre>
+<p>That gives us the result we wanted.</p>
+<p>What if we want multiple pins? Not a problem. Just add more <code>MyAnnotationItem</code> instances to the array.</p>
+<p>All of the pins will be the same default color. But, what if we want different colored pins? It&#8217;s simple to extend our code to produce this:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/realm_map3_669f6ec179.png" alt="Embedded Apple Map showing red, yellow, and plue pins at different locations" /></p>
+<p>Firstly, we need to extend <code>MyAnnotationItem</code> to include an optional <code>color</code> and a <code>tint</code> that returns <code>color</code> if it&#8217;s been defined and &#8220;red&#8221; if not:</p>
+<pre><code class="swift">struct MyAnnotationItem: Identifiable {
+    var coordinate: CLLocationCoordinate2D
+    var color: Color?
+    var tint: Color { color ?? .red }
+    let id = UUID()
+}
+</code></pre>
+<p>In our sample data, we can now choose to provide a color for each annotation:</p>
+<pre><code class="swift">let annotationItems = [
+    MyAnnotationItem(
+        coordinate: CLLocationCoordinate2D(
+            latitude: MapDefaults.latitude,
+            longitude: MapDefaults.longitude)),
+    MyAnnotationItem(
+        coordinate: CLLocationCoordinate2D(
+            latitude: 45.8827419,
+            longitude: -1.1932383),
+        color: .yellow),
+    MyAnnotationItem(
+        coordinate: CLLocationCoordinate2D(
+            latitude: 45.915737,
+            longitude: -1.3300991),
+        color: .blue)
+]
+</code></pre>
+<p>The <code>MapView</code> can then use the <code>tint</code>:</p>
+<pre><code class="swift">Map(coordinateRegion: $region,
+    interactionModes: .all,
+    showsUserLocation: true,
+    annotationItems: annotationItems) { item in
+    MapMarker(
+        coordinate: item.coordinate,
+        tint: item.tint)
+}
+</code></pre>
+<p>If you get bored of pins, you can use <code>MapAnnotation</code> to use any view you like for your annotations:</p>
+<pre><code class="swift">Map(coordinateRegion: $region,
+    interactionModes: .all,
+    showsUserLocation: true,
+    annotationItems: annotationItems) { item in
+    MapAnnotation(coordinate: item.coordinate) {
+        Image(systemName: "gamecontroller.fill")
+            .foregroundColor(item.tint)
+    }
+}
+</code></pre>
+<p>This is the result:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/realm_map5_8509602cd7.png" alt="Apple Map showing red, yellow and blue game controller icons at different locations on the map" /></p>
+<p>You could also include the name of the system image to use with each annotation.</p>
+<p>This <a href="https://gist.github.com/am-MongoDB/3073226a84bf6deb6b2df7afcb21ca92">gist</a> contains the final code for the view.</p>
+<h2>Finding Your User&#8217;s Location</h2>
+<h3>Asking for Permission</h3>
+<p>Apple is pretty vocal about respecting the privacy of their users, and so it shouldn&#8217;t be a shock that your app will have to request permission before being able to access a user&#8217;s location.</p>
+<p>The first step is to add a key-value pair to your Xcode project to indicate that the app may request permission to access the user&#8217;s location, and what text should be displayed in the alert. You can add the pair to the &#8220;Info.plist&#8221; file:</p>
+<pre><code>Privacy - Location When In Use Usage Description : We'll only use your location when you ask to include it in a message
+</code></pre>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Info_plist_1500a15e11.png" alt="Screenshot from Xcode showing the key-value pair for requesting permission for the app to access the user's location" /></p>
+<p>Once that setting has been added, the user should see an alert the first time that the app attempts to access their current location:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/request_access_to_location_08d1be66d1.png" alt="iPhone screenshot – app is requesting permission to access the user's location" /></p>
+<h3>Accessing Current Location</h3>
+<p>While Mapkit has made maps simple and native in SwiftUI, the same can&#8217;t be said for location data.</p>
+<p>You need to create a SwiftUI wrapper for Apple&#8217;s <a href="https://developer.apple.com/documentation/corelocation">Core Location</a> functionality. There&#8217;s not a lot of value in explaining this boilerplate code—just copy this code from RChat&#8217;s <a href="https://github.com/realm/RChat/blob/main/RChat-iOS/RChat/Helpers/LocationHelper.swift">LocationHelper.swift</a> file, and paste it into your app:</p>
+<pre><code class="swift">import CoreLocation
+
+class LocationHelper: NSObject, ObservableObject {
+
+    static let shared = LocationHelper()
+    static let DefaultLocation = CLLocationCoordinate2D(latitude: 45.8827419, longitude: -1.1932383)
+
+    static var currentLocation: CLLocationCoordinate2D {
+        guard let location = shared.locationManager.location else {
+            return DefaultLocation
+        }
+        return location.coordinate
+    }
+
+    private let locationManager = CLLocationManager()
+
+    private override init() {
+        super.init()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+}
+
+extension LocationHelper: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) { }
+
+    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location manager failed with error: \(error.localizedDescription)")
+    }
+
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        print("Location manager changed the status: \(status)")
+    }
+}
+</code></pre>
+<p>Once added, you can access the user&#8217;s location with this simple call:</p>
+<pre><code class="swift">let location = LocationHelper.currentLocation
+</code></pre>
+<h3>Store Location Data in Your Realm Database</h3>
+<h4>The Location Format Expected by MongoDB</h4>
+<p>Realm doesn&#8217;t have a native type for a geographic location, and so it&#8217;s up to us how we choose to store it in a Realm Object. That is, unless we want to synchronize the data to MongoDB Atlas using MongoDB Realm Sync, and go on to use MongoDB&#8217;s geospatial functionality.</p>
+<p>To make the best use of the location data in Atlas, we need to add a <a href="https://docs.mongodb.com/manual/geospatial-queries/#geospatial-indexes">geospatial index</a> to the field (which we’ll see how to do soon.) That means storing the location in a <a href="https://docs.mongodb.com/manual/geospatial-queries/#geospatial-data">supported format</a>. Not all options will work with Realm Sync (e.g., it&#8217;s not guaranteed that attributes will appear in the same order in your Realm Object and the synced Atlas document). The most robust approach is to use an array where the first element is longitude and the second is latitude:</p>
+<pre><code class="json">location: [&lt;longitude&gt;, &lt;latitude&gt;]
+</code></pre>
+<h4>Your Realm Object</h4>
+<p>The RChat app gives users the option to include their location in a chat message—this means that we need to include the location in the <a href="https://github.com/realm/RChat/blob/main/RChat-iOS/RChat/Model/ChatMessage.swift">ChatMessage</a> Object:</p>
+<pre><code class="swift">@objcMembers class ChatMessage: Object, ObjectKeyIdentifiable {
+  …
+    let location = List&lt;Double&gt;()
+  …
+    convenience init(author: String, text: String, image: Photo?, location: [Double] = []) {
+        ...
+    location.forEach { coord in
+            self.location.append(coord)
+      }
+        ...
+        }
+    }
+   ….
+}
+</code></pre>
+<p>The <code>location</code> array that&#8217;s passed to that initializer is formed like this:</p>
+<pre><code class="swift">let location = LocationHelper.currentLocation
+self.location = [location.longitude, location.latitude]
+</code></pre>
+<h2>Location Data in Your Backend MongoDB Realm App</h2>
+<p>The easiest way to create your backend MongoDB Realm schema is to enable <a href="https://docs.mongodb.com/realm/sync/enable-development-mode/">Development Mode</a>—that way, the schema is automatically generated from your Swift Realm Objects.</p>
+<p>This is the generated <a href="https://github.com/realm/RChat/blob/main/RChat-Realm/RChat/services/mongodb-atlas/rules/RChat.ChatMessage.json">schema</a> for our &#8220;ChatMessage&#8221; collection:</p>
+<pre><code class="swift">{
+    "bsonType": "object",
+    "properties": {
+      "_id": {
+        "bsonType": "string"
+      },
+      ...
+      "location": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "double"
+        }
+      }
+    },
+    "required": [
+      "_id",
+      ...
+    ],
+    "title": "ChatMessage"
+}
+</code></pre>
+<p>This is a document that&#8217;s been created from a synced Realm <code>ChatMessage</code> object:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/atlas_document_d09cb3be1d.png" alt="Screen capture of an Atlas document, which includes an array named location" /></p>
+<h3>Adding a Geospatial Index in Atlas</h3>
+<p>Now that you have location data stored in Atlas, it would be nice to be able to work with it—e.g., running <a href="https://docs.mongodb.com/manual/geospatial-queries/">geospatial queries</a>. To enable this, you need to add a <a href="https://docs.mongodb.com/manual/geospatial-queries/#geospatial-indexes">geospatial index</a> to the <code>location</code> field.</p>
+<p>From the Atlas UI, select the &#8220;Indexes&#8221; tab for your collection and click &#8220;CREATE INDEX&#8221;:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/geo_index1_604fcbcd13.png" alt="Atlas screen capture of creating a new index" /></p>
+<p>You should then configure a <code>2dsphere</code> index:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/geo_index2_8878556cfc.png" alt="Atlas screen capture of creating a new 2dsphere index" /></p>
+<p>Most chat messages won&#8217;t include the user&#8217;s location and so I set the <code>sparse</code> option for efficiency.</p>
+<p>Note that you&#8217;ll get an error message if your ChatMessage collection contains any documents where the value in the location attribute isn&#8217;t in a valid geospatial format.</p>
+<p>Atlas will then build the index. This will be very quick, unless you already have a huge number of documents containing the location field. Once complete, you can move onto the next section.</p>
+<h3>Plotting Your Location Data in MongoDB Charts</h3>
+<p><a href="https://www.mongodb.com/products/charts">MongoDB Charts</a> is a simple way to visualize MongoDB data. You can access it through the same UI as Realm and Atlas. Just click on the &#8220;Charts&#8221; button:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/select_charts_9c8caa71c0.png" alt="Atlas screen capture of MongoDB Charts button" /></p>
+<p>The first step is to click the &#8220;Add Data Source&#8221; button:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/charts_data_source_4cbf88fea5.png" alt="Charts screen capture of adding a new data source" /></p>
+<p>Select your Atlas cluster:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/charts_select_cluster_b6d35ea00e.png" alt="Charts screen capture of adding Atlas cluster as a data source" /></p>
+<p>Select the <code>RChat.ChatMessage</code> collection:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/charts_select_collections_4f0dc0577d.png" alt="Charts screen capture of selecting the ChatMessage collection in the RChat database" /></p>
+<p>Click “Finish.” You’ll be taken to the default Dashboards view, which is empty for now. Click &#8220;Add Dashboard&#8221;:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/charts_dashboard1_b25eb3e015.png" alt="Charts screen capture of adding a new dashboard" /></p>
+<p>In your new dashboard, click &#8220;ADD CHART&#8221;:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/charts_add_chart_f00639d1a1.png" alt="Charts screen capture of adding a new chart" /></p>
+<p>Configure your chart as shown here by:<br />
+&#8211; Setting the chart type to &#8220;Geospatial&#8221; and the sub-type to &#8220;Scatter.&#8221;<br />
+&#8211; Dragging the &#8220;location&#8221; attribute to the coordinates box.<br />
+&#8211; Dragging the &#8220;author&#8221; field to the &#8220;Color&#8221; box.</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/charts_create_chart_81189874ac.png" alt="Charts screen capture of configuring a new chart" /></p>
+<p>Once you&#8217;ve created your chart, you can <a href="https://docs.mongodb.com/charts/saas/embed-chart-anon-auth/#std-label-anon-embedding-charts">embed it</a> in web apps, etc. That&#8217;s beyond the scope of this article, but check out the <a href="https://docs.mongodb.com/charts/saas/">MongoDB Charts docs</a> if you&#8217;re interested.</p>
+<h2>Conclusion</h2>
+<p>SwiftUI makes it easy to embed Apple Maps in your SwiftUI apps. As with most Apple frameworks, there are extra maps features available if you break out from SwiftUI, but I&#8217;d suggest that the simplicity of working with SwiftUI is enough incentive for you to avoid that unless you have a compelling reason.</p>
+<p>Accessing location information from within SwiftUI still feels a bit of a hack, but in reality, you cut and paste the helper code once, and then you&#8217;re good to go.</p>
+<p>By storing the location as a <code>[longitude, latitude]</code> array (<code>List</code>) in your Realm database, it&#8217;s simple to sync it with MongoDB Atlas. Once in Atlas, you have the full power of MongoDB&#8217;s geospatial functionality to work your location data.</p>
+<p>If you have questions, please head to our <a href="https://community.mongodb.com/">developer community website</a> where the MongoDB engineers and the MongoDB community will help you build your next big idea with MongoDB.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mongodb/realm/maps/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>New article on migrating Apple&#8217;s Scrumdinger tutorial app to Realm</title>
+		<link>/mongodb/realm/new-article-on-migrating-apples-scrumdinger-tutorial-app-to-realm</link>
+					<comments>/mongodb/realm/new-article-on-migrating-apples-scrumdinger-tutorial-app-to-realm#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 12 Apr 2021 08:53:15 +0000</pubDate>
+				<category><![CDATA[Realm]]></category>
+		<category><![CDATA[ios]]></category>
+		<category><![CDATA[mobile]]></category>
+		<category><![CDATA[Swift]]></category>
+		<category><![CDATA[SwiftUI]]></category>
+		<guid isPermaLink="false">/?p=4604</guid>
+
+					<description><![CDATA[Apple published a great tutorial to teach developers how to create iOS apps using Swift and SwiftUI. I particularly like it because it doesn&#8217;t make any assumptions about existing UIKit experience, making it ideal for developers new to iOS. That tutorial is built around an app named &#8220;Scrumdinger,&#8221; which is designed to facilitate daily scrum]]></description>
+										<content:encoded><![CDATA[
+Apple published a great <a rel="noreferrer noopener" href="https://developer.apple.com/tutorials/app-dev-training" target="_blank">tutorial</a> to teach developers how to create iOS apps using Swift and SwiftUI. I particularly like it because it doesn&#8217;t make any assumptions about existing UIKit experience, making it ideal for developers new to iOS. That tutorial is built around an <a rel="noreferrer noopener" href="https://github.com/realm/Scrumdinger" target="_blank">app named &#8220;Scrumdinger,&#8221;</a> which is designed to facilitate daily <a rel="noreferrer noopener" href="https://en.wikipedia.org/wiki/Scrum_(software_development)" target="_blank">scrum</a> meetings.
+
+
+
+
+<div style="height:36px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+
+Apple&#8217;s Scrumdinger implementation saves the app data to a local file whenever the user minimizes the app, and loads it again when they open the app. It seemed an interesting exercise to modify Scrumdinger to use Realm rather than a flat file to persist the data. So. I wrote <a rel="noreferrer noopener" href="https://developer.mongodb.com/how-to/realm-swiftui-scrumdinger-migration" target="_blank">&#8220;Adapting Apple&#8217;s Scrumdinger SwiftUI Tutorial App to Use Realm&#8221;</a> to step through what changes were required to rebase Scrumdinger onto Realm.
+
+
+
+
+<div style="height:37px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+
+An immediate benefit of the move is that changes are now persisted immediately, so nothing is lost if the device or app crashes. It&#8217;s beyond the scope of this article, but now that the app data is stored in Realm, it would be straightforward to add enhancements such as:
+
+
+
+
+<ul class="wp-block-list"><li>Search meeting minutes for a string.- Filter minutes by date or attendees.</li><li>Sync data so that the same user can see all of their data on multiple iOS (and optionally, Android) devices.</li><li>Use <a rel="noreferrer noopener" href="https://docs.mongodb.com/realm/sync/partitioning/" target="_blank">Realm Sync Partitions</a> to share scrum data between team members.</li><li>Sync the data to MongoDB Atlas so that it can be accessed by web apps or through a GraphQL API</li></ul>
+
+
+
+
+
+]]></content:encoded>
+					
+					<wfw:commentRss>/mongodb/realm/new-article-on-migrating-apples-scrumdinger-tutorial-app-to-realm/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Building a Mobile Chat App Using Realm – Data Architecture</title>
+		<link>/uncategorized/building-a-mobile-chat-app-using-realm-data-architecture</link>
+					<comments>/uncategorized/building-a-mobile-chat-app-using-realm-data-architecture#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 07 Jan 2021 08:09:00 +0000</pubDate>
+				<category><![CDATA[Me]]></category>
+		<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[Realm]]></category>
+		<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[ios]]></category>
+		<category><![CDATA[mobile]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<guid isPermaLink="false">/?p=4580</guid>
+
+					<description><![CDATA[I&#8217;ve just built an iOS chat app using SwiftUI, Realm, and Realm Sync. I decided on a chat app as it makes an interesting case study for designing a data model and controlling who can access what data: A chat message needs to be viewable by all members of a chat room and no one else.]]></description>
+										<content:encoded><![CDATA[<p>I&#8217;ve just built an <a href="https://github.com/ClusterDB/RChat" target="_blank" rel="noopener">iOS chat app</a> using SwiftUI, Realm, and Realm Sync. I decided on a chat app as it makes an interesting case study for designing a data model and controlling who can access what data:</p>
+<ul>
+<li>A chat message needs to be viewable by all members of a chat room and no one else.</li>
+<li>New messages must be pushed to the chat room for all online members in real-time.</li>
+<li>The app should notify a user that there are new messages even when they don&#8217;t have that chat room open.</li>
+<li>Users should be able to observe the &#8220;presence&#8221; of other users (e.g., whether they&#8217;re currently logged into the app).</li>
+<li>There&#8217;s no limit on how many messages users send in a chat room, and so the data structures must allow them to grow indefinitely.</li>
+</ul>
+<p>Because this app&#8217;s data model (and the decisions taken when designing) serve as a great starting point for many different types of apps, I wrote it up in this <a href="https://developer.mongodb.com/how-to/realm-swiftui-ios-chat-app">HowTo article</a>.</p>
+<p>You can download all of the code from the <a href="https://github.com/ClusterDB/RChat">GitHub repo</a>.</p>
+<p>Checkout <a href="https://developer.mongodb.com/how-to/realm-swiftui-ios-chat-app">Building a Mobile Chat App Using Realm – Data Architecture</a> for all of the details.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/uncategorized/building-a-mobile-chat-app-using-realm-data-architecture/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Stitch &#038; Mobile Webinar Questions &#038; Replay</title>
+		<link>/mongodb/stitch-mobile-webinar-questions-replay</link>
+					<comments>/mongodb/stitch-mobile-webinar-questions-replay#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 22 Nov 2018 12:22:32 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[mobile]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Mobile]]></category>
+		<category><![CDATA[MongoDB Stitch]]></category>
+		<category><![CDATA[serverless]]></category>
+		<guid isPermaLink="false">/?p=4541</guid>
+
+					<description><![CDATA[How do you test MongoDB Stitch functions, how do you store Stitch triggers, and what services can you integrate Stitch with? These were some of the great questions that were asked and answered in my recent webinar. You can watch the replay of &#8220;MongoDB Mobile and MongoDB Stitch – Introduction and Latest Developments&#8221; here, or]]></description>
+										<content:encoded><![CDATA[<p>How do you test MongoDB <a href="https://docs.mongodb.com/stitch/functions/" title="MongoDB Stitch serverless functions">Stitch functions</a>, how do you store <a href="https://docs.mongodb.com/stitch/triggers/database-triggers/" title="MongoDB database triggers using MongoDB Stitch"> Stitch triggers</a>, and what services can you integrate Stitch with? These were some of the great questions that were asked and answered in my recent webinar. You can watch the replay of <a href="https://www.mongodb.com/presentations/mongodb-mobile-and-mongodb-stitch-introduction" title="Building mobile and IoT apps with MongoDB, MongoDB Stitch, and MongoDB Mobile">&#8220;MongoDB Mobile and MongoDB Stitch – Introduction and Latest Developments&#8221; here</a>, or read on as I share the answers to those questions here.</p>
+<p>For those new to MongoDB Stitch, it&#8217;s the serverless platform from MongoDB that isolates complexity and ‘plumbing’ so you can build applications faster. Stitch went GA in June 2018, and we recently added a set of new capabilities, including global Stitch apps, more AWS services, a React Native SDK, and the beta for Stitch Mobile Sync. MongoDB Mobile is an embedded version of the MongoDB database that you can embed in your mobile or IoT apps.</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/Mobile_Stitch_Architecture_v2-am9l8s8m2o.png" alt="Building mobile apps with MongoDB Mobile, MongoDB Stitch, and MongoDB Atlas" /></p>
+<p>These are some of the questions I thought might be of interest:</p>
+<h4>How do you test Stitch functions?</h4>
+<p>The <a href="https://www.mongodb.com/blog/post/testing--debugging-mongodb-stitch-functions" title="Testing MongoDB Stitch functions using the Stitch UI console">Stitch UI includes a console</a> which can be used to test your <a href="https://docs.mongodb.com/stitch/functions/" title="MongoDB Stitch serverless functions">Stitch functions</a>; you can include <code>console.log</code> statements to add extra debug output to the console (they also get added to the log files for every function invoked from an <a href="https://docs.mongodb.com/stitch/services/http/#incoming-webhooks" title="MongoDB Stitch incoming http webhooks">incoming webhook</a>, <a href="https://docs.mongodb.com/stitch/triggers/database-triggers/" title="MongoDB database triggers using MongoDB Stitch">trigger</a>, or the <a href="https://docs.mongodb.com/stitch/procedures/init-stitchclient/" title="MongoDB Stitch client SDKs">Stitch SDK</a>).</p>
+<p>You can also <a href="https://www.mongodb.com/blog/post/working-with-mongodb-stitch-through-the-mongo-shell" title="Testing MongoDB Stitch functions using the mongo shell and the Stitch connection string">invoke your Stitch functions through the mongo shell</a>. To do that, you&#8217;ll need to enable the MongoDB wire protocol so that the shell can talk to your Stitch app, then use the Stitch connection string provided. Once connected, you can call Stitch functions explicitly like this:</p>
+<pre><code class="js">mongo&gt; db.runCommand({callFunction: "morning", arguments: ["Billy"]})
+
+{"ok" : 1,
+ "response" : {"message" : "Good Morning Billy from andrew.morgan@mongodb.com"}
+}
+</code></pre>
+<p>You can read more about this in <a href="https://www.mongodb.com/blog/post/working-with-mongodb-stitch-through-the-mongo-shell" title="Testing MongoDB Stitch functions using the mongo shell and the Stitch connection string">this post</a> which takes you through the process.</p>
+<h4>How do you store stitch triggers in your Git repo?</h4>
+<p>You can <a href="https://docs.mongodb.com/stitch/import-export/export-stitch-app/" title="Exporting apps from MongoDB Stitch">export</a> your Stitch application from the Stitch UI or the Stitch CLI; the exported app is represented by a directory structure containing JSON and JavaScript files:</p>
+<pre><code>yourStitchApp/
+├── stitch.json
+├── secrets.json
+├── variables.json
+├── auth_providers/
+│   └── &lt;provider name&gt;.json
+├── functions/
+│   └── &lt;function name&gt;/
+│       ├── config.json
+│       └── source.js
+├── services/
+│   └── &lt;service name&gt;/
+│       ├── config.json
+│       ├── incoming_webhooks/
+│       │   ├── config.json
+│       │   └── source.js
+│       └── rules/
+│           └── &lt;rule name&gt;.json
+├── triggers/
+│   └── &lt;trigger name&gt;/
+│       ├── config.json
+│       └── source.js
+└── values/
+    └── &lt;value name&gt;.json
+</code></pre>
+<p>You can then work on the trigger configuration and the associated function locally, source control the app using Git, or <a href="https://docs.mongodb.com/stitch/import-export/" title="Importing a MongoDB Stitch app">import it into a new App</a>.</p>
+<h4>We saw a few integration provider logos in the presentation. Is there a page on the MongoDB site with the comprehensive list?</h4>
+<p>You can find the list of Stitch’s built-in service integrations in the <a href="https://docs.mongodb.com/stitch/services/" title="MongoDB Stitch documentation">Stitch documentation</a>.</p>
+<p>Note that if we don’t have a built-in integration for a particular service, then you can easily integrate it yourself, using the <a href="https://docs.mongodb.com/stitch/services/http/" title="MongoDB Stitch generic http service">Stitch HTTP service</a> and <a href="https://docs.mongodb.com/stitch/services/http/#incoming-webhooks" title="MongoDB Stitch incoming http webhooks">incoming webhooks</a>. You can even <a href="https://docs.mongodb.com/stitch/import-export/export-stitch-app/" title="Exporting apps from MongoDB Stitch">export your new service integration</a> to share with others.</p>
+<h4>Is MongoDB Mobile + Stitch Mobile Sync the same as a cache in a progressive app?</h4>
+<p>It certainly removes the need to have a separate cache, but it does much more. With MongoDB Mobile, the data is persistently stored on your device. You also have the full power of the MongoDB Query Language to perform sophisticated queries and aggregations on that local data. Changes made to the local database are pushed back to MongoDB Atlas, and from there to any other mobile devices configured to sync the same documents (e.g., for the same user running the app on another device).</p>
+<h4>How do I download &amp; embed MongoDB Mobile?</h4>
+<p>You simply need to <a href="https://docs.mongodb.com/stitch/mongodb/mobile/getting-started/" title="How to embed MongoDB Mobile in your application">add 1 line to your Android or Xcode project</a> to have access to the entire Stitch SDK, including the Stitch Local Database service (i.e.,the MongoDB Mobile database). The Stitch SDK includes the entire mobile and makes it very easy to use and consume, even if you&#8217;re just using the local MongoDB Mobile database and not Stitch.</p>
+<hr />
+<p>Creating your first Stitch app? Start with one of the <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch serverless platform – tutorials">Stitch tutorials</a>.</p>
+<p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mongodb/stitch-mobile-webinar-questions-replay/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="/xmlrpc.php">
+	
+	<title>Build Offline-First Mobile Apps by Caching API Results in Realm | Andrew Morgan on Databases</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Build Offline-First Mobile Apps by Caching API Results in Realm Comments Feed" href="/mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm/feed">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/*  */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/*  */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="/wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="/wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="/wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="/wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="/wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/4633"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+
+<link rel="canonical" href="/mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm">
+<link rel="shortlink" href="/?p=4633">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fmongodb%2Frealm%2Fbuild-offline-first-mobile-apps-by-caching-api-results-in-realm">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fmongodb%2Frealm%2Fbuild-offline-first-mobile-apps-by-caching-api-results-in-realm#038;format=xml">
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style><style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style><script type="text/javascript">//
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//</script><style type="text/css"></style><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style></head>
+
+<body class="post-template-default single single-post postid-4633 single-format-standard custom-background">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="/"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu"><li class="page_item page-item-1011"><a href="/about">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="/wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+
+					<div id="post-4633" class="post-4633 post type-post status-publish format-standard has-post-thumbnail hentry category-realm tag-realm tag-swift tag-swiftui">
+			
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm">September 14, 2021</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+				
+				<h2 class="post-title">Build Offline-First Mobile Apps by Caching API Results in Realm</h2>
+				
+				<div class="entry">
+					<img width="300" height="158" src="/wp-content/uploads/2021/09/Twitter_1024x512-300x158.png" class="alignleft wp-post-image" alt="" decoding="async" srcset="/wp-content/uploads/2021/09/Twitter_1024x512-300x158.png 300w, /wp-content/uploads/2021/09/Twitter_1024x512-1024x538.png 1024w, /wp-content/uploads/2021/09/Twitter_1024x512-768x404.png 768w, /wp-content/uploads/2021/09/Twitter_1024x512-1536x807.png 1536w, /wp-content/uploads/2021/09/Twitter_1024x512.png 2048w" sizes="(max-width: 300px) 100vw, 300px">					<p>Note that this post was originally published at <a href="https://www.mongodb.com/developer/how-to/realm-api-cache/">Build Offline-First Mobile Apps by Caching API Results in Realm</a>.</p>
+<h2>Introduction</h2>
+<p>When building a mobile app, there&#8217;s a good chance that you want it to pull in data from a cloud service—whether from your own or from a third party. While other technologies are growing (e.g., <a href="https://docs.mongodb.com/realm/graphql/">GraphQL</a> and <a href="https://docs.mongodb.com/realm/sync/">MongoDB Realm Sync</a>), <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST APIs</a> are still prevalent.</p>
+<p>It&#8217;s easy to make a call to a REST API endpoint from your mobile app, but what happens when you lose network connectivity? What if you want to slice and dice that data after you&#8217;ve received it? How many times will your app have to fetch the same data (consuming data bandwidth and battery capacity each time)? How will your users react to a sluggish app that&#8217;s forever fetching data over the internet?</p>
+<p>By caching the data from API calls in Realm, the data is always available to your app. This leads to higher availability, faster response times, and reduced network and battery consumption.</p>
+<p>This article shows how the <a href="https://github.com/realm/RCurrency">RCurrency</a> mobile app fetches exchange rate data from a <a href="https://exchangerate.host/">public API</a>, and then caches it in Realm for always-on, local access.</p>
+<h3>Is Using the API from Your Mobile App the Best Approach?</h3>
+<p>This app only reads data through the API. Writing an offline-first app that needs to reliably update cloud data via an API is a <strong>far</strong> more complex affair. If you need to update cloud data when offline, then I&#8217;d strongly recommend you consider <a href="https://docs.mongodb.com/realm/sync/">MongoDB Realm Sync</a>.</p>
+<p>Many APIs throttle your request rate or charge per request. That can lead to issues as your user base grows. A more scalable approach is to have your backend Realm app fetch the data from the API and store it in Atlas. Realm Sync then makes that data available locally on every user&#8217;s mobile device—without the need for any additional API calls.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li><a href="https://github.com/realm/realm-cocoa">Realm-Cocoa 10.13.0+</a></li>
+<li>Xcode 13</li>
+<li>iOS 15</li>
+</ul>
+<h2>The RCurrency Mobile App</h2>
+<p>The <a href="https://github.com/realm/RCurrency">RCurrency</a> app is a simple exchange rate app. It&#8217;s intended for uses such as converting currencies when traveling.</p>
+<p>You choose a base currency and a list of other currencies you want to convert between.</p>
+<p>When opened for the first time, RCurrency uses a REST API to retrieve exchange rates, and stores the data in Realm. From that point on, the app uses the data that&#8217;s stored in Realm. Even if you force-close the app and reopen it, it uses the local data.</p>
+<p>If the stored rates are older than today, the app will fetch the latest rates from the API and replace the Realm data.</p>
+<p>The app supports pull-to-refresh to fetch and store the latest exchange rates from the API.</p>
+<p>You can alter the amount of any currency, and the amounts for all other currencies are instantly recalculated.</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/R_Currency_demo_9820e35730.gif" alt="Animation of the RCurrency app running on an iPhone. Includes the user selecting currencies, changing amounts and observing the amounts changing for other currencies"></p>
+<h2>The REST API</h2>
+<p>I&#8217;m using the API provided by <a href="https://exchangerate.host/">exchangerate.host</a>. The API is a free service that provides a simple API to fetch currency exchange rates.</p>
+<p>One of the reasons I picked this API is that it doesn&#8217;t require you to register and then manage access keys/tokens. It&#8217;s not rocket science to handle that complexity, but I wanted this app to focus on when to fetch data, and what to do once you receive it.</p>
+<p>The app uses a single endpoint (where you can replace <code>USD</code> and <code>EUR</code> with the currencies you want to convert between):</p>
+<pre><code class="js">https://api.exchangerate.host/convert?from=USD&amp;to=EUR
+</code></pre>
+<p>You can try <a href="https://api.exchangerate.host/convert?from=USD&amp;to=EUR">calling that endpoint directly from your browser</a>.</p>
+<p>The endpoint responds with a JSON document:</p>
+<pre><code class="js">{
+  "motd": {
+    "msg": "If you or your company use this project or like what we doing, please consider backing us so we can continue maintaining and evolving this project.",
+    "url": "https://exchangerate.host/#/donate"
+  },
+  "success": true,
+  "query": {
+    "from": "USD",
+    "to": "EUR",
+    "amount": 1
+  },
+  "info": {
+    "rate": 0.844542
+  },
+  "historical": false,
+  "date": "2021-09-02",
+  "result": 0.844542
+}
+</code></pre>
+<p>Note that the exchange rate for each currency is only updated once every 24 hours. That&#8217;s fine for our app that&#8217;s helping you decide whether you can afford that baseball cap when you&#8217;re on vacation. If you&#8217;re a currency day-trader, then you should look elsewhere.</p>
+<h2>The RCurrency App Implementation</h2>
+<h3>Data Model</h3>
+<p>JSON is the language of APIs. That&#8217;s great news as most modern programming languages (including Swift) make it super easy to convert between JSON strings and native objects.</p>
+<p>The app stores the results from the API query in objects of type <code>Rate</code>. To make it as simple as possible to receive and store the results, I made the <a href="https://github.com/realm/RCurrency/blob/main/iOS-SwiftUI/RCurrency/RCurrency/Model/Rate.swift"><code>Rate</code> class</a> match the JSON format of the API results:</p>
+<pre><code class="swift">class Rate: Object, ObjectKeyIdentifiable, Codable {
+    var motd = Motd()
+    var success = false
+    @Persisted var query: Query?
+    var info = Info()
+    @Persisted var date: String
+    @Persisted var result: Double
+}
+
+class Motd: Codable {
+    var msg = ""
+    var url = ""
+}
+
+class Query: EmbeddedObject, ObjectKeyIdentifiable, Codable {
+    @Persisted var from: String
+    @Persisted var to: String
+    var amount = 0
+}
+
+class Info: Codable {
+    var rate = 0.0
+}
+</code></pre>
+<p>Note that only the fields annotated with <code>@Persisted</code> will be stored in Realm.</p>
+<p>Swift can automatically convert between <code>Rate</code> objects and the JSON strings returned by the API because we make the class comply with the <a href="https://developer.apple.com/documentation/swift/codable"><code>Codable</code> protocol</a>.</p>
+<p>There are two other top-level classes used by the app.</p>
+<p><a href="https://github.com/realm/RCurrency/blob/main/iOS-SwiftUI/RCurrency/RCurrency/Model/Symbols.swift"><code>Symbols</code></a> stores all of the supported currency symbols. In the app, the list is bootstrapped from a fixed list. For future-proofing, it would be better to fetch them from an API:</p>
+<pre><code class="swift">class Symbols {
+    var symbols = Dictionary&lt;String, String&gt;()
+}
+
+extension Symbols {
+    static var data = Symbols()
+
+
+    static func loadData() {
+        data.symbols["AED"] = "United Arab Emirates Dirham"
+        data.symbols["AFN"] = "Afghan Afghani"
+        data.symbols["ALL"] = "Albanian Lek"
+        ...
+    }
+}
+</code></pre>
+<p><code>UserSymbols</code> is used to store the user&#8217;s chosen base currency and the list of currencies they&#8217;d like to see exchange rates for:</p>
+<pre><code class="swift">class UserSymbols: Object, ObjectKeyIdentifiable {
+    @Persisted var baseSymbol: String
+    @Persisted var symbols: List&lt;String&gt;
+}
+</code></pre>
+<p>An instance of <code>UserSymbols</code> is stored in Realm so that the user gets the same list whenever they open the app.</p>
+<h3><code>Rate</code> Data Lifecycle</h3>
+<p>This flowchart shows how the exchange rate for a single currency (represented by the <code>symbol</code> string) is managed when the <code>CurrencyRowContainerView</code> is used to render data for that currency:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Rendering_a_Currency_flowchart_c92433a8dc.png" alt="Flowchart showing how the app fetches data from the API and stored in in Realm. The mobile app's UI always renders what's stored in MongoDB. The following sections will describe each block in the flow diagram."></p>
+<p>Note that the actual behavior is a little more subtle than the diagram suggests. SwiftUI ties the Realm data to the UI. If stage #2 finds the data in Realm, then it will immediately get displayed in the view (stage #8). The code will then make the extra checks and refresh the Realm data if needed. If and when the Realm data is updated, SwiftUI will automatically refresh the UI to render it.</p>
+<p>Let&#8217;s look at each of those steps in turn.</p>
+<h4>#1 <code>CurrencyContainerView</code> loaded for currency represented by <code>symbol</code></h4>
+<p><a href="https://github.com/realm/RCurrency/blob/main/iOS-SwiftUI/RCurrency/RCurrency/Views/CurrencyList/CurrencyListContainerView.swift"><code>CurrencyListContainerView</code></a> iterates over each of the currencies that the user has selected. For each currency, it creates a <a href="https://github.com/realm/RCurrency/blob/main/iOS-SwiftUI/RCurrency/RCurrency/Views/CurrencyItem/CurrencyRowContainerView.swift"><code>CurrencyRowContainerView</code></a> and passes in strings representing the base currency (<code>baseSymbol</code>) and the currency we want an exchange rate for (<code>symbol</code>):</p>
+<pre><code class="swift">List {
+   ForEach(userSymbols.symbols, id: \.self) { symbol in
+       CurrencyRowContainerView(baseSymbol: userSymbols.baseSymbol,
+                                   baseAmount: $baseAmount,
+                                   symbol: symbol,
+                                   refreshNeeded: refreshNeeded)
+   }
+   .onDelete(perform: deleteSymbol)
+}
+</code></pre>
+<h4>#2 <code>rate</code> = FetchFromRealm(<code>symbol</code>)</h4>
+<p><a href="https://github.com/realm/RCurrency/blob/main/iOS-SwiftUI/RCurrency/RCurrency/Views/CurrencyItem/CurrencyRowContainerView.swift"><code>CurrencyRowContainerView</code></a> then uses the <code>@ObservedResults</code> property wrapper to query all <code>Rate</code> objects that are already stored in Realm:</p>
+<pre><code class="swift">struct CurrencyRowContainerView: View {
+   @ObservedResults(Rate.self) var rates
+   ...
+}
+</code></pre>
+<p>The view then filters those results to find one for the requested <code>baseSymbol</code>/<code>symbol</code> pair:</p>
+<pre><code class="swift">var rate: Rate? {
+   rates.filter(
+       NSPredicate(format: "query.from = %@ AND query.to = %@",
+                   baseSymbol, symbol)).first
+}
+</code></pre>
+<h4>#3 <code>rate</code> found?</h4>
+<p>The view checks whether <code>rate</code> is set or not (i.e., whether a matching object was found in Realm). If <code>rate</code> is set, then it&#8217;s passed to <code>CurrencyRowDataView</code> to render the details (step #8). If <code>rate</code> is <code>nil</code>, then a placeholder &#8220;Loading Data&#8230;&#8221; <code>TextView</code> is rendered, and <code>loadData</code> is called to fetch the data using the API (step #4-3):</p>
+<pre><code class="swift">var body: some View {
+   if let rate = rate {
+       HStack {
+           CurrencyRowDataView(rate: rate, baseAmount: $baseAmount, action: action)
+           ...
+       }
+   } else {
+       Text("Loading Data...")
+           .onAppear(perform: loadData)
+   }
+}
+</code></pre>
+<h4>#4-3 Fetch <code>rate</code> from API — No matching object found in Realm</h4>
+<p>The API URL is formed by inserting the base currency (<code>baseSymbol</code>) and the target currency (<code>symbol</code>) into a template string. <code>loadData</code> then sends the request to the API endpoint and handles the response:</p>
+<pre><code class="swift">private func loadData() {
+   guard let url = URL(string: "https://api.exchangerate.host/convert?from=\(baseSymbol)&amp;to=\(symbol)") else {
+       print("Invalid URL")
+       return
+   }
+   let request = URLRequest(url: url)
+   print("Network request: \(url.description)")
+   URLSession.shared.dataTask(with: request) { data, response, error in
+       guard let data = data else {
+           print("Error fetching data: \(error?.localizedDescription ?? "Unknown error")")
+           return
+       }
+       if let decodedResponse = try? JSONDecoder().decode(Rate.self, from: data) {
+           // TODO: Step #5-3
+       } else {
+           print("No data received")
+       }
+   }
+   .resume()
+}
+</code></pre>
+<h4>#5-3 StoreInRealm(<code>rate</code>) — No matching object found in Realm</h4>
+<p><code>Rate</code> objects stored in Realm are displayed in our SwiftUI views. Any data changes that impact the UI must be done on the main thread. When the API endpoint sends back results, our code receives them in a callback thread, and so we must use <code>DispatchQueue</code> to run our closure in the main thread so that we can add the resulting <code>Rate</code> object to Realm:</p>
+<pre><code class="swift">if let decodedResponse = try? JSONDecoder().decode(Rate.self, from: data) {
+   DispatchQueue.main.async {
+       $rates.append(decodedResponse)
+   }
+} else {
+   print("No data received")
+}
+</code></pre>
+<p>Notice how simple it is to convert the JSON response into a Realm <code>Rate</code> object and store it in our local realm!</p>
+<h4>#6 Refresh Requested?</h4>
+<p>RCurrency includes a <a href="https://www.hackingwithswift.com/quick-start/swiftui/how-to-enable-pull-to-refresh">pull-to-refresh</a> feature which will fetch fresh exchange rate data for each of the user&#8217;s currency symbols. We add the refresh functionality by appending the <code>.refreshable</code> modifier to the <code>List</code> of rates in <a href="https://github.com/realm/RCurrency/blob/main/iOS-SwiftUI/RCurrency/RCurrency/Views/CurrencyList/CurrencyListContainerView.swift"><code>CurrencyListContainerView</code></a>:</p>
+<pre><code class="swift">List {
+   ...
+}
+.refreshable(action: refreshAll)
+</code></pre>
+<p><code>refreshAll</code> sets the <code>refreshNeeded</code> variable to <code>true</code>, waits a second to allow SwiftUI to react to the change, and then sets it back to <code>false</code>:</p>
+<pre><code class="swift">private func refreshAll() {
+   refreshNeeded = true
+   DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+       refreshNeeded = false
+   }
+}
+</code></pre>
+<p><code>refreshNeeded</code> is passed to each instance of <code>CurrencyRowContainerView</code>:</p>
+<pre><code class="swift">CurrencyRowContainerView(baseSymbol: userSymbols.baseSymbol,
+                        baseAmount: $baseAmount,
+                        symbol: symbol,
+                        refreshNeeded: refreshNeeded)
+</code></pre>
+<p><a href="https://github.com/realm/RCurrency/blob/main/iOS-SwiftUI/RCurrency/RCurrency/Views/CurrencyItem/CurrencyRowContainerView.swift"><code>CurrencyRowContainerView</code></a> checks <code>refreshNeeded</code>. If <code>true</code>, it displays a temporary refresh image and invokes <code>refreshData</code> (step #4-6):</p>
+<pre><code class="swift">if refreshNeeded {
+   Image(systemName: "arrow.clockwise.icloud")
+       .onAppear(perform: refreshData)
+}
+</code></pre>
+<h4>#4-6 Fetch <code>rate</code> from API — Refresh requested</h4>
+<p><code>refreshData</code> fetches the data in exactly the same way as <code>loadData</code> in step #4-3:</p>
+<pre><code class="swift">private func refreshData() {
+   guard let url = URL(string: "https://api.exchangerate.host/convert?from=\(baseSymbol)&amp;to=\(symbol)") else {
+       print("Invalid URL")
+       return
+   }
+   let request = URLRequest(url: url)
+   print("Network request: \(url.description)")
+   URLSession.shared.dataTask(with: request) { data, response, error in
+       guard let data = data else {
+           print("Error fetching data: \(error?.localizedDescription ?? "Unknown error")")
+           return
+       }
+       if let decodedResponse = try? JSONDecoder().decode(Rate.self, from: data) {
+           DispatchQueue.main.async {
+               // TODO: #5-5
+           }
+       } else {
+           print("No data received")
+       }
+   }
+   .resume()
+}
+</code></pre>
+<p>The difference is that in this case, there may already be a <code>Rate</code> object in Realm for this currency pair, and so the results are handled differently&#8230;</p>
+<h4>#5-6 StoreInRealm(<code>rate</code>) — Refresh requested</h4>
+<p>If the <code>Rate</code> object for this currency pair had been found in Realm, then we reference it with <code>existingRate</code>. <code>existingRate</code> is then updated with the API results:</p>
+<pre><code class="swift">if let decodedResponse = try? JSONDecoder().decode(Rate.self, from: data) {
+   DispatchQueue.main.async {
+       if let existingRate = rate {
+           do {
+               let realm = try Realm()
+               try realm.write() {
+                   guard let thawedrate = existingRate.thaw() else {
+                       print("Couldn't thaw existingRate")
+                       return
+                   }
+                   thawedrate.date = decodedResponse.date
+                   thawedrate.result = decodedResponse.result
+               }
+           } catch {
+               print("Unable to update existing rate in Realm")
+           }
+       }
+   }
+}
+</code></pre>
+<h4>#7 <code>rate</code> stale?</h4>
+<p>The exchange rates available through the API are updated daily. The date that the rate applies to is included in the API response, and it’s stored in the Realm <code>Rate</code> object. When displaying the exchange rate data, <a href="https://github.com/realm/RCurrency/blob/main/iOS-SwiftUI/RCurrency/RCurrency/Views/CurrencyItem/CurrencyRowDataView.swift"><code>CurrencyRowDataView</code></a> invokes <code>loadData</code>:</p>
+<pre><code class="swift">var body: some View {
+   CurrencyRowView(value: (rate.result) * baseAmount,
+                   symbol: rate.query?.to ?? "",
+                   baseValue: $baseAmount,
+                   action: action)
+       .onAppear(perform: loadData)
+}
+</code></pre>
+<p><code>loadData</code> checks that the existing Realm <code>Rate</code> object applies to today. If not, then it will refresh the data (stage 4-7):</p>
+<pre><code class="swift">private func loadData() {
+   if !rate.isToday {
+       // TODO: 4-7
+   }
+}
+</code></pre>
+<p><code>isToday</code> is a <a href="https://github.com/realm/RCurrency/blob/main/iOS-SwiftUI/RCurrency/RCurrency/Model/Rate.swift"><code>Rate</code></a> method to check whether the stored data matches the current date:</p>
+<pre><code class="swift">extension Rate {
+   var isToday: Bool {
+       let today = Date().description.prefix(10)
+       return  date == today
+   }
+}
+</code></pre>
+<h4>#4-7 Fetch <code>rate</code> from API — <code>rate</code> stale</h4>
+<p>By now, the code to fetch the data from the API should be familiar:</p>
+<pre><code class="swift">private func loadData() {
+   if !rate.isToday {
+       guard let query = rate.query else {
+           print("Query data is missing")
+           return
+       }
+       guard let url = URL(string: "https://api.exchangerate.host/convert?from=\(query.from)&amp;to=\(query.to)") else {
+           print("Invalid URL")
+           return
+       }
+       let request = URLRequest(url: url)
+       URLSession.shared.dataTask(with: request) { data, response, error in
+           guard let data = data else {
+               print("Error fetching data: \(error?.localizedDescription ?? "Unknown error")")
+               return
+           }
+           if let decodedResponse = try? JSONDecoder().decode(Rate.self, from: data) {
+               DispatchQueue.main.async {
+                   // TODO: #5.7
+               }
+           } else {
+               print("No data received")
+           }
+       }
+       .resume()
+   }
+}
+</code></pre>
+<h4>#5-7 StoreInRealm(<code>rate</code>) — <code>rate</code> stale</h4>
+<p><code>loadData</code> copies the new <code>date</code> and exchange rate (<code>result</code>) to the stored Realm <code>Rate</code> object:</p>
+<pre><code class="swift">if let decodedResponse = try? JSONDecoder().decode(Rate.self, from: data) {
+   DispatchQueue.main.async {
+       $rate.date.wrappedValue = decodedResponse.date
+       $rate.result.wrappedValue = decodedResponse.result
+   }
+}
+</code></pre>
+<h4>#8 View rendered with <code>rate</code></h4>
+<p><a href="https://github.com/realm/RCurrency/blob/main/iOS-SwiftUI/RCurrency/RCurrency/Views/CurrencyItem/CurrencyRowView.swift"><code>CurrencyRowView</code></a> receives the raw exchange rate data, and the amount to convert. It’s responsible for calculating and rendering the results:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Single_Rate_Rendered_84c0c03e6a.png" alt="Screen capture showing the row for a single currency. In this case it shows the US flag, the &quot;USD&quot; symbol and the amount (3.23...)"></p>
+<p>The number shown in this view is part of a <code>TextField</code>, which the user can overwrite:</p>
+<pre><code class="swift">@Binding var baseValue: Double
+...
+TextField("Amount", text: $amount)
+   .keyboardType(.decimalPad)
+   .onChange(of: amount, perform: updateValue)
+   .font(.largeTitle)
+</code></pre>
+<p>When the user overwrites the number, the <code>onChange</code> function is called which recalculates <code>baseValue</code> (the value of the base currency that the user wants to convert):</p>
+<pre><code class="swift">private func updateValue(newAmount: String) {
+   guard let newValue = Double(newAmount) else {
+       print("\(newAmount) cannot be converted to a Double")
+       return
+   }
+   baseValue = newValue / rate
+}
+</code></pre>
+<p>As <code>baseValue</code> was passed in as a binding, the new value percolates up the view hierarchy, and all of the currency values are updated. As the exchange rates are held in Realm, all of the currency values are recalculated without needing to use the API:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/change_values_fd69a8240b.gif" alt="Animation showing the app running on an iPhone. When the user changes the amount for 1 currency, the amounts for all of the others changes immediately"></p>
+<h2>Conclusion</h2>
+<p>REST APIs let your mobile apps act on a vast variety of cloud data. The downside is that APIs can&#8217;t help you when you don&#8217;t have access to the internet. They can also make your app seem sluggish, and your users may get frustrated when they have to wait for data to be downloaded.</p>
+<p>A common solution is to use Realm to cache data from the API so that it&#8217;s always available and can be accessed locally in an instant.</p>
+<p>This article has shown you a typical data lifecycle that you can reuse in your own apps. You&#8217;ve also seen how easy it is to store the JSON results from an API call in your Realm database:</p>
+<pre><code class="swift">if let decodedResponse = try? JSONDecoder().decode(Rate.self, from: data) {
+   DispatchQueue.main.async {
+       $rates.append(decodedResponse)
+   }
+}
+</code></pre>
+<p>We&#8217;ve focussed on using a read-only API. Things get complicated very quickly when your app starts modifying data through the API. What should your app do when your device is offline?</p>
+<ul>
+<li>Don&#8217;t allow users to do anything that requires an update?</li>
+<li>Allow local updates and maintain a list of changes that you iterate through when back online?
+<ul>
+<li>Will some changes you accept from the user have to be backed out once back online and you discover conflicting changes from other users?</li>
+</ul>
+</li>
+</ul>
+<p>If you need to modify data that&#8217;s accessed by other users or devices, consider <a href="https://docs.mongodb.com/realm/sync/">MongoDB Realm Sync</a> as an alternative to accessing APIs directly from your app. It will save you thousands of lines of tricky code!</p>
+<p>The API you&#8217;re using may throttle access or charge per request. You can create a backend MongoDB Realm app to fetch the data from the API just once, and then use Realm Sync to handle the fan-out to all instances of your mobile app.</p>
+<p>If you have any questions or comments on this post (or anything else Realm-related), then please raise them on our <a href="https://www.mongodb.com/community/forums/c/realm-sdks/58">community forum</a>. To keep up with the latest Realm news, follow <a href="https://twitter.com/realm">@realm</a> on Twitter and join the <a href="https://live.mongodb.com/realm-global-community/">Realm global community</a>.</p>
+					<div class="clear"></div>
+										<!-- <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="/mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm"
+    dc:identifier="/mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm"
+    dc:title="Build Offline-First Mobile Apps by Caching API Results in Realm"
+    trackback:ping="/mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm/trackback" />
+</rdf:RDF> -->			
+				</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm" data-via="wpbeginner" data-text="Build Offline-First Mobile Apps by Caching API Results in Realm" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmongodb%2Frealm%2Fbuild-offline-first-mobile-apps-by-caching-api-results-in-realm&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mongodb/realm" rel="category tag">Realm</a> | 
+Tags: <a href="/tag/realm" rel="tag">Realm</a>, <a href="/tag/swift" rel="tag">Swift</a>, <a href="/tag/swiftui" rel="tag">SwiftUI</a></div>
+
+			</div>
+			
+		
+<!-- You can start editing here. -->
+
+
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/mongodb/realm/build-offline-first-mobile-apps-by-caching-api-results-in-realm#respond" style="display:none;">Cancel reply</a></small></h3><p class="must-log-in">You must be <a href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmongodb%2Frealm%2Fbuild-offline-first-mobile-apps-by-caching-api-results-in-realm">logged in</a> to post a comment.</p>	</div><!-- #respond -->
+		<div class="clear"></div>
+		
+		</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="/mongodb/realm-swift-type-projections">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="/mongodb/goodbye-nspredicate-hello-realm-swift-query-api">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script></div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-787242">MySQL Cluster running on Raspberry Pi</a></li><li class="recentcomments"><span class="comment-author-link">andrew</span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link">Sai Krishnan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-661143">Get MySQL Replication up and running in 5 minutes</a></li><li class="recentcomments"><span class="comment-author-link">Nayan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-660628">Get MySQL Replication up and running in 5 minutes</a></li></ul></li>
+<li id="categories-2" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2"><a href="/category/me">Me</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="/category/mongodb">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/mysql">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/mysql-cluster">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131"><a href="/category/mysql-fabric">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="/category/mysql-replication">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214"><a href="/category/mongodb/realm">Realm</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="/category/uncategorized">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div class="tagcloud"><a href="/tag/7-4" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="/tag/apache-kafka" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="/tag/cluster" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="/tag/ha" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="/tag/high-availability" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="/tag/ios" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="/tag/java" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="/tag/javascript" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="/tag/mcm" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="/tag/mean" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="/tag/memcached" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="/tag/mobile" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="/tag/mongodb" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="/tag/mongodb-3-2" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="/tag/mongodb-atlas" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="/tag/mongodb-mobile" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="/tag/mongodb-stitch" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="/tag/mysql" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="/tag/mysql-5-6" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="/tag/mysql-cluster" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="/tag/mysql-cluster-70" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="/tag/mysql-cluster-7-1" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="/tag/mysql-cluster-7-2" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="/tag/mysql-cluster-7-3" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="/tag/mysql-cluster-7-4" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="/tag/mysql-cluster-cge" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="/tag/mysql-cluster-manager" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="/tag/mysql-enterprise-monitor" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="/tag/mysql-fabric-2" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="/tag/mysql-replication" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="/tag/mysql-utilities" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="/tag/ndb-api" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="/tag/node-js" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="/tag/nosql" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="/tag/performance" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="/tag/realm" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="/tag/replication" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="/tag/secondary" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="/tag/serverless" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="/tag/sharding" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="/tag/swift" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="/tag/swiftui" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="/tag/webcast" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="/tag/webinar" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="/tag/windows" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a></div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="/2022/03">March 2022</a></li>
+	<li><a href="/2022/02">February 2022</a></li>
+	<li><a href="/2022/01">January 2022</a></li>
+	<li><a href="/2021/12">December 2021</a></li>
+	<li><a href="/2021/11">November 2021</a></li>
+	<li><a href="/2021/09">September 2021</a></li>
+	<li><a href="/2021/08">August 2021</a></li>
+	<li><a href="/2021/07">July 2021</a></li>
+	<li><a href="/2021/06">June 2021</a></li>
+	<li><a href="/2021/05">May 2021</a></li>
+	<li><a href="/2021/04">April 2021</a></li>
+	<li><a href="/2021/02">February 2021</a></li>
+	<li><a href="/2021/01">January 2021</a></li>
+	<li><a href="/2020/12">December 2020</a></li>
+	<li><a href="/2019/03">March 2019</a></li>
+	<li><a href="/2019/01">January 2019</a></li>
+	<li><a href="/2018/12">December 2018</a></li>
+	<li><a href="/2018/11">November 2018</a></li>
+	<li><a href="/2018/10">October 2018</a></li>
+	<li><a href="/2018/09">September 2018</a></li>
+	<li><a href="/2017/09">September 2017</a></li>
+	<li><a href="/2017/03">March 2017</a></li>
+	<li><a href="/2017/02">February 2017</a></li>
+	<li><a href="/2017/01">January 2017</a></li>
+	<li><a href="/2016/12">December 2016</a></li>
+	<li><a href="/2016/11">November 2016</a></li>
+	<li><a href="/2016/09">September 2016</a></li>
+	<li><a href="/2016/01">January 2016</a></li>
+	<li><a href="/2015/11">November 2015</a></li>
+	<li><a href="/2015/10">October 2015</a></li>
+	<li><a href="/2015/09">September 2015</a></li>
+	<li><a href="/2015/06">June 2015</a></li>
+	<li><a href="/2015/04">April 2015</a></li>
+	<li><a href="/2015/03">March 2015</a></li>
+	<li><a href="/2015/02">February 2015</a></li>
+	<li><a href="/2015/01">January 2015</a></li>
+	<li><a href="/2014/12">December 2014</a></li>
+	<li><a href="/2014/11">November 2014</a></li>
+	<li><a href="/2014/10">October 2014</a></li>
+	<li><a href="/2014/09">September 2014</a></li>
+	<li><a href="/2014/08">August 2014</a></li>
+	<li><a href="/2014/07">July 2014</a></li>
+	<li><a href="/2014/06">June 2014</a></li>
+	<li><a href="/2014/05">May 2014</a></li>
+	<li><a href="/2014/04">April 2014</a></li>
+	<li><a href="/2014/03">March 2014</a></li>
+	<li><a href="/2014/02">February 2014</a></li>
+	<li><a href="/2014/01">January 2014</a></li>
+	<li><a href="/2013/12">December 2013</a></li>
+	<li><a href="/2013/11">November 2013</a></li>
+	<li><a href="/2013/09">September 2013</a></li>
+	<li><a href="/2013/08">August 2013</a></li>
+	<li><a href="/2013/07">July 2013</a></li>
+	<li><a href="/2013/06">June 2013</a></li>
+	<li><a href="/2013/05">May 2013</a></li>
+	<li><a href="/2013/03">March 2013</a></li>
+	<li><a href="/2013/02">February 2013</a></li>
+	<li><a href="/2013/01">January 2013</a></li>
+	<li><a href="/2012/12">December 2012</a></li>
+	<li><a href="/2012/11">November 2012</a></li>
+	<li><a href="/2012/09">September 2012</a></li>
+	<li><a href="/2012/07">July 2012</a></li>
+	<li><a href="/2012/06">June 2012</a></li>
+	<li><a href="/2012/05">May 2012</a></li>
+	<li><a href="/2012/04">April 2012</a></li>
+	<li><a href="/2012/03">March 2012</a></li>
+	<li><a href="/2012/02">February 2012</a></li>
+	<li><a href="/2012/01">January 2012</a></li>
+	<li><a href="/2011/12">December 2011</a></li>
+	<li><a href="/2011/11">November 2011</a></li>
+	<li><a href="/2011/10">October 2011</a></li>
+	<li><a href="/2011/09">September 2011</a></li>
+	<li><a href="/2011/07">July 2011</a></li>
+	<li><a href="/2011/06">June 2011</a></li>
+	<li><a href="/2011/05">May 2011</a></li>
+	<li><a href="/2011/04">April 2011</a></li>
+	<li><a href="/2011/03">March 2011</a></li>
+	<li><a href="/2011/02">February 2011</a></li>
+	<li><a href="/2011/01">January 2011</a></li>
+	<li><a href="/2010/12">December 2010</a></li>
+	<li><a href="/2010/11">November 2010</a></li>
+	<li><a href="/2010/10">October 2010</a></li>
+	<li><a href="/2010/09">September 2010</a></li>
+	<li><a href="/2010/08">August 2010</a></li>
+	<li><a href="/2010/07">July 2010</a></li>
+	<li><a href="/2010/06">June 2010</a></li>
+	<li><a href="/2010/05">May 2010</a></li>
+	<li><a href="/2010/04">April 2010</a></li>
+	<li><a href="/2010/03">March 2010</a></li>
+	<li><a href="/2010/02">February 2010</a></li>
+	<li><a href="/2010/01">January 2010</a></li>
+	<li><a href="/2009/12">December 2009</a></li>
+	<li><a href="/2009/11">November 2009</a></li>
+	<li><a href="/2009/10">October 2009</a></li>
+	<li><a href="/2009/09">September 2009</a></li>
+	<li><a href="/2009/08">August 2009</a></li>
+	<li><a href="/2009/07">July 2009</a></li>
+	<li><a href="/2009/06">June 2009</a></li>
+	<li><a href="/2009/05">May 2009</a></li>
+	<li><a href="/2009/04">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 --><script type="text/javascript" src="/wp-includes/js/comment-reply.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
+</body>
+</html>

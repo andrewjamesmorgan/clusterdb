@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: MySQL Cluster 7.3 GA &#8211; Includes MySQL Cluster Auto-Installer	</title>
+	<atom:link href="/mysql-cluster/mysql-cluster-7-3-auto-installer/feed" rel="self" type="application/rss+xml" />
+	<link>/mysql-cluster/mysql-cluster-7-3-auto-installer</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Fri, 10 Feb 2017 10:39:40 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-658783</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 10 Feb 2017 10:39:40 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2725#comment-658783</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-657468&quot;&gt;Hemachandhiran&lt;/a&gt;.
+
+Thanks for your question but I&#039;m afraid that I no longer work for Oracle (I&#039;m now working for MongoDB) and so am not current on MySQL technology. I&#039;d suggest checking the &lt;a href=&quot;http://forums.mysql.com/list.php?25&quot; rel=&quot;nofollow&quot;&gt;MySQL Cluster forum&lt;/a&gt;.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-657468">Hemachandhiran</a>.</p>
+<p>Thanks for your question but I&#8217;m afraid that I no longer work for Oracle (I&#8217;m now working for MongoDB) and so am not current on MySQL technology. I&#8217;d suggest checking the <a href="http://forums.mysql.com/list.php?25" rel="nofollow">MySQL Cluster forum</a>.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Hemachandhiran		</title>
+		<link>/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-657468</link>
+
+		<dc:creator><![CDATA[Hemachandhiran]]></dc:creator>
+		<pubDate>Fri, 06 Jan 2017 15:44:23 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2725#comment-657468</guid>
+
+					<description><![CDATA[Hi Andrew,
+
+I am intend to install MySQL Cluster 7.5.4 on Debian using auto installer.
+I have 3 dedicated servers. 
+These are my questions
+1. Do we need to install MySQL Cluster 7.5.4 in all 3 servers before starting Auto Installer?
+2. Do we need to install MySQL server on SQL node servers?
+
+Can you specify steps to which components need to be installed in all servers before starting Auto Installer?
+
+Thanks in advance]]></description>
+			<content:encoded><![CDATA[<p>Hi Andrew,</p>
+<p>I am intend to install MySQL Cluster 7.5.4 on Debian using auto installer.<br />
+I have 3 dedicated servers.<br />
+These are my questions<br />
+1. Do we need to install MySQL Cluster 7.5.4 in all 3 servers before starting Auto Installer?<br />
+2. Do we need to install MySQL server on SQL node servers?</p>
+<p>Can you specify steps to which components need to be installed in all servers before starting Auto Installer?</p>
+<p>Thanks in advance</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-647485</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 11 Nov 2016 17:20:18 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2725#comment-647485</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-637680&quot;&gt;Aquiles Araujo&lt;/a&gt;.
+
+The cluster package includes the modified MySQL Server; you cannot use the &#039;standard&#039; MySQL Server.
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-637680">Aquiles Araujo</a>.</p>
+<p>The cluster package includes the modified MySQL Server; you cannot use the &#8216;standard&#8217; MySQL Server.</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-637694</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 19 Aug 2016 13:37:29 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2725#comment-637694</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-637693&quot;&gt;Aquiles Araujo&lt;/a&gt;.
+
+You need to execute the mysqld command from an account other than root.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-637693">Aquiles Araujo</a>.</p>
+<p>You need to execute the mysqld command from an account other than root.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Aquiles Araujo		</title>
+		<link>/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-637693</link>
+
+		<dc:creator><![CDATA[Aquiles Araujo]]></dc:creator>
+		<pubDate>Fri, 19 Aug 2016 13:21:18 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2725#comment-637693</guid>
+
+					<description><![CDATA[Hello Andrew,
+
+How to solve this Problem??
+
+++++++++++++
+Command `nohup /usr/local/mysql/bin/mysqld --defaults-file=/root/MySQL_Cluster/55/my.cnf&#039; exited with 1:
+nohup: appending output to `nohup.out&#039;
+2016-08-19 15:09:31 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use --explicit_defaults_for_timestamp server option (see documentation for more details).
+2016-08-19 15:09:31 0 [Note] /usr/local/mysql/bin/mysqld (mysqld 5.6.31-ndb-7.4.12-cluster-gpl) starting as process 3897 ...
+2016-08-19 15:09:31 3897 [ERROR] Fatal error: Please read &quot;Security&quot; section of the manual to find out how to run mysqld as root!
+
+2016-08-19 15:09:31 3897 [ERROR] Aborting
+
+2016-08-19 15:09:31 3897 [Note] Binlog end
+2016-08-19 15:09:31 3897 [Note] /usr/local/mysql/bin/mysqld: Shutdown complete
+
+++++++++++++]]></description>
+			<content:encoded><![CDATA[<p>Hello Andrew,</p>
+<p>How to solve this Problem??</p>
+<p>++++++++++++<br />
+Command `nohup /usr/local/mysql/bin/mysqld &#8211;defaults-file=/root/MySQL_Cluster/55/my.cnf&#8217; exited with 1:<br />
+nohup: appending output to `nohup.out&#8217;<br />
+2016-08-19 15:09:31 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. Please use &#8211;explicit_defaults_for_timestamp server option (see documentation for more details).<br />
+2016-08-19 15:09:31 0 [Note] /usr/local/mysql/bin/mysqld (mysqld 5.6.31-ndb-7.4.12-cluster-gpl) starting as process 3897 &#8230;<br />
+2016-08-19 15:09:31 3897 [ERROR] Fatal error: Please read &#8220;Security&#8221; section of the manual to find out how to run mysqld as root!</p>
+<p>2016-08-19 15:09:31 3897 [ERROR] Aborting</p>
+<p>2016-08-19 15:09:31 3897 [Note] Binlog end<br />
+2016-08-19 15:09:31 3897 [Note] /usr/local/mysql/bin/mysqld: Shutdown complete</p>
+<p>++++++++++++</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Aquiles Araujo		</title>
+		<link>/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-637680</link>
+
+		<dc:creator><![CDATA[Aquiles Araujo]]></dc:creator>
+		<pubDate>Fri, 19 Aug 2016 11:16:36 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2725#comment-637680</guid>
+
+					<description><![CDATA[Hello Andrew,
+
+First, thank you for help us with MySQL Cluster.
+
+1. Question:
+
+To install the MySQL cluster, do I need also to install the MySQL Server or the Install cluster package has already the MySQL included?
+I want to install MySQL Cluster in 4 Linux Machine (RedHat 6). 
+
+Thank you in advanced.
+
+Regards,
+Aquiles]]></description>
+			<content:encoded><![CDATA[<p>Hello Andrew,</p>
+<p>First, thank you for help us with MySQL Cluster.</p>
+<p>1. Question:</p>
+<p>To install the MySQL cluster, do I need also to install the MySQL Server or the Install cluster package has already the MySQL included?<br />
+I want to install MySQL Cluster in 4 Linux Machine (RedHat 6). </p>
+<p>Thank you in advanced.</p>
+<p>Regards,<br />
+Aquiles</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-632675</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 13 Jun 2016 08:41:26 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2725#comment-632675</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-631524&quot;&gt;Sana&lt;/a&gt;.
+
+MySQL Cluster needs to be installed on all of the servers (the mysqld is actually different from the standard MySQL one).]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-631524">Sana</a>.</p>
+<p>MySQL Cluster needs to be installed on all of the servers (the mysqld is actually different from the standard MySQL one).</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Sana		</title>
+		<link>/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-631524</link>
+
+		<dc:creator><![CDATA[Sana]]></dc:creator>
+		<pubDate>Thu, 02 Jun 2016 09:43:39 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2725#comment-631524</guid>
+
+					<description><![CDATA[Hi Andrew,
+I don&#039;t know anything about MySQL cluster.I want your help in my project.I have 4 servers.shall I install cluster on each machine on windows or on one machine cluster installed and others only need MySQL installed.]]></description>
+			<content:encoded><![CDATA[<p>Hi Andrew,<br />
+I don&#8217;t know anything about MySQL cluster.I want your help in my project.I have 4 servers.shall I install cluster on each machine on windows or on one machine cluster installed and others only need MySQL installed.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-566131</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 08 Sep 2015 16:27:56 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2725#comment-566131</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-560220&quot;&gt;Al Mamun&lt;/a&gt;.
+
+Thanks for your question. I&#039;m no longer directly involved with MySQL (I&#039;m now with MongoDB) and so I&#039;d suggest that you seek help from &lt;a href=&quot;http://forums.mysql.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;http://forums.mysql.com/&lt;/a&gt;.
+
+Best Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-560220">Al Mamun</a>.</p>
+<p>Thanks for your question. I&#8217;m no longer directly involved with MySQL (I&#8217;m now with MongoDB) and so I&#8217;d suggest that you seek help from <a href="http://forums.mysql.com/" target="_blank" rel="nofollow">http://forums.mysql.com/</a>.</p>
+<p>Best Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-566130</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 08 Sep 2015 16:27:45 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2725#comment-566130</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-562935&quot;&gt;Abdullah Al Mamun&lt;/a&gt;.
+
+Thanks for your question. I&#039;m no longer directly involved with MySQL (I&#039;m now with MongoDB) and so I&#039;d suggest that you seek help from &lt;a href=&quot;http://forums.mysql.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;http://forums.mysql.com/&lt;/a&gt;.
+
+Best Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-7-3-auto-installer#comment-562935">Abdullah Al Mamun</a>.</p>
+<p>Thanks for your question. I&#8217;m no longer directly involved with MySQL (I&#8217;m now with MongoDB) and so I&#8217;d suggest that you seek help from <a href="http://forums.mysql.com/" target="_blank" rel="nofollow">http://forums.mysql.com/</a>.</p>
+<p>Best Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

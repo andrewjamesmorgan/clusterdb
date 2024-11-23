@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="/xmlrpc.php">
+	
+	<title>serverless | Andrew Morgan on Databases</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; serverless Tag Feed" href="/tag/serverless/feed">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/*  */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/*  */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="/wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="/wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="/wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="/wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="/wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/tags/208"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style><style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style><script type="text/javascript">//
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//</script><style type="text/css"></style><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style></head>
+
+<body class="archive tag tag-serverless tag-208 custom-background">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="/"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu"><li class="page_item page-item-1011"><a href="/about">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="/wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+		
+		<h2 class="arh">Tag Archive for serverless</h2>
+				
+					<div id="post-4566" class="post-4566 post type-post status-publish format-standard hentry category-mongodb tag-mongodb tag-mongodb-stitch tag-serverless">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch">March 28, 2019</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch" rel="bookmark">How to create Dynamic Custom Roles with MongoDB Stitch</a></h2>
+				
+				<div class="entry">
+										<p>None of us want to write lots of code to control what data each user can access. In most cases, you can set up your data access controls in seconds by using <a href="https://docs.mongodb.com/stitch/mongodb/define-roles-and-permissions/#select-a-collection-rule-template" title="Stitch includes templates to control what data a user can access">Stitch&#8217;s built-in templates</a>, e.g., &#8220;Users can read and write their own data&#8221; or &#8220;Users can read and write their own data. Users that belong to a sharing list can read that data&#8221;. Stitch also lets you create <a href="https://docs.mongodb.com/stitch/mongodb/define-roles-and-permissions/#define-the-role-s-apply-when-condition" title="Define your own criteria to identify a MongoDB Stitch role">custom roles</a> that you tailor to your application and schema – this post creates such a rule, querying a second collection when deciding whether to allow a user to insert a document.</p>
+<p>The application is a troll-free timeline where you can only tag another user in a post if that user has labeled you as a trusted friend. I&#8217;ve already created a database called <code>safeplace</code> for the collections.</p>
+<p>The <code>users</code> collection includes a list of usernames for their trusted friends (<code>peopleWhoCanTagMe</code>):</p>
+<pre><code class="js">{
+    "_id" : ObjectId("5c9273127558d01d93f53dc0"),
+    "username" : "alovelace",
+    "name" : {
+        "first" : "Ada",
+        "last" : "Lovelace"
+    },
+    "peopleWhoCanTagMe" : [
+        "jeckert",
+        "jmauchly"
+    ]
+}
+</code></pre>
+<p>You then need to create a data access rule for the <code>posts</code> collection, consisting of 2 roles, which Stitch evaluates in sequence:</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/Create-Rules-nzrr0dasb3.png" alt="Creating custom roles for Stitch data access control rules"></p>
+<p>The second, <code>anyReader</code>, role lets anyone read any post, but the role we care about is <code>allowedTagger</code> which controls what the application can write to the collection.</p>
+<p>The <code>allowedTagger</code> role is defined using this <a href="https://docs.mongodb.com/stitch/services/json-expressions/" title="JSON expressions to identify MongoDB Stitch roles">JSON expression</a>:</p>
+<pre><code class="js">{
+  "%%true": {
+    "%function": {
+      "name": "canTheyTag",
+      "arguments": [
+        "%%root.poster",
+        "%%root.tagged"
+      ]
+    }
+  }
+}
+</code></pre>
+<p><code>%%root</code> represents the document that the user is attempting to insert. The <code>poster</code> and <code>tagged</code> attributes of the document to be written are the usernames of the author and their claimed friend. The JSON expression passes them as parameters to a <a href="https://docs.mongodb.com/stitch/functions/" title="Creating a serverless function in MongoDB Stitch">Stitch function</a> named <code>canTheyTag</code>:</p>
+<pre><code class="js">exports = function(poster, tagged){
+  var collection = context.services.get("mongodb-atlas")
+    .db("safeplace").collection("users");
+  return collection.findOne({username: tagged})
+  .then ( userDoc =&gt; { 
+    return (userDoc.peopleWhoCanTagMe.indexOf(poster) &gt; -1);
+  }).catch( e =&gt; { console.log(e); return false; }); 
+};
+</code></pre>
+<p>This searches the <code>users</code> collection for the tagged user and then checks that the poster&#8217;s username appears in the <code>peopleWhoCanTagMe</code> array in the retrieved document.</p>
+<p>You can test this new rule using the <code>mongo</code> shell (courtesy of <a href="https://docs.mongodb.com/stitch/mongodb/connect-over-the-wire-protocol/" title="Connect to MongoDB Stitch using any MongoDB tool or connector using the MongoDB wire protocol">Stitch&#8217;s MongoDB Connection String feature</a>). Initially, I&#8217;m not included in Ada&#8217;s list of friends and so trying to tag her in a post fails:</p>
+<pre><code class="js">db.posts.insert({ 
+    poster: "amorgan", 
+    tagged: "alovelace", 
+    post: "Just sent you a pull request" })
+
+WriteCommandError({ "ok" : 0, "errmsg" : "insert not permitted" })
+</code></pre>
+<p>The logs show that the insert didn&#8217;t match our customer role but that it did match the second (<code>anyReader</code>), but that inserts aren&#8217;t allowed for that role:</p>
+<pre><code>Logs:
+[
+  "uncaught promise rejection: StitchError: insert not permitted"
+]
+Error:
+role anyReader does not have insert permission
+Stack Trace:
+StitchError: insert not permitted
+{
+  "name": "insertOne",
+  "service": "mongodb-atlas"
+}
+Compute Used: 936719 bytes•ms
+</code></pre>
+<p>Ada then adds me as a trusted friend:</p>
+<pre><code class="js">db.users.update(
+    {username: "alovelace"}, 
+    {$push: {peopleWhoCanTagMe: "amorgan"}}
+)
+</code></pre>
+<p>My second attempt to tag her in a post succeeds:</p>
+<pre><code class="js">db.posts.insert({
+    poster: "amorgan", 
+    tagged: "alovelace", 
+    post: "Just sent you a pull request" })
+
+WriteResult({ "nInserted" : 1 })
+</code></pre>
+<p>I recently had someone ask me how to implement &#8220;traditional database roles&#8221; using Stitch, i.e. an administrator explicitly defines which user ids belong to a specific role, and then use that role to determine whether they can access a collection. You can use this same approach for that use case – have a collection that assigns users to roles and then find the user id in that collection from a Stitch function that&#8217;s used in roles for the collections you want to protect. You could then optimize the rules by including the users&#8217; roles as an attribute in their authentication token – but I&#8217;ll save that for a future post!</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch" data-via="wpbeginner" data-text="How to create Dynamic Custom Roles with MongoDB Stitch" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mongodb/how-to-create-dynamic-custom-roles-with-mongodb-stitch" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmongodb%2Fhow-to-create-dynamic-custom-roles-with-mongodb-stitch&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mongodb" rel="category tag">MongoDB</a> | 
+Tags: <a href="/tag/mongodb" rel="tag">mongodb</a>, <a href="/tag/mongodb-stitch" rel="tag">MongoDB Stitch</a>, <a href="/tag/serverless" rel="tag">serverless</a></div>
+
+			</div>			<div id="post-4541" class="post-4541 post type-post status-publish format-standard hentry category-mongodb tag-mobile tag-mongodb tag-mongodb-mobile tag-mongodb-stitch tag-serverless">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mongodb/stitch-mobile-webinar-questions-replay">November 22, 2018</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mongodb/stitch-mobile-webinar-questions-replay#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mongodb/stitch-mobile-webinar-questions-replay" rel="bookmark">Stitch &#038; Mobile Webinar Questions &#038; Replay</a></h2>
+				
+				<div class="entry">
+										<p>How do you test MongoDB <a href="https://docs.mongodb.com/stitch/functions/" title="MongoDB Stitch serverless functions">Stitch functions</a>, how do you store <a href="https://docs.mongodb.com/stitch/triggers/database-triggers/" title="MongoDB database triggers using MongoDB Stitch"> Stitch triggers</a>, and what services can you integrate Stitch with? These were some of the great questions that were asked and answered in my recent webinar. You can watch the replay of <a href="https://www.mongodb.com/presentations/mongodb-mobile-and-mongodb-stitch-introduction" title="Building mobile and IoT apps with MongoDB, MongoDB Stitch, and MongoDB Mobile">&#8220;MongoDB Mobile and MongoDB Stitch – Introduction and Latest Developments&#8221; here</a>, or read on as I share the answers to those questions here.</p>
+<p>For those new to MongoDB Stitch, it&#8217;s the serverless platform from MongoDB that isolates complexity and ‘plumbing’ so you can build applications faster. Stitch went GA in June 2018, and we recently added a set of new capabilities, including global Stitch apps, more AWS services, a React Native SDK, and the beta for Stitch Mobile Sync. MongoDB Mobile is an embedded version of the MongoDB database that you can embed in your mobile or IoT apps.</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/Mobile_Stitch_Architecture_v2-am9l8s8m2o.png" alt="Building mobile apps with MongoDB Mobile, MongoDB Stitch, and MongoDB Atlas"></p>
+<p>These are some of the questions I thought might be of interest:</p>
+<h4>How do you test Stitch functions?</h4>
+<p>The <a href="https://www.mongodb.com/blog/post/testing--debugging-mongodb-stitch-functions" title="Testing MongoDB Stitch functions using the Stitch UI console">Stitch UI includes a console</a> which can be used to test your <a href="https://docs.mongodb.com/stitch/functions/" title="MongoDB Stitch serverless functions">Stitch functions</a>; you can include <code>console.log</code> statements to add extra debug output to the console (they also get added to the log files for every function invoked from an <a href="https://docs.mongodb.com/stitch/services/http/#incoming-webhooks" title="MongoDB Stitch incoming http webhooks">incoming webhook</a>, <a href="https://docs.mongodb.com/stitch/triggers/database-triggers/" title="MongoDB database triggers using MongoDB Stitch">trigger</a>, or the <a href="https://docs.mongodb.com/stitch/procedures/init-stitchclient/" title="MongoDB Stitch client SDKs">Stitch SDK</a>).</p>
+<p>You can also <a href="https://www.mongodb.com/blog/post/working-with-mongodb-stitch-through-the-mongo-shell" title="Testing MongoDB Stitch functions using the mongo shell and the Stitch connection string">invoke your Stitch functions through the mongo shell</a>. To do that, you&#8217;ll need to enable the MongoDB wire protocol so that the shell can talk to your Stitch app, then use the Stitch connection string provided. Once connected, you can call Stitch functions explicitly like this:</p>
+<pre><code class="js">mongo&gt; db.runCommand({callFunction: "morning", arguments: ["Billy"]})
+
+{"ok" : 1,
+ "response" : {"message" : "Good Morning Billy from andrew.morgan@mongodb.com"}
+}
+</code></pre>
+<p>You can read more about this in <a href="https://www.mongodb.com/blog/post/working-with-mongodb-stitch-through-the-mongo-shell" title="Testing MongoDB Stitch functions using the mongo shell and the Stitch connection string">this post</a> which takes you through the process.</p>
+<h4>How do you store stitch triggers in your Git repo?</h4>
+<p>You can <a href="https://docs.mongodb.com/stitch/import-export/export-stitch-app/" title="Exporting apps from MongoDB Stitch">export</a> your Stitch application from the Stitch UI or the Stitch CLI; the exported app is represented by a directory structure containing JSON and JavaScript files:</p>
+<pre><code>yourStitchApp/
+├── stitch.json
+├── secrets.json
+├── variables.json
+├── auth_providers/
+│   └── &lt;provider name&gt;.json
+├── functions/
+│   └── &lt;function name&gt;/
+│       ├── config.json
+│       └── source.js
+├── services/
+│   └── &lt;service name&gt;/
+│       ├── config.json
+│       ├── incoming_webhooks/
+│       │   ├── config.json
+│       │   └── source.js
+│       └── rules/
+│           └── &lt;rule name&gt;.json
+├── triggers/
+│   └── &lt;trigger name&gt;/
+│       ├── config.json
+│       └── source.js
+└── values/
+    └── &lt;value name&gt;.json
+</code></pre>
+<p>You can then work on the trigger configuration and the associated function locally, source control the app using Git, or <a href="https://docs.mongodb.com/stitch/import-export/" title="Importing a MongoDB Stitch app">import it into a new App</a>.</p>
+<h4>We saw a few integration provider logos in the presentation. Is there a page on the MongoDB site with the comprehensive list?</h4>
+<p>You can find the list of Stitch’s built-in service integrations in the <a href="https://docs.mongodb.com/stitch/services/" title="MongoDB Stitch documentation">Stitch documentation</a>.</p>
+<p>Note that if we don’t have a built-in integration for a particular service, then you can easily integrate it yourself, using the <a href="https://docs.mongodb.com/stitch/services/http/" title="MongoDB Stitch generic http service">Stitch HTTP service</a> and <a href="https://docs.mongodb.com/stitch/services/http/#incoming-webhooks" title="MongoDB Stitch incoming http webhooks">incoming webhooks</a>. You can even <a href="https://docs.mongodb.com/stitch/import-export/export-stitch-app/" title="Exporting apps from MongoDB Stitch">export your new service integration</a> to share with others.</p>
+<h4>Is MongoDB Mobile + Stitch Mobile Sync the same as a cache in a progressive app?</h4>
+<p>It certainly removes the need to have a separate cache, but it does much more. With MongoDB Mobile, the data is persistently stored on your device. You also have the full power of the MongoDB Query Language to perform sophisticated queries and aggregations on that local data. Changes made to the local database are pushed back to MongoDB Atlas, and from there to any other mobile devices configured to sync the same documents (e.g., for the same user running the app on another device).</p>
+<h4>How do I download &amp; embed MongoDB Mobile?</h4>
+<p>You simply need to <a href="https://docs.mongodb.com/stitch/mongodb/mobile/getting-started/" title="How to embed MongoDB Mobile in your application">add 1 line to your Android or Xcode project</a> to have access to the entire Stitch SDK, including the Stitch Local Database service (i.e.,the MongoDB Mobile database). The Stitch SDK includes the entire mobile and makes it very easy to use and consume, even if you&#8217;re just using the local MongoDB Mobile database and not Stitch.</p>
+<hr>
+<p>Creating your first Stitch app? Start with one of the <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch serverless platform – tutorials">Stitch tutorials</a>.</p>
+<p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mongodb/stitch-mobile-webinar-questions-replay" data-via="wpbeginner" data-text="Stitch &#038; Mobile Webinar Questions &#038; Replay" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mongodb/stitch-mobile-webinar-questions-replay"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mongodb/stitch-mobile-webinar-questions-replay" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmongodb%2Fstitch-mobile-webinar-questions-replay&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mongodb" rel="category tag">MongoDB</a> | 
+Tags: <a href="/tag/mobile" rel="tag">mobile</a>, <a href="/tag/mongodb" rel="tag">mongodb</a>, <a href="/tag/mongodb-mobile" rel="tag">MongoDB Mobile</a>, <a href="/tag/mongodb-stitch" rel="tag">MongoDB Stitch</a>, <a href="/tag/serverless" rel="tag">serverless</a></div>
+
+			</div>			<div id="post-4529" class="post-4529 post type-post status-publish format-standard hentry category-mongodb tag-mongodb tag-mongodb-stitch tag-serverless">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mongodb/working-with-mongodb-stitch-through-the-mongo-shell-mongodb-wire-protocol-support">October 3, 2018</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mongodb/working-with-mongodb-stitch-through-the-mongo-shell-mongodb-wire-protocol-support#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mongodb/working-with-mongodb-stitch-through-the-mongo-shell-mongodb-wire-protocol-support" rel="bookmark">Working with MongoDB Stitch Through the mongo Shell – MongoDB Wire Protocol Support</a></h2>
+				
+				<div class="entry">
+										<p>The <a href="https://docs.mongodb.com/stitch/client-sdks/" title="MongoDB Stitch client SDK">Stitch SDK</a> is the best way to access <a href="https://docs.mongodb.com/stitch/" title="MongoDB Stitch serverless platform">MongoDB Stitch</a> from your frontend application code – getting to your data and accessing your Stitch Services and Functions becomes child&#8217;s&#8217; play.</p>
+<p>However, those already using MongoDB may have existing backend code and tools that work with MongoDB. MongoDB Stitch now supports the <a href="https://docs.mongodb.com/stitch/wire-protocol/" title="MongoDB wire protocol for MongoDB Stitch serverless platform">MongoDB wire protocol</a> – meaning that you can continue to work with your favorite tools (including the <code>mongo</code> shell) and drivers while benefiting from Stitch&#8217;s quick and simple data access control and hosted JavaScript functions.</p>
+<p>After enabling connection string access, connecting to your Stitch app from the <code>mongo</code> shell is business as usual – just use the connection string you&#8217;re shown in the Stitch UI:</p>
+<pre><code>mongo "mongodb://andrewjamXXXXX%40gmail.com:gXXXX@stitch.mongodb.com:27020\
+    /?authMechanism=PLAIN&amp;authSource=%24external&amp;ssl=true&amp;\
+    appName=imported_trackme-xxxxz:mongodb-atlas:local-userpass" --norc
+</code></pre>
+<p>Once connected, adding a document through Stitch should feel very familiar:</p>
+<pre><code class="js">db.comments.insert({
+    owner_id: "5bacd4e7698a67f72dfdb44c",
+    author: "Andrew Morgan",
+    comment: "Stitch wire protocol support rocks!"
+})
+</code></pre>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/MongoDB_Wire_Protocol-gttmsmca03.png" alt="MongoDB Stitch wire protocol"></p>
+<p>However, Stitch is about more than accessing MongoDB data. I&#8217;ve created a (stupidly) simple Stitch (<code>morning</code>) Function to show how you can test your Stitch app:</p>
+<pre><code class="js">exports = function(name){
+  return {message: "Good Morning " + name + " from " 
+             + context.user.data.email};
+};
+</code></pre>
+<p>From the <code>mongo</code> shell, I can now test that function:</p>
+<pre><code class="js">db.runCommand({ callFunction: "morning", arguments: ["Billy"] })
+{
+    "ok" : 1,
+    "response" : {
+        "message" : "Good Morning Billy from greetings@clusterdb.com"
+    }
+}
+</code></pre>
+<p>Creating your first Stitch app? Start with one of the <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch serverless platform – tutorials">Stitch tutorials</a>.</p>
+<p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mongodb/working-with-mongodb-stitch-through-the-mongo-shell-mongodb-wire-protocol-support" data-via="wpbeginner" data-text="Working with MongoDB Stitch Through the mongo Shell – MongoDB Wire Protocol Support" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mongodb/working-with-mongodb-stitch-through-the-mongo-shell-mongodb-wire-protocol-support"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mongodb/working-with-mongodb-stitch-through-the-mongo-shell-mongodb-wire-protocol-support" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmongodb%2Fworking-with-mongodb-stitch-through-the-mongo-shell-mongodb-wire-protocol-support&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mongodb" rel="category tag">MongoDB</a> | 
+Tags: <a href="/tag/mongodb" rel="tag">mongodb</a>, <a href="/tag/mongodb-stitch" rel="tag">MongoDB Stitch</a>, <a href="/tag/serverless" rel="tag">serverless</a></div>
+
+			</div>			<div id="post-4524" class="post-4524 post type-post status-publish format-standard hentry category-mongodb tag-mongodb tag-mongodb-stitch tag-serverless tag-twilio">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mongodb/sending-text-messages-with-mongodb-stitch-twilio">September 26, 2018</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mongodb/sending-text-messages-with-mongodb-stitch-twilio#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mongodb/sending-text-messages-with-mongodb-stitch-twilio" rel="bookmark">Sending Text Messages with MongoDB Stitch &#038; Twilio</a></h2>
+				
+				<div class="entry">
+										<p>When creating a well-rounded app, there are lots of table stakes features that make the app more useful but have already been implemented thousands of times before. Having the application backend send a text message informing your customer of an event is a classic example of such a “commodity” feature.</p>
+<p>Think about using a website or app to book a taxi, where you give your phone number so that you get sent a text message when the taxi’s on its way. Why would the writers of that taxi app want to waste time writing text messaging code? There’s nothing extra they can do to differentiate it from other apps – so why not just consume it as a service from something like <a href="https://www.twilio.com/">Twilio</a>?</p>
+<p>MongoDB Stitch makes it even less work to add this kind of feature. Rather than standing up an app server, figuring out how to use the <a href="https://www.twilio.com/docs/api">Twilio API</a>, writing the code, and possibly creating a <a href="https://www.mongodb.com/blog/post/building-a-rest-api-with-mongodb-stitch" title="Create a REST API with MongoDB Stitch Functions">REST API</a>, just configure the <a href="https://docs.mongodb.com/stitch/reference/partner-services/twilio/" title="Working with SMS text messages with MongoDB Stitch and Twilio">Twilio service</a> in Stitch.</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/Sending_text_with_MongoDB_Stitch_and_Twilio-7glbv13odr.png" alt="Using MongoDB Stitch to send SMS text messages via Twilio"></p>
+<p>When configuring the Stitch Twilio serving, you supply the <em>Account ID</em> and <em>Auth Token</em> from your Twilio account. All that&#8217;s left is to write the <a href="https://docs.mongodb.com/stitch/functions/" title="MongoDB Stitch serverless functions">Stitch function</a> to invoke the service:</p>
+<pre><code class="js">exports = function(trip, user){
+  const twilio = context.services.get("twilio");
+
+  twilio.send({
+    to: user.phone,
+    from: context.values.get("twilioNumber"),
+    body: "Hi " 
+      + user.firstname 
+      + " - just to let you know that your taxi to " 
+      + trip.destination + " will be with you at " 
+      + trip.pickupTime + "."
+  });
+};
+</code></pre>
+<p>You can also have your application react when receiving a text message by configuring <a href="https://docs.mongodb.com/stitch/reference/partner-services/twilio/#incoming-webhooks" title="Act on received SMS text messages using MongoDB Stitch Twilio incoming web hooks">incoming webhooks for the Twilio service</a>.</p>
+<p>Creating your first Stitch app? Start with one of the <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch serverless platform – tutorials">Stitch tutorials</a>.</p>
+<p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mongodb/sending-text-messages-with-mongodb-stitch-twilio" data-via="wpbeginner" data-text="Sending Text Messages with MongoDB Stitch &#038; Twilio" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mongodb/sending-text-messages-with-mongodb-stitch-twilio"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mongodb/sending-text-messages-with-mongodb-stitch-twilio" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmongodb%2Fsending-text-messages-with-mongodb-stitch-twilio&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mongodb" rel="category tag">MongoDB</a> | 
+Tags: <a href="/tag/mongodb" rel="tag">mongodb</a>, <a href="/tag/mongodb-stitch" rel="tag">MongoDB Stitch</a>, <a href="/tag/serverless" rel="tag">serverless</a>, <a href="/tag/twilio" rel="tag">twilio</a></div>
+
+			</div>			<div id="post-4522" class="post-4522 post type-post status-publish format-standard hentry category-mongodb tag-mongodb tag-mongodb-stitch tag-serverless">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mongodb/testing-debugging-mongodb-stitch-functions">September 25, 2018</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mongodb/testing-debugging-mongodb-stitch-functions#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mongodb/testing-debugging-mongodb-stitch-functions" rel="bookmark">Testing &#038; Debugging MongoDB Stitch Functions</a></h2>
+				
+				<div class="entry">
+										<p>When discussing serverless computing (Functions as a Service) with developers, a common concern that arises is the complexity of testing and debugging your functions. Fortunately, the <a href="https://docs.mongodb.com/stitch/functions/#debug-console" title="Documentation from the MongoDB Stitch debug console">MongoDB Stitch UI</a> makes this simple.</p>
+<p>It&#8217;s a bit old school, but if you want to display debug info from your functions, then it&#8217;s as simple as adding <code>console.log()</code> commands to your code. If testing the function through the Stitch UI, the output appears in the <em>Results</em> panel. When executed normally, the output appears in the Stitch logs.</p>
+<p>To test a Stitch function from the UI, select a user for the function to run as (that way the function can access whatever data the user is entitled to). In the <em>Console</em> panel, call <code>exports(&lt;parameters&gt;)</code>, including any parameters that the function expects – these could be simple values or complex documents.</p>
+<p>The results of the function call (the returned data + any <code>console.log()</code> output) appear in the <em>Results</em> panel.</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/Debugging_functions-am4c17877v.gif" alt="Demo of testing a MongoDB Stitch Function"></p>
+<p>If you want to check on what&#8217;s happening in your production apps, check out the <em>Logs</em> panel in the Stitch UI.</p>
+<p>Creating your first Stitch app? Start with one of the <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch serverless platform – tutorials">Stitch tutorials</a>.</p>
+<p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mongodb/testing-debugging-mongodb-stitch-functions" data-via="wpbeginner" data-text="Testing &#038; Debugging MongoDB Stitch Functions" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mongodb/testing-debugging-mongodb-stitch-functions"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mongodb/testing-debugging-mongodb-stitch-functions" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmongodb%2Ftesting-debugging-mongodb-stitch-functions&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mongodb" rel="category tag">MongoDB</a> | 
+Tags: <a href="/tag/mongodb" rel="tag">mongodb</a>, <a href="/tag/mongodb-stitch" rel="tag">MongoDB Stitch</a>, <a href="/tag/serverless" rel="tag">serverless</a></div>
+
+			</div>			<div id="post-4517" class="post-4517 post type-post status-publish format-standard has-post-thumbnail hentry category-mongodb tag-iot tag-mongodb tag-mongodb-stitch tag-serverless">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp">September 18, 2018</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp" rel="bookmark">Recording sensor data with MongoDB Stitch &#038; Electric Imp</a></h2>
+				
+				<div class="entry">
+					<img width="150" height="150" src="/wp-content/uploads/2018/09/old_school_IoT-150x150.jpg" class="alignleft wp-post-image" alt="Old school IoT" decoding="async" srcset="/wp-content/uploads/2018/09/old_school_IoT-150x150.jpg 150w, /wp-content/uploads/2018/09/old_school_IoT-144x144.jpg 144w" sizes="(max-width: 150px) 100vw, 150px">					<p>My early experiments with IoT involved standalone sensors, breakout boards, Arduinos, Raspberry Pis, and a soldering iron. It was a lot of fun, but it took ages to build even the simplest of projects.</p>
+<p>Therefore, I was super excited when I discovered that Electric Imp had a self-contained <a href="https://store.electricimp.com/products/impexplorer-developer-kit?variant=31118866130">IoT hardware developer kit</a> <strong>and</strong> a <a href="https://developer.electricimp.com/libraries/webservices/mongodbstitch">library</a> to access <a href="https://www.mongodb.com/cloud/stitch" title="MongoDB Stitch Serverless Platform">MongoDB Stitch</a> directly.</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/impExplorer-opi47819wd.jpg" alt="Electric Imp impExplorer IoT development kit"></p>
+<p>My first experiment with Electric Imp took sensor data (temperature, humidity, air pressure, light level, and orientation) from the device, and stored it in MongoDB.</p>
+<p>The Electric Imp code (written in <a href="http://www.squirrel-lang.org/" title="Squirrel programming language">Squirrel</a>) is split into 2 parts:<br>
+&#8211; On-device code – sends sensor data to the agent<br>
+&#8211; Agent code, running in Electric Imp&#8217;s cloud – forwards the data to Stitch</p>
+<p>This post focuses on the integration between the Electric Imp agent code and Stitch, but those interested can <a href="https://github.com/am-MongoDB/MongoDB-Stitch-Imp_IoT/blob/master/electricImp/device.nut" title="Send data from Electric Imp impExplorer to agent">view the device code</a>.</p>
+<p>The agent code receives the readings from the device, and then it uses the Electric Imp MongoDB Stitch library to forward them to Stitch:</p>
+<pre><code class="squirel">#require "MongoDBStitch.agent.lib.nut:1.0.0"
+
+//Create the connection to Stitch
+stitch &lt;- MongoDBStitch("imptemp-sobpa");
+
+//Add an API key to link this device to a specific Stitch User
+const API_KEY = "hNErDmBw1zYGOfpaSv4Pf5kaNQrIaxOHLZgj0vExzDcxWf9GAEX055l1mXXX";
+
+//Ensure you are authenticated to Stitch
+stitch.loginWithApiKey(API_KEY);
+
+function log(data) {
+    stitch.executeFunction("Imp_Write", [data], function (error, response) {
+        if (error) {
+            server.log("error: " + error.details);
+        } else {
+            server.log("temperature sent");
+        }
+    });
+}
+
+// Register a function to receive sensor data from the device
+device.on("reading.sent", log);
+</code></pre>
+<p>Note that you will need to create the <code>API_KEY</code> through the Stitch UI.</p>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/electricImp_MongoDB_Stitch-a9ibd5y5ki.png" alt="impExplorer sends readings to Electric Imp agent which sends them to MongoDB Stitch to store in MongoDB Atlas"></p>
+<p>The <code>Imp_Write</code> function receives the readings from the agent, retrieves outside weather data from <a href="http://www.darksky.net/">DarkSky.net</a>, and stores the data in the <code>TempData</code> <a href="https://www.mongodb.com/cloud/atlas" title="MongoDB Atlas database as a service">MongoDB Atlas</a> collection:</p>
+<pre><code class="js">exports = function(data){
+
+  //Get the current time
+  var now = new Date();
+
+  var darksky = context.services.get("darksky");
+  var mongodb = context.services.get("mongodb-atlas");
+  var TempData = mongodb.db("Imp").collection("TempData");
+
+  // Fetch the current weather from darksky.net
+
+  darksky.get({"url": "https://api.darksky.net/forecast/" + 
+    context.values.get("DarkSkyKey") + '/' + 
+    context.values.get("DeviceLocation") +
+    "?exclude=minutely,hourly,daily,alerts,flags&amp;units=auto"
+  }).then(response =&gt; {
+    var darkskyJSON = EJSON.parse(response.body.text()).currently;
+
+    var status =
+      {
+        "Timestamp": now.getTime(),
+        "Date": now,
+        "Readings": data,
+        "External": darkskyJSON,
+      };
+    status.Readings.light = (100*(data.light/65536));
+    context.functions.execute("controlHumidity", data.temp, data.humid);
+    TempData.insertOne(status).then(
+      results =&gt; {
+        console.log("Successfully wrote document to TempData");
+      },
+      error =&gt; {
+        console.log("Error writing to TempData collection: " + error);
+      });
+  });
+};
+</code></pre>
+<p><code>ImpWrite</code> also calls the <code>controlHumidity</code> method – find more on that in <a href="https://www.mongodb.com/blog/post/controlling-humidity-with-a-mongodb-stitch-http-service-and-ifttt" title="Controlling humidity with a MongoDB Stitch HTTP service and IFTTT">this post</a>.</p>
+<p>You can recreate the Stitch app for yourself by <a href="https://github.com/am-MongoDB/MongoDB-Stitch-Imp_IoT" title="MongoDB Stitch app to control a dehumidifier using IFTTT and ElectricImp">downloading the app from GitHub</a> and <a href="https://docs.mongodb.com/stitch/import-export/create-stitch-app/" title="Import an application into MongoDB Stitch">importing it into Stitch</a>. You&#8217;ll need to set some of your own keys first (including the details of your IFTTT webhook address) – details are in the <a href="https://github.com/am-MongoDB/MongoDB-Stitch-Imp_IoT/blob/master/README.md">README</a>. The repo also includes the Electric Imp code for the agent and device.</p>
+<p>Creating your first Stitch app? Start with one of the <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch serverless platform – tutorials">Stitch tutorials</a>.</p>
+<p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">MongoDB Stitch white paper</a>.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp" data-via="wpbeginner" data-text="Recording sensor data with MongoDB Stitch &#038; Electric Imp" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mongodb/recording-sensor-data-with-mongodb-stitch-electric-imp" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmongodb%2Frecording-sensor-data-with-mongodb-stitch-electric-imp&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mongodb" rel="category tag">MongoDB</a> | 
+Tags: <a href="/tag/iot" rel="tag">IoT</a>, <a href="/tag/mongodb" rel="tag">mongodb</a>, <a href="/tag/mongodb-stitch" rel="tag">MongoDB Stitch</a>, <a href="/tag/serverless" rel="tag">serverless</a></div>
+
+			</div>      
+							<div class="more_posts">
+					<span class="post_links"> &nbsp; </span>
+				</div>
+						
+
+					
+	</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="/mongodb/realm-swift-type-projections">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="/mongodb/goodbye-nspredicate-hello-realm-swift-query-api">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script></div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-787242">MySQL Cluster running on Raspberry Pi</a></li><li class="recentcomments"><span class="comment-author-link">andrew</span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link">Sai Krishnan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-661143">Get MySQL Replication up and running in 5 minutes</a></li><li class="recentcomments"><span class="comment-author-link">Nayan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-660628">Get MySQL Replication up and running in 5 minutes</a></li></ul></li>
+<li id="categories-2" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2"><a href="/category/me">Me</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="/category/mongodb">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/mysql">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/mysql-cluster">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131"><a href="/category/mysql-fabric">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="/category/mysql-replication">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214"><a href="/category/mongodb/realm">Realm</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="/category/uncategorized">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div class="tagcloud"><a href="/tag/7-4" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="/tag/apache-kafka" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="/tag/cluster" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="/tag/ha" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="/tag/high-availability" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="/tag/ios" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="/tag/java" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="/tag/javascript" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="/tag/mcm" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="/tag/mean" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="/tag/memcached" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="/tag/mobile" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="/tag/mongodb" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="/tag/mongodb-3-2" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="/tag/mongodb-atlas" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="/tag/mongodb-mobile" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="/tag/mongodb-stitch" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="/tag/mysql" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="/tag/mysql-5-6" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="/tag/mysql-cluster" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="/tag/mysql-cluster-70" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="/tag/mysql-cluster-7-1" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="/tag/mysql-cluster-7-2" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="/tag/mysql-cluster-7-3" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="/tag/mysql-cluster-7-4" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="/tag/mysql-cluster-cge" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="/tag/mysql-cluster-manager" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="/tag/mysql-enterprise-monitor" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="/tag/mysql-fabric-2" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="/tag/mysql-replication" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="/tag/mysql-utilities" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="/tag/ndb-api" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="/tag/node-js" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="/tag/nosql" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="/tag/performance" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="/tag/realm" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="/tag/replication" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="/tag/secondary" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="/tag/serverless" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="/tag/sharding" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="/tag/swift" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="/tag/swiftui" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="/tag/webcast" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="/tag/webinar" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="/tag/windows" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a></div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="/2022/03">March 2022</a></li>
+	<li><a href="/2022/02">February 2022</a></li>
+	<li><a href="/2022/01">January 2022</a></li>
+	<li><a href="/2021/12">December 2021</a></li>
+	<li><a href="/2021/11">November 2021</a></li>
+	<li><a href="/2021/09">September 2021</a></li>
+	<li><a href="/2021/08">August 2021</a></li>
+	<li><a href="/2021/07">July 2021</a></li>
+	<li><a href="/2021/06">June 2021</a></li>
+	<li><a href="/2021/05">May 2021</a></li>
+	<li><a href="/2021/04">April 2021</a></li>
+	<li><a href="/2021/02">February 2021</a></li>
+	<li><a href="/2021/01">January 2021</a></li>
+	<li><a href="/2020/12">December 2020</a></li>
+	<li><a href="/2019/03">March 2019</a></li>
+	<li><a href="/2019/01">January 2019</a></li>
+	<li><a href="/2018/12">December 2018</a></li>
+	<li><a href="/2018/11">November 2018</a></li>
+	<li><a href="/2018/10">October 2018</a></li>
+	<li><a href="/2018/09">September 2018</a></li>
+	<li><a href="/2017/09">September 2017</a></li>
+	<li><a href="/2017/03">March 2017</a></li>
+	<li><a href="/2017/02">February 2017</a></li>
+	<li><a href="/2017/01">January 2017</a></li>
+	<li><a href="/2016/12">December 2016</a></li>
+	<li><a href="/2016/11">November 2016</a></li>
+	<li><a href="/2016/09">September 2016</a></li>
+	<li><a href="/2016/01">January 2016</a></li>
+	<li><a href="/2015/11">November 2015</a></li>
+	<li><a href="/2015/10">October 2015</a></li>
+	<li><a href="/2015/09">September 2015</a></li>
+	<li><a href="/2015/06">June 2015</a></li>
+	<li><a href="/2015/04">April 2015</a></li>
+	<li><a href="/2015/03">March 2015</a></li>
+	<li><a href="/2015/02">February 2015</a></li>
+	<li><a href="/2015/01">January 2015</a></li>
+	<li><a href="/2014/12">December 2014</a></li>
+	<li><a href="/2014/11">November 2014</a></li>
+	<li><a href="/2014/10">October 2014</a></li>
+	<li><a href="/2014/09">September 2014</a></li>
+	<li><a href="/2014/08">August 2014</a></li>
+	<li><a href="/2014/07">July 2014</a></li>
+	<li><a href="/2014/06">June 2014</a></li>
+	<li><a href="/2014/05">May 2014</a></li>
+	<li><a href="/2014/04">April 2014</a></li>
+	<li><a href="/2014/03">March 2014</a></li>
+	<li><a href="/2014/02">February 2014</a></li>
+	<li><a href="/2014/01">January 2014</a></li>
+	<li><a href="/2013/12">December 2013</a></li>
+	<li><a href="/2013/11">November 2013</a></li>
+	<li><a href="/2013/09">September 2013</a></li>
+	<li><a href="/2013/08">August 2013</a></li>
+	<li><a href="/2013/07">July 2013</a></li>
+	<li><a href="/2013/06">June 2013</a></li>
+	<li><a href="/2013/05">May 2013</a></li>
+	<li><a href="/2013/03">March 2013</a></li>
+	<li><a href="/2013/02">February 2013</a></li>
+	<li><a href="/2013/01">January 2013</a></li>
+	<li><a href="/2012/12">December 2012</a></li>
+	<li><a href="/2012/11">November 2012</a></li>
+	<li><a href="/2012/09">September 2012</a></li>
+	<li><a href="/2012/07">July 2012</a></li>
+	<li><a href="/2012/06">June 2012</a></li>
+	<li><a href="/2012/05">May 2012</a></li>
+	<li><a href="/2012/04">April 2012</a></li>
+	<li><a href="/2012/03">March 2012</a></li>
+	<li><a href="/2012/02">February 2012</a></li>
+	<li><a href="/2012/01">January 2012</a></li>
+	<li><a href="/2011/12">December 2011</a></li>
+	<li><a href="/2011/11">November 2011</a></li>
+	<li><a href="/2011/10">October 2011</a></li>
+	<li><a href="/2011/09">September 2011</a></li>
+	<li><a href="/2011/07">July 2011</a></li>
+	<li><a href="/2011/06">June 2011</a></li>
+	<li><a href="/2011/05">May 2011</a></li>
+	<li><a href="/2011/04">April 2011</a></li>
+	<li><a href="/2011/03">March 2011</a></li>
+	<li><a href="/2011/02">February 2011</a></li>
+	<li><a href="/2011/01">January 2011</a></li>
+	<li><a href="/2010/12">December 2010</a></li>
+	<li><a href="/2010/11">November 2010</a></li>
+	<li><a href="/2010/10">October 2010</a></li>
+	<li><a href="/2010/09">September 2010</a></li>
+	<li><a href="/2010/08">August 2010</a></li>
+	<li><a href="/2010/07">July 2010</a></li>
+	<li><a href="/2010/06">June 2010</a></li>
+	<li><a href="/2010/05">May 2010</a></li>
+	<li><a href="/2010/04">April 2010</a></li>
+	<li><a href="/2010/03">March 2010</a></li>
+	<li><a href="/2010/02">February 2010</a></li>
+	<li><a href="/2010/01">January 2010</a></li>
+	<li><a href="/2009/12">December 2009</a></li>
+	<li><a href="/2009/11">November 2009</a></li>
+	<li><a href="/2009/10">October 2009</a></li>
+	<li><a href="/2009/09">September 2009</a></li>
+	<li><a href="/2009/08">August 2009</a></li>
+	<li><a href="/2009/07">July 2009</a></li>
+	<li><a href="/2009/06">June 2009</a></li>
+	<li><a href="/2009/05">May 2009</a></li>
+	<li><a href="/2009/04">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 --></body>
+</html>

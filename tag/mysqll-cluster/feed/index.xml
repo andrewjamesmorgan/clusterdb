@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>mysqll cluster &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/mysqll-cluster/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Wed, 18 Jun 2014 12:54:45 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>SQL &#038; NoSQL, The Best of Both Worlds with MySQL Cluster &#8211; webinar replay now available</title>
+		<link>/mysql-cluster/sql-nosql-the-best-of-both-worlds-with-mysql-cluster-webinar-replay-now-available</link>
+					<comments>/mysql-cluster/sql-nosql-the-best-of-both-worlds-with-mysql-cluster-webinar-replay-now-available#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 18 Jun 2014 12:54:45 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[mysqll cluster]]></category>
+		<category><![CDATA[NoSQL]]></category>
+		<guid isPermaLink="false">/?p=3911</guid>
+
+					<description><![CDATA[I recently presented a webinar explaining how you can enjoy the key benefits of NoSQL data stores without giving up all of the great features provided by a mature RDBMS. In case you weren&#8217;t able to attend (or wanted to refresh your memory) then the webinar replay and charts are now available. There’s often a]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/11/MySQL_Cluster.png"><img decoding="async" src="/wp-content/uploads/2013/11/MySQL_Cluster-300x125.png" alt="MySQL Cluster Logo" width="300" height="125" class="aligncenter size-medium wp-image-2982" srcset="/wp-content/uploads/2013/11/MySQL_Cluster-300x125.png 300w, /wp-content/uploads/2013/11/MySQL_Cluster.png 1004w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+<p>I recently presented a webinar explaining how you can enjoy the key benefits of NoSQL data stores without giving up all of the great features provided by a mature RDBMS.</p>
+<p>In case you weren&#8217;t able to attend (or wanted to refresh your memory) then the <a href="http://www.mysql.com/news-and-events/web-seminars/sql-nosql-the-best-of-both-worlds-with-mysql-cluster/" title="SQL &#038; NoSQL, The Best of Both Worlds with MySQL Cluster webinar replay" target="blank">webinar replay and charts</a> are now available.</p>
+<p>There’s often a lot of excitement around NoSQL Data Stores with the promise of simple access patterns, flexible schemas, scalability and High Availability. The downside can come in the form of losing ACID transactions, consistency, flexible queries and data integrity checks. What if you could have the best of both worlds? </p>
+<p>This webinar showed how MySQL Cluster provides simultaneous SQL and native NoSQL access to your data, with a simple key-value API (Memcached), REST, JavaScript, Java or C++. You will hear how the MySQL Cluster architecture delivers in-memory real-time performance, 99.999% availability, on-line maintenance and linear, horizontal scalability through transparent auto-sharding. </p>
+<p>These webinars are always a good opportunity to get your questions answered; here&#8217;s a catch up of the Q&#038;A from this session:</p>
+<ul>
+<li><strong>Would you suggest using mysql cluster to store graph data (150k writes second)?</strong> For graph data, you always have to choose between a specialized graph database and a more general-purpose database. If it&#8217;s &#8220;almost&#8221; relational with a few graph-like connections, your decision might be different than if it&#8217;s purely graph-like. In any case, your write load of 150K writes per second can certainly be managed in MySQL Cluster. It only requires a little care to get an appropriate cluster configuration as far as number of data nodes, number of API nodes, memory, disk, and networking. Also, the total eventual size of the data is an important factor in the decision about whether to use Cluster, since indexes must always fit in the total distributed memory of the data nodes.</li>
+<li><strong>Can you please explain the RAM requirements for MySQL Cluster, for example if my database is 10GBs in disc space, will it require 10GBs of RAM in MySQL Cluster?</strong> There is additional overhead in addition to the raw data. It&#8217;s tricky to try to summarize, but there is fixed overhead per row plus space for re-do logs and indexes. Details are in online documents. All indexed columns must be in memory but other columns can be on disk if you choose. Remember that each row has to be stored on 2 data nodes and so you need to figure out your total memory requirement, double it and then divide by the number of data nodes to find how much memory would be needed for each data node. <a href="http://www.mysql.com/why-mysql/white-papers/mysql-cluster-evaluation-guide/" title="MySQL Cluster Evaluation Guide - Designing, Evaluating and Benchmarking MySQL Cluster" target="blank">MySQL Cluster Evaluation Guide &#8211; Designing, Evaluating and Benchmarking MySQL Cluster</a> is a good white paper to refer to in order to decide if MySQL Cluster is the right database for your application as well as what you&#8217;ll need and what you should do to get the best results.</li>
+<li><strong>Is there a wizard to migrate innoDB to MySQL Cluster?</strong> There&#8217;s not a &#8220;wizard&#8221; per se, but &#8220;ALTER TABLE x ENGINE=ndb&#8221; will convert a particular table. (It&#8217;s only tricky if you have foreign keys which might have to be dropped at the beginning and reenabled at the end of the process).</li>
+<li><strong>Can this be deployed on EC2 instances, or is this for bare metal?</strong> MySQL Cluster has been successfully deployed (e.g. by <a href="http://www.mysql.com/customers/view/?id=1223" title="PayPal" target="blank">PayPal</a>)</li>
+<li><strong>How difficult is it to do a hardware upgrade? Do you have to do it all at once or can you do each machine in turn?</strong> Both hardware and software upgrades are online operations. You can add nodes to a running cluster, and upgrade the software on nodes individually. If you use the MySQL Cluster Manager, many of the upgrade operations can be automated. You won&#8217;t be able to <strong>exploit</strong> some upgrades (e.g. extra hardware on a data node) until you&#8217;ve upgraded.</li>
+<li><strong>Does MySQL Cluster store all data in memory? What scenarios available for swaping data to disk? Can we differentiate which tables/columns are stored on memory/disk?</strong> All indexes are in memory. A table can be all in-memory, or it can have non-indexed columns stored on disk. That&#8217;s a per-column choice.</li>
+<li><strong>Can mysql be subscribed/notified when some data is changed/updated?</strong> There is a notification API. It is currently only supported in C NDB API (this is the &#8220;Event API&#8221;), not in MySQL server or others. There are plans to also support it in Node.JS, but no actual support at this time. If using SQL then triggers can be defined in the MySQL Server &#8211; just like for InnoDB tables.</li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/sql-nosql-the-best-of-both-worlds-with-mysql-cluster-webinar-replay-now-available/feed</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

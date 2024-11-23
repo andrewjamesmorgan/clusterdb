@@ -1,0 +1,896 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>BaaS &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/baas/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 05 Sep 2017 12:41:19 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>MongoDB Stitch – the latest, and best way to build your app</title>
+		<link>/mongodb/mongodb-stitch-the-latest-and-best-way-to-build-your-app</link>
+					<comments>/mongodb/mongodb-stitch-the-latest-and-best-way-to-build-your-app#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 05 Sep 2017 12:41:19 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[BaaS]]></category>
+		<category><![CDATA[MEAN]]></category>
+		<category><![CDATA[mern]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB Stitch]]></category>
+		<guid isPermaLink="false">/?p=4455</guid>
+
+					<description><![CDATA[MongoDB Stitch – the latest, and best way to build your app In a recent 6 part blog series on the MEAN &#38; MERN stacks, I stepped through how you can build modern applications on a stack of MongoDB, Node.js, Express, and Angular or React. What if there was a service that took care of]]></description>
+										<content:encoded><![CDATA[<h1>MongoDB Stitch – the latest, and best way to build your app</h1>
+<p>In a recent <a href="/mongodb/modern-application-stack-part-1-introducing-the-mean-stack" title="Building apps with the MEAN stack or MERN stack">6 part blog series on the MEAN &amp; MERN stacks</a>, I stepped through how you can build modern applications on a stack of MongoDB, Node.js, Express, and Angular or React. What if there was a service that took care of everything apart from the from application frontend (Angular, React, or other technology)? [MongoDB Stitch](/mongodb/modern-application-stack-part-1-introducing-the-mean-stack “Backend as a Service for MongoDB”) is that service, it&#8217;s a new backend as a service (BaaS) for applications usinf MongoDB.</p>
+<p>The purpose of this post is to introduce what MongoDB Stitch is and, most importantly, demonstrate exactly how you use it – both configuring your app through the Stitch backend UI, and invoking that app backend from your frontend code or other services. Note that MongoDB Stitch is currently in beta and so you should expect the UI to evolve over the coming weeks and months. The <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch BaaS tutorials">tutorials</a> in the <a href="https://docs.mongodb.com/stitch/" title="MongoDB Stitch BaaS documentation">Stitch documentation</a> provide always up-to-date examples for creating Stitch applications.</p>
+<h2>What is MongoDB Stitch?</h2>
+<p>MongoDB Stitch is a BaaS, giving developers a REST-like API (plus SDKs for JavaScript, iOS, and Android) to MongoDB, and composability with other services, backed by a robust permissioning system for configuring fine-grained data access controls.</p>
+<p>Stitch allows developers to focus on building applications rather than on managing data manipulation code or service integration. As application and display logic continues to move into the frontend web and mobile tiers, the remaining backend is often dominated by code to handle storing and retrieving data from a database, enforcing security and data privacy, and integrating various services. MongoDB Stitch provides that same functionality declaratively, rather than using procedural boilerplate backend code.</p>
+<p>The data access rules in MongoDB stitch are entirely declarative and designed to be expressive enough to handle any application, including sensitive data such as payment details. For a given collection, you can restrict what operations are permitted and what fields can be accessed – according to user id, role, or custom criteria. Access can even be limited to specific aggregations – allowing analysts to work with the data without exposing any individual&#8217;s private information.</p>
+<p>If you already have data in MongoDB Atlas, you can start by safely exposing it to new applications via Stitch&#8217;s API – perhaps allowing read access to specific fields. You can authenticate users through built-in integrations with auth providers.</p>
+<p>In my <a href="/mongodb/modern-application-stack-part-1-introducing-the-mean-stack" title="Building apps with the MEAN and MERN stacks">previous blog series</a>, I detailed how to work with the technologies that are typically used to make up a modern application backend: MongoDB for the database, Node.js to run the backend logic, and a framework such as Express to provide a REST API:</p>
+<div id="attachment_4457" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/000_MEAN_MERN_Stack.png"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-4457" src="/wp-content/uploads/2017/09/000_MEAN_MERN_Stack-1024x450.png" alt="MEAN Stack and MERN Stack" width="480" height="211" class="size-large wp-image-4457" srcset="/wp-content/uploads/2017/09/000_MEAN_MERN_Stack-1024x450.png 1024w, /wp-content/uploads/2017/09/000_MEAN_MERN_Stack-300x132.png 300w, /wp-content/uploads/2017/09/000_MEAN_MERN_Stack-768x338.png 768w, /wp-content/uploads/2017/09/000_MEAN_MERN_Stack.png 1819w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4457" class="wp-caption-text">MEAN Stack and MERN Stack</p></div>
+<p>Stitch, greatly simplifies your development and ops efforts for new applications by providing the entire backend as managed service. Even your frontend application code is simplified, as Stitch provides idiomatic SDKs for JavaScript, iOS, and Android – so you don&#8217;t need to code HTTP requests directly. Further, the SDK/API isn&#8217;t limited to just accessing MongoDB data, you can also use it for any other service registered with your Stitch application backend.</p>
+<div id="attachment_4458" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/00_MongoDB_Stitch_architecture.png"><img decoding="async" aria-describedby="caption-attachment-4458" src="/wp-content/uploads/2017/09/00_MongoDB_Stitch_architecture-562x1024.png" alt="MongoDB Stitch BaaS architecture" width="480" height="875" class="size-large wp-image-4458" srcset="/wp-content/uploads/2017/09/00_MongoDB_Stitch_architecture-562x1024.png 562w, /wp-content/uploads/2017/09/00_MongoDB_Stitch_architecture-165x300.png 165w, /wp-content/uploads/2017/09/00_MongoDB_Stitch_architecture-768x1400.png 768w, /wp-content/uploads/2017/09/00_MongoDB_Stitch_architecture.png 1631w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4458" class="wp-caption-text">MongoDB Stitch BaaS architecture</p></div>
+<h2>Building an application with MongoDB Stitch</h2>
+<p>You can <a href="https://www.mongodb.com/cloud/stitch" title="MongoDB Stitch Backend as a Service for MongoDB">get started with MongoDB Stitch for free</a> – use it with your free MongoDB Atlas cluster. If you already registered for MongoDB Atlas then you can create your MongoDB Stitch apps with your existing Atlas group.</p>
+<h3>Creating your application in MongoDB Stitch</h3>
+<p>The app that we&#8217;re building will record user check-ins (from FourSquare or an iOS app or an iOS Workflow applet) in MongoDB Atlas, and then make them visible to the user and their friends through a React/JavaScript web app.</p>
+<p>As we work through the tutorial, no previous knowledge is assumed, but at points, you may need to refer back to the <a href="/mongodb/modern-application-stack-part-1-introducing-the-mean-stack" title="MEAN &amp; MERN stacks">earlier blog series</a> (e.g. for details on <a href="/mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern" title="ReactJS">creating a React application frontend</a>).</p>
+<p>If you haven&#8217;t done so already, <a href="https://www.mongodb.com/cloud/atlas" title="MongoDB Atlas Database as a Service for MongoDB">create a new MongoDB Atlas cluster</a>, selecting the <em>M0</em> instance type for the free tier (if you already have an Atlas cluster, feel free to use that):</p>
+<div id="attachment_4495" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/0100_Create_Atlas_cluster.png"><img decoding="async" aria-describedby="caption-attachment-4495" src="/wp-content/uploads/2017/09/0100_Create_Atlas_cluster-1024x652.png" alt="Creating a MongoDB Atlas cluster" width="480" height="306" class="size-large wp-image-4495" srcset="/wp-content/uploads/2017/09/0100_Create_Atlas_cluster-1024x652.png 1024w, /wp-content/uploads/2017/09/0100_Create_Atlas_cluster-300x191.png 300w, /wp-content/uploads/2017/09/0100_Create_Atlas_cluster-768x489.png 768w, /wp-content/uploads/2017/09/0100_Create_Atlas_cluster.png 1320w" sizes="(max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4495" class="wp-caption-text">Creating a MongoDB Atlas cluster</p></div>
+<p>After the cluster has spun up, click on <em>Stitch Apps</em> and then <em>Create New Application</em>:</p>
+<div id="attachment_4459" style="width: 885px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/01_Select_or_create_MongoDB_Stitch_App.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4459" src="/wp-content/uploads/2017/09/01_Select_or_create_MongoDB_Stitch_App.png" alt="Create new MongoDB Stitch application" width="875" height="503" class="size-full wp-image-4459" srcset="/wp-content/uploads/2017/09/01_Select_or_create_MongoDB_Stitch_App.png 875w, /wp-content/uploads/2017/09/01_Select_or_create_MongoDB_Stitch_App-300x172.png 300w, /wp-content/uploads/2017/09/01_Select_or_create_MongoDB_Stitch_App-768x441.png 768w" sizes="auto, (max-width: 875px) 100vw, 875px" /></a><p id="caption-attachment-4459" class="wp-caption-text">Create new MongoDB Stitch application</p></div>
+<p>Give the application a name and ensure that the correct Atlas cluster is selected:</p>
+<div id="attachment_4460" style="width: 881px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/02_Create_MongoDB_Stitch_App.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4460" src="/wp-content/uploads/2017/09/02_Create_MongoDB_Stitch_App.png" alt="Name your MongoDB Stitch BaaS appName your MongoDB Stitch BaaS app" width="871" height="511" class="size-full wp-image-4460" srcset="/wp-content/uploads/2017/09/02_Create_MongoDB_Stitch_App.png 871w, /wp-content/uploads/2017/09/02_Create_MongoDB_Stitch_App-300x176.png 300w, /wp-content/uploads/2017/09/02_Create_MongoDB_Stitch_App-768x451.png 768w" sizes="auto, (max-width: 871px) 100vw, 871px" /></a><p id="caption-attachment-4460" class="wp-caption-text">Name your MongoDB Stitch BaaS appName your MongoDB Stitch BaaS app</p></div>
+<p>Once you&#8217;ve created the application, take a note of its <em>App ID</em> (in this example <code>trackme-pkjif</code>) as this will be needed by your application&#8217;s frontend:</p>
+<div id="attachment_4461" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/03_Created_MongoDB_Stitch_app.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4461" src="/wp-content/uploads/2017/09/03_Created_MongoDB_Stitch_app-1024x659.png" alt="MongoDB Stitch BaaS application details" width="480" height="309" class="size-large wp-image-4461" srcset="/wp-content/uploads/2017/09/03_Created_MongoDB_Stitch_app-1024x659.png 1024w, /wp-content/uploads/2017/09/03_Created_MongoDB_Stitch_app-300x193.png 300w, /wp-content/uploads/2017/09/03_Created_MongoDB_Stitch_app-768x494.png 768w, /wp-content/uploads/2017/09/03_Created_MongoDB_Stitch_app.png 1162w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4461" class="wp-caption-text">MongoDB Stitch BaaS application details</p></div>
+<h3>Backend database and rules</h3>
+<p>Select the <em>mongodb-atlas</em> service, followed by the <em>Rules</em> tab – this is where you define who can access what data from the MongoDB database:</p>
+<div id="attachment_4462" style="width: 642px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/04_New_collection_rules.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4462" src="/wp-content/uploads/2017/09/04_New_collection_rules.png" alt="MongoDB Stitch BaaS data rules" width="632" height="443" class="size-full wp-image-4462" srcset="/wp-content/uploads/2017/09/04_New_collection_rules.png 632w, /wp-content/uploads/2017/09/04_New_collection_rules-300x210.png 300w" sizes="auto, (max-width: 632px) 100vw, 632px" /></a><p id="caption-attachment-4462" class="wp-caption-text">MongoDB Stitch BaaS data rules</p></div>
+<p>Set the database name to <code>trackme</code> and the collection to <code>checkins</code>:</p>
+<div id="attachment_4463" style="width: 655px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/05_Collection_rule_names.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4463" src="/wp-content/uploads/2017/09/05_Collection_rule_names.png" alt="MongoDB Stitch – naming a collection" width="645" height="470" class="size-full wp-image-4463" srcset="/wp-content/uploads/2017/09/05_Collection_rule_names.png 645w, /wp-content/uploads/2017/09/05_Collection_rule_names-300x219.png 300w" sizes="auto, (max-width: 645px) 100vw, 645px" /></a><p id="caption-attachment-4463" class="wp-caption-text">MongoDB Stitch – naming a collection</p></div>
+<div id="attachment_4464" style="width: 589px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/06_Select_Collection.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4464" src="/wp-content/uploads/2017/09/06_Select_Collection.png" alt="MongoDB Stitch - select collection" width="579" height="418" class="size-full wp-image-4464" srcset="/wp-content/uploads/2017/09/06_Select_Collection.png 579w, /wp-content/uploads/2017/09/06_Select_Collection-300x217.png 300w" sizes="auto, (max-width: 579px) 100vw, 579px" /></a><p id="caption-attachment-4464" class="wp-caption-text">MongoDB Stitch &#8211; select collection</p></div>
+<p>A typical record from the <code>track.checkins</code> collection will look like this:</p>
+<pre><code>db.checkins.find().sort({_id: -1}).skip(2).limit(1).pretty()
+{
+    "_id" : ObjectId("597f14fe4fdd1f5eb78e142f"),
+    "owner_id" : "596ce3304fdd1f3e885999cb",
+    "email" : "me@gmail.com",
+    "venueName" : "Starbucks",
+    "date" : "July 31, 2017 at 12:27PM",
+    "url" : "http://4sq.com/LuzfAn",
+    "locationImg" : "http://maps.google.com/maps/api/staticmap?center=51.522058,-0.722497&amp;zoom=16&amp;size=710x440&amp;maptype=roadmap&amp;sensor=false&amp;markers=color:red%7C51.522058,-0.722497&amp;key=AIzaSyC2e-2nWNBM0VZMERf2I6m_PLZE4R2qAoM"
+}
+</code></pre>
+<p>Select the <em>Field Rules</em> tab and note the default read and write rules for the <em>Top-Level</em> document:</p>
+<div id="attachment_4465" style="width: 632px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/07_Collection_write_rule.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4465" src="/wp-content/uploads/2017/09/07_Collection_write_rule.png" alt="Defining a MongoDB Stitch write rule" width="622" height="603" class="size-full wp-image-4465" srcset="/wp-content/uploads/2017/09/07_Collection_write_rule.png 622w, /wp-content/uploads/2017/09/07_Collection_write_rule-300x291.png 300w" sizes="auto, (max-width: 622px) 100vw, 622px" /></a><p id="caption-attachment-4465" class="wp-caption-text">Defining a MongoDB Stitch write rule</p></div>
+<p>The default read rule is:</p>
+<pre><code>{
+  "owner_id": "%%user.id"
+}
+</code></pre>
+<p>With this configuration, a document can only be read from this collection if its <code>owner_id</code> field matches the <code>id</code> of the application user making the request (i.e. a user can only read their own data). <code>%%user</code> is an <a href="https://docs.mongodb.com/stitch/reference/expansions/">expansion</a> which gives the rule access to information about the application end-user making the request – here we&#8217;re interested in their unique identifier (<code>id</code>). Whenever a user adds a document to a collection, Stitch will set the <code>owner_id</code> to the ID of that user.</p>
+<p>Overwrite the write rule with the following, then press <em>SAVE</em>:</p>
+<pre><code>{
+  "%or": [
+    {
+      "%%prevRoot.owner_id": "%%user.id"
+    },
+    {
+      "%%prevRoot": {
+        "%exists": 0
+      }
+    }
+  ]
+}
+</code></pre>
+<p><a href="https://docs.mongodb.com/stitch/reference/expansions/" title="MongoDB Stitch expansions documentation"><code>%%prevRoot</code></a> is another expansion, representing the state of the document before the operation. You can read the above logic as: &#8220;Allow the write to succeed if either the the same user previously added the document or the document didn&#8217;t exist (i.e. it&#8217;s an insert)&#8221;.</p>
+<p>In addition to general rules for the document, read/write rules can be added for individual fields. Select the <code>owner_id</code> field and ensure that the validation rule is set to:</p>
+<pre><code>{
+  "%or": [
+    {
+      "%%prev": "%%user.id"
+    },
+    {
+      "%%prev": {
+        "%exists": false
+      }
+    }
+  ]
+}
+</code></pre>
+<div id="attachment_4466" style="width: 636px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/08_Field_validation_rule.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4466" src="/wp-content/uploads/2017/09/08_Field_validation_rule.png" alt="MongoDB Stitch field validation rule" width="626" height="655" class="size-full wp-image-4466" srcset="/wp-content/uploads/2017/09/08_Field_validation_rule.png 626w, /wp-content/uploads/2017/09/08_Field_validation_rule-287x300.png 287w" sizes="auto, (max-width: 626px) 100vw, 626px" /></a><p id="caption-attachment-4466" class="wp-caption-text">MongoDB Stitch field validation rule</p></div>
+<p>Filters control which documents a user sees when viewing a collection:</p>
+<div id="attachment_4467" style="width: 640px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/09_Leave_default_filters.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4467" src="/wp-content/uploads/2017/09/09_Leave_default_filters.png" alt="MongoDB Stitch collection filter" width="630" height="419" class="size-full wp-image-4467" srcset="/wp-content/uploads/2017/09/09_Leave_default_filters.png 630w, /wp-content/uploads/2017/09/09_Leave_default_filters-300x200.png 300w" sizes="auto, (max-width: 630px) 100vw, 630px" /></a><p id="caption-attachment-4467" class="wp-caption-text">MongoDB Stitch collection filter</p></div>
+<p>Ensure that <em>When</em> == <code>{"%%true": true}</code> and <em>Match Expression</em> == <code>{"owner_id": "%%user.id"}</code>.  This means that the filter is always applied and that a user will only see their own documents.</p>
+<p>You should also add rules for the <code>trackme.users</code> collection, where a typical document will look like:</p>
+<pre><code>&gt; db.users.findOne()
+{
+    "_id" : ObjectId("596e354f46224c3c723d968a"),
+    "owner_id" : "596ce47c4fdd1f3e88599ac4",
+    "userData" : {
+        "email" : "andrew.morgan@mongodb.com",
+        "name" : "Andrew Morgan",
+        "picture" : "https://lh4.googleusercontent.com/-lCBSTZFxhw0/AAAAAAAAAAI/AAAAAAAAAB4/vX9Sg4dO8xE/photo.jpg"
+    },
+    "friends" : [
+        "billy@gmail.com",
+        "granny@hotmail.com"
+    ]
+}
+</code></pre>
+<p>Setup <code>trackme.users</code> with the same rules and filters as <code>trackme.checkins</code>.</p>
+<h3>Values/constants</h3>
+<p>Stitch provides a simple and secure way to store <a href="https://docs.mongodb.com/stitch/reference/values/">values</a> associated with your application – a perfect example is your keys for public cloud services. Set up the following values:</p>
+<div id="attachment_4468" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/10_define_values.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4468" src="/wp-content/uploads/2017/09/10_define_values-1024x844.png" alt="Define MongoDB Stitch BaaS values" width="480" height="396" class="size-large wp-image-4468" srcset="/wp-content/uploads/2017/09/10_define_values-1024x844.png 1024w, /wp-content/uploads/2017/09/10_define_values-300x247.png 300w, /wp-content/uploads/2017/09/10_define_values-768x633.png 768w, /wp-content/uploads/2017/09/10_define_values.png 1078w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4468" class="wp-caption-text">Define MongoDB Stitch BaaS values</p></div>
+<p>By default, your WebHooks, named pipelines, and frontend application code can read the values. By setting the value to be private, you prevent access from your frontend code (or any other users of the Stitch API). The example <a href="https://github.com/am-MongoDB/trackme_MongoDB_Stitch/blob/master/src/text.checkin.component.js" title="ReactJS code to work with MongoDB Stitch">React frontend code</a> refers to the <code>twilioNumber</code> value (<code>%%values.twilioNumber</code>) when building a pipeline (if you wanted to keep the value more secure then you could implement a named pipeline to send the Twilio message and make <code>twilioNumber</code> private):</p>
+<pre><code>this.props.stitchClient.executePipeline([
+  {
+    service: "myTwilio",
+    action: "send",
+    args: {
+      to: this.state.textNumber,
+      from: 
+        "%%values.twilioNumber",  // Relies on twilioNumber not being private
+      body: name + " last checked into " + venue
+    }
+  }
+])
+</code></pre>
+<h3>Authentication providers</h3>
+<p>A key feature of Stitch is authenticating your app’s end users – after which you can configure precisely what data and services they’re entitled to access (e.g., to view documents that they created through their actions in the app). The following <a href="https://docs.mongodb.com/stitch/authentication/" title="MongoDB Stitch BaaS authentication documentation">types of authentication</a> are all supported:</p>
+<ul>
+<li><strong>Anonymous</strong> (the user doesn’t need to register or log in, but they’re still assigned an ID which is used to control what they see)</li>
+<li><strong><a href="https://docs.mongodb.com/stitch/auth/email-auth/" title="MongoDB Stitch email/password authentication docs">Email/Password</a></strong></li>
+<li><strong><a href="https://docs.mongodb.com/stitch/auth/google-auth/" title="MongoDB Stitch Google authentication docs">Google</a></strong></li>
+<li><strong><a href="https://docs.mongodb.com/stitch/auth/facebook-auth/" title="MongoDB Stitch Facebook authentication docs">Facebook</a></strong></li>
+<li><strong><a href="https://docs.mongodb.com/stitch/auth/custom-auth/" title="MongoDB Stitch custom authentication docs">Custom</a></strong> (using JSON web tokens)</li>
+</ul>
+<p>From the Authentication section of the Stitch UI, turn on Google authentication, providing the <em>Client ID</em> and <em>Client Secret</em> <a href="https://docs.mongodb.com/stitch/auth/google-auth/" title="&quot;MongoDB Stitch BaaS – using Google authentication credentials">generated by Google</a>. If you are running your app on your local machine then add <code>http://localhost:3000/</code> as a <em>Redirect URI</em>; if hosting externally, add the DNS hostname. Enable <em>Name</em>, <em>Picture</em>, and <em>Email</em> so that your app has access to those user credentials from Google. Click <em>Save</em>.</p>
+<div id="attachment_4469" style="width: 1009px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/11_Add_Google_authentication.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4469" src="/wp-content/uploads/2017/09/11_Add_Google_authentication.png" alt="MongoDB Stitch BaaS – adding Google authentication" width="999" height="641" class="size-full wp-image-4469" srcset="/wp-content/uploads/2017/09/11_Add_Google_authentication.png 999w, /wp-content/uploads/2017/09/11_Add_Google_authentication-300x192.png 300w, /wp-content/uploads/2017/09/11_Add_Google_authentication-768x493.png 768w" sizes="auto, (max-width: 999px) 100vw, 999px" /></a><p id="caption-attachment-4469" class="wp-caption-text">MongoDB Stitch BaaS – adding Google authentication</p></div>
+<p>Turn on Facebook authentication, providing the <em>Client ID</em> and <em>Client Secret</em> <a href="https://docs.mongodb.com/stitch/auth/facebook-auth/" title="Facebook authentication with MongoDB Stitch">generated by Facebook</a>. If you are running your app on your local machine then add <code>http://localhost:3000/</code> as a <em>Redirect URI</em>; if hosting externally, add the DNS hostname. Enable <em>Name</em>, <em>Picture</em>, and <em>Email</em> so that your app has access to those user credentials from Facebook. Click <em>Save</em>.</p>
+<div id="attachment_4470" style="width: 859px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/12_Add_Facebook_authentication.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4470" src="/wp-content/uploads/2017/09/12_Add_Facebook_authentication.png" alt="MongoDB Stitch BaaS - adding Facebook authentication" width="849" height="643" class="size-full wp-image-4470" srcset="/wp-content/uploads/2017/09/12_Add_Facebook_authentication.png 849w, /wp-content/uploads/2017/09/12_Add_Facebook_authentication-300x227.png 300w, /wp-content/uploads/2017/09/12_Add_Facebook_authentication-768x582.png 768w" sizes="auto, (max-width: 849px) 100vw, 849px" /></a><p id="caption-attachment-4470" class="wp-caption-text">MongoDB Stitch BaaS &#8211; adding Facebook authentication</p></div>
+<div id="attachment_4471" style="width: 996px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/13_No_other_auth_providers.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4471" src="/wp-content/uploads/2017/09/13_No_other_auth_providers.png" alt="MongoDB Stitch BaaS authentication providers" width="986" height="563" class="size-full wp-image-4471" srcset="/wp-content/uploads/2017/09/13_No_other_auth_providers.png 986w, /wp-content/uploads/2017/09/13_No_other_auth_providers-300x171.png 300w, /wp-content/uploads/2017/09/13_No_other_auth_providers-768x439.png 768w" sizes="auto, (max-width: 986px) 100vw, 986px" /></a><p id="caption-attachment-4471" class="wp-caption-text">MongoDB Stitch BaaS authentication providers</p></div>
+<h3>Adding other services (Slack &amp; Twilio)</h3>
+<p>Stitch has some services pre-integrated, for others, you can use the <a href="https://docs.mongodb.com/stitch/services/http/" title="MongoDB Stitch HTTP service">HTTP Service</a>.</p>
+<p>When a user checks in, a notification will be sent to a Slack channel using Stitch’s [Slack Service](https://docs.mongodb.com/stitch/services/slack/ &#8220;MongoDB Stitch Slack service). Click on <em>Add Service</em> and then select <em>Slack</em>, name the service <code>mySlack</code> (your pipelines and WebHooks can refer to the service using that name), and then click <em>Add service</em>.</p>
+<div id="attachment_4472" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/14_Add_Slack.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4472" src="/wp-content/uploads/2017/09/14_Add_Slack-1024x739.png" alt="MongoDB Stitch, adding Slack service" width="480" height="346" class="size-large wp-image-4472" srcset="/wp-content/uploads/2017/09/14_Add_Slack-1024x739.png 1024w, /wp-content/uploads/2017/09/14_Add_Slack-300x217.png 300w, /wp-content/uploads/2017/09/14_Add_Slack-768x555.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4472" class="wp-caption-text">MongoDB Stitch, adding Slack service</p></div>
+<p>In the <em>Config</em> tab, enter the <em>Team ID</em> and <em>Incoming WebhookURL</em> <a href="https://docs.mongodb.com/stitch/services/slack/#set-up-slack" title="MongoDB Stitch Slack docs">provided by Slack</a>:</p>
+<div id="attachment_4473" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/15_Configure_Slack.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4473" src="/wp-content/uploads/2017/09/15_Configure_Slack-1024x638.png" alt="MongoDB Stitch configuring Slack service" width="480" height="299" class="size-large wp-image-4473" srcset="/wp-content/uploads/2017/09/15_Configure_Slack-1024x638.png 1024w, /wp-content/uploads/2017/09/15_Configure_Slack-300x187.png 300w, /wp-content/uploads/2017/09/15_Configure_Slack-768x479.png 768w, /wp-content/uploads/2017/09/15_Configure_Slack.png 1482w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4473" class="wp-caption-text">MongoDB Stitch configuring Slack service</p></div>
+<p>There is no need to add any WebHooks (the app will send out Slack messages but will not receive any). On the <em>Rules</em> tab, enable <em>Post</em> (as the Stitch app must use the HTTP POST method to send messages to Stitch’s API), and then <em>Save</em>:</p>
+<div id="attachment_4474" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/16_Slack_rules.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4474" src="/wp-content/uploads/2017/09/16_Slack_rules-1024x523.png" alt="MongoDB Stitch adding Slack rules" width="480" height="245" class="size-large wp-image-4474" srcset="/wp-content/uploads/2017/09/16_Slack_rules-1024x523.png 1024w, /wp-content/uploads/2017/09/16_Slack_rules-300x153.png 300w, /wp-content/uploads/2017/09/16_Slack_rules-768x393.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4474" class="wp-caption-text">MongoDB Stitch adding Slack rules</p></div>
+<p>From the React web app, a logged-in user has the option to send an SMS text message, containing their latest check-in, to a phone number of their choice. To enable that service, you must configure the <a href="https://docs.mongodb.com/stitch/services/twilio/" title="MongoDB Stitch Twilio service docs">Twilio Service</a> through the Slack UI:</p>
+<div id="attachment_4475" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/17_Configure_Twilio.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4475" src="/wp-content/uploads/2017/09/17_Configure_Twilio-1024x642.png" alt="MongoDB Stitch, configuring Twilio service" width="480" height="301" class="size-large wp-image-4475" srcset="/wp-content/uploads/2017/09/17_Configure_Twilio-1024x642.png 1024w, /wp-content/uploads/2017/09/17_Configure_Twilio-300x188.png 300w, /wp-content/uploads/2017/09/17_Configure_Twilio-768x481.png 768w, /wp-content/uploads/2017/09/17_Configure_Twilio.png 1544w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4475" class="wp-caption-text">MongoDB Stitch, configuring Twilio service</p></div>
+<p>The values to use for the <em>SSID</em> and the <em>Auth Token</em> can be retrieved after <a href="https://docs.mongodb.com/stitch/services/twilio/" title="Twilio docs for MongoDB Stitch">registering with Twilio</a>. As with Slack, the app will not accept incoming messages from Twilio, and so there is no need to define any incoming WebHooks. In the <em>Rules</em> tab, enable the <em>Send</em> action and click <em>Save</em>:</p>
+<div id="attachment_4476" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/18_Twilio_Rules.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4476" src="/wp-content/uploads/2017/09/18_Twilio_Rules-1024x525.png" alt="Configure Twilio rules in MongoDB Stitch" width="480" height="246" class="size-large wp-image-4476" srcset="/wp-content/uploads/2017/09/18_Twilio_Rules-1024x525.png 1024w, /wp-content/uploads/2017/09/18_Twilio_Rules-300x154.png 300w, /wp-content/uploads/2017/09/18_Twilio_Rules-768x394.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4476" class="wp-caption-text">Configure Twilio rules in MongoDB Stitch</p></div>
+<h3>Named service pipelines</h3>
+<p>Service <a href="https://docs.mongodb.com/stitch/pipelines/" title="MongoDB Stitch service pipelines docs">pipelines</a> are used to execute a sequence of actions. As with the Stitch features you’ve already seen, pipelines are defined using JSON documents. You can create pipelines on the fly in your application code, or you can preconfigure <a href="https://docs.mongodb.com/stitch/reference/namedpipelines/" title="MongoDB Stitch named pipelines docs">Named Pipelines</a>. The advantages of named pipelines are:</p>
+<ul>
+<li>Code reuse: you can create the named pipeline once in the Stich backend, and then invoke it from multiple frontend locations (e.g., from multiple places in a web app, as well as from iOS and Android apps).</li>
+<li>Simpler code: keep the frontend application code clean by hiding the pipeline’s details in the Stitch backend.</li>
+<li>Enhanced security: access to secret resources, such as API keys, can be encapsulated within the Stitch backend. The alternative is to code them in the device-side code, where a user may attempt to reverse-engineer them.</li>
+</ul>
+<p>When creating a named pipeline, there is a set of information you must always provide:</p>
+<ul>
+<li>The <strong>name</strong> of the pipeline. The name is how your frontend application code, WebHooks, or other named pipelines can execute this pipeline.</li>
+<li>Whether the pipeline is <strong>private</strong>. If set to <code>true</code>, you can only invoke the pipeline from within the Stitch backend (from another named pipeline or a WebHook). If set to <code>false</code> then you can also invoke it directly from your application’s frontend code (or from Stitch’s <em>Debug Console</em>).</li>
+<li>If a service accessed by your pipeline would otherwise be blocked by that resource’s rules (e.g. a MongoDB document only being readable by the user that created it), enabling <em>Skip Rules</em> overrides those rules.</li>
+<li>You can control under what scenarios a pipeline is allowed to run by providing a JSON document – if it evaluates to <code>true</code> then the pipeline can run. </li>
+<li>You can define a set of <strong>Parameters</strong> that you can provide when invoking the pipeline. You can also tag as <strong>Required</strong>, those parameters which you must always provide.</li>
+<li>The <strong>Output Type</strong> indicates whether the pipeline will return a <em>Single Document</em>, <em>Boolean</em>, or <em>Array</em>.</li>
+<li>The rest of the pipeline definition consists of one or more stages, where each stage passes its results as input to the next. For each stage, you define:
+<ul>
+<li>Which <strong>Service</strong> to use (e.g. MongoDB, Twilio, Slack, or <em>built-in</em> (such as expressions, or literals))</li>
+<li>The <strong>Action</strong> associated with that service (e.g. for a MongoDB service, you might pick <code>find</code> or <code>insert</code>)</li>
+<li>The body of the action</li>
+<li><strong>Bind Data to %%Vars</strong> lets you create variables based on other values. When defining the value of one of these variables, you can use expansions such as:
+<ul>
+<li><strong><code>%%args.parameter-name</code></strong> to access parameters passed to the pipeline</li>
+<li><strong><code>%%item.field-name</code></strong> to access the results of the previous stage</li>
+<li><strong><code>%%values.value-name</code></strong> to access pre-defined values/constants</li>
+</ul>
+</li>
+<li>You can access the variable values from the <em>Action</em> document using <code>%%vars.variable-name</code>.</li>
+</ul>
+</li>
+</ul>
+<p>The first pipeline to create is <code>recentCheckins</code> which returns an array of the user’s most recent check-ins. When invoking the pipeline, the caller must provide a single parameter (<code>number</code>) which specifies how many check-ins it should return:</p>
+<div id="attachment_4477" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/19_recentCheckins_pipeline.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4477" src="/wp-content/uploads/2017/09/19_recentCheckins_pipeline-1024x891.png" alt="Creating MongoDB Stitch named pipeline" width="480" height="418" class="size-large wp-image-4477" srcset="/wp-content/uploads/2017/09/19_recentCheckins_pipeline-1024x891.png 1024w, /wp-content/uploads/2017/09/19_recentCheckins_pipeline-300x261.png 300w, /wp-content/uploads/2017/09/19_recentCheckins_pipeline-768x668.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4477" class="wp-caption-text">Creating MongoDB Stitch named pipeline</p></div>
+<p>Note that the <code>trackme.checkins</code> collection already includes filters and rules to ensure that a user only sees their own check-ins and so the <code>query</code> subdocument can be empty.</p>
+<p>Create the pipeline by pasting in the <em>Action</em> and <em>Bind Data To %%Vars</em> documents:</p>
+<p><em>Action</em>:</p>
+<pre><code>{
+  "database": "trackme",
+  "collection": "checkins",
+  "query": {},
+  "sort": {
+    "_id": -1
+  },
+  "project": {},
+  "limit": "%%vars.limit"
+}
+</code></pre>
+<p>If you&#8217;re not familiar with the <a href="https://docs.mongodb.com/manual/tutorial/query-documents/" title="MongoDB query language docs">MongoDB Query Language</a>, this searches the <code>trackme.checkins</code> collection, reverse sorts on the <code>_id</code> (most recently inserted documents have the highest value), and then discards all but the first <code>%%vars.limit</code> documents.</p>
+<p><em>Bind Data To %%Vars</em>:</p>
+<pre><code>{
+  "limit": "%%args.number"
+}
+</code></pre>
+<p>This creates a <code>LET</code> statement where <code>%%vars.limit</code> is bound to the <code>number</code> parameter which the caller passes to the pipeline.</p>
+<p>The second named pipeline to define is <code>friendsCheckins</code> to retrieve the most recent check-ins of users who have befriended the current user. Again, the caller must provide a parameter indicating the total number of check-ins it should return:</p>
+<div id="attachment_4478" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/20_friendsCheckins_pipeline.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4478" src="/wp-content/uploads/2017/09/20_friendsCheckins_pipeline-1024x756.png" alt="Define friendsCheckin named pipeline in MongoDB Stitch" width="480" height="354" class="size-large wp-image-4478" srcset="/wp-content/uploads/2017/09/20_friendsCheckins_pipeline-1024x756.png 1024w, /wp-content/uploads/2017/09/20_friendsCheckins_pipeline-300x221.png 300w, /wp-content/uploads/2017/09/20_friendsCheckins_pipeline-768x567.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4478" class="wp-caption-text">Define friendsCheckin named pipeline in MongoDB Stitch</p></div>
+<p>Create the pipeline by pasting in the <em>Action</em> and <em>Bind Data To %%Vars</em> documents:</p>
+<p><em>Action</em>:</p>
+<pre><code>{
+  "database": "trackme",
+  "collection": "users",
+  "pipeline": [
+    {
+      "$match": {
+        "owner_id": "%%vars.owner_id"
+      }
+    },
+    {
+      "$project": {
+        "userData.email": 1,
+        "_id": 0
+      }
+    },
+    {
+      "$lookup": {
+        "from": "users",
+        "localField": "userData.email",
+        "foreignField": "friends",
+        "as": "friendedMe"
+      }
+    },
+    {
+      "$project": {
+        "friendedMe.owner_id": 1
+      }
+    },
+    {
+      "$unwind": {
+        "path": "$friendedMe"
+      }
+    },
+    {
+      "$lookup": {
+        "from": "checkins",
+        "localField": "friendedMe.owner_id",
+        "foreignField": "owner_id",
+        "as": "friendsCheckins"
+      }
+    },
+    {
+      "$project": {
+        "friendsCheckins": 1
+      }
+    },
+    {
+      "$unwind": {
+        "path": "$friendsCheckins"
+      }
+    },
+    {
+      "$sort": {
+        "friendsCheckins._id": -1
+      }
+    },
+    {
+      "$limit": "%%vars.number"
+    },
+    {
+      "$group": {
+        "_id": "$friendsCheckins.email",
+        "checkins": {
+          "$push": {
+            "venueName": "$friendsCheckins.venueName",
+            "date": "$friendsCheckins.date",
+            "url": "$friendsCheckins.url",
+            "locationImg": "$friendsCheckins.locationImg"
+          }
+        }
+      }
+    }
+  ]
+}
+</code></pre>
+<p>If you’re not familiar with the format of this action, take a look at the <a href="https://docs.mongodb.com/manual/core/aggregation-pipeline/" title="MongoDB aggregation pipeline docs">MongoDB Aggregation Pipeline</a>.</p>
+<p><em>Bind Data To %%Vars</em>:</p>
+<pre><code>{
+  "number": "%%args.number",
+  "owner_id": "%%user.id"
+}
+</code></pre>
+<p>As before, this makes the values passed in as parameters accessible to the pipeline&#8217;s action section.</p>
+<p>Before letting the user add a new email address to their array of friends, it&#8217;s useful if you check that they aren&#8217;t already friends:</p>
+<div id="attachment_4479" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/21_alreadyAFriend_pipeline.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4479" src="/wp-content/uploads/2017/09/21_alreadyAFriend_pipeline-1024x733.png" alt="Define the alreadyAFriend named pipeline in MongoDB Stitch" width="480" height="344" class="size-large wp-image-4479" srcset="/wp-content/uploads/2017/09/21_alreadyAFriend_pipeline-1024x733.png 1024w, /wp-content/uploads/2017/09/21_alreadyAFriend_pipeline-300x215.png 300w, /wp-content/uploads/2017/09/21_alreadyAFriend_pipeline-768x550.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4479" class="wp-caption-text">Define the alreadyAFriend named pipeline in MongoDB Stitch</p></div>
+<p><em>Action</em>:</p>
+<pre><code>{
+  "database": "trackme",
+  "collection": "users",
+  "query": {
+    "friends": "%%vars.email"
+  }
+}
+</code></pre>
+<p>Because of the filter on the <code>trackme.users</code> collection, <code>find</code> operation will only look at this user, and so all the query needs to do is check if the provided email address already exists in the document&#8217;s array of friends.</p>
+<p>Bind Data To %%Vars:</p>
+<pre><code>{
+  "email": "%%args.friendsEmail"
+}
+</code></pre>
+<p>Once your application has checked that the requested friend isn&#8217;t already listed, you can call the <code>addFrriend</code> pipeline to add their email address:</p>
+<div id="attachment_4480" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/22_addFriend_pipeline.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4480" src="/wp-content/uploads/2017/09/22_addFriend_pipeline-1024x761.png" alt="Define the addFriend named pipeline in MongoDB Stitch" width="480" height="357" class="size-large wp-image-4480" srcset="/wp-content/uploads/2017/09/22_addFriend_pipeline-1024x761.png 1024w, /wp-content/uploads/2017/09/22_addFriend_pipeline-300x223.png 300w, /wp-content/uploads/2017/09/22_addFriend_pipeline-768x570.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4480" class="wp-caption-text">Define the addFriend named pipeline in MongoDB Stitch</p></div>
+<p><em>Action</em>:</p>
+<pre><code>{
+  "database": "trackme",
+  "collection": "users",
+  "query": {},
+  "update": {
+    "$push": {
+      "friends": "%%vars.email"
+    }
+  },
+  "upsert": false,
+  "multi": false
+}
+</code></pre>
+<p><em>Bind Data To %%Vars</em>:</p>
+<pre><code>{
+  "email": "%%args.friendsEmail"
+}
+</code></pre>
+<p>When a user checks in through FourSquare or our iOS Workflow app, we identify them by their email address rather than their <code>owner_id</code>; the <code>ownerFromEmail</code> pipeline retrieves the user&#8217;s <code>owner_id</code> using the <code>email</code> parameter:</p>
+<div id="attachment_4481" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/23_ownerFromEmail_pipeline.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4481" src="/wp-content/uploads/2017/09/23_ownerFromEmail_pipeline-1024x766.png" alt="Define the ownerFromEmail named pipeline in MongoDB Stitch" width="480" height="359" class="size-large wp-image-4481" srcset="/wp-content/uploads/2017/09/23_ownerFromEmail_pipeline-1024x766.png 1024w, /wp-content/uploads/2017/09/23_ownerFromEmail_pipeline-300x224.png 300w, /wp-content/uploads/2017/09/23_ownerFromEmail_pipeline-768x574.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4481" class="wp-caption-text">Define the ownerFromEmail named pipeline in MongoDB Stitch</p></div>
+<p>Note that <em>Skip Rules</em> is enabled for the pipeline, so that it&#8217;s able to search all documents in the <code>trackme.users</code> collection. For extra security, we make it <em>Private</em> so that it can only be executed by other pipelines or WebHooks that we create.</p>
+<p><em>Action</em>:</p>
+<pre><code>{
+  "database": "trackme",
+  "collection": "users",
+  "query": {
+    "userData.email": "%%vars.email"
+  },
+  "project": {
+    "_id": 0,
+    "owner_id": 1
+  },
+  "limit": 1
+}
+</code></pre>
+<p><em>Bind Data To %%Vars</em>:</p>
+<pre><code>{
+  "email": "%%args.email"
+}
+</code></pre>
+<p>When a user checks in, we want to send a notification to our Slack channel – create the <code>slackCheckin</code> pipeline to do so:</p>
+<div id="attachment_4482" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/24_slackCheckin_pipeline.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4482" src="/wp-content/uploads/2017/09/24_slackCheckin_pipeline-1024x836.png" alt="Define the slackCheckin named pipeline in MongoDB Stitch" width="480" height="392" class="size-large wp-image-4482" srcset="/wp-content/uploads/2017/09/24_slackCheckin_pipeline-1024x836.png 1024w, /wp-content/uploads/2017/09/24_slackCheckin_pipeline-300x245.png 300w, /wp-content/uploads/2017/09/24_slackCheckin_pipeline-768x627.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4482" class="wp-caption-text">Define the slackCheckin named pipeline in MongoDB Stitch</p></div>
+<p>The pipeline uses the <code>mySlack</code> service that we created earlier. Again, set it to <em>Private</em> so that it can only be called from other WebHooks or named pipelines.</p>
+<p><em>Action</em>:</p>
+<pre><code>{
+  "channel": "trackme",
+  "username": "%%vars.name",
+  "text": "%%vars.text",
+  "iconUrl": "%%values.stitchLogo"
+}
+</code></pre>
+<p><em>Bind Data To %%Vars</em>:</p>
+<pre><code>{
+  "name": "%%args.email",
+  "text": {
+    "%concat": [
+      "I just checked into ",
+      "%%args.venue",
+      ". ",
+      "%%args.location"
+    ]
+  }
+}
+</code></pre>
+<h3>Working with other services – the HTTP service and WebHooks</h3>
+<p>The HTTP service fulfills two roles:</p>
+<ul>
+<li>Makes outgoing HTTP calls to services (either public web services or your microservices)</li>
+<li>Accepts incoming HTTP requests (through Stitch WebHooks) – allowing external services to trigger actions within your Stitch application</li>
+</ul>
+<p>The TrackMe application uses WebHooks to receive notifications whenever one of our users checks in through FourSquare or the iOS Workflow app.</p>
+<p>Create a new HTTP service called <code>externalCheckin</code>:</p>
+<div id="attachment_4483" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/25_Add_http_service.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4483" src="/wp-content/uploads/2017/09/25_Add_http_service-1024x776.png" alt="Create externalCheckin HTTP service in MongoDB Stitch" width="480" height="364" class="size-large wp-image-4483" srcset="/wp-content/uploads/2017/09/25_Add_http_service-1024x776.png 1024w, /wp-content/uploads/2017/09/25_Add_http_service-300x227.png 300w, /wp-content/uploads/2017/09/25_Add_http_service-768x582.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4483" class="wp-caption-text">Create externalCheckin HTTP service in MongoDB Stitch</p></div>
+<p>There&#8217;s no need to define any (outgoing) rules as our application doesn&#8217;t use this service to send out any requests.</p>
+<p>Create the <code>fourSquareCheckin</code> WebHook:</p>
+<div id="attachment_4485" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/26_FourSquare_Checkin_WebHook.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4485" src="/wp-content/uploads/2017/09/26_FourSquare_Checkin_WebHook-1024x846.png" alt="Define fourSquareCheckin WebHook in MongoDB Stitch" width="480" height="397" class="size-large wp-image-4485" srcset="/wp-content/uploads/2017/09/26_FourSquare_Checkin_WebHook-1024x846.png 1024w, /wp-content/uploads/2017/09/26_FourSquare_Checkin_WebHook-300x248.png 300w, /wp-content/uploads/2017/09/26_FourSquare_Checkin_WebHook-768x635.png 768w, /wp-content/uploads/2017/09/26_FourSquare_Checkin_WebHook.png 1453w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4485" class="wp-caption-text">Define fourSquareCheckin WebHook in MongoDB Stitch</p></div>
+<p>To prevent another application sending your application bogus check-ins, enable <em>Require Secret As Query Param</em> and provide a secret (I&#8217;ve used <code>667</code>, but for a production app, you&#8217;d want a stronger secret).</p>
+<p>The WebHook consists of two stages. The first stage (Stage 0) uses the <em>built-in</em> <em>expression</em> action to build a JSON document containing the check-in data. Note that we form the <code>locationImg</code> field by adding our <code>GoogleMapsStaticKey</code> value to the end of the received URL (so that the new URL can be used by the frontend application code to retrieve the map image from Google).</p>
+<p><em>Action (first stage)</em>:</p>
+<pre><code>{
+  "expression": {
+    "owner_id": "%%vars.owner.owner_id",
+    "email": "%%vars.email",
+    "venueName": "%%vars.venue",
+    "date": "%%vars.date",
+    "url": "%%vars.url",
+    "locationImg": {
+      "%concat": [
+        "%%vars.location",
+        "&amp;key=",
+        "%%values.GoogleMapsStaticKey"
+      ]
+    }
+  }
+}
+</code></pre>
+<p>When creating the variables to construct the expression, <code>%%vars.owner</code> is formed by invoking our <code>ownerFromEmail</code> named pipeline – passing in the received <code>email</code> address from the received HTTP body.</p>
+<p><em>Bind Data To %%Vars (first stage)</em>:</p>
+<pre><code>{
+  "owner": {
+    "%pipeline": {
+      "name": "ownerFromEmail",
+      "args": {
+        "email": "%%args.body.email"
+      }
+    }
+  },
+  "email": "%%args.body.email",
+  "venue": "%%args.body.venue",
+  "date": "%%args.body.checkinDate",
+  "url": "%%args.body.url",
+  "location": "%%args.body.location",
+  "slackDummy": {
+    "%pipeline": {
+      "name": "slackCheckin",
+      "args": {
+        "email": "%%args.body.email",
+        "venue": "%%args.body.venue",
+        "location": {
+          "%concat": [
+            "%%args.body.location",
+            "&amp;key=",
+            "%%values.GoogleMapsStaticKey"
+          ]
+        }
+     }
+    }
+  }
+}
+</code></pre>
+<p>When defining the variables, we also create a dummy variable (<code>slackDummy</code>) so that we can invoke the <code>slackCheckin</code> pipeline as a side effect.</p>
+<p>The second stage takes that document and stores it in the <code>trackme.checkins</code> collection.</p>
+<p><em>Action (second stage)</em>:</p>
+<pre><code>{
+  "database": "trackme",
+  "collection": "checkins"
+}
+</code></pre>
+<p>Take a note of the WebHook URL (<code>https://stitch.mongodb.com/api/client/v1.0/app/trackme-pkjif/svc/externalCheckin/incomingWebhook/598081f44fdd1f5eb7900c16</code> in this example) as this is where other services must send requests.</p>
+<p>The second WebHook (<code>appCheckin)</code> will be invoked from the iOS Workflow app; it&#8217;s very similar to  <code>fourSquareCheckin</code> but there&#8217;s no need to add the Google Maps key as for these check-ins, <code>locationImg</code> is the <a href="">Imgur</a> URL of a photo taken by the user at the venue.</p>
+<div id="attachment_4486" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/27_appCheckin_WebHook.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4486" src="/wp-content/uploads/2017/09/27_appCheckin_WebHook-1024x790.png" alt="Define appCheckin WebHook in MongoDB Stitch" width="480" height="370" class="size-large wp-image-4486" srcset="/wp-content/uploads/2017/09/27_appCheckin_WebHook-1024x790.png 1024w, /wp-content/uploads/2017/09/27_appCheckin_WebHook-300x232.png 300w, /wp-content/uploads/2017/09/27_appCheckin_WebHook-768x593.png 768w, /wp-content/uploads/2017/09/27_appCheckin_WebHook.png 1451w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4486" class="wp-caption-text">Define appCheckin WebHook in MongoDB Stitch</p></div>
+<p><em>Action (first stage)</em>:</p>
+<pre><code>{
+  "expression": {
+    "owner_id": "%%vars.owner.owner_id",
+    "email": "%%vars.email",
+    "venueName": "%%vars.venue",
+    "date": "%%vars.date",
+    "url": "%%vars.url",
+    "locationImg": "%%vars.location"
+  }
+}
+</code></pre>
+<p><em>Bind Data To %%Vars (first stage)</em>:</p>
+<pre><code>{
+  "owner": {
+    "%pipeline": {
+      "name": "ownerFromEmail",
+      "args": {
+        "email": "%%args.body.email"
+      }
+    }
+  },
+  "email": "%%args.body.email",
+  "venue": "%%args.body.venue",
+  "date": "%%args.body.date",
+  "url": "%%args.body.url",
+  "location": "%%args.body.location",
+  "slackDummy": {
+    "%pipeline": {
+      "name": "slackCheckin",
+      "args": {
+        "email": "%%args.body.email",
+        "venue": "%%args.body.venue",
+        "location": {
+          "%concat": [
+            "%%args.body.location",
+            "&amp;key=",
+            "%%values.GoogleMapsStaticKey"
+          ]
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<p><em>WebHook definition (second stage)</em>:</p>
+<pre><code>{
+  "database": "trackme",
+  "collection": "checkins"
+}
+</code></pre>
+<p>Take a note for the Webhook URL.</p>
+<h2>Checking into the app using WebHooks</h2>
+<h3>Capturing FourSquare check-ins (via IFTTT)</h3>
+<p><a href="https://ifttt.com/" title="If This Then That">IFTTT</a> (If This Then That) is a free cloud service which allows you to automate tasks by combining existing services (Google Docs, Facebook, Instagram, Hue lights, Nest thermostats, GitHub, Trello, Dropbox,&#8230;). The name of the service comes from the simple pattern used for each Applet (automation rule): &#8220;<strong>IF T</strong>his event occurs in service x <strong>T</strong>hen trigger <strong>T</strong>hat action in service y&#8221;.</p>
+<p>IFTTT includes a <a href="https://ifttt.com/maker_webhooks" title="Maker HTTP service in IFTTT">Maker</a> service which can handle web requests (triggers) or send web requests (actions). In this case, you can create an Applet to invoke our <code>fourSquareCheckin</code> WebHook whenever you check in using the Swarm (Foursquare) app:</p>
+<div id="attachment_4487" style="width: 294px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/28_IFTTT_Applet.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4487" src="/wp-content/uploads/2017/09/28_IFTTT_Applet-284x1024.png" alt="Define IFTTT applet for MongoDB Stitch app" width="284" height="1024" class="size-large wp-image-4487" srcset="/wp-content/uploads/2017/09/28_IFTTT_Applet-284x1024.png 284w, /wp-content/uploads/2017/09/28_IFTTT_Applet-83x300.png 83w, /wp-content/uploads/2017/09/28_IFTTT_Applet.png 528w" sizes="auto, (max-width: 284px) 100vw, 284px" /></a><p id="caption-attachment-4487" class="wp-caption-text">Define IFTTT applet for MongoDB Stitch app</p></div>
+<p>Note that you form the URL: (<code>https://stitch.mongodb.com/api/client/v1.0/app/trackme-pkjif/svc/externalCheckin/incomingWebhook/598081f44fdd1f5eb7900c16?secret=667</code>) from the WebHook URL, with the addition of the <code>secret</code> parameter.</p>
+<p>The HTTP method is set to POST and the body is a JSON document formed from several variables provided by the FourSquare service:</p>
+<pre><code>{
+    "email":"me@gmail.com",
+    "venue":"{{VenueName}}",
+    "checkinDate":"{{CheckinDate}}",
+    "url":"{{VenueUrl}}",
+    "location":"{{VenueMapImageUrl}}"
+}
+</code></pre>
+<p>In this example, the email is hard-coded, and so all check-ins will be registered by the same user. A production application would need a better solution.</p>
+<h3>Checking in from an iPhone (via the Workflow iOS app)</h3>
+<p><a href="https://workflow.is/">iOS Workflow</a> has some similarities with IFTTT, but there are also some significant differences:</p>
+<ul>
+<li>Workflow runs on your iOS device rather than in the cloud.</li>
+<li>You trigger Workflows by performing actions on your iOS device (e.g. pressing a button); external events from cloud service trigger IFTTT actions.</li>
+<li>Workflow allows much more involved patterns than IFTTT; it can loop, invoke multiple services, perform calculations, access local resources (e.g. camera and location information) on your device, and much more.</li>
+</ul>
+<p>Implementing a Workflow involves dragging actions into the work area and then adding attributes to those actions (such as the URL for the TrackMe <code>appCheckin</code> WebHook). The result of one action is automatically used as the input to the next in the workflow. Results can also be stored in variables for use by later actions.</p>
+<p>The TrackMe workflow:<br />
+* Retrieve the current location from your device &amp; fetch details venue details<br />
+* If the venue details isn&#8217;t a URL then fetch an Apple Maps URL<br />
+* Take a new photo and upload it to Imgur<br />
+* Create a URL to invoke Trackme (ending in <code>?secret=668</code>)<br />
+* Perform an HTTP POST to this URL, including check-in details in the body</p>
+<p>This is the Check In workflow:</p>
+<div id="attachment_4487" style="width: 294px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/28_IFTTT_Applet.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4487" src="/wp-content/uploads/2017/09/28_IFTTT_Applet-284x1024.png" alt="Define IFTTT applet for MongoDB Stitch app" width="284" height="1024" class="size-large wp-image-4487" srcset="/wp-content/uploads/2017/09/28_IFTTT_Applet-284x1024.png 284w, /wp-content/uploads/2017/09/28_IFTTT_Applet-83x300.png 83w, /wp-content/uploads/2017/09/28_IFTTT_Applet.png 528w" sizes="auto, (max-width: 284px) 100vw, 284px" /></a><p id="caption-attachment-4487" class="wp-caption-text">Define IFTTT applet for MongoDB Stitch app</p></div>
+<p>You can see the Workflow applet in action here:</p>
+<div id="attachment_4489" style="width: 202px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/29_iTrackMe_iOS.gif"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4489" src="/wp-content/uploads/2017/09/29_iTrackMe_iOS.gif" alt="Trackme MongoDB Stitch iOS Workflow in action" width="192" height="338" class="size-full wp-image-4489" /></a><p id="caption-attachment-4489" class="wp-caption-text">Trackme MongoDB Stitch iOS Workflow in action</p></div>
+<p>Checking the <em>trackme</em> Slack channel confirms that the checkin was received. Note that you also check the results of the request in the *Logs * section of the <a href="https://stitch.mongodb.com/" title="MongoDB Stitch BaaS admin UI">Stitch Admin UI</a>.</p>
+<div id="attachment_4492" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/32_Slacked_checkin.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4492" src="/wp-content/uploads/2017/09/32_Slacked_checkin-1024x694.png" alt="Check-in data shown in Slack" width="480" height="325" class="size-large wp-image-4492" srcset="/wp-content/uploads/2017/09/32_Slacked_checkin-1024x694.png 1024w, /wp-content/uploads/2017/09/32_Slacked_checkin-300x203.png 300w, /wp-content/uploads/2017/09/32_Slacked_checkin-768x521.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4492" class="wp-caption-text">Check-in data shown in Slack</p></div>
+<h2>Building a frontend app using React</h2>
+<p>In <a href="/mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern" title="Building a webapp frontend with ReactJS">The Modern Application Stack &#8211; Part 5: Using ReactJS, ES6 &amp; JSX to Build a UI (the rise of MERN)</a>, I covered developing an application frontend using React. In this post, I don&#8217;t rehash the introduction to React, instead, I focus on how the React application interacts with its Stitch backend.</p>
+<p>If you read my <a href="/mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern" title="ReactJS web apps">earlier post</a> then you may recall that it included writing a data service to handle interactions with the backend (<a href="/mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern" title="Mongopop app in ReactJS">Mongopop</a>) REST API; this isn&#8217;t required for the TrackMe frontend as the Stitch SDK provides access to the backend.</p>
+<p>The TrackMe application frontend allows a user to:</p>
+<ul>
+<li>Log in using Google or Facebook authentication</li>
+<li>View their most recent check-ins</li>
+<li>View the most recent check-ins of users that have added them to their list of friends</li>
+<li>Add another user to their list of friends</li>
+<li>Use Twilio to send an SMS text to any number, containing the user&#8217;s latest check-in information</li>
+</ul>
+<p>Download the full application can from the <a href="https://github.com/am-MongoDB/trackme_MongoDB_Stitch"><em>trackme_MongoDB_Stitch</em> GitHub project</a>.</p>
+<div id="attachment_4490" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/30_React_App_display.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4490" src="/wp-content/uploads/2017/09/30_React_App_display-1024x961.png" alt="TrackMe ReactJS Web app frontend for MongoDB Stitch" width="480" height="450" class="size-large wp-image-4490" srcset="/wp-content/uploads/2017/09/30_React_App_display-1024x961.png 1024w, /wp-content/uploads/2017/09/30_React_App_display-300x282.png 300w, /wp-content/uploads/2017/09/30_React_App_display-768x721.png 768w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4490" class="wp-caption-text">TrackMe ReactJS Web app frontend for MongoDB Stitch</p></div>
+<p>To run the TrackMe frontend:</p>
+<pre><code>git clone https://github.com/am-MongoDB/trackme_MongoDB_Stitch.git
+cd trackme_MongoDB_Stitch
+npm install
+</code></pre>
+<p>Edit the value of <code>appId</code> in <code>src/config.js</code>; replacing <code>trackme-xxxx</code> with the value for your Stitch app (found in the <em>Clients</em> tab in the Stitch console after creating your MongoDB Stitch app).</p>
+<pre><code>npm start
+</code></pre>
+<h2>ReactJS Javascript (ES6) Client Code</h2>
+<p>The application&#8217;s React frontend is made up of the <em>Trackme</em> component which embeds four sub-components:</p>
+<div id="attachment_4493" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/33_ReactComponents.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4493" src="/wp-content/uploads/2017/09/33_ReactComponents-1024x884.png" alt="React components making up the TrackMe web app" width="480" height="414" class="size-large wp-image-4493" srcset="/wp-content/uploads/2017/09/33_ReactComponents-1024x884.png 1024w, /wp-content/uploads/2017/09/33_ReactComponents-300x259.png 300w, /wp-content/uploads/2017/09/33_ReactComponents-768x663.png 768w, /wp-content/uploads/2017/09/33_ReactComponents.png 1390w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4493" class="wp-caption-text">React components making up the TrackMe web app</p></div>
+<p>Any Stitch JavaScript application must start by importing the Stitch SKD <code>StitchClient</code>. The code then uses  <code>StitchClient</code> to connect to MongoDB Stitch in the <em>Trackme</em> component&#8217;s constructor function within <a href="https://github.com/am-MongoDB/trackme_MongoDB_Stitch/blob/master/src/App.js" title="App.js React code"><code>App.js</code></a>. After instantiating <code>stitchClient</code>, it&#8217;s used to connect to the <code>trackme</code> database, followed by the <code>checkins</code>, and <code>user</code> collections:</p>
+<pre><code>import { StitchClient } from 'mongodb-stitch';
+import config from './config';
+...
+class Trackme extends React.Component {
+  constructor(props) {
+    super(props);
+        ...
+    this.appId = config.appId;
+        ...
+    let options = {};
+
+    this.stitchClient = new StitchClient(this.appId, options);
+
+    this.db = this.stitchClient.service("mongodb",
+        "mongodb-atlas").db("trackme");
+
+    this.checkins = this.db.collection("checkins");
+    this.users = this.db.collection("users");
+    }
+...
+}
+</code></pre>
+<p><code>stitchClient</code> is passed down to  <a href="https://github.com/am-MongoDB/trackme_MongoDB_Stitch/blob/master/src/login.component.js" title="Login component code for TrackMe React app"><code>src/login.component.js</code></a>, where a single line of code (<code>this.props.stitchClient.authWithOAuth("facebook")</code>) can be used to authenticate using Facebook:</p>
+<pre><code>&lt;div
+  onClick={() =&gt; 
+    this.props.stitchClient.authWithOAuth("facebook")}
+  className="signin-button"&gt;
+  &lt;div className="facebook-signin-logo" /&gt;
+  &lt;span className="signin-button-text"&gt;
+    Sign in with Facebook
+  &lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<p>The same component can use Google to authenticate in the same way:</p>
+<pre><code>&lt;div
+  onClick={() =&gt; 
+    this.props.stitchClient.authWithOAuth("google")}
+  className="signin-button"
+&gt;
+  ...
+  &lt;span className="signin-button-text"&gt;
+    Sign in with Google
+  &lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<p>Whichever authentication method was used, common code displays the user&#8217;s name and avatar (in <a href="https://github.com/am-MongoDB/trackme_MongoDB_Stitch/blob/master/src/login.component.js" title="Login ReactJS component for TrackMe"><code>src/login.component.js</code></a>):</p>
+<pre><code>this.props.stitchClient.userProfile()
+.then(
+  userData =&gt; {
+    ...
+    this.setState({userData: userData.data});
+    ...
+  },
+  error =&gt; {
+    // User hasn't authenticated yet
+  })
+...
+{this.state.userData &amp;&amp; 
+    this.state.userData.picture
+  ? &lt;img src={this.state.userData.picture}
+    className="profile-pic" alt="mug shot"/&gt;
+  : null}
+&lt;span className="login-text"&gt;
+  &lt;span className="username"&gt;
+    {this.state.userData &amp;&amp; this.state.userData.name 
+      ? this.state.userData.name
+      : "?"}
+  &lt;/span&gt;
+&lt;/span&gt;
+</code></pre>
+<p>Common code can logout the user (in <a href="https://github.com/am-MongoDB/trackme_MongoDB_Stitch/blob/master/src/login.component.js" title="Login component code"><code>src/login.component.js</code></a>):</p>
+<pre><code>this.props.stitchClient.logout()
+</code></pre>
+<p>Once logged in, the application frontend can start making use of the services that we&#8217;ve configured for this app through the Stitch UI. In this case, we directly insert or update the user&#8217;s details in the <code>trackme.users</code> collection (in <a href="https://github.com/am-MongoDB/trackme_MongoDB_Stitch/blob/master/src/login.component.js" title="Login code for React MongoDB Stitch app"><code>src/login.component.js</code></a>):</p>
+<pre><code>this.props.userCollection.updateOne(
+  {},  /* We don't need to identify the 
+        user in the query as the 
+        pipeline's filter will handle
+        that.*/
+  { 
+    $set: {
+      owner_id: 
+      this.props.stitchClient.authedId(),
+      userData: userData.data
+    }
+  },
+  {upsert: true})
+.then(
+  result=&gt;{},
+  error=&gt;{console.log("Error: " + error)}
+  );
+</code></pre>
+<p>While that code is using the Stitch SDK/API, it is invoking the MongoDB Atlas service in a traditional manner by performing an <code>updateOne</code> operation <strong>but</strong> the Stitch filters and rules we&#8217;ve configured for the <code>users</code> collection will still be enforced.</p>
+<p>In this React application frontend, I have intentionally used a variety of different ways to interact with Stitch – you will later see how to call a named pipeline and how to construct and execute a new pipeline on the fly.</p>
+<p>When adding a new friend, two of the named pipelines we created through the Stitch UI (<code>alreadyAFriend</code> &amp; <code>addFriend</code>) are executed to add a new email address to the list if and only if it isn&#8217;t already there (<a href="https://github.com/am-MongoDB/trackme_MongoDB_Stitch/blob/master/src/addfriend.component.js" title="AddFriend component code for MongoDB Stitch app"><code>src/addfriend.component.js</code></a>):</p>
+<pre><code>import { builtins } from 'mongodb-stitch';
+...
+this.props.stitchClient
+  .executePipeline([
+    builtins.namedPipeline('alreadyAFriend',
+      {friendsEmail: email})])
+  .then(
+    response =&gt; {
+      if (response.result[0]) {
+        this.setState({error: email + 
+          " has already been included as a friend."});
+      } else
+      {
+        this.props.stitchClient
+          .executePipeline([
+            builtins.namedPipeline(
+              'addFriend', {friendsEmail: email})])
+          .then(
+            response =&gt; {
+              if (response.result[0]) {
+                this.setState({success: 
+                  email + " added as a friend; they can now see your checkins."});
+              } else {
+                this.setState({
+                  error: "Failed to add " + email + " as a friend"});
+              }
+            },
+            error =&gt; {
+              this.setState({error: "Error: " + error});
+              console.log({error: "Error: "+ error});
+            }
+          )
+      }
+    },
+    error =&gt; {
+      this.setState({error: "Error: " + error});
+      console.log({error: "Error: " + error});
+    }
+  )
+...
+</code></pre>
+<p><a href="https://github.com/am-MongoDB/trackme_MongoDB_Stitch/blob/master/src/text.checkin.component.js" title="Checkin component React code for MongoDB Stitch app"><code>src/text.checkin.component.js</code></a> finds the latest checkin (for this user), and then creates and executes a new service pipeline on the fly – sending the venue name to the requested phone number via Twilio:</p>
+<pre><code>this.props.checkins.find({},
+  {sort: {_id: -1}, limit: 1})
+.then (
+  response =&gt; {
+    venue = response[0].venueName;
+    this.props.stitchClient.userProfile()
+    .then (
+      response =&gt; {
+        name = response.data.name;
+      })
+    .then (
+      response =&gt; {
+
+        this.props.stitchClient
+          .executePipeline([
+            {
+              service: "myTwilio",
+              action: "send",
+              args: {
+                to: this.state.textNumber,
+                from: "%%values.twilioNumber",
+                body: name + " last cheked into " + venue
+              }
+            }
+          ])
+          .then(
+            response =&gt; {
+              this.setState({success: "Text has been sent to " +
+                this.state.textNumber});
+            },
+            error =&gt; {
+              this.setState({error: "Failed to send text: " + error});
+              console.log({error: "Failed to send text: " + error});
+          })
+    })
+  },
+    error =&gt; {
+    this.setState({error: "Failed to read the latest checkin: " + error});
+    }
+  )
+</code></pre>
+<p>Note that the pipeline refers to <code>%%values.twilioNumber</code> – this is why that value couldn&#8217;t be tagged as <em>Private</em> within the Stitch UI.</p>
+<p>This is the result:</p>
+<div id="attachment_4491" style="width: 880px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/31_Text_message_from_Twilio.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4491" src="/wp-content/uploads/2017/09/31_Text_message_from_Twilio.png" alt="Text message from Twilio – via MongoDB Stitch" width="870" height="166" class="size-full wp-image-4491" srcset="/wp-content/uploads/2017/09/31_Text_message_from_Twilio.png 870w, /wp-content/uploads/2017/09/31_Text_message_from_Twilio-300x57.png 300w, /wp-content/uploads/2017/09/31_Text_message_from_Twilio-768x147.png 768w" sizes="auto, (max-width: 870px) 100vw, 870px" /></a><p id="caption-attachment-4491" class="wp-caption-text">Text message from Twilio – via MongoDB Stitch</p></div>
+<p>The checkins for the user and their friends are displayed in the <code>Checkins</code> component in <a href="https://github.com/am-MongoDB/trackme_MongoDB_Stitch/blob/master/src/checkins.component.js" title="Checkins ReactJS component for MongoDB Stitch app"><code>src/checkins.component.js</code></a>. The following code invokes the <code>recentCheckins</code> named pipeline (including the <code>number</code> parameter to request the 10 most recent checkins):</p>
+<pre><code>this.props.stitchClient.executePipeline([
+    builtins.namedPipeline('recentCheckins', {number: 10})])
+  .then(
+    checkinData =&gt; {
+      this.setState({checkins: checkinData.result[0].map((checkin, index) =&gt; 
+        &lt;li key={index}&gt;
+          &lt;a href={checkin.url} target="_Blank"&gt;{checkin.venueName}&lt;/a&gt;  
+          ( {checkin.date} )
+           &lt;br/&gt;
+           &lt;img src={checkin.locationImg} className="mapImg" 
+            alt={"map of " + checkin.venueName}/&gt;
+        &lt;/li&gt;
+      )})
+    },
+    error =&gt; {
+      console.log("Failed to fetch checkin data: " + error)
+  })
+</code></pre>
+<p>A similar code block executes the <code>friendsCheckin</code> named pipeline and then loops over each of the friends, displaying the latest checkins for each one:</p>
+<pre><code>this.props.stitchClient
+  .executePipeline([
+    builtins.namedPipeline('friendsCheckins', {number: 10})])
+  .then(
+    friendData =&gt; {
+      this.setState({friendsCheckins: 
+        friendData.result[0].map((friend, friendIndex) =&gt;
+          &lt;li key={friendIndex}&gt;
+            &lt;strong&gt;{friend._id}&lt;/strong&gt;
+            &lt;ul&gt;
+              {friend.checkins.map((checkin) =&gt;
+                &lt;li&gt;
+                  &lt;a href={checkin.url} target="_Blank"&gt; {checkin.venueName}&lt;/a&gt;
+                     ( {checkin.date} ) &lt;br/&gt;
+                    &lt;img src={checkin.locationImg} className="mapImg" 
+                      alt={"map of " + checkin.venueName}/&gt;
+                &lt;/li&gt;
+              )}
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        )
+      })
+    },
+    error =&gt; {
+      console.log("Failed to fetch friends' data: " + error)
+  })
+</code></pre>
+<h2>Continue accessing your data from existing applications (Amazon Alexa skill)</h2>
+<p>Not every MongoDB Stitch use-case involves building a greenfield app on top of a brand new data set. It&#8217;s common that you already have a critical application, storing data in MongoDB, and you want to safely allow new apps or features to use some of that same data.</p>
+<p>The good news is that your existing application can continue without any changes, and Stitch can be added to control access from any new applications. To illustrate this, you can reuse the <em>Mongo</em> Alexa Skill created in <a href="/mongodb/rest-mobile-app-amazon-alexa-cloud-services" title="Writing an Amazon Alexa skill for MongoDB">my earlier post</a>. The JavaScript code needs a sight adjustment (due to a change I made to the schema) – use <a href="https://github.com/am-MongoDB/trackme_MongoDB_Stitch/blob/master/alexa/index.js" title="Amazon Alexa skill for MongoDB Stitch data"><code>alexa/index.js</code></a>.</p>
+<div id="attachment_4494" style="width: 490px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/34_Alexa_stack.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4494" src="/wp-content/uploads/2017/09/34_Alexa_stack-1024x607.png" alt="Architecture for Amazon Alexa reading data from MongoDB Atlas" width="480" height="285" class="size-large wp-image-4494" srcset="/wp-content/uploads/2017/09/34_Alexa_stack-1024x607.png 1024w, /wp-content/uploads/2017/09/34_Alexa_stack-300x178.png 300w, /wp-content/uploads/2017/09/34_Alexa_stack-768x455.png 768w, /wp-content/uploads/2017/09/34_Alexa_stack.png 1880w" sizes="auto, (max-width: 480px) 100vw, 480px" /></a><p id="caption-attachment-4494" class="wp-caption-text">Architecture for Amazon Alexa reading data from MongoDB Atlas</p></div>
+<p>The Alexa skill uses the Express/Node.js REST API implemented in <a href="/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building a REST API for MongoDB">The Modern Application Stack – Part 3: Building a REST API Using Express.js</a>.</p>
+<h2>Conclusion</h2>
+<p>MongoDB Stitch lets you focus on building applications rather than on managing data manipulation code, service integration, or backend infrastructure. Whether you’re just starting up and want a fully managed backend as a service, or you’re part of an enterprise and want to expose existing MongoDB data to new applications, Stitch lets you focus on building the app users want, not on writing boilerplate backend logic.</p>
+<p>In this post, you&#8217;ve learned how to:</p>
+<ul>
+<li>Create a new MongoDB Stitch app that lets you access data stored in MongoDB Atlas</li>
+<li>Integrate with authentication providers such as Google and Facebook</li>
+<li>Configure data access controls – ensuring that application end-users can access just the information they&#8217;re entitled to</li>
+<li>Enable access to the Slack, and Twilio services</li>
+<li>Define constants/values that you can use securely within your application backend, without exposing them to your frontend code, or the outside world</li>
+<li>Implement named pipelines to access MongoDB and your other services</li>
+<li>Implement WebHooks that allow external services to trigger events in your application</li>
+<li>Invoke your new WebHooks from other applications</li>
+<li>Implement your application frontend in React/JavaScript
+<ul>
+<li>Authenticate users using Google and Facebook</li>
+<li>Use the MongoDB Query Language to &#8220;directly&#8221; access your data through Stitch</li>
+<li>Execute names pipelines</li>
+<li>Create and run new pipelines on the fly</li>
+</ul>
+</li>
+<li>Continue to access the same MongoDB data from existing apps, using the MongoDB drivers</li>
+</ul>
+<p>When revisiting the original blog series, it&#8217;s interesting to assess what work could you could save:</p>
+<ul>
+<li>Part 1: <a href="/mongodb/modern-application-stack-part-1-introducing-the-mean-stack" title="MEAN and MERN application stacks">Introducing The MEAN Stack and the young MERN upstart</a>
+<ul>
+<li>This is an introductory chapter, much of it is still relevant when using Stitch.</li>
+</ul>
+</li>
+<li>Part 2: <a href="/mongodb/mean_stack_2_mongodb_node_js" title="Using MongoDB with Node.js">Using MongoDB With Node.js</a>
+<ul>
+<li>The work in this chapter isn’t needed as Stitch works with MongoDB Atlas directly, removing the need to use the <a href="https://mongodb.github.io/node-mongodb-native/" title="Node.js driver for MongoDB">MongoDB Driver for Node.JS</a>.</li>
+</ul>
+</li>
+<li>Part 3: <a href="/mongodb/the-modern-application-stack-part-3-building-a-rest-api-using-express-js" title="Building a REST API for MongoDB using Express">Building a REST API with Express.js</a>
+<ul>
+<li>This chapter isn’t needed as Stitch provides the SDK/REST API to access your MongoDB data (and other services).</li>
+</ul>
+</li>
+<li>Part 4: <a href="/mongodb/the-modern-application-stack-part-4-building-a-client-ui-using-angular-2-formerly-angularjs-typescript" title="Building a MongoDB app wiht Angular2">Building a Client UI Using Angular 2 (formerly AngularJS) &amp; TypeScript</a>
+<ul>
+<li>Much of this chapter is still relevant if you’re looking to build your application frontend using Angular2, but the work to implement the data service isn’t needed when working with MongoDB Stitch.</li>
+</ul>
+</li>
+<li>Part 5: <a href="/mongodb/the-modern-application-stack-part-5-using-reactjs-es6-jsx-to-build-a-ui-the-rise-of-mern" title="Build a ReactJS app for MongoDB">Using ReactJS, ES6 &amp; JSX to Build a UI (the rise of MERN)</a>
+<ul>
+<li>Much of this chapter is still relevant if you’re looking to code your application frontend using React, but the work to implement the data service isn’t needed when working with MongoDB Stitch.</li>
+</ul>
+</li>
+<li>Part 6: <a href="/mongodb/rest-mobile-app-amazon-alexa-cloud-services" title="Building Amazon Alexa and other apps for MongoDB">Browsers Aren’t the Only UI – Mobile Apps, Amazon Alexa, Cloud Services</a>
+<ul>
+<li>Covers much of the same ground as this post. Some of the examples can be simplified when using MongoDB Stitch, and the extending of the REST API to add new features isn’t necessary when using Stitch.</li>
+</ul>
+</li>
+</ul>
+<p>The following table summarizes the steps required to build an application without without the help of Stitch:</p>
+<div id="attachment_4496" style="width: 635px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2017/09/35_simpler_with_stitch.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-4496" src="/wp-content/uploads/2017/09/35_simpler_with_stitch.png" alt="Development steps skipped when using MongoDB Stitch" width="625" height="707" class="size-full wp-image-4496" srcset="/wp-content/uploads/2017/09/35_simpler_with_stitch.png 625w, /wp-content/uploads/2017/09/35_simpler_with_stitch-265x300.png 265w" sizes="auto, (max-width: 625px) 100vw, 625px" /></a><p id="caption-attachment-4496" class="wp-caption-text">Development steps skipped when using MongoDB Stitch</p></div>
+<p>Both MongoDB Atlas and <a href="https://www.mongodb.com/cloud/stitch" title="MongoDB Stitch – Backend as a Service for MongoDB) come with a free tier – so go ahead and [try it out for yourself](https://www.mongodb.com/cloud/stitch &quot;Try MongoDB Stitch - free tier">MongoDB Stitch</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mongodb/mongodb-stitch-the-latest-and-best-way-to-build-your-app/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

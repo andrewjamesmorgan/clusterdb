@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>DRBD &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/drbd/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Fri, 20 Feb 2015 14:49:01 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Choosing the right MySQL High Availability Solution – webinar replay</title>
+		<link>/mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay</link>
+					<comments>/mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 20 Feb 2015 14:49:01 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[clustering]]></category>
+		<category><![CDATA[DRBD]]></category>
+		<category><![CDATA[fabric]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Replication]]></category>
+		<category><![CDATA[Scale]]></category>
+		<guid isPermaLink="false">/?p=4038</guid>
+
+					<description><![CDATA[Earlier this week, I presented a webinar on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application. The replay of this webinar can now be viewed here or if you just want to look at the charts then scroll down. At the end]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png"><img fetchpriority="high" decoding="async" class="aligncenter size-full wp-image-2970" src="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png" alt="MySQL-HA-Logo1.png" width="950" height="100" srcset="/wp-content/uploads/2013/10/MySQL-HA-Logo1.png 950w, /wp-content/uploads/2013/10/MySQL-HA-Logo1-300x31.png 300w" sizes="(max-width: 950px) 100vw, 950px" /></a>Earlier this week, I presented a webinar on MySQL High Availability options for MySQL &#8211; what they are and how to choose the most appropriate one for your application.</p>
+<p>The <a title="Achieving MySQL High Availability, Learn to Select Your Best Option - webinar replay" href="https://event.on24.com/eventRegistration/EventLobbyServlet?target=reg20.jsp&amp;eventid=930247&amp;sessionid=1&amp;key=FF21049401BAD50579B6733B15BC9D36&amp;sourcepage=register" target="_blank">replay of this webinar can now be viewed here</a> or if you just want to look at the charts then scroll down. At the end of this post, I include a summary of the Q&amp;A from the webinar.</p>
+<p><span style="color: #333399;">How important is your data? Can you afford to lose it? What about just some of it? What would be the impact if you couldn&#8217;t access it for a minute, an hour, a day or a week?</span></p>
+<p><span style="color: #333399;">Different applications can have very different requirements for High Availability. Some need 100% data reliability with 24x7x365 read &amp; write access while many others are better served by a simpler approach with more modest HA ambitions.</span></p>
+<p><span style="color: #333399;">MySQL has an array of High Availability solutions ranging from simple backups, through replication and shared storage clustering &#8211; all the way up to 99.999% available shared nothing, geographically replicated clusters. These solutions also have different &#8216;bonus&#8217; features such as full InnoDB compatibility, in-memory real-time performance, linear scalability and SQL &amp; NoSQL APIs.</span></p>
+<p><span style="color: #333399;">The purpose of this webinar is to help you decide where your application sits in terms of HA requirements and discover which of the MySQL solutions best fit the bill. It will also cover what you need outside of the database to ensure High Availability &#8211; state of the art monitoring being a prime example.</span></p>
+<h2>The charts</h2>
+<p>&nbsp;</p>
+<p><iframe src="//www.slideshare.net/slideshow/embed_code/44927297" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></p>
+<h2></h2>
+<h2>Questions and Answers</h2>
+<ul>
+<li><strong>What does &#8220;HA&#8221; stands for?</strong> High Availability</li>
+<li><strong>What is meant by scale-out?</strong> Scale-out is where you increase the capacity or the throughput of the system by adding extra (usually commodity) machines &#8211; this is the opposite of scale-up where you buy the biggest single server that you can find. It tends to be much more economical this way and you can add extra capacity if and when you need it.</li>
+<li><strong>Most of my applications are for small businesses were the data load is not that big, is this session worth listening too?</strong> Yes &#8211; the focus of this presentation is on keeping your data safe and accessible, not on scaling to massive volumes and throughput. Scale-out is touched on as if you need that as well then it can influence your choice of High Availability solution</li>
+<li><strong>How does all this compare with Amazon Aurora?</strong> Aurora is something that&#8217;s offered by Amazon and is supported by them. Aurora can only be run on AWS &#8211; the solutions covered here can be taken to lots of different environments &#8211; whether cloud or &#8216;bare metal&#8217;</li>
+<li><strong>what amount of work would be involved in migrating actual InnoDB based DB&#8217;s into NDB?</strong> As you&#8217;d expect, it depends on the application. Changes should be minor to get it to run but you might need to make more adjustments to get the best performance. This <a title="MySQL Cluster Evaluation Guide" href="http://www.mysql.com/why-mysql/white-papers/mysql-cluster-evaluation-guide/" target="_blank">white paper</a> is a good place to start.</li>
+<li><strong>Is it possible to migrate InnoDB data to MySQL Cluster?</strong> Yes. The first thing to note is that to use MySQL Cluster, you have to use the mysqld (MySQL Server) process that comes with the MySQL Cluster package; once you&#8217;ve switched to that binary then you can run ALTER TABLE my_tab ENGINE=NDB; provided that your schema is compatible with MySQL Cluster. Alternatively you can perform a mysqldump and then load the data in.</li>
+<li><strong>Does MySQL Fabric solutions support &#8220;rolling upgrade&#8221;?</strong> Yes &#8211; you can perform a rolling upgrade of the managed MySQL Servers but you have to do it yourself, Fabric doesn&#8217;t automate it at present</li>
+<li><strong>What about master-master replication?</strong> You can use active-active replication but the application is responsibe for avoiding conflicts between the two sites unless you use MySQL Cluster/NDB (where the functionality is built into the database)</li>
+<li><strong>What&#8217;s the maximum distance that the master and slave can be apart?</strong> For MySQL Replication, there is no maximum distance; the latency of the master isn&#8217;t impacted if you stick with the default asynchronous replication. If you use semi-synchronous replication then the latency of your transactions will be impacted by the WAN latency between the master and slave site(s).</li>
+<li><strong>Is there a monetary investment to implement this or is it free?</strong> The database technology presented in this session can be used under the GPL open source license; if you buy a commercal edition then you get access to some additional tools such as MySQL Enterprise Monitor and MySQL Cluster Manager.</li>
+<li><strong>Can we check the transaction sequence in slave side?</strong> Yes, with MySQL replication, you can check which transactions have been applied on the slave.</li>
+<li><strong>Can the slave switch over to master, in case the master needs to be shut down?</strong> Yes &#8211; that&#8217;s a very common use case</li>
+<li><strong>Do we have seperate binlog for different databases (schemas)?</strong> All of the databases (schemas) within the MySQL Server use the same binary log. When that log file fills up, it&#8217;s rotated out and a new one used.</li>
+<li><strong>How can I implement &#8220;auto-failover&#8221; in mysql 5.6 replication? Are you talking abaout &#8220;mysqlfailover&#8221; script?</strong> You can use the mysqlfailover utility or MySQL Fabric</li>
+<li><strong>What are the similarties and differences between InnoDB and the NDB/MySQL Cluster engines?</strong> We&#8217;ll cover some of this in this presentation and you can find more details in this <a title="MySQL Cluster Evaluation Guide" href="http://www.mysql.com/why-mysql/white-papers/mysql-cluster-evaluation-guide/" target="_blank">white paper</a></li>
+<li><strong>With master-master replication, there were some parameters to control the autoincrement IDs so that we could avoid conflicts with active-active MySQL replication?</strong> If you ensure that the same row isn&#8217;t written to on both masters then you can avoid conflicts. One option could be to store odd primary keys on one and even on the other. You can then set the <a title="auto_increment_increment" href="http://dev.mysql.com/doc/refman/5.0/en/replication-options-master.html#sysvar_auto_increment_increment" target="_blank">auto_increment_increment</a> and <a title="auto_increment_offset" href="http://dev.mysql.com/doc/refman/5.0/en/replication-options-master.html#sysvar_auto_increment_offset" target="_blank">auto_increment_offset</a> parameters and then use auto-increment primary keys on each MySQL Server</li>
+<li><strong>Is there an online backup tool available in mysql &#8211; without locking my database?</strong> Yes &#8211; if you&#8217;re using InnoDB then you can use MySQL Enterprise Backup (part of MySQL Enterprise Edition and it&#8217;s also <em>much</em> faster than mysqldump); MySQL Cluster it has a built-in online backup tool (which can be simpler to use in conjunction with MySQL Cluter Manager which is part of MySQL Cluster Carrier Grade Edition)</li>
+<li><strong>In multi-source replication, how are data conflicts handled? If more than one master modifies the same row, which one is applied?</strong> That&#8217;s left as an exercise for the application. The application is responsible for making sure that there are no conflicting updates (if you care about the conflicts). You could also use MySQL Fabric to shard the data.</li>
+<li><strong>With MySQL Group Replication, if one master is down, will transactions still be applied?</strong> With MySQL Group Replication, updates can be sent to any of the servers and so if one is unavailable just switch to any of the others</li>
+<li><strong>what is the maximum data size MySQL can handle in it&#8217;s latest release?</strong> The maximum size of an InnoDB table[space] is four billion pages (64TB with the default 16k page size). Beyond that you start partitioning or use MySQL Fabric</li>
+<li><strong>Can you give a short definition for sharding?</strong> Sharding is where you take the data for a table and split it accross multiple MySQL Server instances. Typically you&#8217;ll choose one or more columns from the table to act as the sharding key to decide which shard a specific row should be stored in. You can also have functional sharding where you decide that the whole of table A will be in one shard and all of table B in another</li>
+<li><strong>Is there a storage engine to handle JSON documents?</strong> Here&#8217;s an <a title="JSON queries using MySQL" href="interesting blog on that topic. http://blog.ulf-wendel.de/2013/mysql-5-7-sql-functions-for-json-udf/" target="_blank">interesting blog on that topic</a></li>
+<li><strong>What algorithms are available for sharding in MySQL?</strong> With MySQL Fabric you can use a hash or define ranges for the shard key. With MySQL Cluster, the sharding is completely transparrent to the application but it uses a MD5 hashing under the covers</li>
+<li><strong>In MySQL cluster is all the data replicated to all of the data nodes?</strong> Data is synchrously replicated between the 2 data nodes forming a node group. Different node groups are responsible for different shards for any given table</li>
+<li><strong>What&#8217;s the maximum number of data nodes in MySQL Cluster?</strong> 48</li>
+<li><strong>Which it best inter-connect method between MySQL Cluster data nodes for highest performance?</strong> Infiniband and GB Ethernet have both shown great results. If you&#8217;re able to configure the behaviour then low latency will help get the best performance</li>
+<li><strong>Can I colocate MySQL Cluster data nodes with MySQL Servers in order use all posible resources?</strong> Yes, you can co-locate data nodes and MySQL Servers. Note that the management node (ndb_mgmd) should not run on the same machine as any of the data nodes &#8211; <a title="read this post for details on how to deploy MySQL Cluster nodes for High Availability" href="/mysql-cluster/mysql-cluster-fault-tolerance-impact-of-deployment-decisions" target="_blank">read this post for details on how to deploy MySQL Cluster nodes for High Availability</a></li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql/choosing-the-right-mysql-high-availability-solution-webinar-replay/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Holding MySQL HA workshop in Oxford</title>
+		<link>/mysql/holding-mysql-ha-workshop-in-oxford</link>
+					<comments>/mysql/holding-mysql-ha-workshop-in-oxford#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 03 Sep 2013 14:40:45 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[DRBD]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL Cluster Manager]]></category>
+		<category><![CDATA[MySQL Replication]]></category>
+		<category><![CDATA[Windows]]></category>
+		<guid isPermaLink="false">/?p=2941</guid>
+
+					<description><![CDATA[On 17th October I&#8217;ll be running a hands-on workshop on the various technologies available to provide High Availability using MySQL. The workshop is being held on 17th October (the day before the All Your Base conference) in Oxford (UK). The cost is £250 + VAT and you can register here. This workshop provides an introduction]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/09/All-Your-Base-logo1.png"><img decoding="async" class="alignright size-full wp-image-2943" alt="All Your Base Conference - MySQL HA Workshop" src="/wp-content/uploads/2013/09/All-Your-Base-logo1.png" width="202" height="258" /></a>On 17th October I&#8217;ll be running a hands-on workshop on the various technologies available to provide High Availability using MySQL. The workshop is being held on 17th October (the day before the All Your Base conference) in Oxford (UK). The cost is £250 + VAT and you can <a title="MySQL HA workshop at All Your Base conference" href="http://allyourbaseconf.com/workshops.html#mysql" target="_blank">register here</a>.</p>
+<p>This workshop provides an introduction to what High Availability (HA) is; what technology options are available to achieve it with MySQL and how to actually implement your own HA solutions. The session will be a mixture of presentations, demonstrations and (most importantly) hands-on tutorials.</p>
+<p>We&#8217;ll start with an overview of High Availability &#8211; in general and in the context of MySQL and then a survey of the technologies to choose from:</p>
+<ul>
+<li>MySQL Replication</li>
+<li>MySQL Cluster</li>
+<li>DRBD</li>
+<li>Shared storage clustering options
+<ul>
+<li>Windows Server Failover Clustering</li>
+<li>Solaris Clusters</li>
+<li>Oracle Virtual Machine</li>
+</ul>
+</li>
+</ul>
+<p>There will be deep-dives on MySQL Replication and MySQL Cluster and this is where the hands-on parts of the workshop will focus:</p>
+<ul>
+<li>What these technologies achieve and how</li>
+<li>Get your own database clusters up and running (hands-on)</li>
+<li>&#8220;What happens when I do this&#8230;?&#8221; (hands-on)</li>
+<li>Monitoring (mix of hands-on and demos)</li>
+</ul>
+<p>The plan is to get everyone up and running with multiple VMs on their laptops so that they can experiment and test with MySQL Cluster and MySQL Replication over multiple (virtual) hosts. As a stretch, we&#8217;ll try creating a Cluster running over everyone&#8217;s machine at the same time &#8211; though that might be stretching the logisitics! I&#8217;ve got a supply of 30 USB sticks and hope to have 2-3 unique virtual appliances on each &#8211; what could go wrong?</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql/holding-mysql-ha-workshop-in-oxford/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL now provides support for DRBD</title>
+		<link>/mysql-cluster/mysql-now-provides-support-for-drbd</link>
+					<comments>/mysql-cluster/mysql-now-provides-support-for-drbd#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Sat, 29 Sep 2012 16:12:38 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[DRBD]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<guid isPermaLink="false">/?p=2437</guid>
+
+					<description><![CDATA[Oracle has announced that it now provides support for DRBD with MySQL &#8211; this means a single point of support for the entire MySQL/DRBD/Pacemaker/Corosync/Linux stack! As part of this, we&#8217;ve released a new white paper which steps you through everything you need to do to configure this High Availability stack. The white paper provides a]]></description>
+										<content:encoded><![CDATA[<p>Oracle has announced that it now provides support for DRBD with MySQL &#8211; this means a single point of support for the entire MySQL/DRBD/Pacemaker/Corosync/Linux stack! As part of this, we&#8217;ve released a <a href="http://www.mysql.com/why-mysql/white-papers/mysql_wp_drbd.php">new white paper which steps you through everything you need to do to configure this High Availability stack</a>. The white paper provides a step-by-step guide to installing, configuring, provisioning and testing the complete MySQL and DRBD stack, including:</p>
+<ul>
+<li>MySQL Database</li>
+<li>DRBD kernel module and userland utilities</li>
+<li>Pacemaker and Corosync cluster messaging and management processes</li>
+<li>Oracle Linux operating system</li>
+</ul>
+<p>DRBD is an extremely popular way of adding a layer of High Availability to a MySQL deployment &#8211; especially when the 99.999% availability levels delivered by MySQL Cluster isn&#8217;t needed. It can be implemented without the shared storage required for typical clustering solutions (not required by MySQL Cluster either) and so it can be a very cost effective solution for Linux environments.</p>
+<h3>Introduction to MySQL on DRBD/Pacemaker/Corosync/Oracle Linux </h3>
+<p><div id="attachment_2449" style="width: 270px" class="wp-caption alignright"><a href="/wp-content/uploads/2012/08/MySQL-DRBD-Stack.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2449" src="/wp-content/uploads/2012/08/MySQL-DRBD-Stack-260x300.png" alt="" title="MySQL-DRBD Stack" width="260" height="300" class="size-medium wp-image-2449" /></a><p id="caption-attachment-2449" class="wp-caption-text">Fig 1 &#8211; MySQL-DRBD Stack</p></div>Figure 1 illustrates the stack that can be used to deliver a level of High Availability for the MySQL service. </p>
+<p>At the lowest level, 2 hosts are required in order to provide physical redundancy; if using a virtual environment, those 2 hosts should be on different physical machines. It is an important feature that no shared storage is required. At any point in time, the services will be active on one host and in standby mode on the other.</p>
+<p>Pacemaker and Corosync combine to provide the clustering layer that sits between the services and the underlying hosts and operating systems. Pacemaker is responsible for starting and stopping services – ensuring that they’re running on exactly one host, delivering high availability and avoiding data corruption. Corosync provides the underlying messaging infrastructure between the nodes that enables Pacemaker to do its job; it also handles the nodes membership within the cluster and informs Pacemaker of any changes.</p>
+<p>The core Pacemaker process does not have built in knowledge of the specific services to be managed; instead agents are used which provide a wrapper for the service-specific actions. For example, in this solution we use agents for Virtual IP Addresses, MySQL and DRBD – these are all existing agents and come packaged with Pacemaker. This white paper will demonstrate how to configure Pacemaker to use these agents to provide a High Availability stack for MySQL.</p>
+<p>The essential services managed by Pacemaker in this configuration are DRBD, MySQL and the Virtual IP Address that applications use to connect to the active MySQL service.</p>
+<p>DRBD synchronizes data at the block device (typically a spinning or solid state disk) – transparent to the application, database and even the file system. DRBD requires the use of a journaling file system such as ext3 or ext4. For this solution it acts in an active-standby mode – this means that at any point in time the directories being managed by DRBD are accessible for reads and writes on exactly one of the two hosts and inaccessible (even for reads) on the other. Any changes made on the active host are synchronously replicated to the standby host by DRBD.</p>
+<h3>Setting up MySQL with DRBD/Pacemaker/Corosync/Oracle Linux </h3>
+<p><div id="attachment_2456" style="width: 220px" class="wp-caption alignright"><a href="/wp-content/uploads/2012/08/MySQL-DRBD-Target-Config.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2456" src="/wp-content/uploads/2012/08/MySQL-DRBD-Target-Config-210x300.png" alt="" title="MySQL DRBD Target Config" width="210" height="300" class="size-medium wp-image-2456" /></a><p id="caption-attachment-2456" class="wp-caption-text">Fig 2 &#8211; Target network config</p></div>Figure 2 shows the network configuration used in this paper – note that for simplicity a single network connection is used but for maximum availability in a production environment you should consider redundant network connections.</p>
+<p>A single Virtual IP (VIP) is shown in the figure (<span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">192.168.5.102</span>) and this is the address that the application will connect to when accessing the MySQL database. Pacemaker will be responsible for migrating this between the 2 physical IP addresses. </p>
+<p>One of the final steps in configuring Pacemaker is to add network connectivity monitoring in order to attempt to have an isolated host stop its MySQL service to avoid a “split-brain” scenario. This is achieved by having each host ping an external (not one part of the cluster) IP addresses – in this case the network router (<span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">192.168.5.1</span>).</p>
+<p><code><br /></code><br />
+<div id="attachment_2458" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2012/08/File-Locations.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2458" src="/wp-content/uploads/2012/08/File-Locations-300x222.png" alt="" title="File Locations" width="300" height="222" class="size-medium wp-image-2458" /></a><p id="caption-attachment-2458" class="wp-caption-text">Fig 3 &#8211; Locations of files</p></div>Figure 3 shows where the MySQL files will be stored. The MySQL binaries as well as the socket (<span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysql.sock</span>) and process-id (<span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysql.pid</span>) files are stored in a regular partition – independent on each host (under <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">/var/lib/mysql/</span>). The MySQL Server configuration file (<span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">my.cnf</span>) and the database files (<span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">data/*</span>) are stored in a DRBD controlled file system that at any point in time is only available on one of the two hosts – this file system is controlled by DRBD and mounted under <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">/var/lib/mysql_drbd/</span>.<br />
+<code><br /></code><br />
+<code><br /></code><br />
+<div id="attachment_2465" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2012/08/Required-clustered-resources-and-relationships.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2465" src="/wp-content/uploads/2012/08/Required-clustered-resources-and-relationships-300x251.png" alt="" title="Required clustered resources and relationships" width="300" height="251" class="size-medium wp-image-2465" /></a><p id="caption-attachment-2465" class="wp-caption-text">Fig 4 &#8211; Clustered resources</p></div>The white paper steps through setting all of this up as well as the resources in Pacemaker/Corosync that allow detection of a problem and the failover of the storage (DRBD), database (MySQL) and the Virtual IP address used by the application to access the database &#8211; all in a coordinated way of course. As you&#8217;ll notice in Figure 4 this involves setting up quite a few entities and relationships &#8211; the paper goes through each one.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/mysql-now-provides-support-for-drbd/feed</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

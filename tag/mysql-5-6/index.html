@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="/xmlrpc.php">
+	
+	<title>MySQL 5.6 | Andrew Morgan on Databases</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; MySQL 5.6 Tag Feed" href="/tag/mysql-5-6/feed">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="/wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="/wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="/wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="/wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="/wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="/wp-json/">
+<link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/tags/64">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style>
+<style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style>
+<script type="text/javascript">
+				//<![CDATA[
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//]]>
+				</script><style type="text/css"></style>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style>
+</head>
+
+<body class="archive tag tag-mysql-5-6 tag-64 custom-background">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="/"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu">
+<li class="page_item page-item-1011"><a href="/about">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="/wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+		
+		<h2 class="arh">Tag Archive for MySQL 5.6</h2>
+				
+					<div id="post-2905" class="post-2905 post type-post status-publish format-standard has-post-thumbnail hentry category-mysql-replication tag-ha tag-high-availability tag-mysql tag-mysql-5-6 tag-mysql-replication tag-mysql-utilities">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon">August 5, 2013</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon#comments">3 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon" rel="bookmark">Standalone MySQL Utilities Now GA! Includes running mysqlfailover as a daemon</a></h2>
+				
+				<div class="entry">
+										<p><a href="/wp-content/uploads/2013/08/MySQL_Utilities-GA.png"><img decoding="async" class="alignright size-medium wp-image-2906" alt="MySQL Utilities are now GA - logo" src="/wp-content/uploads/2013/08/MySQL_Utilities-GA-300x125.png" width="300" height="125"></a>With the release of MySQL Utilities 1.3.4, the standalone (not bundled with the MySQL WorkBench GUI) package is now Generally Available and fully supported. This post will focus on a very important change (the ability to run as a daemon rather than in a terminal) to the <span style="color: #008080;">mysqlfailover </span>utility which allows you to build a light-weight HA database solution using MySQL Replication.</p>
+<p>For a general overview of MySQL Utilities, <a title="MySQL Utilities Webinar – Q&amp;A + replay" href="/mysql/mysql-utilities-webinar-qa-replay-now-available/" target="_blank">take a look at this recent webinar</a> or for a deeper dive into using them to setup replication and adding auto-failover of the master function to slaves <a title="Replication and auto-failover made easy with MySQL Utilities" href="/mysql/replication-and-auto-failover-made-easy-with-mysql-utilities/" target="_blank">watch this video and worked example</a>.</p>
+<p>When we first released the <span style="color: #008080;">mysqlfailover</span> utility, the reaction was very positive but the feedback also told us that to really use this to provide High Availability in a production system two enhancements were critical:</p>
+<ol>
+<li>The ability to not have the database password visible when someone queries the status of the process (for example, using the <span style="color: #008080;">ps</span> command). This was addressed by allowing the connection string to be specified using a <span style="color: #008080;">login-path</span> (referring to an entry in .mylogin.cnf &#8211; see <a title="Setting up .mylogin.cnf using  mysql_config_editor utility" href="https://dev.mysql.com/doc/refman/5.6/en/mysql-config-editor.html" target="_blank">https://dev.mysql.com/doc/refman/5.6/en/mysql-config-editor.html</a>) in place of <span style="color: #008080;">&lt;user&gt;[:&lt;passwd&gt;]@&lt;host&gt;</span>. This is a vital security enhancement added in MySQL Utilities 1.3.1.</li>
+<li>Allowing <span style="color: #008080;">mysqlfailover</span> to be run as a daemon rather than being tied to the terminal from where it had to be manually launched. This option is key to enabling the user to build a reslient HA system that doesn&#8217;t rely on mysqlfailover being launched from a terminal and that terminal then never going away.</li>
+</ol>
+<p>The rest of this post focuses on how to run <span style="color: #008080;">mysqlfailover</span> as a daemon.</p>
+<p>By default, <span style="color: #008080;">mysqlfailover </span>runs as an interactive program within the terminal it was run from; it constantly refreshes, providing a summary of the status of the replication topology as shown below.</p>
+<pre><span style="color: #008080;">mysql@mini servers]$ mysqlfailover --master=root@192.168.1.101:5001 
+  --discover-slaves-login=root --rediscover
+
+MySQL Replication Failover Utility
+Failover Mode = auto     Next Interval = Thu Aug  1 23:34:56 2013
+
+Master Information
+------------------
+Binary Log File   Position  Binlog_Do_DB  Binlog_Ignore_DB
+mini1-bin.000001  581
+
+GTID Executed Set
+1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+
+WARNING: Errant transaction(s) found on slave(s).
+Replication Health Status
++----------------+-------+---------+--------+------------+---------+
+| host           | port  | role    | state  | gtid_mode  | health  |
++----------------+-------+---------+--------+------------+---------+
+| 192.168.1.101  | 5001  | MASTER  | UP     | ON         | OK      |
+| 192.168.1.101  | 5002  | SLAVE   | UP     | ON         | OK      |
+| 192.168.1.101  | 5003  | SLAVE   | UP     | ON         | OK      |
+| 192.168.1.101  | 5004  | SLAVE   | UP     | ON         | OK      |
++----------------+-------+---------+--------+------------+---------+
+
+Q-quit R-refresh H-health G-GTID Lists U-UUIDs
+</span></pre>
+<p>To run <span style="color: #008080;">mysqlfailover</span> as a daemon, the first new command-line option you must provide is <span style="color: #008080;">&#8211;daemon=start</span>; as you&#8217;d expect this runs the process as a daemon. In this mode, you won&#8217;t get to see the output from <span style="color: #008080;">mysqlfailover</span> at your terminal and so you should make sure that you know what log file is being used &#8211; so it&#8217;s best to specify it with <span style="color: #008080;">&#8211;log=&lt;path-to-log-file&gt;</span>. You can also control what information is periodically written to the log file using <span style="color: #008080;">&#8211;report-values=&lt;list-of-attributes from health,gtid,uuid&gt;</span>.  As you&#8217;ll likely to want to be able to manage the daemon without having to be in the same directory (and also likely to manage it from scripts that are automatically run when the server starts and stops) it makes sense to specify where the process ID file should be stored using <span style="color: #008080;">&#8211;pid=&lt;path-to-pid-file&gt;</span>.</p>
+<p>The final incantation might look something like the following:</p>
+<pre><span style="color: #008080;">mysqlfailover --master=root@192.168.1.101:5001 
+  --discover-slaves-login=root 
+  --rediscover 
+  --log=/home/mysql/servers/mysqlfailover.log 
+  --pidfile=/home/mysql/servers/mysqlfailover.pid 
+  --daemon=start 
+  --report-values=health,gtid,uuid
+</span></pre>
+<p>and the resulting log file could then contain information such as this:</p>
+<pre><span style="color: #008080;">2013-08-02 01:10:34 AM INFO Getting health for master: 192.168.1.101:5001.
+2013-08-02 01:10:35 AM INFO Health Status:
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5001, role: MASTER, state: UP, gtid_mode: ON, health: OK
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5002, role: SLAVE, state: UP, gtid_mode: ON, health: OK
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5003, role: SLAVE, state: UP, gtid_mode: ON, health: OK
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5004, role: SLAVE, state: UP, gtid_mode: ON, health: OK
+2013-08-02 01:10:35 AM INFO GTID Status - Transactions executed on the servers:
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5001, role: MASTER, gtid: 1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5002, role: SLAVE, gtid: 1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5002, role: SLAVE, gtid: 1db19050-faf9-11e2-a214-0800272b8804:1
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5003, role: SLAVE, gtid: 1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5003, role: SLAVE, gtid: 200f8139-faf9-11e2-a214-0800272b8804:1
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5004, role: SLAVE, gtid: 1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5004, role: SLAVE, gtid: 22842441-faf9-11e2-a214-0800272b8804:1
+2013-08-02 01:10:35 AM INFO UUID Status:
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5001, role: MASTER, uuid: 1aca3d80-faf9-11e2-a214-0800272b8804
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5002, role: SLAVE, uuid: 1db19050-faf9-11e2-a214-0800272b8804
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5003, role: SLAVE, uuid: 200f8139-faf9-11e2-a214-0800272b8804
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5004, role: SLAVE, uuid: 22842441-faf9-11e2-a214-0800272b8804
+</span></pre>
+<p>As you&#8217;d expect, you can also stop the daemon:</p>
+<pre><span style="color: #008080;">mysqlfailover 
+    --log=/home/mysql/servers/mysqlfailover.log 
+    --pidfile=/home/mysql/servers/mysqlfailover.pid 
+    --daemon=stop
+</span></pre>
+<p>and restart it:</p>
+<pre><span style="color: #008080;">mysqlfailover 
+    --log=/home/mysql/servers/mysqlfailover.log 
+    --pidfile=/home/mysql/servers/mysqlfailover.pid 
+    --daemon=restart
+</span></pre>
+<p>The final option for <span style="color: #008080;">daemon=</span> is <span style="color: #008080;">daemon=nodetach</span> which is like start but the terminal that it&#8217;s run from will continue to view the output from the daemon.</p>
+<p>One thing to note is that when the server is restarted, <span style="color: #008080;">mysqlfailover</span> needs to be started again and this is not something that is automatically configured when you run it as a daemon &#8211; rather, it&#8217;s your responsibility to ensure that it&#8217;s restarted (for example, including it in an <span style="color: #008080;">init</span> script.</p>
+<p>Please try it out and (as always) let us know how you get on &#8211; the addition of these extra options is a direct result of the user feedback received for the earlier versions.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon" data-via="wpbeginner" data-text="Standalone MySQL Utilities Now GA! Includes running mysqlfailover as a daemon" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-replication%2Fstandalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="tag">High Availability</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-5-6" rel="tag">MySQL 5.6</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>, <a href="/tag/mysql-utilities" rel="tag">MySQL Utilities</a>
+</div>
+
+			</div>			<div id="post-2889" class="post-2889 post type-post status-publish format-standard has-post-thumbnail hentry category-mysql category-mysql-cluster tag-mysql tag-mysql-5-6 tag-mysql-cluster tag-mysql-cluster-7-3">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql/mysql-virtual-developers-day">July 25, 2013</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql/mysql-virtual-developers-day#comments">2 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql/mysql-virtual-developers-day" rel="bookmark">MySQL Virtual Developers Day</a></h2>
+				
+				<div class="entry">
+										<p><a href="/wp-content/uploads/2013/07/MySQL-Developers-Day.png"><img fetchpriority="high" decoding="async" src="/wp-content/uploads/2013/07/MySQL-Developers-Day-300x181.png" alt="MySQL Virtual Developers Day" width="300" height="181" class="alignright size-medium wp-image-2890"></a>I&#8217;ll be presenting the keynote for Wednesday&#8217;s (31st July) <a href="https://oracle.6connex.com/portal/mysql/login?skipRedirectRegistration=true" title="MySQL Virtual Developers Day" target="_blank">MySQL Virtual Developer Day</a>. The idea behind this event is that you get half a day of on-line presentations as well as live Q&#038;A. My session focuses on what&#8217;s new in MySQL &#8211; in particular MySQL 5.6 and MySQL Cluster 7.3. As you&#8217;ll come to have expected, the event is free but you need to <a href="https://oracle.6connex.com/portal/mysql/login?skipRedirectRegistration=true" title="Register for MySQL Virtual Developers Day" target="_blank">register here</a>.<br>
+In the following agenda, all times are local to Singapore&#8230;<br>
+<a href="/wp-content/uploads/2013/07/agenda.png"><img decoding="async" src="/wp-content/uploads/2013/07/agenda.png" alt="MySQL Virtual Developers Day (APAC) Agenda" width="683" height="208" class="alignright size-full wp-image-2891"></a></p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql/mysql-virtual-developers-day" data-via="wpbeginner" data-text="MySQL Virtual Developers Day" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql/mysql-virtual-developers-day"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql/mysql-virtual-developers-day" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql%2Fmysql-virtual-developers-day&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql" rel="category tag">MySQL</a>, <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-5-6" rel="tag">MySQL 5.6</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-7-3" rel="tag">MySQL Cluster 7.3</a>
+</div>
+
+			</div>			<div id="post-2876" class="post-2876 post type-post status-publish format-standard has-post-thumbnail hentry category-mysql category-mysql-replication tag-mysql tag-mysql-5-6 tag-mysql-replication tag-mysql-utilities tag-mysql-workbench">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql/mysql-utilities-webinar">July 16, 2013</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql/mysql-utilities-webinar#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql/mysql-utilities-webinar" rel="bookmark">MySQL Utilities Webinar</a></h2>
+				
+				<div class="entry">
+										<p><a href="/wp-content/uploads/2013/07/MySQL_Utilities.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2013/07/MySQL_Utilities-300x125.png" alt="MySQL Utilities logo" width="300" height="125" class="alignright size-medium wp-image-2875"></a>On Thursday, Dr Charles Bell and I will be presenting a webinar on MySQL Utilities; there will be a heavy focus on what you can acheive with them and how you should use them. As well as listening to the presentation, this is a great chance to get your questions answered by the experts (Israel Gomez from the engineering team will also be on-line to help with the questions). As always, the webinar is free but you should <a href="http://www.mysql.com/news-and-events/web-seminars/focus-on-mysql-utilities/" title="MySQL Utilities webinar - registration" target="_blank">register in advance here</a>. If the time isn&#8217;t convenient, register anyway and you&#8217;ll be sent a link to the replay when it&#8217;s available.</p>
+<h3>Abstract:</h3>
+<p>MySQL Utilities provide a collection of command-line utilities that are used for maintaining and administering MySQL databases, including:</p>
+<ul>
+<li>Admin Utilities (Clone, Copy, Compare, Diff, Export, Import)</li>
+<li>Replication Utilities (Setup, Configuration, Automated Slave Promotion)</li>
+<li>General Utilities (Disk Usage, Redundant Indexes, Search Meta Data)</li>
+</ul>
+<p>Andrew Morgan and Chuck Bell will guide you through these utilities, and many more, explaining what you can gain from these tools and how to use them (for example how a single command repeatedly checks your master server and in the event it fails, automatically promotes one of the slaves to be the new master). This is your opportunity to listen to the development lead describe what he and his team have created, and to get your questions answered by the experts.</p>
+<p>WHO:<br>
+Andrew Morgan, Principal Product Manager<br>
+Chuck Bell, Software Development Manager</p>
+<p>WHEN:<br>
+Thu, Jul 18: 09:00 Pacific time (America)<br>
+Thu, Jul 18: 10:00 Mountain time (America)<br>
+Thu, Jul 18: 11:00 Central time (America)<br>
+Thu, Jul 18: 12:00 Eastern time (America)<br>
+Thu, Jul 18: 16:00 UTC<br>
+Thu, Jul 18: 17:00 Western European time<br>
+Thu, Jul 18: 18:00 Central European time<br>
+Thu, Jul 18: 19:00 Eastern European time<br>
+Thu, Jul 18: 21:30 India, Sri Lanka<br>
+Fri, Jul 19: 00:00 Singapore/Malaysia/Philippines time<br>
+Fri, Jul 19: 00:00 China time<br>
+Fri, Jul 19: 01:00 日本<br>
+Fri, Jul 19: 02:00 NSW, ACT, Victoria, Tasmania (Australia) </p>
+<p>The presentation will be approximately 60 minutes long followed by Q&#038;A. </p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql/mysql-utilities-webinar" data-via="wpbeginner" data-text="MySQL Utilities Webinar" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql/mysql-utilities-webinar"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql/mysql-utilities-webinar" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql%2Fmysql-utilities-webinar&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql" rel="category tag">MySQL</a>, <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-5-6" rel="tag">MySQL 5.6</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>, <a href="/tag/mysql-utilities" rel="tag">MySQL Utilities</a>, <a href="/tag/mysql-workbench" rel="tag">MySQL Workbench</a>
+</div>
+
+			</div>			<div id="post-2684" class="post-2684 post type-post status-publish format-standard has-post-thumbnail hentry category-mysql-replication tag-high-availability tag-mysql tag-mysql-5-6 tag-mysql-replication">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-replication/mysql-5-6-ga-replication-enhancements">February 5, 2013</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-replication/mysql-5-6-ga-replication-enhancements#comments">2 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-replication/mysql-5-6-ga-replication-enhancements" rel="bookmark">MySQL 5.6 GA &#8211; Replication Enhancements</a></h2>
+				
+				<div class="entry">
+										<p></p>
+<div id="attachment_2687" style="width: 304px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2013/02/MTS.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2687" src="/wp-content/uploads/2013/02/MTS-294x300.png" alt="Multi-Threaded Slave" width="294" height="300" class="size-medium wp-image-2687"></a><p id="caption-attachment-2687" class="wp-caption-text">Multi-Threaded Slave</p>
+</div>MySQL 5.6 has now been declared Generally Available (i.e. suitable for production use). This is a very exciting release from a MySQL replication perspective with some big new features. These include:
+<ul>
+<li>
+<strong>Global Transaction Identifiers (GTIDs)</strong> &#8211; a unique identifier that is used accross your replication topology to identify a transaction. Makes setting up and managing your cluster (including the promotion of a new master) far simpler and more reliable.
+</li>
+<li>
+<strong>Multi-threaded slaves (MTS)</strong> &#8211; Increases the performance of replication on the slave; different threads will handle applying events to different databases.</li>
+<li>
+<strong>Binary Log Group Commit</strong> &#8211; Improves replication performance on the master.</li>
+<li>
+<strong>Optimized Row Based Replication</strong> &#8211; reduces the amount of data that needs to be replicated; reducing network usage and potentially speeding up replication.</li>
+<li>
+<strong>Crash-Safe Replication</strong> &#8211; makes replication transactional. The data and replication positioning information are both updated as part of the same transaction.</li>
+<li>
+<strong>Replication Event Checksums</strong> &#8211; checks to ensure that the data being replicated hasn&#8217;t become corrupted, avoids writing corrupted data to the slave.</li>
+<li>
+<strong>Time-Delayed Replication</strong> &#8211; configure one or more of your slaves to only apply replicated events after a configured time. This can be useful to protect against DBA mistakes.</li>
+<li>
+<strong>Informational Logs</strong> &#8211; includes the original statement in the binary log when using row-based-replication to aid in debugging.</li>
+</ul>
+<p>To coincide with the GA announcement, a new white paper has been released &#8211; <a href="http://www.mysql.com/why-mysql/white-papers/mysql-replication-introduction" title="MySQL 5.6 Replication - An Introduction" target="_blank">MySQL 5.6 Replication An Introduction</a> &#8211; that provides a lot more details on these new features. We&#8217;ve also released a second white paper &#8211; <a href="http://www.mysql.com/why-mysql/white-papers/mysql-replication-tutorial" title="MySQL 5.6 Replication Enhancing Scalability and Availability – A Tutorial" target="_blank">MySQL 5.6 Replication, Enhancing Scalability and Availability &#8211; A Tutorial</a> that steps you through using MySQL Replication, with a particular focus on the new features.</p>
+<p>If you&#8217;re already familiar with using MySQL Replication, here are a few pointers on what to do differently for the new MySQL 5.6 features but you should refer to the <a href="http://www.mysql.com/why-mysql/white-papers/mysql-replication-tutorial" title="MySQL 5.6 Replication Enhancing Scalability and Availability – A Tutorial" target="_blank">full tutorial</a> to see these changes in context.</p>
+<p>First of all, here are some extra configuration parameters to include&#8230;</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">
+[mysqld]
+gtid-mode=on				# GTID
+enforce-gtid-consistency=true		# GTID
+master-info-repository=TABLE            # Chrash-safe replication
+relay-log-info-repository=TABLE         # Chrash-safe replication
+slave-parallel-workers=2                # MTS
+binlog-checksum=CRC32                   # Checksums
+master-verify-checksum=1                # Checksums
+slave-sql-verify-checksum=1             # Checksums
+binlog-rows-query-log_events=1          # Informational logs
+</pre>
+<p>When initiating (or restarting) replication on the slave, it is no longer necessary to include the binary log positioning information as the master and slave will automatically negotiate what outstanding events need to be replicated based on any GTIDs previously received by the slave&#8230;</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">
+slave> CHANGE MASTER TO MASTER_HOST='black', 
+                        MASTER_USER='repl_user', 
+                        MASTER_PASSWORD='billy', 
+                        MASTER_AUTO_POSITION=1;
+</pre>
+<p>Please try out these new features and let us know what you think.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-replication/mysql-5-6-ga-replication-enhancements" data-via="wpbeginner" data-text="MySQL 5.6 GA &#8211; Replication Enhancements" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-replication/mysql-5-6-ga-replication-enhancements"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-replication/mysql-5-6-ga-replication-enhancements" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-replication%2Fmysql-5-6-ga-replication-enhancements&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="/tag/high-availability" rel="tag">High Availability</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-5-6" rel="tag">MySQL 5.6</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>
+</div>
+
+			</div>			<div id="post-2669" class="post-2669 post type-post status-publish format-standard has-post-thumbnail hentry category-mysql-cluster tag-mysql tag-mysql-5-6 tag-mysql-cluster tag-mysql-cluster-cge">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/mysql-friends-devroom-at-fosdem-2013">January 18, 2013</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/mysql-friends-devroom-at-fosdem-2013#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/mysql-friends-devroom-at-fosdem-2013" rel="bookmark">&#8220;MySQL &#038; Friends devroom&#8221; at FOSDEM 2013</a></h2>
+				
+				<div class="entry">
+										<p></p>
+<div id="attachment_2670" style="width: 136px" class="wp-caption alignright">
+<a href="https://fosdem.org/2013/"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2670" src="/wp-content/uploads/2013/01/about.png" alt="FOSDEM 2013" width="126" height="124" class="size-full wp-image-2670"></a><p id="caption-attachment-2670" class="wp-caption-text">FOSDEM 2013</p>
+</div>The Free and Open source Software Developers’ European Meeting (FOSDEM) is a two-day event organized by volunteers to promote the widespread use of Free and Open Source software. As in previous years, there is a dedicated stream of MySQL Sessions. On Saturday (2nd Feb) evening there&#8217;s a <a href="http://www.eventbrite.com/event/5255505358" title="FOSDEM 2013 MySQL Community Dinner" target="_blank">MySQL community dinner</a> and then we&#8217;ve a <a href="https://fosdem.org/2013/schedule/track/mysql_and_friends/" title="MySQL devroom schedule for FOSEM 2013" target="_blank">packed program</a> from 9:15 through 17:30 on Sunday (3rd Feb).
+<p>FOSDEM 2013 is a free event and there&#8217;s no requirement  to pre-register &#8211; just get yourself along to Brussels.</p>
+<p>This year I&#8217;ll be making a <a href="https://fosdem.org/2013/schedule/event/mysql_cluster/" title="FOSDEM 2013 - MySQL Cluster" target="_blank">presentation introducing MySQL Cluster</a>. Several of my colleagues from Oracle will also be there to present on the latest and greatest MySQL capabilities &#8211; including what&#8217;s coming in MySQL 5.6. This will be a great opportunity to politely listen to some real technical experts but an even better one to pester them for extra details &#8211; whether during the presentations or when you can grab them at other times.</p>
+<p>Hope to see some of you there!</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/mysql-friends-devroom-at-fosdem-2013" data-via="wpbeginner" data-text="&#8220;MySQL &#038; Friends devroom&#8221; at FOSDEM 2013" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/mysql-friends-devroom-at-fosdem-2013"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/mysql-friends-devroom-at-fosdem-2013" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fmysql-friends-devroom-at-fosdem-2013&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-5-6" rel="tag">MySQL 5.6</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-cge" rel="tag">MySQL Cluster CGE</a>
+</div>
+
+			</div>			<div id="post-2472" class="post-2472 post type-post status-publish format-standard has-post-thumbnail hentry category-mysql tag-failover tag-ha tag-high-availability tag-mysql tag-mysql-5-6 tag-mysql-replication tag-utilities">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql/replication-and-auto-failover-made-easy-with-mysql-utilities">September 24, 2012</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql/replication-and-auto-failover-made-easy-with-mysql-utilities#comments">115 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql/replication-and-auto-failover-made-easy-with-mysql-utilities" rel="bookmark">Replication and auto-failover made easy with MySQL Utilities</a></h2>
+				
+				<div class="entry">
+										<div id="attachment_2474" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2012/08/WorkBench.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2474" class="size-medium wp-image-2474" title="MySQL utilities in Workbench" alt="MySQL utilities in Workbench" src="/wp-content/uploads/2012/08/WorkBench-300x164.jpg" width="300" height="164"></a><p id="caption-attachment-2474" class="wp-caption-text">Utilities in MySQL Workbench</p>
+</div>
+<p>If you&#8217;re a user of MySQL Workbench then you may have noticed a pocket knife icon appear in the top right hand corner &#8211; click on that and a terminal opens which gives you access to the MySQL utilities. In this post I&#8217;m focussing on the replication utilities but you can also refer to the full <a title="MySQL Utilities documentation" href="http://dev.mysql.com/doc/workbench/en/mysql-utilities.html" target="_blank">MySQL Utilities documentation</a>.</p>
+<p>What I&#8217;ll step through is how to uses these utilities to:</p>
+<ul>
+<li>Set up replication from a single master to multiple slaves</li>
+<li>Automatically detect the failure of the master and promote one of the slaves to be the new master</li>
+<li>Introduce the old master back into the topology as a new slave and then promote it to be the master again</li>
+</ul>
+<h3>Tutorial Video</h3>
+<p>Before going through the steps in detail here&#8217;s a demonstration of the replication utilities in action&#8230;<br>
+<iframe loading="lazy" title="MySQL Replication Utilities Tutorial" width="480" height="270" src="https://www.youtube.com/embed/yZJECIq5-Ac?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br>
+To get full use of these utilities you should use the InnoDB storage engine together with the <a title="MySQL 5.6 Replication - including global transaction IDs" href="http://dev.mysql.com/tech-resources/articles/mysql-5.6-replication.html" target="_blank">Global Transaction ID functionality from the latest MySQL 5.6 DMR</a>.</p>
+<h3>Do you really need/want auto-failover?</h3>
+<p>For many people, the instinctive reaction is to deploy a fully automated system that detects when the master database fails and then fails over (promotes a slave to be the new master) without human intervention. For many applications this may be the correct approach.</p>
+<p>There are inherent risks to this though &#8211; What if the failover implementation has a flaw and fails (after all, we probably don&#8217;t test this out in the production system very often)? What if the slave isn&#8217;t able to cope with the workload and makes things worse? Is it just a transitory glitch and would the best approach have been just to wait it out?</p>
+<p>Following a <a title="Github outage following auto-failover of the database" href="http://github.com/blog/1261-github-availability-this-week" target="_blank">recent, high profile outage</a> there has been a great deal of debate on the topic between those that recommend auto-failover and those that believe it should only ever be entrusted to a knowledgeable (of the application and the database architecture) and well informed (of the state of the database nodes, application load etc.) human. Of course, if the triggering of the failover is to be left to a human then you want that person to have access to the information they need and an extremely simple procedure (ideally a single command) to execute the failover. Probably the truth is that it all depends on your specific circumstances.</p>
+<p>The MySQL replication utilities aim to support you whichever camp you belong to:</p>
+<ul>
+<li>In the fully automated mode, the utilities will continually monitor the state of the master and in the event of its failure identify the best slave to promote &#8211; by default it will select the one that is most up-to-date and then apply any changes that are available on other slaves but not on this one before promoting it to be the new master. The user can override this behaviour (for example by limiting which of the slaves are eligible for promotion). The user is also able to bind in their own programs to be run before and after the failover (for example, to inform the application).</li>
+<li>In the monitoring mode, the utility still continually checks the availability of the master, and informs the user if it should fail. The user then executes a single command to fail over to their preferred slave.</li>
+</ul>
+<h3>Step 1. Make sure MySQL Servers are configured correctly</h3>
+<p>For some of the utilities, it&#8217;s important that you&#8217;re using Global Transaction IDs; binary logging needs to be enabled; may as well use the new crash-safe slave functionality&#8230; It&#8217;s beyond the scope of this post to go through all of those and so instead I&#8217;ll just give example configuration files for the 5 MySQL Servers that will be used:</p>
+<p><strong>my1.cnf</strong></p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[mysqld]
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+disable-gtid-unsafe-statements=true # Use enforce-gtid-consistency from 5.6.9+
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+sync-master-info=1
+datadir=/home/billy/mysql/data1
+server-id=1
+log-bin=util11-bin.log
+report-host=utils1
+report-port=3306
+socket=/home/billy/mysql/sock1
+port=3306</pre>
+<p><strong>my2.cnf</strong></p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[mysqld]
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+disable-gtid-unsafe-statements=true # Use enforce-gtid-consistency from 5.6.9+
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+sync-master-info=1
+datadir=/home/billy/mysql/data2
+server-id=2
+log-bin=util12-bin.log
+report-host=utils1
+report-port=3307
+socket=/home/billy/mysql/sock2
+port=3307</pre>
+<p><strong>my3.cnf</strong></p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[mysqld]
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+disable-gtid-unsafe-statements=true # Use enforce-gtid-consistency from 5.6.9+
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+sync-master-info=1
+datadir=/home/billy/mysql/data3
+server-id=3
+log-bin=util2-bin.log
+report-host=utils2
+report-port=3306
+socket=/home/billy/mysql/sock3
+port=3306</pre>
+<p><strong>my4.cnf</strong></p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[mysqld]
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+disable-gtid-unsafe-statements=true # Use enforce-gtid-consistency from 5.6.9+
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+master-info-file=/home/billy/mysql/master4.info
+datadir=/home/billy/mysql/data4
+server-id=4
+log-bin=util4-bin.log
+report-host=utils2
+report-port=3307
+socket=/home/billy/mysql/sock4
+port=3307</pre>
+<p><strong>my5.cnf</strong></p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[mysqld]
+binlog-format=ROW
+log-slave-updates=true
+gtid-mode=on
+disable-gtid-unsafe-statements=true # Use enforce-gtid-consistency from 5.6.9+
+datadir=/home/billy/mysql/data5
+master-info-repository=TABLE
+relay-log-info-repository=TABLE
+sync-master-info=1
+#master-info-file=/home/billy/mysql/master5.info
+server-id=5
+log-bin=util5-bin.log
+report-host=utils2
+report-port=3308
+socket=/home/billy/mysql/sock5
+port=3308</pre>
+<p>The utilities are actually going to be run from a remote host and so it will be necessary for that host to access each of the MySQL Servers and so a user has to be granted remote access (note that the utilities will automatically create the replication user):</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">[billy@utils1 ~]$ mysql -h 127.0.0.1 -P3306 -u root -e "grant all on *.* to root@'%' with grant option;"
+[billy@utils1 ~]$ mysql -h 127.0.0.1 -P3307 -u root -e "grant all on *.* to root@'%' with grant option;"
+[billy@utils2 ~]$ mysql -h 127.0.0.1 -P3306 -u root -e "grant all on *.* to root@'%' with grant option;"
+[billy@utils2 ~]$ mysql -h 127.0.0.1 -P3307 -u root -e "grant all on *.* to root@'%' with grant option;"
+[billy@utils2 ~]$ mysql -h 127.0.0.1 -P3308 -u root -e "grant all on *.* to root@'%' with grant option;"</pre>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;"></pre>
+<p>OK &#8211; that&#8217;s the most painful part of the whole process out of the way!</p>
+<h3>Set up replication</h3>
+<p>While there are extra options (such as specifying what username/password to use for the replication user or providing a password for the root user) I&#8217;m going to keep things simple and use the defaults as much as possible. The following commands are run from the MySQL Utilities terminal &#8211; just click on the pocket-knife icon in MySQL Workbench.</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlreplicate --master=root@utils1:3306 --slave=root@utils1:3307</strong>
+# master on utils1: ... connected.
+# slave on utils1: ... connected.
+# Checking for binary logging on master...
+# Setting up replication...
+# ...done.
+
+<strong>mysqlreplicate --master=root@utils1:3306 --slave=root@utils2:3306</strong>
+# master on utils1: ... connected.
+# slave on utils2: ... connected.
+# Checking for binary logging on master...
+# Setting up replication...
+# ...done.
+
+<strong>mysqlreplicate --master=root@utils1:3306 --slave=root@utils2:3307</strong>
+# master on utils1: ... connected.
+# slave on utils2: ... connected.
+# Checking for binary logging on master...
+# Setting up replication...
+# ...done.
+
+<strong>mysqlreplicate --master=root@utils1:3306 --slave=root@utils2:3308</strong>
+# master on utils1: ... connected.
+# slave on utils2: ... connected.
+# Checking for binary logging on master...
+# Setting up replication...
+# ...done.</pre>
+<p>That&#8217;s it, replication has now been set up from one master to four slaves.</p>
+<p>You can now check that the replication topology matches what you intended:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlrplshow --master=root@utils1 --discover-slaves-login=root;</strong>
+# master on utils1: ... connected.
+# Finding slaves for master: utils1:3306
+
+# Replication Topology Graph
+utils1:3306 (MASTER)
+   |
+   +--- utils1:3307 - (SLAVE)
+   |
+   +--- utils2:3306 - (SLAVE)
+   |
+   +--- utils2:3307 - (SLAVE)
+   |
+   +--- utils2:3308 - (SLAVE)</pre>
+<p>Additionally, you can also check that any of the replication relationships is correctly configure:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlrplcheck --master=root@utils1 --slave=root@utils2</strong>
+# master on utils1: ... connected.
+# slave on utils2: ... connected.
+Test Description                                                     Status
+---------------------------------------------------------------------------
+Checking for binary logging on master                                [pass]
+Are there binlog exceptions?                                         [pass]
+Replication user exists?                                             [pass]
+Checking server_id values                                            [pass]
+Is slave connected to master?                                        [pass]
+Check master information file                                        [pass]
+Checking InnoDB compatibility                                        [pass]
+Checking storage engines compatibility                               [pass]
+Checking lower_case_table_names settings                             [pass]
+Checking slave delay (seconds behind master)                         [pass]
+# ...done.</pre>
+<p>Including the <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">-s</span> option would have included the output that you&#8217;d expect to see from <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">SHOW SLAVE STATUSG on the slave.</span></p>
+<h3>Automated monitoring and failover</h3>
+<p>The previous section showed how you can save some serious time (and opportunity for user-error) when setting up MySQL replication. We now look at using the utilities to automatically monitor the state of the master and then automatically promote a new master from the pool of slaves. For simplicity I&#8217;ll stick with default values wherever possible but note that there are a number of extra options available to you such as:</p>
+<ul>
+<li>Constraining which slaves are eligible for promotion to master; the default is to take the most up-to-date slave</li>
+<li>Binding in your own scripts to be run before or after the failover (e.g. inform your application to switch master?)</li>
+<li>Have the utility monitor the state of the servers but don&#8217;t automatically initiate failover</li>
+</ul>
+<p>Here is how to set it up:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlfailover --master=root@utils1:3306 --discover-slaves-login=root --rediscover</strong>
+
+MySQL Replication Failover Utility
+Failover Mode = auto     Next Interval = Wed Aug 15 13:19:30 2012
+
+Master Information
+------------------
+Binary Log File    Position  Binlog_Do_DB  Binlog_Ignore_DB
+util11-bin.000001  2586
+
+Replication Health Status
++---------+-------+---------+--------+------------+---------+
+| host    | port  | role    | state  | gtid_mode  | health  |
++---------+-------+---------+--------+------------+---------+
+| utils1  | 3306  | MASTER  | UP     | ON         | OK      |
+| utils1  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3306  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3308  | SLAVE   | UP     | ON         | OK      |
++---------+-------+---------+--------+------------+---------+
+
+Q-quit R-refresh H-health G-GTID Lists U-UUIDs</pre>
+<p><span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysqlfailover</span> will then continue to run, refreshing the state &#8211; just waiting for something to go wrong.</p>
+<p>Rather than waiting, I kill the master MySQL Server:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqladmin -h utils1 -P3306 -u root shutdown</strong></pre>
+<p>Checking with the still-running <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysqlfailover</span> we can see that it has promoted <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">utils1:3307</span>.</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">MySQL Replication Failover Utility
+Failover Mode = auto     Next Interval = Wed Aug 15 13:21:13 2012
+
+Master Information
+------------------
+Binary Log File    Position  Binlog_Do_DB  Binlog_Ignore_DB
+util12-bin.000001  7131
+
+Replication Health Status
++---------+-------+---------+--------+------------+---------+
+| host    | port  | role    | state  | gtid_mode  | health  |
++---------+-------+---------+--------+------------+---------+
+| utils1  | 3307  | MASTER  | UP     | ON         | OK      |
+| utils2  | 3306  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3308  | SLAVE   | UP     | ON         | OK      |
++---------+-------+---------+--------+------------+---------+
+
+Q-quit R-refresh H-health G-GTID Lists U-UUIDs</pre>
+<h3>Add the recovered MySQL Server back into the topology</h3>
+<p>After restarting the failed MySQL Server, it can be added back into the mix as a slave to the new master:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlreplicate --master=root@utils1:3307 --slave=root@utils1:3306</strong>
+# master on utils1: ... connected.
+# slave on utils1: ... connected.
+# Checking for binary logging on master...
+# Setting up replication...
+# ...done.</pre>
+<p>The output from <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysqlfailover</span> (still running) confirms the addition:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;">MySQL Replication Failover Utility
+Failover Mode = auto     Next Interval = Wed Aug 15 13:24:38 2012
+
+Master Information
+------------------
+Binary Log File    Position  Binlog_Do_DB  Binlog_Ignore_DB
+util12-bin.000001  7131
+
+Replication Health Status
++---------+-------+---------+--------+------------+---------+
+| host    | port  | role    | state  | gtid_mode  | health  |
++---------+-------+---------+--------+------------+---------+
+| utils1  | 3307  | MASTER  | UP     | ON         | OK      |
+| utils1  | 3306  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3306  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3308  | SLAVE   | UP     | ON         | OK      |
++---------+-------+---------+--------+------------+---------+
+
+Q-quit R-refresh H-health G-GTID Lists U-UUIDs</pre>
+<p>If it were important that the recovered MySQL Server be restored as the master then it is simple to manually trigger the promotion (after quitting out of <span style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080;">mysqlfailover</span>):</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; color: #000080; padding-left: 30px;"><strong>mysqlrpladmin --master=root@utils1:3307 --new-master=root@utils1:3306 --demote-master 
+  --discover-slaves-login=root switchover</strong>
+
+# Discovering slaves for master at utils1:3307
+# Checking privileges.
+# Performing switchover from master at utils1:3307 to slave at utils1:3306.
+# Checking candidate slave prerequisites.
+# Waiting for slaves to catch up to old master.
+# Stopping slaves.
+# Performing STOP on all slaves.
+# Demoting old master to be a slave to the new master.
+# Switching slaves to new master.
+# Starting all slaves.
+# Performing START on all slaves.
+# Checking slaves for errors.
+# Switchover complete.
+#
+# Replication Topology Health:
++---------+-------+---------+--------+------------+---------+
+| host    | port  | role    | state  | gtid_mode  | health  |
++---------+-------+---------+--------+------------+---------+
+| utils1  | 3306  | MASTER  | UP     | ON         | OK      |
+| utils1  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3306  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3307  | SLAVE   | UP     | ON         | OK      |
+| utils2  | 3308  | SLAVE   | UP     | ON         | OK      |
++---------+-------+---------+--------+------------+---------+
+# ...done.</pre>
+<p>As always, we&#8217;d really appreciate people trying this out and giving us feedback!</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql/replication-and-auto-failover-made-easy-with-mysql-utilities" data-via="wpbeginner" data-text="Replication and auto-failover made easy with MySQL Utilities" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql/replication-and-auto-failover-made-easy-with-mysql-utilities"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql/replication-and-auto-failover-made-easy-with-mysql-utilities" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql%2Freplication-and-auto-failover-made-easy-with-mysql-utilities&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql" rel="category tag">MySQL</a> | 
+Tags: <a href="/tag/failover" rel="tag">failover</a>, <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="tag">High Availability</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-5-6" rel="tag">MySQL 5.6</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>, <a href="/tag/utilities" rel="tag">utilities</a>
+</div>
+
+			</div>			<div id="post-2346" class="post-2346 post type-post status-publish format-standard hentry category-mysql-cluster tag-high-availability tag-mysql tag-mysql-5-6 tag-mysql-replication">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/mysql-5-6-replication-webinar-replay">May 29, 2012</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/mysql-5-6-replication-webinar-replay#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/mysql-5-6-replication-webinar-replay" rel="bookmark">MySQL 5.6 Replication &#8211; webinar replay</a></h2>
+				
+				<div class="entry">
+										<div id="attachment_2288" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2012/05/Global_Transaction_IDs.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2288" class="size-medium wp-image-2288" title="MySQL 5.6 Replication - Global Transaction IDs" src="/wp-content/uploads/2012/05/Global_Transaction_IDs-300x186.png" alt="MySQL 5.6 Replication - Global Transaction IDs" width="300" height="186"></a><p id="caption-attachment-2288" class="wp-caption-text">MySQL 5.6 Replication - Global Transaction IDs</p>
+</div>
+<p>On Wednesday (16th May 2012), Mat Keep and I presented on the new replication features that are previewed as part of the latest MySQL 5.6 Development Release.</p>
+<p>The <a title="MySQL Cluster 5.6 Replication - webinar replay" href="http://www.mysql.com/news-and-events/on-demand-webinars/display-od-711.html" target="_blank">replay for that webinar (together with the chart deck) is now available from here</a>.</p>
+<p>In addition, there were a huge number of great questions raised and we had a couple of  key engineers answering them on-line &#8211; <a title="MySQL 5.5 Replication - FAQ" href="https://blogs.oracle.com/MySQL/entry/mysql_5_6_replication_faq" target="_blank">view the Q&amp;A transcript here</a>.</p>
+<p>A reminder of the topics covered in the webinar&#8230;</p>
+<p>MySQL 5.6 delivers new replication capabilities which we will discuss in the webinar:</p>
+<ul>
+<li>High performance with Multi-Threaded Slaves and Optimized Row Based Replication</li>
+<li>High availability with Global Transaction Identifiers, Failover Utilities and Crash Safe Slaves &amp; Binlog</li>
+<li>Data integrity with Replication Event Checksums</li>
+<li>Dev/Ops agility with new Replication Utilities, Time Delayed Replication and more</li>
+</ul>
+<p>&nbsp;</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/mysql-5-6-replication-webinar-replay" data-via="wpbeginner" data-text="MySQL 5.6 Replication &#8211; webinar replay" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/mysql-5-6-replication-webinar-replay"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/mysql-5-6-replication-webinar-replay" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fmysql-5-6-replication-webinar-replay&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/high-availability" rel="tag">High Availability</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-5-6" rel="tag">MySQL 5.6</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>
+</div>
+
+			</div>			<div id="post-2286" class="post-2286 post type-post status-publish format-standard hentry category-mysql-replication tag-ha tag-high-availability tag-mysql tag-mysql-5-6 tag-mysql-replication tag-webinar">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-replication/upcoming-webinar-mysql-5-6-replication-for-next-generation-of-web-and-cloud-services">May 10, 2012</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-replication/upcoming-webinar-mysql-5-6-replication-for-next-generation-of-web-and-cloud-services#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-replication/upcoming-webinar-mysql-5-6-replication-for-next-generation-of-web-and-cloud-services" rel="bookmark">Upcoming webinar: MySQL 5.6 Replication &#8211; For Next Generation of Web and Cloud Services</a></h2>
+				
+				<div class="entry">
+										<div id="attachment_2288" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2012/05/Global_Transaction_IDs.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2288" class="size-medium wp-image-2288" title="MySQL 5.6 Replication - Global Transaction IDs" src="/wp-content/uploads/2012/05/Global_Transaction_IDs-300x186.png" alt="MySQL 5.6 Replication - Global Transaction IDs" width="300" height="186"></a><p id="caption-attachment-2288" class="wp-caption-text">MySQL 5.6 Replication - Global Transaction IDs</p>
+</div>
+<p>On Wednesday (16th May 2012), Mat Keep and I will be presenting the new replication features that are previewed as part of the latest MySQL 5.6 Development Release. If you&#8217;d like to attend then <a title="MySQL 5.6 Replication - For Next Generation of Web and Cloud Services" href="http://mysql.com/news-and-events/web-seminars/display-711.html" target="_blank">register here</a>.</p>
+<p>MySQL 5.6 delivers new replication capabilities which we will discuss in the webinar:</p>
+<ul>
+<li>High performance with Multi-Threaded Slaves and Optimized Row Based Replication</li>
+<li>High availability with Global Transaction Identifiers, Failover Utilities and Crash Safe Slaves &amp; Binlog</li>
+<li>Data integrity with Replication Event Checksums</li>
+<li>Dev/Ops agility with new Replication Utilities, Time Delayed Replication and more</li>
+</ul>
+<p>The session will wrap up with resources to get started with MySQL 5.6 and an opportunity to ask questions.</p>
+<p>The webinar will last 45-60 minutes and will start on Wednesday, May 16, 2012 at 09:00 Pacific time (America); start times in other time zones:</p>
+<ul>
+<li>Wed, May 16: 06:00 Hawaii time</li>
+<li>Wed, May 16: 10:00 Mountain time (America)</li>
+<li>Wed, May 16: 11:00 Central time (America)</li>
+<li>Wed, May 16: 12:00 Eastern time (America)</li>
+<li>Wed, May 16: 16:00 UTC</li>
+<li>Wed, May 16: 17:00 Western European time</li>
+<li>Wed, May 16: 18:00 Central European time</li>
+<li>Wed, May 16: 19:00 Eastern European time</li>
+</ul>
+<p>As always, it&#8217;s worth registering even if you can&#8217;t make the live webcast as you&#8217;ll  be emailed a link to the replay as soon as it&#8217;s available.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-replication/upcoming-webinar-mysql-5-6-replication-for-next-generation-of-web-and-cloud-services" data-via="wpbeginner" data-text="Upcoming webinar: MySQL 5.6 Replication &#8211; For Next Generation of Web and Cloud Services" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-replication/upcoming-webinar-mysql-5-6-replication-for-next-generation-of-web-and-cloud-services"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-replication/upcoming-webinar-mysql-5-6-replication-for-next-generation-of-web-and-cloud-services" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-replication%2Fupcoming-webinar-mysql-5-6-replication-for-next-generation-of-web-and-cloud-services&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="tag">High Availability</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-5-6" rel="tag">MySQL 5.6</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>, <a href="/tag/webinar" rel="tag">webinar</a>
+</div>
+
+			</div>			<div id="post-2254" class="post-2254 post type-post status-publish format-standard hentry category-mysql-cluster tag-mysql tag-mysql-5-6 tag-mysql-cluster tag-mysql-cluster-7-2 tag-nosql">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/nosql-and-mysql-free-webinar">April 18, 2012</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/nosql-and-mysql-free-webinar#comments">4 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/nosql-and-mysql-free-webinar" rel="bookmark">NoSQL and MySQL &#8211; free webinar, replay now available</a></h2>
+				
+				<div class="entry">
+										<div id="attachment_2253" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2012/03/Key-Value-Store.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2253" class="size-medium wp-image-2253" title="Key-Value-Store" src="/wp-content/uploads/2012/03/Key-Value-Store-300x190.png" alt="" width="300" height="190"></a><p id="caption-attachment-2253" class="wp-caption-text">Schema-free NoSQL Data</p>
+</div>
+<p>Update &#8211; the <a title="SQL &amp; NoSQL - the best of both worlds using MySQL" href="https://www.mysql.com/news-and-events/on-demand-webinars/display-od-695.html" target="_blank">webinar replay is now available from here</a>.</p>
+<p>On Thursday, I&#8217;ll be presenting a webinar on NoSQL (of course with a MySQL twist!) &#8211; as always it&#8217;s free to attend but you need to <a title="NoSQL Access to MySQL - the Best of Both Worlds" href="http://www.mysql.com/news-and-events/web-seminars/display-695.html" target="_blank">register here in advance</a>. Even if you can&#8217;t attend, it&#8217;s worth registering as you&#8217;ll be sent a link to the replay and the charts. The session will introduce the concepts and motivations behind the NoSQL movement and then go on to explain how you can get most of the same benefits with MySQL (including MySQL Cluster) while still getting the RDBMS benefits such as ACID transactions.</p>
+<p>The official description:</p>
+<blockquote><p>The ever increasing performance demands of web-based services has generated significant interest in providing NoSQL access methods to MySQL &#8211; enabling users to maintain all of the advantages of their existing relational database infrastructure, while providing blazing fast performance for simple queries, using an API to complement regular SQL access to their data. This session looks at the existing NoSQL access methods for MySQL as well as the latest developments for both the InnoDB and MySQL Cluster storage engines. See how you can get the best of both worlds &#8211; persistence, consistency, rich queries, high availability, scalability and simple, flexible APIs and schemas for agile development.</p></blockquote>
+<p>When:</p>
+<ul>
+<li>Thursday, March 29, 2012: 09:00 Pacific time (America)</li>
+<li>Thu, Mar 29: 06:00 Hawaii time</li>
+<li>Thu, Mar 29: 10:00 Mountain time (America)</li>
+<li>Thu, Mar 29: 11:00 Central time (America)</li>
+<li>Thu, Mar 29: 12:00 Eastern time (America)</li>
+<li>Thu, Mar 29: 16:00 UTC</li>
+<li>Thu, Mar 29: 17:00 Western European time</li>
+<li>Thu, Mar 29: 18:00 Central European time</li>
+<li>Thu, Mar 29: 19:00 Eastern European time</li>
+</ul>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/nosql-and-mysql-free-webinar" data-via="wpbeginner" data-text="NoSQL and MySQL &#8211; free webinar, replay now available" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/nosql-and-mysql-free-webinar"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/nosql-and-mysql-free-webinar" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fnosql-and-mysql-free-webinar&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-5-6" rel="tag">MySQL 5.6</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-7-2" rel="tag">MySQL Cluster 7.2</a>, <a href="/tag/nosql" rel="tag">NoSQL</a>
+</div>
+
+			</div>			<div id="post-2183" class="post-2183 post type-post status-publish format-standard hentry category-mysql-replication tag-mysql tag-mysql-5-6 tag-mysql-replication">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-replication/mysql-5-6-replication-enhancements-webinar-replay">January 6, 2012</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-replication/mysql-5-6-replication-enhancements-webinar-replay#comments">One comment</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-replication/mysql-5-6-replication-enhancements-webinar-replay" rel="bookmark">MySQL 5.6 Replication Enhancements &#8211; webinar replay</a></h2>
+				
+				<div class="entry">
+										<div id="attachment_2174" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2011/12/Global_Transaction_IDs.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-2174" class="size-medium wp-image-2174" title="Global_Transaction_IDs" src="/wp-content/uploads/2011/12/Global_Transaction_IDs-300x189.png" alt="" width="300" height="189"></a><p id="caption-attachment-2174" class="wp-caption-text">Global Transaction IDs - simplifying replication management</p>
+</div>
+<p>The replay has now been released for the MySQL 5.6 replication enhancements replay where you can get the latest information on all of the great new content that has been included in the MySQL 5.6 Development Releases as well as some features that are still being developed. You can <a title="What's New in MySQL 5.6 - Part 2: Replication Enhancements" href="http://www.mysql.com/news-and-events/on-demand-webinars/display-od-677.html" target="_blank">view the replay here</a>.</p>
+<p>Some of the topics discussed are:</p>
+<ul>
+<li>Enhanced data integrity: Global Transactions Identifiers, Crash-Safe Slaves and Replication Event Checksums;</li>
+<li>High performance: Multi-Threaded Slaves, Binlog Group Commit and Optimized Row-Based Replication;</li>
+<li>Improved flexibility: Time Delayed Replication, Multi-Source Replication, Binlog API and Informational Log Events</li>
+</ul>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-replication/mysql-5-6-replication-enhancements-webinar-replay" data-via="wpbeginner" data-text="MySQL 5.6 Replication Enhancements &#8211; webinar replay" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-replication/mysql-5-6-replication-enhancements-webinar-replay"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-replication/mysql-5-6-replication-enhancements-webinar-replay" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-replication%2Fmysql-5-6-replication-enhancements-webinar-replay&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-5-6" rel="tag">MySQL 5.6</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>
+</div>
+
+			</div>      
+							<div class="more_posts">
+					<span class="post_links"><a href="/tag/mysql-5-6/page/2">&laquo; Older Entries</a> &nbsp; </span>
+				</div>
+						
+
+					
+	</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="/mongodb/realm-swift-type-projections">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="/mongodb/goodbye-nspredicate-hello-realm-swift-query-api">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments">
+<h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments">
+<li class="recentcomments">
+<span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-787242">MySQL Cluster running on Raspberry Pi</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">andrew</span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Sai Krishnan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-661143">Get MySQL Replication up and running in 5 minutes</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Nayan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-660628">Get MySQL Replication up and running in 5 minutes</a>
+</li>
+</ul>
+</li>
+<li id="categories-2" class="widget widget_categories">
+<h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2">
+<a href="/category/me">Me</a>
+</li>
+	<li class="cat-item cat-item-146">
+<a href="/category/mongodb">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3">
+<a href="/category/mysql">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4">
+<a href="/category/mysql-cluster">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131">
+<a href="/category/mysql-fabric">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5">
+<a href="/category/mysql-replication">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214">
+<a href="/category/mongodb/realm">Realm</a>
+</li>
+	<li class="cat-item cat-item-1">
+<a href="/category/uncategorized">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud">
+<h2 class="widgettitle">Tags</h2>
+<div class="tagcloud">
+<a href="/tag/7-4" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="/tag/apache-kafka" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="/tag/cluster" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="/tag/ha" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="/tag/high-availability" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="/tag/ios" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="/tag/java" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="/tag/javascript" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="/tag/mcm" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="/tag/mean" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="/tag/memcached" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="/tag/mobile" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="/tag/mongodb" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="/tag/mongodb-3-2" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="/tag/mongodb-atlas" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="/tag/mongodb-mobile" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="/tag/mongodb-stitch" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="/tag/mysql" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="/tag/mysql-5-6" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="/tag/mysql-cluster" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="/tag/mysql-cluster-70" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="/tag/mysql-cluster-7-1" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="/tag/mysql-cluster-7-2" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="/tag/mysql-cluster-7-3" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="/tag/mysql-cluster-7-4" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="/tag/mysql-cluster-cge" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="/tag/mysql-cluster-manager" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="/tag/mysql-enterprise-monitor" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="/tag/mysql-fabric-2" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="/tag/mysql-replication" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="/tag/mysql-utilities" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="/tag/ndb-api" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="/tag/node-js" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="/tag/nosql" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="/tag/performance" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="/tag/realm" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="/tag/replication" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="/tag/secondary" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="/tag/serverless" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="/tag/sharding" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="/tag/swift" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="/tag/swiftui" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="/tag/webcast" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="/tag/webinar" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="/tag/windows" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a>
+</div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive">
+<h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="/2022/03">March 2022</a></li>
+	<li><a href="/2022/02">February 2022</a></li>
+	<li><a href="/2022/01">January 2022</a></li>
+	<li><a href="/2021/12">December 2021</a></li>
+	<li><a href="/2021/11">November 2021</a></li>
+	<li><a href="/2021/09">September 2021</a></li>
+	<li><a href="/2021/08">August 2021</a></li>
+	<li><a href="/2021/07">July 2021</a></li>
+	<li><a href="/2021/06">June 2021</a></li>
+	<li><a href="/2021/05">May 2021</a></li>
+	<li><a href="/2021/04">April 2021</a></li>
+	<li><a href="/2021/02">February 2021</a></li>
+	<li><a href="/2021/01">January 2021</a></li>
+	<li><a href="/2020/12">December 2020</a></li>
+	<li><a href="/2019/03">March 2019</a></li>
+	<li><a href="/2019/01">January 2019</a></li>
+	<li><a href="/2018/12">December 2018</a></li>
+	<li><a href="/2018/11">November 2018</a></li>
+	<li><a href="/2018/10">October 2018</a></li>
+	<li><a href="/2018/09">September 2018</a></li>
+	<li><a href="/2017/09">September 2017</a></li>
+	<li><a href="/2017/03">March 2017</a></li>
+	<li><a href="/2017/02">February 2017</a></li>
+	<li><a href="/2017/01">January 2017</a></li>
+	<li><a href="/2016/12">December 2016</a></li>
+	<li><a href="/2016/11">November 2016</a></li>
+	<li><a href="/2016/09">September 2016</a></li>
+	<li><a href="/2016/01">January 2016</a></li>
+	<li><a href="/2015/11">November 2015</a></li>
+	<li><a href="/2015/10">October 2015</a></li>
+	<li><a href="/2015/09">September 2015</a></li>
+	<li><a href="/2015/06">June 2015</a></li>
+	<li><a href="/2015/04">April 2015</a></li>
+	<li><a href="/2015/03">March 2015</a></li>
+	<li><a href="/2015/02">February 2015</a></li>
+	<li><a href="/2015/01">January 2015</a></li>
+	<li><a href="/2014/12">December 2014</a></li>
+	<li><a href="/2014/11">November 2014</a></li>
+	<li><a href="/2014/10">October 2014</a></li>
+	<li><a href="/2014/09">September 2014</a></li>
+	<li><a href="/2014/08">August 2014</a></li>
+	<li><a href="/2014/07">July 2014</a></li>
+	<li><a href="/2014/06">June 2014</a></li>
+	<li><a href="/2014/05">May 2014</a></li>
+	<li><a href="/2014/04">April 2014</a></li>
+	<li><a href="/2014/03">March 2014</a></li>
+	<li><a href="/2014/02">February 2014</a></li>
+	<li><a href="/2014/01">January 2014</a></li>
+	<li><a href="/2013/12">December 2013</a></li>
+	<li><a href="/2013/11">November 2013</a></li>
+	<li><a href="/2013/09">September 2013</a></li>
+	<li><a href="/2013/08">August 2013</a></li>
+	<li><a href="/2013/07">July 2013</a></li>
+	<li><a href="/2013/06">June 2013</a></li>
+	<li><a href="/2013/05">May 2013</a></li>
+	<li><a href="/2013/03">March 2013</a></li>
+	<li><a href="/2013/02">February 2013</a></li>
+	<li><a href="/2013/01">January 2013</a></li>
+	<li><a href="/2012/12">December 2012</a></li>
+	<li><a href="/2012/11">November 2012</a></li>
+	<li><a href="/2012/09">September 2012</a></li>
+	<li><a href="/2012/07">July 2012</a></li>
+	<li><a href="/2012/06">June 2012</a></li>
+	<li><a href="/2012/05">May 2012</a></li>
+	<li><a href="/2012/04">April 2012</a></li>
+	<li><a href="/2012/03">March 2012</a></li>
+	<li><a href="/2012/02">February 2012</a></li>
+	<li><a href="/2012/01">January 2012</a></li>
+	<li><a href="/2011/12">December 2011</a></li>
+	<li><a href="/2011/11">November 2011</a></li>
+	<li><a href="/2011/10">October 2011</a></li>
+	<li><a href="/2011/09">September 2011</a></li>
+	<li><a href="/2011/07">July 2011</a></li>
+	<li><a href="/2011/06">June 2011</a></li>
+	<li><a href="/2011/05">May 2011</a></li>
+	<li><a href="/2011/04">April 2011</a></li>
+	<li><a href="/2011/03">March 2011</a></li>
+	<li><a href="/2011/02">February 2011</a></li>
+	<li><a href="/2011/01">January 2011</a></li>
+	<li><a href="/2010/12">December 2010</a></li>
+	<li><a href="/2010/11">November 2010</a></li>
+	<li><a href="/2010/10">October 2010</a></li>
+	<li><a href="/2010/09">September 2010</a></li>
+	<li><a href="/2010/08">August 2010</a></li>
+	<li><a href="/2010/07">July 2010</a></li>
+	<li><a href="/2010/06">June 2010</a></li>
+	<li><a href="/2010/05">May 2010</a></li>
+	<li><a href="/2010/04">April 2010</a></li>
+	<li><a href="/2010/03">March 2010</a></li>
+	<li><a href="/2010/02">February 2010</a></li>
+	<li><a href="/2010/01">January 2010</a></li>
+	<li><a href="/2009/12">December 2009</a></li>
+	<li><a href="/2009/11">November 2009</a></li>
+	<li><a href="/2009/10">October 2009</a></li>
+	<li><a href="/2009/09">September 2009</a></li>
+	<li><a href="/2009/08">August 2009</a></li>
+	<li><a href="/2009/07">July 2009</a></li>
+	<li><a href="/2009/06">June 2009</a></li>
+	<li><a href="/2009/05">May 2009</a></li>
+	<li><a href="/2009/04">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 -->
+</body>
+</html>

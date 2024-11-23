@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Database &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/database/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Wed, 16 Sep 2015 15:38:30 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>MongoDB Document Validation &#8211; London MUG charts</title>
+		<link>/mongodb/mongodb-document-validation-london-mug-charts</link>
+					<comments>/mongodb/mongodb-document-validation-london-mug-charts#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 16 Sep 2015 15:37:48 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[3.2]]></category>
+		<category><![CDATA[Database]]></category>
+		<category><![CDATA[document]]></category>
+		<category><![CDATA[mongodb]]></category>
+		<category><![CDATA[MongoDB 3.2]]></category>
+		<guid isPermaLink="false">/?p=4109</guid>
+
+					<description><![CDATA[Last night I preented on the MongoDB 3.2 Documentation Validation feature at the London MongoDB User Group meetup; the charts are shared here. Unfortunately, I didn&#8217;t record the demo and so you&#8217;ll have to grab me at a future MUG if you&#8217;d like to see that! Abstract One of MongoDB’s primary appeals to developers is]]></description>
+										<content:encoded><![CDATA[<p>Last night I preented on the MongoDB 3.2 Documentation Validation feature at the <a href="http://www.meetup.com/London-MongoDB-User-Group/events/224606434/" target="_blank">London MongoDB User Group meetup</a>; the charts are shared here. Unfortunately, I didn&#8217;t record the demo and so you&#8217;ll have to grab me at a future MUG if you&#8217;d like to see that!</p>
+<p><strong>Abstract</strong></p>
+<p>One of MongoDB’s primary appeals to developers is that it gives them the ability to start application development without needing to define a formal, up-front schema. Operations teams appreciate the fact that they don&#8217;t need to perform a time-consuming schema upgrade operation every time the developers need to store a different attribute (as an example, The Weather Channel is now able to launch new features in hours whereas it used to take weeks). For business leaders, the application gets launched much faster, and new features can be rolled out more frequently. MongoDB powers agility. </p>
+<p>Some projects reach a point where it&#8217;s necessary to define rules on what&#8217;s being stored in the database – for example, that for any document in a particular collection, you can be assured that certain attributes are present. </p>
+<p>To address the challenges discussed above, while at the same time maintaining the benefits of a dynamic schema, MongoDB 3.2 introduces document validation.</p>
+<p>There is significant flexibility to customize which parts of the documents are <strong>and are not</strong> validated for any collection.</p>
+<p><iframe src="//www.slideshare.net/slideshow/embed_code/key/pRViHhcmzlQYTt" width="600" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> </p>
+<div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/andrewjamesmorgan/document-validation-in-mongodb-32" title="Document validation in MongoDB 3.2" target="_blank">Document validation in MongoDB 3.2</a> </strong> from <strong><a href="//www.slideshare.net/andrewjamesmorgan" target="_blank">Andrew Morgan</a></strong> </div>
+<p>Please feel free to ask any questions through comments on this post.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mongodb/mongodb-document-validation-london-mug-charts/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Introduction</title>
+		<link>/me/introduction</link>
+					<comments>/me/introduction#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 08 Apr 2009 09:00:55 +0000</pubDate>
+				<category><![CDATA[Me]]></category>
+		<category><![CDATA[Andrew Morgan]]></category>
+		<category><![CDATA[Database]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Replication]]></category>
+		<guid isPermaLink="false">http://clusterdb.com/?p=3</guid>
+
+					<description><![CDATA[Just a quick introduction to begin with. I joined Sun Microsystems in Feb 2009 to look after the product management for MySQL Cluster and MySQL replication. I started my career with Nortel (technically BNR which was the R&#38;D arm of Northern Telecom but everything later got merged and rebranded as Nortel). I was responsible for]]></description>
+										<content:encoded><![CDATA[<p>Just a quick introduction to begin with.</p>
+<p><img fetchpriority="high" decoding="async" width="544" height="507" class="alignleft size-full wp-image-7" title="Me with my kids" src="http://clusterdb.com/wp-content/uploads/2009/04/kids_small.jpg" alt="Me with my kids" srcset="/wp-content/uploads/2009/04/kids_small.jpg 544w, /wp-content/uploads/2009/04/kids_small-300x279.jpg 300w" sizes="(max-width: 544px) 100vw, 544px" /></p>
+<p>I joined Sun Microsystems in Feb 2009 to look after the product management for MySQL Cluster and MySQL replication.</p>
+<p>I started my career with Nortel (technically BNR which was the R&amp;D arm of Northern Telecom but everything later got merged and rebranded as Nortel). I was responsible for writing the original proprietary, in-memory database for Nortel&#8217;s HLR product. Later on, we used a number of 3rd party databases for the HLR (provisioning rather than real-time) and then HSS &#8211; starting with Oracle for the HLR and then SOLID but then settling on MySQL Cluster as the scaleable real-time database for the HSS.</p>
+<p>When I left Nortel (via an IBM rebadging) I moved to Sun, hoping to use my experience as a MySQL Cluster customer to help the team build upon their strong product.</p>
+<p>So far, so good &#8211; I&#8217;ve been really impressed both with the MySQL team and with how well the product is doing both with telco companies and others.</p>
+<p>I&#8217;m planning on using this blog to publish technical content, publicise product information as well as anything else that crops up.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/me/introduction/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: Running MySQL Cluster over multiple Windows servers	</title>
+	<atom:link href="/mysql-cluster/running-mysql-cluster-over-multiple-servers/feed" rel="self" type="application/rss+xml" />
+	<link>/mysql-cluster/running-mysql-cluster-over-multiple-servers</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 08 Sep 2015 16:28:42 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-566134</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 08 Sep 2015 16:28:42 +0000</pubDate>
+		<guid isPermaLink="false">/?p=807#comment-566134</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-543264&quot;&gt;Deep&lt;/a&gt;.
+
+Thanks for your question. I&#039;m no longer directly involved with MySQL (I&#039;m now with MongoDB) and so I&#039;d suggest that you seek help from &lt;a href=&quot;http://forums.mysql.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;http://forums.mysql.com/&lt;/a&gt;.
+
+Best Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-543264">Deep</a>.</p>
+<p>Thanks for your question. I&#8217;m no longer directly involved with MySQL (I&#8217;m now with MongoDB) and so I&#8217;d suggest that you seek help from <a href="http://forums.mysql.com/" target="_blank" rel="nofollow">http://forums.mysql.com/</a>.</p>
+<p>Best Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Deep		</title>
+		<link>/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-543264</link>
+
+		<dc:creator><![CDATA[Deep]]></dc:creator>
+		<pubDate>Thu, 30 Jul 2015 22:06:51 +0000</pubDate>
+		<guid isPermaLink="false">/?p=807#comment-543264</guid>
+
+					<description><![CDATA[Hello,
+
+Thank you for an amazing tutorial.
+
+I created config.ini  and my.101.cnf and my.102.cnf files on every node. i followed your instruction. when use ndb_mgmd --initial -f conf/config.ini --configdir=./conf ,it&#039;s working perfectly on management node.
+
+after that i  tried to start sql node using ndbd -c 192.168.0.19:1186 --initial and i am having &quot;[ndbd] ERROR -- couldnot connect to management server, error &quot;&quot;&quot;
+
+Please help me ASAP.
+
+Thank you.]]></description>
+			<content:encoded><![CDATA[<p>Hello,</p>
+<p>Thank you for an amazing tutorial.</p>
+<p>I created config.ini  and my.101.cnf and my.102.cnf files on every node. i followed your instruction. when use ndb_mgmd &#8211;initial -f conf/config.ini &#8211;configdir=./conf ,it&#8217;s working perfectly on management node.</p>
+<p>after that i  tried to start sql node using ndbd -c 192.168.0.19:1186 &#8211;initial and i am having &#8220;[ndbd] ERROR &#8212; couldnot connect to management server, error &#8220;&#8221;&#8221;</p>
+<p>Please help me ASAP.</p>
+<p>Thank you.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-495660</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 21 May 2015 11:56:23 +0000</pubDate>
+		<guid isPermaLink="false">/?p=807#comment-495660</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-495623&quot;&gt;ashok p&lt;/a&gt;.
+
+A couple of suggestions...
+&lt;ol&gt;
+	&lt;li&gt;Make sure that all of the nodes (processes) are using the same software version&lt;/li&gt;
+	&lt;li&gt;Try turning off any firewalls&lt;/li&gt;
+	&lt;li&gt;If you&#039;ve made any changes to the &lt;code&gt;config.ini&lt;/code&gt; file then stop and restart the management node with the &lt;code&gt;--initial&lt;/code&gt; and then restart every data node and then every MySQL Server node&lt;/li&gt;
+&lt;/ol&gt;
+
+Let us know how you get on.
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-495623">ashok p</a>.</p>
+<p>A couple of suggestions&#8230;</p>
+<ol>
+<li>Make sure that all of the nodes (processes) are using the same software version</li>
+<li>Try turning off any firewalls</li>
+<li>If you&#8217;ve made any changes to the <code>config.ini</code> file then stop and restart the management node with the <code>--initial</code> and then restart every data node and then every MySQL Server node</li>
+</ol>
+<p>Let us know how you get on.</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: ashok p		</title>
+		<link>/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-495623</link>
+
+		<dc:creator><![CDATA[ashok p]]></dc:creator>
+		<pubDate>Thu, 21 May 2015 11:04:47 +0000</pubDate>
+		<guid isPermaLink="false">/?p=807#comment-495623</guid>
+
+					<description><![CDATA[My Mysql cluster has 4 nodes with following details
+
+1. Management node
+
+2. two data nodes
+
+3. 1 sql node-&#062;here is the problem for me.
+
+ SQl/API node is not working connected to my cluster some times and i observed following error continuosly at sql node.
+2015-05-21 16:06:40 2068 [Warning] execute index stats listener failed: error 1427 line 2545
+2015-05-21 16:06:59 2068 [Warning] execute index stats listener failed: error 1427 line 2545
+2015-05-21 16:07:19 2068 [Warning] execute index stats listener failed: error 1427 line 2545
+2015-05-21 16:07:38 2068 [Warning] execute index stats listener failed: error 1427 line 2545
+2015-05-21 16:07:57 2068 [Warning] execute index stats listener failed: error 1427 line 2545
+     Can you please help what was the problem?]]></description>
+			<content:encoded><![CDATA[<p>My Mysql cluster has 4 nodes with following details</p>
+<p>1. Management node</p>
+<p>2. two data nodes</p>
+<p>3. 1 sql node-&gt;here is the problem for me.</p>
+<p> SQl/API node is not working connected to my cluster some times and i observed following error continuosly at sql node.<br />
+2015-05-21 16:06:40 2068 [Warning] execute index stats listener failed: error 1427 line 2545<br />
+2015-05-21 16:06:59 2068 [Warning] execute index stats listener failed: error 1427 line 2545<br />
+2015-05-21 16:07:19 2068 [Warning] execute index stats listener failed: error 1427 line 2545<br />
+2015-05-21 16:07:38 2068 [Warning] execute index stats listener failed: error 1427 line 2545<br />
+2015-05-21 16:07:57 2068 [Warning] execute index stats listener failed: error 1427 line 2545<br />
+     Can you please help what was the problem?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-473442</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 16 Apr 2015 17:29:24 +0000</pubDate>
+		<guid isPermaLink="false">/?p=807#comment-473442</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-470024&quot;&gt;rudolph&lt;/a&gt;.
+
+What does your &lt;code&gt;config.ini&lt;/code&gt; file contain, what commands are you using to start each process and from what hosts?
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-470024">rudolph</a>.</p>
+<p>What does your <code>config.ini</code> file contain, what commands are you using to start each process and from what hosts?</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: rudolph		</title>
+		<link>/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-470024</link>
+
+		<dc:creator><![CDATA[rudolph]]></dc:creator>
+		<pubDate>Wed, 08 Apr 2015 09:56:34 +0000</pubDate>
+		<guid isPermaLink="false">/?p=807#comment-470024</guid>
+
+					<description><![CDATA[good day i am having a problem with running multiple sql servers
+
+the error looks like this.
+
+[mysqld (API)] 2 node (s)
+id = 101 (not connected, accepting connect from 192.168.1.26)
+id = 102 (not connected, accepting connect from 192.168.1.26)
+
+can you please helm me with this????
+
+thanks]]></description>
+			<content:encoded><![CDATA[<p>good day i am having a problem with running multiple sql servers</p>
+<p>the error looks like this.</p>
+<p>[mysqld (API)] 2 node (s)<br />
+id = 101 (not connected, accepting connect from 192.168.1.26)<br />
+id = 102 (not connected, accepting connect from 192.168.1.26)</p>
+<p>can you please helm me with this????</p>
+<p>thanks</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-342193</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 07 Nov 2014 17:17:41 +0000</pubDate>
+		<guid isPermaLink="false">/?p=807#comment-342193</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-337547&quot;&gt;Anna&lt;/a&gt;.
+
+What is the error message?]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-337547">Anna</a>.</p>
+<p>What is the error message?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Anna		</title>
+		<link>/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-337547</link>
+
+		<dc:creator><![CDATA[Anna]]></dc:creator>
+		<pubDate>Tue, 04 Nov 2014 23:00:58 +0000</pubDate>
+		<guid isPermaLink="false">/?p=807#comment-337547</guid>
+
+					<description><![CDATA[Hi guys, 
+I really need your help, I already tried all the possibilities! I reinstall the program thousand times! my problem as a lot of others is the sqld. when I try to launch the sqld in the nodes I received a message of error, and in my main node when I type ndb_mgm show its appear that the myswld API is not connected. I was thinking that maybe I shoul use the sql serve only in the main node and left the other ones with the data. So I am fscing this same problem for more the one week and I really need to solve this as soon as possible.]]></description>
+			<content:encoded><![CDATA[<p>Hi guys,<br />
+I really need your help, I already tried all the possibilities! I reinstall the program thousand times! my problem as a lot of others is the sqld. when I try to launch the sqld in the nodes I received a message of error, and in my main node when I type ndb_mgm show its appear that the myswld API is not connected. I was thinking that maybe I shoul use the sql serve only in the main node and left the other ones with the data. So I am fscing this same problem for more the one week and I really need to solve this as soon as possible.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-121614</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 30 Apr 2014 08:12:51 +0000</pubDate>
+		<guid isPermaLink="false">/?p=807#comment-121614</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-121573&quot;&gt;Abbas&lt;/a&gt;.
+
+Hi Abbas,
+
+ I&#039;m not aware of anyone deploying MySQL Cluster on Windows Azure but would love to hear from anyone who&#039;s tried.
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-121573">Abbas</a>.</p>
+<p>Hi Abbas,</p>
+<p> I&#8217;m not aware of anyone deploying MySQL Cluster on Windows Azure but would love to hear from anyone who&#8217;s tried.</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Abbas		</title>
+		<link>/mysql-cluster/running-mysql-cluster-over-multiple-servers#comment-121573</link>
+
+		<dc:creator><![CDATA[Abbas]]></dc:creator>
+		<pubDate>Wed, 30 Apr 2014 06:35:57 +0000</pubDate>
+		<guid isPermaLink="false">/?p=807#comment-121573</guid>
+
+					<description><![CDATA[How do I deploy MySQL Cluster on Windows Azure? Is there a step by step article on this?
+
+I want to use a front end opencart eCommerce app with a high availability SQL Cluster. I know that Windows azure provides availability for load balancing but I am unable to figure out a way for mySQL?]]></description>
+			<content:encoded><![CDATA[<p>How do I deploy MySQL Cluster on Windows Azure? Is there a step by step article on this?</p>
+<p>I want to use a front end opencart eCommerce app with a high availability SQL Cluster. I know that Windows azure provides availability for load balancing but I am unable to figure out a way for mySQL?</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

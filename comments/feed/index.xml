@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments for Andrew Morgan on Databases	</title>
+	<atom:link href="/comments/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 03 Dec 2019 16:16:55 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		Comment on MySQL Cluster running on Raspberry Pi by Mikael Ronström		</title>
+		<link>/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-787242</link>
+
+		<dc:creator><![CDATA[Mikael Ronström]]></dc:creator>
+		<pubDate>Tue, 03 Dec 2019 16:16:55 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2365#comment-787242</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-659345&quot;&gt;changs&lt;/a&gt;.
+
+MySQL Cluster 8.0.18 now compiles on ARM CPUs and there is a
+community version for ARM on Red Hat.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-659345">changs</a>.</p>
+<p>MySQL Cluster 8.0.18 now compiles on ARM CPUs and there is a<br />
+community version for ARM on Red Hat.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Setting up MySQL Asynchronous Replication for High Availability by andrew		</title>
+		<link>/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668717</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 15 Jun 2017 08:36:04 +0000</pubDate>
+		<guid isPermaLink="false">/?p=401#comment-668717</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668713&quot;&gt;Betty&lt;/a&gt;.
+
+Yes, when the slave comes back online, it will start pulling all of the changes that happened on the master while it was away.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668713">Betty</a>.</p>
+<p>Yes, when the slave comes back online, it will start pulling all of the changes that happened on the master while it was away.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Setting up MySQL Asynchronous Replication for High Availability by Betty		</title>
+		<link>/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668713</link>
+
+		<dc:creator><![CDATA[Betty]]></dc:creator>
+		<pubDate>Thu, 15 Jun 2017 06:50:56 +0000</pubDate>
+		<guid isPermaLink="false">/?p=401#comment-668713</guid>
+
+					<description><![CDATA[What happen if sometimes a slave is offline?
+Will replication continue working after that server online again?
+Thanks for explanation.]]></description>
+			<content:encoded><![CDATA[<p>What happen if sometimes a slave is offline?<br />
+Will replication continue working after that server online again?<br />
+Thanks for explanation.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Get MySQL Replication up and running in 5 minutes by Sai Krishnan		</title>
+		<link>/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-661143</link>
+
+		<dc:creator><![CDATA[Sai Krishnan]]></dc:creator>
+		<pubDate>Tue, 07 Mar 2017 16:59:05 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1293#comment-661143</guid>
+
+					<description><![CDATA[Can you please tell me how do we bind our mysql server with two different Ip Adresses as u have mentioned above i am not able to do that]]></description>
+			<content:encoded><![CDATA[<p>Can you please tell me how do we bind our mysql server with two different Ip Adresses as u have mentioned above i am not able to do that</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Get MySQL Replication up and running in 5 minutes by Nayan		</title>
+		<link>/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-660628</link>
+
+		<dc:creator><![CDATA[Nayan]]></dc:creator>
+		<pubDate>Tue, 28 Feb 2017 06:07:54 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1293#comment-660628</guid>
+
+					<description><![CDATA[Master.cnf and slave.cnf are separate files which present on two different computer? 
+Can we test replication process with two separate systems which is connected to same LAN ?]]></description>
+			<content:encoded><![CDATA[<p>Master.cnf and slave.cnf are separate files which present on two different computer?<br />
+Can we test replication process with two separate systems which is connected to same LAN ?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on MySQL Cluster running on Raspberry Pi by changs		</title>
+		<link>/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-659345</link>
+
+		<dc:creator><![CDATA[changs]]></dc:creator>
+		<pubDate>Thu, 16 Feb 2017 11:46:51 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2365#comment-659345</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-446383&quot;&gt;Sebastian&lt;/a&gt;.
+
+Hi Sebastian
+I have the same error as you, &#039;rmb was not declared in this scope&#039;,could you tell me your solution? 
+thank you very munch.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-446383">Sebastian</a>.</p>
+<p>Hi Sebastian<br />
+I have the same error as you, &#8216;rmb was not declared in this scope&#8217;,could you tell me your solution?<br />
+thank you very munch.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on My first Cluster running on Windows by Kailas Gorane		</title>
+		<link>/mysql-cluster/my-first-cluster-running-on-windows#comment-659221</link>
+
+		<dc:creator><![CDATA[Kailas Gorane]]></dc:creator>
+		<pubDate>Wed, 15 Feb 2017 06:01:48 +0000</pubDate>
+		<guid isPermaLink="false">/?p=153#comment-659221</guid>
+
+					<description><![CDATA[Hi Andrew,
+I am referring to this tutorial to setup mySql cluster. But, sqlserver node is not coming up. Below is output from mgmt console -
+
+[ndbd(NDB)]     2 node(s)
+id=2    @10.15.4.30  (mysql-5.7.17 ndb-7.5.5, Nodegroup: 0, *)
+id=3    @10.15.4.34  (mysql-5.7.17 ndb-7.5.5, Nodegroup: 0)
+
+[ndb_mgmd(MGM)] 1 node(s)
+id=1    @10.15.4.48  (mysql-5.7.17 ndb-7.5.5)
+
+[mysqld(API)]   2 node(s)
+id=4 (not connected, accepting connect from 10.15.4.36)
+id=5 (not connected, accepting connect from 10.15.4.47)
+
+My config.ini file is configured as below-
+
+[ndbd default]
+noofreplicas=2
+[ndbd]
+hostname=10.15.4.30
+NodeId=2
+[ndbd]
+hostname=10.15.4.34
+NodeId=3
+[ndb_mgmd]
+NodeId = 1
+hostname=10.15.4.48
+DataDir=E:/mysqlcluster/cluster-logs      #Directory of the management node Log files
+[mysqld]
+NodeId=4
+hostname=10.15.4.36
+[mysqld]
+NodeId=5
+hostname=10.15.4.47
+
+Below is the my.cnf file on 10.15.4.36 -
+[mysqld]
+ndb-nodeid=4
+ndbcluster
+Ndb-connectstring=10.15.4.48
+port=3306
+server-id=3306
+
+Could you please reply to this issue?]]></description>
+			<content:encoded><![CDATA[<p>Hi Andrew,<br />
+I am referring to this tutorial to setup mySql cluster. But, sqlserver node is not coming up. Below is output from mgmt console &#8211;</p>
+<p>[ndbd(NDB)]     2 node(s)<br />
+id=2    @10.15.4.30  (mysql-5.7.17 ndb-7.5.5, Nodegroup: 0, *)<br />
+id=3    @10.15.4.34  (mysql-5.7.17 ndb-7.5.5, Nodegroup: 0)</p>
+<p>[ndb_mgmd(MGM)] 1 node(s)<br />
+id=1    @10.15.4.48  (mysql-5.7.17 ndb-7.5.5)</p>
+<p>[mysqld(API)]   2 node(s)<br />
+id=4 (not connected, accepting connect from 10.15.4.36)<br />
+id=5 (not connected, accepting connect from 10.15.4.47)</p>
+<p>My config.ini file is configured as below-</p>
+<p>[ndbd default]<br />
+noofreplicas=2<br />
+[ndbd]<br />
+hostname=10.15.4.30<br />
+NodeId=2<br />
+[ndbd]<br />
+hostname=10.15.4.34<br />
+NodeId=3<br />
+[ndb_mgmd]<br />
+NodeId = 1<br />
+hostname=10.15.4.48<br />
+DataDir=E:/mysqlcluster/cluster-logs      #Directory of the management node Log files<br />
+[mysqld]<br />
+NodeId=4<br />
+hostname=10.15.4.36<br />
+[mysqld]<br />
+NodeId=5<br />
+hostname=10.15.4.47</p>
+<p>Below is the my.cnf file on 10.15.4.36 &#8211;<br />
+[mysqld]<br />
+ndb-nodeid=4<br />
+ndbcluster<br />
+Ndb-connectstring=10.15.4.48<br />
+port=3306<br />
+server-id=3306</p>
+<p>Could you please reply to this issue?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Deploying MySQL Cluster over multiple hosts by andrew		</title>
+		<link>/mysql-cluster/deploying-mysql-cluster-over-multiple-hosts#comment-658787</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 10 Feb 2017 10:40:12 +0000</pubDate>
+		<guid isPermaLink="false">/?p=262#comment-658787</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/deploying-mysql-cluster-over-multiple-hosts#comment-649679&quot;&gt;Ahmet&lt;/a&gt;.
+
+Thanks for your question but I&#039;m afraid that I no longer work for Oracle (I&#039;m now working for MongoDB) and so am not current on MySQL technology. I&#039;d suggest checking the &lt;a href=&quot;http://forums.mysql.com/list.php?25&quot; rel=&quot;nofollow&quot;&gt;MySQL Cluster forum&lt;/a&gt;.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/deploying-mysql-cluster-over-multiple-hosts#comment-649679">Ahmet</a>.</p>
+<p>Thanks for your question but I&#8217;m afraid that I no longer work for Oracle (I&#8217;m now working for MongoDB) and so am not current on MySQL technology. I&#8217;d suggest checking the <a href="http://forums.mysql.com/list.php?25" rel="nofollow">MySQL Cluster forum</a>.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on Deploying MySQL Cluster over multiple hosts by andrew		</title>
+		<link>/mysql-cluster/deploying-mysql-cluster-over-multiple-hosts#comment-658786</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 10 Feb 2017 10:40:04 +0000</pubDate>
+		<guid isPermaLink="false">/?p=262#comment-658786</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/deploying-mysql-cluster-over-multiple-hosts#comment-652922&quot;&gt;Nahid&lt;/a&gt;.
+
+Thanks for your question but I&#039;m afraid that I no longer work for Oracle (I&#039;m now working for MongoDB) and so am not current on MySQL technology. I&#039;d suggest checking the &lt;a href=&quot;http://forums.mysql.com/list.php?25&quot; rel=&quot;nofollow&quot;&gt;MySQL Cluster forum&lt;/a&gt;.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/deploying-mysql-cluster-over-multiple-hosts#comment-652922">Nahid</a>.</p>
+<p>Thanks for your question but I&#8217;m afraid that I no longer work for Oracle (I&#8217;m now working for MongoDB) and so am not current on MySQL technology. I&#8217;d suggest checking the <a href="http://forums.mysql.com/list.php?25" rel="nofollow">MySQL Cluster forum</a>.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Comment on MySQL Cluster fault tolerance &#8211; impact of deployment decisions by andrew		</title>
+		<link>/mysql-cluster/mysql-cluster-fault-tolerance-impact-of-deployment-decisions#comment-658785</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 10 Feb 2017 10:39:56 +0000</pubDate>
+		<guid isPermaLink="false">/?p=328#comment-658785</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-fault-tolerance-impact-of-deployment-decisions#comment-654053&quot;&gt;Jim K&lt;/a&gt;.
+
+Thanks for your question but I&#039;m afraid that I no longer work for Oracle (I&#039;m now working for MongoDB) and so am not current on MySQL technology. I&#039;d suggest checking the &lt;a href=&quot;http://forums.mysql.com/list.php?25&quot; rel=&quot;nofollow&quot;&gt;MySQL Cluster forum&lt;/a&gt;.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-fault-tolerance-impact-of-deployment-decisions#comment-654053">Jim K</a>.</p>
+<p>Thanks for your question but I&#8217;m afraid that I no longer work for Oracle (I&#8217;m now working for MongoDB) and so am not current on MySQL technology. I&#8217;d suggest checking the <a href="http://forums.mysql.com/list.php?25" rel="nofollow">MySQL Cluster forum</a>.</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

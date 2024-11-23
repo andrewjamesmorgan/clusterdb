@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="/xmlrpc.php">
+	
+	<title>Making SwiftUI Previews Work For You | Andrew Morgan on Databases</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Making SwiftUI Previews Work For You Comments Feed" href="/mongodb/making-swiftui-previews-work-for-you/feed">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/*  */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/*  */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="/wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="/wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="/wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="/wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="/wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/4643"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+
+<link rel="canonical" href="/mongodb/making-swiftui-previews-work-for-you">
+<link rel="shortlink" href="/?p=4643">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fmongodb%2Fmaking-swiftui-previews-work-for-you">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fmongodb%2Fmaking-swiftui-previews-work-for-you#038;format=xml">
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style><style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style><script type="text/javascript">//
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//</script><style type="text/css"></style><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style></head>
+
+<body class="post-template-default single single-post postid-4643 single-format-standard custom-background">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="/"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu"><li class="page_item page-item-1011"><a href="/about">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="/wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+
+					<div id="post-4643" class="post-4643 post type-post status-publish format-standard has-post-thumbnail hentry category-mongodb category-realm tag-realm tag-swift tag-swiftui">
+			
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mongodb/making-swiftui-previews-work-for-you">November 4, 2021</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mongodb/making-swiftui-previews-work-for-you#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+				
+				<h2 class="post-title">Making SwiftUI Previews Work For You</h2>
+				
+				<div class="entry">
+					<img width="300" height="286" src="/wp-content/uploads/2021/11/preview-multiple-devices-300x286.png" class="alignleft wp-post-image" alt="" decoding="async" fetchpriority="high" srcset="/wp-content/uploads/2021/11/preview-multiple-devices-300x286.png 300w, /wp-content/uploads/2021/11/preview-multiple-devices-1024x975.png 1024w, /wp-content/uploads/2021/11/preview-multiple-devices-768x731.png 768w, /wp-content/uploads/2021/11/preview-multiple-devices.png 1345w" sizes="(max-width: 300px) 100vw, 300px">					<h2>Introduction</h2>
+<p>Canvas previews are an in-your-face feature of SwiftUI. When you create a new view, half of the boilerplate code is for the preview. A third of your Xcode real estate is taken up by the preview.</p>
+<p>Despite the prominence of the feature, many developers simply delete the preview code from their views and rely on the simulator.</p>
+<p>In past releases of Xcode (including the Xcode 13 betas), a reluctance to use previews was understandable. They&#8217;d fail for no apparent reason, and the error messages were beyond cryptic.</p>
+<p>I&#8217;ve stuck with previews from the start, but at times, they&#8217;ve felt like more effort than they&#8217;re worth. But, with Xcode 13, I think we should all be using them for all views. In particular, I&#8217;ve noticed:</p>
+<ul>
+<li>They&#8217;re more reliable.</li>
+<li>The error messages finally make sense.</li>
+<li>Landscape mode is supported.</li>
+</ul>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/preview_multiple_devices_8cfe4cccd4.png" alt="Xcode showing a blackjack app with multiple previews for different devices, orientations, and color schemes"></p>
+<p>I consider previews a little like UI unit tests for your views. Like with unit tests, there&#8217;s some extra upfront effort required, but you get a big payback in terms of productivity and quality.</p>
+<p>In this article, I&#8217;m going to cover:</p>
+<ul>
+<li>What you can check in your previews (think light/dark mode, different devices, landscape mode, etc.) and how to do it.</li>
+<li>Reducing the amount of boilerplate code you need in your previews.</li>
+<li>Writing previews for stateful apps. (I&#8217;ll be using <a href="https://realm.io/">Realm</a>, but the same approach can be used with Core Data.)</li>
+<li>Troubleshooting your previews.</li>
+</ul>
+<p>One feature I won&#8217;t cover is using previews as a graphical way to edit views. One of the big draws of SwiftUI is writing everything in code rather than needing storyboards and XML files. Using a drag-and-drop view builder for SwiftUI doesn&#8217;t appeal to me.</p>
+<p>95% of the examples I use in this article are based on a BlackJack training app. You can find the final version in the <a href="https://github.com/mongodb-developer/BlackJackTrainer">repo</a>.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Xcode 13+</li>
+<li>iOS 15+</li>
+<li>Realm-Cocoa 10.17.0+</li>
+</ul>
+<p>Note:</p>
+<ul>
+<li>I&#8217;ve used Xcode 13 and iOS 15, but most of the examples in this post will work with older versions.</li>
+<li>Previewing in landscape mode is new in Xcode 13.</li>
+<li>The <code>buttonStyle</code> modifier is only available in iOS 15.</li>
+<li>I used Realm-Cocoa 10.17.0, but earlier 10.X versions are likely to work. </li>
+</ul>
+<h2>Working with previews</h2>
+<p>Previews let you see what your view looks like without running it in a simulator or physical device. When you edit the code for your view, its preview updates in real time.</p>
+<p>This section shows what aspects you can preview, and how it&#8217;s done.</p>
+<h3>A super-simple preview</h3>
+<p>When you create a new Xcode project or SwiftUI view, Xcode adds the code for the preview automatically. All you need to do is press the &#8220;Resume&#8221; button (or CMD-Alt-P).</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/simple_preview_a0d9cef7ab.gif" alt="A simple Xcode preview which updates as the code is edited"></p>
+<p>The preview code always has the same structure, with the <code>View</code> that needs previewing (in this case, <code>ContentView</code>) within the <code>previews</code> <code>View</code>:</p>
+<pre><code class="swift">struct ContentView_Previews: PreviewProvider {
+   static var previews: some View {
+       ContentView()
+   }
+}
+</code></pre>
+<h3>Views that require parameters</h3>
+<p>Most of your views will require that the enclosing view pass in parameters. Your preview must do the same—you&#8217;ll get a build error if you forget.</p>
+<p>My <a href="https://github.com/mongodb-developer/BlackJackTrainer/blob/main/Black%20Jack%20Trainer/Black%20Jack%20Trainer/Views/Decision%20Matrix/ResetButton.swift"><code>ResetButton</code></a> view requires that the caller provides two values—<code>label</code> and <code>resetType</code>:</p>
+<pre><code class="swift">struct ResetButton: View {
+   var label: String
+   var resetType: ResetType
+   ...
+}
+</code></pre>
+<p>The preview code needs to pass in those values, just like any embedding view:</p>
+<pre><code class="swift">struct ResetButton_Previews: PreviewProvider {
+   static var previews: some View {
+       ResetButton(label: "Reset All Matrices",
+                   resetType: .all)
+   }
+}
+</code></pre>
+<h3>Views that require <code>Binding</code>s</h3>
+<p>In a chat app, I have a <a href="https://github.com/mongodb-developer/LiveTutorial2021/blob/main/iOS/LiveChat/LiveChat/Views/LoginView.swift"><code>LoginView</code></a> that updates the <code>username</code> binding that&#8217;s past from the enclosing view:</p>
+<pre><code class="swift">struct LoginView: View {  
+   @Binding var username: String
+   ...
+}
+</code></pre>
+<p>The simplest way to create a binding in your preview is to use the <code>constant</code> function:</p>
+<pre><code class="swift">struct LoginView_Previews: PreviewProvider {
+   static var previews: some View {
+       LoginView(username: .constant("Billy"))
+   }
+}
+</code></pre>
+<h3><code>NavigationView</code>s</h3>
+<p>In your view hierarchy, you only add a <code>NavigationView</code> at a single level. That <code>NavigationView</code> then wraps all subviews.</p>
+<p>When previewing those subviews, you may or may not care about the <code>NavigationView</code> functionality. For example, you&#8217;ll only see titles and buttons in the top nav bar if your preview wraps the view in a <code>NavigationView</code>.</p>
+<p>If I preview my <a href="https://github.com/mongodb-developer/BlackJackTrainer/blob/main/Black%20Jack%20Trainer/Black%20Jack%20Trainer/Views/PracticeView.swift"><code>PracticeView</code></a> without adding a <code>NavigationView</code>, then I don&#8217;t see the title:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/no_title_171f797127.png" alt="Preview where there is no title on the screen"></p>
+<p>To preview the title, my preview code needs to wrap <code>PracticeView</code> in a <code>NavigationView</code>:</p>
+<pre><code class="swift">struct PracticeView_Previews: PreviewProvider {
+   static var previews: some View {
+       NavigationView {
+           PracticeView()
+       }
+   }
+}
+</code></pre>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/with_title_bf15560aac.png" alt="Preview with title"></p>
+<h3>Smaller views</h3>
+<p>Sometimes, you don&#8217;t need to preview your view in the context of a full device screen. My <a href="https://github.com/mongodb-developer/BlackJackTrainer/blob/main/Black%20Jack%20Trainer/Black%20Jack%20Trainer/Views/CardView.swift"><code>CardView</code></a> displays a single playing card. Previewing it in a full device screen just wastes desk space:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/full_device_preview_c8ffd5925f.png" alt="Lots of preview space taken up for the iPhone, but the view we're testing only takes up a tiny proportion of the space"></p>
+<p>We can add the <code>previewLayout</code> modifier to indicate that we only want to preview an area large enough for the view. It often makes sense to add some <code>padding</code> as well:</p>
+<pre><code class="swift">struct CardView_Previews: PreviewProvider {
+   static var previews: some View {
+       CardView(card: Card(suit: .heart))
+           .previewLayout(.sizeThatFits)
+           .padding()
+   }
+}
+</code></pre>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/no_device_bfc4332e8f.png" alt="Lots of screen space freed up by only previewing the view (rather than the entire iPhone screen"></p>
+<h3>Light and dark modes</h3>
+<p>It can be quite a shock when you finally get around to testing your app in dark mode. If you&#8217;ve not thought about light/dark mode when implementing each of your views, then the result can be ugly, or even unusable.</p>
+<p>Previews to the rescue!</p>
+<p>Returning to <a href="https://github.com/mongodb-developer/BlackJackTrainer/blob/main/Black%20Jack%20Trainer/Black%20Jack%20Trainer/Views/CardView.swift"><code>CardView</code></a>, I can preview a card in dark mode using the <code>preferredColorScheme</code> view modifier:</p>
+<pre><code class="swift">struct CardView_Previews: PreviewProvider {
+   static var previews: some View {
+       CardView(card: Card(suit: .heart))
+           .preferredColorScheme(.dark)
+           .previewLayout(.sizeThatFits)
+           .padding()
+   }
+}
+</code></pre>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/dark_heart_bbecd98b30.png" alt="10 Hearts displaying correctly in front of a dark background"></p>
+<p>That seems fine, but what if I previewed a spade instead?</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/dark_spade_fe9e8efa1d.png" alt="Black spade isn't visible in front of dark background"></p>
+<p>That could be a problem.</p>
+<p>Adding a white background to the view fixes it:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/dark_spade_2_d61601c19e.png" alt="King of spades now shows up as it sits in a white box"></p>
+<h3>Preview multiple view instances</h3>
+<p>Sometimes, previewing a single instance of your view doesn&#8217;t paint the full picture. Just look at the surprise I got when enabling dark mode for my card view. Wouldn&#8217;t it be better to simultaneously preview both hearts and spades in both dark and light modes?</p>
+<p>You can create multiple previews for the same view using the <code>Group</code> view:</p>
+<pre><code class="swift">struct CardView_Previews: PreviewProvider {
+   static var previews: some View {
+       Group {
+           CardView(card: Card(suit: .heart))
+           CardView(card: Card(suit: .spade))
+           CardView(card: Card(suit: .heart))
+               .preferredColorScheme(.dark)
+           CardView(card: Card(suit: .spade))
+               .preferredColorScheme(.dark)
+       }
+       .previewLayout(.sizeThatFits)
+       .padding()
+   }
+}
+</code></pre>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/multiple_cards_835ef6cf03.png" alt="Multiple cards, each with their own preview"></p>
+<h3>Composing views in a preview</h3>
+<p>A preview of a single view in isolation might look fine, but what will they look like within a broader context?</p>
+<p>Previewing a single <a href="https://github.com/mongodb-developer/BlackJackTrainer/blob/main/Black%20Jack%20Trainer/Black%20Jack%20Trainer/Views/Decision%20Matrix/DecisionCell.swift"><code>DecisionCell</code></a> view looks great:</p>
+<pre><code class="swift">struct DecisionCell_Previews: PreviewProvider {
+   static var previews: some View {
+       DecisionCell(
+           decision: Decision(handValue: 6, dealerCardValue: .nine, action: .hit), myHandValue: 8, dealerCardValue: .five)
+           .previewLayout(.sizeThatFits)
+           .padding()
+   }
+}
+</code></pre>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/single_decision_cell_ea54c12fee.png" alt="A single, yellow Hit cell"></p>
+<p>But, the app will never display a single <code>DecisionCell</code>. They&#8217;ll always be in a grid. Also, the text, background color, and border vary according to state. To create a more realistic preview, I created some sample data within the view and then composed multiple <code>DecisionCell</code>s using vertical and horizontal stacks:</p>
+<pre><code class="swift">struct DecisionCell_Previews: PreviewProvider {
+   static var previews: some View {
+       let decisions: [Decision] = [
+           Decision(handValue: 6, dealerCardValue: .nine, action: .split),
+           Decision(handValue: 6, dealerCardValue: .nine, action: .stand),
+           Decision(handValue: 6, dealerCardValue: .nine, action: .double),
+           Decision(handValue: 6, dealerCardValue: .nine, action: .hit)
+       ]
+       return Group {
+           VStack(spacing: 0) {
+               ForEach(decisions) { decision in
+                   HStack (spacing: 0) {
+                       DecisionCell(decision: decision, myHandValue: 8, dealerCardValue: .three)
+                       DecisionCell(decision: decision, myHandValue: 6, dealerCardValue: .three)
+                       DecisionCell(decision: decision, myHandValue: 8, dealerCardValue: .nine)
+                       DecisionCell(decision: decision, myHandValue: 6, dealerCardValue: .nine)
+                   }
+               }
+           }
+           VStack(spacing: 0) {
+               ForEach(decisions) { decision in
+                   HStack (spacing: 0) {
+                       DecisionCell(decision: decision, myHandValue: 8, dealerCardValue: .three)
+                       DecisionCell(decision: decision, myHandValue: 6, dealerCardValue: .three)
+                       DecisionCell(decision: decision, myHandValue: 8, dealerCardValue: .nine)
+                       DecisionCell(decision: decision, myHandValue: 6, dealerCardValue: .nine)
+                   }
+               }
+           }
+           .preferredColorScheme(.dark)
+       }
+       .previewLayout(.sizeThatFits)
+       .padding()
+   }
+</code></pre>
+<p>I could then see that the black border didn&#8217;t work too well in dark mode:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/stacked_decisions_47d742bf14.png" alt="Dark border around selected cells is lost in front of the dark background"></p>
+<p>Switching the border color from <code>black</code> to <code>primary</code> quickly fixed the issue:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/stacked_decisions2_ecf23e1695.png" alt="White frame around selected cell is visible in front of dark background"></p>
+<h3>Landscape mode</h3>
+<p>Previews default to portrait mode. Use the <code>previewInterfaceOrientation</code> modifier to preview in landscape mode instead:</p>
+<pre><code class="swift">struct ContentView_Previews: PreviewProvider {
+   static var previews: some View {
+       ContentView()
+           .previewInterfaceOrientation(.landscapeRight)
+   }
+}
+</code></pre>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/landscape_80d4442055.png" alt="iPhone app previewed in lanscape mode"></p>
+<h3>Device type</h3>
+<p>Previews default to the simulator device that you&#8217;ve selected in Xcode. Chances are that you want your app to work well on multiple devices. Typically, I find that there&#8217;s extra work needed to make an app I designed for the iPhone work well on an iPad.</p>
+<p>The <code>previewDevice</code> modifier lets us specify the device type to use in the preview:</p>
+<pre><code class="swift">struct ContentView_Previews: PreviewProvider {
+   static var previews: some View {
+       ContentView()
+           .previewDevice(PreviewDevice(rawValue: "iPad (9th generation)"))
+   }
+}
+</code></pre>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/i_Pad_27efe03ad8.png" alt="App previewed on an iPad"></p>
+<p>You can find the names of the available devices from Xcode&#8217;s simulator menu, or from the terminal using <code>xcrun simctl list devices</code>.</p>
+<h3>Pinning views</h3>
+<p>In the bottom-left corner of the preview area, there&#8217;s a pin button. Pressing this &#8220;pins&#8221; the current preview so that it&#8217;s still shown when you browse to the code for other views:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/pin_icon_82889deb40.png" alt="Pin icon in Xcode"></p>
+<p>This is useful to observe how a parent view changes as you edit the code for the child view:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/pin_2ac0418850.gif" alt="Animation of the pinned view continuing to be shown and updates as the developer switches to other views in Xcode"></p>
+<h3>Live previews</h3>
+<p>At the start of this article, I made a comparison between previews and unit testing. Live previews mean that you really can test your views in isolation (to be accurate, the view you&#8217;re testing plus all of the views it embeds or links to).</p>
+<p>Press the play button above the preview to enter live mode:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/play_button_4c5824b927.png" alt="Play button above Xcode preview"></p>
+<p>You can now interact with your view:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/live_mode_6bcaa486c9.gif" alt="Preview responds to user actions"></p>
+<h2>Getting rid of excess boilerplate preview code</h2>
+<p>As you may have noticed, some of my previews now have more code than the actual views. This isn&#8217;t necessarily a problem, but there&#8217;s a lot of repeated boilerplate code used by multiple views. Not only that, but you&#8217;ll be embedding the same boilerplate code into previews in other projects.</p>
+<p>To streamline my preview code, I&#8217;ve created several view builders. They all follow the same pattern—receive a <code>View</code> and return a new <code>View</code> that&#8217;s built from that <code>View</code>.</p>
+<p>I start the name of each view builder with <code>_Preview</code> to make it easy to take advantage of Xcode&#8217;s code completion feature.</p>
+<h3>Light/dark mode</h3>
+<p><a href="https://github.com/mongodb-developer/BlackJackTrainer/blob/main/Black%20Jack%20Trainer/Black%20Jack%20Trainer/Preview%20Content/Custom%20Previews/_PreviewColorScheme.swift"><code>_PreviewColorScheme</code></a> returns a <code>Group</code> of copies of the view. One is in light mode, the other dark:</p>
+<pre><code class="swift">struct _PreviewColorScheme&lt;Value: View&gt;: View {
+   private let viewToPreview: Value
+
+   init(_ viewToPreview: Value) {
+       self.viewToPreview = viewToPreview
+   }
+
+   var body: some View {
+       Group {
+           viewToPreview
+           viewToPreview.preferredColorScheme(.dark)
+       }
+   }
+}
+</code></pre>
+<p>To use this view builder in a preview, simply pass in the <code>View</code> you&#8217;re previewing:</p>
+<pre><code class="swift">struct CardView_Previews: PreviewProvider {
+   static var previews: some View {
+       _PreviewColorScheme(
+           VStack {
+               ForEach(Suit.allCases, id: \.rawValue) { suit in
+                   CardView(card: Card(suit: suit))
+               }
+           }
+               .padding()
+               .previewLayout(.sizeThatFits)
+       )
+   }
+}
+</code></pre>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/preview_color_c1a36666a1.png" alt="multiple cards shown in the same preview"></p>
+<h3>Orientation</h3>
+<p><a href="https://github.com/mongodb-developer/BlackJackTrainer/blob/main/Black%20Jack%20Trainer/Black%20Jack%20Trainer/Preview%20Content/Custom%20Previews/_PreviewOrientation.swift"><code>_PreviewOrientation</code></a> returns a <code>Group</code> containing the original <code>View</code> in portrait and landscape modes:</p>
+<pre><code class="swift">struct _PreviewOrientation&lt;Value: View&gt;: View {
+   private let viewToPreview: Value
+
+   init(_ viewToPreview: Value) {
+       self.viewToPreview = viewToPreview
+   }
+
+   var body: some View {
+       Group {
+           viewToPreview
+           viewToPreview.previewInterfaceOrientation(.landscapeRight)
+       }
+   }
+}
+</code></pre>
+<p>To use this view builder in a preview, simply pass in the <code>View</code> you&#8217;re previewing:</p>
+<pre><code class="swift">struct ContentView_Previews: PreviewProvider {
+   static var previews: some View {
+       _PreviewOrientation(
+           ContentView()
+       )
+   }
+}
+</code></pre>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/preview_Orientation_400bbf69dc.png" alt="Preview showing the same view in portrait and lanscape modes"></p>
+<h3>No device</h3>
+<p><a href="https://github.com/mongodb-developer/BlackJackTrainer/blob/main/Black%20Jack%20Trainer/Black%20Jack%20Trainer/Preview%20Content/Custom%20Previews/_PreviewNoDevice.swift"><code>_PreviewNoDevice</code></a> returns a view built from adding the <code>previewLayout</code> modifier and adding `padding to the input view:</p>
+<pre><code class="swift">struct _PreviewNoDevice&lt;Value: View&gt;: View {
+   private let viewToPreview: Value
+
+   init(_ viewToPreview: Value) {
+       self.viewToPreview = viewToPreview
+   }
+
+   var body: some View {
+       Group {
+           viewToPreview
+               .previewLayout(.sizeThatFits)
+               .padding()
+       }
+   }
+}
+</code></pre>
+<p>To use this view builder in a preview, simply pass in the <code>View</code> you&#8217;re previewing:</p>
+<pre><code class="swift">struct CardView_Previews: PreviewProvider {
+   static var previews: some View {
+       _PreviewNoDevice(
+           CardView(card: Card())
+       )
+   }
+}
+</code></pre>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/preview_no_device_1_c61ae16f88.png" alt="9 Clubs previewed in a small window"></p>
+<h3>Multiple devices</h3>
+<p><a href="https://github.com/mongodb-developer/BlackJackTrainer/blob/main/Black%20Jack%20Trainer/Black%20Jack%20Trainer/Preview%20Content/Custom%20Previews/_PreviewDevices.swift"><code>_PreviewDevices</code></a> returns a <code>Group</code> containing a copy of the <code>View</code> for each device type. You can modify <code>devices</code> in the code to include the devices you want to see previews for:</p>
+<pre><code class="swift">struct _PreviewDevices&lt;Value: View&gt;: View {
+   let devices = [
+       "iPhone 13 Pro Max",
+       "iPhone 13 mini",
+       "iPad (9th generation)"
+   ]
+
+   private let viewToPreview: Value
+
+   init(_ viewToPreview: Value) {
+       self.viewToPreview = viewToPreview
+   }
+
+   var body: some View {
+       Group {
+           ForEach(devices, id: \.self) { device in
+               viewToPreview
+                   .previewDevice(PreviewDevice(rawValue: device))
+                   .previewDisplayName(device)
+           }
+       }
+   }
+}
+</code></pre>
+<p>I&#8217;d be cautious about adding too many devices as it will make any previews using this view builder slow down and consume resources.</p>
+<p>To use this view builder in a preview, simply pass in the <code>View</code> you&#8217;re previewing:</p>
+<pre><code class="swift">struct ContentView_Previews: PreviewProvider {
+   static var previews: some View {
+       _PreviewDevices(
+           ContentView()
+       )
+   }
+}
+</code></pre>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/pasted_image_0_c78c26b145.png" alt="The same view previewed on 3 different device types"></p>
+<h3>Combining multiple view builders</h3>
+<p>Each view builder receives a view and returns a new view. That means that you can compose the functions by passing the results of one view builder to another. In the extreme case, you can use up to three on the same view preview:</p>
+<pre><code class="swift">struct ContentView_Previews: PreviewProvider {
+   static var previews: some View {
+       _PreviewOrientation(
+           _PreviewColorScheme(
+               _PreviewDevices(ContentView())
+           )
+       )
+   }
+}
+</code></pre>
+<p>This produces 12 views to cover all permutations of orientation, appearance, and device.</p>
+<p>For each view, you should consider which modifiers add value. For the <code>CardView</code>, it makes sense to use <code>_PreviewNoDevice</code> and <code>_PreviewColorSchem</code>e, but previewing on different devices and orientations wouldn&#8217;t add any value.</p>
+<h2>Previewing stateful views (Realm)</h2>
+<p>Often, a SwiftUI view will fetch state from a database such as Realm or Core Data. For that to work, there needs to be data in that database.</p>
+<p>Previews are effectively running on embedded iOS simulators. That helps explain how they are both slower and more powerful than you might expect from a &#8220;preview&#8221; feature. That also means that each preview also contains a Realm database (assuming that you&#8217;re using the <a href="https://github.com/realm/realm-cocoa">Realm-Cocoa SDK</a>). The preview can store data in that database, and the view can access that data.</p>
+<p>In the BlackJack training app, the action to take for each player/dealer hand combination is stored in Realm. For example, <a href="https://github.com/mongodb-developer/BlackJackTrainer/blob/main/Black%20Jack%20Trainer/Black%20Jack%20Trainer/Views/Decision%20Matrix/DefaultDecisionView.swift"><code>DefaultDecisionView</code></a> uses <code>@ObservedResults</code> to access data from Realm:</p>
+<pre><code class="swift">struct DefaultDecisionView: View {
+   @ObservedResults(Decisions.self,
+                    filter: NSPredicate(format: "isSoft == NO AND isSplit == NO")) var decisions
+</code></pre>
+<p>To ensure that there&#8217;s data for the previewed view to find, the preview checks whether the Realm database already contains data (<code>Decisions.areDecisionsPopulated</code>). If not, then it adds the required data (<code>Decisions.bootstrapDecisions()</code>):</p>
+<pre><code class="swift">struct DefaultDecisionView_Previews: PreviewProvider {
+   static var previews: some View {
+       if !Decisions.areDecisionsPopulated {
+           Decisions.bootstrapDecisions()
+       }
+       return _PreviewOrientation(
+           _PreviewColorScheme(
+               Group {
+                   NavigationView {
+                       DefaultDecisionView(myHandValue: 6, dealerCardValue: .nine)
+                   }
+                   NavigationView {
+                       DefaultDecisionView(myHandValue: 6, dealerCardValue: .nine, editable: true)
+                   }
+               }
+                   .navigationViewStyle(StackNavigationViewStyle())
+           )
+       )
+   }
+}
+</code></pre>
+<p><code>DefaultDecisionView</code> is embedded in <a href="https://github.com/mongodb-developer/BlackJackTrainer/blob/main/Black%20Jack%20Trainer/Black%20Jack%20Trainer/Views/Decision%20Matrix/DecisionMatrixView.swift"><code>DecisionMatrixView</code></a> and so the preview for <code>DecisionMatrixView</code> must also conditionally populate the Realm data. In turn, <code>DecisionMatrixView</code> is embedded in <a href="https://github.com/mongodb-developer/BlackJackTrainer/blob/main/Black%20Jack%20Trainer/Black%20Jack%20Trainer/Views/PracticeView.swift"><code>PracticeView</code></a>, and <code>PracticeView</code> in <a href="https://github.com/mongodb-developer/BlackJackTrainer/blob/main/Black%20Jack%20Trainer/Black%20Jack%20Trainer/Views/ContentView.swift"><code>ContentView</code></a>—and so, they too need to bootstrap the Realm data so that it&#8217;s available further down the view hierarchy.</p>
+<p>This is the implementation of the bootstrap functions:</p>
+<pre><code class="swift">extension Decisions {
+   static var areDecisionsPopulated: Bool {
+       do {
+           let realm = try Realm()
+           let decisionObjects = realm.objects(Decisions.self)
+           return decisionObjects.count &gt;= 3
+       } catch {
+           print("Error, couldn't read decision objects from Realm: \(error.localizedDescription)")
+           return false
+       }
+   }
+
+   static func bootstrapDecisions() {
+       do {
+           let realm = try Realm()
+           let defaultDecisions = Decisions()
+           let softDecisions = Decisions()
+           let splitDecisions = Decisions()
+
+           defaultDecisions.bootstrap(defaults: defaultDefaultDecisions, handType: .normal)
+           softDecisions.bootstrap(defaults: defaultSoftDecisions, handType: .soft)
+           splitDecisions.bootstrap(defaults: defaultSplitDecisions, handType: .split)
+           try realm.write {
+               realm.delete(realm.objects(Decision.self))
+               realm.delete(realm.objects(Decisions.self))
+               realm.delete(realm.objects(Decision.self))
+               realm.delete(realm.objects(Decisions.self))
+               realm.add(defaultDecisions)
+               realm.add(softDecisions)
+               realm.add(splitDecisions)
+           }
+       } catch {
+           print("Error, couldn't read decision objects from Realm: \(error.localizedDescription)")
+       }
+   }
+}
+</code></pre>
+<h3>Partitioned, synced realms</h3>
+<p>The BlackJack training app uses a standalone Realm database. But what happens if the app is using <a href="https://docs.mongodb.com/realm/sync/">Realm Sync</a>?</p>
+<p>One option could be to have the SwiftUI preview sync data with your backend Realm service. I think that&#8217;s a bit too complex, and it breaks my paradigm of treating previews like unit tests for views.</p>
+<p>I&#8217;ve found that the simplest solution is to make the view aware of whether it&#8217;s been created by a preview or by a running app. I&#8217;ll explain how that works.</p>
+<p><a href="https://github.com/realm/RChat/blob/main/RChat-iOS/RChat/Views/Chat%20Messages/AuthorView.swift"><code>AuthorView</code></a> from the <a href="https://github.com/realm/RChat/">RChat</a> app fetches data from Realm:</p>
+<pre><code class="swift">struct AuthorView: View {
+   @ObservedResults(Chatster.self) var chatsters
+   ...
+}
+</code></pre>
+<p>Its preview code bootstraps the embedded realm:</p>
+<pre><code class="swift">struct AuthorView_Previews: PreviewProvider {
+   static var previews: some View {
+       Realm.bootstrap()
+
+
+       return AppearancePreviews(AuthorView(userName: "rod@contoso.com"))
+           .previewLayout(.sizeThatFits)
+           .padding()
+   }
+}
+</code></pre>
+<p>The app adds bootstrap as an extension to Realm:</p>
+<pre><code class="swift">extension Realm: Samplable {
+   static func bootstrap() {
+       do {
+           let realm = try Realm()
+           try realm.write {
+               realm.deleteAll()
+               realm.add(Chatster.samples)
+               realm.add(User(User.sample))
+               realm.add(ChatMessage.samples)
+           }
+       } catch {
+           print("Failed to bootstrap the default realm")
+       }
+   }
+}
+</code></pre>
+<p>A complication is that <code>AuthorView</code> is embedded in <a href="https://github.com/realm/RChat/tree/main/RChat-iOS/RChat/Views/Chat%20Messages"><code>ChatBubbleView</code></a>. For the app to work, <code>ChatBubbleView</code> must pass the synced realm configuration to <code>AuthorView</code>:</p>
+<pre><code class="swift">AuthorView(userName: authorName)
+   .environment(\.realmConfiguration,
+                   app.currentUser!.configuration(
+                   partitionValue: "all-users=all-the-users"))
+</code></pre>
+<p><strong>But</strong>, when previewing <code>ChatBubbleView</code>, we want <code>AuthorView</code> to use the preview&#8217;s local, embedded realm (not to be dependent on a Realm back-end app). That means that <code>ChatBubbleView</code> must check whether or not it&#8217;s running as part of a preview:</p>
+<pre><code class="swift">struct ChatBubbleView: View {
+   ...
+   var isPreview = false
+   ...
+   var body: some View {
+       ...
+       if isPreview {
+           AuthorView(userName: authorName)
+       } else {
+           AuthorView(userName: authorName)
+               .environment(\.realmConfiguration,
+                   app.currentUser!.configuration(
+                       partitionValue: "all-users=all-the-users"))
+       }
+       ...
+   }
+}
+</code></pre>
+<p>The preview is then responsible for bootstrapping the local realm and flagging to <code>ChatBubbleView</code> that it&#8217;s a preview:</p>
+<pre><code class="swift">struct ChatBubbleView_Previews: PreviewProvider {
+   static var previews: some View {
+       Realm.bootstrap()
+       return ChatBubbleView(
+           chatMessage: .sample,
+           authorName: "jane",
+           isPreview: true)
+   }
+}
+</code></pre>
+<h2>Troubleshooting your previews</h2>
+<p>As mentioned at the beginning of this article, the error messages for failed previews are actually useful in Xcode 13.</p>
+<p>That&#8217;s the good news.</p>
+<p>The bad news is that you still can&#8217;t use breakpoints or print to the console.</p>
+<p>One mitigation is that the <code>previews</code> static var in your preview is a <code>View</code>. That means that you can replace the <code>body</code> of your <code>ContentView</code> with your <code>previews</code> code. You can then run the app in a simulator and add breakpoints or print to the console. It feels odd to use this approach, but I haven&#8217;t found a better option yet.</p>
+<h2>Conclusion</h2>
+<p>I&#8217;ve had a mixed relationship with SwiftUI previews.</p>
+<p>When they work, they&#8217;re a great tool, making it quicker to write your views. Previews allow you to unit test your views. Previews help you avoid issues when your app is running in dark or landscape mode or on different devices.</p>
+<p>But, they require effort to build. Prior to Xcode 13, it would be tough to justify that effort because of reliability issues.</p>
+<p>I believe that Xcode 13 is the tipping point where the efficiency and quality gains far outweigh the effort of writing preview code. That&#8217;s why I&#8217;ve written this article now.</p>
+<p>In this article, you&#8217;ve seen a number of tips to make previews as useful as possible. I&#8217;ve provided four view builders that you can copy directly into your SwiftUI projects, letting you build the best previews with the minimum of code. Finally, you&#8217;ve seen how you can write previews for views that work with data held in a database such as Realm or Core Data.</p>
+<p>Please provide feedback and ask any questions in the <a href="https://www.mongodb.com/community/forums/c/realm-sdks/58">Realm Community Forum</a>.</p>
+					<div class="clear"></div>
+										<!-- <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="/mongodb/making-swiftui-previews-work-for-you"
+    dc:identifier="/mongodb/making-swiftui-previews-work-for-you"
+    dc:title="Making SwiftUI Previews Work For You"
+    trackback:ping="/mongodb/making-swiftui-previews-work-for-you/trackback" />
+</rdf:RDF> -->			
+				</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mongodb/making-swiftui-previews-work-for-you" data-via="wpbeginner" data-text="Making SwiftUI Previews Work For You" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mongodb/making-swiftui-previews-work-for-you"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mongodb/making-swiftui-previews-work-for-you" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmongodb%2Fmaking-swiftui-previews-work-for-you&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mongodb" rel="category tag">MongoDB</a>, <a href="/category/mongodb/realm" rel="category tag">Realm</a> | 
+Tags: <a href="/tag/realm" rel="tag">Realm</a>, <a href="/tag/swift" rel="tag">Swift</a>, <a href="/tag/swiftui" rel="tag">SwiftUI</a></div>
+
+			</div>
+			
+		
+<!-- You can start editing here. -->
+
+
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/mongodb/making-swiftui-previews-work-for-you#respond" style="display:none;">Cancel reply</a></small></h3><p class="must-log-in">You must be <a href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmongodb%2Fmaking-swiftui-previews-work-for-you">logged in</a> to post a comment.</p>	</div><!-- #respond -->
+		<div class="clear"></div>
+		
+		</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="/mongodb/realm-swift-type-projections">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="/mongodb/goodbye-nspredicate-hello-realm-swift-query-api">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script></div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-787242">MySQL Cluster running on Raspberry Pi</a></li><li class="recentcomments"><span class="comment-author-link">andrew</span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link">Sai Krishnan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-661143">Get MySQL Replication up and running in 5 minutes</a></li><li class="recentcomments"><span class="comment-author-link">Nayan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-660628">Get MySQL Replication up and running in 5 minutes</a></li></ul></li>
+<li id="categories-2" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2"><a href="/category/me">Me</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="/category/mongodb">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/mysql">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/mysql-cluster">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131"><a href="/category/mysql-fabric">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="/category/mysql-replication">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214"><a href="/category/mongodb/realm">Realm</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="/category/uncategorized">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div class="tagcloud"><a href="/tag/7-4" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="/tag/apache-kafka" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="/tag/cluster" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="/tag/ha" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="/tag/high-availability" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="/tag/ios" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="/tag/java" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="/tag/javascript" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="/tag/mcm" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="/tag/mean" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="/tag/memcached" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="/tag/mobile" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="/tag/mongodb" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="/tag/mongodb-3-2" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="/tag/mongodb-atlas" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="/tag/mongodb-mobile" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="/tag/mongodb-stitch" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="/tag/mysql" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="/tag/mysql-5-6" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="/tag/mysql-cluster" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="/tag/mysql-cluster-70" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="/tag/mysql-cluster-7-1" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="/tag/mysql-cluster-7-2" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="/tag/mysql-cluster-7-3" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="/tag/mysql-cluster-7-4" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="/tag/mysql-cluster-cge" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="/tag/mysql-cluster-manager" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="/tag/mysql-enterprise-monitor" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="/tag/mysql-fabric-2" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="/tag/mysql-replication" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="/tag/mysql-utilities" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="/tag/ndb-api" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="/tag/node-js" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="/tag/nosql" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="/tag/performance" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="/tag/realm" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="/tag/replication" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="/tag/secondary" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="/tag/serverless" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="/tag/sharding" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="/tag/swift" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="/tag/swiftui" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="/tag/webcast" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="/tag/webinar" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="/tag/windows" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a></div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="/2022/03">March 2022</a></li>
+	<li><a href="/2022/02">February 2022</a></li>
+	<li><a href="/2022/01">January 2022</a></li>
+	<li><a href="/2021/12">December 2021</a></li>
+	<li><a href="/2021/11">November 2021</a></li>
+	<li><a href="/2021/09">September 2021</a></li>
+	<li><a href="/2021/08">August 2021</a></li>
+	<li><a href="/2021/07">July 2021</a></li>
+	<li><a href="/2021/06">June 2021</a></li>
+	<li><a href="/2021/05">May 2021</a></li>
+	<li><a href="/2021/04">April 2021</a></li>
+	<li><a href="/2021/02">February 2021</a></li>
+	<li><a href="/2021/01">January 2021</a></li>
+	<li><a href="/2020/12">December 2020</a></li>
+	<li><a href="/2019/03">March 2019</a></li>
+	<li><a href="/2019/01">January 2019</a></li>
+	<li><a href="/2018/12">December 2018</a></li>
+	<li><a href="/2018/11">November 2018</a></li>
+	<li><a href="/2018/10">October 2018</a></li>
+	<li><a href="/2018/09">September 2018</a></li>
+	<li><a href="/2017/09">September 2017</a></li>
+	<li><a href="/2017/03">March 2017</a></li>
+	<li><a href="/2017/02">February 2017</a></li>
+	<li><a href="/2017/01">January 2017</a></li>
+	<li><a href="/2016/12">December 2016</a></li>
+	<li><a href="/2016/11">November 2016</a></li>
+	<li><a href="/2016/09">September 2016</a></li>
+	<li><a href="/2016/01">January 2016</a></li>
+	<li><a href="/2015/11">November 2015</a></li>
+	<li><a href="/2015/10">October 2015</a></li>
+	<li><a href="/2015/09">September 2015</a></li>
+	<li><a href="/2015/06">June 2015</a></li>
+	<li><a href="/2015/04">April 2015</a></li>
+	<li><a href="/2015/03">March 2015</a></li>
+	<li><a href="/2015/02">February 2015</a></li>
+	<li><a href="/2015/01">January 2015</a></li>
+	<li><a href="/2014/12">December 2014</a></li>
+	<li><a href="/2014/11">November 2014</a></li>
+	<li><a href="/2014/10">October 2014</a></li>
+	<li><a href="/2014/09">September 2014</a></li>
+	<li><a href="/2014/08">August 2014</a></li>
+	<li><a href="/2014/07">July 2014</a></li>
+	<li><a href="/2014/06">June 2014</a></li>
+	<li><a href="/2014/05">May 2014</a></li>
+	<li><a href="/2014/04">April 2014</a></li>
+	<li><a href="/2014/03">March 2014</a></li>
+	<li><a href="/2014/02">February 2014</a></li>
+	<li><a href="/2014/01">January 2014</a></li>
+	<li><a href="/2013/12">December 2013</a></li>
+	<li><a href="/2013/11">November 2013</a></li>
+	<li><a href="/2013/09">September 2013</a></li>
+	<li><a href="/2013/08">August 2013</a></li>
+	<li><a href="/2013/07">July 2013</a></li>
+	<li><a href="/2013/06">June 2013</a></li>
+	<li><a href="/2013/05">May 2013</a></li>
+	<li><a href="/2013/03">March 2013</a></li>
+	<li><a href="/2013/02">February 2013</a></li>
+	<li><a href="/2013/01">January 2013</a></li>
+	<li><a href="/2012/12">December 2012</a></li>
+	<li><a href="/2012/11">November 2012</a></li>
+	<li><a href="/2012/09">September 2012</a></li>
+	<li><a href="/2012/07">July 2012</a></li>
+	<li><a href="/2012/06">June 2012</a></li>
+	<li><a href="/2012/05">May 2012</a></li>
+	<li><a href="/2012/04">April 2012</a></li>
+	<li><a href="/2012/03">March 2012</a></li>
+	<li><a href="/2012/02">February 2012</a></li>
+	<li><a href="/2012/01">January 2012</a></li>
+	<li><a href="/2011/12">December 2011</a></li>
+	<li><a href="/2011/11">November 2011</a></li>
+	<li><a href="/2011/10">October 2011</a></li>
+	<li><a href="/2011/09">September 2011</a></li>
+	<li><a href="/2011/07">July 2011</a></li>
+	<li><a href="/2011/06">June 2011</a></li>
+	<li><a href="/2011/05">May 2011</a></li>
+	<li><a href="/2011/04">April 2011</a></li>
+	<li><a href="/2011/03">March 2011</a></li>
+	<li><a href="/2011/02">February 2011</a></li>
+	<li><a href="/2011/01">January 2011</a></li>
+	<li><a href="/2010/12">December 2010</a></li>
+	<li><a href="/2010/11">November 2010</a></li>
+	<li><a href="/2010/10">October 2010</a></li>
+	<li><a href="/2010/09">September 2010</a></li>
+	<li><a href="/2010/08">August 2010</a></li>
+	<li><a href="/2010/07">July 2010</a></li>
+	<li><a href="/2010/06">June 2010</a></li>
+	<li><a href="/2010/05">May 2010</a></li>
+	<li><a href="/2010/04">April 2010</a></li>
+	<li><a href="/2010/03">March 2010</a></li>
+	<li><a href="/2010/02">February 2010</a></li>
+	<li><a href="/2010/01">January 2010</a></li>
+	<li><a href="/2009/12">December 2009</a></li>
+	<li><a href="/2009/11">November 2009</a></li>
+	<li><a href="/2009/10">October 2009</a></li>
+	<li><a href="/2009/09">September 2009</a></li>
+	<li><a href="/2009/08">August 2009</a></li>
+	<li><a href="/2009/07">July 2009</a></li>
+	<li><a href="/2009/06">June 2009</a></li>
+	<li><a href="/2009/05">May 2009</a></li>
+	<li><a href="/2009/04">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 --><script type="text/javascript" src="/wp-includes/js/comment-reply.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
+</body>
+</html>

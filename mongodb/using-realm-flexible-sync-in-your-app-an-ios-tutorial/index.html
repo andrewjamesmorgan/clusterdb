@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="/xmlrpc.php">
+	
+	<title>Using Realm Flexible Sync in Your App—an iOS Tutorial | Andrew Morgan on Databases</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Using Realm Flexible Sync in Your App—an iOS Tutorial Comments Feed" href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial/feed">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/*  */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/*  */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="/wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="/wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="/wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="/wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="/wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/posts/4664"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+
+<link rel="canonical" href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial">
+<link rel="shortlink" href="/?p=4664">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fmongodb%2Fusing-realm-flexible-sync-in-your-app-an-ios-tutorial">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=http%3A%2F%2F%2Fmongodb%2Fusing-realm-flexible-sync-in-your-app-an-ios-tutorial#038;format=xml">
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style><style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style><script type="text/javascript">//
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//</script><style type="text/css"></style><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style></head>
+
+<body class="post-template-default single single-post postid-4664 single-format-standard custom-background">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="/"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu"><li class="page_item page-item-1011"><a href="/about">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="/wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+
+					<div id="post-4664" class="post-4664 post type-post status-publish format-standard has-post-thumbnail hentry category-mongodb category-realm tag-mongodb tag-realm tag-swiftui">
+			
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial">February 25, 2022</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+				
+				<h2 class="post-title">Using Realm Flexible Sync in Your App—an iOS Tutorial</h2>
+				
+				<div class="entry">
+					<img width="300" height="300" src="/wp-content/uploads/2022/02/ATF-720x720-1-300x300.png" class="alignleft wp-post-image" alt="" decoding="async" fetchpriority="high" srcset="/wp-content/uploads/2022/02/ATF-720x720-1-300x300.png 300w, /wp-content/uploads/2022/02/ATF-720x720-1-150x150.png 150w, /wp-content/uploads/2022/02/ATF-720x720-1-144x144.png 144w, /wp-content/uploads/2022/02/ATF-720x720-1.png 720w" sizes="(max-width: 300px) 100vw, 300px">					<h2>Introduction</h2>
+<p>We recently announced the <a href="https://www.mongodb.com/developer/article/realm-flexible-sync/">release of the Realm Flexible Sync preview</a>—an opportunity for developers to take it for a spin and give us feedback. That article provided an overview of the benefits of flexible sync and how it works. TL;DR: You typically don&#8217;t want to sync the entire backend database to every device—whether for capacity or security concerns. Realm Flexible Sync lets the developer provide queries to control exactly what the mobile app asks to sync, together with backend rules to ensure users can only access the data that they&#8217;re entitled to.</p>
+<p>This post builds on that introduction by showing how to add flexible sync to the RChat mobile app. I&#8217;ll show how to configure the Realm backend app, and then what code needs adding to the mobile app.</p>
+<p>Everything you see in this tutorial can be found in the <a href="https://github.com/realm/RChat/tree/flex-sync">flex-sync branch of the RChat repo</a>.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Xcode 13.2+</li>
+<li>iOS 15+</li>
+<li><a href="https://github.com/realm/realm-swift/releases">Realm-Swift 10.22.0+</a></li>
+<li>MongoDB 5.0+</li>
+</ul>
+<h2>The RChat App</h2>
+<p>RChat is a messaging app. Users can add other users to a chat room and then share messages, images, and location with each other.</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/chat_realm_flex_sync_468d197c99.gif" alt="Screen capture video of running the RCha App on 2 different iOS simulators. Two users join a chat room and send messages to each other"></p>
+<p>All of the user and chat message data is shared between instances of the app via Realm Sync.</p>
+<p>There&#8217;s a common Realm backend app. There are frontend apps for iOS and Android. This post focuses on the backend and the iOS app.</p>
+<h2>Configuring the Realm Backend App</h2>
+<p>The backend app contains a lot of functionality that isn&#8217;t connected to the sync functionality, and so I won&#8217;t cover that here. If you&#8217;re interested, then check out the <a href="https://www.mongodb.com/developer/how-to/realm-swiftui-ios-chat-app/">original RChat series</a>.</p>
+<p>As a starting point, you can install the app. I&#8217;ll then explain the parts connected to Realm Sync.</p>
+<h3>Import the Backend Realm App</h3>
+<ol>
+<li>If you don&#8217;t already have one, <a href="https://cloud.mongodb.com/">create a MongoDB Atlas Cluster</a>, keeping the default name of Cluster0. The Atlas cluster must be running MongoDB 5.0 or later.</li>
+<li>Install the <a href="https://docs.mongodb.com/realm/deploy/realm-cli-reference">Realm CLI</a> and <a href="https://docs.atlas.mongodb.com/configure-api-access#programmatic-api-keys">create an API key pair</a>.</li>
+<li>Download the repo and install the Realm app:</li>
+</ol>
+<pre><code class="bash">git clone https://github.com/ClusterDB/RChat.git
+git checkout flex-sync
+cd RChat/RChat-Realm/RChat
+realm-cli login --api-key &lt;your new public key&gt; --private-api-key &lt;your new private key&gt;
+realm-cli import # Then answer prompts, naming the app RChat
+
+</code></pre>
+<ol>
+<li>From the Atlas UI, click on the Realm logo and you will see the RChat app. Open it and copy the App Id. You&#8217;ll need to use this before building the iOS app.</li>
+</ol>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/copy_realm_app_id_b2d9b27ddc.png" alt="Screen capture of how to copy the Realm App ID in the Realm UI"></p>
+<h3>How Flexible Sync is Enabled in the Back End</h3>
+<h4>Schema</h4>
+<p>The schema represents how the data will be stored in MongoDB Atlas **and*- what the Swift (and Kotlin) model classes must contain.</p>
+<p>Each collection/class requires a schema. If you enable Realm&#8217;s &#8220;Developer Mode&#8221; option, then Realm will automatically define the schema based on your Swift or Kotlin model classes. In this case, your imported Realm <code>App</code> includes the schemas, and so developer mode isn&#8217;t needed. You can view the schemas by browsing to the &#8220;Schema&#8221; section in the <a href="https://cloud.mongodb.com/">Realm UI</a>:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/schemas_in_realm_ui_4032fe478c.png" alt="Screen capture of schema section of the Realm UI"></p>
+<p>You can find more details about the schema/model in <a href="https://www.mongodb.com/developer/how-to/realm-swiftui-ios-chat-app/">Building a Mobile Chat App Using Realm – Data Architecture</a>, but note that for flexible sync (as opposed to the original partition-based sync), the <code>partition</code> field has been removed.</p>
+<p>We&#8217;re interested in the schema for three collections/model-classes:</p>
+<p><strong>User:</strong></p>
+<pre><code class="json">{
+  "bsonType": "object",
+  "properties": {
+    "_id": {
+      "bsonType": "string"
+    },
+    "conversations": {
+      "bsonType": "array",
+      "items": {
+        "bsonType": "object",
+        "properties": {
+          "displayName": {
+            "bsonType": "string"
+          },
+          "id": {
+            "bsonType": "string"
+          },
+          "members": {
+            "bsonType": "array",
+            "items": {
+              "bsonType": "object",
+              "properties": {
+                "membershipStatus": {
+                  "bsonType": "string"
+                },
+                "userName": {
+                  "bsonType": "string"
+                }
+              },
+              "required": [
+                "membershipStatus",
+                "userName"
+              ],
+              "title": "Member"
+            }
+          },
+          "unreadCount": {
+            "bsonType": "long"
+          }
+        },
+        "required": [
+          "unreadCount",
+          "id",
+          "displayName"
+        ],
+        "title": "Conversation"
+      }
+    },
+    "lastSeenAt": {
+      "bsonType": "date"
+    },
+    "presence": {
+      "bsonType": "string"
+    },
+    "userName": {
+      "bsonType": "string"
+    },
+    "userPreferences": {
+      "bsonType": "object",
+      "properties": {
+        "avatarImage": {
+          "bsonType": "object",
+          "properties": {
+            "_id": {
+              "bsonType": "string"
+            },
+            "date": {
+              "bsonType": "date"
+            },
+            "picture": {
+              "bsonType": "binData"
+            },
+            "thumbNail": {
+              "bsonType": "binData"
+            }
+          },
+          "required": [
+            "_id",
+            "date"
+          ],
+          "title": "Photo"
+        },
+        "displayName": {
+          "bsonType": "string"
+        }
+      },
+      "required": [],
+      "title": "UserPreferences"
+    }
+  },
+  "required": [
+    "_id",
+    "userName",
+    "presence"
+  ],
+  "title": "User"
+}
+</code></pre>
+<p><code>User</code> documents/objects represent users of the app.</p>
+<p><strong>Chatster:</strong></p>
+<pre><code class="json">{
+  "bsonType": "object",
+  "properties": {
+    "_id": {
+      "bsonType": "string"
+    },
+    "avatarImage": {
+      "bsonType": "object",
+      "properties": {
+        "_id": {
+          "bsonType": "string"
+        },
+        "date": {
+          "bsonType": "date"
+        },
+        "picture": {
+          "bsonType": "binData"
+        },
+        "thumbNail": {
+          "bsonType": "binData"
+        }
+      },
+      "required": [
+        "_id",
+        "date"
+      ],
+      "title": "Photo"
+    },
+    "displayName": {
+      "bsonType": "string"
+    },
+    "lastSeenAt": {
+      "bsonType": "date"
+    },
+    "presence": {
+      "bsonType": "string"
+    },
+    "userName": {
+      "bsonType": "string"
+    }
+  },
+  "required": [
+    "_id",
+    "presence",
+    "userName"
+  ],
+  "title": "Chatster"
+}
+</code></pre>
+<p><code>Chatster</code> documents/objects represent a read-only subset of instances of <code>User</code> documents. <code>Chatster</code> is needed because there&#8217;s a subset of <code>User</code> data that we want to make accessible to all users. E.g., I want everyone to be able to see my username, presence status, and avatar image, but I don&#8217;t want them to see which chat rooms I&#8217;m a member of.</p>
+<p>Realm Sync lets you control which users can sync which documents, but it doesn&#8217;t let you sync just a subset of a document&#8217;s fields. That&#8217;s why <code>Chatster</code> is needed. I&#8217;m looking forward to when Realm Sync permissions allow me to control access on a per-field (rather than per-document/class) basis. At that point, I can remove <code>Chatster</code> from the app.</p>
+<p><strong>ChatMessage:</strong></p>
+<pre><code class="json">{
+  "bsonType": "object",
+  "properties": {
+    "_id": {
+      "bsonType": "string"
+    },
+    "author": {
+      "bsonType": "string"
+    },
+    "authorID": {
+      "bsonType": "string"
+    },
+    "conversationID": {
+      "bsonType": "string"
+    },
+    "image": {
+      "bsonType": "object",
+      "properties": {
+        "_id": {
+          "bsonType": "string"
+        },
+        "date": {
+          "bsonType": "date"
+        },
+        "picture": {
+          "bsonType": "binData"
+        },
+        "thumbNail": {
+          "bsonType": "binData"
+        }
+      },
+      "required": [
+        "_id",
+        "date"
+      ],
+      "title": "Photo"
+    },
+    "location": {
+      "bsonType": "array",
+      "items": {
+        "bsonType": "double"
+      }
+    },
+    "text": {
+      "bsonType": "string"
+    },
+    "timestamp": {
+      "bsonType": "date"
+    }
+  },
+  "required": [
+    "_id",
+    "authorID",
+    "conversationID",
+    "text",
+    "timestamp"
+  ],
+  "title": "ChatMessage"
+}
+</code></pre>
+<p>There&#8217;s a <code>ChatMessage</code> document object for every message sent to any chat room.</p>
+<h4>Flexible Sync Configuration</h4>
+<p>You can view and edit the sync configuration by browsing to the &#8220;Sync&#8221; section of the Realm UI:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/configure_flex_sync_9b3221e283.png" alt="Enabling Realm Flexible Sync in the Realm UI"></p>
+<p>For this deployment, I&#8217;ve selected the Atlas cluster to use. <strong>That cluster must be running MongoDB 5.0 or later</strong>. At the time of writing, MongoDB 5.0 isn&#8217;t available for shared clusters (including free-tier M0 instances)—that&#8217;s expected to change very soon, possibly by the time that you&#8217;re reading this.</p>
+<p>You must specify which fields the mobile app can use in its sync filter queries. Without this, you can&#8217;t refer to those fields in your sync queries or permissions. You are currently limited to 10 fields.</p>
+<p>Scrolling down, you can see the sync permissions:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/sync_permission_f780c57241.png" alt="Screenshot of a JSON document representing sync permissions in the Realm UI"></p>
+<p>The UI has flattened the permissions JSON document; here&#8217;s a version that&#8217;s easier to read:</p>
+<pre><code class="json">{
+   "rules": {
+       "User": [
+           {
+               "name": "anyone",
+               "applyWhen": {},
+               "read": {
+                   "_id": "%%user.id"
+               },
+               "write": {
+                   "_id": "%%user.id"
+               }
+           }
+       ],
+       "Chatster": [
+           {
+               "name": "anyone",
+               "applyWhen": {},
+               "read": true,
+               "write": false
+           }
+       ],
+       "ChatMessage": [
+           {
+               "name": "anyone",
+               "applyWhen": {},
+               "read": true,
+               "write": {
+                   "authorID": "%%user.id"
+               }
+           }
+       ]
+   },
+   "defaultRoles": [
+       {
+           "name": "all",
+           "applyWhen": {},
+           "read": {},
+           "write": {}
+       }
+   ]
+}
+</code></pre>
+<p>The <code>rules</code> component contains a sub-document for each of our collections. Each of those sub-documents contain an array of roles. Each role contains:</p>
+<ul>
+<li>The <code>name</code> of the role, this should be something that helps other developers understand the purpose of the role (e.g., &#8220;admin,&#8221; &#8220;owner,&#8221; &#8220;guest&#8221;).</li>
+<li><code>applyWhen</code>, which defines whether the requesting user matches the role or not. Each of our collections have a single role, and so <code>applyWhen</code> is set to <code>{}</code>, which always evaluates to true.</li>
+<li>A read rule—how to decide whether this user can view a given document. This is where our three collections impose different rules:
+<ul>
+<li>A user can read and write to their own <code>User</code> object. No one else can read or write to it.</li>
+<li>Anyone can read any <code>Chatster</code> document, but no one can write to them. Note that these documents are maintained by database triggers to keep them consistent with their associated <code>User</code> document.</li>
+<li>The author of a <code>ChatMessage</code> is allowed to write to it. Anyone can read any <code>ChatMessage</code>. Ideally, we&#8217;d restrict it to just members of the chat room, but permissions don&#8217;t currently support arrays—this is another feature that I&#8217;m keen to see added.</li>
+</ul>
+</li>
+</ul>
+<h2>Adding Realm Flexible Sync to the iOS App</h2>
+<p>As with the back end, the iOS app is too big to cover in its entirety in this post. I&#8217;ll explain how to build and run the app and then go through the components relevant to Realm Flexible Sync.</p>
+<h3>Configure, Build, and Run the RChat iOS App</h3>
+<p>You&#8217;ve already downloaded the repo containing the iOS app, but you need to change directory before opening and running the app:</p>
+<pre><code class="bash">cd ../../RChat-iOS
+pod install
+open RChat.xcodeproj
+</code></pre>
+<p>Update <code>RChatApp.swift</code> with your Realm App Id (you copied that from the Realm UI when configuring your backend Realm app). In Xcode, select your device or simulator before building and running the app (⌘R). Select a second device or simulator and run the app a second time (⌘R).</p>
+<p>On each device, provide a username and password and select the &#8220;Register new user&#8221; checkbox:<br>
+<img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/register_rchat_user_f04514f5bf.png" alt="iOS screenshot of registering a new user through the RChat app"></p>
+<p>Once registered and logged in on both devices, you can create a new chat room, invite your second user, and start sharing messages and photos. To share location, you first need to enable it in the app&#8217;s settings.</p>
+<h3>Key Pieces of the iOS App Code</h3>
+<h4>The Model</h4>
+<p>You&#8217;ve seen the schemas that were defined for the &#8220;User,&#8221; &#8220;Chatster,&#8221; and &#8220;ChatMessage&#8221; collections in the back end Realm app. Each of those collections has an associated Realm <code>Object</code> class in the iOS app. Sub-documents map to embedded objects that conform to <code>RealmEmbeddedObject</code>:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/R_Chat_Flex_Sync_Class_Model_496e297d36.png" alt="UML diagram showing the User, Chatster, and ChatMessage classes—together with their embedded classes"></p>
+<p>Let&#8217;s take a close look at each of these classes:</p>
+<p><strong>User Class</strong></p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/User_Flex_Sync_Class_Model_78340465be.png" alt="UML diagram showing the User class—together with its embedded classes"></p>
+<pre><code class="swift">class User: Object, ObjectKeyIdentifiable {
+   @Persisted(primaryKey: true) var _id = UUID().uuidString
+   @Persisted var userName = ""
+   @Persisted var userPreferences: UserPreferences?
+   @Persisted var lastSeenAt: Date?
+   @Persisted var conversations = List&lt;Conversation&gt;()
+   @Persisted var presence = "On-Line"
+}
+
+class UserPreferences: EmbeddedObject, ObjectKeyIdentifiable {
+   @Persisted var displayName: String?
+   @Persisted var avatarImage: Photo?
+}
+
+class Photo: EmbeddedObject, ObjectKeyIdentifiable {
+   @Persisted var _id = UUID().uuidString
+   @Persisted var thumbNail: Data?
+   @Persisted var picture: Data?
+   @Persisted var date = Date()
+}
+
+class Conversation: EmbeddedObject, ObjectKeyIdentifiable {
+   @Persisted var id = UUID().uuidString
+   @Persisted var displayName = ""
+   @Persisted var unreadCount = 0
+   @Persisted var members = List&lt;Member&gt;()
+}
+
+class Member: EmbeddedObject, ObjectKeyIdentifiable {
+   @Persisted var userName = ""
+   @Persisted var membershipStatus = "User added, but invite pending"
+}
+</code></pre>
+<p><strong>Chatster Class</strong></p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Chatster_Flex_Sync_Class_Model_7f5cf9bc28.png" alt="UML diagram showing the Chatster class—together with its embedded class"></p>
+<pre><code class="swift">class Chatster: Object, ObjectKeyIdentifiable {
+   @Persisted(primaryKey: true) var _id = UUID().uuidString // This will match the _id of the associated User
+   @Persisted var userName = ""
+   @Persisted var displayName: String?
+   @Persisted var avatarImage: Photo?
+   @Persisted var lastSeenAt: Date?
+   @Persisted var presence = "Off-Line"
+}
+
+class Photo: EmbeddedObject, ObjectKeyIdentifiable {
+   @Persisted var _id = UUID().uuidString
+   @Persisted var thumbNail: Data?
+   @Persisted var picture: Data?
+   @Persisted var date = Date()
+}
+</code></pre>
+<p><strong>ChatMessage Class</strong></p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Chat_Message_Flex_Sync_Class_Model_17_25_06_c33478d3e9.png" alt="UML diagram showing the ChatMessage class—together with its embedded class"></p>
+<pre><code class="swift">class ChatMessage: Object, ObjectKeyIdentifiable {
+   @Persisted(primaryKey: true) var _id = UUID().uuidString
+   @Persisted var conversationID = ""
+   @Persisted var author: String? // username
+   @Persisted var authorID: String
+   @Persisted var text = ""
+   @Persisted var image: Photo?
+   @Persisted var location = List&lt;Double&gt;()
+   @Persisted var timestamp = Date()
+}
+
+class Photo: EmbeddedObject, ObjectKeyIdentifiable {
+   @Persisted var _id = UUID().uuidString
+   @Persisted var thumbNail: Data?
+   @Persisted var picture: Data?
+   @Persisted var date = Date()
+}
+</code></pre>
+<h4>Accessing Synced Realm Data</h4>
+<p>Any iOS app that wants to sync Realm data needs to create a Realm <code>App</code> instance, providing the Realm App ID so that the Realm SDK can connect to the backend Realm app:</p>
+<pre><code class="swift">let app = RealmSwift.App(id: "rchat-xxxxx") // TODO: Set the Realm application ID
+</code></pre>
+<p>When a SwiftUI view (in this case, <code>LoggedInView</code>) needs to access synced data, the parent view must flag that flexible sync will be used. It does this by passing the Realm configuration through the SwiftUI environment:</p>
+<pre><code class="swift">LoggedInView(userID: $userID)
+   .environment(\.realmConfiguration,
+               app.currentUser!.flexibleSyncConfiguration())
+</code></pre>
+<p><code>LoggedInView</code> can then access two variables from the SwiftUI environment:</p>
+<pre><code class="swift">struct LoggedInView: View {
+   ...
+   @Environment(\.realm) var realm
+   @ObservedResults(User.self) var users
+</code></pre>
+<p>The users variable is a live query containing all synced <code>User</code> objects in the Realm. But at this point, no <code>User</code> documents have been synced because we haven&#8217;t subscribed to anything.</p>
+<p>That&#8217;s easy to fix. We create a new function (<code>setSubscription</code>) that&#8217;s invoked when the view is opened:</p>
+<pre><code class="swift">struct LoggedInView: View {
+   ...
+   @Binding var userID: String?
+   ...
+   var body: some View {
+       ZStack {
+           ...
+       }
+       .onAppear(perform: setSubscription)
+   }
+
+   private func setSubscription() {
+       let subscriptions = realm.subscriptions
+       subscriptions.write {
+           if let currentSubscription = subscriptions.first(named: "user_id") {
+               print("Replacing subscription for user_id")
+               currentSubscription.update(toType: User.self) { user in
+                   user._id == userID!
+               }
+           } else {
+               print("Appending subscription for user_id")
+               subscriptions.append(QuerySubscription&lt;User&gt;(name: "user_id") { user in
+                   user._id == userID!
+               })
+           }
+       }
+   }
+}
+</code></pre>
+<p>Subscriptions are given a name to make them easier to work with. I named this one <code>user_id</code>.</p>
+<p>The function checks whether there&#8217;s already a subscription named <code>user_id</code>. If there is, then the function replaces it. If not, then it adds the new subscription. In either case, the subscription is defined by passing in a query that finds any <code>User</code> documents/objects where the <code>_id</code> field matches the current user&#8217;s ID.</p>
+<p>The subscription should sync exactly one <code>User</code> object to the realm, and so the code for the view&#8217;s body can work with the <code>first</code> object in the results:</p>
+<pre><code class="swift">struct LoggedInView: View {
+   ...
+   @ObservedResults(User.self) var users
+   @Binding var userID: String?
+   ...
+   var body: some View {
+       ZStack {
+           if let user = users.first {
+               ...
+               ConversationListView(user: user)
+               ...
+           }
+       }
+       .navigationBarTitle("Chats", displayMode: .inline)
+       .onAppear(perform: setSubscription)
+   }
+}
+</code></pre>
+<p>Other views work with different model classes and sync queries. For example, when the user clicks on a chat room, a new view is opened that displays all of the <code>ChatMessage</code>s for that conversation:</p>
+<pre><code class="swift">struct ChatRoomBubblesView: View {
+   ...
+   @ObservedResults(ChatMessage.self, sortDescriptor: SortDescriptor(keyPath: "timestamp", ascending: true)) var chats
+   @Environment(\.realm) var realm
+   ...
+   var conversation: Conversation?
+   ...
+   var body: some View {
+       VStack {
+           ...
+       }
+       .onAppear { loadChatRoom() }
+   }
+
+   private func loadChatRoom() {
+       ...
+       setSubscription()
+       ...
+   }
+
+   private func setSubscription() {
+       let subscriptions = realm.subscriptions
+       subscriptions.write {
+           if let conversation = conversation {
+               if let currentSubscription = subscriptions.first(named: "conversation") {
+                   currentSubscription.update(toType: ChatMessage.self) { chatMessage in
+                       chatMessage.conversationID == conversation.id
+                   }
+               } else {
+                   subscriptions.append(QuerySubscription&lt;ChatMessage&gt;(name: "conversation") { chatMessage in
+                       chatMessage.conversationID == conversation.id
+                   })
+               }
+           }
+       }
+   }
+}
+</code></pre>
+<p>In this case, the query syncs all <code>ChatMessage</code> objects where the <code>conversationID</code> matches the <code>id</code> of the <code>Conversation</code> object passed to the view.</p>
+<p>The view&#8217;s body can then iterate over all of the matching, synced objects:</p>
+<pre><code class="swift">struct ChatRoomBubblesView: View {
+...
+   @ObservedResults(ChatMessage.self,
+       sortDescriptor: SortDescriptor(keyPath: "timestamp", ascending: true)) var chats
+   ...
+   var body: some View {
+       ...
+       ForEach(chats) { chatMessage in
+           ChatBubbleView(chatMessage: chatMessage,
+                           authorName: chatMessage.author != user.userName ? chatMessage.author : nil,
+                           isPreview: isPreview)
+       }
+       ...
+   }
+}
+</code></pre>
+<p>As it stands, there&#8217;s some annoying behavior. If you open conversation A, go back, and then open conversation B, you&#8217;ll initially see all of the messages from conversation A. The reason is that it takes a short time for the updated subscription to replace the <code>ChatMessage</code> objects in the synced Realm. I solve that by explicitly removing the subscription (which purges the synced objects) when closing the view:</p>
+<pre><code class="swift">struct ChatRoomBubblesView: View {
+   ...
+   @Environment(\.realm) var realm
+   ...
+   var body: some View {
+       VStack {
+           ...
+       }
+       .onDisappear { closeChatRoom() }
+   }
+
+   private func closeChatRoom() {
+       clearSubscription()
+       ...
+   }
+
+   private func clearSubscription() {
+       print("Leaving room, clearing subscription")
+       let subscriptions = realm.subscriptions
+       subscriptions.write {
+           subscriptions.remove(named: "conversation")
+       }
+   }
+}
+</code></pre>
+<p>I made a design decision that I&#8217;d use the same name (&#8220;conversation&#8221;) for this view, regardless of which conversation/chat room it&#8217;s working with. An alternative would be to create a unique subscription whenever a new chat room is opened (including the ID of the conversation in the name). I could then avoid removing the subscription when navigating away from a chat room.  This second approach would come with two advantages:</p>
+<ol>
+<li>The app should be more responsive when navigating between chat rooms (if you&#8217;d previously visited the chat room that you&#8217;re opening).</li>
+<li>You can switch between chat rooms even when the device isn&#8217;t connected to the internet.</li>
+</ol>
+<p>The disadvantages of this approach would be:</p>
+<ol>
+<li>The app could end up with a lot of subscriptions (and there&#8217;s a cost to them).</li>
+<li>The app continues to store all of the messages from any chat room that you&#8217;ve ever visited from this device. That consumes extra device storage and network bandwidth as messages from all of those rooms continue to be synced to the app.</li>
+</ol>
+<p>A third approach would be to stick with a single subscription (named &#8220;conversations&#8221;) that matches every <code>ChatMessage</code> object. The view would then need to apply a filter on the resulting <code>ChatMessage</code> objects so it only displayed those for the open chat room. This has the same advantages as the second approach, but can consume even more storage as the device will contain messages from all chat rooms—including those that the user has never visited.</p>
+<p>Note that a different user can log into the app from the same device. You don&#8217;t want that user to be greeted with someone else&#8217;s data. To avoid that, the app removes all subscriptions when a user logs out:</p>
+<pre><code class="swift">struct LogoutButton: View {
+   ...
+   @Environment(\.realm) var realm
+
+
+   var body: some View {
+       Button("Log Out") { isConfirming = true }
+       .confirmationDialog("Are you that you want to logout",
+                           isPresented: $isConfirming) {
+           Button("Confirm Logout", role: .destructive, action: logout)
+           Button("Cancel", role: .cancel) {}
+       }
+       .disabled(state.shouldIndicateActivity)
+   }
+
+   private func logout() {
+       ...
+       clearSubscriptions()
+       ...
+   }
+
+   private func clearSubscriptions() {
+       let subscriptions = realm.subscriptions
+       subscriptions.write {
+           subscriptions.removeAll()
+       }
+   }
+}
+</code></pre>
+<h2>Conclusion</h2>
+<p>In this article, you&#8217;ve seen how to include Realm Flexible Sync in your mobile app. I&#8217;ve shown the code for Swift, but the approach would be the same when building apps with Kotlin, Javascript, or .NET.</p>
+<p>This is a preview release and we want your feedback.</p>
+<p>Realm Flexible Sync will evolve to include more query and permission operators. Up next, we&#8217;re looking to expose array operators (that would allow me to add tighter restrictions on who can ask to read which chat messages). We&#8217;ll also enable querying on embedded documents.</p>
+<p>Another feature I&#8217;d like to see is to limit which fields from a document get synced to a given user. This could allow the removal of the <code>Chatster</code> collection, as it&#8217;s only there to provide a read-only view of a subset of <code>User</code> fields to other users.</p>
+<p>Want to suggest an enhancement or up-vote an existing request? The most effective way is through our <a href="https://feedback.mongodb.com/forums/923521-realm">feedback portal</a>.</p>
+<p>Got questions? Ask them in our <a href="https://www.mongodb.com/community/forums/c/realm/realm-sync/111">Community forum</a>.</p>
+					<div class="clear"></div>
+										<!-- <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial"
+    dc:identifier="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial"
+    dc:title="Using Realm Flexible Sync in Your App—an iOS Tutorial"
+    trackback:ping="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial/trackback" />
+</rdf:RDF> -->			
+				</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial" data-via="wpbeginner" data-text="Using Realm Flexible Sync in Your App—an iOS Tutorial" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmongodb%2Fusing-realm-flexible-sync-in-your-app-an-ios-tutorial&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mongodb" rel="category tag">MongoDB</a>, <a href="/category/mongodb/realm" rel="category tag">Realm</a> | 
+Tags: <a href="/tag/mongodb" rel="tag">mongodb</a>, <a href="/tag/realm" rel="tag">Realm</a>, <a href="/tag/swiftui" rel="tag">SwiftUI</a></div>
+
+			</div>
+			
+		
+<!-- You can start editing here. -->
+
+
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial#respond" style="display:none;">Cancel reply</a></small></h3><p class="must-log-in">You must be <a href="/wp-login.php?redirect_to=http%3A%2F%2F%2Fmongodb%2Fusing-realm-flexible-sync-in-your-app-an-ios-tutorial">logged in</a> to post a comment.</p>	</div><!-- #respond -->
+		<div class="clear"></div>
+		
+		</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial" aria-current="page">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="/mongodb/realm-swift-type-projections">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="/mongodb/goodbye-nspredicate-hello-realm-swift-query-api">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script></div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-787242">MySQL Cluster running on Raspberry Pi</a></li><li class="recentcomments"><span class="comment-author-link">andrew</span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link">Sai Krishnan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-661143">Get MySQL Replication up and running in 5 minutes</a></li><li class="recentcomments"><span class="comment-author-link">Nayan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-660628">Get MySQL Replication up and running in 5 minutes</a></li></ul></li>
+<li id="categories-2" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2"><a href="/category/me">Me</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="/category/mongodb">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/mysql">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/mysql-cluster">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131"><a href="/category/mysql-fabric">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="/category/mysql-replication">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214"><a href="/category/mongodb/realm">Realm</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="/category/uncategorized">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div class="tagcloud"><a href="/tag/7-4" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="/tag/apache-kafka" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="/tag/cluster" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="/tag/ha" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="/tag/high-availability" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="/tag/ios" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="/tag/java" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="/tag/javascript" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="/tag/mcm" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="/tag/mean" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="/tag/memcached" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="/tag/mobile" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="/tag/mongodb" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="/tag/mongodb-3-2" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="/tag/mongodb-atlas" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="/tag/mongodb-mobile" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="/tag/mongodb-stitch" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="/tag/mysql" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="/tag/mysql-5-6" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="/tag/mysql-cluster" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="/tag/mysql-cluster-70" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="/tag/mysql-cluster-7-1" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="/tag/mysql-cluster-7-2" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="/tag/mysql-cluster-7-3" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="/tag/mysql-cluster-7-4" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="/tag/mysql-cluster-cge" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="/tag/mysql-cluster-manager" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="/tag/mysql-enterprise-monitor" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="/tag/mysql-fabric-2" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="/tag/mysql-replication" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="/tag/mysql-utilities" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="/tag/ndb-api" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="/tag/node-js" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="/tag/nosql" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="/tag/performance" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="/tag/realm" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="/tag/replication" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="/tag/secondary" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="/tag/serverless" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="/tag/sharding" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="/tag/swift" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="/tag/swiftui" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="/tag/webcast" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="/tag/webinar" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="/tag/windows" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a></div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="/2022/03">March 2022</a></li>
+	<li><a href="/2022/02">February 2022</a></li>
+	<li><a href="/2022/01">January 2022</a></li>
+	<li><a href="/2021/12">December 2021</a></li>
+	<li><a href="/2021/11">November 2021</a></li>
+	<li><a href="/2021/09">September 2021</a></li>
+	<li><a href="/2021/08">August 2021</a></li>
+	<li><a href="/2021/07">July 2021</a></li>
+	<li><a href="/2021/06">June 2021</a></li>
+	<li><a href="/2021/05">May 2021</a></li>
+	<li><a href="/2021/04">April 2021</a></li>
+	<li><a href="/2021/02">February 2021</a></li>
+	<li><a href="/2021/01">January 2021</a></li>
+	<li><a href="/2020/12">December 2020</a></li>
+	<li><a href="/2019/03">March 2019</a></li>
+	<li><a href="/2019/01">January 2019</a></li>
+	<li><a href="/2018/12">December 2018</a></li>
+	<li><a href="/2018/11">November 2018</a></li>
+	<li><a href="/2018/10">October 2018</a></li>
+	<li><a href="/2018/09">September 2018</a></li>
+	<li><a href="/2017/09">September 2017</a></li>
+	<li><a href="/2017/03">March 2017</a></li>
+	<li><a href="/2017/02">February 2017</a></li>
+	<li><a href="/2017/01">January 2017</a></li>
+	<li><a href="/2016/12">December 2016</a></li>
+	<li><a href="/2016/11">November 2016</a></li>
+	<li><a href="/2016/09">September 2016</a></li>
+	<li><a href="/2016/01">January 2016</a></li>
+	<li><a href="/2015/11">November 2015</a></li>
+	<li><a href="/2015/10">October 2015</a></li>
+	<li><a href="/2015/09">September 2015</a></li>
+	<li><a href="/2015/06">June 2015</a></li>
+	<li><a href="/2015/04">April 2015</a></li>
+	<li><a href="/2015/03">March 2015</a></li>
+	<li><a href="/2015/02">February 2015</a></li>
+	<li><a href="/2015/01">January 2015</a></li>
+	<li><a href="/2014/12">December 2014</a></li>
+	<li><a href="/2014/11">November 2014</a></li>
+	<li><a href="/2014/10">October 2014</a></li>
+	<li><a href="/2014/09">September 2014</a></li>
+	<li><a href="/2014/08">August 2014</a></li>
+	<li><a href="/2014/07">July 2014</a></li>
+	<li><a href="/2014/06">June 2014</a></li>
+	<li><a href="/2014/05">May 2014</a></li>
+	<li><a href="/2014/04">April 2014</a></li>
+	<li><a href="/2014/03">March 2014</a></li>
+	<li><a href="/2014/02">February 2014</a></li>
+	<li><a href="/2014/01">January 2014</a></li>
+	<li><a href="/2013/12">December 2013</a></li>
+	<li><a href="/2013/11">November 2013</a></li>
+	<li><a href="/2013/09">September 2013</a></li>
+	<li><a href="/2013/08">August 2013</a></li>
+	<li><a href="/2013/07">July 2013</a></li>
+	<li><a href="/2013/06">June 2013</a></li>
+	<li><a href="/2013/05">May 2013</a></li>
+	<li><a href="/2013/03">March 2013</a></li>
+	<li><a href="/2013/02">February 2013</a></li>
+	<li><a href="/2013/01">January 2013</a></li>
+	<li><a href="/2012/12">December 2012</a></li>
+	<li><a href="/2012/11">November 2012</a></li>
+	<li><a href="/2012/09">September 2012</a></li>
+	<li><a href="/2012/07">July 2012</a></li>
+	<li><a href="/2012/06">June 2012</a></li>
+	<li><a href="/2012/05">May 2012</a></li>
+	<li><a href="/2012/04">April 2012</a></li>
+	<li><a href="/2012/03">March 2012</a></li>
+	<li><a href="/2012/02">February 2012</a></li>
+	<li><a href="/2012/01">January 2012</a></li>
+	<li><a href="/2011/12">December 2011</a></li>
+	<li><a href="/2011/11">November 2011</a></li>
+	<li><a href="/2011/10">October 2011</a></li>
+	<li><a href="/2011/09">September 2011</a></li>
+	<li><a href="/2011/07">July 2011</a></li>
+	<li><a href="/2011/06">June 2011</a></li>
+	<li><a href="/2011/05">May 2011</a></li>
+	<li><a href="/2011/04">April 2011</a></li>
+	<li><a href="/2011/03">March 2011</a></li>
+	<li><a href="/2011/02">February 2011</a></li>
+	<li><a href="/2011/01">January 2011</a></li>
+	<li><a href="/2010/12">December 2010</a></li>
+	<li><a href="/2010/11">November 2010</a></li>
+	<li><a href="/2010/10">October 2010</a></li>
+	<li><a href="/2010/09">September 2010</a></li>
+	<li><a href="/2010/08">August 2010</a></li>
+	<li><a href="/2010/07">July 2010</a></li>
+	<li><a href="/2010/06">June 2010</a></li>
+	<li><a href="/2010/05">May 2010</a></li>
+	<li><a href="/2010/04">April 2010</a></li>
+	<li><a href="/2010/03">March 2010</a></li>
+	<li><a href="/2010/02">February 2010</a></li>
+	<li><a href="/2010/01">January 2010</a></li>
+	<li><a href="/2009/12">December 2009</a></li>
+	<li><a href="/2009/11">November 2009</a></li>
+	<li><a href="/2009/10">October 2009</a></li>
+	<li><a href="/2009/09">September 2009</a></li>
+	<li><a href="/2009/08">August 2009</a></li>
+	<li><a href="/2009/07">July 2009</a></li>
+	<li><a href="/2009/06">June 2009</a></li>
+	<li><a href="/2009/05">May 2009</a></li>
+	<li><a href="/2009/04">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 --><script type="text/javascript" src="/wp-includes/js/comment-reply.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="comment-reply-js" async="async" data-wp-strategy="async"></script>
+</body>
+</html>

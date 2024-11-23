@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: Sharding &#038; HA &#8211; MySQL Fabric Webinar Replay + Q&#038;A	</title>
+	<atom:link href="/mysql-fabric/sharding-ha-mysql-fabric-webinar-replay-qa/feed" rel="self" type="application/rss+xml" />
+	<link>/mysql-fabric/sharding-ha-mysql-fabric-webinar-replay-qa</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 08 Jul 2014 05:36:52 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: jack		</title>
+		<link>/mysql-fabric/sharding-ha-mysql-fabric-webinar-replay-qa#comment-178027</link>
+
+		<dc:creator><![CDATA[jack]]></dc:creator>
+		<pubDate>Tue, 08 Jul 2014 05:36:52 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3918#comment-178027</guid>
+
+					<description><![CDATA[mysqlfabric hash sharding table shard_rangs column lower_bound may 32 byte length
+
+How to repeat:
+first : like yours example 
+add a shard: 
+mysqlfabric sharding add_shard 1 group_id-1 --state=enabled 
+
+In the cod: 
+To add a shard, there has 2 ways 
+inserting to shard_ranges table 
+ONE: 
+#Insert a HASH of keys and the server to which they belong. 
+
+INSERT_HASH_SPECIFICATION = ( 
+&quot;REPLACE INTO shard_ranges(&quot; 
+&quot;shard_mapping_id, &quot; 
+&quot;lower_bound, &quot; 
+&quot;shard_id) &quot; 
+&quot;VALUES(%s, UNHEX(MD5(%s)), %s)&quot; 
+) 
+TWO: 
+#Insert Split ranges. 
+#NOTE: The split lower_bound does not need the md5 algorithm. 
+INSERT_HASH_SPLIT_SPECIFICATION = ( 
+&quot;REPLACE INTO shard_ranges(&quot; 
+&quot;shard_mapping_id, &quot; 
+&quot;lower_bound, &quot; 
+&quot;shard_id) &quot; 
+&quot;VALUES(%s, UNHEX(%s), %s)&quot; 
+) 
+
+I found this: 
+the lower_bound is unhex(md5(&#039;group_id-1&#039;)),the column lower_bound is 
+`lower_bound` varbinary(16) NOT NULL. 
+
+mysql&#062; select shard_mapping_id, hex(lower_bound), shard_id from shard_ranges; 
++------------------+----------------------------------+----------+ 
+&#124; shard_mapping_id &#124; hex(lower_bound) &#124; shard_id &#124; 
++------------------+----------------------------------+----------+ 
+&#124; 1 &#124; 48B32E5AD3C6EC00A45578E0A34B092F &#124; 1 &#124; 
++------------------+----------------------------------+----------+ 
+
+The second: 
+add another shard_id,the command 
+mysqlfabric sharding split_shard 1 group_id-2 
+The code call: 
+def get_upper_bound(lower_bound, shard_mapping_id, type, persister=None) 
+The SQL is: 
+max_query = &quot;SELECT HEX(MD5(MAX(%s))) FROM %s&quot; % \ 
+( 
+shard_mapping.column_name, 
+shard_mapping.table_name 
+) 
+the proplem is md5 return 32 asscii，hex(md5(&#039;&#039;)) is 64 digital. 
+then the upper_bound is 64 digital to insert. 
+the insert sql to shard_ranges is 
+#Insert Split ranges. 
+#NOTE: The split lower_bound does not need the md5 algorithm. 
+INSERT_HASH_SPLIT_SPECIFICATION = ( 
+&quot;REPLACE INTO shard_ranges(&quot; 
+&quot;shard_mapping_id, &quot; 
+&quot;lower_bound, &quot; 
+&quot;shard_id) &quot; 
+&quot;VALUES(%s, UNHEX(%s), %s)&quot; 
+) 
+The unhex(hex(md5(&#039;&#039;))) return 32 length,but the table shard_range lower_bound column length is 16. 
+my error is : 
+/usr/local/bin/mysqlfabric sharding split_shard 1 group_id-2 
+Procedure : 
+{ uuid = e01e08d4-8193-4761-b4cf-6f997bd722b4, 
+finished = True, 
+success = False, 
+return = DatabaseError: (&quot;Command (REPLACE INTO shard_ranges(shard_mapping_id, lower_bound, shard_id) VALUES(%s, UNHEX(%s), %s), (1, &#039;1a1ab19a1c31b1b2993299321bb33132570a2fde1d15109903c66e0b82579db2&#039;, 3)) failed: 1406 (22001): Data too long for column &#039;lower_bound&#039; at row 1&quot;, 1406), 
+activities = 
+} 
+
+I have been alter the table shard_range&#039;s character to latin1 or utf8. it still 
+
+now my question is: 
+1. why the first shard&#039;s lower_bound is the group id 
+2. lower_bound is 16 length is right or my test has errors? 
+
+thanks
+
+Suggested fix:
+alter table shard_ranges modify lower_bound varbriary(32) not null;
+
+But I found the data in the shard server not average.
+[8 Jul 2:12] jack tom
+@staticmethod
+    def add(shard_mapping_id, shard_id, persister=None):
+        &quot;&quot;&quot;Add the HASH shard specification. This represents a single instance
+        of a shard specification that maps a key HASH to a server.
+
+        :param shard_mapping_id: The unique identification for a shard mapping.
+        :param shard_id: An unique identification, a logical representation
+                        for a shard of a particular table.
+        &quot;&quot;&quot;
+        shard = Shards.fetch(shard_id)
+        persister.exec_stmt(
+            HashShardingSpecification.INSERT_HASH_SPECIFICATION, {
+                &quot;params&quot;:(
+                    shard_mapping_id,
+                    shard.group_id,
+                    shard_id
+                )
+            }
+        )
+
+This is the the code, the lower_bound is group_id.
+why is group_id ?
+I think is may the shard&#039;s min value.]]></description>
+			<content:encoded><![CDATA[<p>mysqlfabric hash sharding table shard_rangs column lower_bound may 32 byte length</p>
+<p>How to repeat:<br />
+first : like yours example<br />
+add a shard:<br />
+mysqlfabric sharding add_shard 1 group_id-1 &#8211;state=enabled </p>
+<p>In the cod:<br />
+To add a shard, there has 2 ways<br />
+inserting to shard_ranges table<br />
+ONE:<br />
+#Insert a HASH of keys and the server to which they belong. </p>
+<p>INSERT_HASH_SPECIFICATION = (<br />
+&#8220;REPLACE INTO shard_ranges(&#8221;<br />
+&#8220;shard_mapping_id, &#8221;<br />
+&#8220;lower_bound, &#8221;<br />
+&#8220;shard_id) &#8221;<br />
+&#8220;VALUES(%s, UNHEX(MD5(%s)), %s)&#8221;<br />
+)<br />
+TWO:<br />
+#Insert Split ranges.<br />
+#NOTE: The split lower_bound does not need the md5 algorithm.<br />
+INSERT_HASH_SPLIT_SPECIFICATION = (<br />
+&#8220;REPLACE INTO shard_ranges(&#8221;<br />
+&#8220;shard_mapping_id, &#8221;<br />
+&#8220;lower_bound, &#8221;<br />
+&#8220;shard_id) &#8221;<br />
+&#8220;VALUES(%s, UNHEX(%s), %s)&#8221;<br />
+) </p>
+<p>I found this:<br />
+the lower_bound is unhex(md5(&#8216;group_id-1&#8217;)),the column lower_bound is<br />
+`lower_bound` varbinary(16) NOT NULL. </p>
+<p>mysql&gt; select shard_mapping_id, hex(lower_bound), shard_id from shard_ranges;<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;-+<br />
+| shard_mapping_id | hex(lower_bound) | shard_id |<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;-+<br />
+| 1 | 48B32E5AD3C6EC00A45578E0A34B092F | 1 |<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;-+ </p>
+<p>The second:<br />
+add another shard_id,the command<br />
+mysqlfabric sharding split_shard 1 group_id-2<br />
+The code call:<br />
+def get_upper_bound(lower_bound, shard_mapping_id, type, persister=None)<br />
+The SQL is:<br />
+max_query = &#8220;SELECT HEX(MD5(MAX(%s))) FROM %s&#8221; % \<br />
+(<br />
+shard_mapping.column_name,<br />
+shard_mapping.table_name<br />
+)<br />
+the proplem is md5 return 32 asscii，hex(md5(&#8221;)) is 64 digital.<br />
+then the upper_bound is 64 digital to insert.<br />
+the insert sql to shard_ranges is<br />
+#Insert Split ranges.<br />
+#NOTE: The split lower_bound does not need the md5 algorithm.<br />
+INSERT_HASH_SPLIT_SPECIFICATION = (<br />
+&#8220;REPLACE INTO shard_ranges(&#8221;<br />
+&#8220;shard_mapping_id, &#8221;<br />
+&#8220;lower_bound, &#8221;<br />
+&#8220;shard_id) &#8221;<br />
+&#8220;VALUES(%s, UNHEX(%s), %s)&#8221;<br />
+)<br />
+The unhex(hex(md5(&#8221;))) return 32 length,but the table shard_range lower_bound column length is 16.<br />
+my error is :<br />
+/usr/local/bin/mysqlfabric sharding split_shard 1 group_id-2<br />
+Procedure :<br />
+{ uuid = e01e08d4-8193-4761-b4cf-6f997bd722b4,<br />
+finished = True,<br />
+success = False,<br />
+return = DatabaseError: (&#8220;Command (REPLACE INTO shard_ranges(shard_mapping_id, lower_bound, shard_id) VALUES(%s, UNHEX(%s), %s), (1, &#8216;1a1ab19a1c31b1b2993299321bb33132570a2fde1d15109903c66e0b82579db2&#8217;, 3)) failed: 1406 (22001): Data too long for column &#8216;lower_bound&#8217; at row 1&#8221;, 1406),<br />
+activities =<br />
+} </p>
+<p>I have been alter the table shard_range&#8217;s character to latin1 or utf8. it still </p>
+<p>now my question is:<br />
+1. why the first shard&#8217;s lower_bound is the group id<br />
+2. lower_bound is 16 length is right or my test has errors? </p>
+<p>thanks</p>
+<p>Suggested fix:<br />
+alter table shard_ranges modify lower_bound varbriary(32) not null;</p>
+<p>But I found the data in the shard server not average.<br />
+[8 Jul 2:12] jack tom<br />
+@staticmethod<br />
+    def add(shard_mapping_id, shard_id, persister=None):<br />
+        &#8220;&#8221;&#8221;Add the HASH shard specification. This represents a single instance<br />
+        of a shard specification that maps a key HASH to a server.</p>
+<p>        :param shard_mapping_id: The unique identification for a shard mapping.<br />
+        :param shard_id: An unique identification, a logical representation<br />
+                        for a shard of a particular table.<br />
+        &#8220;&#8221;&#8221;<br />
+        shard = Shards.fetch(shard_id)<br />
+        persister.exec_stmt(<br />
+            HashShardingSpecification.INSERT_HASH_SPECIFICATION, {<br />
+                &#8220;params&#8221;:(<br />
+                    shard_mapping_id,<br />
+                    shard.group_id,<br />
+                    shard_id<br />
+                )<br />
+            }<br />
+        )</p>
+<p>This is the the code, the lower_bound is group_id.<br />
+why is group_id ?<br />
+I think is may the shard&#8217;s min value.</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

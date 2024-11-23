@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>snmp &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/snmp/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Thu, 04 Feb 2010 10:33:48 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Using NDBINFO &#8211; example of monitoring data nodes with MySQL Enterprise Monitor</title>
+		<link>/mysql-cluster/using-ndbinfo-example-of-monitoring-data-nodes-with-mysql-enterprise-monitor</link>
+					<comments>/mysql-cluster/using-ndbinfo-example-of-monitoring-data-nodes-with-mysql-enterprise-monitor#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 04 Feb 2010 10:33:48 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<category><![CDATA[MySQL Enterprise Monitor]]></category>
+		<category><![CDATA[ndbinfo]]></category>
+		<category><![CDATA[snmp]]></category>
+		<guid isPermaLink="false">/?p=929</guid>
+
+					<description><![CDATA[You may have read Bernd&#8217;s recent post that explained how to try out some new beta functionality for MySQL Cluster and wondered what kind of use you could put the new ndb$info to. ndb$info uses tables/views to give real-time access to a whole host of information that helps you monitor and tune your MySQL Cluster]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2010/02/mysql-cluster-logo-150x105.png"><img decoding="async" class="alignright size-full wp-image-919" title="mysql-cluster-logo-150x105" src="/wp-content/uploads/2010/02/mysql-cluster-logo-150x105.png" alt="" width="150" height="105" /></a>You may have read <a href="http://ocklin.blogspot.com/2010/02/mysql-cluster-711-is-there.html" target="_blank">Bernd&#8217;s recent post</a> that explained how to try out some new beta functionality for MySQL Cluster and wondered what kind of use you could put the new ndb$info to. ndb$info uses tables/views to give real-time access to a whole host of information that helps you monitor and tune your MySQL Cluster deployment. This article gives one example, extending MySQL Enterprise Monitor to keep an eye on the amount of free memory on the data nodes and then raise an alarm when it starts to run low &#8211; even generating SNMP traps if that&#8217;s what you need.</p>
+<p>One of the features of MySQL Enterprise Monitor is that you can define custom data collectors and that those data collectors can run SQL queries to get the data. The information retrieved by those custom data collectors can then be used with rules that the user defines through the MySQL Enterprise Monitor GUI to create warning/alarms.</p>
+<p>In this example, I create two new data collectors and store the files in the &#8220;&lt;MySQL Enterprise Monitor installation directory&gt;/agent/share/mysql-proxy/items/&#8221; directory before starting up the MySQL Enterprise Monitor agents:</p>
+<p><strong>cluster_max_used.xml</strong>:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;classes&gt;
+  &lt;class&gt;
+    &lt;namespace&gt;mysql&lt;/namespace&gt;
+    &lt;classname&gt;cluster_max_used&lt;/classname&gt;
+    &lt;query&gt;&lt;![CDATA[SELECT MAX(used) as Used FROM ndbinfo.memoryusage
+      WHERE DATA_MEMORY = 'DATA_MEMORY']]&gt;
+    &lt;/query&gt;
+  &lt;/class&gt;
+&lt;/classes&gt;</span></pre>
+<p><strong>cluster_min_avail.xml</strong>:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><span style="color: #800000;">
+&lt;classes&gt;
+</span><span style="color: #800000;">  &lt;class&gt;
+</span><span style="color: #800000;">    &lt;namespace&gt;mysql&lt;/namespace&gt;
+    &lt;classname&gt;cluster_min_avail&lt;/classname&gt;
+    &lt;query&gt;&lt;![CDATA[SELECT MIN(max)as Max FROM ndbinfo.memoryusage
+       WHERE DATA_MEMORY = 'DATA_MEMORY']]&gt;
+    &lt;/query&gt;
+  &lt;/class&gt;
+&lt;/classes&gt;</span></pre>
+<div id="attachment_927" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2010/02/rule.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-927" class="size-medium wp-image-927" title="rule" src="/wp-content/uploads/2010/02/rule-300x297.jpg" alt="" width="300" height="297" srcset="/wp-content/uploads/2010/02/rule-300x297.jpg 300w, /wp-content/uploads/2010/02/rule-150x150.jpg 150w, /wp-content/uploads/2010/02/rule.jpg 759w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-927" class="wp-caption-text">Fig. 1 Rule definition</p></div>
+<p>In MySQL Enterprise Monitor, rules are grouped together into Advisors and so I create a new Advisor called &#8220;MySQL Cluster&#8221; and then create just one new rule within that Advisor group.</p>
+<p>As shown in Fig. 1 the rule is called &#8220;Data Node Low Memory&#8221;. The &#8220;Variable Assignment&#8221; section is used to define 2 variables %used_mem% and %config_mem% which are populated from the <span style="color: #800000;">Used </span>and <span style="color: #800000;">Max </span>results from the 2 new data collectors. The &#8220;Expression&#8221; section is used to test &#8220;(<span style="color: #800000;">Max </span>&#8211; <span style="color: #800000;">Used</span>) &lt; THRESHOLD&#8221; and then the values to be substituted for THRESHOLD are defined in the &#8220;Thresholds&#8221; section &#8211; indicating at what points the Info, Warning and Critical Alters should be raised.</p>
+<p>There are then a number of optional sections that you can use to add useful information to the person investigating the alert.</p>
+<p>Once the rule has been created, the next step is to schedule it and (if desired) tag that the alerts should also result in SNMP traps being raised. This is standard MySQL Enterprise Monitor practice and so it isn&#8217;t explained here except to point out that this rule is monitoring information from the data nodes but the rule has to be applied to a MySQL Server (MySQL Enterprise Monitor has no idea what a data node is) and so you need to schedule the rule against one or more arbitrary MySQL Server instances in the Cluster.</p>
+<div id="attachment_928" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2010/02/Info_warning.jpg"><img decoding="async" aria-describedby="caption-attachment-928" class="size-medium wp-image-928" title="Info_warning" src="/wp-content/uploads/2010/02/Info_warning-300x239.jpg" alt="" width="300" height="239" srcset="/wp-content/uploads/2010/02/Info_warning-300x239.jpg 300w, /wp-content/uploads/2010/02/Info_warning.jpg 938w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-928" class="wp-caption-text">Fig. 2 Warning alert</p></div>
+<p> <br />
+ <br />
+To test the functionality, start adding more data to your MySQL Cluster until the Warning alert is triggered as shown in Fig. 2. As you can see, the optional information we included is shown &#8211; including values from <span style="color: #800000;">Used </span>and <span style="color: #800000;">Max</span>.<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+&nbsp;<br />
+<div id="attachment_926" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2010/02/critical.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-926" class="size-medium wp-image-926" title="critical" src="/wp-content/uploads/2010/02/critical-300x146.jpg" alt="" width="300" height="146" srcset="/wp-content/uploads/2010/02/critical-300x146.jpg 300w, /wp-content/uploads/2010/02/critical-1024x501.jpg 1024w, /wp-content/uploads/2010/02/critical.jpg 1082w" sizes="auto, (max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-926" class="wp-caption-text">Fig. 3 Critical alarm</p></div></p>
+<p>I then add more data to the database until the critical alert is raised and confirm that it&#8217;s displayed on the main monitoring panel of the MySQL Enterprise Monitor dashboard. Note that if you requested these alerts be included with the SNMP feed then SNMP traps will also be raised.</p>
+<p>Please note that this example is intended to illustrate the mechanics of setting up monitoring on an arbitrary piece of data from ndbinfo and obviously in the real world you would want to monitor more than just the memory and even for the memory, you might want to use a more sophisticated rule.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/using-ndbinfo-example-of-monitoring-data-nodes-with-mysql-enterprise-monitor/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

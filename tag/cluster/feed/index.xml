@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Cluster &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/cluster/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 17 Mar 2015 06:08:24 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>MySQL Cluster Manager 1.3.4 Released</title>
+		<link>/mysql-cluster/mysql-cluster-manager-1-3-4-released</link>
+					<comments>/mysql-cluster/mysql-cluster-manager-1-3-4-released#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 17 Mar 2015 06:08:24 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[7.4]]></category>
+		<category><![CDATA[Cluster]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster Manager]]></category>
+		<category><![CDATA[secondary]]></category>
+		<guid isPermaLink="false">/?p=4044</guid>
+
+					<description><![CDATA[MySQL Cluster Manager 1.3.4 is now available to download from My Oracle Support and from the Oracle Software Delivery Cloud. Details are available in the the MCM 1.3.4 Release Notes. Note that this version of MCM now supports MySQL Cluster 7.4 (as well as earlier versions or MySQL Cluster). Documentation is available here.]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/06/MySQL_Cluster_Manager2.png"><img decoding="async" src="/wp-content/uploads/2013/06/MySQL_Cluster_Manager2-300x106.png" alt="MySQL Cluster Manager logo" width="300" height="106" class="alignright size-medium wp-image-2846" /></a>MySQL Cluster Manager 1.3.4 is now available to <a href="https://support.oracle.com/" title="Download MySQL Cluster Manager" target="_blank">download from My Oracle Support</a> and from the <a href="https://edelivery.oracle.com/" title="Oracle Software Delivery Cloud" target="_blank">Oracle Software Delivery Cloud</a>.</p>
+<p>Details are available in the the <a title="MySQL Cluster Manager - change history" href="http://dev.mysql.com/doc/relnotes/mysql-cluster-manager/1.3/en/mcm-news-1-3-4.html" target="_blank">MCM 1.3.4 Release Notes</a>. Note that this version of MCM now supports MySQL Cluster 7.4 (as well as earlier versions or MySQL Cluster).</p>
+<p><a title="MySQL Cluster Manager documentation" href="http://dev.mysql.com/doc/mysql-cluster-manager/1.3/en/" target="_blank">Documentation is available here</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/mysql-cluster-manager-1-3-4-released/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>FOSDEM 2015 &#8211; SQL &#038; NoSQL Presentation</title>
+		<link>/mysql-cluster/fosdem-2015-sql-nosql-presentation</link>
+					<comments>/mysql-cluster/fosdem-2015-sql-nosql-presentation#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 06 Feb 2015 15:56:29 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Cluster]]></category>
+		<category><![CDATA[fosdem]]></category>
+		<category><![CDATA[fosdem15]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[NDB API]]></category>
+		<category><![CDATA[NoSQL]]></category>
+		<category><![CDATA[t]]></category>
+		<guid isPermaLink="false">/?p=4000</guid>
+
+					<description><![CDATA[Last weekend I got to present to the MySQL Developers Room at FOSDEM in Brussels. The subject of my presentation was NoSQL and SQL the best of both worlds&#8230; There’s a lot of excitement around NoSQL Data Stores with the promise of simple access patterns, flexible schemas, scalability and High Availability. The downside comes in]]></description>
+										<content:encoded><![CDATA[<p>Last weekend I got to present to the MySQL Developers Room at FOSDEM in Brussels.<br />
+<a href="/wp-content/uploads/2015/02/FOSDEM-2015.jpg"><img decoding="async" src="/wp-content/uploads/2015/02/FOSDEM-2015.jpg" alt="FOSDEM-2015" width="184" height="176" class="alignright size-full wp-image-4001" /></a><br />
+The subject of my presentation was <strong>NoSQL and SQL the best of both worlds</strong>&#8230;</p>
+<p>There’s a lot of excitement around NoSQL Data Stores with the promise of simple access patterns, flexible schemas, scalability and High Availability. The downside comes in the form of losing ACID transactions, consistency, flexible queries and data integrity checks. What if you could have the best of both worlds? This session shows how MySQL Cluster provides simultaneous SQL and native NoSQL access to your data – whether a simple key-value API (Memcached), REST, JavaScript, Java or C++. You will hear how the MySQL Cluster architecture delivers in-memory real-time performance, 99.999% availability, on-line maintenance and linear, horizontal scalability through transparent auto-sharding.</p>
+<p><iframe src="//www.slideshare.net/slideshow/embed_code/44350713" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> </p>
+<div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/andrewjamesmorgan/fosdem-2015-nosql-and-sql-the-best-of-both-worlds" title="FOSDEM 2015 - NoSQL and SQL the best of both worlds" target="_blank">FOSDEM 2015 &#8211; NoSQL and SQL the best of both worlds</a> </strong> from <strong><a href="//www.slideshare.net/andrewjamesmorgan" target="_blank">Andrew Morgan</a></strong> </div>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/fosdem-2015-sql-nosql-presentation/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>SQL/NoSQL and MySQL Cluster 7.4 Presentations now available</title>
+		<link>/mysql/sqlnosql-and-mysql-cluster-7-4-presentations-now-available</link>
+					<comments>/mysql/sqlnosql-and-mysql-cluster-7-4-presentations-now-available#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 03 Oct 2014 17:18:53 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Cluster]]></category>
+		<category><![CDATA[Memcached]]></category>
+		<category><![CDATA[node.js]]></category>
+		<category><![CDATA[NoSQL]]></category>
+		<category><![CDATA[secondary]]></category>
+		<category><![CDATA[sql]]></category>
+		<guid isPermaLink="false">/?p=3963</guid>
+
+					<description><![CDATA[My 2 sessions from 2014&#8217;s MySQL Central at Oracle OpenWorld are now available: NoSQL and SQL: The Best of Both Worlds [CON2853] There’s a lot of excitement about NoSQL data stores, with the promise of simple access patterns, flexible schemas, scalability, and high availability. The downside comes in the form of losing ACID transactions, consistency,]]></description>
+										<content:encoded><![CDATA[<p>My 2 sessions from 2014&#8217;s MySQL Central at Oracle OpenWorld are now available:</p>
+<h2><a href="https://oracleus.activeevents.com/2014/connect/sessionDetail.ww?SESSION_ID=2853" title="NoSQL and SQL: The Best of Both Worlds [CON2853]" target="_blank">NoSQL and SQL: The Best of Both Worlds [CON2853]</a></h2>
+<p>There’s a lot of excitement about NoSQL data stores, with the promise of simple access patterns, flexible schemas, scalability, and high availability. The downside comes in the form of losing ACID transactions, consistency, flexible queries, and data integrity checks. What if you could have the best of both worlds? This session shows how MySQL Cluster provides simultaneous SQL and native NoSQL access to your data—whether it’s in a simple key-value API (memcached) or REST, JavaScript, Java, or C++. You will hear how the MySQL Cluster architecture delivers in-memory real-time performance; 99.999 percent availability; online maintenance; and linear, horizontal scalability through transparent autosharding.</p>
+<p><iframe loading="lazy" src="//www.slideshare.net/slideshow/embed_code/39848914" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></p>
+<h2><a href="https://oracleus.activeevents.com/2014/connect/sessionDetail.ww?SESSION_ID=3815" title="MySQL Cluster: Dive into the Latest Developments [CON3815]" target="_blank">MySQL Cluster: Dive into the Latest Developments [CON3815]</a></h2>
+<p>Wednesday, Oct 1, 3:30 PM &#8211; 4:15 PM &#8211; Moscone South &#8211; 250</p>
+<p>I&#8217;ll be co-presenting this session with <a href="https://oracleus.activeevents.com/2014/connect/speakerDetail.ww?PERSON_ID=90A0D4EEB0B047DE9D2C77FB01BF5D04&#038;tclass=popup" title="Bernd Ocklin - Director MySQL Cluster, Oracle" target="_blank">Bernd Ocklin &#8211; Director MySQL Cluster, Oracle</a></p>
+<p>MySQL Cluster does more than scale beyond a billion transactions per minute. It’s also the in-memory database at the heart of mobile phone networks and online games. Scaling for the masses. A touch of your mobile phone’s green button likely has already gotten you in contact with MySQL Cluster. Driven by these extreme use cases, this session covers how to build business-critical scalable solutions with MySQL Cluster.</p>
+<p><iframe loading="lazy" src="//www.slideshare.net/slideshow/embed_code/39848913" width="476" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql/sqlnosql-and-mysql-cluster-7-4-presentations-now-available/feed</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL with Windows Server 2008 R2 Failover Clustering</title>
+		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering</link>
+					<comments>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 06 Sep 2011 12:18:20 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[Cluster]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[Windows]]></category>
+		<guid isPermaLink="false">/?p=1939</guid>
+
+					<description><![CDATA[Oracle has announced support for running MySQL on Windows Server Failover Clustering (WSFC); with so many people developing and deploying MySQL on Windows, this offers a great option to add High Availability to MySQL deployments if you don&#8217;t want to go as far as deploying MySQL Cluster. This post will give a brief overview of]]></description>
+										<content:encoded><![CDATA[<div id="attachment_1941" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/09/windows-2008-r2-logo1.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1941" class="size-medium wp-image-1941" title="windows-2008-r2-logo1" src="/wp-content/uploads/2011/09/windows-2008-r2-logo1-300x204.jpg" alt="" width="300" height="204" /></a><p id="caption-attachment-1941" class="wp-caption-text">Windows Server 2008 R2 Failover Clustering</p></div>
+<p>Oracle has <a href="http://www.oracle.com/us/corporate/press/485067">announced </a>support for running MySQL on Windows Server Failover Clustering (WSFC); with so many people developing and deploying MySQL on Windows, this offers a great option to add High Availability to MySQL deployments if you don&#8217;t want to go as far as deploying MySQL Cluster.</p>
+<p>This post will give a brief overview of how to set things up but for all of the gory details a <a href="http://www.mysql.com/why-mysql/white-papers/mysql_wp_windows_failover_clustering.php" target="_blank">new white paper MySQL with Windows Server 2008 R2 Failover Clustering</a> is available &#8211; please give me any feedback. I will also be presenting on this at a <a href="http://www.mysql.com/news-and-events/web-seminars/display-659.html" target="_blank">free webinar</a> on Thursday 15th September (please <a href="http://www.mysql.com/news-and-events/web-seminars/display-659.html" target="_blank">register in advance</a>) as well at an Oracle OpenWorld session in San Francisco on Tuesday 4th October (Tuesday, 01:15 PM, Marriott Marquis &#8211; Golden Gate C2) &#8211; a good opportunity to get more details and get your questions answered.</p>
+<p>It sometimes surprises people just how much MySQL is used on Windows, here are a few of the reasons:</p>
+<ul>
+<li>Lower TCO
+<ul>
+<li>90% savings over Microsoft SQL Server</li>
+<li>If your a little skeptical about this then try it out for yourself with the <a href="http://mysql.com/tcosavings/ " target="_blank">MySQL TCO Savings Calculator</a></li>
+</ul>
+</li>
+<li>Broad platform support
+<ul>
+<li>No lock-in</li>
+<li>Windows, Linux, MacOS, Solaris</li>
+</ul>
+</li>
+<li>Ease of use and administration
+<ul>
+<li>&lt; 5 mins to download, install &amp; configure</li>
+<li>MySQL Enterprise Monitor &amp; MySQL WorkBench</li>
+</ul>
+</li>
+<li>Reliability
+<ul>
+<li>24&#215;7 Uptime</li>
+<li>Field Proven</li>
+</ul>
+</li>
+<li>Performance and scalability
+<ul>
+<li>MySQL 5.5 delivered over 500% performance boost on Windows.</li>
+</ul>
+</li>
+<li>Integration into Windows environment
+<ul>
+<li>ADO.NET, ODBC &amp; Microsoft Access Integration</li>
+<li>And now, support for Windows Server Failover Clustering!</li>
+</ul>
+</li>
+</ul>
+<div>Probably the most common form of High Availability for MySQL is MySQL (asynchronous or semi-synchronous replication) and the option for the highest levels of availability is <a href="http://www.mysql.com/products/cluster/" target="_blank">MySQL Cluster</a>. We are in the process of rolling out a number of solutions that provide levels of availability somewhere in between MySQL Replication and MySQL Cluster; Oracle VM Template for MySQL Enterprise Edition was the first (<a href="/mysql/new-oracle-vm-template-for-mysql-enterprise-edition/" target="_blank">overview</a>, <a href="/mysql-cluster/webinar-today-delivering-scalable-and-highly-available-session-management-with-mysql-cluster/" target="_blank">webinar replay</a>, <a href="/mysql/white-paper-oracle-vm-template-for-mysql-enterprise-edition/" target="_blank">white paper</a>) and WSFC is the second.</div>
+<p>&nbsp;</p>
+<h3>Solution Overview</h3>
+<div>
+<p><a href="/wp-content/uploads/2011/09/wfc_architrecture.jpg"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-1936" title="wfc_architrecture" src="/wp-content/uploads/2011/09/wfc_architrecture-210x300.jpg" alt="" width="210" height="300" /></a>MySQL with Windows Failover Clustering requires at least 2 servers within the cluster together with some shared storage (for example FCAL SAN or iSCSI disks). For redundancy, 2 LANs should be used for the cluster to avoid a single point of failure and typically one would be reserved for the heartbeats between the cluster nodes.</p>
+<p>The MySQL binaries and data files are stored in the shared storage and Windows Failover Clustering ensures that at most one of the cluster nodes will access those files at any point in time (hence avoiding file corruptions).</p>
+<p>Clients connect to the MySQL service through a Virtual IP Address (VIP) and so in the event of failover they experience a brief loss of connection but otherwise do not need to be aware that the failover has happened other than to handle the failure of any in-flight transactions.</p>
+<h3><a href="/wp-content/uploads/2011/09/wfc_network.jpg"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-1935" title="wfc_network" src="/wp-content/uploads/2011/09/wfc_network-272x300.jpg" alt="" width="272" height="300" /></a>Target Configuration</h3>
+<p>This post will briefly step through how to set up and use a cluster and this diagrams shows how this is mapped onto physical hardware and network addresses for the lab used later in this post. In this case, iSCSI is used for the shared storage. Note that ideally there would be an extra subnet for the heartbeat connection between ws1 and ws3.</p>
+<p>This is only intended to be an overview and the steps have been simplified refer to the <a href="http://www.mysql.com/why-mysql/white-papers/mysql_wp_windows_failover_clustering.php" target="_blank">white paper</a> for more details on the steps.</p>
+<h3>Prerequisites</h3>
+<ul>
+<li>MySQL 5.5 &amp; InnoDB must be used for the database (note that MyISAM is not crash-safe and so failover may result in a corrupt database)</li>
+<li>Windows Server 2008 R2</li>
+<li>Redundant network connections between nodes and storage</li>
+<li>WSFC cluster validation must pass</li>
+<li>iSCSI or FCAL SAN should be used for the shared storage</li>
+</ul>
+<h3>Step 1 Configure iSCSI in software (optional)</h3>
+<div id="attachment_1934" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/09/wfc_iscsi.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1934" class="size-medium wp-image-1934" title="wfc_iscsi" src="/wp-content/uploads/2011/09/wfc_iscsi-300x103.jpg" alt="" width="300" height="103" /></a><p id="caption-attachment-1934" class="wp-caption-text">Create 2 clustered disks</p></div>
+<p>This post does not attempt to describe how to configure a highly available, secure and performant SAN but in order to implement the subsequent steps shared storage is required and so in this step we look at one way of using software to provide iSCSI targets without any iSCSI/SAN hardware (just using the server’s internal disk). This is a reasonable option to experiment with but probably not what you’d want to deploy with for a HA application. If you already have shared storage set up then you can skip this step and use that instead.</p>
+<p>As part of this process you&#8217;ll create at least two virtual disks within the iSCSI target; one for the quorum file and one for the MySQL binaries and data files. The quorum file is used by Windows Failover Clustering to avoid “split-brain” behaviour.</p>
+<h3>Step 2. Ensure Windows Failover Clustering is enabled</h3>
+<div id="attachment_1933" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/09/wfc_feature.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1933" class="size-medium wp-image-1933" title="wfc_feature" src="/wp-content/uploads/2011/09/wfc_feature-300x228.jpg" alt="" width="300" height="228" /></a><p id="caption-attachment-1933" class="wp-caption-text">Ensure that WSFC is enabled</p></div>
+<p>To confirm that Windows Failover Clustering is installed on ws1 and ws3, open the “Features” branch in the Server Manager tool and check if “Failover Cluster Manager” is present.</p>
+<p>If Failover Clustering is not installed then it is very simple to add it. Select “Features” within the Service Manager and then click on “Add Features” and then select “Failover Clustering” and then “Next”.</p>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3>Step 3. Install MySQL as a service on both servers</h3>
+<div id="attachment_1932" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/09/wfc_mysql_service.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1932" class="size-medium wp-image-1932" title="wfc_mysql_service" src="/wp-content/uploads/2011/09/wfc_mysql_service-300x155.jpg" alt="" width="300" height="155" /></a><p id="caption-attachment-1932" class="wp-caption-text">Install MySQL as a Windows Service</p></div>
+<p>If MySQL is already installed as a service on both ws1 and ws3 then this step can be skipped.</p>
+<p>The installation is very straight-forward using the <a href="http://dev.mysql.com/tech-resources/articles/mysql-installer-for-windows.html" target="_blank">MySQL Windows Installer</a> and selecting the default options is fine.</p>
+<p>Within the MySQL installation wizard, sticking with the defaults is fine for this exercise. When you reach the configuration step, check “Create Windows Service”.</p>
+<p>The installation and configuration must be performed on both ws1 and ws2, if necessary.</p>
+<h3>Step 4. Migrate MySQL binaries &amp; data to shared storage</h3>
+<p>If the MySQL Service is running on either ws1 or ws3 then stop it &#8211; open the Task Manager using ctrl-shift-escape, select the “Services” tab and then right-click on the MySQL service and choose “Stop Service”.</p>
+<p>As the iSCSI disks were enabled on ws1 you can safely access them in order to copy across the MySQL binaries and data files to the shared disk.</p>
+<h3>Step 5. Create Windows Failover Cluster</h3>
+<div id="attachment_1931" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/09/wfc_create_cluster.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1931" class="size-medium wp-image-1931" title="wfc_create_cluster" src="/wp-content/uploads/2011/09/wfc_create_cluster-300x183.jpg" alt="" width="300" height="183" /></a><p id="caption-attachment-1931" class="wp-caption-text">Create the Cluster (without MySQL)</p></div>
+<p>From the Server Manager on either ws1 or ws3 navigate to “Features -&gt; Failover Cluster Manager” and then select “Validate a Configuration”. When prompted enter ws1 as one name and then ws3 as the other.</p>
+<p>In the “Testing Options” select “Run all tests” and continue. If the tests report any errors then these should be fixed before continuing.</p>
+<p>Now that the system has been verified, select “Create a Cluster” and provide the same server names as used in the validation step. In this example, “MySQL” is provided as the “Cluster Name” and then the wizard goes on to create the cluster.</p>
+<h3>Step 6. Create Cluster of MySQL Servers within Windows Cluster</h3>
+<div id="attachment_1930" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/09/wfc_cluster_mysql.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1930" class="size-medium wp-image-1930" title="wfc_cluster_mysql" src="/wp-content/uploads/2011/09/wfc_cluster_mysql-300x263.jpg" alt="" width="300" height="263" /></a><p id="caption-attachment-1930" class="wp-caption-text">Cluster the MySQL Service</p></div>
+<p>Adding the MySQL service to the new Cluster is very straight-forward. Right-click on “Services and applications” in the Server Manager tree and select “Configure a Service or Application…”. When requested by the subsequent wizard, select “Generic Service” from the list and then “MySQL” from the offered list of services. Our example name was “ClusteredMySQL”. Please choose an appropriate name for your cluster. The wizard will then offer the shared disk that has not already been established as the quorum disk for use with the Clustered service – make sure that it is selected.</p>
+<p>Once the wizard finishes, it starts up the MySQL Service. Click on the “ClusteredMySQL” service branch to observe that the service is up and running. You should also make a note of the Virtual IP (VIP) assigned, in this case 192.168.2.18.</p>
+<h3>Step 7. Test the cluster</h3>
+<p>As described in Step 6, the VIP should be used to connect to the clustered MySQL service:</p>
+<pre style="padding-left: 30px;"><span style="color: #333399;">C: mysql –u root –h 192.168.2.18 –P3306 –pbob</span></pre>
+<p>From there create a database and populate some data.</p>
+<pre style="padding-left: 30px;"><span style="color: #333399;">mysql&gt; CREATE DATABASE clusterdb;</span>
+<span style="color: #333399;">mysql&gt; USE clusterdb;</span>
+<span style="color: #333399;">mysql&gt; CREATE TABLE simples (id int not null primary key) ENGINE=innodb;</span>
+<span style="color: #333399;">mysql&gt; REPLACE INTO simples VALUES (1);</span>
+<span style="color: #333399;">mysql&gt; SELECT * FROM simples;</span>
+<span style="color: #333399;">+----+</span>
+<span style="color: #333399;">| id |</span>
+<span style="color: #333399;">+----+</span>
+<span style="color: #333399;">| 1 |</span>
+<span style="color: #333399;">+----+</span></pre>
+<div id="attachment_1929" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/09/wfc_migrate_service.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1929" class="size-medium wp-image-1929" title="wfc_migrate_service" src="/wp-content/uploads/2011/09/wfc_migrate_service-300x117.jpg" alt="" width="300" height="117" /></a><p id="caption-attachment-1929" class="wp-caption-text">Migrate MySQL Service Across Cluster</p></div>
+<p>The MySQL service was initially created on ws1 but it can be forced to migrate to ws3 by right-clicking on the service and selecting “Move this service or application to another node”.</p>
+<p>As the MySQL data is held in the shared storage (which has also been migrated to ws3), it is still available and can still be accessed through the existing mysql client which is connected to the VIP:</p>
+<pre style="padding-left: 30px;"><span style="color: #333399;">mysql&gt; select * from simples; </span>
+<span class="Apple-style-span" style="color: #333399;">ERROR 2006 (HY000): MySQL server has gone away </span>
+<span class="Apple-style-span" style="color: #333399;">No connection. Trying to reconnect... </span>
+<span class="Apple-style-span" style="color: #333399;">Connection id: 1 </span>
+<span class="Apple-style-span" style="color: #333399;">Current database: clusterdb </span>
+<span class="Apple-style-span" style="color: #333399;">+----+ </span>
+<span class="Apple-style-span" style="color: #333399;">| id | </span>
+<span class="Apple-style-span" style="color: #333399;">+----+ </span>
+<span class="Apple-style-span" style="color: #333399;">| 1 | </span>
+<span class="Apple-style-span" style="color: #333399;">+----+</span></pre>
+<p>Note the error shown above – the mysql client loses the connection to the MySQL service as part of the migration and so it automatically reconnects and complete the query. Any application using MySQL with Windows Failover Cluster should also expect to have to cope with these “glitches” in the connection.</p>
+<h3>Conclusion</h3>
+<p>More users develop and deploy and MySQL on Windows than any other single platform. Enhancements in MySQL 5.5 increased performance by over 5x compared to previous MySQL releases. With certification for Windows Server Failover Clustering, MySQL can now be deployed to support business critical workloads demanding high availability, enabling organizations to better meet demanding service levels while also reducing TCO and eliminating single vendor lock-in.<br />
+Please let me know how you get on by leaving comments on this post.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql/mysql-with-windows-server-2008-r2-failover-clustering/feed</wfw:commentRss>
+			<slash:comments>16</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Cluster Data Node restart times</title>
+		<link>/mysql-cluster/mysql-cluster-data-node-restart-times</link>
+					<comments>/mysql-cluster/mysql-cluster-data-node-restart-times#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 30 Jul 2009 12:46:00 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Cluster]]></category>
+		<category><![CDATA[Cluster 7.0]]></category>
+		<category><![CDATA[Cluster Database]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.0]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<category><![CDATA[recovery]]></category>
+		<category><![CDATA[restart]]></category>
+		<guid isPermaLink="false">/?p=365</guid>
+
+					<description><![CDATA[Restart times have been reduced in MySQL Cluster 6.3.28a &#38; 7.0.9a &#8211; refer to that article for the new timings: /mysql-cluster/mysql-cluster-restarts-get-faster/ Restarts are required for certain, infrequent maintenance activities. Note that there is no loss of service while a single node restarts. When a data node restarts, it first attempts to load the data into memory]]></description>
+										<content:encoded><![CDATA[<p><strong>Restart times have been reduced in MySQL Cluster 6.3.28a &amp; 7.0.9a &#8211; refer to that article for the new timings:</strong> <a href="/mysql-cluster/mysql-cluster-restarts-get-faster/" target="_self">/mysql-cluster/mysql-cluster-restarts-get-faster/</a></p>
+<p>Restarts are required for certain, infrequent maintenance activities. Note that there is no loss of service while a single node restarts.</p>
+<p>When a data node restarts, it first attempts to load the data into memory from the local log files and then it will catch up with any subsequent changes by retrieveing them from the surviving node(s) in its node group.</p>
+<p> Based on this, you would expect the time taken to restart a data node to be influenced by:</p>
+<ol>
+<li>The amount of data that was stored on the data node before the restart</li>
+<li>Rate of updates being made to the data during the restart</li>
+<li>Network performance (assuming the data is being updated during recovery)</li>
+</ol>
+<p>The times will also be influenced bycertain configuration parameters, performance of the host machine and whether the multi-threaded data node (ndbmtd) is being used.</p>
+<p>To provide some insight into how these factors impact restart times, tests have been performed where the following factors are varied:</p>
+<ul>
+<li>Database size (Each Gbyte is made up of 1,000,000 tuples in each of 5 tables)</li>
+<li>Whether traffic is running or not (a single thread using the NDB API to send in up to 2K tps (10K updates/second))</li>
+<li>Whether the 2 data nodes in the node group are on the same host or separated by a Gbit Ethernet network</li>
+</ul>
+<p>The following factors are kept constant:</p>
+<ul>
+<li>Physical hosts: Intel Core 2 Quad Q8200@2.33 GHz; 7.7 GBytes RAM</li>
+<li>NoOfFragmentLogFiles: 300</li>
+<li>MaxNoOfExecutionThreads=4</li>
+</ul>
+<p>Here are the observed results:</p>
+<div id="attachment_369" style="width: 597px" class="wp-caption alignnone"><a href="/wp-content/uploads/2009/07/restart_times.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-369" class="size-full wp-image-369" title="Data Node restart times" src="/wp-content/uploads/2009/07/restart_times.jpg" alt="Data Node restart times" width="587" height="168" srcset="/wp-content/uploads/2009/07/restart_times.jpg 587w, /wp-content/uploads/2009/07/restart_times-300x85.jpg 300w" sizes="auto, (max-width: 587px) 100vw, 587px" /></a><p id="caption-attachment-369" class="wp-caption-text">Data Node restart times</p></div>
+<p>There are a couple of things to note from these results:</p>
+<ul>
+<li>Using the multi-threaded data node (ndbmtd) greatly improves the restart time (in this case, 4 threads were available, improvements could be even greater on an 8 core/thread system)</li>
+<li>Results become less predictable when heavy update traffic is being processed (in this case, up to 10,000 updated rows/second on a single node group). In the tests, no attempt was made to regulate this traffic and the test application was run on the same host as the one of the data nodes. Changes to the rate of updates will vary how long it takes for the restarting node to catch-up as it&#8217;s a moving target.</li>
+</ul>
+<p>There is another recovery/restart scenario. The measurements shown above assumed that the file system on the data node&#8217;s host was intact and could be used to recover the in-memory copy &#8211; if that were not the case (or the data nodes were restarted with the &#8220;initial&#8221; option) then all of the data would have to be recovered from the surviving data node(s) in the same node group. As a comparison restarting a 6 Gbyte data node with the &#8220;initial&#8221; option took 20 minutes compared to 8 minutes without it (ndbmtd, over Gbit n/w).</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/mysql-cluster-data-node-restart-times/feed</wfw:commentRss>
+			<slash:comments>12</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>New MySQL Cluster maintenance release: 7.0.6</title>
+		<link>/mysql-cluster/new-mysql-cluster-maintenance-release-706</link>
+					<comments>/mysql-cluster/new-mysql-cluster-maintenance-release-706#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 09 Jun 2009 19:04:26 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Cluster]]></category>
+		<category><![CDATA[Cluster 7.0]]></category>
+		<category><![CDATA[Maintenance Release]]></category>
+		<category><![CDATA[MySQL Cluster 7.0]]></category>
+		<guid isPermaLink="false">/?p=145</guid>
+
+					<description><![CDATA[MySQL Cluster version 7.0.6 has been released. MySQL Cluster 7.0.6 is available in source and binary form for a number of platforms from our download pages. The release in source form can in addition be downloaded from the MySQL FTP server. MySQL Cluster version 7.0.6 is using MySQL Server version 5.1.34 and contains all bug]]></description>
+										<content:encoded><![CDATA[<p>MySQL Cluster version 7.0.6 has been released. MySQL Cluster 7.0.6 is available in source and binary form for a number of platforms from our <a href="http://dev.mysql.com/downloads/cluster/7.0.html" target="_blank">download pages</a>.<a href="http://dev.mysql.com/downloads/cluster/7.0.html" target="_blank"><br />
+</a></p>
+<p>The release in source form can in addition be downloaded from the <a href="ftp://ftp.mysql.com/pub/mysql/download/mysql-cluster-gpl-7.0.6-innodb.tar.gz" target="_blank">MySQL FTP server</a>.<a href="ftp://ftp.mysql.com/pub/mysql/download/mysql-cluster-gpl-7.0.6-innodb.tar.gz" target="_blank"></a></p>
+<p>MySQL Cluster version 7.0.6 is using MySQL Server version 5.1.34 and contains all bug fixes and changes that MySQL Server 5.1.33 and 5.1.34 contain.<br />
+Following changes were made in MySQL Cluster 7.0.6 since the previous release 7.0.5:</p>
+<p>Functionality added or changed:</p>
+<ul>
+<li>Important Note: It is possible in MySQL Cluster NDB 7.0.6 and later   to perform online upgrades from MySQL Cluster NDB 6.3.8 and later MySQL   Cluster NDB 6.3 releases, or from MySQL Cluster NDB 7.0.5 or later MySQL Cluster NDB 7.0 releases.</li>
+<li>It was not possible to perform an online upgrade from any MySQL Cluster  NDB 6.x release to MySQL Cluster NDB 7.0.5 or any to earlier MySQL Cluster NDB 7.0 release. (Bug#44294)</li>
+<li>The ndb_config utility program can now provide an offline dump of all MySQL Cluster configuration parameters including information such as default and permitted values, brief description, and applicable section of the config.ini file.</li>
+</ul>
+<p>The documentation has been updated accordingly and a <a href="http://dev.mysql.com/doc/refman/5.1/en/mysql-cluster-news-5-1-34-ndb-7-0-6.html" target="_blank">full change log </a>will be found.</p>
+<p>For more information about changes and bugs fixed in MySQL Server 5.1.33 and 5.1.34 please refer to the <a href="http://dev.mysql.com/doc/refman/5.1/en/news-5-1-x.html" target="_blank">reference manual</a>.<a href="http://dev.mysql.com/doc/refman/5.1/en/news-5-1-x.html" target="_blank"><br />
+</a></p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/new-mysql-cluster-maintenance-release-706/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>syslog &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/syslog/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Mon, 28 Jun 2010 12:40:44 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Using Syslog with MySQL Cluster</title>
+		<link>/mysql/using-syslog-with-mysql-cluster</link>
+					<comments>/mysql/using-syslog-with-mysql-cluster#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 28 Jun 2010 12:40:44 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<category><![CDATA[syslog]]></category>
+		<guid isPermaLink="false">/?p=1141</guid>
+
+					<description><![CDATA[By default, MySQL Cluster sends log data to a file but you can also send it to the console or to Syslog; this article explains how to send it to Syslog. The example given here is for LINUX. In this example, I&#8217;ll use the &#8220;user&#8221; syslog facility name and so the first step is to]]></description>
+										<content:encoded><![CDATA[<p>By default, MySQL Cluster sends log data to a file but you can also send it to the console or to Syslog; this article explains how to send it to Syslog. The example given here is for LINUX.</p>
+<p>In this example, I&#8217;ll use the &#8220;user&#8221; syslog facility name and so the first step is to make sure that syslog is configured to route those messages. If this hasn&#8217;t already been configured then add the following lines to <span style="color: #3366ff;">/etc/rsyslog.conf</span>:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;"># Log user messages to local files
+</span><span style="color: #993300;">user.*    /var/log/user</span></pre>
+<p>For the changes to take effect, restart the syslog service:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;">[root@ws1 etc]# service rsyslog restart
+</span><span style="color: #993300;">Shutting down system logger:                               [  OK  ]
+</span><span style="color: #993300;">Starting system logger:                                    [  OK  ]</span></pre>
+<p>Note that you should make those changes as root.</p>
+<p>Still as root, start up a stream of  any additions to the new log file:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;">[root@ws1 etc]# tail -f /var/log/user</span></pre>
+<p>To tell Cluster to use Syslog, add this line into the<span style="color: #3366ff;"> [ndb_mgmd] </span>section in config.ini:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;">LogDestination=SYSLOG:facility=user</span></pre>
+<p>and then start up your Cluster as normal.</p>
+<p>You should now be able to see that MySQL Cluster information is being logged to<span style="color: #3366ff;"> /var/log/user</span>.</p>
+<p>You can adjust how much information is logged either through the config file or from the <span style="color: #3366ff;">ndb_mgm</span> tool, for example &#8211; to see when global checkpoints are written:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;">ndb_mgm&gt; all clusterlog checkpoint=15
+</span><span style="color: #993300;">Executing CLUSTERLOG CHECKPOINT=15 on node 3 OK!
+</span><span style="color: #993300;">Executing CLUSTERLOG CHECKPOINT=15 on node 4 OK!</span></pre>
+<div>Note that a log-level of 15 will show all logs and 0 will show none. Other log categories besides CHECKPOINT are STARTUP, SHUTDOWN, STATISTICS, NODERESTART, CONNECTION, INFO, ERROR, CONGESTION, DEBUG and BACKUP.</div>
+<div></div>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql/using-syslog-with-mysql-cluster/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

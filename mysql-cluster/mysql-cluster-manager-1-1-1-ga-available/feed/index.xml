@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: MySQL Cluster Manager 1.1.1 (GA) Available	</title>
+	<atom:link href="/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available/feed" rel="self" type="application/rss+xml" />
+	<link>/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Thu, 16 Jan 2014 12:43:47 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-56542</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 16 Jan 2014 12:43:47 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1886#comment-56542</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-53776&quot;&gt;Kevin&lt;/a&gt;.
+
+Adding 2 hosts to the same site is straight-forward, you just repeat the &lt;code&gt;CREATE CLUSTER&lt;/code&gt; command and then make sure that you don&#039;t have conflicting resources (for example, use the SET command to make sure that &lt;code&gt;port&lt;/code&gt; and &lt;code&gt;portnumber&lt;/code&gt; are distinct for nodes on the same host. I just tried this and it works fine.
+
+Adding hosts to an existing site should also work - I&#039;ve just tested it and it worked fine. Is &lt;code&gt;mcmd&lt;/code&gt; running on the new host (note that if you cloned the new host from one of the others then make sure you delete the mcm_data directory from it otherwise MCM will get confused and the &lt;code&gt;mcmd&lt;/code&gt; may stop). I tested &lt;code&gt;ADD HOST&lt;/code&gt; without &lt;code&gt;mcmd&lt;/code&gt; running on the new host and got exactly the behaviour you describe.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-53776">Kevin</a>.</p>
+<p>Adding 2 hosts to the same site is straight-forward, you just repeat the <code>CREATE CLUSTER</code> command and then make sure that you don&#8217;t have conflicting resources (for example, use the SET command to make sure that <code>port</code> and <code>portnumber</code> are distinct for nodes on the same host. I just tried this and it works fine.</p>
+<p>Adding hosts to an existing site should also work &#8211; I&#8217;ve just tested it and it worked fine. Is <code>mcmd</code> running on the new host (note that if you cloned the new host from one of the others then make sure you delete the mcm_data directory from it otherwise MCM will get confused and the <code>mcmd</code> may stop). I tested <code>ADD HOST</code> without <code>mcmd</code> running on the new host and got exactly the behaviour you describe.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Kevin		</title>
+		<link>/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-53776</link>
+
+		<dc:creator><![CDATA[Kevin]]></dc:creator>
+		<pubDate>Mon, 13 Jan 2014 07:51:26 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1886#comment-53776</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-48400&quot;&gt;andrew&lt;/a&gt;.
+
+Hi Andrew,
+
+Actually , we are currently testing MCM and exploring the various administrative tasks. 
+
+As of now there is no requirement. 
+
+Can you also tell me how we can add two clusters in one site? As when I am trying to add hosts prompt is getting hung. When I am taking another mcm client session, its showing host as added, status available but version unknown.
+
+Regards,
+Kevin]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-48400">andrew</a>.</p>
+<p>Hi Andrew,</p>
+<p>Actually , we are currently testing MCM and exploring the various administrative tasks. </p>
+<p>As of now there is no requirement. </p>
+<p>Can you also tell me how we can add two clusters in one site? As when I am trying to add hosts prompt is getting hung. When I am taking another mcm client session, its showing host as added, status available but version unknown.</p>
+<p>Regards,<br />
+Kevin</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-48400</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 07 Jan 2014 10:41:35 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1886#comment-48400</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-48274&quot;&gt;Kevin&lt;/a&gt;.
+
+Hi Kevin,
+
+ at the moment there is no option in MCM to remove nodes from the Cluster. For Cluster itself, removing data nodes is a tricky process as it isn&#039;t an on-line operation and involves performing a backup, shutdown, start-up and restore. We find that while &quot;elastic scaling&quot; is a popular idea, the reality is that Cluster users only ever seem to need to scale out and not back in again. Do you have a scale-in requirement/use-case?
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-48274">Kevin</a>.</p>
+<p>Hi Kevin,</p>
+<p> at the moment there is no option in MCM to remove nodes from the Cluster. For Cluster itself, removing data nodes is a tricky process as it isn&#8217;t an on-line operation and involves performing a backup, shutdown, start-up and restore. We find that while &#8220;elastic scaling&#8221; is a popular idea, the reality is that Cluster users only ever seem to need to scale out and not back in again. Do you have a scale-in requirement/use-case?</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Kevin		</title>
+		<link>/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-48274</link>
+
+		<dc:creator><![CDATA[Kevin]]></dc:creator>
+		<pubDate>Tue, 07 Jan 2014 05:24:24 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1886#comment-48274</guid>
+
+					<description><![CDATA[Hi Andrew,
+
+Nice Blog. It will be helpful for me if you can post steps of node deletion as I am new to MCM. 
+
+Regards,
+Kevin]]></description>
+			<content:encoded><![CDATA[<p>Hi Andrew,</p>
+<p>Nice Blog. It will be helpful for me if you can post steps of node deletion as I am new to MCM. </p>
+<p>Regards,<br />
+Kevin</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-482</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 28 Jun 2013 13:14:21 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1886#comment-482</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-481&quot;&gt;shraddh&lt;/a&gt;.
+
+Don&#039;t know a lot about the federated storage engine - what would you do to enable it if you weren&#039;t using MCM?
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-481">shraddh</a>.</p>
+<p>Don&#8217;t know a lot about the federated storage engine &#8211; what would you do to enable it if you weren&#8217;t using MCM?</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: shraddh		</title>
+		<link>/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-481</link>
+
+		<dc:creator><![CDATA[shraddh]]></dc:creator>
+		<pubDate>Fri, 28 Jun 2013 09:42:49 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1886#comment-481</guid>
+
+					<description><![CDATA[Hi Andrew,
+Nice blog, thanks for catrieng all Mysql cluster fundas on one site, I have one query, How to enable federated engine using MYSQL cluster manager, as we cannot modify config file manually. Please suggest.. Thanks in advance.]]></description>
+			<content:encoded><![CDATA[<p>Hi Andrew,<br />
+Nice blog, thanks for catrieng all Mysql cluster fundas on one site, I have one query, How to enable federated engine using MYSQL cluster manager, as we cannot modify config file manually. Please suggest.. Thanks in advance.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Stalin		</title>
+		<link>/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-480</link>
+
+		<dc:creator><![CDATA[Stalin]]></dc:creator>
+		<pubDate>Mon, 24 Sep 2012 17:18:43 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1886#comment-480</guid>
+
+					<description><![CDATA[Thanks much for the response.
+
+I shouldn&#039;t see any issues in that case. I will know more this week when i do the install. 
+
+Thanks Again.
+
+Stalin]]></description>
+			<content:encoded><![CDATA[<p>Thanks much for the response.</p>
+<p>I shouldn&#8217;t see any issues in that case. I will know more this week when i do the install. </p>
+<p>Thanks Again.</p>
+<p>Stalin</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-479</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 24 Sep 2012 15:17:36 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1886#comment-479</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-478&quot;&gt;Stalin&lt;/a&gt;.
+
+Hi Stalin,
+
+ In terms of communications:
+  - The MCM agents must all be able to talk to each other
+  - The MCM agents running on the same host as the ndb_mgmd nodes must be able communicate with their local ndb_mgmds over the management &#039;wire protocol&#039;
+  - The MCM agents on all hosts must be able to start and stop local processes
+
+Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-478">Stalin</a>.</p>
+<p>Hi Stalin,</p>
+<p> In terms of communications:<br />
+  &#8211; The MCM agents must all be able to talk to each other<br />
+  &#8211; The MCM agents running on the same host as the ndb_mgmd nodes must be able communicate with their local ndb_mgmds over the management &#8216;wire protocol&#8217;<br />
+  &#8211; The MCM agents on all hosts must be able to start and stop local processes</p>
+<p>Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Stalin		</title>
+		<link>/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-478</link>
+
+		<dc:creator><![CDATA[Stalin]]></dc:creator>
+		<pubDate>Sun, 23 Sep 2012 17:52:58 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1886#comment-478</guid>
+
+					<description><![CDATA[Andrew,
+
+Thanks for giving a quick refresher on MCM. It helps people like me, who is new to MySQL world.
+
+Is possible to run CM agents on different subnet than cluster processes?  I&#039;m in the process of setting up 8 nodes cluster on 7.2 CGE. Each hosts have 2 separate VLANs/subnets, app-db and mgmt respectively. We wanted use mgmt VLAN to manage the cluster including setting up SQL enterprise monitor agents to monitor cluster and send data to management repository running in a separate node in the management network. App-db VLAN will be primarily used for apps to talk to MySQLd nodes.
+
+If this not supported, any input on how to workaround this setup?
+
+Thanks,
+Stalin]]></description>
+			<content:encoded><![CDATA[<p>Andrew,</p>
+<p>Thanks for giving a quick refresher on MCM. It helps people like me, who is new to MySQL world.</p>
+<p>Is possible to run CM agents on different subnet than cluster processes?  I&#8217;m in the process of setting up 8 nodes cluster on 7.2 CGE. Each hosts have 2 separate VLANs/subnets, app-db and mgmt respectively. We wanted use mgmt VLAN to manage the cluster including setting up SQL enterprise monitor agents to monitor cluster and send data to management repository running in a separate node in the management network. App-db VLAN will be primarily used for apps to talk to MySQLd nodes.</p>
+<p>If this not supported, any input on how to workaround this setup?</p>
+<p>Thanks,<br />
+Stalin</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: MySQL news in a spot &#124; The Pythian Blog		</title>
+		<link>/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available#comment-477</link>
+
+		<dc:creator><![CDATA[MySQL news in a spot &#124; The Pythian Blog]]></dc:creator>
+		<pubDate>Fri, 11 May 2012 00:43:30 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1886#comment-477</guid>
+
+					<description><![CDATA[[...] /mysql-cluster/mysql-cluster-manager-1-1-1-ga-available/ /mysql-cluster/on-line-add-node-with-mcm-a-more-complex-example-2/?utm_source=rss#038;utm_medium=rss&#038;utm_campaign=on-line-add-node-with-mcm-a-more-complex-example-2 [...]]]></description>
+			<content:encoded><![CDATA[<p>[&#8230;] <a href="/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available/" rel="ugc">/mysql-cluster/mysql-cluster-manager-1-1-1-ga-available/</a> <a href="/mysql-cluster/on-line-add-node-with-mcm-a-more-complex-example-2/?utm_source=rss#038;utm_medium=rss&#038;utm_campaign=on-line-add-node-with-mcm-a-more-complex-example-2" rel="ugc">/mysql-cluster/on-line-add-node-with-mcm-a-more-complex-example-2/?utm_source=rss#038;utm_medium=rss&#038;utm_campaign=on-line-add-node-with-mcm-a-more-complex-example-2</a> [&#8230;]</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="/xmlrpc.php">
+	
+	<title>MySQL Cluster 7.2 | Andrew Morgan on Databases | Page 4</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; MySQL Cluster 7.2 Tag Feed" href="/tag/mysql-cluster-7-2/feed">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="/wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="/wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="/wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="/wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="/wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="/wp-json/">
+<link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/tags/71">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style>
+<style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style>
+<script type="text/javascript">
+				//<![CDATA[
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//]]>
+				</script><style type="text/css"></style>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style>
+</head>
+
+<body class="archive paged tag tag-mysql-cluster-7-2 tag-71 custom-background paged-4 tag-paged-4">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="/"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu">
+<li class="page_item page-item-1011"><a href="/about">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="/wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+		
+		<h2 class="arh">Tag Archive for MySQL Cluster 7.2</h2>
+				
+					<div id="post-1547" class="post-1547 post type-post status-publish format-standard hentry category-mysql-cluster tag-mysql tag-mysql-cluster tag-mysql-cluster-7-2">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/sharing-user-credentials-between-mysql-servers-with-cluster">April 11, 2011</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/sharing-user-credentials-between-mysql-servers-with-cluster#comments">3 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/sharing-user-credentials-between-mysql-servers-with-cluster" rel="bookmark">Sharing user credentials between MySQL Servers with Cluster</a></h2>
+				
+				<div class="entry">
+										<div id="attachment_1549" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2011/03/MySQL-User-in-MyISAM.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-1549" class="size-medium wp-image-1549" title="MySQL User in MyISAM" src="/wp-content/uploads/2011/03/MySQL-User-in-MyISAM-300x275.jpg" alt="" width="300" height="275"></a><p id="caption-attachment-1549" class="wp-caption-text">Fig. 1 User privileges stored in MyISAM</p>
+</div>
+<p>The Developer Release for MySQL Cluster 7.2 includes a new feature that allows the system data required for checking user access to be shared amongst all of your MySQL Servers. By default all of the tables holding these credentials are stored in MyISAM and so are local to that MySQL Server.</p>
+<p>This can become painful to manage &#8211; every time you want to create a new user or change their permissions you need to repeat it on every server, miss one out and the user won&#8217;t be able to access that server (or will still be able to access it after you withdraw their privileges).</p>
+<p>This is illustrated in Fig.1 &#8211; The user &#8220;fred&#8221; is created on one MySQL Server but when Fred attempts to connect to one of the MySQL Servers they&#8217;re blocked. This maybe what you wanted to happen but probably not.</p>
+<p>In this post, we&#8217;ll see how to change this behaviour but first we&#8217;ll confirm the default behaviour.</p>
+<p>Obviously, it makes sense to try this out for yourself and you can download the source or binaries from <a href="http://dev.mysql.com/downloads/cluster/" target="_blank">http://dev.mysql.com/downloads/cluster/</a> (select the sub-tab for the Development Milestone Release).</p>
+<p>The first step is to run Cluster with multiple MySQL Servers &#8211; if you&#8217;re not comfortable with how to do this then refer to <a href="/mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/" target="_blank">this post on how to distribute MySQL Cluster over multiple hosts</a>.</p>
+<p>Four mysql client connections will be used &#8211; <span style="color: #993300;">one for root to connect to server 1</span>; <span style="color: #339966;">one for Fred to connect to server 1<span style="color: #000000;">; <span style="color: #3366ff;">one for root to connect to server 2</span> and </span></span><span style="color: #ff0000;">one for Fred to try connecting to server 2</span>.</p>
+<p>So, let&#8217;s create Fred on server 1 and a table for him to access:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;">$ mysql -h 192.168.1.7 -P3306 -u root --prompt 'server1-root> '
+</span><span style="color: #993300;">server1-root> GRANT ALL ON *.* TO 'fred'@'192.168.1.7';
+server1-root> CREATE DATABASE clusterdb; USE clusterdb;
+</span><span style="color: #993300;">server1-root> CREATE TABLE towns (id INT NOT NULL PRIMARY KEY,
+</span><span style="color: #993300;">  town VARCHAR(20)) ENGINE=NDBCLUSTER;
+</span><span style="color: #993300;">server1-root> REPLACE INTO towns VALUES (1,'Maidenhead'),(2, 'Reading');</span></pre>
+<p>Next we confirm that Fred can access this data when connecting through server 1:</p>
+<pre style="padding-left: 30px;"><span style="color: #339966;">$ mysql -h 192.168.1.7 -P3306 -u fred --prompt 'server1-fred> '</span>
+<span style="color: #339966;">server1-fred> SELECT * FROM clusterdb.towns;</span>
+<span style="color: #339966;">+----+------------+</span>
+<span style="color: #339966;">| id | town       |</span>
+<span style="color: #339966;">+----+------------+</span>
+<span style="color: #339966;">|  1 | Maidenhead |</span>
+<span style="color: #339966;">|  2 | Reading    |</span>
+<span style="color: #339966;">+----+------------+</span></pre>
+<p>Now try the same thing from server 2:</p>
+<pre style="padding-left: 30px;"><span style="color: #ff0000;">$ mysql -h 192.168.1.7 -P3307 -u fred --prompt 'server2> '</span>
+<span style="color: #ff0000;">server2-fred> SELECT * FROM clusterdb.towns;</span>
+<span style="color: #ff0000;">ERROR 1142 (42000): SELECT command denied to user ''@'ws2.localdomain'
+ for table 'towns'</span></pre>
+<p>What we need to do next is to run a script (as MySQL root) and then a stored procedure to convert 5 tables from the mysql database (&#8220;user&#8221;, &#8220;db&#8221;, &#8220;tables_priv&#8221;, &#8220;columns_priv&#8221; &#038; &#8220;procs_priv&#8221;) from the MyISAM to the ndbcluster storage engine:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;">server1-root> SOURCE /usr/local/mysql/share/mysql/ndb_dist_priv.sql;
+</span><span style="color: #993300;">server1-root> CALL mysql.mysql_cluster_move_privileges();</span></pre>
+<p>We can confirm that the storage engine has changed, for example:</p>
+<pre style="padding-left: 30px;"><span style="color: #993300;">server1-root> SHOW CREATE TABLE mysql.userG</span>
+<span style="color: #993300;">*************************** 1. row ***************************</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #993300;">      Table: userCreate Table: CREATE TABLE `user` (</span>
+<span style="color: #993300;">  `Host` char(60) COLLATE utf8_bin NOT NULL DEFAULT '',</span>
+<span style="color: #993300;">....</span>
+<span style="color: #993300;">....</span>
+<span style="color: #993300;"> ) <strong>ENGINE=ndbcluster</strong> DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Users
+ and global privileges'</span></pre>
+<p>Note that &#8220;ENGINE=ndbcluster&#8221;.</p>
+<div id="attachment_1550" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2011/03/MySQL-User-in-Cluster.jpg"><img decoding="async" aria-describedby="caption-attachment-1550" class="size-medium wp-image-1550" title="MySQL User in Cluster" src="/wp-content/uploads/2011/03/MySQL-User-in-Cluster-300x272.jpg" alt="" width="300" height="272"></a><p id="caption-attachment-1550" class="wp-caption-text">Fig. 2 User Privilege Tables Stored in MySQL Cluster</p>
+</div>
+<p>Now that these tables are stored in MySQL Cluster, they should be visible from all of the MySQL Servers. So now, whichever MySQL Server Fred attempts to connect through, that MySQL Server will fetch the privilege data from the shared data nodes rather than using local information and so Fred will get the same access rights. As our clusterdb.towns table was created using the ndbcluster storage engine as well, it is accessible from all servers and so Fred should now be able to see the contents of the table from server 2 as the access rights on server 2 now allow it. Note that the data already stored in those 5 mysql tables survived the migration from MyISAM to MySQL Cluster.</p>
+<p>So the final test is to confirm that Fred really is allowed to get to this data from server 2:</p>
+<pre style="padding-left: 30px;"><span style="color: #ff0000;">$ mysql -h 192.168.1.7 -P3307 -u fred --prompt 'server2-fred>
+server2-fred> SELECT * FROM clusterdb.towns;
++----+------------+
+| id | town       |
++----+------------+
+|  1 | Maidenhead |
+|  2 | Reading    |
++----+------------+
+</span></pre>
+<p>Note that if &#8220;fred&#8221; were already connected to server2 then he would need to disconnect and reconnect.</p>
+<p>Once server1 has been set up in this way, changes to the user privileges data can be made from any one of the mysql servers in the Cluster (not just server1) and they will be enforced by all of the MySQL Servers.</p>
+<p>You can find the <a href="http://dev.mysql.com/doc/refman/5.1/en/mysql-cluster-privilege-distribution.html" target="_blank">official documentation for this feature here</a>.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/sharing-user-credentials-between-mysql-servers-with-cluster" data-via="wpbeginner" data-text="Sharing user credentials between MySQL Servers with Cluster" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/sharing-user-credentials-between-mysql-servers-with-cluster"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/sharing-user-credentials-between-mysql-servers-with-cluster" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fsharing-user-credentials-between-mysql-servers-with-cluster&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-7-2" rel="tag">MySQL Cluster 7.2</a>
+</div>
+
+			</div>			<div id="post-1618" class="post-1618 post type-post status-publish format-standard hentry category-mysql category-mysql-cluster tag-adaptive-query-localization tag-mysql tag-mysql-cluster-7-2">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization">April 11, 2011</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization#comments">12 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization" rel="bookmark">Dramatically Increased MySQL Cluster JOIN performance with Adaptive Query Localization</a></h2>
+				
+				<div class="entry">
+										<p>Regular readers of this Blog or attendees at the 2010 O&#8217;Reilly MySQL Conference may recall a feature that the MySQL Cluster team were working to speed up JOINs (<a href="http://assets.en.oreilly.com/1/event/36/MySQL%20Cluster%20and%20Pushdown-joins%20_In%20Pursuit%20of%20the%20Holy%20Grail_%20Presentation.pdf" target="_blank">see Jonas&#8217;s slides from that conference here</a>). The good news is that work has continued since then and it is now part of the new MySQL Cluster 7.2 Milestone Development Release. This post will step through where to get hold of the binaries and see the benefits for yourself. The examples I try here result in a 25x speedup just by turning the feature on &#8211; I&#8217;ve also seen a 50x speedup on other queries!</p>
+<p>We&#8217;re anxious to get feedback on what benefits you see with your application&#8217;s JOINs, please respond to this post.</p>
+<h3>What&#8217;s in a name?</h3>
+<p>If some of this seems familiar but you don&#8217;t remember hearing the term &#8220;Adaptive Query Localization&#8221; before then you&#8217;re not going crazy &#8211; previous internal names were SPJ (Select Project Join) and Pushed-Down Joins. We just figured that Adaptive Query Localization was more descriptive.</p>
+<h3>
+<div id="attachment_1626" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2011/03/Nested-Loop-Join.jpg"><img decoding="async" aria-describedby="caption-attachment-1626" class="size-medium wp-image-1626" title="Nested Loop Join" src="/wp-content/uploads/2011/03/Nested-Loop-Join-300x155.jpg" alt="" width="300" height="155"></a><p id="caption-attachment-1626" class="wp-caption-text">Classic Nested-Loop-Join</p>
+</div>
+</h3>
+<p>What does it do?
+</p>
+<p>Traditionally, joins have been implemented in the MySQL Server where the query was executed. This is implemented as a nested-loop join; for every row from the first part of the join, a request has to be sent to the data nodes in order to fetch the data for the next level of the join and for every row in that level&#8230;. This method can result in a lot of network messages which slows down the query (as well as wasting resources).</p>
+<p>When turned on, Adaptive Query Localization results in the hard work being pushed down to the data nodes where the data is locally accessible. As a bonus, the work is divided amongst the pool of data nodes and so you get parallel execution.</p>
+<h3>
+<div id="attachment_1627" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2011/03/NDB-API.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1627" class="size-medium wp-image-1627" title="NDB API" src="/wp-content/uploads/2011/03/NDB-API-300x188.jpg" alt="" width="300" height="188"></a><p id="caption-attachment-1627" class="wp-caption-text">NDB API</p>
+</div>
+</h3>
+<p>How is it implemented?
+</p>
+<p>I&#8217;ll leave the real deep and dirty details to others but cover the basic concepts here. All API nodes access the data nodes using the native C++ NDB API, the MySQL Server is one example of an API node (the new <a href="/mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster" target="_blank">Memcached Cluster API</a> is another). This API has been expanded to allowed parameterised or linked queries where the input from one query is dependent on the previous one.</p>
+<p>To borrow an example from an excellent <a href="http://messagepassing.blogspot.com/2011/01/low-latency-distributed-parallel-joins.html" target="_blank">post by Frazer Clement</a> on the topic, the classic way to implement a join would be&#8230;</p>
+<pre style="font-size: 11px;">SQL > select t1.b, t2.c from t1,t2 where t1.pk=22 and t1.b=t2.pk;
+  ndbapi > read column b from t1 where pk = 22;</pre>
+<pre style="font-size: 11px;">              [round trip]</pre>
+<pre style="font-size: 11px;">           (b = 15)
+  ndbapi > read column c from t2 where pk = 15;</pre>
+<pre style="font-size: 11px;">              [round trip]</pre>
+<pre style="font-size: 11px;">           (c = 30)
+           [ return b = 15, c = 30 ]</pre>
+<p>Using the new functionality this can be performed with a single network round trip where the second read operation is dependent on the results of the first&#8230;</p>
+<pre style="font-size: 11px;">  ndbapi > read column <strong><span style="color: #800000;">@b</span></strong>:=b from t1 where pk = 22;
+           read column c from t2 where pk=<span style="color: #800000;"><strong>@b</strong></span>;</pre>
+<pre style="font-size: 11px;">              [round trip]</pre>
+<pre style="font-size: 11px;">           (b = 15, c = 30)
+           [ return b = 15, c = 30 ]</pre>
+<div id="attachment_1625" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2011/03/Optimised-Join.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1625" class="size-medium wp-image-1625" title="Optimised Join" src="/wp-content/uploads/2011/03/Optimised-Join-300x157.jpg" alt="" width="300" height="157"></a><p id="caption-attachment-1625" class="wp-caption-text">Effects of Adaptive Query Localization</p>
+</div>
+<p>Note that if your application is using the NDB API directly then you can use this same linked query functionality to speed up your queries.</p>
+<h3>Where do I get it?</h3>
+<p>Download the source or binaries from <a href="http://dev.mysql.com/downloads/cluster/" target="_blank">http://dev.mysql.com/downloads/cluster/</a> (select the sub-tab for the Development Milestone Release).</p>
+<h3>How do I use it?</h3>
+<p>The first step is to get you Cluster up and running. As the focus of this feature is to reduce the amount of network messaging, it makes sense to perform your tests on multiple machines; if you need pointers on setting Cluster up then check this post on <a title="Deploying MySQL Cluster over multiple hosts" href="/mysql-cluster/deploying-mysql-cluster-over-multiple-hosts/" target="_blank">running Cluster over multiple machines</a> (or the <a title="Running MySQL Cluster over multiple Windows servers" href="/mysql-cluster/running-mysql-cluster-over-multiple-servers/" target="_blank">Windows version</a>).</p>
+<div id="attachment_1636" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2011/03/System-Configuration.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1636" class="size-medium wp-image-1636" title="System Configuration" src="/wp-content/uploads/2011/03/System-Configuration-300x158.jpg" alt="" width="300" height="158"></a><p id="caption-attachment-1636" class="wp-caption-text">System Configuration</p>
+</div>
+<p>For my test, I used 2 PCs, each running Fedora 14 with Quad-Core CPU, 8 GBytes of RAM and Gigabit Ethernet connectivity. Each PC was running 2 data nodes (ndbd rather than ndbmtd) and one of the PCs was also running the management node and the MySQL Server running the queries (note that this configuration is not suitable for a HA deployment &#8211; for that run the management node on a third machine and run a MySQL Server on 192.168.1.11).</p>
+<p>I&#8217;d hoped to go a step further and have the MySQL Server run on a third machine but hardware problems put paid to that &#8211; the reason that this would have been interesting is that it would have meant more of the messaging would be over the network and so would give a more realistic performance comparison (the speedup factor should have been higher). Another couple of steps that could further improve the speedup:</p>
+<ol>
+<li>Use multi-threaded data nodes (as more of the work is being done in the data nodes, this should help)</li>
+<li>Use machines with more cores</li>
+<li>Tune the configuration parameters (I&#8217;m keeping it as simple as possible here)</li>
+</ol>
+<p>For reference, here is the configuration file used (config.ini):</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #333399;"> [ndb_mgmd]</span>
+<span style="color: #333399; font-size: 11px;"> hostname=192.168.1.7</span>
+<span style="color: #333399; font-size: 11px;"> datadir=/home/billy/mysql/spj/my_cluster/ndb_data</span>
+<span style="color: #333399; font-size: 11px;"> NodeId=1</span>
+
+<span style="color: #333399;"> [ndbd default]</span>
+<span style="color: #333399;"> noofreplicas=2</span>
+<span style="color: #333399;"> DiskPageBufferMemory=4M</span>
+
+<span style="color: #333399;"> [ndbd]</span>
+<span style="color: #333399;"> hostname=192.168.1.7</span>
+<span style="color: #333399;"> datadir=/home/billy/mysql/spj/my_cluster/ndb_data</span>
+<span style="color: #333399;"> NodeId=3</span>
+
+<span style="color: #333399;"> [ndbd]</span>
+<span style="color: #333399;"> hostname=192.168.1.11</span>
+<span style="color: #333399;"> datadir=/home/billy/mysql/spj/my_cluster/ndb_data</span>
+<span style="color: #333399;"> NodeId=4</span>
+
+<span style="color: #333399;"> [ndbd]</span>
+<span style="color: #333399;"> hostname=192.168.1.7</span>
+<span style="color: #333399;"> datadir=/home/billy/mysql/spj/my_cluster/ndb_data2</span>
+<span style="color: #333399;"> NodeId=5</span>
+
+<span style="color: #333399;"> [ndbd]</span>
+<span style="color: #333399;"> hostname=192.168.1.11</span>
+<span style="color: #333399;"> datadir=/home/billy/mysql/spj/my_cluster/ndb_data2</span>
+<span style="color: #333399;"> NodeId=6</span>
+
+<span style="color: #333399;"> [mysqld]</span>
+<span style="color: #333399;"> NodeId=50</span></pre>
+<p>And for the MySQL Server (my.cnf):</p>
+<p style="padding-left: 30px; font-size: 11px;"><span style="color: #333399;">[mysqld]<br>
+ndbcluster<br>
+datadir=/home/billy/mysql/spj/my_cluster/mysqld_data</span></p>
+<p>As a reminder &#8211; here is how you start up such a Cluster:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #333399;">[billy@ws2 my_cluster]$ ndb_mgmd -f conf/config.ini --initial </span>
+<span style="color: #333399;">  --configdir=/home/billy/mysql/spj/my_cluster/conf/</span>
+<span style="color: #333399;">[billy@ws2 my_cluster]$ ndbd -c 192.168.1.7:1186</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #800000;">[billy@ws1 my_cluster]$ ndbd -c 192.168.1.7:1186</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #333399;">[billy@ws2 my_cluster]$ ndbd -c 192.168.1.7:1186</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #800000;">[billy@ws1 my_cluster]$ ndbd -c 192.168.1.7:1186</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;">
+<div>
+<span style="color: #333399;">[billy@ws2 my_cluster]$ ndb_mgm -e show # Wait until data nodes are running
+</span><span style="color: #333399;">[billy@ws2 my_cluster]$ mysqld --defaults-file=conf/my.cnf&
+[billy@ws2 </span><span style="color: #333399;">my_cluster]$ mysql -h 127.0.0.1 -P 3306 -u root</span>
+</div></pre>
+<p>Three tables that are to be used for the queries and these are created as follows:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> CREATE DATABASE clusterdb; USE clusterdb;</span>
+<span style="color: #008000;">mysql> CREATE TABLE residents (id INT NOT NULL PRIMARY KEY, name VARCHAR(20),
+  postcode VARCHAR(20)) ENGINE=ndb;</span>
+<span style="color: #008000;">mysql> CREATE TABLE postcodes (postcode VARCHAR(20) NOT NULL PRIMARY KEY, 
+  town VARCHAR(20)) ENGINE=ndb;</span>
+<span style="color: #008000;">mysql> CREATE TABLE towns (town VARCHAR(20) NOT NULL PRIMARY KEY,
+  county VARCHAR(20)) ENGINE=ndb;</span></pre>
+<p>I then added 100K rows to each of these tables; if you want to recreate this then you can <a href="/adaptive_query_example_data.zip" target="_blank">download the data files here</a>.</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> LOAD DATA LOCAL INFILE  "/home/billy/Dropbox/LINUX/projects/SPJ/residents.csv"</span>
+<span style="color: #008000;">   REPLACE INTO TABLE residents FIELDS TERMINATED BY ',' ENCLOSED BY '"';</span>
+<span style="color: #008000;">mysql> LOAD DATA LOCAL INFILE  "/home/billy/Dropbox/LINUX/projects/SPJ/postcodes.csv"</span>
+<span style="color: #008000;">  REPLACE INTO TABLE postcodes FIELDS TERMINATED BY ',' ENCLOSED BY '"';</span>
+<span style="color: #008000;">mysql> LOAD DATA LOCAL INFILE  "/home/billy/Dropbox/LINUX/projects/SPJ/towns.csv"</span>
+<span style="color: #008000;">  REPLACE INTO TABLE towns FIELDS TERMINATED BY ',' ENCLOSED BY '"'; </span></pre>
+<p>Now everything is set up to actually perform our tests! First of all two queries are run with the adaptive query localization turned <strong>off</strong> i.e. this is the &#8220;before&#8221; picture:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> set ndb_join_pushdown=off;</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> SELECT COUNT(*)  FROM residents,postcodes WHERE
+  residents.postcode=postcodes.postcode AND postcodes.town="MAIDENHEAD";</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> | COUNT(*) |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> |    20000 |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> 1 row in set (<span style="color: #800000;"><strong>27.65 sec</strong></span>)</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> SELECT COUNT(*)  FROM residents,postcodes,towns WHERE
+  residents.postcode=postcodes.postcode AND
+  postcodes.town=towns.town AND towns.county="Berkshire";</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> | COUNT(*) |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> |    40001 |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> 1 row in set (<span style="color: #800000;"><strong>48.68 sec</strong></span>)</span></pre>
+<p>and then the test is repeated with adaptive query localization turned on:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> set ndb_join_pushdown=on;</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> SELECT COUNT(*)  FROM residents,postcodes WHERE
+  residents.postcode=postcodes.postcode</span><span style="color: #008000;"> AND postcodes.town="MAIDENHEAD";</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> | COUNT(*) |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> |    20000 |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> 1 row in set (<span style="color: #800000;"><strong>1.07 sec</strong></span>)</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> SELECT COUNT(*)  FROM residents,postcodes,towns WHERE
+  residents.postcode=postcodes.postcode </span><span style="color: #008000;">AND postcodes.town=towns.town
+  AND towns.county="Berkshire";</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> | COUNT(*) |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> |    40001 |</span>
+<span style="color: #008000;"> +----------+</span>
+<span style="color: #008000;"> 1 row in set (<span style="color: #800000;"><strong>2.02 sec</strong></span>)</span></pre>
+<p>For those 2 queries it represents a 25.8x and 24.1x speedup.</p>
+<p>It&#8217;s important to note that not every join can currently be pushed down to the data nodes; here are the current rules (we hope to relax them overtime) for a query to be suitable:</p>
+<ul>
+<li>JOINed columns must have the same data type</li>
+<li>Queries should not reference BLOBs</li>
+<li>Explicit locking is not supported</li>
+<li>Only supports fully or partially qualified primary keys or plain indexes as access method for child tables (first part of JOIN can be a full table scan)</li>
+</ul>
+<p>You can check whether your query is fitting these rules using EXPLAIN, for example:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> set ndb_join_pushdown=on;</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #008000;">mysql> EXPLAIN SELECT COUNT(*)  FROM residents,postcodes WHERE residents.postcode=postcodes.postcode AND postcodes.town="MAIDENHEAD";</span>
+<span style="color: #008000;">+----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+--------------------------------------------------------------------------+</span>
+<span style="color: #008000;">| id | select_type | table     | type   | possible_keys | key     | key_len | ref                          | rows   | Extra                                                                    |</span><span style="color: #008000;">
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+--------------------------------------------------------------------------+</span><span style="color: #008000;">
+|  1 | SIMPLE      | residents | ALL    | NULL          | NULL    | NULL    | NULL                         | 100000 | Parent of 2 pushed join@1                                                |</span><span style="color: #008000;">
+|  1 | SIMPLE      | postcodes | eq_ref | PRIMARY       | PRIMARY | 22      | clusterdb.residents.postcode |      1 | Child of 'residents' in pushed join@1; Using where with pushed condition |</span><span style="color: #008000;">
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+--------------------------------------------------------------------------+</span></pre>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #008000;">mysql> EXPLAIN EXTENDED SELECT COUNT(*)  FROM residents,postcodes,towns WHERE residents.postcode=postcodes.postcode AND postcodes.town=towns.town AND towns.county="Berkshire";</span><span style="color: #008000;">
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+</span><span style="color: #008000;">
+| id | select_type | table     | type   | possible_keys | key     | key_len | ref                          | rows   | filtered | Extra                                                                                                                  |</span><span style="color: #008000;">
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+</span><span style="color: #008000;">
+|  1 | SIMPLE      | residents | ALL    | NULL          | NULL    | NULL    | NULL                         | 100000 |   100.00 | Parent of 3 pushed join@1                                                                                              |</span><span style="color: #008000;">
+|  1 | SIMPLE      | postcodes | eq_ref | PRIMARY       | PRIMARY | 22      | clusterdb.residents.postcode |      1 |   100.00 | Child of 'residents' in pushed join@1                                                                                  |</span><span style="color: #008000;">
+|  1 | SIMPLE      | towns     | eq_ref | PRIMARY       | PRIMARY | 22      | clusterdb.postcodes.town     |      1 |   100.00 | Child of 'postcodes' in pushed join@1; Using where with pushed condition: (`clusterdb`.`towns`.`county` = 'Berkshire') |</span><span style="color: #008000;">
++----+-------------+-----------+--------+---------------+---------+---------+------------------------------+--------+----------+------------------------------------------------------------------------------------------------------------------------+</span></pre>
+<p>Note that if you want to check for more details why your join isn&#8217;t currently being pushed down to the data node then you can use &#8220;<span style="color: #008000;">EXPLAIN EXTENDED</span>&#8221; and then &#8220;<span style="color: #008000;">SHOW WARNINGS</span>&#8221; to get more hints. Hopefully that will allow you to tweak your queries to get the best improvements.</p>
+<p>PLEASE let us know your experiences and give us examples of queries that worked well and (just as importantly) those that didn&#8217;t so that we can improve the feature &#8211; just leave a comment on this Blog with your table schemas, your query and your before/after timings.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization" data-via="wpbeginner" data-text="Dramatically Increased MySQL Cluster JOIN performance with Adaptive Query Localization" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql%2Fdramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql" rel="category tag">MySQL</a>, <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/adaptive-query-localization" rel="tag">Adaptive Query Localization</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster-7-2" rel="tag">MySQL Cluster 7.2</a>
+</div>
+
+			</div>      
+							<div class="more_posts">
+					<span class="post_links"> &nbsp; <a href="/tag/mysql-cluster-7-2/page/3">Recent Entries &raquo;</a></span>
+				</div>
+						
+
+					
+	</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="/mongodb/realm-swift-type-projections">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="/mongodb/goodbye-nspredicate-hello-realm-swift-query-api">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments">
+<h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments">
+<li class="recentcomments">
+<span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-787242">MySQL Cluster running on Raspberry Pi</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">andrew</span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Sai Krishnan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-661143">Get MySQL Replication up and running in 5 minutes</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Nayan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-660628">Get MySQL Replication up and running in 5 minutes</a>
+</li>
+</ul>
+</li>
+<li id="categories-2" class="widget widget_categories">
+<h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2">
+<a href="/category/me">Me</a>
+</li>
+	<li class="cat-item cat-item-146">
+<a href="/category/mongodb">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3">
+<a href="/category/mysql">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4">
+<a href="/category/mysql-cluster">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131">
+<a href="/category/mysql-fabric">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5">
+<a href="/category/mysql-replication">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214">
+<a href="/category/mongodb/realm">Realm</a>
+</li>
+	<li class="cat-item cat-item-1">
+<a href="/category/uncategorized">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud">
+<h2 class="widgettitle">Tags</h2>
+<div class="tagcloud">
+<a href="/tag/7-4" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="/tag/apache-kafka" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="/tag/cluster" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="/tag/ha" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="/tag/high-availability" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="/tag/ios" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="/tag/java" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="/tag/javascript" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="/tag/mcm" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="/tag/mean" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="/tag/memcached" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="/tag/mobile" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="/tag/mongodb" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="/tag/mongodb-3-2" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="/tag/mongodb-atlas" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="/tag/mongodb-mobile" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="/tag/mongodb-stitch" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="/tag/mysql" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="/tag/mysql-5-6" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="/tag/mysql-cluster" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="/tag/mysql-cluster-70" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="/tag/mysql-cluster-7-1" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="/tag/mysql-cluster-7-2" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="/tag/mysql-cluster-7-3" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="/tag/mysql-cluster-7-4" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="/tag/mysql-cluster-cge" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="/tag/mysql-cluster-manager" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="/tag/mysql-enterprise-monitor" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="/tag/mysql-fabric-2" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="/tag/mysql-replication" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="/tag/mysql-utilities" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="/tag/ndb-api" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="/tag/node-js" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="/tag/nosql" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="/tag/performance" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="/tag/realm" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="/tag/replication" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="/tag/secondary" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="/tag/serverless" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="/tag/sharding" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="/tag/swift" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="/tag/swiftui" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="/tag/webcast" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="/tag/webinar" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="/tag/windows" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a>
+</div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive">
+<h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="/2022/03">March 2022</a></li>
+	<li><a href="/2022/02">February 2022</a></li>
+	<li><a href="/2022/01">January 2022</a></li>
+	<li><a href="/2021/12">December 2021</a></li>
+	<li><a href="/2021/11">November 2021</a></li>
+	<li><a href="/2021/09">September 2021</a></li>
+	<li><a href="/2021/08">August 2021</a></li>
+	<li><a href="/2021/07">July 2021</a></li>
+	<li><a href="/2021/06">June 2021</a></li>
+	<li><a href="/2021/05">May 2021</a></li>
+	<li><a href="/2021/04">April 2021</a></li>
+	<li><a href="/2021/02">February 2021</a></li>
+	<li><a href="/2021/01">January 2021</a></li>
+	<li><a href="/2020/12">December 2020</a></li>
+	<li><a href="/2019/03">March 2019</a></li>
+	<li><a href="/2019/01">January 2019</a></li>
+	<li><a href="/2018/12">December 2018</a></li>
+	<li><a href="/2018/11">November 2018</a></li>
+	<li><a href="/2018/10">October 2018</a></li>
+	<li><a href="/2018/09">September 2018</a></li>
+	<li><a href="/2017/09">September 2017</a></li>
+	<li><a href="/2017/03">March 2017</a></li>
+	<li><a href="/2017/02">February 2017</a></li>
+	<li><a href="/2017/01">January 2017</a></li>
+	<li><a href="/2016/12">December 2016</a></li>
+	<li><a href="/2016/11">November 2016</a></li>
+	<li><a href="/2016/09">September 2016</a></li>
+	<li><a href="/2016/01">January 2016</a></li>
+	<li><a href="/2015/11">November 2015</a></li>
+	<li><a href="/2015/10">October 2015</a></li>
+	<li><a href="/2015/09">September 2015</a></li>
+	<li><a href="/2015/06">June 2015</a></li>
+	<li><a href="/2015/04">April 2015</a></li>
+	<li><a href="/2015/03">March 2015</a></li>
+	<li><a href="/2015/02">February 2015</a></li>
+	<li><a href="/2015/01">January 2015</a></li>
+	<li><a href="/2014/12">December 2014</a></li>
+	<li><a href="/2014/11">November 2014</a></li>
+	<li><a href="/2014/10">October 2014</a></li>
+	<li><a href="/2014/09">September 2014</a></li>
+	<li><a href="/2014/08">August 2014</a></li>
+	<li><a href="/2014/07">July 2014</a></li>
+	<li><a href="/2014/06">June 2014</a></li>
+	<li><a href="/2014/05">May 2014</a></li>
+	<li><a href="/2014/04">April 2014</a></li>
+	<li><a href="/2014/03">March 2014</a></li>
+	<li><a href="/2014/02">February 2014</a></li>
+	<li><a href="/2014/01">January 2014</a></li>
+	<li><a href="/2013/12">December 2013</a></li>
+	<li><a href="/2013/11">November 2013</a></li>
+	<li><a href="/2013/09">September 2013</a></li>
+	<li><a href="/2013/08">August 2013</a></li>
+	<li><a href="/2013/07">July 2013</a></li>
+	<li><a href="/2013/06">June 2013</a></li>
+	<li><a href="/2013/05">May 2013</a></li>
+	<li><a href="/2013/03">March 2013</a></li>
+	<li><a href="/2013/02">February 2013</a></li>
+	<li><a href="/2013/01">January 2013</a></li>
+	<li><a href="/2012/12">December 2012</a></li>
+	<li><a href="/2012/11">November 2012</a></li>
+	<li><a href="/2012/09">September 2012</a></li>
+	<li><a href="/2012/07">July 2012</a></li>
+	<li><a href="/2012/06">June 2012</a></li>
+	<li><a href="/2012/05">May 2012</a></li>
+	<li><a href="/2012/04">April 2012</a></li>
+	<li><a href="/2012/03">March 2012</a></li>
+	<li><a href="/2012/02">February 2012</a></li>
+	<li><a href="/2012/01">January 2012</a></li>
+	<li><a href="/2011/12">December 2011</a></li>
+	<li><a href="/2011/11">November 2011</a></li>
+	<li><a href="/2011/10">October 2011</a></li>
+	<li><a href="/2011/09">September 2011</a></li>
+	<li><a href="/2011/07">July 2011</a></li>
+	<li><a href="/2011/06">June 2011</a></li>
+	<li><a href="/2011/05">May 2011</a></li>
+	<li><a href="/2011/04">April 2011</a></li>
+	<li><a href="/2011/03">March 2011</a></li>
+	<li><a href="/2011/02">February 2011</a></li>
+	<li><a href="/2011/01">January 2011</a></li>
+	<li><a href="/2010/12">December 2010</a></li>
+	<li><a href="/2010/11">November 2010</a></li>
+	<li><a href="/2010/10">October 2010</a></li>
+	<li><a href="/2010/09">September 2010</a></li>
+	<li><a href="/2010/08">August 2010</a></li>
+	<li><a href="/2010/07">July 2010</a></li>
+	<li><a href="/2010/06">June 2010</a></li>
+	<li><a href="/2010/05">May 2010</a></li>
+	<li><a href="/2010/04">April 2010</a></li>
+	<li><a href="/2010/03">March 2010</a></li>
+	<li><a href="/2010/02">February 2010</a></li>
+	<li><a href="/2010/01">January 2010</a></li>
+	<li><a href="/2009/12">December 2009</a></li>
+	<li><a href="/2009/11">November 2009</a></li>
+	<li><a href="/2009/10">October 2009</a></li>
+	<li><a href="/2009/09">September 2009</a></li>
+	<li><a href="/2009/08">August 2009</a></li>
+	<li><a href="/2009/07">July 2009</a></li>
+	<li><a href="/2009/06">June 2009</a></li>
+	<li><a href="/2009/05">May 2009</a></li>
+	<li><a href="/2009/04">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 -->
+</body>
+</html>

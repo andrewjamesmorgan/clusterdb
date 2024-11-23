@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: MySQL with Windows Server 2008 R2 Failover Clustering	</title>
+	<atom:link href="/mysql/mysql-with-windows-server-2008-r2-failover-clustering/feed" rel="self" type="application/rss+xml" />
+	<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Wed, 09 Mar 2016 16:23:25 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: jason		</title>
+		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-619342</link>
+
+		<dc:creator><![CDATA[jason]]></dc:creator>
+		<pubDate>Wed, 09 Mar 2016 16:23:25 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1939#comment-619342</guid>
+
+					<description><![CDATA[Does anyone know if a similiar guide is available for windows 2012?]]></description>
+			<content:encoded><![CDATA[<p>Does anyone know if a similiar guide is available for windows 2012?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: melissa		</title>
+		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-374372</link>
+
+		<dc:creator><![CDATA[melissa]]></dc:creator>
+		<pubDate>Wed, 03 Dec 2014 16:14:27 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1939#comment-374372</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-80426&quot;&gt;andrew&lt;/a&gt;.
+
+hi I have the same issue as Sunil, and is true that the my.ini file is in ProgramData which is is initially hidden. And the my-default.ini is in the Program Files/Mysql.. and these two files are different, so I cannot change the datadir in the my.ini. If you anything I can do because my failover cluster is up and everything running and my virtual disks are healthy, but when I create one database in one machine it does not replicate in the other one. It is really strange because my my-default.ini are pointing to my virtualdisk.
+
+Thank you for reading, hope if you can help me.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-80426">andrew</a>.</p>
+<p>hi I have the same issue as Sunil, and is true that the my.ini file is in ProgramData which is is initially hidden. And the my-default.ini is in the Program Files/Mysql.. and these two files are different, so I cannot change the datadir in the my.ini. If you anything I can do because my failover cluster is up and everything running and my virtual disks are healthy, but when I create one database in one machine it does not replicate in the other one. It is really strange because my my-default.ini are pointing to my virtualdisk.</p>
+<p>Thank you for reading, hope if you can help me.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-80426</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 26 Feb 2014 19:07:59 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1939#comment-80426</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-80360&quot;&gt;Sunil Newa&lt;/a&gt;.
+
+Have you tried either copying the .ini file or specifying its location using the --defaults-file option?]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-80360">Sunil Newa</a>.</p>
+<p>Have you tried either copying the .ini file or specifying its location using the &#8211;defaults-file option?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Sunil Newa		</title>
+		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-80360</link>
+
+		<dc:creator><![CDATA[Sunil Newa]]></dc:creator>
+		<pubDate>Wed, 26 Feb 2014 17:01:06 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1939#comment-80360</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-547&quot;&gt;andrew&lt;/a&gt;.
+
+Hi Andrew,
+I am unable to configure MySQL 5.6 on windows cluster. I found my.ini file is inside the progaramdata folder instead of program files folder (5.5). Please help me if you know how to configure Mysql 5.6 on windows failover clustering.
+Thanks]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-547">andrew</a>.</p>
+<p>Hi Andrew,<br />
+I am unable to configure MySQL 5.6 on windows cluster. I found my.ini file is inside the progaramdata folder instead of program files folder (5.5). Please help me if you know how to configure Mysql 5.6 on windows failover clustering.<br />
+Thanks</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-547</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 14 Aug 2013 07:37:57 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1939#comment-547</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-546&quot;&gt;Ryan&lt;/a&gt;.
+
+The advantage of using binaries on the shared storage is that you can be confident that the exact same version of the MySQL software will be used, if you were using local copies then you&#039;d need to ensure that each had the same version of MySQL. The referenced white paper does describe how to update the service. Note that the paper is based on MySQL 5.5 but as far as I&#039;m aware it should translate easily enough to MySQL 5.6.
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-546">Ryan</a>.</p>
+<p>The advantage of using binaries on the shared storage is that you can be confident that the exact same version of the MySQL software will be used, if you were using local copies then you&#8217;d need to ensure that each had the same version of MySQL. The referenced white paper does describe how to update the service. Note that the paper is based on MySQL 5.5 but as far as I&#8217;m aware it should translate easily enough to MySQL 5.6.</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Ryan		</title>
+		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-546</link>
+
+		<dc:creator><![CDATA[Ryan]]></dc:creator>
+		<pubDate>Wed, 14 Aug 2013 00:21:26 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1939#comment-546</guid>
+
+					<description><![CDATA[What is the point of copying and updating the basedir to &quot;basedir=”F:/MySQL Server 5.5”&quot; ?  
+
+The service has the hardcoded path below.  If I set the basedir to my iscsi path of F:/MySQL Server 5.5, the service won&#039;t start.  Since mysql is installed on both servers, what is the point of putting the binaries on shared storage where they could just be accessed locally?  Is it needed for the failover cluster?  If so, does the service need to be modified?
+
+---
+
+&quot;C:/MySQL/MySQL Server 5.6/binmysqld&quot; --defaults-file=&quot;C:MySQLmy.ini&quot; MySQL]]></description>
+			<content:encoded><![CDATA[<p>What is the point of copying and updating the basedir to &#8220;basedir=”F:/MySQL Server 5.5”&#8221; ?  </p>
+<p>The service has the hardcoded path below.  If I set the basedir to my iscsi path of F:/MySQL Server 5.5, the service won&#8217;t start.  Since mysql is installed on both servers, what is the point of putting the binaries on shared storage where they could just be accessed locally?  Is it needed for the failover cluster?  If so, does the service need to be modified?</p>
+<p>&#8212;</p>
+<p>&#8220;C:/MySQL/MySQL Server 5.6/binmysqld&#8221; &#8211;defaults-file=&#8221;C:MySQLmy.ini&#8221; MySQL</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-545</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 25 Jun 2013 10:30:42 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1939#comment-545</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-544&quot;&gt;kalyan&lt;/a&gt;.
+
+It looks like you&#039;re trying to connect from a user/host combination that isn&#039;t allowed - try this (substituting your username and host IP)...
+
+mysql&gt; grant all on *.* to &#039;username&#039;@&#039;192.168.1.23&#039;;]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-544">kalyan</a>.</p>
+<p>It looks like you&#8217;re trying to connect from a user/host combination that isn&#8217;t allowed &#8211; try this (substituting your username and host IP)&#8230;</p>
+<p>mysql> grant all on *.* to &#8216;username&#8217;@&#8217;192.168.1.23&#8217;;</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: kalyan		</title>
+		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-544</link>
+
+		<dc:creator><![CDATA[kalyan]]></dc:creator>
+		<pubDate>Tue, 25 Jun 2013 09:14:40 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1939#comment-544</guid>
+
+					<description><![CDATA[Error 1130 has occurred while connecting to mysql using virtual ip
+
+Could you please let me know the solution]]></description>
+			<content:encoded><![CDATA[<p>Error 1130 has occurred while connecting to mysql using virtual ip</p>
+<p>Could you please let me know the solution</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Thu Ya		</title>
+		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-543</link>
+
+		<dc:creator><![CDATA[Thu Ya]]></dc:creator>
+		<pubDate>Mon, 13 Feb 2012 11:35:16 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1939#comment-543</guid>
+
+					<description><![CDATA[Hi,
+
+I configured and cluster drive is working fine.But mysql service cannot start automatically.
+Any idea, please?
+
+Thanks
+Thu Ya]]></description>
+			<content:encoded><![CDATA[<p>Hi,</p>
+<p>I configured and cluster drive is working fine.But mysql service cannot start automatically.<br />
+Any idea, please?</p>
+<p>Thanks<br />
+Thu Ya</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Thu Ya		</title>
+		<link>/mysql/mysql-with-windows-server-2008-r2-failover-clustering#comment-542</link>
+
+		<dc:creator><![CDATA[Thu Ya]]></dc:creator>
+		<pubDate>Sat, 11 Feb 2012 16:43:52 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1939#comment-542</guid>
+
+					<description><![CDATA[dear Admin,
+very helpful and very clear document.
+But I wold like to request one more thing.
+we want to implement a web portal using Apache, Tomcat and MySQL.
+now I know about MySQL HA configuration, so can you help me for HA configuration for web portal. I meant can I configure the same ways for apache and tomcat like MySQL?
+How can I configure for all services, if one service fail, all service need to move to another node.
+really appreciate for any advice.
+
+Thanks in advance.
+Thu Ya]]></description>
+			<content:encoded><![CDATA[<p>dear Admin,<br />
+very helpful and very clear document.<br />
+But I wold like to request one more thing.<br />
+we want to implement a web portal using Apache, Tomcat and MySQL.<br />
+now I know about MySQL HA configuration, so can you help me for HA configuration for web portal. I meant can I configure the same ways for apache and tomcat like MySQL?<br />
+How can I configure for all services, if one service fail, all service need to move to another node.<br />
+really appreciate for any advice.</p>
+<p>Thanks in advance.<br />
+Thu Ya</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

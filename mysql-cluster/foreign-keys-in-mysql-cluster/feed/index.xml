@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: Foreign Keys in MySQL Cluster	</title>
+	<atom:link href="/mysql-cluster/foreign-keys-in-mysql-cluster/feed" rel="self" type="application/rss+xml" />
+	<link>/mysql-cluster/foreign-keys-in-mysql-cluster</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Thu, 11 Jun 2015 12:25:05 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/foreign-keys-in-mysql-cluster#comment-512428</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 11 Jun 2015 12:25:05 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2298#comment-512428</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/foreign-keys-in-mysql-cluster#comment-499541&quot;&gt;gloCalHelp&lt;/a&gt;.
+
+Sorry for the delay – I’m not able to check at this point but it’s worth raising the question on the &lt;a href=&quot;http://forums.mysql.com/list.php?25&quot; rel=&quot;nofollow&quot;&gt;MySQL Clsuter forum&lt;/a&gt;.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/foreign-keys-in-mysql-cluster#comment-499541">gloCalHelp</a>.</p>
+<p>Sorry for the delay – I’m not able to check at this point but it’s worth raising the question on the <a href="http://forums.mysql.com/list.php?25" rel="nofollow">MySQL Clsuter forum</a>.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/foreign-keys-in-mysql-cluster#comment-512420</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 11 Jun 2015 12:21:02 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2298#comment-512420</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/foreign-keys-in-mysql-cluster#comment-510623&quot;&gt;gloCalHelp&lt;/a&gt;.
+
+Sorry for the delay - I&#039;m not able to check at this point but if you can&#039;t find the answer in the release notes then it&#039;s worth raising the question on the &lt;a href=&quot;http://forums.mysql.com/list.php?25&quot; rel=&quot;nofollow&quot;&gt;MySQL Cluster forum&lt;/a&gt;.
+
+Best Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/foreign-keys-in-mysql-cluster#comment-510623">gloCalHelp</a>.</p>
+<p>Sorry for the delay &#8211; I&#8217;m not able to check at this point but if you can&#8217;t find the answer in the release notes then it&#8217;s worth raising the question on the <a href="http://forums.mysql.com/list.php?25" rel="nofollow">MySQL Cluster forum</a>.</p>
+<p>Best Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: gloCalHelp		</title>
+		<link>/mysql-cluster/foreign-keys-in-mysql-cluster#comment-510623</link>
+
+		<dc:creator><![CDATA[gloCalHelp]]></dc:creator>
+		<pubDate>Tue, 09 Jun 2015 08:33:15 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2298#comment-510623</guid>
+
+					<description><![CDATA[hi, MySQL cluster pioneer,
+
+  Has the &quot;Error Code: 1215. Cannot add foreign key constraint&quot; been solved in MySQLCluster 7.4.6?]]></description>
+			<content:encoded><![CDATA[<p>hi, MySQL cluster pioneer,</p>
+<p>  Has the &#8220;Error Code: 1215. Cannot add foreign key constraint&#8221; been solved in MySQLCluster 7.4.6?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: gloCalHelp		</title>
+		<link>/mysql-cluster/foreign-keys-in-mysql-cluster#comment-499541</link>
+
+		<dc:creator><![CDATA[gloCalHelp]]></dc:creator>
+		<pubDate>Mon, 25 May 2015 09:42:36 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2298#comment-499541</guid>
+
+					<description><![CDATA[Dear Andrew,
+
+    In order to not let my question be more outstanding among reply, could you please forgive me to submit it as a new topic here again?
+my submission reply is :
+
+Hi, Dear Andrew,
+
+    Has cluster ndb 7.4.6 totally support &quot;referencing just part of the multi-part key &quot; as a foreign key?
+  
+    &quot;...Note that by referencing just part of the multi-part key it’s actually non-unique even if the full key was unique ...&quot; does this means that in cluster NDB engine, the reference foreign key should be only one UNIQUE key, but cann&#039;t be a part of multi-coloumn key?
+
+    But it is strange that some table constraint with a part of multi-coloumn key can create in NDBCluster, but  some tables doesn&#039;t. 
+
+    Such as, these tables can create:
+CREATE TABLE `pz_tb_wdcash` (
+  `ID` varchar(255) NOT NULL COMMENT &#039;ID&#039;,
+  `pzAccount` varchar(32) DEFAULT NULL COMMENT &#039;平台账户ID&#039;,
+  ...
+  `opratAdmin` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FKF70CA7C9A279E9A` (`pzAccount`) USING BTREE,
+  KEY `FKF70CA7C60F7D21E` (`pzBankCard`) USING BTREE,
+  KEY `FKF70CA7C6D563EAE` (`pzBankCard`) USING BTREE,
+  CONSTRAINT `pz_tb_wdcash_ibfk_1` FOREIGN KEY (`pzBankCard`) REFERENCES `p2p_td_bank_card` (`ID`),
+  CONSTRAINT `pz_tb_wdcash_ibfk_2` FOREIGN KEY (`pzAccount`) REFERENCES `p2p_td_user` (`ID`)
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;
+pz_tb_wdcash&#039;s 1 foreign key is the below table&#039;s one of keys &quot;ID&quot;.
+
+CREATE TABLE `pz_tb_bank_card` (
+  `ID` varchar(255) NOT NULL,
+  `C_USER` varchar(32) NOT NULL COMMENT &#039;平台账户ID&#039;,
+  ...
+  `C_UPDATE_TIME` datetime DEFAULT NULL COMMENT &#039;更新时间&#039;,
+  PRIMARY KEY (`ID`),
+  KEY `FKF6C0EC392F758BDE` (`C_USER`) USING BTREE,
+  KEY `FKF6C0EC392F63C0C0` (`C_BANK`) USING BTREE,
+  CONSTRAINT `pz_tb_bank_card_ibfk_1` FOREIGN KEY (`C_BANK`) REFERENCES `p2p_td_bank` (`ID`),
+  CONSTRAINT `pz_tb_bank_card_ibfk_2` FOREIGN KEY (`C_USER`) REFERENCES `p2p_td_user` (`ID`)
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;
+
+but why  the below  table cann&#039;t create?
+
+DROP TABLE IF EXISTS `pz_tb_pz_account`;
+
+/*Error 1215；can not add foreign key constraint*/
+CREATE TABLE `pz_tb_pz_account` (
+  `id` varchar(40) NOT NULL COMMENT &#039;ID&#039;,
+  `pzid` varchar(40) DEFAULT NULL COMMENT &#039;配资id&#039;,
+  ...
+  `status` varchar(5) DEFAULT &#039;0&#039; COMMENT &#039;清算审批状态 0 未审批 1 审批完成&#039;,
+  PRIMARY KEY (`id`),
+  KEY `FK690FB1F479E54801` (`pzid`) USING BTREE,
+  CONSTRAINT `pz_tb_pz_account_ibfk_1` FOREIGN KEY (`pzid`) REFERENCES `pz_tb_pz` (`id`)
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;
+
+its reference table has been created  as below:
+CREATE TABLE `pz_tb_pz` (
+  `id` varchar(32) NOT NULL COMMENT &#039;ID&#039;,
+  ...
+  `endtype` varchar(5) DEFAULT NULL COMMENT &#039;终止类型 1方案到期 2用户手动终止 3到达平仓线&#039;,
+  PRIMARY KEY (`id`),
+  KEY `FKB62A63069A279E9A` (`pzAccount`) USING BTREE,
+  KEY `FKB62A630649DB09AA` (`pzAccount`) USING BTREE
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;
+
+
+why? and I have add MaxNoOfTriggers=5188 in config.ini, is there any good solution?
+
+Thank you.]]></description>
+			<content:encoded><![CDATA[<p>Dear Andrew,</p>
+<p>    In order to not let my question be more outstanding among reply, could you please forgive me to submit it as a new topic here again?<br />
+my submission reply is :</p>
+<p>Hi, Dear Andrew,</p>
+<p>    Has cluster ndb 7.4.6 totally support &#8220;referencing just part of the multi-part key &#8221; as a foreign key?</p>
+<p>    &#8220;&#8230;Note that by referencing just part of the multi-part key it’s actually non-unique even if the full key was unique &#8230;&#8221; does this means that in cluster NDB engine, the reference foreign key should be only one UNIQUE key, but cann&#8217;t be a part of multi-coloumn key?</p>
+<p>    But it is strange that some table constraint with a part of multi-coloumn key can create in NDBCluster, but  some tables doesn&#8217;t. </p>
+<p>    Such as, these tables can create:<br />
+CREATE TABLE `pz_tb_wdcash` (<br />
+  `ID` varchar(255) NOT NULL COMMENT &#8216;ID&#8217;,<br />
+  `pzAccount` varchar(32) DEFAULT NULL COMMENT &#8216;平台账户ID&#8217;,<br />
+  &#8230;<br />
+  `opratAdmin` varchar(100) DEFAULT NULL,<br />
+  PRIMARY KEY (`ID`),<br />
+  KEY `FKF70CA7C9A279E9A` (`pzAccount`) USING BTREE,<br />
+  KEY `FKF70CA7C60F7D21E` (`pzBankCard`) USING BTREE,<br />
+  KEY `FKF70CA7C6D563EAE` (`pzBankCard`) USING BTREE,<br />
+  CONSTRAINT `pz_tb_wdcash_ibfk_1` FOREIGN KEY (`pzBankCard`) REFERENCES `p2p_td_bank_card` (`ID`),<br />
+  CONSTRAINT `pz_tb_wdcash_ibfk_2` FOREIGN KEY (`pzAccount`) REFERENCES `p2p_td_user` (`ID`)<br />
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;<br />
+pz_tb_wdcash&#8217;s 1 foreign key is the below table&#8217;s one of keys &#8220;ID&#8221;.</p>
+<p>CREATE TABLE `pz_tb_bank_card` (<br />
+  `ID` varchar(255) NOT NULL,<br />
+  `C_USER` varchar(32) NOT NULL COMMENT &#8216;平台账户ID&#8217;,<br />
+  &#8230;<br />
+  `C_UPDATE_TIME` datetime DEFAULT NULL COMMENT &#8216;更新时间&#8217;,<br />
+  PRIMARY KEY (`ID`),<br />
+  KEY `FKF6C0EC392F758BDE` (`C_USER`) USING BTREE,<br />
+  KEY `FKF6C0EC392F63C0C0` (`C_BANK`) USING BTREE,<br />
+  CONSTRAINT `pz_tb_bank_card_ibfk_1` FOREIGN KEY (`C_BANK`) REFERENCES `p2p_td_bank` (`ID`),<br />
+  CONSTRAINT `pz_tb_bank_card_ibfk_2` FOREIGN KEY (`C_USER`) REFERENCES `p2p_td_user` (`ID`)<br />
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;</p>
+<p>but why  the below  table cann&#8217;t create?</p>
+<p>DROP TABLE IF EXISTS `pz_tb_pz_account`;</p>
+<p>/*Error 1215；can not add foreign key constraint*/<br />
+CREATE TABLE `pz_tb_pz_account` (<br />
+  `id` varchar(40) NOT NULL COMMENT &#8216;ID&#8217;,<br />
+  `pzid` varchar(40) DEFAULT NULL COMMENT &#8216;配资id&#8217;,<br />
+  &#8230;<br />
+  `status` varchar(5) DEFAULT &#8216;0&#8217; COMMENT &#8216;清算审批状态 0 未审批 1 审批完成&#8217;,<br />
+  PRIMARY KEY (`id`),<br />
+  KEY `FK690FB1F479E54801` (`pzid`) USING BTREE,<br />
+  CONSTRAINT `pz_tb_pz_account_ibfk_1` FOREIGN KEY (`pzid`) REFERENCES `pz_tb_pz` (`id`)<br />
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;</p>
+<p>its reference table has been created  as below:<br />
+CREATE TABLE `pz_tb_pz` (<br />
+  `id` varchar(32) NOT NULL COMMENT &#8216;ID&#8217;,<br />
+  &#8230;<br />
+  `endtype` varchar(5) DEFAULT NULL COMMENT &#8216;终止类型 1方案到期 2用户手动终止 3到达平仓线&#8217;,<br />
+  PRIMARY KEY (`id`),<br />
+  KEY `FKB62A63069A279E9A` (`pzAccount`) USING BTREE,<br />
+  KEY `FKB62A630649DB09AA` (`pzAccount`) USING BTREE<br />
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;</p>
+<p>why? and I have add MaxNoOfTriggers=5188 in config.ini, is there any good solution?</p>
+<p>Thank you.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: gloCalHelp		</title>
+		<link>/mysql-cluster/foreign-keys-in-mysql-cluster#comment-499535</link>
+
+		<dc:creator><![CDATA[gloCalHelp]]></dc:creator>
+		<pubDate>Mon, 25 May 2015 09:39:58 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2298#comment-499535</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/foreign-keys-in-mysql-cluster#comment-660&quot;&gt;andrew&lt;/a&gt;.
+
+Hi, Dear Andrew,
+
+    Has cluster ndb 7.4.6 totally support &quot;referencing just part of the multi-part key &quot; as a foreign key?
+  
+    &quot;...Note that by referencing just part of the multi-part key it’s actually non-unique even if the full key was unique ...&quot; does this means that in cluster NDB engine, the reference foreign key should be only one UNIQUE key, but cann&#039;t be a part of multi-coloumn key?
+
+    But it is strange that some table constraint with a part of multi-coloumn key can create in NDBCluster, but  some tables doesn&#039;t. 
+
+    Such as, these tables can create:
+CREATE TABLE `pz_tb_wdcash` (
+  `ID` varchar(255) NOT NULL COMMENT &#039;ID&#039;,
+  `pzAccount` varchar(32) DEFAULT NULL COMMENT &#039;平台账户ID&#039;,
+  ...
+  `opratAdmin` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FKF70CA7C9A279E9A` (`pzAccount`) USING BTREE,
+  KEY `FKF70CA7C60F7D21E` (`pzBankCard`) USING BTREE,
+  KEY `FKF70CA7C6D563EAE` (`pzBankCard`) USING BTREE,
+  CONSTRAINT `pz_tb_wdcash_ibfk_1` FOREIGN KEY (`pzBankCard`) REFERENCES `p2p_td_bank_card` (`ID`),
+  CONSTRAINT `pz_tb_wdcash_ibfk_2` FOREIGN KEY (`pzAccount`) REFERENCES `p2p_td_user` (`ID`)
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;
+pz_tb_wdcash&#039;s 1 foreign key is the below table&#039;s one of keys &quot;ID&quot;.
+
+CREATE TABLE `pz_tb_bank_card` (
+  `ID` varchar(255) NOT NULL,
+  `C_USER` varchar(32) NOT NULL COMMENT &#039;平台账户ID&#039;,
+  ...
+  `C_UPDATE_TIME` datetime DEFAULT NULL COMMENT &#039;更新时间&#039;,
+  PRIMARY KEY (`ID`),
+  KEY `FKF6C0EC392F758BDE` (`C_USER`) USING BTREE,
+  KEY `FKF6C0EC392F63C0C0` (`C_BANK`) USING BTREE,
+  CONSTRAINT `pz_tb_bank_card_ibfk_1` FOREIGN KEY (`C_BANK`) REFERENCES `p2p_td_bank` (`ID`),
+  CONSTRAINT `pz_tb_bank_card_ibfk_2` FOREIGN KEY (`C_USER`) REFERENCES `p2p_td_user` (`ID`)
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;
+
+but why  the below  table cann&#039;t create?
+
+DROP TABLE IF EXISTS `pz_tb_pz_account`;
+
+/*Error 1215；can not add foreign key constraint*/
+CREATE TABLE `pz_tb_pz_account` (
+  `id` varchar(40) NOT NULL COMMENT &#039;ID&#039;,
+  `pzid` varchar(40) DEFAULT NULL COMMENT &#039;配资id&#039;,
+  ...
+  `status` varchar(5) DEFAULT &#039;0&#039; COMMENT &#039;清算审批状态 0 未审批 1 审批完成&#039;,
+  PRIMARY KEY (`id`),
+  KEY `FK690FB1F479E54801` (`pzid`) USING BTREE,
+  CONSTRAINT `pz_tb_pz_account_ibfk_1` FOREIGN KEY (`pzid`) REFERENCES `pz_tb_pz` (`id`)
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;
+
+its reference table has been created  as below:
+CREATE TABLE `pz_tb_pz` (
+  `id` varchar(32) NOT NULL COMMENT &#039;ID&#039;,
+  ...
+  `endtype` varchar(5) DEFAULT NULL COMMENT &#039;终止类型 1方案到期 2用户手动终止 3到达平仓线&#039;,
+  PRIMARY KEY (`id`),
+  KEY `FKB62A63069A279E9A` (`pzAccount`) USING BTREE,
+  KEY `FKB62A630649DB09AA` (`pzAccount`) USING BTREE
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;
+
+
+why? and I have add MaxNoOfTriggers=5188 in config.ini, is there any good solution?
+
+Thank you.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/foreign-keys-in-mysql-cluster#comment-660">andrew</a>.</p>
+<p>Hi, Dear Andrew,</p>
+<p>    Has cluster ndb 7.4.6 totally support &#8220;referencing just part of the multi-part key &#8221; as a foreign key?</p>
+<p>    &#8220;&#8230;Note that by referencing just part of the multi-part key it’s actually non-unique even if the full key was unique &#8230;&#8221; does this means that in cluster NDB engine, the reference foreign key should be only one UNIQUE key, but cann&#8217;t be a part of multi-coloumn key?</p>
+<p>    But it is strange that some table constraint with a part of multi-coloumn key can create in NDBCluster, but  some tables doesn&#8217;t. </p>
+<p>    Such as, these tables can create:<br />
+CREATE TABLE `pz_tb_wdcash` (<br />
+  `ID` varchar(255) NOT NULL COMMENT &#8216;ID&#8217;,<br />
+  `pzAccount` varchar(32) DEFAULT NULL COMMENT &#8216;平台账户ID&#8217;,<br />
+  &#8230;<br />
+  `opratAdmin` varchar(100) DEFAULT NULL,<br />
+  PRIMARY KEY (`ID`),<br />
+  KEY `FKF70CA7C9A279E9A` (`pzAccount`) USING BTREE,<br />
+  KEY `FKF70CA7C60F7D21E` (`pzBankCard`) USING BTREE,<br />
+  KEY `FKF70CA7C6D563EAE` (`pzBankCard`) USING BTREE,<br />
+  CONSTRAINT `pz_tb_wdcash_ibfk_1` FOREIGN KEY (`pzBankCard`) REFERENCES `p2p_td_bank_card` (`ID`),<br />
+  CONSTRAINT `pz_tb_wdcash_ibfk_2` FOREIGN KEY (`pzAccount`) REFERENCES `p2p_td_user` (`ID`)<br />
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;<br />
+pz_tb_wdcash&#8217;s 1 foreign key is the below table&#8217;s one of keys &#8220;ID&#8221;.</p>
+<p>CREATE TABLE `pz_tb_bank_card` (<br />
+  `ID` varchar(255) NOT NULL,<br />
+  `C_USER` varchar(32) NOT NULL COMMENT &#8216;平台账户ID&#8217;,<br />
+  &#8230;<br />
+  `C_UPDATE_TIME` datetime DEFAULT NULL COMMENT &#8216;更新时间&#8217;,<br />
+  PRIMARY KEY (`ID`),<br />
+  KEY `FKF6C0EC392F758BDE` (`C_USER`) USING BTREE,<br />
+  KEY `FKF6C0EC392F63C0C0` (`C_BANK`) USING BTREE,<br />
+  CONSTRAINT `pz_tb_bank_card_ibfk_1` FOREIGN KEY (`C_BANK`) REFERENCES `p2p_td_bank` (`ID`),<br />
+  CONSTRAINT `pz_tb_bank_card_ibfk_2` FOREIGN KEY (`C_USER`) REFERENCES `p2p_td_user` (`ID`)<br />
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;</p>
+<p>but why  the below  table cann&#8217;t create?</p>
+<p>DROP TABLE IF EXISTS `pz_tb_pz_account`;</p>
+<p>/*Error 1215；can not add foreign key constraint*/<br />
+CREATE TABLE `pz_tb_pz_account` (<br />
+  `id` varchar(40) NOT NULL COMMENT &#8216;ID&#8217;,<br />
+  `pzid` varchar(40) DEFAULT NULL COMMENT &#8216;配资id&#8217;,<br />
+  &#8230;<br />
+  `status` varchar(5) DEFAULT &#8216;0&#8217; COMMENT &#8216;清算审批状态 0 未审批 1 审批完成&#8217;,<br />
+  PRIMARY KEY (`id`),<br />
+  KEY `FK690FB1F479E54801` (`pzid`) USING BTREE,<br />
+  CONSTRAINT `pz_tb_pz_account_ibfk_1` FOREIGN KEY (`pzid`) REFERENCES `pz_tb_pz` (`id`)<br />
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;</p>
+<p>its reference table has been created  as below:<br />
+CREATE TABLE `pz_tb_pz` (<br />
+  `id` varchar(32) NOT NULL COMMENT &#8216;ID&#8217;,<br />
+  &#8230;<br />
+  `endtype` varchar(5) DEFAULT NULL COMMENT &#8216;终止类型 1方案到期 2用户手动终止 3到达平仓线&#8217;,<br />
+  PRIMARY KEY (`id`),<br />
+  KEY `FKB62A63069A279E9A` (`pzAccount`) USING BTREE,<br />
+  KEY `FKB62A630649DB09AA` (`pzAccount`) USING BTREE<br />
+) ENGINE=NDBCLUSTER DEFAULT CHARSET=utf8;</p>
+<p>why? and I have add MaxNoOfTriggers=5188 in config.ini, is there any good solution?</p>
+<p>Thank you.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: gloCalHelp		</title>
+		<link>/mysql-cluster/foreign-keys-in-mysql-cluster#comment-496178</link>
+
+		<dc:creator><![CDATA[gloCalHelp]]></dc:creator>
+		<pubDate>Fri, 22 May 2015 02:13:04 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2298#comment-496178</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/foreign-keys-in-mysql-cluster#comment-495662&quot;&gt;andrew&lt;/a&gt;.
+
+Dear Andrew,
+
+   Thank you for your guide, is the 2nd data node&#039;s fail connecting after 8 hours because of being not consistent MySQLCluster-installing-package&#039;s ownership with the 1st data node?
+
+Georgelin]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/foreign-keys-in-mysql-cluster#comment-495662">andrew</a>.</p>
+<p>Dear Andrew,</p>
+<p>   Thank you for your guide, is the 2nd data node&#8217;s fail connecting after 8 hours because of being not consistent MySQLCluster-installing-package&#8217;s ownership with the 1st data node?</p>
+<p>Georgelin</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/foreign-keys-in-mysql-cluster#comment-495662</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 21 May 2015 12:00:05 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2298#comment-495662</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/foreign-keys-in-mysql-cluster#comment-495565&quot;&gt;gloCalHelp&lt;/a&gt;.
+
+For the 1st problem, it looks as though one of your machines failed or you had a networking problem. Note that to avoid a single point of failure, there are some important rules to follow in terms of where the management node (which acts as the arbitrator in the event of network partitioning) resides - take a look at &lt;a href=&quot;/mysql-cluster/mysql-cluster-fault-tolerance-impact-of-deployment-decisions&quot; rel=&quot;nofollow&quot;&gt;MySQL Cluster fault tolerance – impact of deployment decisions&lt;/a&gt;.
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/foreign-keys-in-mysql-cluster#comment-495565">gloCalHelp</a>.</p>
+<p>For the 1st problem, it looks as though one of your machines failed or you had a networking problem. Note that to avoid a single point of failure, there are some important rules to follow in terms of where the management node (which acts as the arbitrator in the event of network partitioning) resides &#8211; take a look at <a href="/mysql-cluster/mysql-cluster-fault-tolerance-impact-of-deployment-decisions" rel="nofollow">MySQL Cluster fault tolerance – impact of deployment decisions</a>.</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: gloCalHelp		</title>
+		<link>/mysql-cluster/foreign-keys-in-mysql-cluster#comment-495565</link>
+
+		<dc:creator><![CDATA[gloCalHelp]]></dc:creator>
+		<pubDate>Thu, 21 May 2015 09:18:42 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2298#comment-495565</guid>
+
+					<description><![CDATA[Dear Sir Andrew and other pioneers,
+
+   Thanks fro Andrew and others&#039; guide, I have run MySQLCluster 7.4.6  2 data nodes, 1 mgm and 1 SQL node in linux with 1 SQL node in win7. but cluster has these two problems.
+
+1st problem: I got thrice error: &quot; Node 3: Forced node shutdown completed. Caused by error 2305: &#039;Node lost connection to other nodes and can not form a unpartitioned cluster, please investigate if there are error(s) on other node(s)(Arbitration error). Temporary error, restart node&#039;.&quot; , 
+what is the cause?
+
+2nd problem: before I install 1 SQL node in win7, I have uninstalled the old community MySQL server, and through the win7 SQL node, I can see
+table record created in mgm node, but the cluster&#039;s other info, such as root passwords and other accounts info can not sync to Win7, and it is strange that the SQL node still use the win7&#039;s old mysql password to update and connect to cluster, is this a bug?
+
+Bye.]]></description>
+			<content:encoded><![CDATA[<p>Dear Sir Andrew and other pioneers,</p>
+<p>   Thanks fro Andrew and others&#8217; guide, I have run MySQLCluster 7.4.6  2 data nodes, 1 mgm and 1 SQL node in linux with 1 SQL node in win7. but cluster has these two problems.</p>
+<p>1st problem: I got thrice error: &#8221; Node 3: Forced node shutdown completed. Caused by error 2305: &#8216;Node lost connection to other nodes and can not form a unpartitioned cluster, please investigate if there are error(s) on other node(s)(Arbitration error). Temporary error, restart node&#8217;.&#8221; ,<br />
+what is the cause?</p>
+<p>2nd problem: before I install 1 SQL node in win7, I have uninstalled the old community MySQL server, and through the win7 SQL node, I can see<br />
+table record created in mgm node, but the cluster&#8217;s other info, such as root passwords and other accounts info can not sync to Win7, and it is strange that the SQL node still use the win7&#8217;s old mysql password to update and connect to cluster, is this a bug?</p>
+<p>Bye.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: gloCalHelp		</title>
+		<link>/mysql-cluster/foreign-keys-in-mysql-cluster#comment-495341</link>
+
+		<dc:creator><![CDATA[gloCalHelp]]></dc:creator>
+		<pubDate>Thu, 21 May 2015 01:49:00 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2298#comment-495341</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/foreign-keys-in-mysql-cluster#comment-494964&quot;&gt;andrew&lt;/a&gt;.
+
+Dear Sir Andrew,
+   Thank you very much, the safe SQL node can begin to run without error temporally now. You are great, and it seems that the default install binary is the correct one. 
+   As my memory, yesterday, I denifitely use the &quot;--defaults-file=/usr/local/mysql/my.cnf&quot; to start, after it failed, I didn&#039;t use this option and it told me to put my.cnf to /usr/, and I did that, but it failed again.
+
+   And today, I follow your steps and denifitely use the mysqld_safe in the installing package folder of &quot;/usr/local/mysql-cluster-gpl-7.4.6-linux-glibc2.5-x86_64/bin&quot;. 
+
+   Hope you and oracle&#039;s  genius free MySQLCluster 7.4.6 can work greatly with real over 99.999% high availabilty and high scalabitly and realtime replication with partitioning!
+
+   Many thanks to genius Andrew and Oracle&#039;s mysql team!
+   
+   And I am one of the mysql&#039;s lovers and hope to join your team.
+
+Best regards,
+Sincerely,
+Georgelin
+0086 180 500 42436]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/foreign-keys-in-mysql-cluster#comment-494964">andrew</a>.</p>
+<p>Dear Sir Andrew,<br />
+   Thank you very much, the safe SQL node can begin to run without error temporally now. You are great, and it seems that the default install binary is the correct one.<br />
+   As my memory, yesterday, I denifitely use the &#8220;&#8211;defaults-file=/usr/local/mysql/my.cnf&#8221; to start, after it failed, I didn&#8217;t use this option and it told me to put my.cnf to /usr/, and I did that, but it failed again.</p>
+<p>   And today, I follow your steps and denifitely use the mysqld_safe in the installing package folder of &#8220;/usr/local/mysql-cluster-gpl-7.4.6-linux-glibc2.5-x86_64/bin&#8221;. </p>
+<p>   Hope you and oracle&#8217;s  genius free MySQLCluster 7.4.6 can work greatly with real over 99.999% high availabilty and high scalabitly and realtime replication with partitioning!</p>
+<p>   Many thanks to genius Andrew and Oracle&#8217;s mysql team!</p>
+<p>   And I am one of the mysql&#8217;s lovers and hope to join your team.</p>
+<p>Best regards,<br />
+Sincerely,<br />
+Georgelin<br />
+0086 180 500 42436</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/foreign-keys-in-mysql-cluster#comment-494964</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 20 May 2015 13:31:55 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2298#comment-494964</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/foreign-keys-in-mysql-cluster#comment-494857&quot;&gt;gloCalHelp&lt;/a&gt;.
+
+The first thing to check is that you&#039;re running the mysqld_safe that came with the Cluster package and not one that&#039;s already on your system - try &lt;code&gt;which mysqld_safe&lt;/code&gt;.
+
+Another possibility is that it isn&#039;t picking up your config file so try adding the explicit &lt;code&gt;--defaults-file=&lt;path to my.cnf&lt;/code&gt;.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/foreign-keys-in-mysql-cluster#comment-494857">gloCalHelp</a>.</p>
+<p>The first thing to check is that you&#8217;re running the mysqld_safe that came with the Cluster package and not one that&#8217;s already on your system &#8211; try <code>which mysqld_safe</code>.</p>
+<p>Another possibility is that it isn&#8217;t picking up your config file so try adding the explicit <code>--defaults-file=<path to my.cnf</code>.</path></code></p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

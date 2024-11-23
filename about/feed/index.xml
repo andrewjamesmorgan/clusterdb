@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: About	</title>
+	<atom:link href="/about/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Sat, 19 Dec 2015 08:54:59 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: sanil		</title>
+		<link>/about#comment-604843</link>
+
+		<dc:creator><![CDATA[sanil]]></dc:creator>
+		<pubDate>Sat, 19 Dec 2015 08:54:59 +0000</pubDate>
+		<guid isPermaLink="false">http:/?page_id=2#comment-604843</guid>
+
+					<description><![CDATA[I have an issue with our mysql ndb cluster. Always throwing an error node x disconnected and Lost arbitrator node 1 - process failure [state=6].Could you please help me to resolve these issues. Is it related to network outage ?
+
+2015-11-18 09:50:18 [MgmtSrvr] ALERT    -- Node 1: Node 2 Disconnected
+2015-11-18 09:50:18 [MgmtSrvr] ALERT    -- Node 1: Node 3 Disconnected
+2015-11-18 09:50:18 [MgmtSrvr] ALERT    -- Node 1: Node 31 Disconnected
+2015-11-18 09:50:19 [MgmtSrvr] INFO     -- Node 1: Node 2 Connected
+2015-11-18 09:50:19 [MgmtSrvr] INFO     -- Node 1: Node 31 Connected
+2015-11-18 09:50:19 [MgmtSrvr] INFO     -- Node 1: Node 3 Connected
+2015-11-18 09:50:20 [MgmtSrvr] INFO     -- Node 31: Prepare arbitrator node 1
+[ticket=0b2700480bcc2992]
+2015-11-18 09:50:20 [MgmtSrvr] INFO     -- Node 3: Prepare arbitrator node 1
+[ticket=0b2700480bcc2992]
+2015-11-18 09:50:20 [MgmtSrvr] INFO     -- Node 2: Started arbitrator node 1
+[ticket=0b2700480bcc2992]
+2015-11-18 09:50:53 [MgmtSrvr] INFO     -- Node 7: Event buffer status:
+used=56KB(7%) alloc=708KB(0%) max=0B apply_epoch=12673679/9
+latest_epoch=12673679/12
+2015-11-18 09:51:05 [MgmtSrvr] INFO     -- Node 7: Event buffer status:
+used=1148B(10%) alloc=10816B(0%) max=0B apply_epoch=12673679/9
+latest_epoch=12673679/12
+2015-11-18 09:51:05 [MgmtSrvr] ALERT    -- Node 1: Node 2 Disconnected
+2015-11-18 09:51:05 [MgmtSrvr] ALERT    -- Node 1: Node 3 Disconnected
+2015-11-18 09:51:05 [MgmtSrvr] ALERT    -- Node 1: Node 31 Disconnected
+2015-11-18 09:51:05 [MgmtSrvr] INFO     -- Node 1: Node 2 Connected
+2015-11-18 09:51:05 [MgmtSrvr] INFO     -- Node 1: Node 31 Connected
+2015-11-18 09:51:07 [MgmtSrvr] INFO     -- Node 1: Node 3 Connected
+2015-11-18 09:51:07 [MgmtSrvr] INFO     -- Node 31: Prepare arbitrator node 1
+[ticket=0b2700490bccdebc]
+2015-11-18 09:51:14 [MgmtSrvr] ALERT    -- Node 1: Node 2 Disconnected
+2015-11-18 09:51:15 [MgmtSrvr] ALERT    -- Node 1: Node 3 Disconnected
+2015-11-18 09:51:15 [MgmtSrvr] ALERT    -- Node 1: Node 31 Disconnected
+2015-11-18 09:51:15 [MgmtSrvr] WARNING  -- Failed to convert connection from
+&#039;192.168.10.154:34098&#039; to transporter: line: 548 : Incorrect state for node 3
+state: does nothing (2)
+2015-11-18 09:51:15 [MgmtSrvr] INFO     -- Node 1: Node 3 Connected
+2015-11-18 09:51:16 [MgmtSrvr] INFO     -- Node 1: Node 31 Connected
+2015-11-18 09:51:16 [MgmtSrvr] INFO     -- Node 1: Node 2 Connected]]></description>
+			<content:encoded><![CDATA[<p>I have an issue with our mysql ndb cluster. Always throwing an error node x disconnected and Lost arbitrator node 1 &#8211; process failure [state=6].Could you please help me to resolve these issues. Is it related to network outage ?</p>
+<p>2015-11-18 09:50:18 [MgmtSrvr] ALERT    &#8212; Node 1: Node 2 Disconnected<br />
+2015-11-18 09:50:18 [MgmtSrvr] ALERT    &#8212; Node 1: Node 3 Disconnected<br />
+2015-11-18 09:50:18 [MgmtSrvr] ALERT    &#8212; Node 1: Node 31 Disconnected<br />
+2015-11-18 09:50:19 [MgmtSrvr] INFO     &#8212; Node 1: Node 2 Connected<br />
+2015-11-18 09:50:19 [MgmtSrvr] INFO     &#8212; Node 1: Node 31 Connected<br />
+2015-11-18 09:50:19 [MgmtSrvr] INFO     &#8212; Node 1: Node 3 Connected<br />
+2015-11-18 09:50:20 [MgmtSrvr] INFO     &#8212; Node 31: Prepare arbitrator node 1<br />
+[ticket=0b2700480bcc2992]<br />
+2015-11-18 09:50:20 [MgmtSrvr] INFO     &#8212; Node 3: Prepare arbitrator node 1<br />
+[ticket=0b2700480bcc2992]<br />
+2015-11-18 09:50:20 [MgmtSrvr] INFO     &#8212; Node 2: Started arbitrator node 1<br />
+[ticket=0b2700480bcc2992]<br />
+2015-11-18 09:50:53 [MgmtSrvr] INFO     &#8212; Node 7: Event buffer status:<br />
+used=56KB(7%) alloc=708KB(0%) max=0B apply_epoch=12673679/9<br />
+latest_epoch=12673679/12<br />
+2015-11-18 09:51:05 [MgmtSrvr] INFO     &#8212; Node 7: Event buffer status:<br />
+used=1148B(10%) alloc=10816B(0%) max=0B apply_epoch=12673679/9<br />
+latest_epoch=12673679/12<br />
+2015-11-18 09:51:05 [MgmtSrvr] ALERT    &#8212; Node 1: Node 2 Disconnected<br />
+2015-11-18 09:51:05 [MgmtSrvr] ALERT    &#8212; Node 1: Node 3 Disconnected<br />
+2015-11-18 09:51:05 [MgmtSrvr] ALERT    &#8212; Node 1: Node 31 Disconnected<br />
+2015-11-18 09:51:05 [MgmtSrvr] INFO     &#8212; Node 1: Node 2 Connected<br />
+2015-11-18 09:51:05 [MgmtSrvr] INFO     &#8212; Node 1: Node 31 Connected<br />
+2015-11-18 09:51:07 [MgmtSrvr] INFO     &#8212; Node 1: Node 3 Connected<br />
+2015-11-18 09:51:07 [MgmtSrvr] INFO     &#8212; Node 31: Prepare arbitrator node 1<br />
+[ticket=0b2700490bccdebc]<br />
+2015-11-18 09:51:14 [MgmtSrvr] ALERT    &#8212; Node 1: Node 2 Disconnected<br />
+2015-11-18 09:51:15 [MgmtSrvr] ALERT    &#8212; Node 1: Node 3 Disconnected<br />
+2015-11-18 09:51:15 [MgmtSrvr] ALERT    &#8212; Node 1: Node 31 Disconnected<br />
+2015-11-18 09:51:15 [MgmtSrvr] WARNING  &#8212; Failed to convert connection from<br />
+&#8216;192.168.10.154:34098&#8217; to transporter: line: 548 : Incorrect state for node 3<br />
+state: does nothing (2)<br />
+2015-11-18 09:51:15 [MgmtSrvr] INFO     &#8212; Node 1: Node 3 Connected<br />
+2015-11-18 09:51:16 [MgmtSrvr] INFO     &#8212; Node 1: Node 31 Connected<br />
+2015-11-18 09:51:16 [MgmtSrvr] INFO     &#8212; Node 1: Node 2 Connected</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/about#comment-118410</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 24 Apr 2014 12:32:34 +0000</pubDate>
+		<guid isPermaLink="false">http:/?page_id=2#comment-118410</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/about#comment-118013&quot;&gt;Trevor Lowing&lt;/a&gt;.
+
+Hi Trevor,
+
+ I&#039;d recommend getting the consultancy from the MySQL team... &lt;a href=&quot;http://www.mysql.com/consulting/&quot; title=&quot;MySQL Consulting&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;http://www.mysql.com/consulting/&lt;/a&gt;
+
+ Disclaimer - they are also my employer!
+
+Best Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/about#comment-118013">Trevor Lowing</a>.</p>
+<p>Hi Trevor,</p>
+<p> I&#8217;d recommend getting the consultancy from the MySQL team&#8230; <a href="http://www.mysql.com/consulting/" title="MySQL Consulting" target="_blank" rel="nofollow">http://www.mysql.com/consulting/</a></p>
+<p> Disclaimer &#8211; they are also my employer!</p>
+<p>Best Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Trevor Lowing		</title>
+		<link>/about#comment-118013</link>
+
+		<dc:creator><![CDATA[Trevor Lowing]]></dc:creator>
+		<pubDate>Wed, 23 Apr 2014 13:40:37 +0000</pubDate>
+		<guid isPermaLink="false">http:/?page_id=2#comment-118013</guid>
+
+					<description><![CDATA[Andrew,
+
+I&#039;m working on a new project that requires clustered MySQL with capability of geographic redundancy.  Who would you recommend for engaging consulting services? This in in Virginia.
+
+Thanks,
+
+Trevor]]></description>
+			<content:encoded><![CDATA[<p>Andrew,</p>
+<p>I&#8217;m working on a new project that requires clustered MySQL with capability of geographic redundancy.  Who would you recommend for engaging consulting services? This in in Virginia.</p>
+<p>Thanks,</p>
+<p>Trevor</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/about#comment-33886</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 18 Dec 2013 12:41:02 +0000</pubDate>
+		<guid isPermaLink="false">http:/?page_id=2#comment-33886</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/about#comment-29852&quot;&gt;Pedro&lt;/a&gt;.
+
+Could you tell me what command you ran? What platform was this on?
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/about#comment-29852">Pedro</a>.</p>
+<p>Could you tell me what command you ran? What platform was this on?</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Pedro		</title>
+		<link>/about#comment-29852</link>
+
+		<dc:creator><![CDATA[Pedro]]></dc:creator>
+		<pubDate>Fri, 13 Dec 2013 02:09:44 +0000</pubDate>
+		<guid isPermaLink="false">http:/?page_id=2#comment-29852</guid>
+
+					<description><![CDATA[I have issues:
+
+Connect to MySQL Cluster Manager by running &quot;/home/pedro/mysql-mcm/mcm1.2.4/bin/mcm&quot; -a eletron:1862
+Configuring default cluster &#039;mycluster&#039;...
+ERROR: Unable to create site, aborting bootstrap!
+ERROR 2004: (00MGR) Host eletron is not a member of site mysite
+
+Helpe-me please! Thank you!]]></description>
+			<content:encoded><![CDATA[<p>I have issues:</p>
+<p>Connect to MySQL Cluster Manager by running &#8220;/home/pedro/mysql-mcm/mcm1.2.4/bin/mcm&#8221; -a eletron:1862<br />
+Configuring default cluster &#8216;mycluster&#8217;&#8230;<br />
+ERROR: Unable to create site, aborting bootstrap!<br />
+ERROR 2004: (00MGR) Host eletron is not a member of site mysite</p>
+<p>Helpe-me please! Thank you!</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

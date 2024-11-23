@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: MySQL Cluster Performance Tuning Best Practices &#8211; Webinar replay available	</title>
+	<atom:link href="/mysql-cluster/mysql-cluster-performance-tuning-best-practices-webinar-replay-available/feed" rel="self" type="application/rss+xml" />
+	<link>/mysql-cluster/mysql-cluster-performance-tuning-best-practices-webinar-replay-available</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Wed, 07 Sep 2011 07:43:12 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: admin		</title>
+		<link>/mysql-cluster/mysql-cluster-performance-tuning-best-practices-webinar-replay-available#comment-385</link>
+
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 07 Sep 2011 07:43:12 +0000</pubDate>
+		<guid isPermaLink="false">/?p=950#comment-385</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/mysql-cluster-performance-tuning-best-practices-webinar-replay-available#comment-384&quot;&gt;Arvind&lt;/a&gt;.
+
+Arvind http://www.mysql.com/news-and-events/on-demand-webinars/display-od-480.html works for me]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/mysql-cluster-performance-tuning-best-practices-webinar-replay-available#comment-384">Arvind</a>.</p>
+<p>Arvind <a href="http://www.mysql.com/news-and-events/on-demand-webinars/display-od-480.html" rel="nofollow ugc">http://www.mysql.com/news-and-events/on-demand-webinars/display-od-480.html</a> works for me</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Arvind		</title>
+		<link>/mysql-cluster/mysql-cluster-performance-tuning-best-practices-webinar-replay-available#comment-384</link>
+
+		<dc:creator><![CDATA[Arvind]]></dc:creator>
+		<pubDate>Wed, 07 Sep 2011 07:00:49 +0000</pubDate>
+		<guid isPermaLink="false">/?p=950#comment-384</guid>
+
+					<description><![CDATA[The link from mysql site refers to unavailable server, Do you have any other archive, would be really helpful]]></description>
+			<content:encoded><![CDATA[<p>The link from mysql site refers to unavailable server, Do you have any other archive, would be really helpful</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: James		</title>
+		<link>/mysql-cluster/mysql-cluster-performance-tuning-best-practices-webinar-replay-available#comment-383</link>
+
+		<dc:creator><![CDATA[James]]></dc:creator>
+		<pubDate>Fri, 19 Feb 2010 19:28:12 +0000</pubDate>
+		<guid isPermaLink="false">/?p=950#comment-383</guid>
+
+					<description><![CDATA[I have a question about where the actual mysql data is stored in a cluster.
+
+The ext3 file system has a limit of 32,000 subdirectories.  This means you are limited to 32,000 databases on a single mysql server.
+
+If you have 2 data node groups in a mysql cluster, is the data within the databases split into the 2 groups or are the databases entirely either on one data node group or another?
+
+How reliable is running an XFS file system for the mysql cluster data nodes.
+
+thanks.]]></description>
+			<content:encoded><![CDATA[<p>I have a question about where the actual mysql data is stored in a cluster.</p>
+<p>The ext3 file system has a limit of 32,000 subdirectories.  This means you are limited to 32,000 databases on a single mysql server.</p>
+<p>If you have 2 data node groups in a mysql cluster, is the data within the databases split into the 2 groups or are the databases entirely either on one data node group or another?</p>
+<p>How reliable is running an XFS file system for the mysql cluster data nodes.</p>
+<p>thanks.</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

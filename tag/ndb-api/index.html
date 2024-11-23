@@ -1,0 +1,2107 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="/xmlrpc.php">
+	
+	<title>NDB API | Andrew Morgan on Databases</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; NDB API Tag Feed" href="/tag/ndb-api/feed">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="/wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="/wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="/wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="/wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="/wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="/wp-json/">
+<link rel="alternate" title="JSON" type="application/json" href="/wp-json/wp/v2/tags/80">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style>
+<style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style>
+<script type="text/javascript">
+				//<![CDATA[
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//]]>
+				</script><style type="text/css"></style>
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style>
+</head>
+
+<body class="archive tag tag-ndb-api tag-80 custom-background">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="/"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu">
+<li class="page_item page-item-1011"><a href="/about">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="/wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+		
+		<h2 class="arh">Tag Archive for NDB API</h2>
+				
+					<div id="post-4000" class="post-4000 post type-post status-publish format-standard hentry category-mysql-cluster tag-cluster tag-fosdem tag-fosdem15 tag-ha tag-high-availability tag-mysql tag-mysql-cluster tag-ndb-api tag-nosql tag-t">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/fosdem-2015-sql-nosql-presentation">February 6, 2015</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/fosdem-2015-sql-nosql-presentation#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/fosdem-2015-sql-nosql-presentation" rel="bookmark">FOSDEM 2015 &#8211; SQL &#038; NoSQL Presentation</a></h2>
+				
+				<div class="entry">
+										<p>Last weekend I got to present to the MySQL Developers Room at FOSDEM in Brussels.<br>
+<a href="/wp-content/uploads/2015/02/FOSDEM-2015.jpg"><img decoding="async" src="/wp-content/uploads/2015/02/FOSDEM-2015.jpg" alt="FOSDEM-2015" width="184" height="176" class="alignright size-full wp-image-4001"></a><br>
+The subject of my presentation was <strong>NoSQL and SQL the best of both worlds</strong>&#8230;</p>
+<p>There’s a lot of excitement around NoSQL Data Stores with the promise of simple access patterns, flexible schemas, scalability and High Availability. The downside comes in the form of losing ACID transactions, consistency, flexible queries and data integrity checks. What if you could have the best of both worlds? This session shows how MySQL Cluster provides simultaneous SQL and native NoSQL access to your data – whether a simple key-value API (Memcached), REST, JavaScript, Java or C++. You will hear how the MySQL Cluster architecture delivers in-memory real-time performance, 99.999% availability, on-line maintenance and linear, horizontal scalability through transparent auto-sharding.</p>
+<p><iframe src="//www.slideshare.net/slideshow/embed_code/44350713" width="425" height="355" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> </p>
+<div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/andrewjamesmorgan/fosdem-2015-nosql-and-sql-the-best-of-both-worlds" title="FOSDEM 2015 - NoSQL and SQL the best of both worlds" target="_blank">FOSDEM 2015 &#8211; NoSQL and SQL the best of both worlds</a> </strong> from <strong><a href="//www.slideshare.net/andrewjamesmorgan" target="_blank">Andrew Morgan</a></strong> </div>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/fosdem-2015-sql-nosql-presentation" data-via="wpbeginner" data-text="FOSDEM 2015 &#8211; SQL &#038; NoSQL Presentation" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/fosdem-2015-sql-nosql-presentation"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/fosdem-2015-sql-nosql-presentation" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Ffosdem-2015-sql-nosql-presentation&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/cluster" rel="tag">Cluster</a>, <a href="/tag/fosdem" rel="tag">fosdem</a>, <a href="/tag/fosdem15" rel="tag">fosdem15</a>, <a href="/tag/ha" rel="tag">HA</a>, <a href="/tag/high-availability" rel="tag">High Availability</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/ndb-api" rel="tag">NDB API</a>, <a href="/tag/nosql" rel="tag">NoSQL</a>, <a href="/tag/t" rel="tag">t</a>
+</div>
+
+			</div>			<div id="post-1616" class="post-1616 post type-post status-publish format-standard hentry category-mysql-cluster tag-mysql tag-mysql-cluster tag-mysql-cluster-7-2 tag-ndb-api tag-nosql">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster">February 15, 2012</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster#comments">50 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster" rel="bookmark">Scalable, persistent, HA NoSQL Memcache storage using MySQL Cluster</a></h2>
+				
+				<div class="entry">
+										<div id="attachment_1689" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2011/04/Memcached_with_Cluster.jpg"><img decoding="async" aria-describedby="caption-attachment-1689" class="size-medium wp-image-1689" title="Memcached_with_Cluster" src="/wp-content/uploads/2011/04/Memcached_with_Cluster-300x140.jpg" alt="" width="300" height="140"></a><p id="caption-attachment-1689" class="wp-caption-text">Memcached API with Cluster Data Nodes</p>
+</div>
+<p><strong>The native Memcached API for MySQL Cluster is now GA as part of MySQL Cluster 7.2</strong></p>
+<p><em>This post was first published in April 2011 when the first trial version of the Memcached API for MySQL Cluster was released; it was then up-versioned for the second MySQL Cluster 7.2 Development Milestone Release in October 2011. I&#8217;ve now refreshed the post based on the GA of MySQL Cluster 7.2 which includes the completed Memcache API.</em></p>
+<p>There are a number of attributes of MySQL Cluster that make it ideal for lots of applications that are considering NoSQL data stores. Scaling out capacity and performance on commodity hardware, in-memory real-time performance (especially for simple access patterns), flexible schemas&#8230; sound familiar? In addition, MySQL Cluster adds transactional consistency and durability. In case that&#8217;s not enough, you can also simultaneously combine various NoSQL APIs with full-featured SQL &#8211; all working on the same data set. This post focuses on a new Memcached API that is now available to download, try out and deploy. This post steps through setting up Cluster with the Memcached API and then demonstrates how to read and write the same data through both Memcached and SQL (including for existing MySQL Cluster tables). </p>
+<p>Download the <a href="http://www.mysql.com/downloads/cluster/" title="Download community version of MySQL Cluster 7.2 - including Memcached API" target="_new">community version from mysql.com</a>  or the commercial version from <a href="https://edelivery.oracle.com/" title="Download commercial version of MySQL Cluster 7.2 - including Memcached API" target="_new">Oracle&#8217;s Software Delivery Cloud</a><em> (note that there is not currently a Windows version)</em>.</p>
+<div id="attachment_1690" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2011/04/Memcached_traditional.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1690" class="size-medium wp-image-1690" title="Memcached_traditional" src="/wp-content/uploads/2011/04/Memcached_traditional-300x272.jpg" alt="" width="300" height="272"></a><p id="caption-attachment-1690" class="wp-caption-text">Traditional use of Memcached</p>
+</div>
+<p>  First of all a bit of background about Memcached. It has typically been used as a cache when the performance of the database of record (the persistent database) cannot keep up with application demand. When changing data, the application will push the change to the database, when reading data, the application first checks the Memached cache, if it is not there then the data is read from the database and copied into Memcached. If a Memcached instance fails or is restarted for maintenance reasons, the contents are lost and the application will need to start reading from the database again. Of course the database layer probably needs to be scaled as well so you send writes to the master and reads to the replication slaves.</p>
+<p>  This has become a classic architecture for web and other applications and the simple Memcached attribute-value API has become extremely popular amongst developers.</p>
+<p>  As an illustration of the simplicity of this API, the following example stores and then retrieves the string &#8220;Maidenhead&#8221; against the key &#8220;Test&#8221;:
+</p>
+<pre style="padding-left: 30px; font-size: 11px;">telnet localhost 11211
+set <span style="color: #008000;">Test </span>0 0 10
+<span style="color: #008000;">Maidenhead!</span>
+END</pre>
+<pre style="padding-left: 30px; font-size: 11px;">get <span style="color: #008000;">Test</span>
+VALUE Test 0 10
+<span style="color: #008000;">Maidenhead!</span>
+END</pre>
+<p>Note that if we kill and restart the memcached server, the data is lost (as it was only held in RAM):</p>
+<pre style="padding-left: 30px; font-size: 11px;">get <span style="color: #008000;">Test</span>
+END</pre>
+<h3>New options for using Memcached API with MySQL Cluster</h3>
+<div id="attachment_1806" style="width: 242px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2011/04/Memcached_NDB.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1806" class="size-medium wp-image-1806" title="Memcached_NDB" src="/wp-content/uploads/2011/04/Memcached_NDB-e1302604846341-232x300.jpg" alt="" width="232" height="300"></a><p id="caption-attachment-1806" class="wp-caption-text">Architecture for Memcached NDB API</p>
+</div>
+<p>What we&#8217;re doing with MySQL Cluster is to offer a bunch of new ways of using this API but with the benefits of MySQL Cluster. The solution has been designed to be very flexible, allowing the application architect to find a configuration that best fits their needs.</p>
+<p>A quick diversion on how this is implemented. The application sends reads and writes to the memcached process (using the standard Memcached API). This in turn invokes the Memcached Driver for NDB (which is part of the same process) which in turn calls the NDB API for very quick access to the data held in MySQL Cluster&#8217;s data nodes (it&#8217;s the fastest way of accessing MySQL Cluster).</p>
+<p>Because the data is now stored in MySQL Cluster, it is persistent and you can transparently scale out by adding more data nodes (this is an on-line operation).</p>
+<p>Another important point is that the NDB API is already a commonly used, fully functional access method that the Memcached API can exploit. For example, if you make a change to a piece of data then the change will automatically be written to any MySQL Server that has its binary logging enabled which in turn means that the change can be replicated to a second site.</p>
+<div id="attachment_1689" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2011/04/Memcached_with_Cluster.jpg"><img decoding="async" aria-describedby="caption-attachment-1689" class="size-medium wp-image-1689" title="Memcached_with_Cluster" src="/wp-content/uploads/2011/04/Memcached_with_Cluster-300x140.jpg" alt="" width="300" height="140"></a><p id="caption-attachment-1689" class="wp-caption-text">Memcached API with Cluster Data Nodes</p>
+</div>
+<p>So the first (and probably simplest) architecture is to co-locate the Memcached API with the data nodes. </p>
+<p>The applications can connect to any of the memcached API nodes &#8211; if one should fail just switch to another as it can access the exact same data instantly. As you add more data nodes you also add more memcached servers and so the data access/storage layer can scale out (until you hit the 48 data node limit).</p>
+<div id="attachment_1688" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2011/04/Memcached_with_app.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1688" class="size-medium wp-image-1688" title="Memcached_with_app" src="/wp-content/uploads/2011/04/Memcached_with_app-300x136.jpg" alt="" width="300" height="136"></a><p id="caption-attachment-1688" class="wp-caption-text">Memcached server with the Application</p>
+</div>
+<p>Another simple option is to co-locate the Memcached API with the application. In this way, as you add more application nodes you also get more Memcached throughput. If you need more data storage capacity you can independently scale MySQL Cluster by adding more data nodes. One nice feature of this approach is that failures are handled very simply &#8211; if one App/Memcached machine should fail, all of the other applications just continue accessing their local Memcached API.</p>
+<div id="attachment_1704" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2011/04/Memcached_layer1.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1704" class="size-medium wp-image-1704" title="Memcached_layer" src="/wp-content/uploads/2011/04/Memcached_layer1-300x224.jpg" alt="" width="300" height="224"></a><p id="caption-attachment-1704" class="wp-caption-text">Separate Memcached layer</p>
+</div>
+<p>For maximum flexibility, you can have a separate Memcached layer so that the application, the Memcached API &amp; MySQL Cluster can all be scaled independently.</p>
+<p>In all of the examples so far, there has been a single source for the data (it&#8217;s all held in MySQL Cluster).<br>
+<code><br></code><br>
+<code><br></code><br>
+<code><br></code><br>
+</p>
+<div id="attachment_1703" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2011/04/Memcached_with_cache1.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1703" class="size-medium wp-image-1703" title="Memcached_with_cache" src="/wp-content/uploads/2011/04/Memcached_with_cache1-300x229.jpg" alt="" width="300" height="229"></a><p id="caption-attachment-1703" class="wp-caption-text">Local Cache in Memcached</p>
+</div>
+<p>If you choose, you can still have all or some of the data cached within the memcached server (and specify whether that data should also be persisted in MySQL Cluster) &#8211; you choose how to treat different pieces of your data. If for example, you had some data that is written to and read from frequently then store it just in MySQL Cluster, if you have data that is written to rarely but read very often then you might choose to cache it in Memcached as well and if you have data that has a short lifetime and wouldn&#8217;t benefit from being stored in MySQL Cluster then only hold it in Memcached. The beauty is that you get to configure this on a per-key-prefix basis (through tables in MySQL Cluster) and that the application doesn&#8217;t have to care &#8211; it just uses the Memcached API and relies on the software to store data in the right place(s) and to keep everything in sync.</p>
+<p>Of course if you want to access the same data through SQL then you&#8217;d make sure that it was configured to be stored in MySQL Cluster.</p>
+<p>Enough of the theory, how to try it out&#8230;</p>
+<h3>Installing &amp; configuarying the software</h3>
+<p>As this post is focused on API access to the data rather than testing High Availability, performance or scalability the Cluster can be kept extremely simple with all of the processes (nodes) running on a single server. The only thing to be careful of when you create your Cluster is to make sure that you define at least 5 API sections (e.g. [mysqld]) in your configuration file so you can access using SQL and 2 Memcached servers (each uses 2 connections) at the same time.</p>
+<p>For further information on how to set up a single-host Cluster, refer to <a title="Download, install, configure, run and test MySQL Cluster in under 15 minutes" href="/mysql/download-install-configure-run-and-test-mysql-cluster-in-under-15-minutes/" target="_blank">this post</a> or just follow the next few steps.</p>
+<p>Create a config.ini file for the Cluster configuration:</p>
+<pre style="padding-left: 30px; font-size: 11px; color: #800000;">[ndb_mgmd]
+hostname=localhost
+datadir=/home/billy/my_cluster/ndb_data
+NodeId=1
+
+[ndbd default]
+noofreplicas=2
+datadir=/home/billy/my_cluster/ndb_data
+
+[ndbd]
+hostname=localhost
+NodeId=3
+
+[ndbd]
+hostname=localhost
+NodeId=4
+
+[mysqld]
+NodeId=50
+
+[mysqld]
+NodeId=51
+
+[mysqld]
+NodeId=52
+
+[mysqld]
+NodeId=53
+
+[mysqld]
+NodeId=54</pre>
+<p>and a my.cnf file for the MySQL server:</p>
+<pre style="padding-left: 30px; font-size: 11px; color: #800000;">[mysqld]
+ndbcluster
+datadir=/home/billy/my_cluster/mysqld_data</pre>
+<p>Before starting the Cluster, install the standard databases for the MySQL Server (from wherever you have MySQL Cluster installed &#8211; typically /usr/local/mysql):</p>
+<pre style="padding-left: 30px; font-size: 11px; color: #004488;">[billy@ws2 mysql]$ ./scripts/mysql_install_db
+  --basedir=/usr/local/mysql
+  --datadir=/home/billy/my_cluster/mysqld_data
+  --user=billy</pre>
+<h5>Start up the system</h5>
+<p>We are now ready to start up the Cluster processes:</p>
+<pre style="padding-left: 30px; font-size: 11px; color: #004488;">[billy@ws2 my_cluster]$ ndb_mgmd -f conf/config.ini
+  --initial --configdir=/home/billy/my_cluster/conf/
+[billy@ws2 my_cluster]$ ndbd
+[billy@ws2 my_cluster]$ ndbd
+[billy@ws2 my_cluster]$ ndb_mgm -e show # Wait for data nodes to start
+[billy@ws2 my_cluster]$ mysqld --defaults-file=conf/my.cnf &amp;</pre>
+<p>If your version doesn&#8217;t already have the ndbmemcache database installed then that should be your next step:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #004488;">[billy@ws2 ~]$ mysql -h 127.0.0.1 -P3306 -u root &lt; /usr/local/mysql/share/memcache-api/ndb_memcache_metadata.sql</span></pre>
+<p>After that, start the Memcached server (with the NDB driver activated):</p>
+<pre style="padding-left: 30px; font-size: 11px; color: #004488;">[billy@ws2 ~]$  memcached -E /usr/local/mysql/lib/ndb_engine.so -e &quot;connectstring=localhost:1186;role=db-only&quot; -vv -c 20</pre>
+<p>Notice the &#8220;connectstring&#8221; &#8211; this allows the primary Cluster to be on a different machine to the Memcached API. Note that you can actually use the same Memcached server to access multiple Clusters &#8211; you configure this within the ndbmemcached database in the primary Cluster. In a production system you may want to include <span style="color: #004488;">reconf=false</span> amogst the <span style="color: #004488;">-e</span> parameters in order to stop configuration changes being applied to running Memcached servers (you&#8217;d need to restart those servers instead).</p>
+<h5>Try it out!</h5>
+<p>Next the fun bit &#8211; we can start testing it out:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #004488;">[billy@ws2 ~]$ telnet localhost 11211</span>
+
+<span style="color: #004488;">set maidenhead 0 0 3 
+SL6 </span>
+<span style="color: #004400;">STORED </span>
+<span style="color: #004488;">get maidenhead </span>
+<span style="color: #004400;">VALUE maidenhead 0 3 
+SL6 
+END</span></pre>
+<p>We can now check that the data really is stored in the database:</p>
+<pre style="padding-left: 30px; font-size: 11px; color: #884400;">mysql&gt; SELECT * FROM ndbmemcache.demo_table;
+   +------------------+------------+-----------------+--------------+
+   | mkey             | math_value | cas_value       | string_value |
+   +------------------+------------+-----------------+--------------+
+   | maidenhead       |       NULL | 263827761397761 | SL6          |
+   +------------------+------------+-----------------+--------------+</pre>
+<p>Of course, you can also modify this data through SQL and immediately see the change through the Memcached API:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #884400;">mysql&gt; UPDATE ndbmemcache.demo_table SET string_value='sl6 4' WHERE mkey='maidenhead';</span>
+
+<span style="color: #004488;">[billy@ws2 ~]$ telnet localhost 11211
+
+get maidenhead</span>
+<span style="color: #004400;">VALUE maidenhead 0 5 
+SL6 4 
+END</span></pre>
+<p>By default, the normal limit of 14K per row still applies when using the Memcached API; however, the standard configuration treats any key-value pair with a key-pefix of &#8220;b:&#8221; differently and will allow the value to be up to 3 Mb (note the default limit imposed by the Memcached server is 1 Mb and so you&#8217;d also need to raise that). Internally the contents of this value will be split between 1 row in <span style="color: #004488;">ndbmemcache.demo_table_large</span> and one or more rows in <span style="color: #004488;">ndbmemcache.external_values</span>.</p>
+<p>Note that this is completely schema-less, the application can keep on adding new key/value pairs and they will all get added to the default table. This may well be fine for prototyping or modest sized databases. As you can see this data can be accessed through SQL but there&#8217;s a good chance that you&#8217;ll want a richer schema on the SQL side or you&#8217;ll need to have the data in multiple tables for other reasons (for example you want to replicate just some of the data to a second Cluster for geographic redundancy or to InnoDB for report generation).</p>
+<p>The next step is to create your own databases and tables (assuming that you don&#8217;t already have them) and then create the definitions for how the app can get at the data through the Memcached API. First let&#8217;s create a table that has a couple of columns that we&#8217;ll also want to make accessible through the Memcached API:</p>
+<pre style="padding-left: 30px; font-size: 11px; color: #884400;">mysql&gt; CREATE DATABASE clusterdb; USE clusterdb;
+mysql&gt; CREATE TABLE towns_tab (town VARCHAR(30) NOT NULL PRIMARY KEY,
+  zip VARCHAR(10), population INT, county VARCHAR(10)) ENGINE=NDB;
+mysql&gt; REPLACE INTO towns_tab VALUES ('Marlow', 'SL7', 14004, 'Berkshire');</pre>
+<p>Next we need to tell the NDB driver how to access this data through the Memcached API. Two &#8216;containers&#8217; are created that identify the columns within our new table that will be exposed. We then define the key-prefixes that users of the Memcached API will use to indicate which piece of data (i.e. database/table/column) they are accessing:</p>
+<pre style="padding-left: 30px; font-size: 11px; color: #884400;">mysql&gt; USE ndbmemcache;
+mysql&gt; REPLACE INTO containers VALUES ('towns_cnt', 'clusterdb',
+'towns_tab', 'town', 'zip', 0, NULL, NULL, NULL, NULL);
+mysql&gt; REPLACE INTO containers VALUES ('pop_cnt', 'clusterdb',
+  'towns_tab', 'town', 'population', 0, NULL, NULL, NULL, NULL);
+mysql&gt; SELECT * FROM containers;
+   +------------+-------------+------------------+-------------+----------------+-------+------------------+------------+--------------------+-----------------------------+
+   | name       | db_schema   | db_table         | key_columns | value_columns  | flags | increment_column | cas_column | expire_time_column | large_values_table          |
+   +------------+-------------+------------------+-------------+----------------+-------+------------------+------------+--------------------+-----------------------------+
+   | demo_ext   | ndbmemcache | demo_table_large | mkey        | string_value   | 0     | NULL             | cas_value  | NULL               | ndbmemcache.external_values |
+   | towns_cnt  | clusterdb   | towns_tab        | town        | zip            | 0     | NULL             | NULL       | NULL               | NULL                        |
+   | demo_table | ndbmemcache | demo_table       | mkey        | string_value   | 0     | math_value       | cas_value  | NULL               | NULL                        |
+   | pop_cnt    | clusterdb   | towns_tab        | town        | population     | 0     | NULL             | NULL       | NULL               | NULL                        |
+   | demo_tabs  | ndbmemcache | demo_table_tabs  | mkey        | val1,val2,val3 | flags | NULL             | NULL       | expire_time        | NULL                        |
+   +------------+-------------+------------------+-------------+----------------+-------+------------------+------------+--------------------+-----------------------------+
+mysql&gt; REPLACE INTO key_prefixes VALUES (1, 'twn_pr:', 0,
+  'ndb-only', 'towns_cnt');
+mysql&gt; REPLACE INTO key_prefixes VALUES (1, 'pop_pr:', 0,
+  'ndb-only', 'pop_cnt');
+mysql&gt; SELECT * FROM key_prefixes;
+   +----------------+------------+------------+---------------+------------+
+   | server_role_id | key_prefix | cluster_id | policy        | container  |
+   +----------------+------------+------------+---------------+------------+
+   |              1 | pop_pr:    |          0 | ndb-only      | pop_cnt    |
+   |              0 | t:         |          0 | ndb-test      | demo_tabs  |
+   |              3 |            |          0 | caching       | demo_table |
+   |              0 |            |          0 | ndb-test      | demo_table |
+   |              0 | mc:        |          0 | memcache-only | NULL       |
+   |              1 | b:         |          0 | ndb-only      | demo_ext   |
+   |              2 |            |          0 | memcache-only | NULL       |
+   |              1 |            |          0 | ndb-only      | demo_table |
+   |              0 | b:         |          0 | ndb-test      | demo_ext   |
+   |              3 | t:         |          0 | caching       | demo_tabs  |
+   |              1 | t:         |          0 | ndb-only      | demo_tabs  |
+   |              4 |            |          0 | ndb-test      | demo_ext   |
+   |              1 | twn_pr:    |          0 | ndb-only      | towns_cnt  |
+   |              3 | b:         |          0 | caching       | demo_ext   |
+   +----------------+------------+------------+---------------+------------+</pre>
+<p>At present it is necessary to restart the Memcached server in order to pick up the new key_prefix (and so you&#8217;d want to run multiple instances in order to maintain service):</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #004488;">
+[billy@ws2:~]$ memcached -E /usr/local/mysql/lib/ndb_engine.so -e &quot;connectstring=localhost:1186;role=db-only&quot; -vv -c 20</span>
+   07-Feb-2012 11:22:29 GMT NDB Memcache 5.5.19-ndb-7.2.4 started [NDB 7.2.4; MySQL 5.5.19]
+   Contacting primary management server (localhost:1186) ...
+   Connected to &quot;localhost:1186&quot; as node id 51.
+   Retrieved 5 key prefixes for server role &quot;db-only&quot;.
+   The default behavior is that:
+       GET uses NDB only
+       SET uses NDB only
+       DELETE uses NDB only.
+   The 4 explicitly defined key prefixes are &quot;b:&quot; (demo_table_large), &quot;pop_pr:&quot; (towns_tab), 
+      &quot;t:&quot; (demo_table_tabs) and &quot;twn_pr:&quot; (towns_tab)</pre>
+<p>Now these columns (and the data already added through SQL) are accessible through the Memcached API:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #004488;">[billy@ws2 ~]$ telnet localhost 11211
+
+get twn_pr:Marlow</span>
+<span style="color: #004400;">VALUE twn_pr:Marlow 0 3 
+SL7 
+END </span>
+<span style="color: #004488;">set twn_pr:Maidenhead 0 0 3 
+SL6 </span>
+<span style="color: #004400;">STORED </span>
+<span style="color: #004488;">set pop_pr:Maidenhead 0 0 5 
+42827 </span>
+<span style="color: #004400;">STORED</span></pre>
+<p>and then we can check these changes through SQL:</p>
+<pre style="padding-left: 30px; font-size: 11px; color: #884400;">mysql&gt; SELECT * FROM clusterdb.towns_tab;
+   +------------+------+------------+-----------+
+   | town       | zip  | population | county    |
+   +------------+------+------------+-----------+
+   | Maidenhead | SL6  |      42827 | NULL      |
+   | Marlow     | SL7  |      14004 | Berkshire |
+   +------------+------+------------+-----------+</pre>
+<p>One final test is to start a second memcached server that will access the same data. As everything is running on the same host, we need to have the second server listen on a different port:</p>
+<pre style="padding-left: 30px; font-size: 11px;"><span style="color: #004488;">[billy@ws2 ~]$ memcached -E /usr/local/mysql/lib/ndb_engine.so 
+   -e "connectstring=localhost:1186;role=db-only" -vv -c 20 
+   <strong>-p 11212 -U 11212</strong> 
+[billy@ws2 ~]$ telnet localhost 11212
+
+get twn_pr:Marlow </span>
+<span style="color: #004400;">VALUE twn_pr:Marlow 0 3
+SL7 
+END</span></pre>
+<div id="attachment_1754" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2011/04/Memcached_with_other_APIs1.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1754" class="size-medium wp-image-1754" title="Memcached_with_other_APIs" src="/wp-content/uploads/2011/04/Memcached_with_other_APIs1-300x123.jpg" alt="" width="300" height="123"></a><p id="caption-attachment-1754" class="wp-caption-text">Memcached alongside NoSQL &amp; SQL APIs</p>
+</div>
+<p>As mentioned before, there&#8217;s a wide range of ways of accessing the data in MySQL Cluster &#8211; both SQL and NoSQL. You&#8217;re free to mix and match these technologies &#8211; for example, a mission critical business application using SQL, a high-running web app using the Memcached API and a real-time application using the NDB API. And the best part is that they can all share the exact same data and they all provide the same HA infrastructure (for example synchronous replication and automatic failover within the Cluster and geographic replication to other clusters).</p>
+<p>Finally, a reminder &#8211; please try this out and let us know what you think (or if you don&#8217;t have time to try it then let us now what you think anyway) by adding a comment to this post.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster" data-via="wpbeginner" data-text="Scalable, persistent, HA NoSQL Memcache storage using MySQL Cluster" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/scalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fscalabale-persistent-ha-nosql-memcache-storage-using-mysql-cluster&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-7-2" rel="tag">MySQL Cluster 7.2</a>, <a href="/tag/ndb-api" rel="tag">NDB API</a>, <a href="/tag/nosql" rel="tag">NoSQL</a>
+</div>
+
+			</div>			<div id="post-1008" class="post-1008 post type-post status-publish format-standard hentry category-mysql-cluster tag-java tag-jpa tag-mysql-cluster tag-mysql-cluster-7-1 tag-ndb-api">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial">March 30, 2010</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial#comments">7 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial" rel="bookmark">Using ClusterJ (part of MySQL Cluster Connector for Java) &#8211; a tutorial</a></h2>
+				
+				<div class="entry">
+										<div id="attachment_1010" style="width: 234px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2010/03/ClusterJ_Stack.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1010" class="size-medium wp-image-1010" title="Java access to MySQL Cluster" src="/wp-content/uploads/2010/03/ClusterJ_Stack-224x300.jpg" alt="" width="224" height="300" srcset="/wp-content/uploads/2010/03/ClusterJ_Stack-224x300.jpg 224w, /wp-content/uploads/2010/03/ClusterJ_Stack.jpg 342w" sizes="auto, (max-width: 224px) 100vw, 224px"></a><p id="caption-attachment-1010" class="wp-caption-text">Fig. 1 Java access to MySQL Cluster</p>
+</div>
+<p>ClusterJ is part of the MySQL Cluster Connector for Java which is currently in beta as part of MySQL Cluster 7.1. It is designed to provide a high performance method for Java applications to store and access data in a MySQL Cluster database. It is also designed to be easy for Java developers to use and is “in the style of” Hibernate/Java Data Objects (JDO) and JPA. It uses the Domain Object Model DataMapper pattern:</p>
+<ul>
+<li>Data is represented as domain objects</li>
+<li>Domain objects are separate from business logic</li>
+<li>Domain objects are mapped to database tables</li>
+</ul>
+<p>The purpose of ClusterJ is to provide a mapping from the table-oriented view of the data stored in MySQL Cluster to the Java objects used by the application. This is achieved by annotating interfaces representing the Java objects; where each persistent interface is mapped to a table and each property in that interface to a column. By default, the table name will match the interface name and the column names match the property names but this can be overridden using annotations.</p>
+<div id="attachment_1011" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2010/03/ClusterJ_Annotations.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1011" class="size-medium wp-image-1011" title="ClusterJ_Annotations" src="/wp-content/uploads/2010/03/ClusterJ_Annotations-300x159.jpg" alt="" width="300" height="159"></a><p id="caption-attachment-1011" class="wp-caption-text">Fig. 2 ClusterJ Interface Annotations</p>
+</div>
+<p>If the table does not already exist (for example, this is a brand new application with new data) then the table must be created manually &#8211; unlike OpenJPA, ClusterJ will not create the table automatically.</p>
+<p>Figure 2 shows an example of an interface that has been created in order to represent the data held in the ‘employee’ table.</p>
+<p>ClusterJ uses the following concepts:</p>
+<ul>
+<li>
+<div id="attachment_1013" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2010/03/ClusterJ_concepts.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1013" class="size-medium wp-image-1013" title="ClusterJ_concepts" src="/wp-content/uploads/2010/03/ClusterJ_concepts-300x300.jpg" alt="" width="300" height="300"></a><p id="caption-attachment-1013" class="wp-caption-text">Fig. 3 ClusterJ Terminology</p>
+</div>
+<p><strong>SessionFactory</strong>: There is one instance per MySQL Cluster instance for each Java Virtual Machine (JVM). The SessionFactory object is used by the application to get hold of sessions. The configuration details for the ClusterJ instance are defined in the Configuration properties which is an artifact associated with the SessionFactory.</p>
+</li>
+<li>
+<strong>Session</strong>: There is one instance per user (per Cluster, per JVM) and represents a Cluster connection</li>
+<li>
+<strong>Domain Object</strong>: Objects representing the data from a table. The domain objects (and their relationships to the Cluster tables) are defined by annotated interfaces (as shown in the right-hand side of Figure 2.</li>
+<li>
+<strong>Transaction</strong>: There is one transaction per session at any point in time. By default, each operation (query, insert, update, or delete) is run under a new transaction. . The Transaction interface allows developers to aggregate multiple operations into a single, atomic unit of work.</li>
+</ul>
+<p>ClusterJ will be suitable for many Java developers but it has some restrictions which may make OpenJPA with the ClusterJPA plug-in more appropriate. These ClusterJ restrictions are:</p>
+<ul>
+<li>Persistent Interfaces rather than persistent classes. The developer provides the signatures for the getter/setter methods rather than the properties and no extra methods can be added.</li>
+<li>No Relationships between properties or between objects can be defined in the domain objects. Properties are primitive types.</li>
+<li>No Multi-table inheritance; there is a single table per persistent interface</li>
+<li>No joins in queries (all data being queried must be in the same table/interface)</li>
+<li>No Table creation &#8211; user needs to create tables and indexes</li>
+<li>No Lazy Loading &#8211; entire record is loaded at one time, including large object (LOBs).</li>
+</ul>
+<h3>Tutorial</h3>
+<p>This tutorial uses MySQL Cluster 7.1.2a on Fedora 12. If using earlier or more recent versions of MySQL Cluster then you may need to change the class-paths as explained in <a href="http://dev.mysql.com/doc/ndbapi/en/mccj-using-clusterj.html" target="_blank">http://dev.mysql.com/doc/ndbapi/en/mccj-using-clusterj.html</a></p>
+<p>It is necessary to have MySQL Cluster up and running. For simplicity all of the nodes (processes) making up the Cluster will be run on the same physical host, along with the application.</p>
+<p>These are the MySQL Cluster configuration files being used :</p>
+<p><strong>config.ini:</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">[ndbd default]noofreplicas=2
+datadir=/home/billy/mysql/my_cluster/data
+
+[ndbd]
+hostname=localhost
+id=3
+
+[ndbd]
+hostname=localhost
+id=4
+
+[ndb_mgmd]
+id = 1
+hostname=localhost
+datadir=/home/billy/mysql/my_cluster/data
+
+[mysqld]
+hostname=localhost
+id=101
+
+[api]
+hostname=localhost</span></pre>
+<p><strong>my.cnf:</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">[mysqld]
+ndbcluster
+datadir=/home/billy/mysql/my_cluster/data
+basedir=/usr/local/mysql</span></pre>
+<p>This tutorial focuses on ClusterJ rather than on running MySQL Cluster; if you are new to MySQL Cluster then refer to <a href="/mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host/" target="_blank">running a simple Cluster</a> before trying this tutorial.</p>
+<p>ClusterJ needs to be told how to connect to our MySQL Cluster database; including the connect string (the address/port for the management node), the database to use, the user to login as and attributes for the connection such as the timeout values. If these parameters aren’t defined then ClusterJ will fail with run-time exceptions. This information represents the “configuration properties” shown in Figure 3.  These parameters can be hard coded in the application code but it is more maintainable to create a clusterj.properties file that will be imported by the application. This file should be stored in the same directory as your application source code.</p>
+<p><strong>clusterj.properties:</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">com.mysql.clusterj.connectstring=localhost:1186
+ com.mysql.clusterj.database=clusterdb
+ com.mysql.clusterj.connect.retries=4
+ com.mysql.clusterj.connect.delay=5
+ com.mysql.clusterj.connect.verbose=1
+ com.mysql.clusterj.connect.timeout.before=30
+ com.mysql.clusterj.connect.timeout.after=20
+ com.mysql.clusterj.max.transactions=1024</span></pre>
+<p>As ClusterJ will not create tables automatically, the next step is to create ‘clusterdb’ database (referred to in clusterj.properties) and the ‘employee’ table:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">[billy@ws1 ~]$ mysql -u root -h 127.0.0.1 -P 3306 -u root
+ mysql&gt;  create database clusterdb;use clusterdb;
+ mysql&gt; CREATE TABLE employee (
+ -&gt;     id INT NOT NULL PRIMARY KEY,
+ -&gt;     first VARCHAR(64) DEFAULT NULL,
+ -&gt;     last VARCHAR(64) DEFAULT NULL,
+ -&gt;     municipality VARCHAR(64) DEFAULT NULL,
+ -&gt;     started VARCHAR(64) DEFAULT NULL,
+ -&gt;     ended  VARCHAR(64) DEFAULT NULL,
+ -&gt;     department INT NOT NULL DEFAULT 1,
+ -&gt;     UNIQUE KEY idx_u_hash (first,last) USING HASH,
+ -&gt;     KEY idx_municipality (municipality)
+ -&gt; ) ENGINE=NDBCLUSTER;</span></pre>
+<p>The next step is to create the annotated interface:</p>
+<p><strong>Employee.java:</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">import com.mysql.clusterj.annotation.Column;
+import com.mysql.clusterj.annotation.Index;
+import com.mysql.clusterj.annotation.PersistenceCapable;
+import com.mysql.clusterj.annotation.PrimaryKey;</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">@PersistenceCapable(table="employee")
+@Index(name="idx_uhash")
+public interface Employee {</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">@PrimaryKey
+int getId();
+void setId(int id);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">String getFirst();
+void setFirst(String first);
+
+String getLast();
+void setLast(String last);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">@Column(name="municipality")
+@Index(name="idx_municipality")
+String getCity();
+void setCity(String city);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">String getStarted();
+void setStarted(String date);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">String getEnded();
+void setEnded(String date);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">Integer getDepartment();
+void setDepartment(Integer department);
+}</span></pre>
+<p>The name of the table is specified in the annotation @PersistenceCapable(table=&#8221;employee&#8221;) and then each column from the employee table has an associated getter and setter method defined in the interface. By default, the property name in the interface is the same as the column name in the table – the column name has been overridden for the City property by explicitly including the @Column(name=&#8221;municipality&#8221;) annotation just before the associated getter method. The @PrimaryKey annotation is used to identify the property whose associated column is the Primary Key in the table. ClusterJ is made aware of the existence of indexes in the database using the @Index annotation.</p>
+<p>The next step is to write the application code which we step through here block by block; the first of which simply contains the import statements and then loads the contents of the clusterj.properties defined above:</p>
+<p><strong>Main.java (part 1):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">import com.mysql.clusterj.ClusterJHelper;
+import com.mysql.clusterj.SessionFactory;
+import com.mysql.clusterj.Session;
+import com.mysql.clusterj.Query;
+import com.mysql.clusterj.query.QueryBuilder;
+import com.mysql.clusterj.query.QueryDomainType;</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">import java.io.File;
+import java.io.InputStream;
+import java.io.FileInputStream;
+import java.io.*;</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">import java.util.Properties;
+import java.util.List;</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">public class Main {</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">public static void main (String[] args) throws java.io.FileNotFoundException,java.io.IOException {</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">// Load the properties from the clusterj.properties file</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">File propsFile = new File("clusterj.properties");
+InputStream inStream = new FileInputStream(propsFile);
+Properties props = new Properties();
+props.load(inStream);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">//Used later to get userinput
+BufferedReader br = new BufferedReader(new
+InputStreamReader(System.in));</span></pre>
+<p>The next step is to get a handle for a SessionFactory from the ClusterJHelper class and then use that factory to create a session (based on the properties imported from clusterj.properties file.</p>
+<p><strong>Main.java (part 2):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">// Create a session (connection to the database)
+SessionFactory factory = ClusterJHelper.getSessionFactory(props);
+Session session = factory.getSession();</span></pre>
+<p>Now that we have a session, it is possible to instantiate new Employee objects and then persist them to the database. Where there are no transaction begin() or commit() statements, each operation involving the database is treated as a separate transaction.</p>
+<p><strong>Main.java (part 3):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">// Create and initialise an Employee
+Employee newEmployee = session.newInstance(Employee.class);
+newEmployee.setId(988);
+newEmployee.setFirst("John");
+newEmployee.setLast("Jones");
+newEmployee.setStarted("1 February 2009");
+newEmployee.setDepartment(666);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">// Write the Employee to the database
+session.persist(newEmployee);</span></pre>
+<p>At this point, a row will have been added to the ‘employee’ table. To verify this, a new Employee object is created and used to read the data back from the ‘employee’ table using the primary key (Id) value of 998:</p>
+<p><strong>Main.java (part 4):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">// Fetch the Employee from the database
+ Employee theEmployee = session.find(Employee.class, 988);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">if (theEmployee == null)
+ {System.out.println("Could not find employee");}
+else
+ {System.out.println ("ID: " + theEmployee.getId() + "; Name: " +
+ theEmployee.getFirst() + " " + theEmployee.getLast());
+ System.out.println ("Location: " + theEmployee.getCity());
+ System.out.println ("Department: " + theEmployee.getDepartment());
+ System.out.println ("Started: " + theEmployee.getStarted());
+ System.out.println ("Left: " + theEmployee.getEnded());
+}</span></pre>
+<p>This is the output seen at this point:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">ID: 988; Name: John Jones
+Location: null
+Department: 666
+Started: 1 February 2009
+Left: null
+Check the database before I change the Employee - hit return when you are done</span></pre>
+<p>The next step is to modify this data but it does not write it back to the database yet:</p>
+<p><strong>Main.java (part 5):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">// Make some changes to the Employee &amp; write back to the database
+theEmployee.setDepartment(777);
+theEmployee.setCity("London");</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">System.out.println("Check the database before I change the Employee -
+hit return when you are done");
+String ignore = br.readLine();</span></pre>
+<p>The application will pause at this point and give you chance to check the database to confirm that the original data has been added as a new row but the changes have not been written back yet:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">mysql&gt; select * from clusterdb.employee;
++-----+-------+-------+--------------+-----------------+-------+------------+
+| id  | first | last  | municipality | started         | ended | department |
++-----+-------+-------+--------------+-----------------+-------+------------+
+| 988 | John  | Jones | NULL         | 1 February 2009 | NULL  |        666 |
++-----+-------+-------+--------------+-----------------+-------+------------+</span></pre>
+<p>After hitting return, the application will continue and write the changes to the table, using an automatic transaction to perform the update.</p>
+<p><strong>Main.java (part 6):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">session.updatePersistent(theEmployee);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">System.out.println("Check the change in the table before I bulk add
+Employees - hit return when you are done");
+ignore = br.readLine();</span></pre>
+<p>The application will again pause so that we can now check that the change has been written back (persisted) to the database:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">mysql&gt; select * from clusterdb.employee;
++-----+-------+-------+--------------+-----------------+-------+------------+
+| id  | first | last  | municipality | started         | ended | department |
++-----+-------+-------+--------------+-----------------+-------+------------+
+| 988 | John  | Jones | London       | 1 February 2009 | NULL  |        777 |
++-----+-------+-------+--------------+-----------------+-------+------------+</span></pre>
+<p>The application then goes onto create and persist 100 new employees. To improve performance, a single transaction is used to that all of the changes can be written to the database at once when the commit() statement is run:</p>
+<p><strong>Main.java (part 7):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">// Add 100 new Employees - all as part of a single transaction
+ newEmployee.setFirst("Billy");
+ newEmployee.setStarted("28 February 2009");</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">session.currentTransaction().begin();</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">for (int i=700;i&lt;800;i++) {
+ newEmployee.setLast("No-Mates"+i);
+ newEmployee.setId(i+1000);
+ newEmployee.setDepartment(i);
+ session.persist(newEmployee);
+ }</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">session.currentTransaction().commit();</span></pre>
+<p>The 100 new employees will now have been persisted to the database. The next step is to create and execute a query that will search the database for all employees in department 777 by using a QueryBuilder and using that to build a QueryDomain that compares the ‘department’ column with a parameter. After creating the, the department parameter is set to 777 (the query could subsequently be reused with different department numbers). The application then runs the query and iterates through and displays each of employees in the result set:</p>
+<p><strong>Main.java (part 8):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">// Retrieve the set all of Employees in department 777
+QueryBuilder builder = session.getQueryBuilder();
+QueryDomainType&lt;Employee&gt; domain =
+builder.createQueryDefinition(Employee.class);
+domain.where(domain.get("department").equal(domain.param(
+"department")));
+Query&lt;Employee&gt; query = session.createQuery(domain);
+query.setParameter("department",777);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">List&lt;Employee&gt; results = query.getResultList();
+for (Employee deptEmployee: results) {
+System.out.println ("ID: " + deptEmployee.getId() + "; Name: " +
+deptEmployee.getFirst() + " " + deptEmployee.getLast());
+System.out.println ("Location: " + deptEmployee.getCity());
+System.out.println ("Department: " + deptEmployee.getDepartment());
+System.out.println ("Started: " + deptEmployee.getStarted());
+System.out.println ("Left: " + deptEmployee.getEnded());
+}</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">System.out.println("Last chance to check database before emptying table
+- hit return when you are done");
+ignore = br.readLine();</span></pre>
+<p>At this point, the application will display the following and prompt the user to allow it to continue:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">ID: 988; Name: John Jones
+Location: London
+Department: 777
+Started: 1 February 2009
+Left: null
+ID: 1777; Name: Billy No-Mates777
+Location: null
+Department: 777
+Started: 28 February 2009
+Left: null</span></pre>
+<p>We can compare that output with an SQL query performed on the database:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">mysql&gt; select * from employee where department=777;
+ +------+-------+-------------+--------------+------------------+-------+------------+
+ | id   | first | last        | municipality | started          | ended | department |
+ +------+-------+-------------+--------------+------------------+-------+------------+
+ |  988 | John  | Jones       | London       | 1 February 2009  | NULL  |        777 |
+ | 1777 | Billy | No-Mates777 | NULL         | 28 February 2009 | NULL  |        777 |
+ +------+-------+-------------+--------------+------------------+-------+------------+</span></pre>
+<p>Finally, after pressing return again, the application will remove all employees:</p>
+<p><strong>Main.java (part 9):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">session.deletePersistentAll(Employee.class);
+ }
+}</span></pre>
+<p>As a final check, an SQL query confirms that all of the rows have been deleted from the ‘employee’ table.</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">mysql&gt; select * from employee;
+Empty set (0.00 sec)</span></pre>
+<h4>Compiling and running the ClusterJ tutorial code</h4>
+<pre style="padding-left: 30px;"><span style="color: #800000;">javac -classpath /usr/local/mysql/share/mysql/java/clusterj-api.jar:. Main.java Employee.java</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #800000;">java -classpath /usr/local/mysql/share/mysql/java/clusterj.jar:. -Djava.library.path=/usr/local/mysql/lib Main
+</span><span style="color: #800000;"> </span></pre>
+<p><a href="/ClusterJ_Examples.tar.gz" target="_blank">Download the source code for this tutorial from here </a>(together with the code for the up-coming ClusterJPA tutorial).</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial" data-via="wpbeginner" data-text="Using ClusterJ (part of MySQL Cluster Connector for Java) &#8211; a tutorial" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fusing-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/java" rel="tag">Java</a>, <a href="/tag/jpa" rel="tag">JPA</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-7-1" rel="tag">MySQL Cluster 7.1</a>, <a href="/tag/ndb-api" rel="tag">NDB API</a>
+</div>
+
+			</div>			<div id="post-953" class="post-953 post type-post status-publish format-standard hentry category-mysql-cluster tag-java tag-mysql tag-mysql-cluster tag-mysql-cluster-7-1 tag-ndb-api">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/mysql-cluster-connector-for-java-replay-available-for-part-1-of-the-webinar">February 19, 2010</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/mysql-cluster-connector-for-java-replay-available-for-part-1-of-the-webinar#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/mysql-cluster-connector-for-java-replay-available-for-part-1-of-the-webinar" rel="bookmark">MySQL Cluster Connector for Java &#8211; replay available for part 1 of the webinar</a></h2>
+				
+				<div class="entry">
+										<p>The replay of the two webinars can now be accesed from <a href="http://www.mysql.com/news-and-events/on-demand-webinars/display-od-487.html">mysql.com</a></p>
+<p>Remember that the second part of the webinar will be on March 3rd (details below).</p>
+<div id="attachment_785" style="width: 330px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2009/12/clusterj-architecture.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-785" class="size-full wp-image-785" title="clusterj-architecture" src="/wp-content/uploads/2009/12/clusterj-architecture.png" alt="ClusterJ Architecture" width="320" height="183" srcset="/wp-content/uploads/2009/12/clusterj-architecture.png 320w, /wp-content/uploads/2009/12/clusterj-architecture-300x171.png 300w" sizes="auto, (max-width: 320px) 100vw, 320px"></a><p id="caption-attachment-785" class="wp-caption-text">ClusterJ Architecture</p>
+</div>
+<p>MySQL have been working on a new way of accessing MySQL Cluster using Java. Designed for Java developers, the MySQL Cluster Connector for Java implements an easy-to-use and high performance native Java interface and OpenJPA plug-in that maps Java classes to tables stored in the high availability, real-time MySQL Cluster database.</p>
+<p>There is a series of 2 webinars coming up, as always these are free to attend &#8211; you just need to register in advance:</p>
+<p><strong>Part 1: Tuesday, February 16, 2010: 10:00 Pacific time</strong></p>
+<ul>
+<li>an overview of the MySQL Cluster Connector for Java</li>
+<li>what these technologies bring to Java developers</li>
+<li>implementation details of the MySQL Cluster Java API and Plug-In for OpenJPA</li>
+<li>configuring the connection to MySQL Cluster</li>
+<li>creating the Java Domain Object Model for your tables</li>
+<li>managing insert, update, and delete operations</li>
+<li>querying the database</li>
+<li>how to get started developing new Java applications using these interfaces</li>
+</ul>
+<p>Accessfrom <a href="http://www.mysql.com/news-and-events/on-demand-webinars/display-od-487.html">mysql.com</a></p>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">an overview of the MySQL Cluster Connector for Java</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">what these technologies bring to Java developers</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">implementation details of the MySQL Cluster Java API and Plug-In for OpenJPA</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">configuring the connection to MySQL Cluster</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">creating the Java Domain Object Model for your tables</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">managing insert, update, and delete operations</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">querying the database</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">how to get started developing new Java applications using these interfaces</div>
+<h3>Part 2: Wednesday, March 03, 2010: 10:00 Pacific time</h3>
+<ul>
+<li>how MySQL Cluster Connector for Java coexists with existing OpenJPA / TopLink / JDBC-based apps</li>
+<li>how to evaluate the MySQL Cluster Connector for Java alternatives</li>
+<li>performance comparisons with both existing Java access and with native NDB API access to MySQL Cluster</li>
+<li>what the future holds for this technology</li>
+</ul>
+<p style="padding-left: 30px;">Wed, Mar 03: <span style="white-space: pre;"> </span>08:00 Hawaii time<br>
+Wed, Mar 03: <span style="white-space: pre;"> </span>11:00 Mountain time (America)<br>
+Wed, Mar 03: <span style="white-space: pre;"> </span>12:00 Central time (America)<br>
+Wed, Mar 03: <span style="white-space: pre;"> </span>13:00 Eastern time (America)<br>
+Wed, Mar 03: <span style="white-space: pre;"> </span>18:00 UTC<br>
+Wed, Mar 03: <span style="white-space: pre;"> </span>18:00 Western European time<br>
+Wed, Mar 03: <span style="white-space: pre;"> </span>19:00 Central European time<br>
+Wed, Mar 03: <span style="white-space: pre;"> </span>20:00 Eastern European time</p>
+<p><a href="http://www.mysql.com/news-and-events/web-seminars/display-488.html" target="_blank">Register for Part 2 here</a>.</p>
+<p>This functionality isn&#8217;t GA but it is available for you to try and we&#8217;d love to get feedback (which you can provide through the <a href="http://forums.mysql.com/list.php?25" target="_blank">MySQL Cluster forum </a>or by emailing cluster@lists.mysql.com</p>
+<p>If you want to see for yourself then take a look at the <a href="http://ocklin.blogspot.com/2009/12/java-and-openjpa-for-mysql-cluster.html" target="_blank">Blog entry from Bernhard Ocklin</a> &#8211; the engineering manager responsible for this work.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/mysql-cluster-connector-for-java-replay-available-for-part-1-of-the-webinar" data-via="wpbeginner" data-text="MySQL Cluster Connector for Java &#8211; replay available for part 1 of the webinar" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/mysql-cluster-connector-for-java-replay-available-for-part-1-of-the-webinar"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/mysql-cluster-connector-for-java-replay-available-for-part-1-of-the-webinar" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fmysql-cluster-connector-for-java-replay-available-for-part-1-of-the-webinar&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/java" rel="tag">Java</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-7-1" rel="tag">MySQL Cluster 7.1</a>, <a href="/tag/ndb-api" rel="tag">NDB API</a>
+</div>
+
+			</div>			<div id="post-779" class="post-779 post type-post status-publish format-standard hentry category-mysql-cluster tag-mysql tag-mysql-cluster tag-mysql-cluster-70 tag-mysql-cluster-cge tag-ndb-api tag-replication tag-stored-procedures tag-white-paper">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database">December 7, 2009</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database#comments">2 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database" rel="bookmark">New white paper: Guide to Optimizing Performance of the MySQL Cluster Database</a></h2>
+				
+				<div class="entry">
+										<div id="attachment_780" style="width: 215px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2009/12/connection_pooling.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-780" class="size-full wp-image-780" title="Connection Pooling" src="/wp-content/uploads/2009/12/connection_pooling.jpg" alt="MySQL Cluster Connection Pooling" width="205" height="302" srcset="/wp-content/uploads/2009/12/connection_pooling.jpg 205w, /wp-content/uploads/2009/12/connection_pooling-203x300.jpg 203w" sizes="auto, (max-width: 205px) 100vw, 205px"></a><p id="caption-attachment-780" class="wp-caption-text">MySQL Cluster Connection Pooling</p>
+</div>
+<p>This guide explores how to tune and optimize the MySQL Cluster database to handle diverse workload requirements. It discusses data access patterns and how to build distribution awareness into applications, before exploring schema and query optimization, tuning of parameters and how to get the best out of the latest innovations in hardware design.</p>
+<p>The Guide concludes with recent performance benchmarks conducted with the MySQL Cluster database, an overview of how MySQL Cluster can be integrated with other MySQL storage engines, before summarizing additional resources that will enable you to optimize MySQL Cluster performance with your applications.</p>
+<p>Download the white paper (as always, for free) from:<a href="http://www.mysql.com/why-mysql/white-papers/mysql_wp_cluster_perfomance.php" target="_blank"> http://www.mysql.com/why-mysql/white-papers/mysql_wp_cluster_perfomance.php</a></p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database" data-via="wpbeginner" data-text="New white paper: Guide to Optimizing Performance of the MySQL Cluster Database" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fnew-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-70" rel="tag">MySQL Cluster 7.0</a>, <a href="/tag/mysql-cluster-cge" rel="tag">MySQL Cluster CGE</a>, <a href="/tag/ndb-api" rel="tag">NDB API</a>, <a href="/tag/replication" rel="tag">Replication</a>, <a href="/tag/stored-procedures" rel="tag">Stored Procedures</a>, <a href="/tag/white-paper" rel="tag">White Paper</a>
+</div>
+
+			</div>			<div id="post-479" class="post-479 post type-post status-publish format-standard hentry category-mysql-cluster category-mysql-replication tag-mysql tag-mysql-cluster tag-mysql-replication tag-ndb-api">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating">August 13, 2009</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating" rel="bookmark">Using NDB API Events to mask/hide colum data when replicating</a></h2>
+				
+				<div class="entry">
+										<p>If you  have asynchronous replication where the slave database is using MySQL Cluster then you can use the NDB API events functionality to mask/overwrite data. You might do this for example if the replica is to be used for generating reports where some of the data is sensitive and not relevant to those reports. Unlike stored procedures, NDB API events will be triggered on the slave.</p>
+<p>The first step is to set up replication (master-&gt;slave rather than multi-master) as described in <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/" target="_blank">Setting up MySQL Asynchronous Replication for High Availability</a>).</p>
+<p>In this example, the following table definition is used:</p>
+<pre style="padding-left: 30px;color: #993300;font-size: 11px">mysql&gt; use clusterdb;
+mysql&gt; create table ASSETS (CODE int not null primary key, VALUE int) engine=ndb;</pre>
+<p>The following code should be compiled and then executed on a node within the slave Cluster:</p>
+<pre style="padding-left: 30px;color: #993300;font-size: 11px">#include &lt;NdbApi.hpp&gt;
+#include &lt;stdio.h&gt;
+#include &lt;iostream&gt;
+#include &lt;unistd.h&gt;
+#include &lt;cstdlib&gt;
+#include &lt;string.h&gt;
+
+#define APIERROR(error) 
+  { std::cout &lt;&lt; "Error in " &lt;&lt; __FILE__ &lt;&lt; ", line:" &lt;&lt; __LINE__ &lt;&lt; ", code:" 
+  &lt;&lt; error.code &lt;&lt; ", msg: " &lt;&lt; error.message &lt;&lt; "." &lt;&lt; std::endl; 
+  exit(-1); }
+
+int myCreateEvent(Ndb* myNdb,
+const char *eventName,
+const char *eventTableName,
+const char **eventColumnName,
+const int noEventColumnName);
+
+static void do_blank(Ndb*, int);
+
+int main(int argc, char** argv)
+{
+  if (argc &lt; 1)
+ {
+    std::cout &lt;&lt; "Arguments are &lt;connect_string cluster&gt;.n";
+    exit(-1);
+  }
+  const char *connectstring = argv[1];
+
+  ndb_init();
+
+  Ndb_cluster_connection *cluster_connection=
+  new Ndb_cluster_connection(connectstring); // Object representing the cluster
+
+  int r= cluster_connection-&gt;connect(5 /* retries               */,
+  3 /* delay between retries */,
+  1 /* verbose               */);
+  if (r &gt; 0)
+  {
+    std::cout &lt;&lt; "Cluster connect failed, possibly resolved with more retries.n";
+    exit(-1);
+  }
+  else if (r &lt; 0)
+  {
+    std::cout &lt;&lt; "Cluster connect failed.n";
+    exit(-1);
+  }
+
+  if (cluster_connection-&gt;wait_until_ready(30,30))
+  {
+    std::cout &lt;&lt; "Cluster was not ready within 30 secs." &lt;&lt; std::endl;
+    exit(-1);
+  }
+
+  Ndb* myNdb= new Ndb(cluster_connection,
+                      "clusterdb");  // Object representing the database
+
+  if (myNdb-&gt;init() == -1) APIERROR(myNdb-&gt;getNdbError());
+
+  const char *eventName= "CHNG_IN_ASSETS";
+  const char *eventTableName= "ASSETS";
+  const int noEventColumnName= 2;
+  const char *eventColumnName[noEventColumnName]=
+  {"CODE",
+   "VALUE"};
+
+  // Create events
+  myCreateEvent(myNdb,
+  eventName,
+  eventTableName,
+  eventColumnName,
+  noEventColumnName);
+
+  // Normal values and blobs are unfortunately handled differently..
+  typedef union { NdbRecAttr* ra; NdbBlob* bh; } RA_BH;
+
+  int i;
+
+  // Start "transaction" for handling events
+  NdbEventOperation* op;
+  printf("create EventOperationn");
+  if ((op = myNdb-&gt;createEventOperation(eventName)) == NULL)
+    APIERROR(myNdb-&gt;getNdbError());
+
+  printf("get valuesn");
+  RA_BH recAttr[noEventColumnName];
+  RA_BH recAttrPre[noEventColumnName];
+
+  for (i = 0; i &lt; noEventColumnName; i++) {
+    recAttr[i].ra    = op-&gt;getValue(eventColumnName[i]);
+    recAttrPre[i].ra = op-&gt;getPreValue(eventColumnName[i]);
+  }
+
+  // set up the callbacks
+  // This starts changes to "start flowing"
+  if (op-&gt;execute())
+    APIERROR(op-&gt;getNdbError());
+
+  while (true) {
+    int r = myNdb-&gt;pollEvents(1000); // wait for event or 1000 ms
+    if (r &gt; 0) {
+      while ((op= myNdb-&gt;nextEvent())) {
+        NdbRecAttr* ra = recAttr[0].ra;
+        if (ra-&gt;isNULL() &gt;= 0) { // we have a value
+          if (ra-&gt;isNULL() == 0) { // we have a non-null value
+            printf("CODE: %d ", ra-&gt;u_32_value());
+            do_blank(myNdb, ra-&gt;u_32_value());
+          } else 
+            printf("%-5s", "NULL");
+          } else
+            printf("%-5s", "-"); // no value
+            ra = recAttr[1].ra;
+            printf("n");
+          }
+        }
+      }
+    }
+
+int myCreateEvent(Ndb* myNdb,
+                  const char *eventName,
+                  const char *eventTableName,
+                  const char **eventColumnNames,
+                  const int noEventColumnNames)
+{
+  NdbDictionary::Dictionary *myDict= myNdb-&gt;getDictionary();
+  if (!myDict) APIERROR(myNdb-&gt;getNdbError());
+
+  const NdbDictionary::Table *table= myDict-&gt;getTable(eventTableName);
+  if (!table) APIERROR(myDict-&gt;getNdbError());
+
+  NdbDictionary::Event myEvent(eventName, *table);
+  myEvent.addTableEvent(NdbDictionary::Event::TE_INSERT);
+
+  myEvent.addEventColumns(noEventColumnNames, eventColumnNames);
+
+  // Add event to database
+  if (myDict-&gt;createEvent(myEvent) == 0)
+    myEvent.print();
+  else if (myDict-&gt;getNdbError().classification ==
+            NdbError::SchemaObjectExists) {
+    printf("Event creation failed, event existsn");
+    printf("dropping Event...n");
+    if (myDict-&gt;dropEvent(eventName)) APIERROR(myDict-&gt;getNdbError());
+    // try again
+    // Add event to database
+    if ( myDict-&gt;createEvent(myEvent)) APIERROR(myDict-&gt;getNdbError());
+  } else
+    APIERROR(myDict-&gt;getNdbError());
+
+    return 0;
+}
+
+static void do_blank(Ndb* myNdb, int code)
+{
+  const NdbDictionary::Dictionary* myDict= myNdb-&gt;getDictionary();
+  const NdbDictionary::Table *myTable= myDict-&gt;getTable("ASSETS");
+
+  if (myTable == NULL)
+  APIERROR(myDict-&gt;getNdbError());
+
+  NdbTransaction *myTransaction= myNdb-&gt;startTransaction();
+  if (myTransaction == NULL) APIERROR(myNdb-&gt;getNdbError());
+
+  printf("Replacing VALUE with 0 for CODE: %d ", code);
+
+  NdbOperation *myOperation= myTransaction-&gt;getNdbOperation(myTable);
+  if (myOperation == NULL) APIERROR(myTransaction-&gt;getNdbError());
+
+  myOperation-&gt;updateTuple();
+  myOperation-&gt;equal("CODE", code);
+  myOperation-&gt;setValue("VALUE", 0);
+
+  if (myTransaction-&gt;execute( NdbTransaction::Commit ) == -1)
+    APIERROR(myTransaction-&gt;getNdbError());
+
+  myNdb-&gt;closeTransaction(myTransaction);
+}
+
+shell&gt; slave_filter 127.0.0.1:1186</pre>
+<p>From the master Cluster, insert some values (note that the example can easily be extended to cover updates too):</p>
+<pre style="padding-left: 30px;color: #993300;font-size: 11px">mysql&gt; insert into ASSETS values (101, 50),(102, 40), (103, 99);</pre>
+<p>and then check that on the slave the value has been set to 0 for each of the entries:</p>
+<pre style="padding-left: 30px;color: #993300;font-size: 11px">mysql&gt; select * from ASSETS;
++------+-------+
+| CODE | VALUE |
++------+-------+
+|  100 |     0 |
+|  103 |     0 |
+|  101 |     0 |
+|  102 |     0 |
++------+-------+</pre>
+<p>How this works&#8230;. The table data is replicated as normal and the real values are stored in the slave. The &#8220;slave_filter&#8221; process has registered against insert operations on this table and when it&#8217;s triggered it sets the VALUE field to 0. The event is processes asynchronously from the replication and so there will be some very narrow window during which the true values would be stored in the slave.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating" data-via="wpbeginner" data-text="Using NDB API Events to mask/hide colum data when replicating" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/using-ndb-api-events-to-maskhide-colum-data-when-replicating" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fusing-ndb-api-events-to-maskhide-colum-data-when-replicating&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a>, <a href="/category/mysql-replication" rel="category tag">MySQL Replication</a> | 
+Tags: <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-replication" rel="tag">MySQL Replication</a>, <a href="/tag/ndb-api" rel="tag">NDB API</a>
+</div>
+
+			</div>			<div id="post-303" class="post-303 post type-post status-publish format-standard hentry category-mysql-cluster tag-doxygen tag-mysql tag-mysql-cluster tag-mysql-cluster-70 tag-ndb-api">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/doxygen-output-for-mysql-cluster-ndb-api-mgm-api">July 20, 2009</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/doxygen-output-for-mysql-cluster-ndb-api-mgm-api#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/doxygen-output-for-mysql-cluster-ndb-api-mgm-api" rel="bookmark">Doxygen output for MySQL Cluster NDB API &#038; MGM API</a></h2>
+				
+				<div class="entry">
+										<p></p>
+<div id="attachment_302" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2009/07/NDB_API_Doc.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-302" class="size-medium wp-image-302" title="NDB API Header Documentation" src="/wp-content/uploads/2009/07/NDB_API_Doc-300x199.jpg" alt="NDB API Documentation" width="300" height="199" srcset="/wp-content/uploads/2009/07/NDB_API_Doc-300x199.jpg 300w, /wp-content/uploads/2009/07/NDB_API_Doc.jpg 692w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><p id="caption-attachment-302" class="wp-caption-text">NDB API Documentation</p>
+</div>
+<br>
+A new page has been added to this site: <a href="/mysql-cluster-ndb-api-and-management-api/" target="_blank">NDB API Docs</a> which presents the information from the header files for both the NDB API and the NDB Management API.<br>
+<br>
+The material has been generated using doxygen and will be refreshed shortly after any new major, minor or maintenance release is made generally available (starting from MySQL Cluster 7.0.6).
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/doxygen-output-for-mysql-cluster-ndb-api-mgm-api" data-via="wpbeginner" data-text="Doxygen output for MySQL Cluster NDB API &#038; MGM API" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/doxygen-output-for-mysql-cluster-ndb-api-mgm-api"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/doxygen-output-for-mysql-cluster-ndb-api-mgm-api" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fdoxygen-output-for-mysql-cluster-ndb-api-mgm-api&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/doxygen" rel="tag">doxygen</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-70" rel="tag">MySQL Cluster 7.0</a>, <a href="/tag/ndb-api" rel="tag">NDB API</a>
+</div>
+
+			</div>			<div id="post-248" class="post-248 post type-post status-publish format-standard hentry category-mysql-cluster tag-distribution-aware tag-mysql tag-mysql-cluster tag-mysql-cluster-cge tag-ndb-api tag-partition">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications">July 6, 2009</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications#comments">8 comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications" rel="bookmark">Intelligent user-controlled partitioning and writing distribution-aware NDB API Applications</a></h2>
+				
+				<div class="entry">
+										<h3>Default partitioning</h3>
+<div id="attachment_246" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2009/07/poor_partitioning.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-246" class="size-medium wp-image-246" title="Default partitioning" src="/wp-content/uploads/2009/07/poor_partitioning-300x174.jpg" alt="By default, Cluster will partition based on primary key" width="300" height="174" srcset="/wp-content/uploads/2009/07/poor_partitioning-300x174.jpg 300w, /wp-content/uploads/2009/07/poor_partitioning.jpg 800w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><p id="caption-attachment-246" class="wp-caption-text">By default, Cluster will partition based on primary key</p>
+</div>
+<p>When adding rows to a table that&#8217;s using MySQL Cluster as the storage engine, each row is assigned to a partition where that partition is mastered by a particular data node in the Cluster. The best performance comes when all of the data required to satisfy a transaction is held within a single partition so that it can be satisfied within  a single data node rather than being bounced back and forth between multiple nodes where  extra latency will be introduced.</p>
+<p>By default, Cluster partions the data by hashing the primary key. This is not always optimal.</p>
+<p>For example, if we have 2 tables, the first using a single-column primary key (sub_id) and the second using a composite key (sub_id, service_name)&#8230;</p>
+<pre style="padding-left: 30px; font-size: 11px;color: #993300;">mysql&gt; describe names;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| sub_id | int(11)     | NO   | PRI | NULL    |       |
+| name   | varchar(30) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+
+mysql&gt; describe services;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| sub_id       | int(11)     | NO   | PRI | 0       |       |
+| service_name | varchar(30) | NO   | PRI |         |       |
+| service_parm | int(11)     | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+</pre>
+<p>If we then add data to these (initially empty) tables, we can then use the &#8216;explain&#8217; command to see which partitions (and hence phyical hosts) are used to store the data for this single subscriber&#8230;</p>
+<pre style="padding-left: 30px; font-size: 11px;color: #993300;">mysql&gt; insert into names values (1,'Billy');
+
+mysql&gt; insert into services values (1,'VoIP',20),(1,'Video',654),(1,'IM',878),(1,'ssh',666);
+
+mysql&gt; explain partitions select * from names where sub_id=1;
++----+-------------+-------+------------+-------+---------------+---------+---------+-------+------+-------+
+| id | select_type | table | partitions | type  | possible_keys | key     | key_len | ref   | rows | Extra |
++----+-------------+-------+------------+-------+---------------+---------+---------+-------+------+-------+
+|  1 | SIMPLE      | names | p3         | const | PRIMARY       | PRIMARY | 4       | const |    1 |       |
++----+-------------+-------+------------+-------+---------------+---------+---------+-------+------+-------+
+
+mysql&gt; explain partitions select * from services where sub_id=1;
++----+-------------+----------+-------------+------+---------------+---------+---------+-------+------+-------+
+| id | select_type | table    | partitions  | type | possible_keys | key     | key_len | ref   | rows | Extra |
++----+-------------+----------+-------------+------+---------------+---------+---------+-------+------+-------+
+|  1 | SIMPLE      | services | p0,p1,p2,p3 | ref  | PRIMARY       | PRIMARY | 4       | const |   10 |       |
++----+-------------+----------+-------------+------+---------------+---------+---------+-------+------+-------+</pre>
+<p>The service records for the same subscriber (sub_id = 1) are split accross 4 diffent partitions (p0, p1, p2 &amp; p3). This means that the query results in messages being passed backwards and forwards between the 4 different data nodes which cnsumes extra CPU time and incurs extra latency.</p>
+<h3>User-defined partitioning to the rescue</h3>
+<p>We can override the default behaviour by telling Cluster which fields should be fed into the hash algorithm. For our example, it&#8217;s reasonable to expect a transaction to access multiple records for the same subscriber (identified by their sub_id) and so the application will perform best if all of the rows for that sub_id are held in the same partition&#8230;</p>
+<pre style="padding-left: 30px; font-size: 11px;color: #993300;">mysql&gt; drop table services;
+
+mysql&gt; create table services (sub_id int, service_name varchar (30), service_parm int, primary key (sub_id, service_name)) engine = ndb
+-&gt; partition by key (sub_id);
+
+mysql&gt; insert into services values (1,'VoIP',20),(1,'Video',654),(1,'IM',878),(1,'ssh',666);
+
+mysql&gt; explain partitions select * from services where sub_id=1;
++----+-------------+----------+------------+------+---------------+---------+---------+-------+------+-------+
+| id | select_type | table    | partitions | type | possible_keys | key     | key_len | ref   | rows | Extra |
++----+-------------+----------+------------+------+---------------+---------+---------+-------+------+-------+
+|  1 | SIMPLE      | services | p3         | ref  | PRIMARY       | PRIMARY | 4       | const |   10 |       |
++----+-------------+----------+------------+------+---------------+---------+---------+-------+------+-------+</pre>
+<p>Now all of the rows for sub_id=1 from the services table are now held within a single partition (p3) which is the same as that holding the row for the same sub_id in the names table. Note that it wasn&#8217;t necessary to drop, recreate and re-provision the services table, the following command would have had the same effect:</p>
+<pre style="padding-left: 30px; font-size: 11px;color: #993300;">mysql&gt; alter table services partition by key (sub_id);</pre>
+<h3>Writing a distribution-aware application using the NDB API</h3>
+<div id="attachment_247" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2009/07/distribution_aware.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-247" class="size-medium wp-image-247" title="Distribution unaware application" src="/wp-content/uploads/2009/07/distribution_aware-300x169.jpg" alt="Distribution unaware NDB API application" width="300" height="169" srcset="/wp-content/uploads/2009/07/distribution_aware-300x169.jpg 300w, /wp-content/uploads/2009/07/distribution_aware.jpg 461w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><p id="caption-attachment-247" class="wp-caption-text">Distribution unaware NDB API application</p>
+</div>
+<p>In our example, the data is nicely partitioned for optimum performance when accessing all of the subscriber&#8217;s data &#8211; a single data node holding all of their data. However, there is another step to take to get the best out of your NDB-API based application. By default, the NDB API will use the Transaction Coordinator (TC) on a &#8216;random&#8217; data node to handle the transaction &#8211; we could get lucky and the guess is correct but it&#8217;s more likely that it will be sent to the wrong data node which with then have to proxy it to the correct data node. The probability of getting it right first time reduces as the number of node groups increases and so can prevent linear scaling.</p>
+<p>It&#8217;s very simple to modify this behaviour so that the best data node/TC is hit first time, every time. When creating the transaction, the application can include parameters telling the NDB API one of the tables to be accessed and for what key(s). The NDB API will then use that information to identify the best TC to use&#8230;</p>
+<pre style="padding-left: 30px; font-size: 11px;color: #993300;">
+const NdbDictionary::Dictionary* myDict= myNdb.getDictionary();
+const NdbDictionary::Table *namesTable= myDict-&gt;getTable("names");
+const NdbDictionary::Table *servicesTable= myDict-&gt;getTable("services");
+
+NdbRecAttr *myRecAttr;
+
+Ndb::Key_part_ptr dist_key[2];
+dist_key[0].ptr = (const void*) &amp;sub_id;
+dist_key[0].len = sizeof(sub_id);
+dist_key[1].ptr = NULL;
+dist_key[1].len = NULL;
+
+if (namesTable == NULL)
+APIERROR(myDict-&gt;getNdbError());
+
+if (servicesTable == NULL)
+APIERROR(myDict-&gt;getNdbError());
+
+NdbTransaction *myTransaction= myNdb.startTransaction(namesTable,
+dist_key);
+if (myTransaction == NULL) APIERROR(myNdb.getNdbError());
+
+NdbOperation *myOperation= myTransaction-&gt;getNdbOperation(namesTable);
+if (myOperation == NULL) APIERROR(myTransaction-&gt;getNdbError());
+
+myOperation-&gt;readTuple(NdbOperation::LM_Read);
+myOperation-&gt;equal("sub_id",sub_id);
+
+myRecAttr= myOperation-&gt;getValue("name", NULL);
+if (myRecAttr == NULL) APIERROR(myTransaction-&gt;getNdbError());
+
+// Perform operations on "services" table as well as part of another operation
+// if required; the subscriber's data will be in the same data node
+
+if (myTransaction-&gt;execute( NdbTransaction::Commit ) == -1)
+APIERROR(myTransaction-&gt;getNdbError());
+
+printf(" %2d    %sn",
+sub_id, myRecAttr-&gt;aRef());
+
+myNdb.closeTransaction(myTransaction);
+</pre>
+<p>Note that as the services table has been configured to use the same field (sub_id) for partitioning as the names table, the startTransaction method only needs to know about the namesTable as the TC that the NDB API selects will serve just as well for this subscriber&#8217;s data from the services table. The rest of the code can be found in <a href="/wp-content/uploads/2009/07/distaware.cpp">distaware</a>.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications" data-via="wpbeginner" data-text="Intelligent user-controlled partitioning and writing distribution-aware NDB API Applications" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/intelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fintelligent-user-controlled-partitioning-and-writing-distribution-aware-ndb-api-applications&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/distribution-aware" rel="tag">distribution aware</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-cge" rel="tag">MySQL Cluster CGE</a>, <a href="/tag/ndb-api" rel="tag">NDB API</a>, <a href="/tag/partition" rel="tag">partition</a>
+</div>
+
+			</div>			<div id="post-207" class="post-207 post type-post status-publish format-standard hentry category-mysql-cluster tag-batch tag-mysql tag-mysql-cluster tag-mysql-cluster-cge tag-ndb-api">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api">June 29, 2009</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api#comments">One comment</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api" rel="bookmark">Batching &#8211; improving MySQL Cluster performance when using the NDB API</a></h2>
+				
+				<div class="entry">
+										<p>As many people are aware, the best performance can be achieved from MySQL Cluster by using the native (C++) NDB API (rather than using SQL via a MySQL Server). What&#8217;s less well known is that you can improve the performance of your NDB-API enabled application even further by &#8216;batching&#8217;. This article attempts to explain why batching helps and how to do it.</p>
+<h3>What is batching and why does it help?</h3>
+<div id="attachment_209" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2009/06/batching.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-209" class="size-medium wp-image-209" title="NDB API Without batching" src="/wp-content/uploads/2009/06/batching-300x147.jpg" alt="NDB API accessing data from the Cluster without batching" width="300" height="147" srcset="/wp-content/uploads/2009/06/batching-300x147.jpg 300w, /wp-content/uploads/2009/06/batching.jpg 614w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><p id="caption-attachment-209" class="wp-caption-text">NDB API accessing data from the Cluster without batching</p>
+</div>
+<p>Batching involves sending multiple operations from the application to the Cluster in one group rather than individually; the Cluster then processes these operations and sends back the results. Without batching, each of these operations incurs the latency of crossing the network as well as consuming CPU time on both the application and data node hosts.</p>
+<p>By batching together multiple operations, all of the requests can be sent in one message and all of the replies received in another &#8211; thus reducing the number of messages and hence the latency and CPU time consumed.</p>
+<h3>How to use batching with the MySQL Cluster NDB API</h3>
+<div id="attachment_213" style="width: 310px" class="wp-caption alignright">
+<a href="/wp-content/uploads/2009/06/batched_operations.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-213" class="size-medium wp-image-213" title="Batched NDB API Operations" src="/wp-content/uploads/2009/06/batched_operations-300x210.jpg" alt="Batched NDB API Operations" width="300" height="210" srcset="/wp-content/uploads/2009/06/batched_operations-300x210.jpg 300w, /wp-content/uploads/2009/06/batched_operations.jpg 896w" sizes="auto, (max-width: 300px) 100vw, 300px"></a><p id="caption-attachment-213" class="wp-caption-text">Batched NDB API Operations</p>
+</div>
+<p>The principle is that you batch together as many operations as you can, execute them together and then interpret the results. After interpretting the results, the application may then decide to send in another batch of operations.</p>
+<p>An NDB API transaction consists of one or more operations where each operation (currently) acts on a single table and could be a simple primary key read or write or a complex table scan.</p>
+<p>The operation is not sent to the Cluster at the point that it&#8217;s defined. Instead, the application must explicitly request that all operations defined within the transaction up to that point be executed &#8211; at which point, the NDB API can send the batch of operations to the data nodes to be processed. The application may request that the transaction be committed at that point or it may ask for the transaction to be held open so that it can analyse the results from the first set of operations and then use that information within a subsequent series of operations and then commit the transaction after executing that second batch of operations.</p>
+<p>The following code sample shows how this can be implemented in practice (note that the application logic and all error handling has been ommited).</p>
+<pre style="padding-left: 30px; font-size: 11px"><span style="color: #993300;">const NdbDictionary::Dictionary* myDict= myNdb.getDictionary();
+
+const NdbDictionary::Table *myTable= myDict-&gt;getTable("tbl1");
+const NdbDictionary::Table *myTable2= myDict-&gt;getTable("tbl2");
+
+NdbTransaction *myTransaction= myNdb.startTransaction();
+
+// Read all of the required data as part of a single batch
+
+NdbOperation *myOperation= myTransaction-&gt;getNdbOperation(myTable1);
+myOperation-&gt;readTuple(NdbOperation::LM_Read);
+myOperation-&gt;equal("ref", asset_num);
+myRecAttr= myOperation-&gt;getValue("cost", NULL);
+
+NdbOperation *myOperation2= myTransaction-&gt;getNdbOperation(myTable2);
+myOperation2-&gt;readTuple(NdbOperation::LM_Read);
+myOperation2-&gt;equal("ref", asset_num);
+myRecAttr= myOperation-&gt;getValue("volume", NULL);
+
+myTransaction-&gt;execute(NdbTransaction::NoCommit);
+
+// NOT SHOWN: Application logic interprets results from first set of operations
+
+// Based on the data read during the initial batch, make the necessary changes
+
+myOperation *myOperation3= myTransaction-&gt;getNdbOperation(myTable1);
+myOperation3-&gt;updateTuple();
+myOperation3-&gt;equal("ref", asset_num);
+myOperation2-&gt;setValue("cost", new_cost);
+
+myOperation *myOperation4= myTransaction-&gt;getNdbOperation(myTable2);
+myOperation4-&gt;updateTuple();
+myOperation4-&gt;equal("ref", asset_num);
+myOperation4-&gt;setValue("volume", new_volume);
+
+myTransaction-&gt;execute( NdbTransaction::Commit);
+myNdb.closeTransaction(myTransaction);
+</span></pre>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api" data-via="wpbeginner" data-text="Batching &#8211; improving MySQL Cluster performance when using the NDB API" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fbatching-improving-mysql-cluster-performance-when-using-the-ndb-api&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/batch" rel="tag">Batch</a>, <a href="/tag/mysql" rel="tag">MySQL</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/mysql-cluster-cge" rel="tag">MySQL Cluster CGE</a>, <a href="/tag/ndb-api" rel="tag">NDB API</a>
+</div>
+
+			</div>			<div id="post-72" class="post-72 post type-post status-publish format-standard hentry category-mysql-cluster tag-cluster-database tag-mysql-cluster tag-ndb-api tag-stored-procedures tag-triggers">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mysql-cluster/are-stored-procedures-available-with-mysql-cluster">May 1, 2009</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mysql-cluster/are-stored-procedures-available-with-mysql-cluster#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mysql-cluster/are-stored-procedures-available-with-mysql-cluster" rel="bookmark">Are Stored Procedures available with MySQL Cluster?</a></h2>
+				
+				<div class="entry">
+										<p>The answer is yes – kind of.</p>
+<p>Stored procedures are implemented in a MySQL Server and can be used regardless of the storage engine being used for a specific table. One inference from this is that they won’t work when accessing the Cluster database directly through the NDB API.</p>
+<p>This leads to the question of whether or not that limitation actually restricts what you can achieve. This article gives a brief introduction to stored procedures and looks at how the same results can be achieved using the NDB API.</p>
+<p>Stored procedures provide a rudimentary way of implementing functionality within the database (rather than in the application code). They are implemented by the database designer and have the ability to perform computations as well as make changes to the data in the database. A typical use of stored procedures would be to control all access to the data by a user or application – for example, to impose extra checks on the data or make sure that all linked data is updated rather than leaving it to the user or application designer to always remember to do it. To impose this, the DBA could grant permission to users to call the stored procedures but not write to the tables directly.</p>
+<p>This functionality can be very useful when the data is being accessed through the SQL interface. If using the NDB API then you have the full power of the C++ language at your disposal and so a designer can code whatever checks and side effects are needed within a wrapper method and then have applications use those methods rather than accessing the raw NDB API directly for those changes.</p>
+<p>There is one piece of functionality available using stored procedures which could be very helpful to applications using the NDB API – triggers. The rest of this article explains what triggers are; how they’re used and how that same results can be achieved using the NDB API.</p>
+<h2><span style="color: #333399;">Triggers</span></h2>
+<p>Triggers allow stored code to be invoked as a side effect of SQL commands being executed on the database through a MySQL Server. The database designer can implement a stored procedure and then register it to be invoked when specific actions (INSERT, DELETE etc.) are performed on a table.</p>
+<p>The following example shows how a simple stored procedure can be implemented and then registered against a table.</p>
+<pre><span style="color: #800000;">mysql&gt; USE test;
+Database changed
+mysql&gt; create table ASSETS (NAME varchar(30) not null primary key,VALUE int) engine=ndb;
+Query OK, 0 rows affected (0.67 sec)
+mysql&gt; create table AUDIT_LOG (NOTE varchar(30) not NULL primary key) engine=ndb;
+Query OK, 0 rows affected (0.56 sec)
+mysql&gt; delimiter //
+mysql&gt; create procedure log_it (log_string varchar(30))
+    -&gt; begin
+    -&gt; insert into AUDIT_LOG values(log_string);
+    -&gt; end
+    -&gt; //
+Query OK, 0 rows affected (0.00 sec)
+mysql&gt; delimiter ;
+mysql&gt; create trigger ins_asset before insert on ASSETS
+    -&gt; for each row call log_it(new.name);
+Query OK, 0 rows affected (0.00 sec</span></pre>
+<p>The stored procedure in this example is triggered whenever a new tuple is inserted into the ASSETS table. The procedure then inserts the asset’s name into the AUDIT_LOG table. If the tuple is deleted from the ASSETS table then the entry in the AUDIT_LOG table remains intact.</p>
+<p>The following screen capture shows the results when adding a tuple to the table that contains the trigger.</p>
+<pre><span style="color: #800000;">mysql&gt; insert into ASSETS values ('Computer',350);
+Query OK, 1 row affected (0.01 sec)
+mysql&gt; select * from AUDIT_LOG;
++----------+
+| NOTE     |
++----------+
+| Computer |
++----------+
+1 row in set (0.00 sec)</span></pre>
+<p>Note that as the trigger and stored procedure are implemented in the MySQL Server, they need to be separately defined in all of the MySQL Server instances where they are needed.</p>
+<p>The following NDB API code adds a new tuple to the ASSETS table in much the same way as was done through SQL above (Note: my C++ is very rusty and so there will be glitches in this code &#8211; especially for string handling).</p>
+<pre><span style="color: #800000;">#include &lt;NdbApi.hpp&gt;
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+
+static void run_application(Ndb_cluster_connection &amp;, char*);
+
+#define PRINT_ERROR(code,msg) 
+std::cout &lt;&lt; "Error in " &lt;&lt; __FILE__ &lt;&lt; ", line: " &lt;&lt; __LINE__ 
+          &lt;&lt; ", code: " &lt;&lt; code 
+          &lt;&lt; ", msg: " &lt;&lt; msg &lt;&lt; "." &lt;&lt; std::endl
+
+#define APIERROR(error) { 
+  PRINT_ERROR(error.code,error.message); 
+  exit(-1); }
+
+int main(int argc, char** argv)
+{
+  if (argc != 3)
+  {
+    std::cout &lt;&lt; "Arguments are &lt;connect_string cluster&gt;&lt;asset_name&gt;.n";
+    exit(-1);
+  }
+  ndb_init();
+
+  // connect to cluster and run application
+  {
+    const char *connectstring = argv[1];
+    char *asset_name = argv[2];
+    // Object representing the cluster
+    Ndb_cluster_connection cluster_connection(connectstring);
+
+    // Connect to cluster management server (ndb_mgmd)
+    if (cluster_connection.connect(4 /* retries               */,
+                                   5 /* delay between retries */,
+                                   1 /* verbose               */))
+    {
+      std::cout &lt;&lt; "Cluster management server was not ready within 30 secs.n";
+      exit(-1);
+    }
+
+    // Connect and wait for the storage nodes (ndbd's)
+    if (cluster_connection.wait_until_ready(30,0) &lt; 0)
+    {
+      std::cout &lt;&lt; "Cluster was not ready within 30 secs.n";
+      exit(-1);
+    }
+    // run the application code
+    run_application(cluster_connection, asset_name);
+  }
+  ndb_end(0);
+  return 0;
+}
+
+static void do_insert(Ndb &amp;, char*);
+
+static void run_application(Ndb_cluster_connection &amp;cluster_connection,
+char *asset_name)
+{
+  /********************************************
+  * Connect to database via NdbApi           *
+  ********************************************/
+  // Object representing the database
+  Ndb myNdb( &amp;cluster_connection, "test" );
+  if (myNdb.init()) APIERROR(myNdb.getNdbError());
+  do_insert(myNdb, asset_name);
+}
+
+static void do_insert(Ndb &amp;myNdb, char *asset_name)
+{
+  const NdbDictionary::Dictionary* myDict= myNdb.getDictionary();
+  const NdbDictionary::Table *myTable= myDict-&gt;getTable("ASSETS");
+  char str[20];
+  str[0] = strlen(asset_name);
+  strcpy(str +1, asset_name);
+
+  if (myTable == NULL) APIERROR(myDict-&gt;getNdbError());
+  NdbTransaction *myTransaction= myNdb.startTransaction();
+  if (myTransaction == NULL) APIERROR(myNdb.getNdbError());
+  NdbOperation *myOperation= myTransaction-&gt;getNdbOperation(myTable);
+  if (myOperation == NULL) APIERROR(myTransaction-&gt;getNdbError());
+  myOperation-&gt;insertTuple();
+  myOperation-&gt;setValue("NAME", str);
+  myOperation-&gt;setValue("VALUE", 555);
+  if (myTransaction-&gt;execute( NdbTransaction::Commit ) == -1)
+    APIERROR(myTransaction-&gt;getNdbError());
+  myNdb.closeTransaction(myTransaction);
+}
+</span></pre>
+<p>This code can then be executed and then the effects verified using SQL commands through the MySQL Server – note that the stored procedure has not been triggered and so the name has not been copied into the AUDIT_LOG table.</p>
+<pre><span style="color: #800000;">[billy@ws1 stored]$ ./test_stored_procedures localhost:1186 Monitor
+
+mysql&gt; select * from ASSETS;
++----------+-------+
+| NAME     | VALUE |
++----------+-------+
+| Monitor  |   555 |
+| Computer |   350 |
++----------+-------+
+2 rows in set (0.01 sec)</span>
+
+<span style="color: #800000;">mysql&gt; select * from AUDIT_LOG;
++----------+
+| NOTE     |
++----------+
+| Computer |
++----------+
+1 row in set (0.00 sec)</span></pre>
+<p>It could easily be argued that triggers are not required when using the NDB API – simply code a wrapper method that also applies the required side effects. However, it is possible to come up with scenarios where triggers would be much more convenient – for example if the application is already littered with accesses to the data and you want to retrofit the side effect.</p>
+<p>Fortunately, the NDB API includes the ability to register triggers against operations for a specific table. The code that follows implements a process that waits for an INSERT to be performed on the ASSETS table and then creates an entry in the AUDIT_LOG table just as the earlier stored procedure did.</p>
+<pre><span style="color: #800000;">#include &lt;NdbApi.hpp&gt;
+#include &lt;stdio.h&gt;
+#include &lt;iostream&gt;
+#include &lt;unistd.h&gt;
+#include &lt;cstdlib&gt;
+#include &lt;string.h&gt;</span>
+
+<span style="color: #800000;">#define APIERROR(error) 
+{ std::cout &lt;&lt; "Error in " &lt;&lt; __FILE__ &lt;&lt; ", line:" &lt;&lt; __LINE__ &lt;&lt; ", code:" 
+            &lt;&lt; error.code &lt;&lt; ", msg: " &lt;&lt; error.message &lt;&lt; "." &lt;&lt; std::endl; 
+  exit(-1); }</span>
+
+<span style="color: #800000;">int myCreateEvent(Ndb* myNdb,
+                  const char *eventName,
+                  const char *eventTableName,
+                  const char **eventColumnName,
+                  const int noEventColumnName);</span>
+
+<span style="color: #800000;">static void do_insert(Ndb*, char*);</span>
+
+<span style="color: #800000;">int main(int argc, char** argv)
+{
+  if (argc &lt; 2)
+  {
+    std::cout &lt;&lt; "Arguments are &lt;connect_string cluster&gt; &lt;timeout&gt;].n";
+    exit(-1);
+  }
+  const char *connectstring = argv[1];
+  int timeout = atoi(argv[2]);
+  ndb_init();
+  Ndb_cluster_connection *cluster_connection=
+  new Ndb_cluster_connection(connectstring);</span>
+
+<span style="color: #800000;">  int r= cluster_connection-&gt;connect(5 /* retries               */,
+                                     3 /* delay between retries */,
+                                     1 /* verbose               */);
+  if (r &gt; 0)
+  {
+    std::cout
+       &lt;&lt; "Cluster connect failed, possibly resolved with more retries.n";
+    exit(-1);
+  }
+  else if (r &lt; 0)
+  {
+    std::cout
+       &lt;&lt; "Cluster connect failed.n";
+    exit(-1);
+  }
+  if (cluster_connection-&gt;wait_until_ready(30,30))
+  {
+    std::cout &lt;&lt; "Cluster was not ready within 30 secs." &lt;&lt; std::endl;
+    exit(-1);
+  }
+  Ndb* myNdb= new Ndb(cluster_connection,
+                      "test");  // Object representing the database
+  if (myNdb-&gt;init() == -1) APIERROR(myNdb-&gt;getNdbError());
+  const char *eventName= "CHNG_IN_ASSETS";
+  const char *eventTableName= "ASSETS";
+  const int noEventColumnName= 2;
+  const char *eventColumnName[noEventColumnName]=
+    {"NAME",
+     "VALUE"};</span>
+
+<span style="color: #800000;">  // Create events
+  myCreateEvent(myNdb,
+  eventName,
+  eventTableName,
+  eventColumnName,
+  noEventColumnName);</span>
+
+<span style="color: #800000;">  // Normal values and blobs are unfortunately handled differently..
+  typedef union { NdbRecAttr* ra; NdbBlob* bh; } RA_BH;</span>
+
+<span style="color: #800000;">  int i, j;
+  j = 0;
+  while (j &lt; timeout) {
+    // Start "transaction" for handling events
+    NdbEventOperation* op;
+  if ((op = myNdb-&gt;createEventOperation(eventName)) == NULL)
+    APIERROR(myNdb-&gt;getNdbError());
+  RA_BH recAttr[noEventColumnName];
+  RA_BH recAttrPre[noEventColumnName];
+  for (i = 0; i &lt; noEventColumnName; i++) {
+    recAttr[i].ra    = op-&gt;getValue(eventColumnName[i]);
+    recAttrPre[i].ra = op-&gt;getPreValue(eventColumnName[i]);
+  }
+  if (op-&gt;execute())
+    APIERROR(op-&gt;getNdbError());
+  NdbEventOperation* the_op = op;
+  i= 0;
+  while (i &lt; timeout) {
+    int r = myNdb-&gt;pollEvents(1000); // wait for event or 1000 ms
+    if (r &gt; 0) {
+    while ((op= myNdb-&gt;nextEvent())) {
+      i++;
+      NdbRecAttr* ra = recAttr[0].ra;
+      if (ra-&gt;isNULL() &gt;= 0) { // we have a value
+        if (ra-&gt;isNULL() == 0) { // we have a non-null value
+          printf("NAME: %s ", ra-&gt;aRef());
+          do_insert(myNdb, ra-&gt;aRef());
+        } else
+          printf("%-5s", "NULL");
+        } else
+        printf("%-5s", "-"); // no value
+        ra = recAttr[1].ra;
+        printf("n");
+      }
+    }
+  }
+  if (myNdb-&gt;dropEventOperation(the_op)) APIERROR(myNdb-&gt;getNdbError());
+  the_op = 0;
+  j++;
+  }
+  {
+    NdbDictionary::Dictionary *myDict = myNdb-&gt;getDictionary();
+    if (!myDict) APIERROR(myNdb-&gt;getNdbError());
+    if (myDict-&gt;dropEvent(eventName)) APIERROR(myDict-&gt;getNdbError());
+  }
+  delete myNdb;
+  delete cluster_connection;
+  ndb_end(0);
+  return 0;
+}</span>
+
+<span style="color: #800000;">int myCreateEvent(Ndb* myNdb,
+const char *eventName,
+const char *eventTableName,
+const char **eventColumnNames,
+const int noEventColumnNames)
+{
+  NdbDictionary::Dictionary *myDict= myNdb-&gt;getDictionary();
+  if (!myDict) APIERROR(myNdb-&gt;getNdbError());
+  const NdbDictionary::Table *table= myDict-&gt;getTable(eventTableName);
+  if (!table) APIERROR(myDict-&gt;getNdbError());
+  NdbDictionary::Event myEvent(eventName, *table);
+  myEvent.addTableEvent(NdbDictionary::Event::TE_INSERT);
+  myEvent.addEventColumns(noEventColumnNames, eventColumnNames);</span>
+
+<span style="color: #800000;">  // Add event to database
+  if (myDict-&gt;createEvent(myEvent) == 0)
+    myEvent.print();
+  else if (myDict-&gt;getNdbError().classification ==
+    NdbError::SchemaObjectExists) {
+    printf("Event creation failed, event existsn");
+    printf("dropping Event...n");
+    if (myDict-&gt;dropEvent(eventName)) APIERROR(myDict-&gt;getNdbError());
+    // try again
+    // Add event to database
+    if ( myDict-&gt;createEvent(myEvent)) APIERROR(myDict-&gt;getNdbError());
+  } else
+    APIERROR(myDict-&gt;getNdbError());
+    return 0;</span><span style="color: #800000;">
+}
+static void do_insert(Ndb* myNdb, char *asset_name)
+{
+  const NdbDictionary::Dictionary* myDict= myNdb-&gt;getDictionary();
+  const NdbDictionary::Table *myTable= myDict-&gt;getTable("AUDIT_LOG");
+  char str[30];
+  str[0] = strlen(asset_name);
+  strcpy(str +1, asset_name);
+  printf("Storing %i characters: %sn", strlen(asset_name), asset_name);
+  if (myTable == NULL) APIERROR(myDict-&gt;getNdbError());
+  NdbTransaction *myTransaction= myNdb-&gt;startTransaction();
+  if (myTransaction == NULL) APIERROR(myNdb-&gt;getNdbError());
+  myOperation-&gt;insertTuple();
+  myOperation-&gt;setValue("NOTE", str);
+  if (myTransaction-&gt;execute( NdbTransaction::Commit ) == -1)
+    APIERROR(myTransaction-&gt;getNdbError());
+  myNdb-&gt;closeTransaction(myTransaction);
+ }</span></pre>
+<p>We can then use the code to make the addition through the NDB API. We use one terminal to run the listener and then another to run the code to add the tuple.</p>
+<pre><span style="color: #800000;">[billy@ws1 stored]$ ./trigger_listener localhost:1186 100</span>
+<span style="color: #800000;">[billy@ws1 stored]$ ./test_stored_procedures localhost:1186 Keyboard</span>
+
+<span style="color: #800000;">mysql&gt; select * from ASSETS;
++----------+-------+
+| NAME     | VALUE |
++----------+-------+
+| Keyboard |   555 |
+| Computer |   350 |
+| Monitor  |   555 |
++----------+-------+
+3 rows in set (0.00 sec)</span>
+
+<span style="color: #800000;">mysql&gt; select * from AUDIT_LOG;
++-----------+
+| NOTE      |
++-----------+
+| Computer  |
+| Keyboard  |
++-----------+
+2 rows in set (0.00 sec)</span><span style="color: #ff0000;">
+</span></pre>
+<p>A major advantage of this approach is that the trigger is implemented within the Cluster database and so is invoked regardless of where the INSERT is requested – whether it be through the NDB API or through <strong>any</strong> of the MySQL Servers. This is shown in the results that follow.</p>
+<pre><span style="color: #800000;">mysql&gt; drop trigger ins_asset;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; drop procedure log_it;
+Query OK, 0 rows affected (0.00 sec)
+mysql&gt; insert into ASSETS values("Printers", 200);
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; select * from ASSETS;
++----------+-------+
+| NAME     | VALUE |
++----------+-------+
+| Keyboard |   555 |
+| Computer |   350 |
+| Monitor  |   555 |
+| Printers |   200 |
++----------+-------+
+4 rows in set (0.00 sec)</span>
+
+<span style="color: #800000;">mysql&gt; select * from AUDIT_LOG;
++-----------+
+| NOTE      |
++-----------+
+| Printers  |
+| Keyboard  |
+| Computer  |
++-----------+
+4 rows in set (0.00 sec)</span></pre>
+<p>Note that I first removed the original trigger and stored procedure that were defined in the MySQL Server.</p>
+<p>There is another key difference between MySQL triggers and NDB events &#8211; triggers are executed as part of the MySQL transaction making the main database change whereas NDB events happen asynchronously. The effect of this is:</p>
+<ul>
+<li>The original transaction will commit succesfully before the side effects have been processed</li>
+<li>If the process waiting for the event disappears then the side effect will not be processed &#8211; for this reson, you may want to consider an audit/clean-up scripts  to cover these cases.</li>
+</ul>
+<h2><span style="color: #333399;">Conclusion</span></h2>
+<p>Stored procedures are fully supported for users or applications which access a Cluster database through a MySQL Server (whether directly using SQL or through any of the numerous connectors that are available). Applications which access the database through the NDB API have the full flexibility of C++ to implement functionality that can achieve the same results. Triggers are available whichever method is used to access the database – albeit with different implementations and slightly different functionality.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mysql-cluster/are-stored-procedures-available-with-mysql-cluster" data-via="wpbeginner" data-text="Are Stored Procedures available with MySQL Cluster?" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mysql-cluster/are-stored-procedures-available-with-mysql-cluster"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mysql-cluster/are-stored-procedures-available-with-mysql-cluster" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmysql-cluster%2Fare-stored-procedures-available-with-mysql-cluster&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowtransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mysql-cluster" rel="category tag">MySQL Cluster</a> | 
+Tags: <a href="/tag/cluster-database" rel="tag">Cluster Database</a>, <a href="/tag/mysql-cluster" rel="tag">MySQL Cluster</a>, <a href="/tag/ndb-api" rel="tag">NDB API</a>, <a href="/tag/stored-procedures" rel="tag">Stored Procedures</a>, <a href="/tag/triggers" rel="tag">Triggers</a>
+</div>
+
+			</div>      
+							<div class="more_posts">
+					<span class="post_links"> &nbsp; </span>
+				</div>
+						
+
+					
+	</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="/mongodb/realm-swift-type-projections">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="/mongodb/goodbye-nspredicate-hello-realm-swift-query-api">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments">
+<h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments">
+<li class="recentcomments">
+<span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-787242">MySQL Cluster running on Raspberry Pi</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">andrew</span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Sai Krishnan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-661143">Get MySQL Replication up and running in 5 minutes</a>
+</li>
+<li class="recentcomments">
+<span class="comment-author-link">Nayan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-660628">Get MySQL Replication up and running in 5 minutes</a>
+</li>
+</ul>
+</li>
+<li id="categories-2" class="widget widget_categories">
+<h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2">
+<a href="/category/me">Me</a>
+</li>
+	<li class="cat-item cat-item-146">
+<a href="/category/mongodb">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3">
+<a href="/category/mysql">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4">
+<a href="/category/mysql-cluster">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131">
+<a href="/category/mysql-fabric">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5">
+<a href="/category/mysql-replication">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214">
+<a href="/category/mongodb/realm">Realm</a>
+</li>
+	<li class="cat-item cat-item-1">
+<a href="/category/uncategorized">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud">
+<h2 class="widgettitle">Tags</h2>
+<div class="tagcloud">
+<a href="/tag/7-4" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="/tag/apache-kafka" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="/tag/cluster" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="/tag/ha" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="/tag/high-availability" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="/tag/ios" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="/tag/java" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="/tag/javascript" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="/tag/mcm" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="/tag/mean" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="/tag/memcached" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="/tag/mobile" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="/tag/mongodb" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="/tag/mongodb-3-2" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="/tag/mongodb-atlas" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="/tag/mongodb-mobile" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="/tag/mongodb-stitch" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="/tag/mysql" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="/tag/mysql-5-6" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="/tag/mysql-cluster" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="/tag/mysql-cluster-70" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="/tag/mysql-cluster-7-1" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="/tag/mysql-cluster-7-2" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="/tag/mysql-cluster-7-3" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="/tag/mysql-cluster-7-4" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="/tag/mysql-cluster-cge" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="/tag/mysql-cluster-manager" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="/tag/mysql-enterprise-monitor" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="/tag/mysql-fabric-2" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="/tag/mysql-replication" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="/tag/mysql-utilities" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="/tag/ndb-api" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="/tag/node-js" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="/tag/nosql" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="/tag/performance" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="/tag/realm" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="/tag/replication" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="/tag/secondary" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="/tag/serverless" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="/tag/sharding" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="/tag/swift" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="/tag/swiftui" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="/tag/webcast" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="/tag/webinar" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="/tag/windows" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a>
+</div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive">
+<h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="/2022/03">March 2022</a></li>
+	<li><a href="/2022/02">February 2022</a></li>
+	<li><a href="/2022/01">January 2022</a></li>
+	<li><a href="/2021/12">December 2021</a></li>
+	<li><a href="/2021/11">November 2021</a></li>
+	<li><a href="/2021/09">September 2021</a></li>
+	<li><a href="/2021/08">August 2021</a></li>
+	<li><a href="/2021/07">July 2021</a></li>
+	<li><a href="/2021/06">June 2021</a></li>
+	<li><a href="/2021/05">May 2021</a></li>
+	<li><a href="/2021/04">April 2021</a></li>
+	<li><a href="/2021/02">February 2021</a></li>
+	<li><a href="/2021/01">January 2021</a></li>
+	<li><a href="/2020/12">December 2020</a></li>
+	<li><a href="/2019/03">March 2019</a></li>
+	<li><a href="/2019/01">January 2019</a></li>
+	<li><a href="/2018/12">December 2018</a></li>
+	<li><a href="/2018/11">November 2018</a></li>
+	<li><a href="/2018/10">October 2018</a></li>
+	<li><a href="/2018/09">September 2018</a></li>
+	<li><a href="/2017/09">September 2017</a></li>
+	<li><a href="/2017/03">March 2017</a></li>
+	<li><a href="/2017/02">February 2017</a></li>
+	<li><a href="/2017/01">January 2017</a></li>
+	<li><a href="/2016/12">December 2016</a></li>
+	<li><a href="/2016/11">November 2016</a></li>
+	<li><a href="/2016/09">September 2016</a></li>
+	<li><a href="/2016/01">January 2016</a></li>
+	<li><a href="/2015/11">November 2015</a></li>
+	<li><a href="/2015/10">October 2015</a></li>
+	<li><a href="/2015/09">September 2015</a></li>
+	<li><a href="/2015/06">June 2015</a></li>
+	<li><a href="/2015/04">April 2015</a></li>
+	<li><a href="/2015/03">March 2015</a></li>
+	<li><a href="/2015/02">February 2015</a></li>
+	<li><a href="/2015/01">January 2015</a></li>
+	<li><a href="/2014/12">December 2014</a></li>
+	<li><a href="/2014/11">November 2014</a></li>
+	<li><a href="/2014/10">October 2014</a></li>
+	<li><a href="/2014/09">September 2014</a></li>
+	<li><a href="/2014/08">August 2014</a></li>
+	<li><a href="/2014/07">July 2014</a></li>
+	<li><a href="/2014/06">June 2014</a></li>
+	<li><a href="/2014/05">May 2014</a></li>
+	<li><a href="/2014/04">April 2014</a></li>
+	<li><a href="/2014/03">March 2014</a></li>
+	<li><a href="/2014/02">February 2014</a></li>
+	<li><a href="/2014/01">January 2014</a></li>
+	<li><a href="/2013/12">December 2013</a></li>
+	<li><a href="/2013/11">November 2013</a></li>
+	<li><a href="/2013/09">September 2013</a></li>
+	<li><a href="/2013/08">August 2013</a></li>
+	<li><a href="/2013/07">July 2013</a></li>
+	<li><a href="/2013/06">June 2013</a></li>
+	<li><a href="/2013/05">May 2013</a></li>
+	<li><a href="/2013/03">March 2013</a></li>
+	<li><a href="/2013/02">February 2013</a></li>
+	<li><a href="/2013/01">January 2013</a></li>
+	<li><a href="/2012/12">December 2012</a></li>
+	<li><a href="/2012/11">November 2012</a></li>
+	<li><a href="/2012/09">September 2012</a></li>
+	<li><a href="/2012/07">July 2012</a></li>
+	<li><a href="/2012/06">June 2012</a></li>
+	<li><a href="/2012/05">May 2012</a></li>
+	<li><a href="/2012/04">April 2012</a></li>
+	<li><a href="/2012/03">March 2012</a></li>
+	<li><a href="/2012/02">February 2012</a></li>
+	<li><a href="/2012/01">January 2012</a></li>
+	<li><a href="/2011/12">December 2011</a></li>
+	<li><a href="/2011/11">November 2011</a></li>
+	<li><a href="/2011/10">October 2011</a></li>
+	<li><a href="/2011/09">September 2011</a></li>
+	<li><a href="/2011/07">July 2011</a></li>
+	<li><a href="/2011/06">June 2011</a></li>
+	<li><a href="/2011/05">May 2011</a></li>
+	<li><a href="/2011/04">April 2011</a></li>
+	<li><a href="/2011/03">March 2011</a></li>
+	<li><a href="/2011/02">February 2011</a></li>
+	<li><a href="/2011/01">January 2011</a></li>
+	<li><a href="/2010/12">December 2010</a></li>
+	<li><a href="/2010/11">November 2010</a></li>
+	<li><a href="/2010/10">October 2010</a></li>
+	<li><a href="/2010/09">September 2010</a></li>
+	<li><a href="/2010/08">August 2010</a></li>
+	<li><a href="/2010/07">July 2010</a></li>
+	<li><a href="/2010/06">June 2010</a></li>
+	<li><a href="/2010/05">May 2010</a></li>
+	<li><a href="/2010/04">April 2010</a></li>
+	<li><a href="/2010/03">March 2010</a></li>
+	<li><a href="/2010/02">February 2010</a></li>
+	<li><a href="/2010/01">January 2010</a></li>
+	<li><a href="/2009/12">December 2009</a></li>
+	<li><a href="/2009/11">November 2009</a></li>
+	<li><a href="/2009/10">October 2009</a></li>
+	<li><a href="/2009/09">September 2009</a></li>
+	<li><a href="/2009/08">August 2009</a></li>
+	<li><a href="/2009/07">July 2009</a></li>
+	<li><a href="/2009/06">June 2009</a></li>
+	<li><a href="/2009/05">May 2009</a></li>
+	<li><a href="/2009/04">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 -->
+</body>
+</html>

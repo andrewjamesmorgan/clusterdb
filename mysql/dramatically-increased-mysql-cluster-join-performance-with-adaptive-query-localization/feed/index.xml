@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: Dramatically Increased MySQL Cluster JOIN performance with Adaptive Query Localization	</title>
+	<atom:link href="/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization/feed" rel="self" type="application/rss+xml" />
+	<link>/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Fri, 09 Jan 2015 16:55:42 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization#comment-414522</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 09 Jan 2015 16:55:42 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1618#comment-414522</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization#comment-360967&quot;&gt;John&lt;/a&gt;.
+
+Sorry about that - fixed now.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization#comment-360967">John</a>.</p>
+<p>Sorry about that &#8211; fixed now.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: John		</title>
+		<link>/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization#comment-360967</link>
+
+		<dc:creator><![CDATA[John]]></dc:creator>
+		<pubDate>Fri, 21 Nov 2014 11:26:58 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1618#comment-360967</guid>
+
+					<description><![CDATA[The link for the data of the example seems to be down.
+Can you please re-upload the data?]]></description>
+			<content:encoded><![CDATA[<p>The link for the data of the example seems to be down.<br />
+Can you please re-upload the data?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: dmitry		</title>
+		<link>/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization#comment-462</link>
+
+		<dc:creator><![CDATA[dmitry]]></dc:creator>
+		<pubDate>Tue, 22 Nov 2011 21:57:36 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1618#comment-462</guid>
+
+					<description><![CDATA[Thank you a lot for help]]></description>
+			<content:encoded><![CDATA[<p>Thank you a lot for help</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Ole John Aske		</title>
+		<link>/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization#comment-461</link>
+
+		<dc:creator><![CDATA[Ole John Aske]]></dc:creator>
+		<pubDate>Tue, 22 Nov 2011 21:50:04 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1618#comment-461</guid>
+
+					<description><![CDATA[There are some limitations on which kind of join operations which can be &#039;pushed&#039; to the datanodes. As the warning from EXPLAIN EXTENDED suggest, outer join of (partial) scans are among these.
+
+Sorry for not realizing this in my previous analyzis. FYI: If the t2 child table had the access type &#039;eq_ref&#039;, it would have been pushed, or of the join wasn&#039;t an outer join.
+
+Regarding plans for lifting this limitation, or implementing new algorithms: I am not in a position to be able to comment on this.]]></description>
+			<content:encoded><![CDATA[<p>There are some limitations on which kind of join operations which can be &#8216;pushed&#8217; to the datanodes. As the warning from EXPLAIN EXTENDED suggest, outer join of (partial) scans are among these.</p>
+<p>Sorry for not realizing this in my previous analyzis. FYI: If the t2 child table had the access type &#8216;eq_ref&#8217;, it would have been pushed, or of the join wasn&#8217;t an outer join.</p>
+<p>Regarding plans for lifting this limitation, or implementing new algorithms: I am not in a position to be able to comment on this.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: dmitry		</title>
+		<link>/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization#comment-460</link>
+
+		<dc:creator><![CDATA[dmitry]]></dc:creator>
+		<pubDate>Tue, 22 Nov 2011 09:23:14 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1618#comment-460</guid>
+
+					<description><![CDATA[I am sorry for my mistake. last query:
+
+mysql&#062; SELECT t1.* , t.f2, t.f3 FROM t1 LEFT JOIN (select * from t2) t ON t1.id = t.t1_id;
+
+But result same :
+9702 rows in set (3.29 sec]]></description>
+			<content:encoded><![CDATA[<p>I am sorry for my mistake. last query:</p>
+<p>mysql&gt; SELECT t1.* , t.f2, t.f3 FROM t1 LEFT JOIN (select * from t2) t ON t1.id = t.t1_id;</p>
+<p>But result same :<br />
+9702 rows in set (3.29 sec</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: dmitry		</title>
+		<link>/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization#comment-459</link>
+
+		<dc:creator><![CDATA[dmitry]]></dc:creator>
+		<pubDate>Tue, 22 Nov 2011 09:14:15 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1618#comment-459</guid>
+
+					<description><![CDATA[I run analyze and this not have any effect. I cant use ‘… ON t1.id = t.t1_id WHERE t.st in (0,2)’  because this not equivalent query.
+
+I tried variant of query without additional join condition and without sorting:
+
+mysql&#062; explain extended  SELECT t1.* , t.f2, t.f3   FROM t1  LEFT JOIN t2 t ON t1.id = t.t1_id;
++----+-------------+-------+------+---------------+-------+---------+--------------------------+------+----------+-------+
+&#124; id &#124; select_type &#124; table &#124; type &#124; possible_keys &#124; key   &#124; key_len &#124; ref                      &#124; rows &#124; filtered &#124; Extra &#124;
++----+-------------+-------+------+---------------+-------+---------+--------------------------+------+----------+-------+
+&#124;  1 &#124; SIMPLE      &#124; t1    &#124; ALL  &#124; NULL          &#124; NULL  &#124; NULL    &#124; NULL                     &#124; 9382 &#124;   100.00 &#124;       &#124;
+&#124;  1 &#124; SIMPLE      &#124; t     &#124; ref  &#124; t1_id         &#124; t1_id &#124; 5       &#124; testdb.t1.id             &#124;    1 &#124;   100.00 &#124;       &#124;
++----+-------------+-------+------+---------------+-------+---------+--------------------------+------+----------+-------+
+
+
+Show warnings say &quot;Can&#039;t push table &#039;t&#039; as child of &#039;t1&#039;, outer join of scan-child not implemented&quot;;
+
+mysql&#062; SELECT t1.* , t.f2, t.f3 FROM t1  LEFT JOIN t2 t ON t1.id = t.t1_id;
+9702 rows in set (4.38 sec)
+
+Now optimizer use &quot;right&quot; index, but query slow too.
+
+And again we can speedup query using cheat:
+mysql&#062; explain extended SELECT t1.* , t.f2, t.f3   FROM t1  LEFT JOIN (select * from t2) t ON t1.id = t.t1_id;
++----+-------------+------------+------+---------------+------+---------+------+------+----------+-------+
+&#124; id &#124; select_type &#124; table      &#124; type &#124; possible_keys &#124; key  &#124; key_len &#124; ref  &#124; rows &#124; filtered &#124; Extra &#124;
++----+-------------+------------+------+---------------+------+---------+------+------+----------+-------+
+&#124;  1 &#124; PRIMARY     &#124; t1         &#124; ALL  &#124; NULL          &#124; NULL &#124; NULL    &#124; NULL &#124; 9382 &#124;   100.00 &#124;       &#124;
+&#124;  1 &#124; PRIMARY     &#124;  &#124; ALL  &#124; NULL          &#124; NULL &#124; NULL    &#124; NULL &#124; 3704 &#124;   100.00 &#124;       &#124;
+&#124;  2 &#124; DERIVED     &#124; t2         &#124; ALL  &#124; NULL          &#124; NULL &#124; NULL    &#124; NULL &#124; 3704 &#124;   100.00 &#124;       &#124;
++----+-------------+------------+------+---------------+------+---------+------+------+----------+-------+
+3 rows in set, 2 warnings (0.15 sec)
+
+mysql&#062; SELECT ta.* , t.f2, t.f3   FROM (select * from t1) ta  LEFT JOIN (select * from t2) t ON ta.id = t.t1_id;
+9702 rows in set (3.38 sec)
+
+ 
+I think that sequence scan of sub query faster then indexed access because sql node loads all rows t2 to memory from datanodes as one operation аnd doesn&#039;t use many iterations for get records from t2. But optimizer doesn&#039;t know about real costs of random operations via network and uses indexed access. Maybe this issue can be fixed with hash join. I think that hash join uses sequence scan of both tables without indexed access. Do you have any plans to implement hash join algorithm in mysql cluster?]]></description>
+			<content:encoded><![CDATA[<p>I run analyze and this not have any effect. I cant use ‘… ON t1.id = t.t1_id WHERE t.st in (0,2)’  because this not equivalent query.</p>
+<p>I tried variant of query without additional join condition and without sorting:</p>
+<p>mysql&gt; explain extended  SELECT t1.* , t.f2, t.f3   FROM t1  LEFT JOIN t2 t ON t1.id = t.t1_id;<br />
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;-+&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;+&#8212;&#8212;&#8212;-+&#8212;&#8212;-+<br />
+| id | select_type | table | type | possible_keys | key   | key_len | ref                      | rows | filtered | Extra |<br />
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;-+&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;+&#8212;&#8212;&#8212;-+&#8212;&#8212;-+<br />
+|  1 | SIMPLE      | t1    | ALL  | NULL          | NULL  | NULL    | NULL                     | 9382 |   100.00 |       |<br />
+|  1 | SIMPLE      | t     | ref  | t1_id         | t1_id | 5       | testdb.t1.id             |    1 |   100.00 |       |<br />
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;-+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;-+&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;+&#8212;&#8212;&#8212;-+&#8212;&#8212;-+</p>
+<p>Show warnings say &#8220;Can&#8217;t push table &#8216;t&#8217; as child of &#8216;t1&#8217;, outer join of scan-child not implemented&#8221;;</p>
+<p>mysql&gt; SELECT t1.* , t.f2, t.f3 FROM t1  LEFT JOIN t2 t ON t1.id = t.t1_id;<br />
+9702 rows in set (4.38 sec)</p>
+<p>Now optimizer use &#8220;right&#8221; index, but query slow too.</p>
+<p>And again we can speedup query using cheat:<br />
+mysql&gt; explain extended SELECT t1.* , t.f2, t.f3   FROM t1  LEFT JOIN (select * from t2) t ON t1.id = t.t1_id;<br />
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;-+&#8212;&#8212;-+<br />
+| id | select_type | table      | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra |<br />
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;-+&#8212;&#8212;-+<br />
+|  1 | PRIMARY     | t1         | ALL  | NULL          | NULL | NULL    | NULL | 9382 |   100.00 |       |<br />
+|  1 | PRIMARY     |  | ALL  | NULL          | NULL | NULL    | NULL | 3704 |   100.00 |       |<br />
+|  2 | DERIVED     | t2         | ALL  | NULL          | NULL | NULL    | NULL | 3704 |   100.00 |       |<br />
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;-+&#8212;&#8212;-+<br />
+3 rows in set, 2 warnings (0.15 sec)</p>
+<p>mysql&gt; SELECT ta.* , t.f2, t.f3   FROM (select * from t1) ta  LEFT JOIN (select * from t2) t ON ta.id = t.t1_id;<br />
+9702 rows in set (3.38 sec)</p>
+<p>I think that sequence scan of sub query faster then indexed access because sql node loads all rows t2 to memory from datanodes as one operation аnd doesn&#8217;t use many iterations for get records from t2. But optimizer doesn&#8217;t know about real costs of random operations via network and uses indexed access. Maybe this issue can be fixed with hash join. I think that hash join uses sequence scan of both tables without indexed access. Do you have any plans to implement hash join algorithm in mysql cluster?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Ole John Aske		</title>
+		<link>/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization#comment-458</link>
+
+		<dc:creator><![CDATA[Ole John Aske]]></dc:creator>
+		<pubDate>Mon, 21 Nov 2011 20:02:34 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1618#comment-458</guid>
+
+					<description><![CDATA[This query is not pushed as all, which explain the slow performance. The reason for this is that the optimizer has two conflicting choices between index usage:
+
+1) Either use index &#039; KEY t2.t1_id to lookup t2 rows on &#039;t.t1_id = t1.id&#039;
+
+2) or use index &#039;KEY t.st&#039; to evaluate &#039;t.st  in (0,2&#039;
+
+The optimizer makes the bad choice of 2), which result in a &#039;range&#039; access when joining in table t2. This access type is not supported as a pushable join.
+
+You might try, which may or may not fix this:
+ 
+ - analyze table t1,t2;
+ - Force usage of index t2.t1_id: http://dev.mysql.com/doc/refman/5.1/en/index-hints.html
+ - Rewrite join to &#039;... ON t1.id = t.t1_id WHERE t.st in (0,2)&#039;
+
+BEWARE: Last suggestion is not a 100% equivalent query.
+
+Regards Ole John Aske
+
+FYI: EXPLAIN EXTENDED on the query will give you the reason for the query not being pushed as warnings, which you may then list with &#039;show warnings&#039;]]></description>
+			<content:encoded><![CDATA[<p>This query is not pushed as all, which explain the slow performance. The reason for this is that the optimizer has two conflicting choices between index usage:</p>
+<p>1) Either use index &#8216; KEY t2.t1_id to lookup t2 rows on &#8216;t.t1_id = t1.id&#8217;</p>
+<p>2) or use index &#8216;KEY t.st&#8217; to evaluate &#8216;t.st  in (0,2&#8217;</p>
+<p>The optimizer makes the bad choice of 2), which result in a &#8216;range&#8217; access when joining in table t2. This access type is not supported as a pushable join.</p>
+<p>You might try, which may or may not fix this:</p>
+<p> &#8211; analyze table t1,t2;<br />
+ &#8211; Force usage of index t2.t1_id: <a href="http://dev.mysql.com/doc/refman/5.1/en/index-hints.html" rel="nofollow ugc">http://dev.mysql.com/doc/refman/5.1/en/index-hints.html</a><br />
+ &#8211; Rewrite join to &#8216;&#8230; ON t1.id = t.t1_id WHERE t.st in (0,2)&#8217;</p>
+<p>BEWARE: Last suggestion is not a 100% equivalent query.</p>
+<p>Regards Ole John Aske</p>
+<p>FYI: EXPLAIN EXTENDED on the query will give you the reason for the query not being pushed as warnings, which you may then list with &#8216;show warnings&#8217;</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: dmitry		</title>
+		<link>/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization#comment-457</link>
+
+		<dc:creator><![CDATA[dmitry]]></dc:creator>
+		<pubDate>Mon, 21 Nov 2011 17:31:38 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1618#comment-457</guid>
+
+					<description><![CDATA[But 2.44 sec this is very slow result for us.
+
+Server version: 5.5.15-ndb-7.2.1-gpl-log]]></description>
+			<content:encoded><![CDATA[<p>But 2.44 sec this is very slow result for us.</p>
+<p>Server version: 5.5.15-ndb-7.2.1-gpl-log</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: dmitry		</title>
+		<link>/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization#comment-456</link>
+
+		<dc:creator><![CDATA[dmitry]]></dc:creator>
+		<pubDate>Mon, 21 Nov 2011 17:29:28 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1618#comment-456</guid>
+
+					<description><![CDATA[DDL:
+
+CREATE TABLE `t1` (
+  `id` int(11) NOT NULL DEFAULT &#039;0&#039;,
+  `aid` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `m` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `aid` (`aid`,`m`),
+  KEY `aid_2` (`aid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci 
+
+CREATE TABLE `t2` (
+  `id` int(11) NOT NULL DEFAULT &#039;0&#039;,
+  `t1_id` int(11) DEFAULT NULL,
+  `f2` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `f3` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `st` smallint(6) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `t1_id` (`t1_id`),
+  KEY `f2` (`f2`),
+  KEY `f3` (`f3`),
+  KEY `st` (`st`),
+  KEY `created_at` (`created_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+
+
+mysql&#062; select count(*) from t1;
++----------+
+&#124; count(*) &#124;
++----------+
+&#124;     9382 &#124;
++----------+
+1 row in set (0.14 sec)
+
+mysql&#062; select count(*) from t2;
++----------+
+&#124; count(*) &#124;
++----------+
+&#124;     3704 &#124;
++----------+
+1 row in set (0.14 sec)
+
+
+INNODB:
+
+mysql&#062; explain SELECT t1.* , t.f2, t.f3  FROM t1  LEFT JOIN  t2  t ON t1.id = t.t1_id AND t.st in (0,2)  ORDER BY t.created_at desc LIMIT 50 OFFSET 0 ;
++----+-------------+-------+-------+---------------+-------+---------+--------------------------+------+----------------------------------------------+
+&#124; id &#124; select_type &#124; table &#124; type  &#124; possible_keys &#124; key   &#124; key_len &#124; ref                      &#124; rows &#124; Extra                                        &#124;
++----+-------------+-------+-------+---------------+-------+---------+--------------------------+------+----------------------------------------------+
+&#124;  1 &#124; SIMPLE      &#124; t1    &#124; index &#124; NULL          &#124; aid   &#124; 67      &#124; NULL                     &#124; 9687 &#124; Using index; Using temporary; Using filesort &#124;
+&#124;  1 &#124; SIMPLE      &#124; t     &#124; ref   &#124; t1_id,st      &#124; t1_id &#124; 5       &#124; testdb.t1.id &#124;    1 &#124;                                              &#124;
++----+-------------+-------+-------+---------------+-------+---------+--------------------------+------+----------------------------------------------+
+2 rows in set (0.13 sec)
+
+mysql&#062; SELECT t1.* , t.f2, t.f3  FROM t1  LEFT JOIN  t2  t ON t1.id = t.t1_id AND t.st in (0,2)  ORDER BY t.created_at desc LIMIT 50 OFFSET 0 ;
+50 rows in set (0.18 sec)
+
+
+########################################
+
+NDB:
+mysql&#062; alter table t1 engine=ndb;
+Query OK, 9382 rows affected (0.78 sec)
+Records: 9382  Duplicates: 0  Warnings: 0
+
+mysql&#062; alter table t2 engine=ndb;
+Query OK, 3704 rows affected (0.73 sec)
+Records: 3704  Duplicates: 0  Warnings: 0
+
+mysql&#062; explain SELECT t1.* , t.f2, t.f3  FROM t1  LEFT JOIN  t2  t ON t1.id = t.t1_id AND t.st in (0,2)  ORDER BY t.created_at desc LIMIT 50 OFFSET 0 ;
++----+-------------+-------+-------+---------------+------+---------+------+------+---------------------------------+
+&#124; id &#124; select_type &#124; table &#124; type  &#124; possible_keys &#124; key  &#124; key_len &#124; ref  &#124; rows &#124; Extra                           &#124;
++----+-------------+-------+-------+---------------+------+---------+------+------+---------------------------------+
+&#124;  1 &#124; SIMPLE      &#124; t1    &#124; ALL   &#124; NULL          &#124; NULL &#124; NULL    &#124; NULL &#124; 9382 &#124; Using temporary; Using filesort &#124;
+&#124;  1 &#124; SIMPLE      &#124; t     &#124; range &#124; t1_id,st      &#124; st   &#124; 3       &#124; NULL &#124;    6 &#124; Using where                     &#124;
++----+-------------+-------+-------+---------------+------+---------+------+------+---------------------------------+
+2 rows in set (0.15 sec)
+
+mysql&#062; SELECT t1.* , t.f2, t.f3  FROM t1  LEFT JOIN  t2  t ON t1.id = t.t1_id AND t.st in (0,2)  ORDER BY t.created_at desc LIMIT 50 OFFSET 0 ;
+50 rows in set (1 min 59.34 sec)
+
+We can speedup this query using simple cheat:
+
+mysql&#062; explain SELECT t1.* , t.f2, t.f3  FROM t1  LEFT JOIN ( select * from t2)  t ON t1.id = t.t1_id AND t.st in (0,2)  ORDER BY t.created_at desc LIMIT 50 OFFSET 0 ;
++----+-------------+------------+------+---------------+------+---------+------+------+---------------------------------+
+&#124; id &#124; select_type &#124; table      &#124; type &#124; possible_keys &#124; key  &#124; key_len &#124; ref  &#124; rows &#124; Extra                           &#124;
++----+-------------+------------+------+---------------+------+---------+------+------+---------------------------------+
+&#124;  1 &#124; PRIMARY     &#124; t1         &#124; ALL  &#124; NULL          &#124; NULL &#124; NULL    &#124; NULL &#124; 9382 &#124; Using temporary; Using filesort &#124;
+&#124;  1 &#124; PRIMARY     &#124;  &#124; ALL  &#124; NULL          &#124; NULL &#124; NULL    &#124; NULL &#124; 3704 &#124;                                 &#124;
+&#124;  2 &#124; DERIVED     &#124; t2         &#124; ALL  &#124; NULL          &#124; NULL &#124; NULL    &#124; NULL &#124; 3704 &#124;                                 &#124;
++----+-------------+------------+------+---------------+------+---------+------+------+---------------------------------+
+3 rows in set (0.15 sec)
+
+
+mysql&#062; SELECT t1.* , t.f2, t.f3  FROM t1  LEFT JOIN ( select * from t2)  t ON t1.id = t.t1_id AND t.st in (0,2)  ORDER BY t.created_at desc LIMIT 50 OFFSET 0 ;
+50 rows in set (3.66 sec)
+
+OR
+
+mysql&#062; SELECT t1.* , t.f2, t.f3  FROM t1  LEFT JOIN ( select * from t2 where t2.st in (0,2)) t ON t1.id = t.t1_id  ORDER BY t.created_at desc LIMIT 50 OFFSET 0 ;
+50 rows in set (2.44 sec)]]></description>
+			<content:encoded><![CDATA[<p>DDL:</p>
+<p>CREATE TABLE `t1` (<br />
+  `id` int(11) NOT NULL DEFAULT &#8216;0&#8217;,<br />
+  `aid` varchar(11) COLLATE utf8_unicode_ci NOT NULL,<br />
+  `m` varchar(10) COLLATE utf8_unicode_ci NOT NULL,<br />
+  PRIMARY KEY (`id`),<br />
+  KEY `aid` (`aid`,`m`),<br />
+  KEY `aid_2` (`aid`)<br />
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci </p>
+<p>CREATE TABLE `t2` (<br />
+  `id` int(11) NOT NULL DEFAULT &#8216;0&#8217;,<br />
+  `t1_id` int(11) DEFAULT NULL,<br />
+  `f2` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,<br />
+  `f3` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,<br />
+  `created_at` datetime DEFAULT NULL,<br />
+  `st` smallint(6) DEFAULT NULL,<br />
+  PRIMARY KEY (`id`),<br />
+  KEY `t1_id` (`t1_id`),<br />
+  KEY `f2` (`f2`),<br />
+  KEY `f3` (`f3`),<br />
+  KEY `st` (`st`),<br />
+  KEY `created_at` (`created_at`)<br />
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci</p>
+<p>mysql&gt; select count(*) from t1;<br />
++&#8212;&#8212;&#8212;-+<br />
+| count(*) |<br />
++&#8212;&#8212;&#8212;-+<br />
+|     9382 |<br />
++&#8212;&#8212;&#8212;-+<br />
+1 row in set (0.14 sec)</p>
+<p>mysql&gt; select count(*) from t2;<br />
++&#8212;&#8212;&#8212;-+<br />
+| count(*) |<br />
++&#8212;&#8212;&#8212;-+<br />
+|     3704 |<br />
++&#8212;&#8212;&#8212;-+<br />
+1 row in set (0.14 sec)</p>
+<p>INNODB:</p>
+<p>mysql&gt; explain SELECT t1.* , t.f2, t.f3  FROM t1  LEFT JOIN  t2  t ON t1.id = t.t1_id AND t.st in (0,2)  ORDER BY t.created_at desc LIMIT 50 OFFSET 0 ;<br />
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;-+&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;-+&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+<br />
+| id | select_type | table | type  | possible_keys | key   | key_len | ref                      | rows | Extra                                        |<br />
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;-+&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;-+&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+<br />
+|  1 | SIMPLE      | t1    | index | NULL          | aid   | 67      | NULL                     | 9687 | Using index; Using temporary; Using filesort |<br />
+|  1 | SIMPLE      | t     | ref   | t1_id,st      | t1_id | 5       | testdb.t1.id |    1 |                                              |<br />
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;-+&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;-+&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+<br />
+2 rows in set (0.13 sec)</p>
+<p>mysql&gt; SELECT t1.* , t.f2, t.f3  FROM t1  LEFT JOIN  t2  t ON t1.id = t.t1_id AND t.st in (0,2)  ORDER BY t.created_at desc LIMIT 50 OFFSET 0 ;<br />
+50 rows in set (0.18 sec)</p>
+<p>########################################</p>
+<p>NDB:<br />
+mysql&gt; alter table t1 engine=ndb;<br />
+Query OK, 9382 rows affected (0.78 sec)<br />
+Records: 9382  Duplicates: 0  Warnings: 0</p>
+<p>mysql&gt; alter table t2 engine=ndb;<br />
+Query OK, 3704 rows affected (0.73 sec)<br />
+Records: 3704  Duplicates: 0  Warnings: 0</p>
+<p>mysql&gt; explain SELECT t1.* , t.f2, t.f3  FROM t1  LEFT JOIN  t2  t ON t1.id = t.t1_id AND t.st in (0,2)  ORDER BY t.created_at desc LIMIT 50 OFFSET 0 ;<br />
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;-+&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+<br />
+| id | select_type | table | type  | possible_keys | key  | key_len | ref  | rows | Extra                           |<br />
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;-+&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+<br />
+|  1 | SIMPLE      | t1    | ALL   | NULL          | NULL | NULL    | NULL | 9382 | Using temporary; Using filesort |<br />
+|  1 | SIMPLE      | t     | range | t1_id,st      | st   | 3       | NULL |    6 | Using where                     |<br />
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;-+&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+<br />
+2 rows in set (0.15 sec)</p>
+<p>mysql&gt; SELECT t1.* , t.f2, t.f3  FROM t1  LEFT JOIN  t2  t ON t1.id = t.t1_id AND t.st in (0,2)  ORDER BY t.created_at desc LIMIT 50 OFFSET 0 ;<br />
+50 rows in set (1 min 59.34 sec)</p>
+<p>We can speedup this query using simple cheat:</p>
+<p>mysql&gt; explain SELECT t1.* , t.f2, t.f3  FROM t1  LEFT JOIN ( select * from t2)  t ON t1.id = t.t1_id AND t.st in (0,2)  ORDER BY t.created_at desc LIMIT 50 OFFSET 0 ;<br />
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+<br />
+| id | select_type | table      | type | possible_keys | key  | key_len | ref  | rows | Extra                           |<br />
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+<br />
+|  1 | PRIMARY     | t1         | ALL  | NULL          | NULL | NULL    | NULL | 9382 | Using temporary; Using filesort |<br />
+|  1 | PRIMARY     |  | ALL  | NULL          | NULL | NULL    | NULL | 3704 |                                 |<br />
+|  2 | DERIVED     | t2         | ALL  | NULL          | NULL | NULL    | NULL | 3704 |                                 |<br />
++&#8212;-+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+<br />
+3 rows in set (0.15 sec)</p>
+<p>mysql&gt; SELECT t1.* , t.f2, t.f3  FROM t1  LEFT JOIN ( select * from t2)  t ON t1.id = t.t1_id AND t.st in (0,2)  ORDER BY t.created_at desc LIMIT 50 OFFSET 0 ;<br />
+50 rows in set (3.66 sec)</p>
+<p>OR</p>
+<p>mysql&gt; SELECT t1.* , t.f2, t.f3  FROM t1  LEFT JOIN ( select * from t2 where t2.st in (0,2)) t ON t1.id = t.t1_id  ORDER BY t.created_at desc LIMIT 50 OFFSET 0 ;<br />
+50 rows in set (2.44 sec)</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: admin		</title>
+		<link>/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization#comment-455</link>
+
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 18 Nov 2011 15:50:42 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1618#comment-455</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization#comment-454&quot;&gt;Igor&lt;/a&gt;.
+
+Hi Igor,
+
+ would you mind sharing the relevant parts of your schema and the JOINs that aren&#039;t seeing a benefit? We know that not all JOINs benefit but we&#039;d like to get feedback on what restrictions we should be removing.
+
+Thanks, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql/dramatically-increased-mysql-cluster-join-performance-with-adaptive-query-localization#comment-454">Igor</a>.</p>
+<p>Hi Igor,</p>
+<p> would you mind sharing the relevant parts of your schema and the JOINs that aren&#8217;t seeing a benefit? We know that not all JOINs benefit but we&#8217;d like to get feedback on what restrictions we should be removing.</p>
+<p>Thanks, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

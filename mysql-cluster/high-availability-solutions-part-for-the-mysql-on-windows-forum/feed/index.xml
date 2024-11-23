@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: High Availability Solutions &#8211; part for the MySQL On Windows Forum	</title>
+	<atom:link href="/mysql-cluster/high-availability-solutions-part-for-the-mysql-on-windows-forum/feed" rel="self" type="application/rss+xml" />
+	<link>/mysql-cluster/high-availability-solutions-part-for-the-mysql-on-windows-forum</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Mon, 10 Sep 2012 14:10:38 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/high-availability-solutions-part-for-the-mysql-on-windows-forum#comment-445</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 10 Sep 2012 14:10:38 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1469#comment-445</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/high-availability-solutions-part-for-the-mysql-on-windows-forum#comment-444&quot;&gt;Steve McGarrah&lt;/a&gt;.
+
+Hi Steve,
+
+ you could start by using the [TCP] section.... http://dev.mysql.com/doc/refman/5.5/en/mysql-cluster-tcp-definition.html
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/high-availability-solutions-part-for-the-mysql-on-windows-forum#comment-444">Steve McGarrah</a>.</p>
+<p>Hi Steve,</p>
+<p> you could start by using the [TCP] section&#8230;. <a href="http://dev.mysql.com/doc/refman/5.5/en/mysql-cluster-tcp-definition.html" rel="nofollow ugc">http://dev.mysql.com/doc/refman/5.5/en/mysql-cluster-tcp-definition.html</a></p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Steve McGarrah		</title>
+		<link>/mysql-cluster/high-availability-solutions-part-for-the-mysql-on-windows-forum#comment-444</link>
+
+		<dc:creator><![CDATA[Steve McGarrah]]></dc:creator>
+		<pubDate>Thu, 30 Aug 2012 18:07:34 +0000</pubDate>
+		<guid isPermaLink="false">/?p=1469#comment-444</guid>
+
+					<description><![CDATA[I am trying to configure MySQL cluster on two multi-homed Windows 2008 R2 servers. Each has 4 NICs installed with each NIC having a seperate IP (e.g., 192.168.0.10, .11, .12, .13) I have hostname in set as the IP within my config.ini file for each ndbmtd node and each mysqld node. When I start the services I get errors with the ndb nodes saying it is attempting to bind from the wrong address.  Can anyone help?]]></description>
+			<content:encoded><![CDATA[<p>I am trying to configure MySQL cluster on two multi-homed Windows 2008 R2 servers. Each has 4 NICs installed with each NIC having a seperate IP (e.g., 192.168.0.10, .11, .12, .13) I have hostname in set as the IP within my config.ini file for each ndbmtd node and each mysqld node. When I start the services I get errors with the ndb nodes saying it is attempting to bind from the wrong address.  Can anyone help?</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: MySQL Fabric now Generally Available – Automating High Availability and Sharding for MySQL	</title>
+	<atom:link href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql/feed" rel="self" type="application/rss+xml" />
+	<link>/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 23 Aug 2016 10:57:01 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: manoj		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-637938</link>
+
+		<dc:creator><![CDATA[manoj]]></dc:creator>
+		<pubDate>Tue, 23 Aug 2016 10:57:01 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3837#comment-637938</guid>
+
+					<description><![CDATA[Hi Andrew, 
+
+I am not able to connect to fabric on 32274 from a remote machine. Please let me know What changes do I need to make it accessible.]]></description>
+			<content:encoded><![CDATA[<p>Hi Andrew, </p>
+<p>I am not able to connect to fabric on 32274 from a remote machine. Please let me know What changes do I need to make it accessible.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: phil		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-634666</link>
+
+		<dc:creator><![CDATA[phil]]></dc:creator>
+		<pubDate>Thu, 07 Jul 2016 10:13:27 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3837#comment-634666</guid>
+
+					<description><![CDATA[hello,
+
+I installed a fabric server, I can access it with ppython and query it
+but php seems to use port 8080 (XML/RPC over HTTP) to query fabric
+but there is nothing listening on port 8080 on the fabric server and nothing in the doc says anything about installing a web service
+
+can you enlight me on this ?
+
+thanks]]></description>
+			<content:encoded><![CDATA[<p>hello,</p>
+<p>I installed a fabric server, I can access it with ppython and query it<br />
+but php seems to use port 8080 (XML/RPC over HTTP) to query fabric<br />
+but there is nothing listening on port 8080 on the fabric server and nothing in the doc says anything about installing a web service</p>
+<p>can you enlight me on this ?</p>
+<p>thanks</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-512430</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 11 Jun 2015 12:25:43 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3837#comment-512430</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-496455&quot;&gt;Doan&lt;/a&gt;.
+
+Sorry for the delay – I’m not able to check at this point but it’s worth raising the question on the &lt;a href=&quot;http://forums.mysql.com/list.php?144&quot; rel=&quot;nofollow&quot;&gt;MySQL Fabric forum&lt;/a&gt;.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-496455">Doan</a>.</p>
+<p>Sorry for the delay – I’m not able to check at this point but it’s worth raising the question on the <a href="http://forums.mysql.com/list.php?144" rel="nofollow">MySQL Fabric forum</a>.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Doan		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-496455</link>
+
+		<dc:creator><![CDATA[Doan]]></dc:creator>
+		<pubDate>Fri, 22 May 2015 09:22:32 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3837#comment-496455</guid>
+
+					<description><![CDATA[Hi Andrew, 
+
+I&#039;ve done every thing until this step :Adding Scale-Out with Sharding.
+I don&#039;t understand why you must create another global_group (global-group) and why don&#039;t you use the global_group-1 to create sharding.
+And when I tried the command:  mysqlfabric group activate group_id-1 , I got the error:
+DatabaseError: Command (REPLACE INTO shard_maps(type_name, global_group) VALUES(%s, %s), (&#039;HASH&#039;, &#039;global_group-1&#039;)) failed accessing (localhost:3306). 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`fabric`.`shard_maps`, CONSTRAINT `fk_shard_mapping_global_group` FOREIGN KEY (`global_group`) REFERENCES `groups` (`group_id`)).
+
+Please kindly answer for me,
+Thanks, your post is so great.]]></description>
+			<content:encoded><![CDATA[<p>Hi Andrew, </p>
+<p>I&#8217;ve done every thing until this step :Adding Scale-Out with Sharding.<br />
+I don&#8217;t understand why you must create another global_group (global-group) and why don&#8217;t you use the global_group-1 to create sharding.<br />
+And when I tried the command:  mysqlfabric group activate group_id-1 , I got the error:<br />
+DatabaseError: Command (REPLACE INTO shard_maps(type_name, global_group) VALUES(%s, %s), (&#8216;HASH&#8217;, &#8216;global_group-1&#8217;)) failed accessing (localhost:3306). 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`fabric`.`shard_maps`, CONSTRAINT `fk_shard_mapping_global_group` FOREIGN KEY (`global_group`) REFERENCES `groups` (`group_id`)).</p>
+<p>Please kindly answer for me,<br />
+Thanks, your post is so great.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-495664</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Thu, 21 May 2015 12:02:08 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3837#comment-495664</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-495539&quot;&gt;Pavan Kumar Mekala&lt;/a&gt;.
+
+The ports can be configured for each MySQL Server (default to 3306) and the Fabric node (defaults to 32274).
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-495539">Pavan Kumar Mekala</a>.</p>
+<p>The ports can be configured for each MySQL Server (default to 3306) and the Fabric node (defaults to 32274).</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Pavan Kumar Mekala		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-495539</link>
+
+		<dc:creator><![CDATA[Pavan Kumar Mekala]]></dc:creator>
+		<pubDate>Thu, 21 May 2015 08:14:36 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3837#comment-495539</guid>
+
+					<description><![CDATA[Hi Andrew,
+
+I am evaluating Fabric at my office lab environment which is behind the firewall and would like to know the Firewall ports for Connector, fabric, Global group and Shard group machines. Will you be able to provide this info?
+
+Regards,
+Pavan Kumar Mekala]]></description>
+			<content:encoded><![CDATA[<p>Hi Andrew,</p>
+<p>I am evaluating Fabric at my office lab environment which is behind the firewall and would like to know the Firewall ports for Connector, fabric, Global group and Shard group machines. Will you be able to provide this info?</p>
+<p>Regards,<br />
+Pavan Kumar Mekala</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Aneesha KA		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-488634</link>
+
+		<dc:creator><![CDATA[Aneesha KA]]></dc:creator>
+		<pubDate>Mon, 11 May 2015 06:01:40 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3837#comment-488634</guid>
+
+					<description><![CDATA[Hi Andrew,
+
+Do we need to install fabric on another server other than master and slave? I have one master and one slave server.
+
+Please help me]]></description>
+			<content:encoded><![CDATA[<p>Hi Andrew,</p>
+<p>Do we need to install fabric on another server other than master and slave? I have one master and one slave server.</p>
+<p>Please help me</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-263373</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 17 Sep 2014 15:47:11 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3837#comment-263373</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-215793&quot;&gt;Tim&lt;/a&gt;.
+
+Hi Tim, 
+
+ The Fabric user needs permission to control replication and to read/write to the fabric database.
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-215793">Tim</a>.</p>
+<p>Hi Tim, </p>
+<p> The Fabric user needs permission to control replication and to read/write to the fabric database.</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: tuzhu		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-234793</link>
+
+		<dc:creator><![CDATA[tuzhu]]></dc:creator>
+		<pubDate>Tue, 26 Aug 2014 06:42:25 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3837#comment-234793</guid>
+
+					<description><![CDATA[Hi Andrew,
+I installed the MySQL Fabric and Utilities. I created 3 groups, global-group, group_id-1 and group_id-2, then buit a shard. Till now, everything is OK. But when i split the shard with a new group named group_id-3, there is an error occurred. The message is as follows:
+# mysqlfabric sharding split_shard 2 group_id-3 --split_value=100000
+Password for admin: 
+Procedure :
+{ uuid        = a0eaff93-f6fe-4a7d-9c44-e7e53882fbfe,
+  finished    = True,
+  success     = False,
+  return      = BackupError: (&#039;Error while restoring the backup using the mysql client\n, %s&#039;, &quot;ERROR 1840 (HY000) at line 24 in file: &#039;MySQL_132.228.239.19_3316.sql&#039;: @@GLOBAL.GTID_PURGED can only be set when @@GLOBAL.GTID_EXECUTED is empty.\n&quot;),
+  activities  = 
+}
+I run the &quot;reset master&quot; command first, but the error is still there.what is this error?
+
+Regards
+Shen]]></description>
+			<content:encoded><![CDATA[<p>Hi Andrew,<br />
+I installed the MySQL Fabric and Utilities. I created 3 groups, global-group, group_id-1 and group_id-2, then buit a shard. Till now, everything is OK. But when i split the shard with a new group named group_id-3, there is an error occurred. The message is as follows:<br />
+# mysqlfabric sharding split_shard 2 group_id-3 &#8211;split_value=100000<br />
+Password for admin:<br />
+Procedure :<br />
+{ uuid        = a0eaff93-f6fe-4a7d-9c44-e7e53882fbfe,<br />
+  finished    = True,<br />
+  success     = False,<br />
+  return      = BackupError: (&#8216;Error while restoring the backup using the mysql client\n, %s&#8217;, &#8220;ERROR 1840 (HY000) at line 24 in file: &#8216;MySQL_132.228.239.19_3316.sql&#8217;: @@GLOBAL.GTID_PURGED can only be set when @@GLOBAL.GTID_EXECUTED is empty.\n&#8221;),<br />
+  activities  =<br />
+}<br />
+I run the &#8220;reset master&#8221; command first, but the error is still there.what is this error?</p>
+<p>Regards<br />
+Shen</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Elena K		</title>
+		<link>/mysql-fabric/mysql-fabric-adding-high-availability-and-scaling-to-mysql#comment-234468</link>
+
+		<dc:creator><![CDATA[Elena K]]></dc:creator>
+		<pubDate>Mon, 25 Aug 2014 23:23:58 +0000</pubDate>
+		<guid isPermaLink="false">/?p=3837#comment-234468</guid>
+
+					<description><![CDATA[Dear Andrew,
+I am testing the Sharding , and using the naming conventions for the groups as in your example.
+I have the original HA group_id-1 running and tested. And 3 more instances were added on the &quot;primary&quot; host.
+When adding these 3 hosts to the &#039;global-group&#039; - I keep getting a &quot;false&quot; status:
+# mysqlfabric group add global-group 10.42.9.141:3316
+Procedure :
+{ uuid        = 1ce881cd-2b9e-4fc3-95b1-07a4a9ced11b,
+  finished    = True,
+  success     = False,
+  return      = ServerError: Server (c76130d7-f8d2-11e3-9965-fa163e3ad8cd) already exists.,
+  activities  =
+}
+
+The &quot;Fabric&quot; db current server and groups values are:
+mysql&#062; select * from servers;
++--------------------------------------+------------------+------+--------+--------+------------+
+&#124; server_uuid                          &#124; server_address   &#124; mode &#124; status &#124; weight &#124; group_id   &#124;
++--------------------------------------+------------------+------+--------+--------+------------+
+&#124; c76130d7-f8d2-11e3-9965-fa163e3ad8cd &#124; 10.42.9.141:3306 &#124;    3 &#124;      3 &#124;      1 &#124; group_id-1 &#124;
+&#124; de95ed37-f677-11e3-8a09-fa163e98f173 &#124; 10.42.9.135:3306 &#124;    1 &#124;      2 &#124;      1 &#124; group_id-1 &#124;
++--------------------------------------+------------------+------+--------+--------+------------+
+2 rows in set (0.00 sec)
+
+mysql&#062; select * from groups;
++--------------+-------------+--------------------------------------+----------------------------+--------+
+&#124; group_id     &#124; description &#124; master_uuid                          &#124; master_defined             &#124; status &#124;
++--------------+-------------+--------------------------------------+----------------------------+--------+
+&#124; global-group &#124; NULL        &#124; NULL                                 &#124; NULL                       &#124;        &#124;
+&#124; group_id-1   &#124; NULL        &#124; c76130d7-f8d2-11e3-9965-fa163e3ad8cd &#124; 2014-08-25 22:54:09.000000 &#124;       &#124;
++--------------+-------------+--------------------------------------+----------------------------+--------+
+2 rows
+
+Should I &quot;shut down&quot; the &#039;group_id-1&#039; prior working on the global-group ?
+Thank you.]]></description>
+			<content:encoded><![CDATA[<p>Dear Andrew,<br />
+I am testing the Sharding , and using the naming conventions for the groups as in your example.<br />
+I have the original HA group_id-1 running and tested. And 3 more instances were added on the &#8220;primary&#8221; host.<br />
+When adding these 3 hosts to the &#8216;global-group&#8217; &#8211; I keep getting a &#8220;false&#8221; status:<br />
+# mysqlfabric group add global-group 10.42.9.141:3316<br />
+Procedure :<br />
+{ uuid        = 1ce881cd-2b9e-4fc3-95b1-07a4a9ced11b,<br />
+  finished    = True,<br />
+  success     = False,<br />
+  return      = ServerError: Server (c76130d7-f8d2-11e3-9965-fa163e3ad8cd) already exists.,<br />
+  activities  =<br />
+}</p>
+<p>The &#8220;Fabric&#8221; db current server and groups values are:<br />
+mysql&gt; select * from servers;<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8211;+&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;+<br />
+| server_uuid                          | server_address   | mode | status | weight | group_id   |<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8211;+&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;+<br />
+| c76130d7-f8d2-11e3-9965-fa163e3ad8cd | 10.42.9.141:3306 |    3 |      3 |      1 | group_id-1 |<br />
+| de95ed37-f677-11e3-8a09-fa163e98f173 | 10.42.9.135:3306 |    1 |      2 |      1 | group_id-1 |<br />
++&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;+&#8212;&#8212;&#8211;+&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;+<br />
+2 rows in set (0.00 sec)</p>
+<p>mysql&gt; select * from groups;<br />
++&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8211;+<br />
+| group_id     | description | master_uuid                          | master_defined             | status |<br />
++&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8211;+<br />
+| global-group | NULL        | NULL                                 | NULL                       |        |<br />
+| group_id-1   | NULL        | c76130d7-f8d2-11e3-9965-fa163e3ad8cd | 2014-08-25 22:54:09.000000 |       |<br />
++&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-+&#8212;&#8212;&#8211;+<br />
+2 rows</p>
+<p>Should I &#8220;shut down&#8221; the &#8216;group_id-1&#8217; prior working on the global-group ?<br />
+Thank you.</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

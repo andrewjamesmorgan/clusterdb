@@ -1,0 +1,828 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Java &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/java/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Wed, 31 Mar 2010 14:02:28 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Using ClusterJPA (part of MySQL Cluster Connector for Java) – a tutorial</title>
+		<link>/mysql-cluster/using-clusterjpa-part-of-mysql-cluster-connector-for-java-a-tutorial</link>
+					<comments>/mysql-cluster/using-clusterjpa-part-of-mysql-cluster-connector-for-java-a-tutorial#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 31 Mar 2010 14:02:28 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Java]]></category>
+		<category><![CDATA[JPA]]></category>
+		<category><![CDATA[MySQL Cluster 7.1]]></category>
+		<guid isPermaLink="false">/?p=1020</guid>
+
+					<description><![CDATA[This is a follow up to the earlier post Using ClusterJ (part of MySQL Cluster Connector for Java) – a tutorial but covers the ClusterJPA interface rather than ClusterJ. JPA is the Java standard for persistence and different vendors can implement their own implementation of this API and they can (and do) add proprietary extensions.]]></description>
+										<content:encoded><![CDATA[<div id="attachment_1010" style="width: 234px" class="wp-caption alignright"><a href="/wp-content/uploads/2010/03/ClusterJ_Stack.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-1010" class="size-medium wp-image-1010" title="Java access to MySQL Cluster" src="/wp-content/uploads/2010/03/ClusterJ_Stack-224x300.jpg" alt="" width="224" height="300" srcset="/wp-content/uploads/2010/03/ClusterJ_Stack-224x300.jpg 224w, /wp-content/uploads/2010/03/ClusterJ_Stack.jpg 342w" sizes="(max-width: 224px) 100vw, 224px" /></a><p id="caption-attachment-1010" class="wp-caption-text">Fig. 1 Java access to MySQL Cluster</p></div>
+<p>This is a follow up to the earlier post <a href="/mysql-cluster/using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial/">Using ClusterJ (part of MySQL Cluster Connector for Java) – a tutorial</a> but covers the ClusterJPA interface rather than ClusterJ.</p>
+<p>JPA is the Java standard for persistence and different vendors can implement their own implementation of this API and they can (and do) add proprietary extensions. Three of the most common implementations are OpenJPA, Hibernate and Toplink. JPA can be used within server containers or outside of them (i.e. with either J2EE or J2SE).</p>
+<p>Typically a JPA implementation would access the database (for example, MySQL Cluster) using JDBC. JDBC gives a great deal of flexibility to the JPA implementer but it cannot give the best performance when using MySQL Cluster as there is an internal conversion to SQL by Connector/J and a subsequent translation from SQL to the C++ NDB API by the MySQL Server. As of MySQL Cluster 7.1, OpenJPA can be configured to use the high performance NDB API (via ClusterJ) for most operations but fall back on JDBC for more complex queries.</p>
+<p>The first implementation of ClusterJPA is as an OpenJPA BrokerFactory but in the future, it may be extended to work with other JPA implementations.</p>
+<p>ClusterJPA overcomes ClusterJ limitations, notably:</p>
+<ul>
+<li> Persistent classes</li>
+<li>Relationships</li>
+<li>Joins in queries</li>
+<li> Lazy loading</li>
+<li> Table and index creation from object model</li>
+</ul>
+<div id="attachment_1023" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2010/03/ClusterJ_Performance.jpg"><img decoding="async" aria-describedby="caption-attachment-1023" class="size-medium wp-image-1023" title="ClusterJ_Performance" src="/wp-content/uploads/2010/03/ClusterJ_Performance-300x183.jpg" alt="" width="300" height="183" /></a><p id="caption-attachment-1023" class="wp-caption-text">Fig.2 ClusterJPA Performance</p></div>
+<p>Typically users base their selection of a JPA solution on factors such as proprietary extensions, what existing applications already use and (increasingly with ClusterJPA) performance.</p>
+<p>The performance of ClusterJPA (OpenJPA using ClusterJ) has been compared with OpenJPA using JDBC in Figure 2. It should be noted that the performance is significantly better when using ClusterJPA (the yellow bar). It is hoped that in the future the performance can be improved even further for finds, updates and deletes.</p>
+<p>Adapting an OpenJPA based application to use ClusterJPA with MySQL Cluster should be fairly straight-forward with the main change being in the definition of the persistence unit in persistence.xml:</p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">&lt;persistence xmlns=http://java.sun.com/xml/ns/persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0"&gt;
+ &lt;persistence-unit name="clusterdb" transaction-type="RESOURCE_LOCAL“&gt;
+  &lt;provider&gt; org.apache.openjpa.persistence.PersistenceProviderImpl &lt;/provider&gt;
+  &lt;class&gt;Employee&lt;/class&gt;
+  &lt;class&gt;Department&lt;/class&gt;
+  &lt;properties&gt;
+   &lt;property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema" /&gt;
+   &lt;property name="openjpa.ConnectionDriverName"
+    value="com.mysql.jdbc.Driver" /&gt;
+   &lt;property name="openjpa.ConnectionURL" value="jdbc:mysql://localhost:3306/clusterdb" /&gt;
+   &lt;property name="openjpa.ConnectionUserName" value="root" /&gt;
+   &lt;property name="openjpa.ConnectionPassword" value="" /&gt;
+   &lt;property name="openjpa.BrokerFactory" value="ndb" /&gt;
+   &lt;property name="openjpa.jdbc.DBDictionary" value="TableType=ndbcluster" /&gt;
+   &lt;property name="openjpa.ndb.connectString" value="localhost:1186" /&gt;
+   &lt;property name="openjpa.ndb.database" value="clusterdb" /
+  &lt;/properties&gt;
+ &lt;/persistence-unit&gt;
+&lt;/persistence&gt;</span></pre>
+<div id="attachment_1024" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2010/03/ClusterJPA_Annotations.jpg"><img decoding="async" aria-describedby="caption-attachment-1024" class="size-medium wp-image-1024" title="ClusterJPA_Annotations" src="/wp-content/uploads/2010/03/ClusterJPA_Annotations-300x147.jpg" alt="" width="300" height="147" /></a><p id="caption-attachment-1024" class="wp-caption-text">Fig. 3 ClusterJPA Annotations</p></div>
+<p>Defining the object-to-table mappings is performed by annotating the persistent class for the domain object. If not already in existence, OpenJPA will create the table. The property  openjpa.jdbc.DBDictionary tells OpenJPA to create the tables using ndb as the storage engine.</p>
+<p>This paper does not go into the use of JPA in great depth – focusing instead on the specifics of using OpenJPA with MySQL Cluster/ClusterJPA. For more information on the use of JPA and OpenJPA, refer to <a href="http://openjpa.apache.org/" target="_blank">http://openjpa.apache.org/</a> and in particular, <a href="http://openjpa.apache.org/builds/latest/docs/manual/manual.html" target="_blank">http://openjpa.apache.org/builds/latest/docs/manual/manual.html</a></p>
+<p>The tutorials are using MySQL Cluster 7.1.2a on Fedora 12. If using earlier or more recent versions of MySQL Cluster then you may need to change the class-paths as explained in <a href="http://dev.mysql.com/doc/ndbapi/en/mccj-using-jpa.html" target="_blank">http://dev.mysql.com/doc/ndbapi/en/mccj-using-jpa.html</a></p>
+<p>For this tutorial, it is necessary to have MySQL Cluster up and running. For simplicity all of the nodes (processes) making up the Cluster will be run on the same physical host, along with the application.</p>
+<p>Although most of the database access is performed through the NDB API, the Cluster includes a MySQL Server process for OpenJPA to use for complex queries and to allow the user to check the contents of the database manually.</p>
+<p>These are the MySQL Cluster configuration files being used :</p>
+<p><strong>config.ini:</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">[ndbd default]
+noofreplicas=2
+datadir=/home/billy/mysql/my_cluster/data
+
+[ndbd]
+hostname=localhost
+id=3
+
+[ndbd]
+hostname=localhost
+id=4
+
+[ndb_mgmd]
+id = 1
+hostname=localhost
+datadir=/home/billy/mysql/my_cluster/data
+
+[mysqld]
+hostname=localhost
+id=101
+
+[api]
+hostname=localhost</span></pre>
+<p><strong>my.cnf:</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">[mysqld]
+ndbcluster
+datadir=/home/billy/mysql/my_cluster/data
+basedir=/usr/local/mysql</span></pre>
+<p>This tutorial focuses on ClusterJPA rather than on running MySQL Cluster; if you are new to MySQL Cluster then refer to <a href="/mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host/" target="_blank">Running a simple Cluster</a> before trying these tutorials.</p>
+<p>JPA/OpenJPA/ClusterJPA can be used within or outside a container (i.e. it can be used with J2EE or J2SE) – for simplicity, this tutorial does not use a container (i.e. it is written using J2SE).</p>
+<p>Before being able to run any ClusterJPA code, you first need to download and install OpenJPA from <a href="http://openjpa.apache.org/" target="_blank">http://openjpa.apache.org/</a> &#8211; this tutorial uses OpenJPA 1.2.1. Simply extract the contents of the binary tar ball to the host you want to run your application on; for this tutorial, I use /usr/local/openjpa.</p>
+<p>Additionally, ClusterJPA must sometimes use JDBC to satisfy certain queries and so “JDBC Driver for MySQL (Connector/J)” should also be installed – this can be downloaded from <a href="http://dev.mysql.com/downloads/connector/j/" target="_blank">http://dev.mysql.com/downloads/connector/j/</a> Again, simply extract the contents of the tar ball, for this tutorial the files are stored in /usr/local/connectorj and version 5.1.12 is used.</p>
+<p>If the ClusterJ tutorial has already been run on this MySQL Cluster database then drop the tables from the cluster so that you can observe them being created automatically – though in a real application, you may prefer to create them manually.</p>
+<p>A configuration file is required to indicate how persistence is to be handled for the application. Create a new directory called META-INF in the application source directory and within there create a file called persistence.xml:</p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">&lt;persistence xmlns="http://java.sun.com/xml/ns/persistence"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0"&gt;
+ &lt;persistence-unit name="clusterdb" transaction-type="RESOURCE_LOCAL"&gt;
+ &lt;provider&gt;
+ org.apache.openjpa.persistence.PersistenceProviderImpl
+ &lt;/provider&gt;
+ &lt;class&gt;Employee&lt;/class&gt;
+ &lt;class&gt;Department&lt;/class&gt;
+ &lt;properties&gt;
+ &lt;property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema" /&gt;
+ &lt;property name="openjpa.ConnectionDriverName"
+ value="com.mysql.jdbc.Driver" /&gt;
+ &lt;property name="openjpa.ConnectionURL"
+ value="jdbc:mysql://localhost:3306/clusterdb" /&gt;
+ &lt;property name="openjpa.ConnectionUserName" value="root" /&gt;
+ &lt;property name="openjpa.ConnectionPassword" value="" /&gt;
+ &lt;property name="openjpa.BrokerFactory" value="ndb" /&gt;
+ &lt;property name="openjpa.jdbc.DBDictionary" value="TableType=ndb"/&gt;
+ &lt;property name="openjpa.ndb.connectString" value="localhost:1186" /&gt;
+ &lt;property name="openjpa.ndb.database" value="clusterdb" /&gt;
+ &lt;/properties&gt;
+ &lt;/persistence-unit&gt;
+&lt;/persistence&gt;</span></pre>
+<p>A persistence unit called ‘clusterdb’ is created; the provider (implementation for the persistence) is set to openjpa (as opposed for example to hibernate). Two classes are specified – ‘Employee’ and ‘Department’ which relate to the persistent classes that the application will define. Connector/J is defined as the JDBC connection (together with the host and the port of the MySQL Server to be used). The key to having OpenJPA use ClusterJPA is to set the BrokerFactory to ndb and specify the connect string (host:port) for the MySQL Cluster management node. The database is defined to be ‘clusterdb’ for both the JDBC and ClusterJ connections. The engine type when creating tables is set to ndb.</p>
+<p>If not already done so, create the ‘clusterdb’ database (if it already contains tables from the ClusterJ tutorial then drop them):</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">mysql&gt; create database clusterdb;</span></pre>
+<p>The next step is to create the persistent class definitions for the Department and Employee Entities:</p>
+<p><strong>Department.java:</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">import javax.persistence.*;
+
+@Entity(name = "department")
+public class Department {
+  private int Id;
+  private String Site;
+
+  public Department(){}
+
+  @Id public int getId() {return Id;}
+  public void setId(int id) {Id=id;}
+
+  @Column(name="location")    
+  public String getSite() {return Site;}
+  public void setSite(String site) {Site=site;}
+
+  public String toString() {
+  return "Department: " + getId() + " based in " + getSite();
+ }
+}</span></pre>
+<p>Using the @Entity tag, the table name is specified to be ‘department’. Note that unlike ClusterJ, ClusterJPA uses persistent classes (rather than interfaces) and so it is necessary to define the properties as well as the getter/setter methods. The primary key is defined using the @Id tag and we specify that the column associated with the Site property should be called ‘location’ using the @Column tag.</p>
+<p>As this is a class, it is possible to add other useful methods – in this case toString().</p>
+<p><strong>Employee.java:</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">import javax.persistence.*;
+@Entity(name = "employee") //Name of the table
+public class Employee {
+ private int Id;
+ private String First;
+ private String Last;
+ private String City;
+ private String Started;  
+ private String Ended;  
+ private int Department;
+
+ public Employee(){}
+
+ @Id public int getId() {return Id;}
+ public void setId(int id) {Id=id;}
+
+ public String getFirst() {return First;}
+ public void setFirst(String first) {First=first;}
+
+ public String getLast() {return Last;}
+ public void setLast(String last) {Last=last;}
+
+ @Column(name="municipality")  
+ public String getCity() {return City;}
+ public void setCity(String city) {City=city;}
+
+ public String getStarted() {return Started;}
+ public void setStarted(String date) {Started=date;}
+
+ public String getEnded() {return Ended;}
+ public void setEnded(String date) {Ended=date;}
+
+ public int getDepartment() {return Department;}
+ public void setDepartment(int department) {Department=department;}
+
+ public String toString() {
+  return getFirst() + " " + getLast() + " (Dept " +
+  getDepartment()+ ") from " + getCity() +
+  " started on " + getStarted() + " &amp; left on " + getEnded();
+ }
+}</span></pre>
+<p>The next step is to write the application code which we step through here block by block; the first of which simply contains the import statements and then:</p>
+<p><strong>Main.java (part 1):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import java.io.*;</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">public class Main {</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">public static void main (String[] args) throws java.io.IOException {</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;"> EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("clusterdb");
+ EntityManager em = entityManagerFactory.createEntityManager();
+ EntityTransaction userTransaction = em.getTransaction();</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;"> BufferedReader br = new BufferedReader(new InputStreamReader(System.in));</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;"> System.out.println("The tables will now have been created - check through SQL.");
+ System.out.println("mysql&gt; use clusterdb;");
+ System.out.println("mysql&gt; show tables;");
+ System.out.println("Hit return when you are done");
+ String ignore = br.readLine();</span></pre>
+<p>As part of creating the EntityManagerFactory and EntityManager, OpenJPA creates the tables for the two classes specified for the ‘clusterdb’ persistence unit. While the application waits for the user to press return, this can be checked:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">mysql&gt; use clusterdb
+ mysql&gt; show tables;
+ +---------------------+
+ | Tables_in_clusterdb |
+ +---------------------+
+ | department          |
+ | employee            |
+ +---------------------+</span></pre>
+<p>After hitting return, the application can create an Employee object and then persist it – at which point it will be stored in the ‘employee’ table. A second Employee object is then created and populated with the data read back from the database (using a primary key look up on the Id property with a value of 1):</p>
+<p><strong>Main.java (part 2):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;"> userTransaction.begin();
+ Employee emp = new Employee();
+ emp.setId(1);
+ emp.setDepartment(666);
+ emp.setFirst("Billy");
+ emp.setLast("Fish");
+ emp.setStarted("1st February 2009");
+ em.persist(emp);
+ userTransaction.commit();</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;"> userTransaction.begin();
+ Employee theEmployee = em.find(Employee.class, 1);
+ userTransaction.commit();</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;"> System.out.println(theEmployee.toString());</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;"> System.out.println("Chance to check the database before City is set");
+ System.out.println("Hit return when you are done");
+ ignore = br.readLine();</span></pre>
+<p>The Employee object read back from the database is displayed:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">Billy Fish (Dept 666) from null started on 1st February 2009 &amp; left on null
+Chance to check the database before City is set
+Hit return when you are done</span></pre>
+<p>At this point, the application waits to give the user a chance to confirm that the Employee really has been written to the database:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">mysql&gt; select * from employee;
++----+--------------+------------+-------+-------+------+-------------------+
+| id | municipality | department | ended | first | last | started           |
++----+--------------+------------+-------+-------+------+-------------------+
+|  1 | NULL         |        666 | NULL  | Billy | Fish | 1st February 2009 |
++----+--------------+------------+-------+-------+------+-------------------+</span></pre>
+<p>After hitting return, the application continues and an update is made to the persisted Employee object – note that there is no need to explicitly ask for the changes to be persisted, this happens automatically when the transaction is committed:</p>
+<p><strong>Main.java (part 3):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;"> userTransaction.begin();
+ theEmployee.setCity("London");
+ theEmployee.setDepartment(777);
+ userTransaction.commit();</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;"> System.out.println("Chance to check the City is set in the database");
+ System.out.println("Hit return when you are done");
+ ignore = br.readLine();</span></pre>
+<p>At this point, the application again waits while the user has a chance to confirm that the changes did indeed get written through to the database:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">mysql&gt; select * from employee;
++----+--------------+------------+-------+-------+------+-------------------+
+| id | municipality | department | ended | first | last | started           |
++----+--------------+------------+-------+-------+------+-------------------+
+|  1 | London       |        777 | NULL  | Billy | Fish | 1st February 2009 |
++----+--------------+------------+-------+-------+------+-------------------+</span></pre>
+<p>When allowed to continue, the application creates and persists an additional 100 Employee &amp; Department entities. It then goes on to create and execute a query to find all employees with a department number of 777 and then looks up the location of the site for that department.</p>
+<p><strong>Main.java (part 4):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;"> Department dept;</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;"> userTransaction.begin();
+ for (int i=700;i&lt;800;i++) {
+  emp = new Employee();
+  dept = new Department();
+  emp.setId(i+1000);
+  emp.setDepartment(i);
+  emp.setFirst("Billy");
+  emp.setLast("No-Mates-"+i);
+  emp.setStarted("1st February 2009");
+  em.persist(emp);
+  dept.setId(i);
+  dept.setSite("Building-"+i);
+  em.persist(dept);
+ }
+ userTransaction.commit();</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;"> userTransaction.begin();</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;"> Query q = em.createQuery("select x from Employee x where x.department=777");
+ Query qd;</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;"> for (Employee m : (List&lt;Employee&gt;) q.getResultList()) {
+  System.out.println(m.toString());
+  qd = em.createQuery("select x from Department x where x.id=777");
+  for (Department d : (List&lt;Department&gt;) qd.getResultList()) {
+   System.out.println(d.toString());
+  }
+ }
+ userTransaction.commit();</span></pre>
+<p>These are the results displayed:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">Billy No-Mates-777 (Dept 777) from null started on 1st February 2009 &amp; left on null
+Department: 777 based in Building-777
+Billy Fish (Dept 777) from London started on 1st February 2009 &amp; left on null
+Department: 777 based in Building-777</span></pre>
+<p>Note that joins between tables are possible with JPA but that is beyond the scope of this tutorial.</p>
+<p>Finaly, the EntityManager and EntityManagerFactory are closed:</p>
+<p><span style="color: #000000;"><strong>Main.java (part 5):</strong></span></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">  em.close();
+  entityManagerFactory.close();
+ }
+}</span></pre>
+<p><strong>Compiling and running the ClusterJPA tutorial code</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">javac -classpath /usr/local/mysql/share/mysql/java/clusterjpa.jar:/usr/local/openjpa/openjpa-1.2.1.jar:/usr/local/openjpa/lib/geronimo-jpa_3.0_spec-1.0.jar:. Main.java Employee.java Department.java</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #800000;">java -Djava.library.path=/usr/local/mysql/lib/ -classpath /usr/local/mysql/share/mysql/java/clusterjpa.jar:/usr/local/openjpa/openjpa-1.2.1.jar:/usr/local/openjpa/lib/*:/usr/local/connectorj/mysql-connector-java-5.1.12-bin.jar:. Main</span><span style="color: #800000;"> </span></pre>
+<p><a href="../ClusterJ_Examples.tar.gz" target="_blank">Download the source code for this tutorial from here </a>(together  with the code for the previous ClusterJ tutorial).</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/using-clusterjpa-part-of-mysql-cluster-connector-for-java-a-tutorial/feed</wfw:commentRss>
+			<slash:comments>4</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Using ClusterJ (part of MySQL Cluster Connector for Java) &#8211; a tutorial</title>
+		<link>/mysql-cluster/using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial</link>
+					<comments>/mysql-cluster/using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 30 Mar 2010 12:40:27 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Java]]></category>
+		<category><![CDATA[JPA]]></category>
+		<category><![CDATA[MySQL Cluster 7.1]]></category>
+		<category><![CDATA[NDB API]]></category>
+		<guid isPermaLink="false">/?p=1008</guid>
+
+					<description><![CDATA[ClusterJ is part of the MySQL Cluster Connector for Java which is currently in beta as part of MySQL Cluster 7.1. It is designed to provide a high performance method for Java applications to store and access data in a MySQL Cluster database. It is also designed to be easy for Java developers to use]]></description>
+										<content:encoded><![CDATA[<div id="attachment_1010" style="width: 234px" class="wp-caption alignright"><a href="/wp-content/uploads/2010/03/ClusterJ_Stack.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1010" class="size-medium wp-image-1010" title="Java access to MySQL Cluster" src="/wp-content/uploads/2010/03/ClusterJ_Stack-224x300.jpg" alt="" width="224" height="300" srcset="/wp-content/uploads/2010/03/ClusterJ_Stack-224x300.jpg 224w, /wp-content/uploads/2010/03/ClusterJ_Stack.jpg 342w" sizes="auto, (max-width: 224px) 100vw, 224px" /></a><p id="caption-attachment-1010" class="wp-caption-text">Fig. 1 Java access to MySQL Cluster</p></div>
+<p>ClusterJ is part of the MySQL Cluster Connector for Java which is currently in beta as part of MySQL Cluster 7.1. It is designed to provide a high performance method for Java applications to store and access data in a MySQL Cluster database. It is also designed to be easy for Java developers to use and is “in the style of” Hibernate/Java Data Objects (JDO) and JPA. It uses the Domain Object Model DataMapper pattern:</p>
+<ul>
+<li>Data is represented as domain objects</li>
+<li>Domain objects are separate from business logic</li>
+<li>Domain objects are mapped to database tables</li>
+</ul>
+<p>The purpose of ClusterJ is to provide a mapping from the table-oriented view of the data stored in MySQL Cluster to the Java objects used by the application. This is achieved by annotating interfaces representing the Java objects; where each persistent interface is mapped to a table and each property in that interface to a column. By default, the table name will match the interface name and the column names match the property names but this can be overridden using annotations.</p>
+<div id="attachment_1011" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2010/03/ClusterJ_Annotations.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1011" class="size-medium wp-image-1011" title="ClusterJ_Annotations" src="/wp-content/uploads/2010/03/ClusterJ_Annotations-300x159.jpg" alt="" width="300" height="159" /></a><p id="caption-attachment-1011" class="wp-caption-text">Fig. 2 ClusterJ Interface Annotations</p></div>
+<p>If the table does not already exist (for example, this is a brand new application with new data) then the table must be created manually &#8211; unlike OpenJPA, ClusterJ will not create the table automatically.</p>
+<p>Figure 2 shows an example of an interface that has been created in order to represent the data held in the ‘employee’ table.</p>
+<p>ClusterJ uses the following concepts:</p>
+<ul>
+<li>
+<div id="attachment_1013" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2010/03/ClusterJ_concepts.jpg"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1013" class="size-medium wp-image-1013" title="ClusterJ_concepts" src="/wp-content/uploads/2010/03/ClusterJ_concepts-300x300.jpg" alt="" width="300" height="300" /></a><p id="caption-attachment-1013" class="wp-caption-text">Fig. 3 ClusterJ Terminology</p></div>
+<p><strong>SessionFactory</strong>: There is one instance per MySQL Cluster instance for each Java Virtual Machine (JVM). The SessionFactory object is used by the application to get hold of sessions. The configuration details for the ClusterJ instance are defined in the Configuration properties which is an artifact associated with the SessionFactory.</li>
+<li><strong>Session</strong>: There is one instance per user (per Cluster, per JVM) and represents a Cluster connection</li>
+<li><strong>Domain Object</strong>: Objects representing the data from a table. The domain objects (and their relationships to the Cluster tables) are defined by annotated interfaces (as shown in the right-hand side of Figure 2.</li>
+<li><strong>Transaction</strong>: There is one transaction per session at any point in time. By default, each operation (query, insert, update, or delete) is run under a new transaction. . The Transaction interface allows developers to aggregate multiple operations into a single, atomic unit of work.</li>
+</ul>
+<p>ClusterJ will be suitable for many Java developers but it has some restrictions which may make OpenJPA with the ClusterJPA plug-in more appropriate. These ClusterJ restrictions are:</p>
+<ul>
+<li>Persistent Interfaces rather than persistent classes. The developer provides the signatures for the getter/setter methods rather than the properties and no extra methods can be added.</li>
+<li>No Relationships between properties or between objects can be defined in the domain objects. Properties are primitive types.</li>
+<li>No Multi-table inheritance; there is a single table per persistent interface</li>
+<li>No joins in queries (all data being queried must be in the same table/interface)</li>
+<li>No Table creation &#8211; user needs to create tables and indexes</li>
+<li>No Lazy Loading &#8211; entire record is loaded at one time, including large object (LOBs).</li>
+</ul>
+<h3>Tutorial</h3>
+<p>This tutorial uses MySQL Cluster 7.1.2a on Fedora 12. If using earlier or more recent versions of MySQL Cluster then you may need to change the class-paths as explained in <a href="http://dev.mysql.com/doc/ndbapi/en/mccj-using-clusterj.html" target="_blank">http://dev.mysql.com/doc/ndbapi/en/mccj-using-clusterj.html</a></p>
+<p>It is necessary to have MySQL Cluster up and running. For simplicity all of the nodes (processes) making up the Cluster will be run on the same physical host, along with the application.</p>
+<p>These are the MySQL Cluster configuration files being used :</p>
+<p><strong>config.ini:</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">[ndbd default]noofreplicas=2
+datadir=/home/billy/mysql/my_cluster/data
+
+[ndbd]
+hostname=localhost
+id=3
+
+[ndbd]
+hostname=localhost
+id=4
+
+[ndb_mgmd]
+id = 1
+hostname=localhost
+datadir=/home/billy/mysql/my_cluster/data
+
+[mysqld]
+hostname=localhost
+id=101
+
+[api]
+hostname=localhost</span></pre>
+<p><strong>my.cnf:</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">[mysqld]
+ndbcluster
+datadir=/home/billy/mysql/my_cluster/data
+basedir=/usr/local/mysql</span></pre>
+<p>This tutorial focuses on ClusterJ rather than on running MySQL Cluster; if you are new to MySQL Cluster then refer to <a href="/mysql-cluster/creating-a-simple-cluster-on-a-single-linux-host/" target="_blank">running a simple Cluster</a> before trying this tutorial.</p>
+<p>ClusterJ needs to be told how to connect to our MySQL Cluster database; including the connect string (the address/port for the management node), the database to use, the user to login as and attributes for the connection such as the timeout values. If these parameters aren’t defined then ClusterJ will fail with run-time exceptions. This information represents the “configuration properties” shown in Figure 3.  These parameters can be hard coded in the application code but it is more maintainable to create a clusterj.properties file that will be imported by the application. This file should be stored in the same directory as your application source code.</p>
+<p><strong>clusterj.properties:</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">com.mysql.clusterj.connectstring=localhost:1186
+ com.mysql.clusterj.database=clusterdb
+ com.mysql.clusterj.connect.retries=4
+ com.mysql.clusterj.connect.delay=5
+ com.mysql.clusterj.connect.verbose=1
+ com.mysql.clusterj.connect.timeout.before=30
+ com.mysql.clusterj.connect.timeout.after=20
+ com.mysql.clusterj.max.transactions=1024</span></pre>
+<p>As ClusterJ will not create tables automatically, the next step is to create ‘clusterdb’ database (referred to in clusterj.properties) and the ‘employee’ table:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">[billy@ws1 ~]$ mysql -u root -h 127.0.0.1 -P 3306 -u root
+ mysql&gt;  create database clusterdb;use clusterdb;
+ mysql&gt; CREATE TABLE employee (
+ -&gt;     id INT NOT NULL PRIMARY KEY,
+ -&gt;     first VARCHAR(64) DEFAULT NULL,
+ -&gt;     last VARCHAR(64) DEFAULT NULL,
+ -&gt;     municipality VARCHAR(64) DEFAULT NULL,
+ -&gt;     started VARCHAR(64) DEFAULT NULL,
+ -&gt;     ended  VARCHAR(64) DEFAULT NULL,
+ -&gt;     department INT NOT NULL DEFAULT 1,
+ -&gt;     UNIQUE KEY idx_u_hash (first,last) USING HASH,
+ -&gt;     KEY idx_municipality (municipality)
+ -&gt; ) ENGINE=NDBCLUSTER;</span></pre>
+<p>The next step is to create the annotated interface:</p>
+<p><strong>Employee.java:</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">import com.mysql.clusterj.annotation.Column;
+import com.mysql.clusterj.annotation.Index;
+import com.mysql.clusterj.annotation.PersistenceCapable;
+import com.mysql.clusterj.annotation.PrimaryKey;</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">@PersistenceCapable(table="employee")
+@Index(name="idx_uhash")
+public interface Employee {</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">@PrimaryKey
+int getId();
+void setId(int id);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">String getFirst();
+void setFirst(String first);
+
+String getLast();
+void setLast(String last);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">@Column(name="municipality")
+@Index(name="idx_municipality")
+String getCity();
+void setCity(String city);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">String getStarted();
+void setStarted(String date);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">String getEnded();
+void setEnded(String date);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">Integer getDepartment();
+void setDepartment(Integer department);
+}</span></pre>
+<p>The name of the table is specified in the annotation @PersistenceCapable(table=&#8221;employee&#8221;) and then each column from the employee table has an associated getter and setter method defined in the interface. By default, the property name in the interface is the same as the column name in the table – the column name has been overridden for the City property by explicitly including the @Column(name=&#8221;municipality&#8221;) annotation just before the associated getter method. The @PrimaryKey annotation is used to identify the property whose associated column is the Primary Key in the table. ClusterJ is made aware of the existence of indexes in the database using the @Index annotation.</p>
+<p>The next step is to write the application code which we step through here block by block; the first of which simply contains the import statements and then loads the contents of the clusterj.properties defined above:</p>
+<p><strong>Main.java (part 1):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">import com.mysql.clusterj.ClusterJHelper;
+import com.mysql.clusterj.SessionFactory;
+import com.mysql.clusterj.Session;
+import com.mysql.clusterj.Query;
+import com.mysql.clusterj.query.QueryBuilder;
+import com.mysql.clusterj.query.QueryDomainType;</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">import java.io.File;
+import java.io.InputStream;
+import java.io.FileInputStream;
+import java.io.*;</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">import java.util.Properties;
+import java.util.List;</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">public class Main {</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">public static void main (String[] args) throws java.io.FileNotFoundException,java.io.IOException {</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">// Load the properties from the clusterj.properties file</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">File propsFile = new File("clusterj.properties");
+InputStream inStream = new FileInputStream(propsFile);
+Properties props = new Properties();
+props.load(inStream);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">//Used later to get userinput
+BufferedReader br = new BufferedReader(new
+InputStreamReader(System.in));</span></pre>
+<p>The next step is to get a handle for a SessionFactory from the ClusterJHelper class and then use that factory to create a session (based on the properties imported from clusterj.properties file.</p>
+<p><strong>Main.java (part 2):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">// Create a session (connection to the database)
+SessionFactory factory = ClusterJHelper.getSessionFactory(props);
+Session session = factory.getSession();</span></pre>
+<p>Now that we have a session, it is possible to instantiate new Employee objects and then persist them to the database. Where there are no transaction begin() or commit() statements, each operation involving the database is treated as a separate transaction.</p>
+<p><strong>Main.java (part 3):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">// Create and initialise an Employee
+Employee newEmployee = session.newInstance(Employee.class);
+newEmployee.setId(988);
+newEmployee.setFirst("John");
+newEmployee.setLast("Jones");
+newEmployee.setStarted("1 February 2009");
+newEmployee.setDepartment(666);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">// Write the Employee to the database
+session.persist(newEmployee);</span></pre>
+<p>At this point, a row will have been added to the ‘employee’ table. To verify this, a new Employee object is created and used to read the data back from the ‘employee’ table using the primary key (Id) value of 998:</p>
+<p><strong>Main.java (part 4):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">// Fetch the Employee from the database
+ Employee theEmployee = session.find(Employee.class, 988);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">if (theEmployee == null)
+ {System.out.println("Could not find employee");}
+else
+ {System.out.println ("ID: " + theEmployee.getId() + "; Name: " +
+ theEmployee.getFirst() + " " + theEmployee.getLast());
+ System.out.println ("Location: " + theEmployee.getCity());
+ System.out.println ("Department: " + theEmployee.getDepartment());
+ System.out.println ("Started: " + theEmployee.getStarted());
+ System.out.println ("Left: " + theEmployee.getEnded());
+}</span></pre>
+<p>This is the output seen at this point:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">ID: 988; Name: John Jones
+Location: null
+Department: 666
+Started: 1 February 2009
+Left: null
+Check the database before I change the Employee - hit return when you are done</span></pre>
+<p>The next step is to modify this data but it does not write it back to the database yet:</p>
+<p><strong>Main.java (part 5):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">// Make some changes to the Employee &amp; write back to the database
+theEmployee.setDepartment(777);
+theEmployee.setCity("London");</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">System.out.println("Check the database before I change the Employee -
+hit return when you are done");
+String ignore = br.readLine();</span></pre>
+<p>The application will pause at this point and give you chance to check the database to confirm that the original data has been added as a new row but the changes have not been written back yet:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">mysql&gt; select * from clusterdb.employee;
++-----+-------+-------+--------------+-----------------+-------+------------+
+| id  | first | last  | municipality | started         | ended | department |
++-----+-------+-------+--------------+-----------------+-------+------------+
+| 988 | John  | Jones | NULL         | 1 February 2009 | NULL  |        666 |
++-----+-------+-------+--------------+-----------------+-------+------------+</span></pre>
+<p>After hitting return, the application will continue and write the changes to the table, using an automatic transaction to perform the update.</p>
+<p><strong>Main.java (part 6):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">session.updatePersistent(theEmployee);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">System.out.println("Check the change in the table before I bulk add
+Employees - hit return when you are done");
+ignore = br.readLine();</span></pre>
+<p>The application will again pause so that we can now check that the change has been written back (persisted) to the database:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">mysql&gt; select * from clusterdb.employee;
++-----+-------+-------+--------------+-----------------+-------+------------+
+| id  | first | last  | municipality | started         | ended | department |
++-----+-------+-------+--------------+-----------------+-------+------------+
+| 988 | John  | Jones | London       | 1 February 2009 | NULL  |        777 |
++-----+-------+-------+--------------+-----------------+-------+------------+</span></pre>
+<p>The application then goes onto create and persist 100 new employees. To improve performance, a single transaction is used to that all of the changes can be written to the database at once when the commit() statement is run:</p>
+<p><strong>Main.java (part 7):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">// Add 100 new Employees - all as part of a single transaction
+ newEmployee.setFirst("Billy");
+ newEmployee.setStarted("28 February 2009");</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">session.currentTransaction().begin();</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">for (int i=700;i&lt;800;i++) {
+ newEmployee.setLast("No-Mates"+i);
+ newEmployee.setId(i+1000);
+ newEmployee.setDepartment(i);
+ session.persist(newEmployee);
+ }</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">session.currentTransaction().commit();</span></pre>
+<p>The 100 new employees will now have been persisted to the database. The next step is to create and execute a query that will search the database for all employees in department 777 by using a QueryBuilder and using that to build a QueryDomain that compares the ‘department’ column with a parameter. After creating the, the department parameter is set to 777 (the query could subsequently be reused with different department numbers). The application then runs the query and iterates through and displays each of employees in the result set:</p>
+<p><strong>Main.java (part 8):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">// Retrieve the set all of Employees in department 777
+QueryBuilder builder = session.getQueryBuilder();
+QueryDomainType&lt;Employee&gt; domain =
+builder.createQueryDefinition(Employee.class);
+domain.where(domain.get("department").equal(domain.param(
+"department")));
+Query&lt;Employee&gt; query = session.createQuery(domain);
+query.setParameter("department",777);</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">List&lt;Employee&gt; results = query.getResultList();
+for (Employee deptEmployee: results) {
+System.out.println ("ID: " + deptEmployee.getId() + "; Name: " +
+deptEmployee.getFirst() + " " + deptEmployee.getLast());
+System.out.println ("Location: " + deptEmployee.getCity());
+System.out.println ("Department: " + deptEmployee.getDepartment());
+System.out.println ("Started: " + deptEmployee.getStarted());
+System.out.println ("Left: " + deptEmployee.getEnded());
+}</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">System.out.println("Last chance to check database before emptying table
+- hit return when you are done");
+ignore = br.readLine();</span></pre>
+<p>At this point, the application will display the following and prompt the user to allow it to continue:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">ID: 988; Name: John Jones
+Location: London
+Department: 777
+Started: 1 February 2009
+Left: null
+ID: 1777; Name: Billy No-Mates777
+Location: null
+Department: 777
+Started: 28 February 2009
+Left: null</span></pre>
+<p>We can compare that output with an SQL query performed on the database:</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">mysql&gt; select * from employee where department=777;
+ +------+-------+-------------+--------------+------------------+-------+------------+
+ | id   | first | last        | municipality | started          | ended | department |
+ +------+-------+-------------+--------------+------------------+-------+------------+
+ |  988 | John  | Jones       | London       | 1 February 2009  | NULL  |        777 |
+ | 1777 | Billy | No-Mates777 | NULL         | 28 February 2009 | NULL  |        777 |
+ +------+-------+-------------+--------------+------------------+-------+------------+</span></pre>
+<p>Finally, after pressing return again, the application will remove all employees:</p>
+<p><strong>Main.java (part 9):</strong></p>
+<pre style="padding-left: 30px;"><span style="color: #3366ff;">session.deletePersistentAll(Employee.class);
+ }
+}</span></pre>
+<p>As a final check, an SQL query confirms that all of the rows have been deleted from the ‘employee’ table.</p>
+<pre style="padding-left: 30px;"><span style="color: #800000;">mysql&gt; select * from employee;
+Empty set (0.00 sec)</span></pre>
+<h4>Compiling and running the ClusterJ tutorial code</h4>
+<pre style="padding-left: 30px;"><span style="color: #800000;">javac -classpath /usr/local/mysql/share/mysql/java/clusterj-api.jar:. Main.java Employee.java</span></pre>
+<pre style="padding-left: 30px;"><span style="color: #800000;">java -classpath /usr/local/mysql/share/mysql/java/clusterj.jar:. -Djava.library.path=/usr/local/mysql/lib Main
+</span><span style="color: #800000;"> </span></pre>
+<p><a href="/ClusterJ_Examples.tar.gz" target="_blank">Download the source code for this tutorial from here </a>(together with the code for the up-coming ClusterJPA tutorial).</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/using-clusterj-part-of-mysql-cluster-connector-for-java-a-tutorial/feed</wfw:commentRss>
+			<slash:comments>7</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Build MySQL Cluster 7.1 from source &#8211; including MySQL Cluster Connector for Java</title>
+		<link>/mysql-cluster/build-mysql-cluster-7-1-from-source-including-mysql-cluster-connector-for-java</link>
+					<comments>/mysql-cluster/build-mysql-cluster-7-1-from-source-including-mysql-cluster-connector-for-java#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 19 Mar 2010 12:09:57 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[ClusterJ]]></category>
+		<category><![CDATA[Java]]></category>
+		<category><![CDATA[JPA]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.1]]></category>
+		<category><![CDATA[OpenJPA]]></category>
+		<guid isPermaLink="false">/?p=997</guid>
+
+					<description><![CDATA[If you want to try out the beta features in MySQL Cluster 7.1 then you can either use the appropriate binaries or you can build it for yourself from source. Here I explain how to do this on LINUX. Note that if you want to make use of OpenJPA then you first need to install]]></description>
+										<content:encoded><![CDATA[<p>If you want to try out the beta features in MySQL Cluster 7.1 then you can either use the appropriate binaries or you can build it for yourself from source. Here I explain how to do this on LINUX.</p>
+<p>Note that if you want to make use of OpenJPA then you first need to install <a href="http://openjpa.apache.org/" target="_blank">OpenJPA</a> and <a href="http://dev.mysql.com/downloads/connector/j/" target="_blank">Connector/J</a>.</p>
+<p>The example here was on Fedora12 with the <a href="http://dev.mysql.com/downloads/cluster/#downloads" target="_blank">MySQL Cluster 7.1.2 source</a>:</p>
+<blockquote><p><span style="color: #993300;">CFLAGS=&#8221;-O3&#8243; CXX=gcc CXXFLAGS=&#8221;-O3 -felide-constructors -fno-exceptions -fno-rtti&#8221; ./configure -prefix=/usr/local/mysql &#8211;enable-assembler &#8211;with-mysqld-ldflags=-all-static &#8211;with-plugins=max &#8211;with-openjpa &#8211;with-classpath=/usr/local/openjpa/openjpa-1.2.1.jar:/usr/local/openjpa/lib/geronimo-jpa_3.0_spec-1.0.jar:/usr/local/openjpa/lib/geronimo-jta_1.1_spec-1.1.jar  &#8211;with-extra-charsets=all</span></p>
+<p><span style="color: #993300;">make</span></p>
+<p><span style="color: #993300;">make install</span></p></blockquote>
+<p>That&#8217;s it! Obviously, the exact location of the OpenJPA jars will depend on where you installed it. Note that for &#8216;make install&#8217; you need to run it from an account that has access to /usr/local</p>
+<p>I&#8217;ll follow up a little later with a post with example applications (in the mean time refer to this <a href="http://ocklin.blogspot.com/2009/12/java-and-openjpa-for-mysql-cluster_14.html" target="_blank">tutorial</a> or the <a href="http://dev.mysql.com/doc/ndbapi/en/mccj.html" target="_blank">MySQL Cluster for Java on-line documentation</a>) but FYI these are the options I use to compile and run my test aps:</p>
+<blockquote><p><span style="color: #993300;"><strong>ClusterJ</strong>:</span></p>
+<p><span style="color: #993300;">javac -classpath /usr/local/mysql/share/mysql/java/clusterj-api.jar:. Main.java Employee.java</span></p>
+<p><span style="color: #993300;">java -classpath /usr/local/mysql/share/mysql/java/clusterj.jar:. -Djava.library.path=/usr/local/mysql/lib/mysql/ Main</span></p>
+<p><span style="color: #993300;"><br />
+</span></p>
+<p><span style="color: #993300;"><strong>ClusterJPA</strong>:</span></p>
+<p><span style="color: #993300;">javac -classpath /usr/local/mysql/share/mysql/java/clusterjpa.jar:/usr/local/openjpa/openjpa-1.2.1.jar:/usr/local/openjpa/lib/geronimo-jpa_3.0_spec-1.0.jar:. Main.java Employee.java Department.java</span></p>
+<p><span style="color: #993300;">java -Djava.library.path=/usr/local/mysql/lib/mysql/ -classpath /usr/local/mysql/share/mysql/java/clusterjpa.jar:/usr/local/openjpa/openjpa-1.2.1.jar:/usr/local/openjpa/lib/*:/usr/local/connectorj/mysql-connector-java-5.1.12-bin.jar:. Main</span></p></blockquote>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/build-mysql-cluster-7-1-from-source-including-mysql-cluster-connector-for-java/feed</wfw:commentRss>
+			<slash:comments>2</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Cluster Connector for Java &#8211; replay available for part 1 of the webinar</title>
+		<link>/mysql-cluster/mysql-cluster-connector-for-java-replay-available-for-part-1-of-the-webinar</link>
+					<comments>/mysql-cluster/mysql-cluster-connector-for-java-replay-available-for-part-1-of-the-webinar#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 19 Feb 2010 13:12:57 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Java]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.1]]></category>
+		<category><![CDATA[NDB API]]></category>
+		<guid isPermaLink="false">/?p=953</guid>
+
+					<description><![CDATA[The replay of the two webinars can now be accesed from mysql.com Remember that the second part of the webinar will be on March 3rd (details below). MySQL have been working on a new way of accessing MySQL Cluster using Java. Designed for Java developers, the MySQL Cluster Connector for Java implements an easy-to-use and]]></description>
+										<content:encoded><![CDATA[<p>The replay of the two webinars can now be accesed from <a href="http://www.mysql.com/news-and-events/on-demand-webinars/display-od-487.html">mysql.com</a></p>
+<p>Remember that the second part of the webinar will be on March 3rd (details below).</p>
+<div id="attachment_785" style="width: 330px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/12/clusterj-architecture.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-785" class="size-full wp-image-785" title="clusterj-architecture" src="/wp-content/uploads/2009/12/clusterj-architecture.png" alt="ClusterJ Architecture" width="320" height="183" srcset="/wp-content/uploads/2009/12/clusterj-architecture.png 320w, /wp-content/uploads/2009/12/clusterj-architecture-300x171.png 300w" sizes="auto, (max-width: 320px) 100vw, 320px" /></a><p id="caption-attachment-785" class="wp-caption-text">ClusterJ Architecture</p></div>
+<p>MySQL have been working on a new way of accessing MySQL Cluster using Java. Designed for Java developers, the MySQL Cluster Connector for Java implements an easy-to-use and high performance native Java interface and OpenJPA plug-in that maps Java classes to tables stored in the high availability, real-time MySQL Cluster database.</p>
+<p>There is a series of 2 webinars coming up, as always these are free to attend &#8211; you just need to register in advance:</p>
+<p><strong>Part 1: Tuesday, February 16, 2010: 10:00 Pacific time</strong></p>
+<ul>
+<li>an overview of the MySQL Cluster Connector for Java</li>
+<li>what these technologies bring to Java developers</li>
+<li>implementation details of the MySQL Cluster Java API and Plug-In for OpenJPA</li>
+<li>configuring the connection to MySQL Cluster</li>
+<li>creating the Java Domain Object Model for your tables</li>
+<li>managing insert, update, and delete operations</li>
+<li>querying the database</li>
+<li>how to get started developing new Java applications using these interfaces</li>
+</ul>
+<p>Accessfrom <a href="http://www.mysql.com/news-and-events/on-demand-webinars/display-od-487.html">mysql.com</a></p>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">an overview of the MySQL Cluster Connector for Java</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">what these technologies bring to Java developers</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">implementation details of the MySQL Cluster Java API and Plug-In for OpenJPA</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">configuring the connection to MySQL Cluster</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">creating the Java Domain Object Model for your tables</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">managing insert, update, and delete operations</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">querying the database</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">how to get started developing new Java applications using these interfaces</div>
+<h3>Part 2: Wednesday, March 03, 2010: 10:00 Pacific time</h3>
+<ul>
+<li>how MySQL Cluster Connector for Java coexists with existing OpenJPA / TopLink / JDBC-based apps</li>
+<li>how to evaluate the MySQL Cluster Connector for Java alternatives</li>
+<li>performance comparisons with both existing Java access and with native NDB API access to MySQL Cluster</li>
+<li>what the future holds for this technology</li>
+</ul>
+<p style="padding-left: 30px;">Wed, Mar 03: <span style="white-space: pre;"> </span>08:00 Hawaii time<br />
+Wed, Mar 03: <span style="white-space: pre;"> </span>11:00 Mountain time (America)<br />
+Wed, Mar 03: <span style="white-space: pre;"> </span>12:00 Central time (America)<br />
+Wed, Mar 03: <span style="white-space: pre;"> </span>13:00 Eastern time (America)<br />
+Wed, Mar 03: <span style="white-space: pre;"> </span>18:00 UTC<br />
+Wed, Mar 03: <span style="white-space: pre;"> </span>18:00 Western European time<br />
+Wed, Mar 03: <span style="white-space: pre;"> </span>19:00 Central European time<br />
+Wed, Mar 03: <span style="white-space: pre;"> </span>20:00 Eastern European time</p>
+<p><a href="http://www.mysql.com/news-and-events/web-seminars/display-488.html" target="_blank">Register for Part 2 here</a>.</p>
+<p>This functionality isn&#8217;t GA but it is available for you to try and we&#8217;d love to get feedback (which you can provide through the <a href="http://forums.mysql.com/list.php?25" target="_blank">MySQL Cluster forum </a>or by emailing cluster@lists.mysql.com</p>
+<p>If you want to see for yourself then take a look at the <a href="http://ocklin.blogspot.com/2009/12/java-and-openjpa-for-mysql-cluster.html" target="_blank">Blog entry from Bernhard Ocklin</a> &#8211; the engineering manager responsible for this work.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/mysql-cluster-connector-for-java-replay-available-for-part-1-of-the-webinar/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Upcoming webinars for Java and JPA access to MySQL Cluster</title>
+		<link>/mysql-cluster/upcoming-webinars-for-java-and-jpa-access-to-mysql-cluster</link>
+					<comments>/mysql-cluster/upcoming-webinars-for-java-and-jpa-access-to-mysql-cluster#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 20 Jan 2010 16:08:39 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Java]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.1]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<guid isPermaLink="false">/?p=874</guid>
+
+					<description><![CDATA[MySQL have been working on a new way of accessing MySQL Cluster using Java. Designed for Java developers, the MySQL Cluster Connector for Java implements an easy-to-use and high performance native Java interface and OpenJPA plug-in that maps Java classes to tables stored in the high availability, real-time MySQL Cluster database. There is a series]]></description>
+										<content:encoded><![CDATA[<div id="attachment_785" style="width: 330px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/12/clusterj-architecture.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-785" class="size-full wp-image-785" title="clusterj-architecture" src="/wp-content/uploads/2009/12/clusterj-architecture.png" alt="ClusterJ Architecture" width="320" height="183" srcset="/wp-content/uploads/2009/12/clusterj-architecture.png 320w, /wp-content/uploads/2009/12/clusterj-architecture-300x171.png 300w" sizes="auto, (max-width: 320px) 100vw, 320px" /></a><p id="caption-attachment-785" class="wp-caption-text">ClusterJ Architecture</p></div>
+<p>MySQL have been working on a new way of accessing MySQL Cluster using Java. Designed for Java developers, the MySQL Cluster Connector for Java implements an easy-to-use and high performance native Java interface and OpenJPA plug-in that maps Java classes to tables stored in the high availability, real-time MySQL Cluster database.</p>
+<p>There is a series of 2 webinars coming up, as always these are free to attend &#8211; you just need to register in advance:</p>
+<p><strong>Part 1: Tuesday, February 16, 2010: 10:00 Pacific time</strong></p>
+<ul>
+<li>an overview of the MySQL Cluster Connector for Java</li>
+<li>what these technologies bring to Java developers</li>
+<li>implementation details of the MySQL Cluster Java API and Plug-In for OpenJPA</li>
+<li>configuring the connection to MySQL Cluster</li>
+<li>creating the Java Domain Object Model for your tables</li>
+<li>managing insert, update, and delete operations</li>
+<li>querying the database</li>
+<li>how to get started developing new Java applications using these interfaces</li>
+</ul>
+<p style="padding-left: 30px; ">Tue, Feb 16: <span style="white-space:pre"> </span>08:00 Hawaii time<br />
+Tue, Feb 16: <span style="white-space:pre"> </span>11:00 Mountain time (America)<br />
+Tue, Feb 16: <span style="white-space:pre"> </span>12:00 Central time (America)<br />
+Tue, Feb 16: <span style="white-space:pre"> </span>13:00 Eastern time (America)<br />
+Tue, Feb 16: <span style="white-space:pre"> </span>18:00 UTC<br />
+Tue, Feb 16: <span style="white-space:pre"> </span>18:00 Western European time<br />
+Tue, Feb 16: <span style="white-space:pre"> </span>19:00 Central European time<br />
+Tue, Feb 16: <span style="white-space:pre"> </span>20:00 Eastern European time</p>
+<p><a href="http://www.mysql.com/news-and-events/web-seminars/display-487.html" target="_blank">Register for Part 1 here</a>.</p>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">an overview of the MySQL Cluster Connector for Java</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">what these technologies bring to Java developers</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">implementation details of the MySQL Cluster Java API and Plug-In for OpenJPA</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">configuring the connection to MySQL Cluster</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">creating the Java Domain Object Model for your tables</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">managing insert, update, and delete operations</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">querying the database</div>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 215px; width: 1px; height: 1px;">how to get started developing new Java applications using these interfaces</div>
+<h3>Part 2: Wednesday, March 03, 2010: 10:00 Pacific time</h3>
+<ul>
+<li>how MySQL Cluster Connector for Java coexists with existing OpenJPA / TopLink / JDBC-based apps</li>
+<li>how to evaluate the MySQL Cluster Connector for Java alternatives</li>
+<li>performance comparisons with both existing Java access and with native NDB API access to MySQL Cluster</li>
+<li>what the future holds for this technology</li>
+</ul>
+<p style="padding-left: 30px; ">Wed, Mar 03: <span style="white-space: pre;"> </span>08:00 Hawaii time<br />
+Wed, Mar 03: <span style="white-space: pre;"> </span>11:00 Mountain time (America)<br />
+Wed, Mar 03: <span style="white-space: pre;"> </span>12:00 Central time (America)<br />
+Wed, Mar 03: <span style="white-space: pre;"> </span>13:00 Eastern time (America)<br />
+Wed, Mar 03: <span style="white-space: pre;"> </span>18:00 UTC<br />
+Wed, Mar 03: <span style="white-space: pre;"> </span>18:00 Western European time<br />
+Wed, Mar 03: <span style="white-space: pre;"> </span>19:00 Central European time<br />
+Wed, Mar 03: <span style="white-space: pre;"> </span>20:00 Eastern European time</p>
+<p><a href="http://www.mysql.com/news-and-events/web-seminars/display-488.html" target="_blank">Register for Part 2 here</a>.</p>
+<p>This functionality isn&#8217;t yet GA but it is available for you to try and we&#8217;d love to get feedback (which you can provide through the <a href="http://forums.mysql.com/list.php?25" target="_blank">MySQL Cluster forum </a>or by emailing cluster@lists.mysql.com</p>
+<p>If you want to see for yourself then take a look at the <a href="http://ocklin.blogspot.com/2009/12/java-and-openjpa-for-mysql-cluster.html" target="_blank">Blog entry from Bernhard Ocklin</a> &#8211; the engineering manager responsible for this work.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/upcoming-webinars-for-java-and-jpa-access-to-mysql-cluster/feed</wfw:commentRss>
+			<slash:comments>4</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Java and OpenJPA for MySQL Cluster</title>
+		<link>/mysql-cluster/java-and-openjpa-for-mysql-cluster</link>
+					<comments>/mysql-cluster/java-and-openjpa-for-mysql-cluster#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 11 Dec 2009 11:34:02 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[ClusterJ]]></category>
+		<category><![CDATA[Java]]></category>
+		<category><![CDATA[JPA]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.1]]></category>
+		<category><![CDATA[OpenJPA]]></category>
+		<guid isPermaLink="false">/?p=786</guid>
+
+					<description><![CDATA[MySQL have been working on a new way of accessing MySQL Cluster using Java. The aim being to give most of the performance of the C++ NDB API but in a much friendlier form for Java developers. There will in fact be 2 new interfaces &#8211; ClusterJ (MySQL&#8217;s own API) and a JPA solution (using]]></description>
+										<content:encoded><![CDATA[<div id="attachment_785" style="width: 330px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/12/clusterj-architecture.png"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-785" class="size-full wp-image-785" title="clusterj-architecture" src="/wp-content/uploads/2009/12/clusterj-architecture.png" alt="ClusterJ Architecture" width="320" height="183" srcset="/wp-content/uploads/2009/12/clusterj-architecture.png 320w, /wp-content/uploads/2009/12/clusterj-architecture-300x171.png 300w" sizes="auto, (max-width: 320px) 100vw, 320px" /></a><p id="caption-attachment-785" class="wp-caption-text">ClusterJ Architecture</p></div>
+<p>MySQL have been working on a new way of accessing MySQL Cluster using Java. The aim being to give most of the performance of the C++ NDB API but in a much friendlier form for Java developers. There will in fact be 2 new interfaces &#8211; ClusterJ (MySQL&#8217;s own API) and a JPA solution (using OpenJPA). If you want to see for yourself then take a look at the <a href="http://ocklin.blogspot.com/2009/12/java-and-openjpa-for-mysql-cluster_14.html" target="_blank">Blog entry from Bernhard Ocklin</a> &#8211; the engineering manager responsible for this work.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/java-and-openjpa-for-mysql-cluster/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

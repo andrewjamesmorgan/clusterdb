@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: MySQL Cluster Auto-Installer &#8211; labs release	</title>
+	<atom:link href="/mysql-cluster/auto-installer-labs-release/feed" rel="self" type="application/rss+xml" />
+	<link>/mysql-cluster/auto-installer-labs-release</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Mon, 07 Nov 2016 16:42:45 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: arri		</title>
+		<link>/mysql-cluster/auto-installer-labs-release#comment-647024</link>
+
+		<dc:creator><![CDATA[arri]]></dc:creator>
+		<pubDate>Mon, 07 Nov 2016 16:42:45 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2504#comment-647024</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/auto-installer-labs-release#comment-477969&quot;&gt;Regan&lt;/a&gt;.
+
+I&#039;m facing the same problem on Windows Server 2012 R2.
+I&#039;m using CygWin ssh server.
+
+Frustrating part is that i&#039;ve had it working fine before in a cluster of 4 VM&#039;s (all running W2K12R2).
+
+Any insight would be great!]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/auto-installer-labs-release#comment-477969">Regan</a>.</p>
+<p>I&#8217;m facing the same problem on Windows Server 2012 R2.<br />
+I&#8217;m using CygWin ssh server.</p>
+<p>Frustrating part is that i&#8217;ve had it working fine before in a cluster of 4 VM&#8217;s (all running W2K12R2).</p>
+<p>Any insight would be great!</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/auto-installer-labs-release#comment-566129</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 08 Sep 2015 16:27:37 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2504#comment-566129</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/auto-installer-labs-release#comment-565978&quot;&gt;Nezar&lt;/a&gt;.
+
+Thanks for your question. I&#039;m no longer directly involved with MySQL (I&#039;m now with MongoDB) and so I&#039;d suggest that you seek help from &lt;a href=&quot;http://forums.mysql.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow&quot;&gt;http://forums.mysql.com/&lt;/a&gt;.
+
+Best Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/auto-installer-labs-release#comment-565978">Nezar</a>.</p>
+<p>Thanks for your question. I&#8217;m no longer directly involved with MySQL (I&#8217;m now with MongoDB) and so I&#8217;d suggest that you seek help from <a href="http://forums.mysql.com/" target="_blank" rel="nofollow">http://forums.mysql.com/</a>.</p>
+<p>Best Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Nezar		</title>
+		<link>/mysql-cluster/auto-installer-labs-release#comment-565978</link>
+
+		<dc:creator><![CDATA[Nezar]]></dc:creator>
+		<pubDate>Tue, 08 Sep 2015 08:29:28 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2504#comment-565978</guid>
+
+					<description><![CDATA[Hello,
+I am trying to create my cluster on two hosts: 192.168.1.5 (management node, sql node, data node) and 192.168.1.6 (sql node and data node). The cluster deploys sucessfully, but when I use deploy and start cluster I get this error: SyntaxError: unexpected number
+the error appears just after starting the N49 service.
+any suggestion?
+
+Many thanks]]></description>
+			<content:encoded><![CDATA[<p>Hello,<br />
+I am trying to create my cluster on two hosts: 192.168.1.5 (management node, sql node, data node) and 192.168.1.6 (sql node and data node). The cluster deploys sucessfully, but when I use deploy and start cluster I get this error: SyntaxError: unexpected number<br />
+the error appears just after starting the N49 service.<br />
+any suggestion?</p>
+<p>Many thanks</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Sara Borghol		</title>
+		<link>/mysql-cluster/auto-installer-labs-release#comment-499453</link>
+
+		<dc:creator><![CDATA[Sara Borghol]]></dc:creator>
+		<pubDate>Mon, 25 May 2015 07:35:48 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2504#comment-499453</guid>
+
+					<description><![CDATA[Hello, 
+
+ When creating MySQL cluster using Auto-installer on Hyper-v , and trying to add the local machine as a host, it fail to get the resource information of the machine giving me [error : Number_of_Processors] , also, doesn&#039;t give the right MySQL install directory , and MySQL data directory. Is this related to creating cluster using hyper-V and not on physical machine?]]></description>
+			<content:encoded><![CDATA[<p>Hello, </p>
+<p> When creating MySQL cluster using Auto-installer on Hyper-v , and trying to add the local machine as a host, it fail to get the resource information of the machine giving me [error : Number_of_Processors] , also, doesn&#8217;t give the right MySQL install directory , and MySQL data directory. Is this related to creating cluster using hyper-V and not on physical machine?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/auto-installer-labs-release#comment-480104</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 27 Apr 2015 12:38:47 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2504#comment-480104</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/auto-installer-labs-release#comment-477969&quot;&gt;Regan&lt;/a&gt;.
+
+Sorry - this isn&#039;t an error that I&#039;ve come accross - hopefully someone else can comment?]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/auto-installer-labs-release#comment-477969">Regan</a>.</p>
+<p>Sorry &#8211; this isn&#8217;t an error that I&#8217;ve come accross &#8211; hopefully someone else can comment?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: Regan		</title>
+		<link>/mysql-cluster/auto-installer-labs-release#comment-477969</link>
+
+		<dc:creator><![CDATA[Regan]]></dc:creator>
+		<pubDate>Fri, 24 Apr 2015 14:45:15 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2504#comment-477969</guid>
+
+					<description><![CDATA[Hi Andrew,
+
+I&#039;m trying to install mysql cluster 7.4.6-winx64.
+i stuck on error sounds like this &quot;Error: DLL load failed: The specified module could not be found.&quot; on remote host. I try to ignore the error and proceed to the final step and the error still the same Unable to create directory on host [remote host ip address]: DLL load failed: The specified module could not be found.&quot;
+At first I think this is a SSH Server problem on remote host.
+But i&#039;ve tried 3 SSH Server, FreeSSHd, OpenSSH, BitviseSSH, and the errors still same.
+
+I try to do some research related to the error, and find that there is possibility that python unable to compile the DLL. I&#039;ve stuck for several days by now.
+
+maybe any suggestion that I could try?
+
+Thanks and Best Regards
+Regan]]></description>
+			<content:encoded><![CDATA[<p>Hi Andrew,</p>
+<p>I&#8217;m trying to install mysql cluster 7.4.6-winx64.<br />
+i stuck on error sounds like this &#8220;Error: DLL load failed: The specified module could not be found.&#8221; on remote host. I try to ignore the error and proceed to the final step and the error still the same Unable to create directory on host [remote host ip address]: DLL load failed: The specified module could not be found.&#8221;<br />
+At first I think this is a SSH Server problem on remote host.<br />
+But i&#8217;ve tried 3 SSH Server, FreeSSHd, OpenSSH, BitviseSSH, and the errors still same.</p>
+<p>I try to do some research related to the error, and find that there is possibility that python unable to compile the DLL. I&#8217;ve stuck for several days by now.</p>
+<p>maybe any suggestion that I could try?</p>
+<p>Thanks and Best Regards<br />
+Regan</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/auto-installer-labs-release#comment-467266</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 01 Apr 2015 12:52:55 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2504#comment-467266</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/auto-installer-labs-release#comment-460906&quot;&gt;steven&lt;/a&gt;.
+
+Correct - MCM is part of the commercial version of MySQL Cluster - MySQL Cluster Carrier Grade Edition. Like other pieces of Oracle software, you can download it from edelivery.oracle.com and try it out for 30 days before deciding whether the added value justifies the purchase.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/auto-installer-labs-release#comment-460906">steven</a>.</p>
+<p>Correct &#8211; MCM is part of the commercial version of MySQL Cluster &#8211; MySQL Cluster Carrier Grade Edition. Like other pieces of Oracle software, you can download it from edelivery.oracle.com and try it out for 30 days before deciding whether the added value justifies the purchase.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: andrew		</title>
+		<link>/mysql-cluster/auto-installer-labs-release#comment-467264</link>
+
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 01 Apr 2015 12:51:20 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2504#comment-467264</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/auto-installer-labs-release#comment-460951&quot;&gt;steven&lt;/a&gt;.
+
+After the auto-installer has shown you the default paths for each host - make sure that the path for the binaries matches where you&#039;ve actually stored them on the target machines.
+
+Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/auto-installer-labs-release#comment-460951">steven</a>.</p>
+<p>After the auto-installer has shown you the default paths for each host &#8211; make sure that the path for the binaries matches where you&#8217;ve actually stored them on the target machines.</p>
+<p>Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: steven		</title>
+		<link>/mysql-cluster/auto-installer-labs-release#comment-460951</link>
+
+		<dc:creator><![CDATA[steven]]></dc:creator>
+		<pubDate>Wed, 18 Mar 2015 03:18:52 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2504#comment-460951</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/auto-installer-labs-release#comment-460942&quot;&gt;steven&lt;/a&gt;.
+
+I change the local host setting to its IP, got a bit further but now I get this,
+
+========
+Cannot locate ndbmtd in /usr/sbin/[&#039;bin&#039;, &#039;sbin&#039;, &#039;scripts&#039;, &#039;&#039;, &#039;../scripts&#039;] on host 10.100.32.71
+========
+
+?]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/auto-installer-labs-release#comment-460942">steven</a>.</p>
+<p>I change the local host setting to its IP, got a bit further but now I get this,</p>
+<p>========<br />
+Cannot locate ndbmtd in /usr/sbin/[&#8216;bin&#8217;, &#8216;sbin&#8217;, &#8216;scripts&#8217;, &#8221;, &#8216;../scripts&#8217;] on host 10.100.32.71<br />
+========</p>
+<p>?</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: steven		</title>
+		<link>/mysql-cluster/auto-installer-labs-release#comment-460942</link>
+
+		<dc:creator><![CDATA[steven]]></dc:creator>
+		<pubDate>Wed, 18 Mar 2015 02:51:37 +0000</pubDate>
+		<guid isPermaLink="false">/?p=2504#comment-460942</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/auto-installer-labs-release#comment-460938&quot;&gt;steven&lt;/a&gt;.
+
+nope,
+
+==========
+Command `/usr/sbin/ndb_mgmd --initial --ndb-nodeid=49 --config-dir=/var/lib/mysql/MySQL_Cluster/49/ --config-file=/var/lib/mysql/MySQL_Cluster/49/config.ini&#039;, running on 10.100.32.62 exited with 1:
+MySQL Cluster Management Server mysql-5.6.23 ndb-7.4.4
+2015-03-18 15:42:33 [MgmtSrvr] ERROR    -- at line 68: Mixing of localhost (default for [NDBD]HostName) with other hostname(10.100.32.62) is illegal
+2015-03-18 15:42:33 [MgmtSrvr] ERROR    -- at line 68: Could not store previous default section of configuration file.
+2015-03-18 15:42:33 [MgmtSrvr] ERROR    -- Could not load configuration from &#039;/var/lib/mysql/MySQL_Cluster/49/config.ini&#039;
+==========]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/auto-installer-labs-release#comment-460938">steven</a>.</p>
+<p>nope,</p>
+<p>==========<br />
+Command `/usr/sbin/ndb_mgmd &#8211;initial &#8211;ndb-nodeid=49 &#8211;config-dir=/var/lib/mysql/MySQL_Cluster/49/ &#8211;config-file=/var/lib/mysql/MySQL_Cluster/49/config.ini&#8217;, running on 10.100.32.62 exited with 1:<br />
+MySQL Cluster Management Server mysql-5.6.23 ndb-7.4.4<br />
+2015-03-18 15:42:33 [MgmtSrvr] ERROR    &#8212; at line 68: Mixing of localhost (default for [NDBD]HostName) with other hostname(10.100.32.62) is illegal<br />
+2015-03-18 15:42:33 [MgmtSrvr] ERROR    &#8212; at line 68: Could not store previous default section of configuration file.<br />
+2015-03-18 15:42:33 [MgmtSrvr] ERROR    &#8212; Could not load configuration from &#8216;/var/lib/mysql/MySQL_Cluster/49/config.ini&#8217;<br />
+==========</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

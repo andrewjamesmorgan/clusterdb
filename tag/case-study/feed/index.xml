@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>case study &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/case-study/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Fri, 18 Sep 2009 18:38:30 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>MySQL Cluster Helps Mapion to Improve its User Experience</title>
+		<link>/mysql/mysql-cluster-helps-mapion-to-improve-its-user-experience</link>
+					<comments>/mysql/mysql-cluster-helps-mapion-to-improve-its-user-experience#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 18 Sep 2009 18:38:30 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[case study]]></category>
+		<category><![CDATA[MySQL Cluster]]></category>
+		<guid isPermaLink="false">/?p=524</guid>
+
+					<description><![CDATA[A new case study has been published that describes how and why Mapion adopted MySQL Cluster as the real-time, mission critical database for their Mapion Mobile applications. Mapion adopted MySQL Cluster Databse because it allows for the availability of existing applications through its &#8216;shared-nothing&#8217; distributed architecture with no single point of failure, to meet Mapion&#8217;s]]></description>
+										<content:encoded><![CDATA[<p>A new case study has been published that describes how and why Mapion adopted MySQL Cluster as the real-time, mission critical database for their Mapion Mobile applications.</p>
+<p>Mapion adopted MySQL Cluster Databse because it allows for the availability of existing applications through its &#8216;shared-nothing&#8217; distributed architecture with no single point of failure, to meet Mapion&#8217;s mission-critical application requirements of 99.999% availability. This is coupled with automatic data partitioning with load balancing, which allows almost unlimited database scalability for the company. Mr. Takashi Ando comments, “Some databases supported clusters when we previously reviewed our database technology, but they were hard to operate and would have increased costs substantially. We found ourselves in a completely different situation when planning the introduction of the new system. MySQL Cluster Database had made it possible to construct a highly available system while keeping costs down.”</p>
+<p>Mapion&#8217;s online map service enables users to search for addresses as well as gain access to navigation information such as directions for driving and public transport routes. The fee-based service for mobile users, Mapion Mobile, sends maps and directions direct to users&#8217; mobile phones, while the Mapion BB broadband service offers more detailed maps, which smoothly and instantaneously refresh as the user navigates around the displayed map.</p>
+<div id="_mcePaste" style="position: absolute; overflow-x: hidden; overflow-y: hidden; width: 1px; height: 1px; top: 94px; left: -10000px;">Headquartered in Tokyo, Japan, Mapion Co. Ltd delivers Japan’s leading online map search service, with over 700,000 page views per day, and over 200 enterprise customers. Mapion’s shareholders include Toppan, NTT East, Dentsu, Yahoo Japan, and Sharp.</div>
+<div id="_mcePaste" style="position: absolute; overflow-x: hidden; overflow-y: hidden; width: 1px; height: 1px; top: 94px; left: -10000px;">The company&#8217;s online map service enables users to search for addresses as well as gain access to navigation information such as directions for driving and public transport routes. The fee-based service for mobile users, Mapion Mobile, sends maps and directions direct to users&#8217; mobile phones, while the Mapion BB broadband service offers more detailed maps, which smoothly and instantaneously refresh as the user navigates around the displayed map</div>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql/mysql-cluster-helps-mapion-to-improve-its-user-experience/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

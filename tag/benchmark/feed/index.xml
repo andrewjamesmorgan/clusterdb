@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>benchmark &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/benchmark/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Mon, 14 Mar 2011 10:08:45 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>MySQL Cluster Database 7: Performance Benchmark</title>
+		<link>/mysql-cluster/mysql-cluster-database-7-performance-benchmark</link>
+					<comments>/mysql-cluster/mysql-cluster-database-7-performance-benchmark#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 14 Mar 2011 10:08:45 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[benchmark]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.0]]></category>
+		<category><![CDATA[Performance]]></category>
+		<guid isPermaLink="false">/?p=1498</guid>
+
+					<description><![CDATA[(Note that this is a copy of the original article from Hasham Pathan posted on 21st April 2009). Summary of Results: We recently conducted a Performance Benchmark of the newly released version of MySQL Cluster database software version 7.0 using the DBT2 Benchmark. The results are very impressive. Highlight of the results: For 4 Node]]></description>
+										<content:encoded><![CDATA[<p>(Note that this is a copy of the <a href="http://blogs.sun.com/hasham/entry/mysql_cluster_7_performance_benchmark" target="_blank">original article from Hasham Pathan</a> posted on 21st April 2009).</p>
+<h3>Summary of Results:</h3>
+<p>We recently conducted a Performance Benchmark of the newly  released version of MySQL Cluster database software version  7.0 using the DBT2 Benchmark. The results are very impressive.</p>
+<p>Highlight of the results:</p>
+<ul>
+<li>For 4 Node Cluster, we achieved 251,000 Transactions per minute which is more than 4X improvement over the MySQL Cluster 6.3 release.</li>
+<li>For 2 Node Cluster, we achieved 143,000 Transactions per minute which is more than  4X improvement over the MySQL Cluster 6.3 release.</li>
+<li>Whether a user is looking to take advantage of the latest multi-core, multi-thread server processors, or is seeking to reduce space and energy consumption of their Cluster hardware, MySQL Cluster 7.0 provides a higher throughput, more efficient solution than previous generations of the MySQL Cluster database.</li>
+</ul>
+<p><em> Note that these results were obtained using 1GB  Gigabit Ethernet. We expect improved performance for high speed cluster interconnect like <a href="http://www.sun.com/products/networking/infiniband.jsp" target="_blank">InfiniBand </a>and <a href="http://www.dolphinics.com/" target="_blank">Dolphinics interconnect solutions</a>.</em> Testing using these interconnects is currently underway.</p>
+<p>Some of the KEY features of MySQL cluster 7.0 include &#8220;ability to add nodes and node groups online&#8221;  and &#8220;Data node multithreading support&#8221; You can look at the list of new feature available in MySQL cluster 7.0 <a href="http://www.mysql.com/why-mysql/white-papers/mysql_wp_cluster7_architecture.php" target="_blank">here</a>.</p>
+<h3>Deployment Architecture and Configuration Details:</h3>
+<div id="attachment_1497" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/03/MySQL-Cluster-Topology-2Nodes.gif"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-1497" class="size-medium wp-image-1497" title="MySQL-Cluster-Topology-2Nodes" src="/wp-content/uploads/2011/03/MySQL-Cluster-Topology-2Nodes-300x256.gif" alt="" width="300" height="256" /></a><p id="caption-attachment-1497" class="wp-caption-text">The topology diagram for 2 Node Scenario </p></div>
+<p>In the case of a 2 node scenario, the data node processes were running on TWO Sun Fire x4450 system with 8 processor cores per data node. The MySQL server nodes were running a combination of Sun Fire x4450 systems and Sun Fire x4600 systems as shown in the deployment diagram below.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div id="attachment_1496" style="width: 287px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/03/MySQL-Cluster-Topology-4Nodes.gif"><img decoding="async" aria-describedby="caption-attachment-1496" class="size-medium wp-image-1496" title="MySQL-Cluster-Topology-4Nodes" src="/wp-content/uploads/2011/03/MySQL-Cluster-Topology-4Nodes-277x300.gif" alt="" width="277" height="300" /></a><p id="caption-attachment-1496" class="wp-caption-text">The topology diagram for 4 Node Scenario</p></div>
+<p>In the case of a 4 node scenario, FOUR x4450 system were used to deploy the Data Nodes, each data node using 8 cores.  The MySQL Server nodes were running on a combination of TWO Sun Fire x4600, ONE Sun Fire x4240 and FOUR Sun Fire x4450 systems.(co-located with data node systems). Other relevant details are captured in the deployment topology diagram.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3>Detailed Results:</h3>
+<div id="attachment_1495" style="width: 676px" class="wp-caption aligncenter"><a href="/wp-content/uploads/2011/03/DBT2-Benchmark-4Nodes.gif"><img decoding="async" aria-describedby="caption-attachment-1495" class="size-full wp-image-1495 " title="DBT2-Benchmark-4Nodes" src="/wp-content/uploads/2011/03/DBT2-Benchmark-4Nodes.gif" alt="" width="666" height="561" /></a><p id="caption-attachment-1495" class="wp-caption-text">Four Data Node Results</p></div>
+<div id="attachment_1493" style="width: 627px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/03/DBT2-Benchmark-2Nodes.gif"><img loading="lazy" decoding="async" aria-describedby="caption-attachment-1493" class="size-full wp-image-1493 " title="DBT2-Benchmark-2Nodes" src="/wp-content/uploads/2011/03/DBT2-Benchmark-2Nodes.gif" alt="" width="617" height="527" /></a><p id="caption-attachment-1493" class="wp-caption-text">Two Data Node Results</p></div>
+<h3>Important Notes:</h3>
+<ol>
+<li> Each MySQL server was bound to 3 processor cores using  &#8220;processor set&#8221; feature(to accommodate more MySQL Servers on the available hardware).  It is observed that we get increased  TPM/MySQL Server and slight decrease in the response time with 4 processor cores per MySQL server).  An example:  With 3 processor cores assigned for  the MySQL server process, we get the TPM of 12988 for 1 Server, 20 Warehouses.  With 4 processor cores, the TPM increases to 19113 with decrease in the response time from 52ms to 34ms.</li>
+<li> TPM &#8211; New-order transactions per minute. It should be noted that the each transaction comprises of about 30 queries, so average response time per query if calculated would be  ~3ms. More details on the &#8220;transaction&#8221; are available in the TPC-C specification  document and DBT2 code base.</li>
+<li>The MySQL 6.3 Cluster saturate with fewer number of MySQL servers. For comparison purpose,  we ran the tests with equal number of MySQL servers for both  MySQL Cluster 6.3 and 7.0</li>
+</ol>
+<h3>Benchmark Description</h3>
+<p>Database Test 2 (DBT-2) :  DBT2 is an open source benchmark developed by OSDL (Open Source Development Labs ). Significant updates to the benchmark were made to simplify its ability to run with a clustered database such as MySQL Cluster Carrier Grade Edition. DBT2 simulates a typical OLTP (Online Transaction Processing) application that performs transactions with around ten to twenty SQL statements per transaction within five distinct transaction types. The DBT2 benchmark can be used as a good indicator in regards to the expected performance of any application that performs fairly simple transactions and executes these transactions in a repetitive fashion.</p>
+<p>For the benchmark results above, DBT2 and MySQL Cluster were configured as an “in memory” database to simulate typical “real-time” database configurations. It should be noted that performance results are being measured as new-order transactions per minute (TPM).  The changes made to the DBT2 benchmark are documented and can be found on the SourceForge page for DBT2 downloads. It can also be downloaded from ww.iclaustron.com.</p>
+<h3>Additional Information:</h3>
+<p>More information on MySQL Cluster</p>
+<ul>
+<li><a href="http://www.mysql.com/why-mysql/white-papers/mysql_wp_cluster7_architecture.php" target="_blank">MySQL Cluster 7 Architecture and New Features</a></li>
+<li><a href="http://www.mysql.com/why-mysql/white-papers/mysql_cluster_eval_guide.php" target="_blank">MySQL Cluster Evaluation Guide</a></li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/mysql-cluster-database-7-performance-benchmark/feed</wfw:commentRss>
+			<slash:comments>4</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

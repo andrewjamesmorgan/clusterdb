@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<!-- HTML 5 --><html lang="en-US">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="pingback" href="/xmlrpc.php">
+	
+	<title>March | 2022 | Andrew Morgan on Databases</title>
+
+<meta name="robots" content="max-image-preview:large">
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Feed" href="/feed">
+<link rel="alternate" type="application/rss+xml" title="Andrew Morgan on Databases &raquo; Comments Feed" href="/comments/feed">
+		<!-- This site uses the Google Analytics by MonsterInsights plugin v9.2.2 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+		<!-- Note: MonsterInsights is not currently configured on this site. The site owner needs to authenticate with Google Analytics in the MonsterInsights settings panel. -->
+					<!-- No tracking code set -->
+				<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+/*  */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.clusterdb.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"🏳️‍⚧️","🏳️​⚧️")?!1:!n(e,"🇺🇳","🇺​🇳")&&!n(e,"🏴󠁧󠁢󠁥󠁮󠁧󠁿","🏴​󠁧​󠁢​󠁥​󠁮​󠁧​󠁿");case"emoji":return!n(e,"🐦‍⬛","🐦​⬛")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/*  */
+</script>
+<style id="wp-emoji-styles-inline-css" type="text/css">img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}</style>
+<link rel="stylesheet" id="wp-block-library-css" href="/wp-includes/css/dist/block-library/style.min.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<style id="classic-theme-styles-inline-css" type="text/css">/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}</style>
+<style id="global-styles-inline-css" type="text/css">:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style>
+<link rel="stylesheet" id="plyr-css-css" href="/wp-content/plugins/easy-video-player/lib/plyr.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_stylesheet-css" href="/wp-content/themes/zeesynergie/style.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="zeeSynergie_colorscheme-css" href="/wp-content/themes/zeesynergie/includes/css/colorschemes/blue.css?ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<link rel="stylesheet" id="themezee_default_font-css" href="http://fonts.googleapis.com/css?family=Paytone+One&#038;ver=81fb77f64976ac32efe42aab69fdb5e4" type="text/css" media="all">
+<script type="text/javascript" src="/wp-content/plugins/easy-video-player/lib/plyr.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="plyr-js-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script type="text/javascript" src="/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script type="text/javascript" src="/wp-content/themes/zeesynergie/includes/js/jquery.cycle.all.min.js?ver=81fb77f64976ac32efe42aab69fdb5e4" id="zee_jquery-cycle-js"></script>
+<link rel="https://api.w.org/" href="/wp-json/"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
+
+<style data-context="foundation-flickity-css">/*! Flickity v2.0.2
+http://flickity.metafizzy.co
+---------------------------------------------- */.flickity-enabled{position:relative}.flickity-enabled:focus{outline:0}.flickity-viewport{overflow:hidden;position:relative;height:100%}.flickity-slider{position:absolute;width:100%;height:100%}.flickity-enabled.is-draggable{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.flickity-enabled.is-draggable .flickity-viewport{cursor:move;cursor:-webkit-grab;cursor:grab}.flickity-enabled.is-draggable .flickity-viewport.is-pointer-down{cursor:-webkit-grabbing;cursor:grabbing}.flickity-prev-next-button{position:absolute;top:50%;width:44px;height:44px;border:none;border-radius:50%;background:#fff;background:hsla(0,0%,100%,.75);cursor:pointer;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.flickity-prev-next-button:hover{background:#fff}.flickity-prev-next-button:focus{outline:0;box-shadow:0 0 0 5px #09f}.flickity-prev-next-button:active{opacity:.6}.flickity-prev-next-button.previous{left:10px}.flickity-prev-next-button.next{right:10px}.flickity-rtl .flickity-prev-next-button.previous{left:auto;right:10px}.flickity-rtl .flickity-prev-next-button.next{right:auto;left:10px}.flickity-prev-next-button:disabled{opacity:.3;cursor:auto}.flickity-prev-next-button svg{position:absolute;left:20%;top:20%;width:60%;height:60%}.flickity-prev-next-button .arrow{fill:#333}.flickity-page-dots{position:absolute;width:100%;bottom:-25px;padding:0;margin:0;list-style:none;text-align:center;line-height:1}.flickity-rtl .flickity-page-dots{direction:rtl}.flickity-page-dots .dot{display:inline-block;width:10px;height:10px;margin:0 8px;background:#333;border-radius:50%;opacity:.25;cursor:pointer}.flickity-page-dots .dot.is-selected{opacity:1}</style><style data-context="foundation-slideout-css">.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:auto;z-index:0;width:256px;overflow-y:auto;-webkit-overflow-scrolling:touch;display:none}.slideout-menu.pushit-right{left:auto;right:0}.slideout-panel{position:relative;z-index:1;will-change:transform}.slideout-open,.slideout-open .slideout-panel,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.pushit{display:none}</style><script type="text/javascript">//
+					jQuery(document).ready(function($) {
+						$('#nav ul').css({display: 'none'}); // Opera Fix
+						$('#nav li').hover(function(){
+							$(this).find('ul:first').css({visibility: 'visible',display: 'none'}).show().css({opacity:0}).animate({opacity:1},400);
+						},function(){
+							$(this).find('ul:first').css({visibility: 'hidden'});
+						});
+					});
+				//</script><style type="text/css"></style><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><style type="text/css" id="custom-background-css">body.custom-background { background-color: #89a5bf; }</style>
+	<style>.ios7.web-app-mode.has-fixed header{ background-color: rgba(3,122,221,.88);}</style></head>
+
+<body class="archive date custom-background">
+<div id="wrapper">
+
+	<div id="header">
+
+		<div id="head">
+			<div id="logo">
+									<a href="/"><h1>Andrew Morgan on Databases</h1></a>
+                                        <!-- <a href="/"><h1>MySQL Cluster, Replication, Fabric...</h1></a>  ZXZX -->					
+							</div>
+			<div id="socialmedia_icons">
+				<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		
+		<div id="navi_container">
+			<div id="navi">
+				<ul id="nav" class="menu"><li class="page_item page-item-1011"><a href="/about">About</a></li>
+</ul>			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="container">
+	
+			<div id="custom_header">
+			<img src="/wp-content/uploads/2015/06/cropped-ClusterDB-logo-header.png">
+		</div>
+	
+	<div id="wrap">
+		<div id="content">
+		
+		<h2 class="arh">Archive for March 14, 2022</h2>
+				
+					<div id="post-4668" class="post-4668 post type-post status-publish format-standard hentry category-mongodb category-realm tag-game tag-ios tag-mongodb tag-realm tag-swift tag-swiftui">
+				
+				<div class="postmeta">	<div class="postmeta_links">
+		<a href="/author/andrew" title="Posts by andrew" rel="author">andrew</a> |
+		<a href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm">March 14, 2022</a>
+			</div>
+	<div class="postcomments">
+		<a href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm#respond">No comments</a>	</div>
+	<div class="clear"></div>
+</div>
+
+				<h2 class="post-title"><a href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm" rel="bookmark">Building a collaborative iOS Minesweeper game with Realm</a></h2>
+				
+				<div class="entry">
+										<p><a href="/wp-content/uploads/2022/03/ATF-720x720-1.png"><img fetchpriority="high" decoding="async" src="/wp-content/uploads/2022/03/ATF-720x720-1-300x300.png" alt="Realm-Sweeper. Writing a multiplayer iOS Minesweeper game using SwiftUI and Realm" width="300" height="300" class="alignright size-medium wp-image-4669" srcset="/wp-content/uploads/2022/03/ATF-720x720-1-300x300.png 300w, /wp-content/uploads/2022/03/ATF-720x720-1-150x150.png 150w, /wp-content/uploads/2022/03/ATF-720x720-1-144x144.png 144w, /wp-content/uploads/2022/03/ATF-720x720-1.png 720w" sizes="(max-width: 300px) 100vw, 300px"></a></p>
+<p>I wanted to build an app that we could use at events to demonstrate <a href="https://www.mongodb.com/realm/mobile/sync">Realm Sync</a>. It needed to be fun to interact with, and so a multiplayer game made sense. Tic-tac-toe is too simple to get excited about. I&#8217;m not a game developer and so <em>Call Of Duty</em> wasn&#8217;t an option. Then I remembered Microsoft&#8217;s <a href="https://en.wikipedia.org/wiki/Minesweeper">Minesweeper</a>.</p>
+<p>Minesweeper was a Windows fixture from 1990 until Windows 8 relegated it to the app store in 2012. It was a single-player game, but it struck me as something that could be a lot of fun to play with others. Some family beta-testing of my first version while waiting for a ferry proved that it did get people to interact with each other (even if most interactions involved shouting, &#8220;Which of you muppets clicked on that mine?!&#8221;).</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/IMG_1301_81fa444116.jpeg" alt="Family sat around a table, all playing the Realm-Sweeper game on their iPhones"></p>
+<p>You can download the back end and iOS apps from the <a href="https://github.com/realm/Realm-Sweeper">Realm-Sweeper repo</a>, and get it up and running in a few minutes if you want to play with it.</p>
+<p>This article steps you through some of the key aspects of setting up the backend Realm app, as well as the iOS code. Hopefully, you&#8217;ll see how simple it is and try building something for yourself. If anyone&#8217;s looking for ideas, then <a href="https://en.wikipedia.org/wiki/Sokoban">Sokoban</a> could be interesting.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li><a href="https://github.com/realm/realm-swift/releases/tag/v10.23.0">Realm-Cocoa 10.20.1+</a></li>
+<li>iOS 15+</li>
+</ul>
+<h2>The Minesweeper game</h2>
+<p>The gameplay for Minesweeper is very simple.</p>
+<p>You&#8217;re presented with a grid of gray tiles. You tap on a tile to expose what&#8217;s beneath. If you expose a mine, game over. If there isn&#8217;t a mine, then you&#8217;ll be rewarded with a hint as to how many mines are adjacent to that tile. If you deduce (or guess) that a tile is covering a mine, then you can plant a flag to record that.</p>
+<p>You win the game when you correctly flag every mine and expose what&#8217;s behind every non-mined tile.</p>
+<h3>What Realm-Sweeper adds</h3>
+<p>Minesweeper wasn&#8217;t designed for touchscreen devices; you had to use a physical mouse. Realm-Sweeper brings the game into the 21st century by adding touch controls. Tap a tile to reveal what&#8217;s beneath; tap and hold to plant a flag.</p>
+<p>Minesweeper was a single-player game. All people who sign into Realm-Sweeper with the same user ID get to collaborate on the same game in real time.</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/realm_sweeper_24ef46cef1.gif" alt="Animation of two iPhones. As a user taps a tile on one device, the change appears almost instantly on the other"></p>
+<p>You also get to configure the size of the grid and how many mines you&#8217;d like to hide.</p>
+<h2>The data model</h2>
+<p>I decided to go for a simple data model that would put Realm sync to the test.</p>
+<p>Each game is a single document/object that contains meta data (score, number of rows/columns, etc.) together with the grid of tiles (the board):</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/schema_f791f6acf6.png" alt="Data model for the Game Class"></p>
+<p>This means that even a modestly sized grid (20&#215;20 tiles) results in a <code>Game</code> document/object with more than 2,000 attributes.</p>
+<p>Every time you tap on a tile, the <code>Game</code> object has to be synced with all other players. Those players are also tapping on tiles, and those changes have to be synced too. If you tap on a tile which isn&#8217;t adjacent to any mines, then the app will recursively ripple through exposing similar, connected tiles. That&#8217;s a lot of near-simultaneous changes being made to the same object from different devices—a great test of Realm&#8217;s automatic conflict resolution!</p>
+<h2>The backend Realm app</h2>
+<p>If you don&#8217;t want to set this up yourself, simply follow the <a href="https://github.com/realm/Realm-Sweeper/tree/main/Realm">instructions from the repo</a> to import the app.</p>
+<p>If you opt to build the backend app yourself, there are only two things to configure once you create the empty Realm app:</p>
+<ol>
+<li><a href="https://docs.mongodb.com/realm/authentication/email-password/#:~:text=Summary-,Overview,email%20addresses%20are%20case%2Dsensitive.">Enable email/password authentication</a>. I kept it simple by opting to auto-confirm new users and sticking with the default password-reset function (which does nothing).</li>
+<li><a href="https://docs.mongodb.com/realm/sync/configure/enable-sync/">Enable partitioned Realm sync</a>. Set the partition key to <code>partition</code> and enable developer mode (so that the schema will be created automatically when the iOS app syncs for the first time).</li>
+</ol>
+<p>The <code>partition</code> field will be set to the username—allowing anyone who connects as that user to sync all of their games.</p>
+<p>You can also add sync rules to ensure that a user can only sync their own games (in case someone hacks the mobile app). I always prefer using Realm functions for permissions. You can add this for both the read and write rules:</p>
+<pre><code class="json">{
+  "%%true": {
+    "%function": {
+      "arguments": [
+        "%%partition"
+      ],
+      "name": "canAccessPartition"
+    }
+  }
+}
+</code></pre>
+<p>The <code>canAccessPartition</code> function is:</p>
+<pre><code class="js">exports = function(partition) {
+  const user = context.user.data.email;
+  return partition === user;
+};
+</code></pre>
+<h2>The iOS app</h2>
+<p>I&#8217;d suggest starting by downloading, configuring, and running the app—just follow the <a href="https://github.com/realm/Realm-Sweeper/tree/main/iOS">instructions from the repo</a>. That way, you can get a feel for how it works.</p>
+<p>This isn&#8217;t intended to be a full tutorial covering every line of code in the app. Instead, I&#8217;ll point out some key components.</p>
+<p>As always with Realm and MongoDB, it all starts with the data…</p>
+<h3>Model</h3>
+<p>There&#8217;s a single top-level Realm Object—<code>Game</code>:</p>
+<pre><code class="swift">class Game: Object, ObjectKeyIdentifiable {
+    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted var numRows = 0
+    @Persisted var numCols = 0
+    @Persisted var score = 0
+    @Persisted var startTime: Date? = Date()
+    @Persisted var latestMoveTime: Date?
+    @Persisted var secondsTakenToComplete: Int?
+    @Persisted var board: Board?
+    @Persisted var gameStatus = GameStatus.notStarted
+    @Persisted var winningTimeInSeconds: Int?
+    …
+}
+</code></pre>
+<p>Most of the fields are pretty obvious. The most interesting is <code>board</code>, which contains the grid of tiles:</p>
+<pre><code class="swift">class Board: EmbeddedObject, ObjectKeyIdentifiable {
+    @Persisted var rows = List&lt;Row&gt;()
+    @Persisted var startingNumberOfMines = 0
+    ... 
+}
+</code></pre>
+<p><code>row</code> is a list of <code>Cells</code>:</p>
+<pre><code class="swift">class Row: EmbeddedObject, ObjectKeyIdentifiable {
+    @Persisted var cells = List&lt;Cell&gt;()
+    ...
+}
+
+class Cell: EmbeddedObject, ObjectKeyIdentifiable {
+    @Persisted var isMine = false
+    @Persisted var numMineNeigbours = 0
+    @Persisted var isExposed = false
+    @Persisted var isFlagged = false
+    @Persisted var hasExploded = false
+    ...
+}
+</code></pre>
+<p>The model is also where the ~~business~~ game logic is implemented. This means that the views can focus on the UI. For example, <code>Game</code> includes a computed variable to check whether the game has been solved:</p>
+<pre><code class="swift">var hasWon: Bool {
+    guard let board = board else { return false }
+    if board.remainingMines != 0 { return false }
+
+    var result = true
+
+    board.rows.forEach() { row in
+        row.cells.forEach() { cell in
+            if !cell.isExposed &amp;&amp; !cell.isFlagged {
+                result = false
+                return
+            }
+        }
+        if !result { return }
+    }
+    return result
+}
+</code></pre>
+<h3>Views</h3>
+<p>As with any SwiftUI app, the UI is built up of a hierarchy of many views.</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/views_aaac46f078.png" alt="Screen capture from Xcode showing the hierarchy of views making up the RealmSweeper UI"></p>
+<p>Here&#8217;s a quick summary of the <a href="https://github.com/realm/Realm-Sweeper/tree/main/iOS/RealmSweeper/Views">views</a> that make up Real-Sweeper:</p>
+<p><strong><a href="https://github.com/realm/Realm-Sweeper/blob/main/iOS/RealmSweeper/Views/ContentView.swift"><code>ContentView</code></a></strong> is the top-level view. When the app first runs, it will show the <code>LoginView</code>. Once the user has logged in, it shows <code>GameListView</code> instead. It&#8217;s here that we set the Realm Sync partition (to be the <code>username</code> of the user that&#8217;s just logged in):</p>
+<pre><code class="swift">if username == "" {
+    LoginView(username: $username)
+} else {
+    GameListView()
+        .environment(\.realmConfiguration, realmApp.currentUser!.configuration(partitionValue: username))
+        .navigationBarItems(leading: realmApp.currentUser != nil ? LogoutButton(username: $username) : nil)
+}
+</code></pre>
+<p><code>ContentView</code> also includes the <code>LogoutButton</code> view.</p>
+<p><strong><a href="https://github.com/realm/Realm-Sweeper/blob/main/iOS/RealmSweeper/Views/Users/LoginView.swift"><code>LoginView</code></a></strong> allows the user to provide a username and password:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Login_View_034d3f058f.png" alt="Screen capture of the login view. Fields to enter username and password. Checkbox to indicate that you're registering a new user. Button to login,"></p>
+<p>Those credentials are then used to register or log into the backend Realm app:</p>
+<pre><code class="swift">func userAction() {
+    Task {
+        do {
+            if newUser {
+                try await realmApp.emailPasswordAuth.registerUser(
+                    email: email, password: password)
+            }
+            let _ = try await realmApp.login(
+                    credentials: .emailPassword(email: email, password: password))
+            username = email
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+    }
+}
+</code></pre>
+<p><a href="https://github.com/realm/Realm-Sweeper/blob/main/iOS/RealmSweeper/Views/Game%20List/GameListView.swift"><strong><code>GameListView</code></strong></a> reads the list of this user&#8217;s existing games.</p>
+<pre><code class="swift">@ObservedResults(Game.self, 
+    sortDescriptor: SortDescriptor(keyPath: "startTime", ascending: false)) var games
+</code></pre>
+<p>It displays each of the games within a <code>GameSummaryView</code>. If you tap one of the games, then you jump to a <code>GameView</code> for that game:</p>
+<pre><code class="swift">NavigationLink(destination: GameView(game: game)) {
+    GameSummaryView(game: game)
+}
+</code></pre>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Game_List_View_22711c2b4a.png" alt="GameListView, Screen capture of a list of games, together with buttons to logout, set settings, or create a new game"></p>
+<p>Tap the settings button and you&#8217;re sent to <code>SettingsView</code>.</p>
+<p>Tap the &#8220;New Game&#8221; button and a new <code>Game</code> object is created and then stored in Realm by appending it to the <code>games</code> live query:</p>
+<pre><code class="swift">private func createGame() {
+    numMines = min(numMines, numRows * numColumns)
+    game = Game(rows: numRows, cols: numColumns, mines: numMines)
+    if let game = game {
+        $games.append(game)
+    }
+    startGame  = true
+}
+</code></pre>
+<p><strong><a href="https://github.com/realm/Realm-Sweeper/blob/main/iOS/RealmSweeper/Views/SettingsView.swift"><code>SettingsView</code></a></strong> lets the user choose the number of tiles and mines to use:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Settings_View_39aa24c7ce.png" alt="SettingsView. Steppers to set the number of rows, columns, and mines"></p>
+<p>If the user uses multiple devices to play the game (e.g., an iPhone and an iPad), then they may want different-sized boards (taking advantage of the extra screen space on the iPad). Because of that, the view uses the device&#8217;s <code>UserDefaults</code> to locally persist the settings rather than storing them in a synced realm:</p>
+<pre><code class="swift">@AppStorage("numRows") var numRows = 10
+@AppStorage("numColumns") var numColumns = 10
+@AppStorage("numMines") var numMines = 15
+</code></pre>
+<p><strong><a href="https://github.com/realm/Realm-Sweeper/blob/main/iOS/RealmSweeper/Views/Game%20List/GameSummaryView.swift"><code>GameSummaryView</code></a></strong> displays a summary of one of the user&#8217;s current or past games.</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Game_Summary_View_e80a138236.png" alt="GameSummaryView. Screen capture of view containing the start and completion times + emoji for the status of the game"></p>
+<p><strong><a href="https://github.com/realm/Realm-Sweeper/blob/main/iOS/RealmSweeper/Views/Game/GameView.swift"><code>GameView</code></a></strong> shows the latest stats for the current game at the top of the screen:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Game_Status_5ee8b8b6e0.png" alt="GameStatusView. Screen capture showing remaining mines, status of the game (smiling emoji) and elapsed time"></p>
+<p>It uses the <code>LEDCounter</code> and <code>StatusButton</code> views for the summary.</p>
+<p>Below the summary, it displays the <code>BoardView</code> for the game.</p>
+<p><strong><a href="https://github.com/realm/Realm-Sweeper/blob/main/iOS/RealmSweeper/Views/Control%20Box/Counters/LEDCounter.swift"><code>LEDCounter</code></a></strong> displays the provided number as three digits using a retro LED font:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Counter_View_d7b73c42ce.png" alt="CounterView – 3 red LED numbers"></p>
+<p><strong><a href="https://github.com/realm/Realm-Sweeper/blob/main/iOS/RealmSweeper/Views/Control%20Box/StatusButton.swift"><code>StatusButton</code></a></strong> uses a <code>ZStack</code> to display the symbol for the game&#8217;s status on top of a tile image:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Status_Button_8975894d39.png" alt="StatusButton. Smiling emoji in front of a gray tile"></p>
+<p>The view uses SwiftUI&#8217;s <a href="https://www.hackingwithswift.com/quick-start/swiftui/how-to-provide-relative-sizes-using-geometryreader"><code>GeometryReader</code></a> function to discover how much space is available so that it can select an appropriate font size for the symbol:</p>
+<pre><code class="swift">GeometryReader { geo in
+    Text(status)
+        .font(.system(size: geo.size.height * 0.7))
+}
+</code></pre>
+<p><strong><a href="https://github.com/realm/Realm-Sweeper/blob/main/iOS/RealmSweeper/Views/Game/BoardView.swift"><code>BoardView</code></a></strong> displays the game&#8217;s grid of tiles:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Board_View_703d6386db.png" alt="BoardView. A grid of tiles. Some tiles have been removed, revealing colored numbers. One tile contains a red flag"></p>
+<p>Each of the tiles is represented by a <code>CellView</code> view.</p>
+<p>When a tile is tapped, this view exposes its contents:</p>
+<pre><code class="swift">.onTapGesture() {
+    expose(row: row, col: col)
+}
+</code></pre>
+<p>On a tap-and-hold, a flag is dropped:</p>
+<pre><code class="swift">.onLongPressGesture(minimumDuration: 0.1) {
+    flag(row: row, col: col)
+}
+</code></pre>
+<p>When my family tested the first version of the app, they were frustrated that they couldn&#8217;t tell whether they&#8217;d held long enough for the flag to be dropped. This was an easy mistake to make as their finger was hiding the tile at the time—an example of where testing with a mouse and simulator wasn&#8217;t a substitute for using real devices. It was especially frustrating as getting it wrong meant that you revealed a mine and immediately lost the game. Fortunately, this is easy to fix using iOS&#8217;s haptic feedback:</p>
+<pre><code class="swift">func hapticFeedback(_ isSuccess: Bool) {
+    let generator = UINotificationFeedbackGenerator()
+    generator.notificationOccurred(isSuccess ? .success : .error)
+}
+</code></pre>
+<p>You now feel a buzz when the flag has been dropped.</p>
+<p><strong><a href="/2022/CellView"><code>CellView</code></a></strong> displays an individual tile:</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Cell_View_6ee46c6103.png" alt="CellView. Tile containing a crossed out red flag"></p>
+<p>What&#8217;s displayed depends on the contents of the <code>Cell</code> and the state of the game. It uses four further views to display different types of tile: <code>FlagView</code>, <code>MineCountView</code>, <code>MineView</code>, and <code>TileView</code>.</p>
+<p><strong><a href="https://github.com/realm/Realm-Sweeper/blob/main/iOS/RealmSweeper/Views/Tiles/FlagView.swift"><code>FlagView</code></a></strong></p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Flag_View_fd57e245f3.png" alt="FlagView. 2 Tiles, both containing a flag, one shows the  flag crossed out"></p>
+<p><strong><a href="https://github.com/realm/Realm-Sweeper/blob/main/iOS/RealmSweeper/Views/Tiles/MineCountView.swift"><code>MineCountView</code></a></strong></p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Mine_Count_View_e8392ff46d.png" alt="MineCountView, 6 gray tiles. One is empty the others containing numbers 1 through 5, each in a different color"></p>
+<p><strong><a href="https://github.com/realm/Realm-Sweeper/blob/main/iOS/RealmSweeper/Views/Tiles/MineView.swift"><code>MineView</code></a></strong></p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Mine_View_18eaaf517b.png" alt="MineView. Two tiles containing mines, one with a gray background, one with a red background"></p>
+<p><strong><a href="https://github.com/realm/Realm-Sweeper/blob/main/iOS/RealmSweeper/Views/Tiles/TileView.swift"><code>TileView</code></a></strong></p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/Tile_View_1a01815c26.png" alt="TileView. A single gray tile"></p>
+<h2>Conclusion</h2>
+<p>Realm-Sweeper gives a real feel for how quickly Realm is able to synchronize data over the internet.</p>
+<p>I intentionally avoided optimizing how I updated the game data in Realm. When you see a single click exposing dozens of tiles, each cell change is an update to the <code>Game</code> object that needs to be synced.</p>
+<p><img decoding="async" src="https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/sync_526ade2926.gif" alt="GIF showing changes in one game board appearing in near-realtime in the game board on a different device"></p>
+<p>Note that both instances of the game are running in iPhone simulators on an overworked Macbook in England. The Realm backend app is running in the US—that&#8217;s a 12,000 km/7,500 mile round trip for each sync.</p>
+<p>I took this approach as I wanted to demonstrate the performance of Realm synchronization. If an app like this became super-popular with millions of users, then it would put a lot of extra strain on the backend Realm app.</p>
+<p>An obvious optimization would be to condense all of the tile changes from a single tap into a single write to the Realm object. If you&#8217;re interested in trying that out, just fork the <a href="https://github.com/realm/Realm-Sweeper">repo</a> and make the changes. If you do implement the optimization, then please create a pull request. (I&#8217;d probably add it as an option within the settings so that the &#8220;slow&#8221; mode is still an option.)</p>
+<p>Got questions? Ask them in our <a href="https://www.mongodb.com/community/forums/c/realm/realm-sync/111">Community forum</a>.</p>
+					<div class="clear"></div>
+									</div>
+		<br>
+		<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+   		<a href="http://twitter.com/share" class="twitter-share-button" data-url="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm" data-via="wpbeginner" data-text="Building a collaborative iOS Minesweeper game with Realm" data-related="syedbalkhi:Founder of WPBeginner" data-count="horizontal">Tweet</a>
+		<br>
+		<!-- <g:plusone size="medium" href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm"></g:plusone> -->
+		<div class="g-plusone" data-annotation="inline" data-width="300"></div>
+		<!-- Place this tag after the last +1 button tag. -->
+		<script type="text/javascript">(function() {
+    				var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    				po.src = 'https://apis.google.com/js/plusone.js';
+    				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  			})();</script>
+		<br>
+		<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-url="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm" data-counter="right"></script>
+		<br>
+		<iframe src="http://www.facebook.com/plugins/like.php?href=%2Fmongodb%2Fbuilding-a-collaborative-ios-minesweeper-game-with-realm&amp;layout=standard&amp;show_faces=true&amp;width=450&amp;action=like&amp;colorscheme=light" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; width:450px; height:60px;">
+		</iframe>
+
+<!-- ZXZX -->
+				<div class="postinfo">Category: <a href="/category/mongodb" rel="category tag">MongoDB</a>, <a href="/category/mongodb/realm" rel="category tag">Realm</a> | 
+Tags: <a href="/tag/game" rel="tag">game</a>, <a href="/tag/ios" rel="tag">ios</a>, <a href="/tag/mongodb" rel="tag">mongodb</a>, <a href="/tag/realm" rel="tag">Realm</a>, <a href="/tag/swift" rel="tag">Swift</a>, <a href="/tag/swiftui" rel="tag">SwiftUI</a></div>
+
+			</div>      
+							<div class="more_posts">
+					<span class="post_links"> &nbsp; </span>
+				</div>
+						
+
+					
+	</div>
+		
+		
+<div id="sidebar">
+	<ul>
+
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="Search">
+				</div>
+			</form></li>
+
+		<li id="recent-posts-2" class="widget widget_recent_entries">
+		<h2 class="widgettitle">Recent Posts</h2>
+
+		<ul>
+											<li>
+					<a href="/mongodb/building-a-collaborative-ios-minesweeper-game-with-realm">Building a collaborative iOS Minesweeper game with Realm</a>
+									</li>
+											<li>
+					<a href="/mongodb/using-realm-flexible-sync-in-your-app-an-ios-tutorial">Using Realm Flexible Sync in Your App—an iOS Tutorial</a>
+									</li>
+											<li>
+					<a href="/mongodb/realm-swift-type-projections">Realm-Swift Type Projections</a>
+									</li>
+											<li>
+					<a href="/mongodb/introducing-flexible-sync-preview-the-next-iteration-of-realm-sync">Introducing Flexible Sync (Preview) – The Next Iteration of Realm Sync</a>
+									</li>
+											<li>
+					<a href="/mongodb/goodbye-nspredicate-hello-realm-swift-query-api">Goodbye NSPredicate, hello Realm Swift Query API</a>
+									</li>
+					</ul>
+
+		</li>
+<li id="text-2" class="widget widget_text">			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-5257306915232759";
+/* Clusterdb-home */
+google_ad_slot = "1624229680";
+google_ad_width = 200;
+google_ad_height =600;
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script></div>
+		</li>
+<li id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widgettitle">Recent Comments</h2>
+<ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://mikael.ronstrom@blogspot.com/" class="url" rel="ugc external nofollow">Mikael Ronström</a></span> on <a href="/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comment-787242">MySQL Cluster running on Raspberry Pi</a></li><li class="recentcomments"><span class="comment-author-link">andrew</span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668717">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.suksesonline.com/" class="url" rel="ugc external nofollow">Betty</a></span> on <a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability#comment-668713">Setting up MySQL Asynchronous Replication for High Availability</a></li><li class="recentcomments"><span class="comment-author-link">Sai Krishnan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-661143">Get MySQL Replication up and running in 5 minutes</a></li><li class="recentcomments"><span class="comment-author-link">Nayan</span> on <a href="/mysql-cluster/get-mysql-replication-up-and-running-in-5-minutes#comment-660628">Get MySQL Replication up and running in 5 minutes</a></li></ul></li>
+<li id="categories-2" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+
+			<ul>
+					<li class="cat-item cat-item-2"><a href="/category/me">Me</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="/category/mongodb">MongoDB</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="/category/mysql">MySQL</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="/category/mysql-cluster">MySQL Cluster</a>
+</li>
+	<li class="cat-item cat-item-131"><a href="/category/mysql-fabric">MySQL Fabric</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="/category/mysql-replication">MySQL Replication</a>
+</li>
+	<li class="cat-item cat-item-214"><a href="/category/mongodb/realm">Realm</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="/category/uncategorized">Uncategorized</a>
+</li>
+			</ul>
+
+			</li>
+<li id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div class="tagcloud"><a href="/tag/7-4" class="tag-cloud-link tag-link-137 tag-link-position-1" style="font-size: 9.0632911392405pt;" aria-label="7.4 (7 items)">7.4</a>
+<a href="/tag/apache-kafka" class="tag-cloud-link tag-link-169 tag-link-position-2" style="font-size: 8.620253164557pt;" aria-label="Apache Kafka (6 items)">Apache Kafka</a>
+<a href="/tag/cluster" class="tag-cloud-link tag-link-18 tag-link-position-3" style="font-size: 8.620253164557pt;" aria-label="Cluster (6 items)">Cluster</a>
+<a href="/tag/ha" class="tag-cloud-link tag-link-41 tag-link-position-4" style="font-size: 15.354430379747pt;" aria-label="HA (40 items)">HA</a>
+<a href="/tag/high-availability" class="tag-cloud-link tag-link-43 tag-link-position-5" style="font-size: 15.26582278481pt;" aria-label="High Availability (39 items)">High Availability</a>
+<a href="/tag/ios" class="tag-cloud-link tag-link-215 tag-link-position-6" style="font-size: 10.658227848101pt;" aria-label="ios (11 items)">ios</a>
+<a href="/tag/java" class="tag-cloud-link tag-link-47 tag-link-position-7" style="font-size: 8.620253164557pt;" aria-label="Java (6 items)">Java</a>
+<a href="/tag/javascript" class="tag-cloud-link tag-link-48 tag-link-position-8" style="font-size: 10.303797468354pt;" aria-label="javascript (10 items)">javascript</a>
+<a href="/tag/mcm" class="tag-cloud-link tag-link-56 tag-link-position-9" style="font-size: 8pt;" aria-label="MCM (5 items)">MCM</a>
+<a href="/tag/mean" class="tag-cloud-link tag-link-186 tag-link-position-10" style="font-size: 8pt;" aria-label="MEAN (5 items)">MEAN</a>
+<a href="/tag/memcached" class="tag-cloud-link tag-link-57 tag-link-position-11" style="font-size: 8pt;" aria-label="Memcached (5 items)">Memcached</a>
+<a href="/tag/mobile" class="tag-cloud-link tag-link-211 tag-link-position-12" style="font-size: 8pt;" aria-label="mobile (5 items)">mobile</a>
+<a href="/tag/mongodb" class="tag-cloud-link tag-link-150 tag-link-position-13" style="font-size: 16.417721518987pt;" aria-label="mongodb (53 items)">mongodb</a>
+<a href="/tag/mongodb-3-2" class="tag-cloud-link tag-link-153 tag-link-position-14" style="font-size: 8pt;" aria-label="MongoDB 3.2 (5 items)">MongoDB 3.2</a>
+<a href="/tag/mongodb-atlas" class="tag-cloud-link tag-link-163 tag-link-position-15" style="font-size: 9.0632911392405pt;" aria-label="MongoDB Atlas (7 items)">MongoDB Atlas</a>
+<a href="/tag/mongodb-mobile" class="tag-cloud-link tag-link-212 tag-link-position-16" style="font-size: 8pt;" aria-label="MongoDB Mobile (5 items)">MongoDB Mobile</a>
+<a href="/tag/mongodb-stitch" class="tag-cloud-link tag-link-204 tag-link-position-17" style="font-size: 12.253164556962pt;" aria-label="MongoDB Stitch (17 items)">MongoDB Stitch</a>
+<a href="/tag/mysql" class="tag-cloud-link tag-link-147 tag-link-position-18" style="font-size: 22pt;" aria-label="MySQL (229 items)">MySQL</a>
+<a href="/tag/mysql-5-6" class="tag-cloud-link tag-link-64 tag-link-position-19" style="font-size: 10.924050632911pt;" aria-label="MySQL 5.6 (12 items)">MySQL 5.6</a>
+<a href="/tag/mysql-cluster" class="tag-cloud-link tag-link-148 tag-link-position-20" style="font-size: 21.46835443038pt;" aria-label="MySQL Cluster (198 items)">MySQL Cluster</a>
+<a href="/tag/mysql-cluster-70" class="tag-cloud-link tag-link-69 tag-link-position-21" style="font-size: 13.936708860759pt;" aria-label="MySQL Cluster 7.0 (27 items)">MySQL Cluster 7.0</a>
+<a href="/tag/mysql-cluster-7-1" class="tag-cloud-link tag-link-70 tag-link-position-22" style="font-size: 15.177215189873pt;" aria-label="MySQL Cluster 7.1 (38 items)">MySQL Cluster 7.1</a>
+<a href="/tag/mysql-cluster-7-2" class="tag-cloud-link tag-link-71 tag-link-position-23" style="font-size: 14.556962025316pt;" aria-label="MySQL Cluster 7.2 (32 items)">MySQL Cluster 7.2</a>
+<a href="/tag/mysql-cluster-7-3" class="tag-cloud-link tag-link-72 tag-link-position-24" style="font-size: 12.253164556962pt;" aria-label="MySQL Cluster 7.3 (17 items)">MySQL Cluster 7.3</a>
+<a href="/tag/mysql-cluster-7-4" class="tag-cloud-link tag-link-134 tag-link-position-25" style="font-size: 11.278481012658pt;" aria-label="MySQL Cluster 7.4 (13 items)">MySQL Cluster 7.4</a>
+<a href="/tag/mysql-cluster-cge" class="tag-cloud-link tag-link-73 tag-link-position-26" style="font-size: 17.569620253165pt;" aria-label="MySQL Cluster CGE (72 items)">MySQL Cluster CGE</a>
+<a href="/tag/mysql-cluster-manager" class="tag-cloud-link tag-link-74 tag-link-position-27" style="font-size: 12.607594936709pt;" aria-label="MySQL Cluster Manager (19 items)">MySQL Cluster Manager</a>
+<a href="/tag/mysql-enterprise-monitor" class="tag-cloud-link tag-link-76 tag-link-position-28" style="font-size: 9.0632911392405pt;" aria-label="MySQL Enterprise Monitor (7 items)">MySQL Enterprise Monitor</a>
+<a href="/tag/mysql-fabric-2" class="tag-cloud-link tag-link-132 tag-link-position-29" style="font-size: 9.0632911392405pt;" aria-label="mysql fabric (7 items)">mysql fabric</a>
+<a href="/tag/mysql-replication" class="tag-cloud-link tag-link-149 tag-link-position-30" style="font-size: 15.354430379747pt;" aria-label="MySQL Replication (40 items)">MySQL Replication</a>
+<a href="/tag/mysql-utilities" class="tag-cloud-link tag-link-78 tag-link-position-31" style="font-size: 8pt;" aria-label="MySQL Utilities (5 items)">MySQL Utilities</a>
+<a href="/tag/ndb-api" class="tag-cloud-link tag-link-80 tag-link-position-32" style="font-size: 10.303797468354pt;" aria-label="NDB API (10 items)">NDB API</a>
+<a href="/tag/node-js" class="tag-cloud-link tag-link-83 tag-link-position-33" style="font-size: 10.303797468354pt;" aria-label="node.js (10 items)">node.js</a>
+<a href="/tag/nosql" class="tag-cloud-link tag-link-84 tag-link-position-34" style="font-size: 12.784810126582pt;" aria-label="NoSQL (20 items)">NoSQL</a>
+<a href="/tag/performance" class="tag-cloud-link tag-link-97 tag-link-position-35" style="font-size: 9.9493670886076pt;" aria-label="Performance (9 items)">Performance</a>
+<a href="/tag/realm" class="tag-cloud-link tag-link-213 tag-link-position-36" style="font-size: 11.721518987342pt;" aria-label="Realm (15 items)">Realm</a>
+<a href="/tag/replication" class="tag-cloud-link tag-link-104 tag-link-position-37" style="font-size: 10.924050632911pt;" aria-label="Replication (12 items)">Replication</a>
+<a href="/tag/secondary" class="tag-cloud-link tag-link-138 tag-link-position-38" style="font-size: 11.278481012658pt;" aria-label="secondary (13 items)">secondary</a>
+<a href="/tag/serverless" class="tag-cloud-link tag-link-208 tag-link-position-39" style="font-size: 8.620253164557pt;" aria-label="serverless (6 items)">serverless</a>
+<a href="/tag/sharding" class="tag-cloud-link tag-link-129 tag-link-position-40" style="font-size: 8pt;" aria-label="sharding (5 items)">sharding</a>
+<a href="/tag/swift" class="tag-cloud-link tag-link-216 tag-link-position-41" style="font-size: 10.303797468354pt;" aria-label="Swift (10 items)">Swift</a>
+<a href="/tag/swiftui" class="tag-cloud-link tag-link-217 tag-link-position-42" style="font-size: 10.303797468354pt;" aria-label="SwiftUI (10 items)">SwiftUI</a>
+<a href="/tag/webcast" class="tag-cloud-link tag-link-124 tag-link-position-43" style="font-size: 8pt;" aria-label="Webcast (5 items)">Webcast</a>
+<a href="/tag/webinar" class="tag-cloud-link tag-link-125 tag-link-position-44" style="font-size: 12.430379746835pt;" aria-label="webinar (18 items)">webinar</a>
+<a href="/tag/windows" class="tag-cloud-link tag-link-127 tag-link-position-45" style="font-size: 9.0632911392405pt;" aria-label="Windows (7 items)">Windows</a></div>
+</li>
+<li id="theme_socialmedia-2" class="widget theme_socialmedia">			<div class="widget-social-icons">
+				
+			<a href="http://twitter.com/andrewmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/twitter.png" alt="twitter"></a><a href="http://www.facebook.com/andrewjamesmorgan"><img src="/wp-content/themes/zeesynergie/images/icons/facebook.png" alt="facebook"></a><a href="https://plus.google.com/u/0/100605473697871424413/posts"><img src="/wp-content/themes/zeesynergie/images/icons/googleplus.png" alt="googleplus"></a><a href="http://www.linkedin.com/profile/view?id=16709956"><img src="/wp-content/themes/zeesynergie/images/icons/linkedin.png" alt="linkedin"></a><a href="http://www.flickr.com/photos/andrewjamesmorgan/"><img src="/wp-content/themes/zeesynergie/images/icons/flickr.png" alt="flickr"></a><a href="http://www.youtube.com/channel/UCodtDakJ4VdeSCzS3P3rIsw"><img src="/wp-content/themes/zeesynergie/images/icons/youtube.png" alt="youtube"></a>			</div>
+		</li>
+<li id="archives-2" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
+
+			<ul>
+					<li><a href="/2022/03" aria-current="page">March 2022</a></li>
+	<li><a href="/2022/02">February 2022</a></li>
+	<li><a href="/2022/01">January 2022</a></li>
+	<li><a href="/2021/12">December 2021</a></li>
+	<li><a href="/2021/11">November 2021</a></li>
+	<li><a href="/2021/09">September 2021</a></li>
+	<li><a href="/2021/08">August 2021</a></li>
+	<li><a href="/2021/07">July 2021</a></li>
+	<li><a href="/2021/06">June 2021</a></li>
+	<li><a href="/2021/05">May 2021</a></li>
+	<li><a href="/2021/04">April 2021</a></li>
+	<li><a href="/2021/02">February 2021</a></li>
+	<li><a href="/2021/01">January 2021</a></li>
+	<li><a href="/2020/12">December 2020</a></li>
+	<li><a href="/2019/03">March 2019</a></li>
+	<li><a href="/2019/01">January 2019</a></li>
+	<li><a href="/2018/12">December 2018</a></li>
+	<li><a href="/2018/11">November 2018</a></li>
+	<li><a href="/2018/10">October 2018</a></li>
+	<li><a href="/2018/09">September 2018</a></li>
+	<li><a href="/2017/09">September 2017</a></li>
+	<li><a href="/2017/03">March 2017</a></li>
+	<li><a href="/2017/02">February 2017</a></li>
+	<li><a href="/2017/01">January 2017</a></li>
+	<li><a href="/2016/12">December 2016</a></li>
+	<li><a href="/2016/11">November 2016</a></li>
+	<li><a href="/2016/09">September 2016</a></li>
+	<li><a href="/2016/01">January 2016</a></li>
+	<li><a href="/2015/11">November 2015</a></li>
+	<li><a href="/2015/10">October 2015</a></li>
+	<li><a href="/2015/09">September 2015</a></li>
+	<li><a href="/2015/06">June 2015</a></li>
+	<li><a href="/2015/04">April 2015</a></li>
+	<li><a href="/2015/03">March 2015</a></li>
+	<li><a href="/2015/02">February 2015</a></li>
+	<li><a href="/2015/01">January 2015</a></li>
+	<li><a href="/2014/12">December 2014</a></li>
+	<li><a href="/2014/11">November 2014</a></li>
+	<li><a href="/2014/10">October 2014</a></li>
+	<li><a href="/2014/09">September 2014</a></li>
+	<li><a href="/2014/08">August 2014</a></li>
+	<li><a href="/2014/07">July 2014</a></li>
+	<li><a href="/2014/06">June 2014</a></li>
+	<li><a href="/2014/05">May 2014</a></li>
+	<li><a href="/2014/04">April 2014</a></li>
+	<li><a href="/2014/03">March 2014</a></li>
+	<li><a href="/2014/02">February 2014</a></li>
+	<li><a href="/2014/01">January 2014</a></li>
+	<li><a href="/2013/12">December 2013</a></li>
+	<li><a href="/2013/11">November 2013</a></li>
+	<li><a href="/2013/09">September 2013</a></li>
+	<li><a href="/2013/08">August 2013</a></li>
+	<li><a href="/2013/07">July 2013</a></li>
+	<li><a href="/2013/06">June 2013</a></li>
+	<li><a href="/2013/05">May 2013</a></li>
+	<li><a href="/2013/03">March 2013</a></li>
+	<li><a href="/2013/02">February 2013</a></li>
+	<li><a href="/2013/01">January 2013</a></li>
+	<li><a href="/2012/12">December 2012</a></li>
+	<li><a href="/2012/11">November 2012</a></li>
+	<li><a href="/2012/09">September 2012</a></li>
+	<li><a href="/2012/07">July 2012</a></li>
+	<li><a href="/2012/06">June 2012</a></li>
+	<li><a href="/2012/05">May 2012</a></li>
+	<li><a href="/2012/04">April 2012</a></li>
+	<li><a href="/2012/03">March 2012</a></li>
+	<li><a href="/2012/02">February 2012</a></li>
+	<li><a href="/2012/01">January 2012</a></li>
+	<li><a href="/2011/12">December 2011</a></li>
+	<li><a href="/2011/11">November 2011</a></li>
+	<li><a href="/2011/10">October 2011</a></li>
+	<li><a href="/2011/09">September 2011</a></li>
+	<li><a href="/2011/07">July 2011</a></li>
+	<li><a href="/2011/06">June 2011</a></li>
+	<li><a href="/2011/05">May 2011</a></li>
+	<li><a href="/2011/04">April 2011</a></li>
+	<li><a href="/2011/03">March 2011</a></li>
+	<li><a href="/2011/02">February 2011</a></li>
+	<li><a href="/2011/01">January 2011</a></li>
+	<li><a href="/2010/12">December 2010</a></li>
+	<li><a href="/2010/11">November 2010</a></li>
+	<li><a href="/2010/10">October 2010</a></li>
+	<li><a href="/2010/09">September 2010</a></li>
+	<li><a href="/2010/08">August 2010</a></li>
+	<li><a href="/2010/07">July 2010</a></li>
+	<li><a href="/2010/06">June 2010</a></li>
+	<li><a href="/2010/05">May 2010</a></li>
+	<li><a href="/2010/04">April 2010</a></li>
+	<li><a href="/2010/03">March 2010</a></li>
+	<li><a href="/2010/02">February 2010</a></li>
+	<li><a href="/2010/01">January 2010</a></li>
+	<li><a href="/2009/12">December 2009</a></li>
+	<li><a href="/2009/11">November 2009</a></li>
+	<li><a href="/2009/10">October 2009</a></li>
+	<li><a href="/2009/09">September 2009</a></li>
+	<li><a href="/2009/08">August 2009</a></li>
+	<li><a href="/2009/07">July 2009</a></li>
+	<li><a href="/2009/06">June 2009</a></li>
+	<li><a href="/2009/05">May 2009</a></li>
+	<li><a href="/2009/04">April 2009</a></li>
+			</ul>
+
+			</li>
+	
+	</ul>
+</div>	</div>
+	
+	</div>
+	<div id="footer">
+		<div id="foot">
+			Supported by <a href="http://www.thievesgarden.co.uk/" title="Maidenhead Accommodation - self catering apartment to rent" target="Thieves Garden">Thieves Garden - Maidenhead self catering apartment</a> and <a href="http://www.oleronvilla.com/" title="Ile d'Oleron Holiday Home to rent" target="Oleron Villa">Oleron Villa holiday home on Ile d'Oleron</a>.			<div class="credit_link">	<a href="http://themezee.com/">Theme by ThemeZee</a>
+</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+	<!-- Powered by WPtouch: 4.3.39 --></body>
+</html>

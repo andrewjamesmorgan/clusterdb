@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Batch &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/batch/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Mon, 29 Jun 2009 11:18:41 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Batching &#8211; improving MySQL Cluster performance when using the NDB API</title>
+		<link>/mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api</link>
+					<comments>/mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 29 Jun 2009 11:18:41 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Batch]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<category><![CDATA[NDB API]]></category>
+		<guid isPermaLink="false">/?p=207</guid>
+
+					<description><![CDATA[As many people are aware, the best performance can be achieved from MySQL Cluster by using the native (C++) NDB API (rather than using SQL via a MySQL Server). What&#8217;s less well known is that you can improve the performance of your NDB-API enabled application even further by &#8216;batching&#8217;. This article attempts to explain why]]></description>
+										<content:encoded><![CDATA[<p>As many people are aware, the best performance can be achieved from MySQL Cluster by using the native (C++) NDB API (rather than using SQL via a MySQL Server). What&#8217;s less well known is that you can improve the performance of your NDB-API enabled application even further by &#8216;batching&#8217;. This article attempts to explain why batching helps and how to do it.</p>
+<h3>What is batching and why does it help?</h3>
+<div id="attachment_209" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/06/batching.jpg"><img decoding="async" aria-describedby="caption-attachment-209" class="size-medium wp-image-209" title="NDB API Without batching" src="/wp-content/uploads/2009/06/batching-300x147.jpg" alt="NDB API accessing data from the Cluster without batching" width="300" height="147" srcset="/wp-content/uploads/2009/06/batching-300x147.jpg 300w, /wp-content/uploads/2009/06/batching.jpg 614w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-209" class="wp-caption-text">NDB API accessing data from the Cluster without batching</p></div>
+<p>Batching involves sending multiple operations from the application to the Cluster in one group rather than individually; the Cluster then processes these operations and sends back the results. Without batching, each of these operations incurs the latency of crossing the network as well as consuming CPU time on both the application and data node hosts.</p>
+<p>By batching together multiple operations, all of the requests can be sent in one message and all of the replies received in another &#8211; thus reducing the number of messages and hence the latency and CPU time consumed.</p>
+<h3>How to use batching with the MySQL Cluster NDB API</h3>
+<div id="attachment_213" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2009/06/batched_operations.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-213" class="size-medium wp-image-213" title="Batched NDB API Operations" src="/wp-content/uploads/2009/06/batched_operations-300x210.jpg" alt="Batched NDB API Operations" width="300" height="210" srcset="/wp-content/uploads/2009/06/batched_operations-300x210.jpg 300w, /wp-content/uploads/2009/06/batched_operations.jpg 896w" sizes="(max-width: 300px) 100vw, 300px" /></a><p id="caption-attachment-213" class="wp-caption-text">Batched NDB API Operations</p></div>
+<p>The principle is that you batch together as many operations as you can, execute them together and then interpret the results. After interpretting the results, the application may then decide to send in another batch of operations.</p>
+<p>An NDB API transaction consists of one or more operations where each operation (currently) acts on a single table and could be a simple primary key read or write or a complex table scan.</p>
+<p>The operation is not sent to the Cluster at the point that it&#8217;s defined. Instead, the application must explicitly request that all operations defined within the transaction up to that point be executed &#8211; at which point, the NDB API can send the batch of operations to the data nodes to be processed. The application may request that the transaction be committed at that point or it may ask for the transaction to be held open so that it can analyse the results from the first set of operations and then use that information within a subsequent series of operations and then commit the transaction after executing that second batch of operations.</p>
+<p>The following code sample shows how this can be implemented in practice (note that the application logic and all error handling has been ommited).</p>
+<pre style="padding-left: 30px; font-size: 11px"><span style="color: #993300;">const NdbDictionary::Dictionary* myDict= myNdb.getDictionary();
+
+const NdbDictionary::Table *myTable= myDict-&gt;getTable("tbl1");
+const NdbDictionary::Table *myTable2= myDict-&gt;getTable("tbl2");
+
+NdbTransaction *myTransaction= myNdb.startTransaction();
+
+// Read all of the required data as part of a single batch
+
+NdbOperation *myOperation= myTransaction-&gt;getNdbOperation(myTable1);
+myOperation-&gt;readTuple(NdbOperation::LM_Read);
+myOperation-&gt;equal("ref", asset_num);
+myRecAttr= myOperation-&gt;getValue("cost", NULL);
+
+NdbOperation *myOperation2= myTransaction-&gt;getNdbOperation(myTable2);
+myOperation2-&gt;readTuple(NdbOperation::LM_Read);
+myOperation2-&gt;equal("ref", asset_num);
+myRecAttr= myOperation-&gt;getValue("volume", NULL);
+
+myTransaction-&gt;execute(NdbTransaction::NoCommit);
+
+// NOT SHOWN: Application logic interprets results from first set of operations
+
+// Based on the data read during the initial batch, make the necessary changes
+
+myOperation *myOperation3= myTransaction-&gt;getNdbOperation(myTable1);
+myOperation3-&gt;updateTuple();
+myOperation3-&gt;equal("ref", asset_num);
+myOperation2-&gt;setValue("cost", new_cost);
+
+myOperation *myOperation4= myTransaction-&gt;getNdbOperation(myTable2);
+myOperation4-&gt;updateTuple();
+myOperation4-&gt;equal("ref", asset_num);
+myOperation4-&gt;setValue("volume", new_volume);
+
+myTransaction-&gt;execute( NdbTransaction::Commit);
+myNdb.closeTransaction(myTransaction);
+</span></pre>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/batching-improving-mysql-cluster-performance-when-using-the-ndb-api/feed</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

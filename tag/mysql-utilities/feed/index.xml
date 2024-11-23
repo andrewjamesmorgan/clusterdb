@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>MySQL Utilities &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/mysql-utilities/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Mon, 04 Aug 2014 14:01:25 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>MySQL Fabric/MySQL Utilities 1.4.4 released</title>
+		<link>/mysql-fabric/mysql-fabricmysql-utilities-1-4-4-released</link>
+					<comments>/mysql-fabric/mysql-fabricmysql-utilities-1-4-4-released#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 04 Aug 2014 14:01:25 +0000</pubDate>
+				<category><![CDATA[MySQL Fabric]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[mysql fabric]]></category>
+		<category><![CDATA[MySQL Utilities]]></category>
+		<guid isPermaLink="false">/?p=3936</guid>
+
+					<description><![CDATA[The binary and source versions of MySQL Utilities/MySQL Fabric have now been made available at http://dev.mysql.com/downloads/utilities/. This release contains bug fixes and minor enhancements &#8211; full details can be found in the MySQL Fabric/MySQL Utilities release notes.]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2014/08/MySQL_Utilities_Fabric.png"><img fetchpriority="high" decoding="async" class="aligncenter size-full wp-image-3938" src="/wp-content/uploads/2014/08/MySQL_Utilities_Fabric.png" alt="MySQL Utilities &amp; Fabric" width="420" height="352" srcset="/wp-content/uploads/2014/08/MySQL_Utilities_Fabric.png 420w, /wp-content/uploads/2014/08/MySQL_Utilities_Fabric-300x251.png 300w" sizes="(max-width: 420px) 100vw, 420px" /></a> The binary and source versions of MySQL Utilities/MySQL Fabric have now been made available at <a href="http://dev.mysql.com/downloads/utilities/" target="_blank">http://dev.mysql.com/downloads/utilities/</a>.</p>
+<p>This release contains bug fixes and minor enhancements &#8211; full details can be found in the <a title="MySQL Fabric/MySQL Utilities release notes" href="http://dev.mysql.com/doc/relnotes/mysql-utilities/en/wb-utils-news-1-4-4.html" target="_blank">MySQL Fabric/MySQL Utilities release notes</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-fabric/mysql-fabricmysql-utilities-1-4-4-released/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>New replication &#038; HA white papers</title>
+		<link>/mysql/new-replication-ha-white-papers</link>
+					<comments>/mysql/new-replication-ha-white-papers#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Wed, 14 Aug 2013 13:19:24 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL Replication]]></category>
+		<category><![CDATA[MySQL Utilities]]></category>
+		<guid isPermaLink="false">/?p=2931</guid>
+
+					<description><![CDATA[With the General Availability of the standalone MySQL Utilities it now makes sense to use these to simplify (and optionally automate) your MySQL Replication and High Availability solutions. In light of that, 4 of our MySQL white papers have been updated to reflect the new opportunities: MySQL Guide to High Availability Solutions. Data is the]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/08/MySQL_Replication_and_HA.png"><img decoding="async" class="alignright size-medium wp-image-2932" alt="MySQLReplication and High Availability logo" src="/wp-content/uploads/2013/08/MySQL_Replication_and_HA-300x101.png" width="300" height="101" /></a>With the <a title="Standalone MySQL Utilities Now GA! Includes running mysqlfailover as a daemon" href="/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon/" target="_blank">General Availability of the standalone MySQL Utilities</a> it now makes sense to use these to simplify (and optionally automate) your MySQL Replication and High Availability solutions. In light of that, 4 of our MySQL white papers have been updated to reflect the new opportunities:</p>
+<p><strong><a title="MySQL Guide to High Availability Solutions" href="http://www.mysql.com/why-mysql/white-papers/mysql-guide-to-high-availability-solutions/" target="_blank">MySQL Guide to High Availability Solutions</a></strong>. Data is the currency of today&#8217;s web, mobile, social, enterprise and cloud applications. Ensuring data is always available is a top priority for any organization &#8211; minutes of downtime will result in significant loss of revenue and reputation.</p>
+<p>This Guide is designed to assist Developers, Architects and DBAs in navigating the complex waters of HA. It presents:</p>
+<ul>
+<li>A methodology for selecting the right HA solution to meet Service Level Agreements</li>
+<li>A tour of the leading certified HA solutions for MySQL</li>
+<li>Operational best practices to implement and support HA</li>
+</ul>
+<p><strong><a title="MySQL Replication: High Availability - Building a Self-Healing Replication Topology" href="http://www.mysql.com/why-mysql/white-papers/mysql-replication-high-availability/" target="_blank">MySQL Replication: High Availability &#8211; Building a Self-Healing Replication Topology</a></strong>. Download the whitepaper to learn how to improve user-experience, reduce cost and innovate faster using MySQL replication.</p>
+<p>Global Transaction Identifiers (GTIDs) are one of the core new features of MySQL 5.6 replication, providing a foundation to building self-healing, highly available data clusters.</p>
+<p>By reading this whitepaper, you will be able to:</p>
+<ul>
+<li>Illustrate use-cases and implementation of MySQL replication</li>
+<li>Learn how High Availability (HA) with MySQL replication is achieved using GTIDs</li>
+<li>Gain an overview of MySQL replication utilities</li>
+<li>Discover resources for achieving HA with MySQL replication</li>
+</ul>
+<p>The paper concludes with an overview of operational best practices.</p>
+<p><strong><a title="MySQL Replication: An Introduction" href="http://www.mysql.com/why-mysql/white-papers/mysql-replication-introduction/" target="_blank">MySQL Replication: An Introduction</a></strong>. Download the whitepaper to learn how MySQL replication enables the largest web, cloud, mobile and social applications to scale-out on commodity hardware, while reducing the risks of downtime.</p>
+<p>The whitepaper discusses:</p>
+<ul>
+<li>Replication concepts</li>
+<li>Replication enhancements in MySQL 5.6</li>
+<li>Replication use-cases</li>
+<li>Replication topologies</li>
+<li>Replication monitoring and management</li>
+</ul>
+<p>The paper concludes with resources to get started with MySQL replication in building next generation services.</p>
+<p><strong><a title="MySQL Replication Tutorial: Configuration, Provisioning and Management" href="http://www.mysql.com/why-mysql/white-papers/mysql-replication-tutorial/" target="_blank">MySQL Replication Tutorial: Configuration, Provisioning and Management</a></strong>. Download the whitepaper for practical examples and best practices in building highly available services using MySQL replication as well as MySQL Utilities.</p>
+<p>By reading this paper, you will be able to:</p>
+<ul>
+<li>Configure and provision MySQL replication (with or without MySQL Utilities)</li>
+<li>Migrate to semi-synchronous replication</li>
+<li>Administer and trouble-shoot MySQL replication (with or without MySQL Utilities)</li>
+<li>Promote a slave to be the new master in the event of a failed Master (manual or automatic, with or without MySQL Utilities</li>
+</ul>
+<p>The paper concludes with additional resources to tune and optimize MySQL replication for your environment.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql/new-replication-ha-white-papers/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Standalone MySQL Utilities Now GA! Includes running mysqlfailover as a daemon</title>
+		<link>/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon</link>
+					<comments>/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 05 Aug 2013 12:54:05 +0000</pubDate>
+				<category><![CDATA[MySQL Replication]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL 5.6]]></category>
+		<category><![CDATA[MySQL Utilities]]></category>
+		<guid isPermaLink="false">/?p=2905</guid>
+
+					<description><![CDATA[With the release of MySQL Utilities 1.3.4, the standalone (not bundled with the MySQL WorkBench GUI) package is now Generally Available and fully supported. This post will focus on a very important change (the ability to run as a daemon rather than in a terminal) to the mysqlfailover utility which allows you to build a]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/08/MySQL_Utilities-GA.png"><img decoding="async" class="alignright size-medium wp-image-2906" alt="MySQL Utilities are now GA - logo" src="/wp-content/uploads/2013/08/MySQL_Utilities-GA-300x125.png" width="300" height="125" /></a>With the release of MySQL Utilities 1.3.4, the standalone (not bundled with the MySQL WorkBench GUI) package is now Generally Available and fully supported. This post will focus on a very important change (the ability to run as a daemon rather than in a terminal) to the <span style="color: #008080;">mysqlfailover </span>utility which allows you to build a light-weight HA database solution using MySQL Replication.</p>
+<p>For a general overview of MySQL Utilities, <a title="MySQL Utilities Webinar – Q&amp;A + replay" href="/mysql/mysql-utilities-webinar-qa-replay-now-available/" target="_blank">take a look at this recent webinar</a> or for a deeper dive into using them to setup replication and adding auto-failover of the master function to slaves <a title="Replication and auto-failover made easy with MySQL Utilities" href="/mysql/replication-and-auto-failover-made-easy-with-mysql-utilities/" target="_blank">watch this video and worked example</a>.</p>
+<p>When we first released the <span style="color: #008080;">mysqlfailover</span> utility, the reaction was very positive but the feedback also told us that to really use this to provide High Availability in a production system two enhancements were critical:</p>
+<ol>
+<li>The ability to not have the database password visible when someone queries the status of the process (for example, using the <span style="color: #008080;">ps</span> command). This was addressed by allowing the connection string to be specified using a <span style="color: #008080;">login-path</span> (referring to an entry in .mylogin.cnf &#8211; see <a title="Setting up .mylogin.cnf using  mysql_config_editor utility" href="https://dev.mysql.com/doc/refman/5.6/en/mysql-config-editor.html" target="_blank">https://dev.mysql.com/doc/refman/5.6/en/mysql-config-editor.html</a>) in place of <span style="color: #008080;">&lt;user&gt;[:&lt;passwd&gt;]@&lt;host&gt;</span>. This is a vital security enhancement added in MySQL Utilities 1.3.1.</li>
+<li>Allowing <span style="color: #008080;">mysqlfailover</span> to be run as a daemon rather than being tied to the terminal from where it had to be manually launched. This option is key to enabling the user to build a reslient HA system that doesn&#8217;t rely on mysqlfailover being launched from a terminal and that terminal then never going away.</li>
+</ol>
+<p>The rest of this post focuses on how to run <span style="color: #008080;">mysqlfailover</span> as a daemon.</p>
+<p>By default, <span style="color: #008080;">mysqlfailover </span>runs as an interactive program within the terminal it was run from; it constantly refreshes, providing a summary of the status of the replication topology as shown below.</p>
+<pre><span style="color: #008080;">mysql@mini servers]$ mysqlfailover --master=root@192.168.1.101:5001 
+  --discover-slaves-login=root --rediscover
+
+MySQL Replication Failover Utility
+Failover Mode = auto     Next Interval = Thu Aug  1 23:34:56 2013
+
+Master Information
+------------------
+Binary Log File   Position  Binlog_Do_DB  Binlog_Ignore_DB
+mini1-bin.000001  581
+
+GTID Executed Set
+1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+
+WARNING: Errant transaction(s) found on slave(s).
+Replication Health Status
++----------------+-------+---------+--------+------------+---------+
+| host           | port  | role    | state  | gtid_mode  | health  |
++----------------+-------+---------+--------+------------+---------+
+| 192.168.1.101  | 5001  | MASTER  | UP     | ON         | OK      |
+| 192.168.1.101  | 5002  | SLAVE   | UP     | ON         | OK      |
+| 192.168.1.101  | 5003  | SLAVE   | UP     | ON         | OK      |
+| 192.168.1.101  | 5004  | SLAVE   | UP     | ON         | OK      |
++----------------+-------+---------+--------+------------+---------+
+
+Q-quit R-refresh H-health G-GTID Lists U-UUIDs
+</span></pre>
+<p>To run <span style="color: #008080;">mysqlfailover</span> as a daemon, the first new command-line option you must provide is <span style="color: #008080;">&#8211;daemon=start</span>; as you&#8217;d expect this runs the process as a daemon. In this mode, you won&#8217;t get to see the output from <span style="color: #008080;">mysqlfailover</span> at your terminal and so you should make sure that you know what log file is being used &#8211; so it&#8217;s best to specify it with <span style="color: #008080;">&#8211;log=&lt;path-to-log-file&gt;</span>. You can also control what information is periodically written to the log file using <span style="color: #008080;">&#8211;report-values=&lt;list-of-attributes from health,gtid,uuid&gt;</span>.  As you&#8217;ll likely to want to be able to manage the daemon without having to be in the same directory (and also likely to manage it from scripts that are automatically run when the server starts and stops) it makes sense to specify where the process ID file should be stored using <span style="color: #008080;">&#8211;pid=&lt;path-to-pid-file&gt;</span>.</p>
+<p>The final incantation might look something like the following:</p>
+<pre><span style="color: #008080;">mysqlfailover --master=root@192.168.1.101:5001 
+  --discover-slaves-login=root 
+  --rediscover 
+  --log=/home/mysql/servers/mysqlfailover.log 
+  --pidfile=/home/mysql/servers/mysqlfailover.pid 
+  --daemon=start 
+  --report-values=health,gtid,uuid
+</span></pre>
+<p>and the resulting log file could then contain information such as this:</p>
+<pre><span style="color: #008080;">2013-08-02 01:10:34 AM INFO Getting health for master: 192.168.1.101:5001.
+2013-08-02 01:10:35 AM INFO Health Status:
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5001, role: MASTER, state: UP, gtid_mode: ON, health: OK
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5002, role: SLAVE, state: UP, gtid_mode: ON, health: OK
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5003, role: SLAVE, state: UP, gtid_mode: ON, health: OK
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5004, role: SLAVE, state: UP, gtid_mode: ON, health: OK
+2013-08-02 01:10:35 AM INFO GTID Status - Transactions executed on the servers:
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5001, role: MASTER, gtid: 1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5002, role: SLAVE, gtid: 1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5002, role: SLAVE, gtid: 1db19050-faf9-11e2-a214-0800272b8804:1
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5003, role: SLAVE, gtid: 1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5003, role: SLAVE, gtid: 200f8139-faf9-11e2-a214-0800272b8804:1
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5004, role: SLAVE, gtid: 1aca3d80-faf9-11e2-a214-0800272b8804:1-2
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5004, role: SLAVE, gtid: 22842441-faf9-11e2-a214-0800272b8804:1
+2013-08-02 01:10:35 AM INFO UUID Status:
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5001, role: MASTER, uuid: 1aca3d80-faf9-11e2-a214-0800272b8804
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5002, role: SLAVE, uuid: 1db19050-faf9-11e2-a214-0800272b8804
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5003, role: SLAVE, uuid: 200f8139-faf9-11e2-a214-0800272b8804
+2013-08-02 01:10:35 AM INFO host: 192.168.1.101, port: 5004, role: SLAVE, uuid: 22842441-faf9-11e2-a214-0800272b8804
+</span></pre>
+<p>As you&#8217;d expect, you can also stop the daemon:</p>
+<pre><span style="color: #008080;">mysqlfailover 
+    --log=/home/mysql/servers/mysqlfailover.log 
+    --pidfile=/home/mysql/servers/mysqlfailover.pid 
+    --daemon=stop
+</span></pre>
+<p>and restart it:</p>
+<pre><span style="color: #008080;">mysqlfailover 
+    --log=/home/mysql/servers/mysqlfailover.log 
+    --pidfile=/home/mysql/servers/mysqlfailover.pid 
+    --daemon=restart
+</span></pre>
+<p>The final option for <span style="color: #008080;">daemon=</span> is <span style="color: #008080;">daemon=nodetach</span> which is like start but the terminal that it&#8217;s run from will continue to view the output from the daemon.</p>
+<p>One thing to note is that when the server is restarted, <span style="color: #008080;">mysqlfailover</span> needs to be started again and this is not something that is automatically configured when you run it as a daemon &#8211; rather, it&#8217;s your responsibility to ensure that it&#8217;s restarted (for example, including it in an <span style="color: #008080;">init</span> script.</p>
+<p>Please try it out and (as always) let us know how you get on &#8211; the addition of these extra options is a direct result of the user feedback received for the earlier versions.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-replication/standalone-mysql-utilities-now-ga-includes-running-mysqlfailover-as-a-daemon/feed</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Utilities Webinar &#8211; Q&#038;A + replay now available</title>
+		<link>/mysql/mysql-utilities-webinar-qa-replay-now-available</link>
+					<comments>/mysql/mysql-utilities-webinar-qa-replay-now-available#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Mon, 29 Jul 2013 07:46:32 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Utilities]]></category>
+		<category><![CDATA[Replication]]></category>
+		<guid isPermaLink="false">/?p=2896</guid>
+
+					<description><![CDATA[Dr Charles Bell and I recently presented a webinar on MySQL Utilities; there was a heavy focus on what you can acheive with them and how you should use them. In case you couldn&#8217;t attend or want to listen to some of the details again, the replay from that webinar is available here. Abstract: MySQL]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/07/MySQL_Utilities.png"><img loading="lazy" decoding="async" class="alignright size-medium wp-image-2875" alt="MySQL Utilities logo" src="/wp-content/uploads/2013/07/MySQL_Utilities-300x125.png" width="300" height="125" /></a>Dr Charles Bell and I recently presented a webinar on MySQL Utilities; there was a heavy focus on what you can acheive with them and how you should use them. In case you couldn&#8217;t attend or want to listen to some of the details again, the <a title="MySQL Utilities webinar replay" href="http://w.on24.com/r.htm?e=655548&amp;s=1&amp;k=EEBAC76AC407E0017ABF67F4686C7B2F" target="_blank">replay from that webinar is available here</a>.</p>
+<h3>Abstract:</h3>
+<p>MySQL Utilities provide a collection of command-line utilities that are used for maintaining and administering MySQL databases, including:</p>
+<ul>
+<li>Admin Utilities (Clone, Copy, Compare, Diff, Export, Import)</li>
+<li>Replication Utilities (Setup, Configuration, Automated Slave Promotion)</li>
+<li>General Utilities (Disk Usage, Redundant Indexes, Search Meta Data)</li>
+</ul>
+<p>Andrew Morgan and Chuck Bell will guide you through these utilities, and many more, explaining what you can gain from these tools and how to use them (for example how a single command repeatedly checks your master server and in the event it fails, automatically promotes one of the slaves to be the new master).</p>
+<h3>Question &amp; Answer Summary:</h3>
+<ul>
+<li><strong>Using these utilities, can we export/import routines&#8217; source as well?</strong> Yes.</li>
+<li><strong>I generally run multi-master behind a proxy (haproxy). I was wondering if the replication check would work. But I guess mysql still does not support multi-master or ring replcation.</strong> It depends on want you intend to do exactly. There are some limitation, but we intend to improve the utilities over time. So, just test the utilities on your environment and your are welcome to share your feedback with us.</li>
+<li><strong>Do you need the python connector if you have the utilities on workbench?</strong> No, it is bundled as part of WB.</li>
+<li><strong>What does &#8220;mysqluserclone&#8221; do that &#8220;SHOW GRANTS FOR USER&#8221; doesn&#8217;t do?</strong> It actually creates the users, clone them and not simply show its privileges like SHOW GRANTS. You can find more details <a href="http://dev.mysql.com/doc/workbench/en/mysqluserclone.html" title="mysqluserclone manual" target="_blank">here</a>.</li>
+<li><strong>With mysqlfailover can I set a sequence to swith specific order if a fail occurs with the master?</strong>  Yes, you can. It will follow the sequence of the defined candidates.</li>
+<li><strong>Can I run mysqlfailover on a independent server that check the master and their slave servers or it can run on the master or slave servers (mandatory)?</strong> Running on an independent server is ideal. After all, you don&#8217;t want it to disappear when the master&#8217;s host fails.</li>
+<li><strong>How many MySQL instances can I manage with mysqlfailover, I mean there is possible to check more than one array with the same independent server?</strong> With one mysqlfailover instance you can monitor one topology, i.e. one master and all its slaves. If you have more than one topology (using a different master) you can use a mysqlfailover instance to monitor each one.
+</li>
+<li><strong>If a master goes down and replication failover is successful, how hard is it to bring that old master back into the fold, assuming it was just a network disruption?</strong> You can use mysqlreplicate to set the old master as a slave of the new master resulted by the failover, that will update the old master. then you can use mysqlrpladmin to switchover the just added slave, to make it a master again, that back your original replication setup.</li>
+<li><strong>Can mysqlprocgrep log what it kills?</strong> There is no option to log what it is done. But you can redirect the utility output if it contains the information you need.</li>
+<li><strong>How does mysqldbcompare handle auto-increment columns?</strong> It will find the difference between auto_increment values. So, currently if it is different it will identify the difference. You will get the difference, as: changed or missing rows are shown in a standard format of GRID, CSV, TAB, or VERTICAL. you can choose in which format you want to get the difference.</li>
+<li><strong>I use Pacemaker/Corosync to achieve failover. Is mysqlfailover suitable for use in that context? Do I need to add extra logic around it, some wrapper script? If so, does Oracle provide a ready-made scripts for Pacemaker/Corosync?</strong> mysqlfailover was designed to work independently, and provides some functionalities that may help with the integration with other systems (like the possibility to execute external pre- pos- failover scripts). We do not have a ready-made script for Pacemaker/Corosync. For more information <a href="http://dev.mysql.com/doc/workbench/en/mysqlfailover.html" title="mysqlfailover manual" target="_blank">check here</a>.</li>
+<li><strong>How long are the frm files kept if the database is corrupt or was deleted.</strong> The .frm files are not removed in any way. So there is no deletion or removal of the .frm files. The .frm files are an integral part of the server and stored in the datadir.</li>
+<li><strong>Can mysqlserverclone clone instances between separate servers? Using SSH?</strong> mysqlserverclone, starts a new instance, that mimics a running server or a offline server by taking a look to his configuration, but to copy objects like tables, to another instance you need to use mysqldbcopy. We do not currently support SSH. If you see this as a much needed feature, please open a feature request via bugs.mysql.com. That will help us understand the need and urgency.</li>
+</ul>
+<p>&nbsp;</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql/mysql-utilities-webinar-qa-replay-now-available/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>MySQL Utilities Webinar</title>
+		<link>/mysql/mysql-utilities-webinar</link>
+					<comments>/mysql/mysql-utilities-webinar#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 16 Jul 2013 12:50:09 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Replication]]></category>
+		<category><![CDATA[MySQL 5.6]]></category>
+		<category><![CDATA[MySQL Utilities]]></category>
+		<category><![CDATA[MySQL Workbench]]></category>
+		<guid isPermaLink="false">/?p=2876</guid>
+
+					<description><![CDATA[On Thursday, Dr Charles Bell and I will be presenting a webinar on MySQL Utilities; there will be a heavy focus on what you can acheive with them and how you should use them. As well as listening to the presentation, this is a great chance to get your questions answered by the experts (Israel]]></description>
+										<content:encoded><![CDATA[<p><a href="/wp-content/uploads/2013/07/MySQL_Utilities.png"><img loading="lazy" decoding="async" src="/wp-content/uploads/2013/07/MySQL_Utilities-300x125.png" alt="MySQL Utilities logo" width="300" height="125" class="alignright size-medium wp-image-2875" /></a>On Thursday, Dr Charles Bell and I will be presenting a webinar on MySQL Utilities; there will be a heavy focus on what you can acheive with them and how you should use them. As well as listening to the presentation, this is a great chance to get your questions answered by the experts (Israel Gomez from the engineering team will also be on-line to help with the questions). As always, the webinar is free but you should <a href="http://www.mysql.com/news-and-events/web-seminars/focus-on-mysql-utilities/" title="MySQL Utilities webinar - registration" target="_blank">register in advance here</a>. If the time isn&#8217;t convenient, register anyway and you&#8217;ll be sent a link to the replay when it&#8217;s available.</p>
+<h3>Abstract:</h3>
+<p>MySQL Utilities provide a collection of command-line utilities that are used for maintaining and administering MySQL databases, including:</p>
+<ul>
+<li>Admin Utilities (Clone, Copy, Compare, Diff, Export, Import)</li>
+<li>Replication Utilities (Setup, Configuration, Automated Slave Promotion)</li>
+<li>General Utilities (Disk Usage, Redundant Indexes, Search Meta Data)</li>
+</ul>
+<p>Andrew Morgan and Chuck Bell will guide you through these utilities, and many more, explaining what you can gain from these tools and how to use them (for example how a single command repeatedly checks your master server and in the event it fails, automatically promotes one of the slaves to be the new master). This is your opportunity to listen to the development lead describe what he and his team have created, and to get your questions answered by the experts.</p>
+<p>WHO:<br />
+Andrew Morgan, Principal Product Manager<br />
+Chuck Bell, Software Development Manager</p>
+<p>WHEN:<br />
+Thu, Jul 18: 09:00 Pacific time (America)<br />
+Thu, Jul 18: 10:00 Mountain time (America)<br />
+Thu, Jul 18: 11:00 Central time (America)<br />
+Thu, Jul 18: 12:00 Eastern time (America)<br />
+Thu, Jul 18: 16:00 UTC<br />
+Thu, Jul 18: 17:00 Western European time<br />
+Thu, Jul 18: 18:00 Central European time<br />
+Thu, Jul 18: 19:00 Eastern European time<br />
+Thu, Jul 18: 21:30 India, Sri Lanka<br />
+Fri, Jul 19: 00:00 Singapore/Malaysia/Philippines time<br />
+Fri, Jul 19: 00:00 China time<br />
+Fri, Jul 19: 01:00 日本<br />
+Fri, Jul 19: 02:00 NSW, ACT, Victoria, Tasmania (Australia) </p>
+<p>The presentation will be approximately 60 minutes long followed by Q&#038;A. </p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql/mysql-utilities-webinar/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

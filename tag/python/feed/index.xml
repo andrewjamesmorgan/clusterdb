@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Python &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/python/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Wed, 31 Oct 2018 16:43:27 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>Working with MongoDB Stitch Through Existing Drivers – Python &#038; PyMongo</title>
+		<link>/mongodb/working-with-mongodb-stitch-through-existing-drivers-python-pymongo</link>
+					<comments>/mongodb/working-with-mongodb-stitch-through-existing-drivers-python-pymongo#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 12 Oct 2018 15:48:35 +0000</pubDate>
+				<category><![CDATA[MongoDB]]></category>
+		<category><![CDATA[MongoDB Stitch]]></category>
+		<category><![CDATA[Python]]></category>
+		<guid isPermaLink="false">/?p=4532</guid>
+
+					<description><![CDATA[If you are developing an app using Java, Swift, or JavaScript then the Stitch SDK is the best way to access MongoDB Stitch from your frontend application code – getting to your data and accessing your Stitch Services and Functions becomes child&#8217;s play. But, what if you are developing in another language &#8211; perhaps running]]></description>
+										<content:encoded><![CDATA[<p>If you are developing an app using Java, Swift, or JavaScript then the <a href="https://docs.mongodb.com/stitch/client-sdks/" title="MongoDB Stitch client SDK">Stitch SDK</a> is the best way to access <a href="https://docs.mongodb.com/stitch/" title="MongoDB Stitch serverless platform">MongoDB Stitch</a> from your frontend application code – getting to your data and accessing your Stitch Services and Functions becomes child&#8217;s play.</p>
+<p>But, what if you are developing in another language &#8211; perhaps running on an app server? Luckily, MongoDB Stitch now supports the <a href="https://docs.mongodb.com/stitch/wire-protocol/" title="MongoDB wire protocol for MongoDB Stitch serverless platform">MongoDB wire protocol</a> – meaning that you can continue to work with your favorite MongoDB drivers (such as <a href="https://docs.mongodb.com/ecosystem/drivers/python/" title="Pymongo – python driver for MongoDB">PyMongo</a>) and tools such as the <a href="https://www.mongodb.com/blog/post/working-with-mongodb-stitch-through-the-mongo-shell" title="Working with MongoDB Stitch Through the mongo Shell – MongoDB Wire Protocol Support"><code>mongo</code> shell</a>.</p>
+<p>After <a href="https://docs.mongodb.com/stitch/wire-protocol/" title="MongoDB wire protocol access to MongoDB Stitch">enabling connection string access</a>, connecting to your Stitch app from your application is business as usual – just use the connection string you&#8217;re shown in the Stitch UI (replacing the username and password with one of your existing Stitch users). This example is for <a href="https://docs.mongodb.com/ecosystem/drivers/python/" title="Pymongo – python driver for MongoDB">Python</a>, but the pattern is the same for other languages:</p>
+<pre><code>&gt;&gt;&gt; import pymongo
+&gt;&gt;&gt; from pymongo import MongoClient
+&gt;&gt;&gt; client = MongoClient('mongodb://andrewxxxxmorgan%40gmail.com:\
+      my_password@stitch.mongodb.com:27020/?authMechanism=PLAIN&amp;\
+      authSource=%24external&amp;ssl=true&amp;\
+      appName=imported_trackme-etjzr:mongodb-atlas:local-userpass')
+</code></pre>
+<p>Inserting a document should seem very familiar (note that I&#8217;m including an <code>owner_id</code> attribute so that the app can take advantage of <a href="https://docs.mongodb.com/stitch/mongodb/mongodb-rules/" title="MongoDB Stitch rules to control access to data">Stitch&#8217;s data access controls</a>):</p>
+<pre><code>&gt;&gt;&gt; db = client.trackme
+&gt;&gt;&gt; collection = db.comments
+
+&gt;&gt;&gt; comment = {
+    "author" : "Andrew Morgan",
+    "comment" : "Using Stitch from Python – who knew?!",
+    "owner_id" : "5bacd4e7698a67f72dfdb44c"
+}
+&gt;&gt;&gt; collection.insert_one(comment)
+
+&lt;pymongo.results.InsertOneResult object at 0x102b362d8&gt;
+</code></pre>
+<p><img decoding="async" src="https://webassets.mongodb.com/_com_assets/cms/MongoDB_Wire_Protocol-14msjczlcb.png" alt="Connecting to MongoDB Stitch using the MongoDB Python Driver" /></p>
+<p>However, Stitch is about more just than accessing MongoDB data. I&#8217;ve created a (stupidly) simple Stitch (<code>morning</code>) Function to show how you can execute Stitch Functions through MongoDB drivers:</p>
+<pre><code>&gt;&gt;&gt; db.command("callFunction", "morning", arguments=['Billy'])
+
+u'ok': 1, u'response': {u'message': u'Good Morning Billy from andrewxxxxxxorgan@gmail.com'}}
+</code></pre>
+<p>Creating your first Stitch app? Start with one of the <a href="https://docs.mongodb.com/stitch/tutorials/" title="MongoDB Stitch serverless platform – tutorials">Stitch tutorials</a>.</p>
+<p>Want to learn more about MongoDB Stitch? Read the <a href="https://www.mongodb.com/collateral/mongodb-stitch-serverless-platform" title="MongoDB Stitch serverless platform architecture white paper">white paper</a>.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mongodb/working-with-mongodb-stitch-through-existing-drivers-python-pymongo/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

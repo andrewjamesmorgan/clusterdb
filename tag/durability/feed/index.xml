@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Durability &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/durability/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 13 Jul 2010 10:18:30 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>How can a database be in-memory and durable at the same time?</title>
+		<link>/mysql-cluster/how-can-a-database-be-in-memory-and-durable-at-the-same-time</link>
+					<comments>/mysql-cluster/how-can-a-database-be-in-memory-and-durable-at-the-same-time#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 13 Jul 2010 10:18:30 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[Durability]]></category>
+		<category><![CDATA[Durable]]></category>
+		<category><![CDATA[MySQL Cluster CGE]]></category>
+		<guid isPermaLink="false">/?p=1163</guid>
+
+					<description><![CDATA[There is often confusion as to how it can be claimed that MySQL Cluster delivers in-memory performance while also providing durability (the &#8220;D&#8221; in ACID). This post explains how that can be achieved as well as how to mix and match scalability, High Availability and Durability. As an aside, the user can specify specific MySQL]]></description>
+										<content:encoded><![CDATA[<p>There is often confusion as to how it can be claimed that MySQL Cluster delivers in-memory performance while also providing durability (the &#8220;D&#8221; in ACID). This post explains how that can be achieved as well as how to mix and match scalability, High Availability and Durability.</p>
+<div id="attachment_1170" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2010/07/Cluster_Venn1.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-1170" class="size-medium wp-image-1170" title="Cluster_Venn" src="/wp-content/uploads/2010/07/Cluster_Venn1-300x277.jpg" alt="" width="300" height="277" /></a><p id="caption-attachment-1170" class="wp-caption-text">MySQL Cluster deployment options</p></div>
+<p>As an aside, the user can specify specific MySQL Cluster tables or columns to be stored on disk rather than in memory &#8211; this is a solution for extra capacity but you don&#8217;t need to take this performance hit just to have the data persisted to disk. This post focuses on the in-memory approach.</p>
+<p>There is a great deal of flexibility in how you deploy MySQL Cluster with in-memory data &#8211; allowing the user to decide which features they want to make use of.</p>
+<p>The simplest (and least common) topology is represented by the server sitting outside of the circles in the diagram. The data is held purely in memory in a single data node and so if power is lost then so is the data. This is an option if you&#8217;re looking for an alternative to the MEMORY storage engine (and should deliver better write performance as well as more functionality). To implement this, your configuration file would look something like this:</p>
+<p style="padding-left: 30px;"><strong>config.ini (no Durability, Scalability or HA)</strong></p>
+<pre style="padding-left: 60px;"><strong><span style="font-weight: normal;"><span style="color: #993300;">[ndbd default]
+</span></span><span style="font-weight: normal;"><span style="color: #993300;"><strong>NoOfReplicas=1</strong>
+</span></span><span style="font-weight: normal;"><span style="color: #993300;">datadir=E:am233268DocumentsMySQL_ClusterMy_Clusterdata</span></span>
+
+<span style="font-weight: normal;"><span style="color: #993300;">[ndbd]
+</span></span><span style="font-weight: normal;"><span style="color: #993300;">hostname=localhost</span></span>
+
+<span style="font-weight: normal;"><span style="color: #993300;">[ndb_mgmd]
+</span></span><span style="font-weight: normal;"><span style="color: #993300;">hostname=localhost</span></span>
+
+<span style="font-weight: normal;"><span style="color: #993300;">[mysqld]
+</span></span><span style="font-weight: normal;"><span style="color: #993300;">hostname=localhost</span></span>
+</strong></pre>
+<p>By setting NoOfReplicas to 1, you are indicating that data should not be duplicated on a second data node. By only having one [ndbd] section you are specifying that there should be only 1 data node.</p>
+<p>To indicate that the data should not be persisted to disk, make the following change:</p>
+<pre style="padding-left: 30px;"><span style="color: #333399;">mysql&gt; SET ndb_table_no_logging=1;</span></pre>
+<p>Once ndb_table_no_logging has been set to 1, any Cluster tables that are subsequently created will be purely in-memory (and hence the contents will be volatile).</p>
+<p>Durability can be added as an option. In this case, the changes to the in-memory data is persisted to disk asynchronously (thus minimizing any increase in transaction latency). Persistent is implemented using 2 mechanisms in combination:</p>
+<ul>
+<li>Periodically a snapshot of the in-memory data in the data node is written to disk &#8211; this is referred to as a Local Checkpoint (LCP)</li>
+<li>Each change is written to a Redo log buffer and then periodically these buffers are flushed to a disk-based Redo log file &#8211; this is coordinated across all data nodes in the Cluster and is referred to as a Global Checkpoint (GCP)</li>
+</ul>
+<p>This checkpointing to disk is enabled by default but if you&#8217;ve previously turned it off then you can turn it back on with:</p>
+<pre style="padding-left: 30px;"><span style="color: #333399;">mysql&gt; SET ndb_table_no_logging=0;</span></pre>
+<p>Following this change, any new Cluster tables will be asynchronously persisted to disk. If you have existing, volatile MySQL Cluster tables then you can now make them persistent:</p>
+<pre style="padding-left: 30px;"><span style="color: #333399;">mysql&gt; ALTER TABLE tab1 ENGINE=ndb;</span></pre>
+<p>High Availability can be implemented by including extra data node(s) in the Cluster and increasing the value of NoOfReplicas (2 is the normal value so that all data is held in 2 data nodes). The set (pair) of data nodes storing the same set of data is referred to as a node group. Data is synchronously replicated between the data nodes in the node group and so changes cannot be lost unless both data nodes fail at the same time. If the 2 data nodes making up a node group are run on different servers then the data can remain available for use even if one of the servers fails. The configuration file for single, 2 data node node group Cluster would look something like:</p>
+<p style="padding-left: 30px;"><strong>config.ini (HA but no scalability)</strong></p>
+<p style="padding-left: 30px;">
+<pre style="padding-left: 60px;"><span style="color: #993300;">[ndbd default]
+</span><span style="color: #993300;"><strong>NoOfReplicas=2</strong>
+</span><span style="color: #993300;">datadir=E:am233268DocumentsMySQL_ClusterMy_Clusterdata</span></pre>
+<pre style="padding-left: 60px;"><span style="color: #993300;">[ndbd]
+</span><span style="color: #993300;">hostname=192.168.0.1</span></pre>
+<div id="_mcePaste" style="padding-left: 60px;">
+<pre><span style="color: #993300;">[ndbd]
+</span><span style="color: #993300;">hostname=192.168.0.2</span></pre>
+</div>
+<pre style="padding-left: 60px;"><span style="color: #993300;">[ndb_mgmd]
+</span><span style="color: #993300;">hostname=192.168.0.3</span></pre>
+<pre style="padding-left: 60px;"><span style="color: #993300;">[mysqld]
+</span><span style="color: #993300;">hostname=192.168.0.1</span></pre>
+<div style="padding-left: 60px;">
+<pre><span style="color: #993300;">[mysqld]
+</span><span style="color: #993300;">hostname=192.168.0.2</span></pre>
+</div>
+<div>If you exceed the capacity or performance of a single node group then you can add extra data node(s) to add 1 or more extra node groups. An example configuration where we want scalability but <strong>not</strong> High Availability would have multiple node groups but each made up of a single data node. The configuration file would look something like this:</div>
+<div style="padding-left: 30px;"><strong>config.ini (scalability but not HA)</strong></div>
+<div>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 60px;"><span style="color: #993300;">[ndbd default]
+</span><span style="color: #993300;"><strong>NoOfReplicas=1</strong>
+</span><span style="color: #993300;">datadir=E:am233268DocumentsMySQL_ClusterMy_Clusterdata</span></pre>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 60px;"><span style="color: #993300;">[ndbd]
+</span><span style="color: #993300;">hostname=192.168.0.1</span></pre>
+<div id="_mcePaste" style="padding-left: 60px;">
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace;"><span style="color: #993300;">[ndbd]
+</span><span style="color: #993300;">hostname=192.168.0.2</span></pre>
+</div>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 60px;"><span style="color: #993300;">[ndb_mgmd]
+</span><span style="color: #993300;">hostname=192.168.0.1</span></pre>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 60px;"><span style="color: #993300;">[mysqld]
+</span><span style="color: #993300;">hostname=192.168.0.1</span></pre>
+<div style="padding-left: 60px;">
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace;"><span style="color: #993300;">[mysqld]
+</span><span style="color: #993300;">hostname=192.168.0.2</span></pre>
+</div>
+</div>
+<div>New node groups can be added to a Cluster without taking the database off-line (see <a href="http://www.mysql.com/why-mysql/white-papers/mysql_wp_cluster7_architecture.php" target="_blank">MySQL Cluster 7.1 New Features White Paper</a>).</div>
+<div>As shown in the diagram at the start of this post it is also possible to implement any combination of Durability, Scalability and High Availability. A typical configuration that has scalability (in this case 2 node-groups), HA (2 data nodes in each node group) and durability (there by default) could be implemented with this configuration file:</div>
+<div>
+<div style="padding-left: 30px;"><strong>config.ini (Scalability,  HA &amp; Durability)</strong></div>
+<div>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 60px;"><span style="color: #993300;">[ndbd default]
+</span><span style="color: #993300;"><strong>NoOfReplicas=2</strong>
+</span><span style="color: #993300;">datadir=E:am233268DocumentsMySQL_ClusterMy_Clusterdata</span></pre>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 60px;"><span style="color: #993300;">[ndbd]
+</span><span style="color: #993300;">hostname=192.168.0.1</span></pre>
+<div id="_mcePaste" style="padding-left: 60px;">
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace;"><span style="color: #993300;">[ndbd]
+</span><span style="color: #993300;">hostname=192.168.0.2</span></pre>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace;"><span style="color: #993300;">[ndbd]
+hostname=192.168.0.3</span></pre>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace;"><span style="color: #993300;">[ndbd]
+hostname=192.168.0.4</span></pre>
+</div>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 60px;"><span style="color: #993300;">[ndb_mgmd]
+</span><span style="color: #993300;">hostname=192.168.0.5</span></pre>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 60px;"><span style="color: #993300;">[ndb_mgmd]
+hostname=192.168.0.6</span></pre>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 60px;"><span style="color: #993300;">[mysqld]
+</span><span style="color: #993300;">hostname=192.168.0.5</span></pre>
+<div style="padding-left: 60px;">
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace;"><span style="color: #993300;">[mysqld]
+</span><span style="color: #993300;">hostname=192.168.0.6</span></pre>
+</div>
+</div>
+</div>
+<div>While that solution now provides you with scalability, durability and HA you are still vulnerable to the loss of the entire Cluster (for example, a catastrophic power failure for the whole data center) &#8211; to avoid this, asynchronous replication (Geo Replication) can be setup between 2 (or more) Clusters running at 2 different locations. There is no limit to the distance between the 2 sites. As with the nodal topology, Geo Replication can be used between Clusters deploying any combination of the features described here and there is no requirement for both sites to be using the same Cluster configuration (or even for the second site to store data in MySQL Cluster at all!). More details on Geo Replication scenarios can be found at<a href="/mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/" target="_blank"> /mysql-cluster/setting-up-mysql-asynchronous-replication-for-high-availability/</a></div>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/how-can-a-database-be-in-memory-and-durable-at-the-same-time/feed</wfw:commentRss>
+			<slash:comments>9</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

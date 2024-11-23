@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Raspberry Pi &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/raspberry-pi/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Fri, 01 Jun 2012 13:41:09 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>MySQL Cluster running on Raspberry Pi</title>
+		<link>/mysql-cluster/mysql-cluster-running-on-raspberry-pi</link>
+					<comments>/mysql-cluster/mysql-cluster-running-on-raspberry-pi#comments</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Fri, 01 Jun 2012 13:41:09 +0000</pubDate>
+				<category><![CDATA[MySQL Cluster]]></category>
+		<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[MySQL Cluster 7.2]]></category>
+		<category><![CDATA[Raspberry Pi]]></category>
+		<guid isPermaLink="false">/?p=2365</guid>
+
+					<description><![CDATA[I start a long weekend tonight and it&#8217;s the kids&#8217; last day of school before their school holidays and so last night felt like the right time to play a bit. This week I received my Raspberry Pi &#8211; if you haven&#8217;t heard of it then you should take a look at the Raspberry Pi]]></description>
+										<content:encoded><![CDATA[<div id="attachment_2364" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2012/06/Raspberry-Pi-010.jpg"><img fetchpriority="high" decoding="async" aria-describedby="caption-attachment-2364" class="size-medium wp-image-2364" title="MySQL Cluster running on Raspberry Pi" src="/wp-content/uploads/2012/06/Raspberry-Pi-010-300x224.jpg" alt="MySQL Cluster running on Raspberry Pi" width="300" height="224" /></a><p id="caption-attachment-2364" class="wp-caption-text">MySQL Cluster running on Raspberry Pi</p></div>
+<p>I start a long weekend tonight and it&#8217;s the kids&#8217; last day of school before their school holidays and so last night felt like the right time to play a bit. This week I received my Raspberry Pi &#8211; if you haven&#8217;t heard of it then you should take a look at the <a title="Raspberry Pi FAQ" href="http://www.raspberrypi.org/faqs" target="_blank">Raspberry Pi FAQ</a> &#8211; basically it&#8217;s a ridiculously cheap ($25 or $35 if you want the top of the range model) ARM based PC that&#8217;s the size of a credit card.</p>
+<p>A knew I had to have one to play with but what to do with it? Why not start by porting MySQL Cluster onto it? We always claim that Cluster runs on commodity hardware &#8211; surely this would be the ultimate test of that claim.</p>
+<p>I chose the customised version of Debian &#8211; you have to copy it onto the SD memory card that acts as the storage for the Pi. Once up and running on the Pi, the first step was to increase the size of the main storage partition &#8211; it starts at about 2 Gbytes &#8211; using gparted. I then had to compile MySQL Cluster &#8211; ARM isn&#8217;t a supported platform and so there are no pre-built binaries. I needed to install a couple of packages before I could get very far:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">sudo apt-get update
+sudo apt-get install cmake
+sudo apt-get install libncurses5-dev</pre>
+<p>Compilation initially got about 80% through before failing and so if you try this yourself then save yourself some time by applying the patch from this <a title="Bug report with attachment to allow MySQL Cluster to compile on ARM platform" href="http://bugs.mysql.com/bug.php?id=62769" target="_blank">bug report</a> before starting. The build scripts wouldn&#8217;t work but I was able to just run make&#8230;</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">make
+sudo make install</pre>
+<p>As I knew that memory was tight I tried to come up with a config.ini file that cut down on how much memory would be needed (note that 192.168.1.122 is the Raspberry Pi while 192.168.1.118 is an 8GByte Linux x86-64 PC &#8211; doesn&#8217;t seem a very fair match!):</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">[ndb_mgmd]
+hostname=192.168.1.122
+NodeId=1
+
+[ndbd default]
+noofreplicas=2
+DataMemory=2M
+IndexMemory=1M
+DiskPageBufferMemory=4M
+StringMemory=5
+MaxNoOfConcurrentOperations=1K
+MaxNoOfConcurrentTransactions=500
+SharedGlobalMemory=500K
+LongMessageBuffer=512K
+MaxParallelScansPerFragment=16
+MaxNoOfAttributes=100
+MaxNoOfTables=20
+MaxNoOfOrderedIndexes=20
+
+[ndbd]
+hostname=192.168.1.122
+datadir=/home/pi/mysql/ndb_data
+NodeId=3
+
+[ndbd]
+hostname=192.168.1.118
+datadir=/home/billy/my_cluster/ndbd_data
+NodeId=4
+
+[mysqld]
+NodeId=50
+
+[mysqld]
+NodeId=51
+
+[mysqld]
+NodeId=52
+
+[mysqld]
+NodeId=53
+
+[mysqld]
+NodeId=54</pre>
+<p>Running the management node worked pretty easily but then I had problems starting the data nodes &#8211; checking how much memory I had available gave me a hint as to why!</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">pi@raspberrypi:~$ free -m
+             total       used       free     shared    buffers     cached
+Mem:           186         29        157          0          1         11
+-/+ buffers/cache:         16        169
+Swap:            0          0          0</pre>
+<p>OK &#8211; so 157 Mbytes of memory available and no swap space, not ideal and so the next step was to use gparted again to create swap partitions on the SD card as well a massive 1Gbyte on my MySQL branded USB stick (need to persuade marketing to be a bit more generous with those). A quick edit of /etc/fstab and a restart and things were looking in better shape:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">pi@raspberrypi:~$ free -m
+             total       used       free     shared    buffers     cached
+Mem:           186         29        157          0          1         11
+-/+ buffers/cache:         16        169
+Swap:         1981          0       1981</pre>
+<p>Next to start up the management node and 1 data node on the Pi as well as a second data node on the Linux server &#8220;ws2&#8221; (I want High Availability after all &#8211; OK so running the management node on the same host as a data node is a single point of failure)&#8230;</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">pi@raspberrypi:~/mysql$ ndb_mgmd -f conf/config.ini --configdir=/home/pi/mysql/conf/ --initial
+pi@raspberrypi:~/mysql$ ndbd
+billy@ws2:~$ ndbd -c 192.168.1.122:1186</pre>
+<p>I could then confirm that everything was up and running:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">pi@raspberrypi:~$ ndb_mgm -e show
+Connected to Management Server at: localhost:1186
+Cluster Configuration
+---------------------
+[ndbd(NDB)]     2 node(s)
+id=3    @192.168.1.122  (mysql-5.5.22 ndb-7.2.6, Nodegroup: 0, Master)
+id=4    @192.168.1.118  (mysql-5.5.22 ndb-7.2.6, Nodegroup: 0)
+
+[ndb_mgmd(MGM)] 1 node(s)
+id=1    @192.168.1.122  (mysql-5.5.22 ndb-7.2.6)
+
+[mysqld(API)]   5 node(s)
+id=50 (not connected, accepting connect from any host)
+id=51 (not connected, accepting connect from any host)
+id=52 (not connected, accepting connect from any host)
+id=53 (not connected, accepting connect from any host)
+id=54 (not connected, accepting connect from any host)</pre>
+<p>Cool!</p>
+<p>Next step is to run a MySQL Server so that I can actually test the Cluster &#8211; if I tried running that on the Pi then it caused problems (157 Mbytes of RAM doesn&#8217;t stretch as far as it used to) &#8211; on ws2:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">billy@ws2:~/my_cluster$ cat conf/my.cnf
+[mysqld]
+ndbcluster
+datadir=/home/billy/my_cluster/mysqld_data
+ndb-connectstring=192.168.1.122:1186
+
+billy@ws2:~/my_cluster$ mysqld --defaults-file=conf/my.cnf&amp;</pre>
+<p>Check that it really has connected to the Cluster:</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">pi@raspberrypi:~/mysql$ ndb_mgm -e show
+Connected to Management Server at: localhost:1186
+Cluster Configuration
+---------------------
+[ndbd(NDB)]     2 node(s)
+id=3    @192.168.1.122  (mysql-5.5.22 ndb-7.2.6, Nodegroup: 0, Master)
+id=4    @192.168.1.118  (mysql-5.5.22 ndb-7.2.6, Nodegroup: 0)
+
+[ndb_mgmd(MGM)] 1 node(s)
+id=1    @192.168.1.122  (mysql-5.5.22 ndb-7.2.6)
+
+[mysqld(API)]   5 node(s)
+id=50   @192.168.1.118  (mysql-5.5.22 ndb-7.2.6)
+id=51 (not connected, accepting connect from any host)
+id=52 (not connected, accepting connect from any host)
+id=53 (not connected, accepting connect from any host)
+id=54 (not connected, accepting connect from any host)</pre>
+<p>Finally, just need to check that I can read and write data&#8230;</p>
+<pre style="font: normal normal normal 12px/18px Consolas, Monaco, 'Courier New', Courier, monospace; padding-left: 30px; color: #000080;">billy@ws2:~/my_cluster$ mysql -h 127.0.0.1 -P3306 -u root
+mysql&gt; CREATE DATABASE clusterdb;USE clusterdb;
+Query OK, 1 row affected (0.24 sec)
+
+Database changed
+mysql&gt; CREATE TABLE simples (id INT NOT NULL PRIMARY KEY) engine=ndb;
+120601 13:30:20 [Note] NDB Binlog: CREATE TABLE Event: REPL$clusterdb/simples
+Query OK, 0 rows affected (10.13 sec)
+
+mysql&gt; REPLACE INTO simples VALUES (1),(2),(3),(4);
+Query OK, 4 rows affected (0.04 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql&gt; SELECT * FROM simples;
++----+
+| id |
++----+
+|  1 |
+|  2 |
+|  4 |
+|  3 |
++----+
+4 rows in set (0.09 sec)</pre>
+<p>OK &#8211; so is there any real application to this? Well, probably not other than providing a cheap development environment &#8211; imagine scaling out to 48 data nodes, that would cost $1,680 (+ the cost of some SD cards)! More practically might be management nodes &#8211; we know that they need very few resources. As a reminder &#8211; this is not a supported platform!</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql-cluster/mysql-cluster-running-on-raspberry-pi/feed</wfw:commentRss>
+			<slash:comments>19</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>

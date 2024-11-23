@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	Comments on: New white paper: Guide to Optimizing Performance of the MySQL Cluster Database	</title>
+	<atom:link href="/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database/feed" rel="self" type="application/rss+xml" />
+	<link>/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 22 Dec 2009 17:44:33 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>
+		By: admin		</title>
+		<link>/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database#comment-271</link>
+
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Tue, 22 Dec 2009 17:44:33 +0000</pubDate>
+		<guid isPermaLink="false">/?p=779#comment-271</guid>
+
+					<description><![CDATA[In reply to &lt;a href=&quot;/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database#comment-270&quot;&gt;John DePietro&lt;/a&gt;.
+
+Hi John,
+
+ I don&#039;t have any material comparing the products but the fundamental technology differences are:
+
+ - Oracle RAC is a shared-everything Clustering solution; the up-side is that every node in
+   the cluster can see all of the data which may help when you have a query that needs to
+   traverse all of the data. The downside is that the shared storage can be more expensive
+   and recovery from failures may take longer.
+ - MySQL Cluster is shared-nothing. The advantage is that you can scale-out with low cost
+   hardware and recovery from failures is &lt;strong&gt;extremely &lt;/strong&gt;fast. Downsides
+   are that complex joins can be slow as the data is distributed amongst the data nodes.
+ - TimesTen is most typically used as a cache sitting between the application and an 
+   Oracle database. TT (at least the last time I checked) doesn&#039;t scale horizontally
+
+Regards, Andrew.]]></description>
+			<content:encoded><![CDATA[<p>In reply to <a href="/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database#comment-270">John DePietro</a>.</p>
+<p>Hi John,</p>
+<p> I don&#8217;t have any material comparing the products but the fundamental technology differences are:</p>
+<p> &#8211; Oracle RAC is a shared-everything Clustering solution; the up-side is that every node in<br />
+   the cluster can see all of the data which may help when you have a query that needs to<br />
+   traverse all of the data. The downside is that the shared storage can be more expensive<br />
+   and recovery from failures may take longer.<br />
+ &#8211; MySQL Cluster is shared-nothing. The advantage is that you can scale-out with low cost<br />
+   hardware and recovery from failures is <strong>extremely </strong>fast. Downsides<br />
+   are that complex joins can be slow as the data is distributed amongst the data nodes.<br />
+ &#8211; TimesTen is most typically used as a cache sitting between the application and an<br />
+   Oracle database. TT (at least the last time I checked) doesn&#8217;t scale horizontally</p>
+<p>Regards, Andrew.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		By: John DePietro		</title>
+		<link>/mysql-cluster/new-white-paper-guide-to-optimizing-performance-of-the-mysql-cluster-database#comment-270</link>
+
+		<dc:creator><![CDATA[John DePietro]]></dc:creator>
+		<pubDate>Tue, 22 Dec 2009 12:30:56 +0000</pubDate>
+		<guid isPermaLink="false">/?p=779#comment-270</guid>
+
+					<description><![CDATA[Does Sun have information regarding comparison of MySQL vs. Oracle and TimesTen DB Clustering?
+
+Do you know of any independent evaluations that could be helpful for comparison purpose?]]></description>
+			<content:encoded><![CDATA[<p>Does Sun have information regarding comparison of MySQL vs. Oracle and TimesTen DB Clustering?</p>
+<p>Do you know of any independent evaluations that could be helpful for comparison purpose?</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

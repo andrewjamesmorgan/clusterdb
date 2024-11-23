@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>OVM &#8211; Andrew Morgan on Databases</title>
+	<atom:link href="/tag/ovm/feed" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Database technologies - especially around scalability and High Availability</description>
+	<lastBuildDate>Tue, 28 Jun 2011 15:44:55 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	
+	<item>
+		<title>White Paper &#8211; Oracle VM Template for MySQL Enterprise Edition</title>
+		<link>/mysql/white-paper-oracle-vm-template-for-mysql-enterprise-edition</link>
+					<comments>/mysql/white-paper-oracle-vm-template-for-mysql-enterprise-edition#respond</comments>
+		
+		<dc:creator><![CDATA[andrew]]></dc:creator>
+		<pubDate>Tue, 28 Jun 2011 15:44:55 +0000</pubDate>
+				<category><![CDATA[MySQL]]></category>
+		<category><![CDATA[HA]]></category>
+		<category><![CDATA[High Availability]]></category>
+		<category><![CDATA[Oracle Virtual Machine]]></category>
+		<category><![CDATA[OVM]]></category>
+		<guid isPermaLink="false">/?p=1861</guid>
+
+					<description><![CDATA[A new white paper is available that steps you though the benefits and the use of the Oracle VM Template for MySQL Enterprise Edition (also see yesterday&#8217;s press announcement). Get the white paper here. As a reminder Oracle Virtual Manager provides a way to add High Availability to your MySQL deployment (this is separate from]]></description>
+										<content:encoded><![CDATA[<p><div id="attachment_1863" style="width: 310px" class="wp-caption alignright"><a href="/wp-content/uploads/2011/06/MySQL_OVM_HA.jpg"><img decoding="async" aria-describedby="caption-attachment-1863" src="/wp-content/uploads/2011/06/MySQL_OVM_HA-300x149.jpg" alt="" title="MySQL_OVM_HA" width="300" height="149" class="size-medium wp-image-1863" /></a><p id="caption-attachment-1863" class="wp-caption-text">HA Provided by OVM</p></div>A new white paper is available that steps you though the benefits and the use of the Oracle VM Template for MySQL Enterprise Edition (also see <a href="/mysql/new-oracle-vm-template-for-mysql-enterprise-edition/">yesterday&#8217;s press announcement</a>). <a href="http://www.mysql.com/why-mysql/white-papers/mysql_wp_oracle-vm-template-for-mee.php">Get the white paper here</a>.</p>
+<p>As a reminder Oracle Virtual Manager provides a way to add High Availability to your MySQL deployment (this is separate from MySQL Replication and MySQL Cluster). The new OVM template provides a very convenient way to create one or more Virtual Machines that come pre-provisioned with OVM, Oracle Linux and MySQL Enterprise Edition as well as the scripts required to integrate MySQL into OVM&#8217;s HA features.</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>/mysql/white-paper-oracle-vm-template-for-mysql-enterprise-edition/feed</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
