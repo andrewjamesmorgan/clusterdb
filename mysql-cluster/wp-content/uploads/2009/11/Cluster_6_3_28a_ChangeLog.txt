@@ -1,0 +1,755 @@
+------------------------------------------------------------
+revno: 3146
+tags: clone-mysql-5.1.39-ndb-6.3.28a-src-build
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: 6.3.28a
+timestamp: Wed 2009-11-04 16:09:40 +0100
+message:
+  ndb - bug#48531
+------------------------------------------------------------
+revno: 3145
+tags: clone-mysql-5.1.39-ndb-6.3.28-src-build, mysql-5.1.39-ndb-6.3.28
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Fri 2009-10-30 09:16:03 +0100
+message:
+  ndb - backport testUpgrade to 63 from 70, to have them equal
+------------------------------------------------------------
+revno: 3144
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Fri 2009-10-30 09:09:39 +0100
+message:
+  ndb - bug-48416 6.3 test prg
+------------------------------------------------------------
+revno: 3143
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 6.3
+timestamp: Tue 2009-10-27 17:47:28 +0100
+message:
+  Merge
+    ------------------------------------------------------------
+    revno: 2572.69.21
+    committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+    branch nick: 6.2
+    timestamp: Tue 2009-10-27 17:44:30 +0100
+    message:
+      funcs_1.ndb_views
+       - fails randomly, add some extra queries hopefully making it
+         possible to see which step fails.
+       - unfortunately need to update .result file for all engines
+------------------------------------------------------------
+revno: 3142
+committer: Frazer Clement <frazer@mysql.com>
+branch nick: mysql-5.1-telco-6.3
+timestamp: Tue 2009-10-27 14:22:57 +0000
+message:
+  Merge 6.2->6.3
+    ------------------------------------------------------------
+    revno: 2572.69.20
+    committer: Frazer Clement <frazer@mysql.com>
+    branch nick: mysql-5.1-telco-6.2
+    timestamp: Tue 2009-10-27 13:32:00 +0000
+    message:
+      Bug#46955 : Extend fix to libmysqld
+------------------------------------------------------------
+revno: 3141
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Tue 2009-10-27 14:10:32 +0100
+message:
+  ndb - fix so that UtilTransactions::selectCount() can handle temporary errors
+------------------------------------------------------------
+revno: 3140
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Tue 2009-10-27 11:10:08 +0100
+message:
+  ndb - minor test prg cleanup
+        fix duplicate ERROR_CODE
+------------------------------------------------------------
+revno: 3139
+committer: Frazer Clement <frazer@mysql.com>
+branch nick: mysql-5.1-telco-6.3
+timestamp: Mon 2009-10-26 20:40:34 +0000
+message:
+  Merge 6.2->6.3
+    ------------------------------------------------------------
+    revno: 2572.69.19
+    committer: Frazer Clement <frazer@mysql.com>
+    branch nick: mysql-5.1-telco-6.2
+    timestamp: Mon 2009-10-26 20:02:17 +0000
+    message:
+      Bug48040 : Ndb : TC trigger infinite loop in abort scenario
+------------------------------------------------------------
+revno: 3138
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: mysql-5.1-telco-6.3
+timestamp: Mon 2009-10-26 16:36:03 +0100
+message:
+  Merge
+    ------------------------------------------------------------
+    revno: 3134.1.2
+    committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+    branch nick: 6.3
+    timestamp: Mon 2009-10-26 16:32:29 +0100
+    message:
+      Merge
+        ------------------------------------------------------------
+        revno: 2572.69.18
+        committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+        branch nick: 6.2
+        timestamp: Mon 2009-10-26 16:16:52 +0100
+        message:
+          ndb - don't use --binlog-format if a particular mysqld in the configuration doesn't use log-bin
+        ------------------------------------------------------------
+        revno: 2572.69.17
+        committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+        branch nick: 6.2
+        timestamp: Mon 2009-10-26 15:07:51 +0100
+        message:
+          ndb - update  missed .result files after fixing that SHOW CREATE TABLE prints AUTO_INCREMENT
+    ------------------------------------------------------------
+    revno: 3134.1.1
+    committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+    branch nick: 6.3
+    timestamp: Mon 2009-10-26 14:18:25 +0100
+    message:
+      Merge
+    ------------------------------------------------------------
+    revno: 2572.69.16
+    committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+    branch nick: 6.2
+    timestamp: Mon 2009-10-26 14:15:42 +0100
+    message:
+      Merge bug47243 to -telco trees
+------------------------------------------------------------
+revno: 3137
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Mon 2009-10-26 15:21:02 +0100
+message:
+  ndb - improve error reporting when head-tail meets in REDO log
+------------------------------------------------------------
+revno: 3136
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Mon 2009-10-26 15:06:50 +0100
+message:
+  ndb - run testcase on all tables
+------------------------------------------------------------
+revno: 3135
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Mon 2009-10-26 09:53:31 +0100
+message:
+  ndb - fix testSystemRestart -n to
+    create/destory event-handle to get "fresh" LCP ids
+------------------------------------------------------------
+revno: 3134
+committer: Frazer Clement <frazer@mysql.com>
+branch nick: mysql-5.1-telco-6.3
+timestamp: Fri 2009-10-23 20:08:09 +0100
+message:
+  Merge 6.2->6.3
+    ------------------------------------------------------------
+    revno: 2572.69.15
+    committer: Frazer Clement <frazer@mysql.com>
+    branch nick: mysql-5.1-telco-6.2
+    timestamp: Fri 2009-10-23 18:49:51 +0100
+    message:
+      Fix for issues with new --ndb-wait-setup option and embedded MySQLD
+------------------------------------------------------------
+revno: 3133
+committer: Frazer Clement <frazer@mysql.com>
+branch nick: mysql-5.1-telco-6.3
+timestamp: Fri 2009-10-23 17:08:33 +0100
+message:
+  Merge 6.2->6.3
+    ------------------------------------------------------------
+    revno: 2572.69.14
+    committer: Frazer Clement <frazer@mysql.com>
+    branch nick: mysql-5.1-telco-6.2
+    timestamp: Fri 2009-10-23 16:54:00 +0100
+    message:
+      Fix warning in libmysqld - release compile
+    ------------------------------------------------------------
+    revno: 2572.69.13
+    committer: Frazer Clement <frazer@mysql.com>
+    branch nick: mysql-5.1-telco-6.2
+    timestamp: Fri 2009-10-23 16:48:55 +0100
+    message:
+      Bug#45768 : GCOV testing hits assert: NdbBlob::preCommit assert(theState == Active) 
+------------------------------------------------------------
+revno: 3132
+committer: Frazer Clement <frazer@mysql.com>
+branch nick: mysql-5.1-telco-6.3
+timestamp: Fri 2009-10-23 15:31:33 +0100
+message:
+  Merge 6.2->6.3
+    ------------------------------------------------------------
+    revno: 2572.69.12
+    committer: Frazer Clement <frazer@mysql.com>
+    branch nick: mysql-5.1-telco-6.2
+    timestamp: Fri 2009-10-23 15:02:54 +0100
+    message:
+      Bug#46955 Slave thread starting before cluster storage engine is ready on mysqld restart
+------------------------------------------------------------
+revno: 3131
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Fri 2009-10-23 14:59:29 +0200
+message:
+  ndb - bug#48266 - use correct constant for MAX_READ
+------------------------------------------------------------
+revno: 3130
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Fri 2009-10-23 13:37:58 +0200
+message:
+  ndb - fix bug with multi-page caching, where pages could be linked incorrectly, with ndbrequire as a consequence
+------------------------------------------------------------
+revno: 3129
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Thu 2009-10-22 13:09:33 +0200
+message:
+  ndb - add extra logging = 99, track down brown/smelly code
+------------------------------------------------------------
+revno: 3128
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Thu 2009-10-22 08:14:00 +0200
+message:
+  merge 62 to 63
+    ------------------------------------------------------------
+    revno: 2572.69.11
+    committer: Jonas Oreland <jonas@mysql.com>
+    branch nick: telco-6.2
+    timestamp: Thu 2009-10-22 08:13:16 +0200
+    message:
+      ndb - mimic mainline and disable pl_get_master_version_and_clock
+------------------------------------------------------------
+revno: 3127
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 6.3
+timestamp: Wed 2009-10-21 21:00:18 +0200
+message:
+  ndb - use the more common synonym AF_UNIX instead of AF_LOCAL
+------------------------------------------------------------
+revno: 3126
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Wed 2009-10-21 16:06:50 +0200
+message:
+  ndb - "fix" for race in offline alter
+------------------------------------------------------------
+revno: 3125
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Wed 2009-10-21 13:11:32 +0200
+message:
+  ndb - delay drop-table so that it's alone in epoch
+    so that stupid handler doesnt drop events
+    (which it does wo/ checking if there is data...)
+------------------------------------------------------------
+revno: 3124
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Wed 2009-10-21 10:40:24 +0200
+message:
+  ndb - revert work-arounds, that was cause to m_noOfSection vs sendWithDelay
+------------------------------------------------------------
+revno: 3123
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Wed 2009-10-21 10:32:09 +0200
+message:
+  merge 62 to 63
+    ------------------------------------------------------------
+    revno: 2572.69.10
+    committer: Jonas Oreland <jonas@mysql.com>
+    branch nick: telco-6.2
+    timestamp: Wed 2009-10-21 10:30:38 +0200
+    message:
+      ndb - fix super unlikely race-condition "slampkrypare"
+        1) sendSignalWithDelay() with sections
+        later
+        2) scedule-time-queue puts it in to timequeue
+        3) sendPacked() is called directly afterwards
+      
+      The the signal-object use in sendPacked will have m_noOfSections > 0
+      Which can cause weird weird weird effect
+------------------------------------------------------------
+revno: 3122
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Wed 2009-10-21 09:42:27 +0200
+message:
+  ndb - review comments
+    1) fix comment
+    2) use initialized static char instead of uninitialized char in TransporterRegistry::wakeup()
+------------------------------------------------------------
+revno: 3121
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Wed 2009-10-21 01:15:22 +0200
+message:
+  ndb - uninitialized variable
+------------------------------------------------------------
+revno: 3120
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Tue 2009-10-20 23:39:41 +0200
+message:
+  ndb - fix weird unhandled-sections-after-execute assertion
+------------------------------------------------------------
+revno: 3119
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Tue 2009-10-20 22:13:47 +0200
+message:
+  ndb - redo optimizations for back-tracking
+------------------------------------------------------------
+revno: 3118
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Tue 2009-10-20 22:06:22 +0200
+message:
+  ndb - make AsyncFile-thread wakeup main-thread when having data available
+------------------------------------------------------------
+revno: 3117
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Tue 2009-10-20 21:19:19 +0200
+message:
+  ndb - add facility to SimulatedBlock that enables wakeup of potentially sleeping (main-)thread
+------------------------------------------------------------
+revno: 3116
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Tue 2009-10-20 20:35:05 +0200
+message:
+  ndb - fix compiler warning and close extra sockets during shutdown
+------------------------------------------------------------
+revno: 3115
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Tue 2009-10-20 20:19:00 +0200
+message:
+  ndb - TransporterRegistry::wakeup
+    This patch introduces the feature of waking up a thread blocking on IO
+      by introducing a socket-pair, that 1 byte is written to
+------------------------------------------------------------
+revno: 3114
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Tue 2009-10-20 18:06:26 +0200
+message:
+  merge 62 to 63
+    ------------------------------------------------------------
+    revno: 2572.69.9
+    committer: Pekka Nousiainen <pekka@mysql.com>
+    branch nick: my51-ddsr62
+    timestamp: Tue 2009-10-20 18:11:38 +0300
+    message:
+      bug#47832 01_lcp.diff
+      Fix un-initialized scan position of LCP scan of empty fragment and
+      make the scan state a bit more explicit.
+------------------------------------------------------------
+revno: 3113
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Tue 2009-10-20 14:46:21 +0200
+message:
+  merge 62 to 63
+    ------------------------------------------------------------
+    revno: 2572.69.8
+    committer: Jonas Oreland <jonas@mysql.com>
+    branch nick: telco-6.2
+    timestamp: Tue 2009-10-20 14:44:56 +0200
+    message:
+      ndb - fix newly introduced compiler warnings
+------------------------------------------------------------
+revno: 3112
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Tue 2009-10-20 14:13:40 +0200
+message:
+  merge 62 to 63
+    ------------------------------------------------------------
+    revno: 2572.69.7
+    committer: Jonas Oreland <jonas@mysql.com>
+    branch nick: telco-6.2
+    timestamp: Tue 2009-10-20 14:10:49 +0200
+    message:
+      ndb - bug#48037
+        Fix various abort cases with indexes that could in worst case 
+          cause node-failure
+------------------------------------------------------------
+revno: 3111
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Mon 2009-10-19 11:12:45 +0200
+message:
+  merge 62 to 63
+    ------------------------------------------------------------
+    revno: 2572.69.6
+    committer: Jonas Oreland <jonas@mysql.com>
+    branch nick: telco-6.2
+    timestamp: Mon 2009-10-19 11:10:42 +0200
+    message:
+      ndb - change DLCFifoList to inherit protected, so that one does not forget to add new methods to it too when adding methods to DLFifoList, like was done with addFirst/addLast etc
+------------------------------------------------------------
+revno: 3110
+committer: Frazer Clement <frazer@mysql.com>
+branch nick: mysql-5.1-telco-6.3
+timestamp: Fri 2009-10-16 21:40:17 +0100
+message:
+  Merge 6.2->6.3
+    ------------------------------------------------------------
+    revno: 2572.69.5
+    committer: Frazer Clement <frazer@mysql.com>
+    branch nick: mysql-5.1-telco-6.2
+    timestamp: Fri 2009-10-16 16:37:14 +0100
+    message:
+      Bug#48113 : Ndb : Insert hitting DD space exhaustion does not lock following tuple ops
+------------------------------------------------------------
+revno: 3109
+committer: Martin Skold <Martin.Skold@mysql.com>
+branch nick: mysql-5.1-telco-6.3
+timestamp: Thu 2009-10-15 18:54:54 +0200
+message:
+  Merge
+    ------------------------------------------------------------
+    revno: 2572.69.4
+    committer: Martin Skold <Martin.Skold@mysql.com>
+    branch nick: mysql-5.1-telco-6.2
+    timestamp: Thu 2009-10-15 17:45:56 +0200
+    message:
+      Merge
+------------------------------------------------------------
+revno: 3108
+committer: Martin Skold <Martin.Skold@mysql.com>
+branch nick: mysql-5.1-telco-6.3
+timestamp: Thu 2009-10-15 16:12:45 +0200
+message:
+  Merge
+    ------------------------------------------------------------
+    revno: 3103.1.1
+    committer: Jonas Oreland <jonas@mysql.com>
+    branch nick: telco-6.3
+    timestamp: Thu 2009-10-15 14:29:02 +0200
+    message:
+      merge 62 to 63
+    ------------------------------------------------------------
+    revno: 2572.66.20
+    committer: Jonas Oreland <jonas@mysql.com>
+    branch nick: telco-6.2
+    timestamp: Thu 2009-10-15 14:27:43 +0200
+    message:
+      ndb - add ndb_init to misc utility programs since ndbout now asserts otherwise
+------------------------------------------------------------
+revno: 3107
+committer: Martin Skold <Martin.Skold@mysql.com>
+branch nick: mysql-5.1-telco-6.3
+timestamp: Thu 2009-10-15 14:37:53 +0200
+message:
+  Bug#47955 UPDATEs using indexes that modify no rows return incorrect found rows: when we could not compare records we have to check with handler and assume found rows == updated rows
+------------------------------------------------------------
+revno: 3106
+committer: Martin Skold <Martin.Skold@mysql.com>
+branch nick: mysql-5.1-telco-6.3
+timestamp: Thu 2009-10-15 10:28:50 +0200
+message:
+  Bug#47955 UPDATEs using indexes that modify no rows return incorrect found rows: don't use updated rows to set found number of rows, added test case
+------------------------------------------------------------
+revno: 3105
+committer: Martin Skold <Martin.Skold@mysql.com>
+branch nick: mysql-5.1-telco-6.3
+timestamp: Thu 2009-10-15 10:23:13 +0200
+message:
+  Bug#48036: NDB: UPDATE IGNORE not working together with unique constraint: disable batching of updates if updating unique index, added test case
+------------------------------------------------------------
+revno: 3104
+committer: Martin Skold <Martin.Skold@mysql.com>
+branch nick: mysql-5.1-telco-6.3
+timestamp: Wed 2009-10-14 16:12:28 +0200
+message:
+  Merge
+    ------------------------------------------------------------
+    revno: 2572.69.3
+    committer: Martin Skold <Martin.Skold@mysql.com>
+    branch nick: mysql-5.1-telco-6.2
+    timestamp: Thu 2009-10-08 11:58:57 +0200
+    message:
+      Bug#47865 SHOW CREATE TABLE does not show the current auto_increment number for ndb tables: added test case
+    ------------------------------------------------------------
+    revno: 2572.69.2
+    committer: Martin Skold <Martin.Skold@mysql.com>
+    branch nick: mysql-5.1-telco-6.2
+    timestamp: Thu 2009-10-08 11:48:07 +0200
+    message:
+      Bug#47865  SHOW CREATE TABLE does not show the current auto_increment number for ndb tables: reading auto_increment value in ha_ndbcluster::update_create_info
+    ------------------------------------------------------------
+    revno: 2572.69.1
+    committer: Martin Skold <Martin.Skold@mysql.com>
+    branch nick: mysql-5.1-telco-6.2
+    timestamp: Wed 2009-10-07 17:53:06 +0200
+    message:
+      Bug#35990 Error code 1062 to 1296 (unknown) after setting sql_mode to STRICT_TRANS_TABLES: Disable ndb error warnings in strict mode
+------------------------------------------------------------
+revno: 3103
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Mon 2009-10-12 14:02:16 +0200
+message:
+  merge 62 to 63
+    ------------------------------------------------------------
+    revno: 2572.66.19
+    committer: Jonas Oreland <jonas@mysql.com>
+    branch nick: telco-6.2
+    timestamp: Mon 2009-10-12 13:47:31 +0200
+    message:
+      ndb - remove testcase that fails spuriously
+        and I can't figure out what it's trying to do...
+------------------------------------------------------------
+revno: 3102
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Mon 2009-10-12 12:20:47 +0200
+message:
+  merge 62 to 63
+    ------------------------------------------------------------
+    revno: 2572.66.18
+    committer: Jonas Oreland <jonas@mysql.com>
+    branch nick: telco-6.2
+    timestamp: Mon 2009-10-12 12:13:09 +0200
+    message:
+      ndb - bug#45964 - remove usage of NdbScanOperation::restart from examples
+------------------------------------------------------------
+revno: 3101
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Mon 2009-10-12 08:21:54 +0200
+message:
+  ndb - bug#47984 - move mem allocation to thread
+------------------------------------------------------------
+revno: 3100
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Mon 2009-10-12 07:50:32 +0200
+message:
+  merge 62 to 63
+    ------------------------------------------------------------
+    revno: 2572.66.17
+    committer: Jonas Oreland <jonas@mysql.com>
+    branch nick: telco-6.2
+    timestamp: Mon 2009-10-12 07:43:10 +0200
+    message:
+      ndb - bug#47935 - fix incorrect assertion on backup replica when getting ZTUPLE_ALREADY_EXIST
+------------------------------------------------------------
+revno: 3099
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 6.3
+timestamp: Fri 2009-10-09 16:58:08 +0200
+message:
+  Bug#47948 ndb_mgmd fails to stop other ndb_mgmd
+   - Rewrite code to be endian safe, avoid cat from Uint16* to int*
+------------------------------------------------------------
+revno: 3098
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 6.3
+timestamp: Fri 2009-10-09 15:09:38 +0200
+message:
+  Merge
+    ------------------------------------------------------------
+    revno: 2572.66.16
+    committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+    branch nick: 6.2
+    timestamp: Fri 2009-10-09 12:13:10 +0200
+    message:
+      Merge
+    ------------------------------------------------------------
+    revno: 2572.68.1
+    committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+    branch nick: 6.2-bug38502
+    timestamp: Thu 2009-09-24 18:17:14 +0200
+    message:
+      Bug#38502 NDB_PORT cause ndb_mgmd fail
+       - Detect the case when "./configure --with-ndb-port"  is used without
+         a portnumber(or something) actually supplied.
+       - Cleanup the usage of NDB_PORT by putting it in [my_]config.h
+       - Remove some sprintf by using preprocessor macros for building
+         the default connect string as well as string variants of the
+         port number.
+       - Quite sure that the compiler will now complain if the port is
+         not a number.
+------------------------------------------------------------
+revno: 3097
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 6.3
+timestamp: Fri 2009-10-09 11:19:46 +0200
+message:
+  Merge
+    ------------------------------------------------------------
+    revno: 2572.66.15
+    committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+    branch nick: 6.2
+    timestamp: Fri 2009-10-09 11:13:43 +0200
+    message:
+      Merge
+    ------------------------------------------------------------
+    revno: 2572.66.14
+    committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+    branch nick: 6.2
+    timestamp: Fri 2009-10-09 11:09:48 +0200
+    message:
+      Merge
+------------------------------------------------------------
+revno: 3096
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 6.3
+timestamp: Fri 2009-10-09 11:09:56 +0200
+message:
+  Merge
+    ------------------------------------------------------------
+    revno: 3094.1.1
+    committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+    branch nick: 6.3
+    timestamp: Thu 2009-10-08 13:41:21 +0200
+    message:
+      Merge bug#46113 to 6.3
+    ------------------------------------------------------------
+    revno: 2572.67.1
+    committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+    branch nick: 6.2
+    timestamp: Thu 2009-10-08 11:55:36 +0200
+    message:
+      Bug#46113 ndbd fails to start when built with gcc-4.4.0 (e.g Fedora 11)
+       - Add macro for checking that type T does have a user defined constructor.
+       - Use macro in DLList.hpp, DLFifoList.hpp and DLHashTable.hpp
+       - Add empty constructors to the structs that are put in the above lists
+         (that the compiler now detects if using -std=c++0x)
+------------------------------------------------------------
+revno: 3095
+committer: Frazer Clement <frazer@mysql.com>
+branch nick: mysql-5.1-telco-6.3
+timestamp: Thu 2009-10-08 11:29:46 +0100
+message:
+  Merge 6.2->6.3
+    ------------------------------------------------------------
+    revno: 2572.66.13
+    committer: Frazer Clement <frazer@mysql.com>
+    branch nick: mysql-5.1-telco-6.2
+    timestamp: Thu 2009-10-08 11:19:19 +0100
+    message:
+      Bug#44607 : Ndb : Fragmented long signals need node failure handling code
+------------------------------------------------------------
+revno: 3094
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Thu 2009-10-08 08:24:59 +0200
+message:
+  ndb - bug#47908 - store mbyte pos as Uint16 to allow >256M FragmentLogFileSize
+------------------------------------------------------------
+revno: 3093
+committer: Frazer Clement <frazer@mysql.com>
+branch nick: mysql-5.1-telco-6.3
+timestamp: Wed 2009-10-07 18:16:52 +0100
+message:
+  Merge 6.2->6.3
+    ------------------------------------------------------------
+    revno: 2572.66.12
+    committer: Frazer Clement <frazer@mysql.com>
+    branch nick: mysql-5.1-telco-6.2
+    timestamp: Wed 2009-10-07 17:27:03 +0100
+    message:
+      Bug#46662 : Ndb : mysqlbinlog fails to apply update to table with unique index
+    ------------------------------------------------------------
+    revno: 2572.66.11
+    committer: Frazer Clement <frazer@mysql.com>
+    branch nick: mysql-5.1-telco-6.2
+    timestamp: Wed 2009-10-07 17:26:17 +0100
+    message:
+      Bug#47674 : MySQL Cluster : Manually applying binlog zaps unmodified columns
+------------------------------------------------------------
+revno: 3092
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 6.3
+timestamp: Wed 2009-10-07 16:13:32 +0200
+message:
+  Merge
+    ------------------------------------------------------------
+    revno: 2572.66.10
+    committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+    branch nick: 6.2-bug46113
+    timestamp: Wed 2009-10-07 16:08:22 +0200
+    message:
+      Bug#46113 ndbd fails to start when built with gcc-4.4.0 (e.g Fedora 11)
+       - Make DataBuffer.hpp strict aliasing safe
+------------------------------------------------------------
+revno: 3091
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Wed 2009-10-07 10:03:09 +0200
+message:
+  ndb - merge 62 to 63
+    ------------------------------------------------------------
+    revno: 2572.66.9
+    committer: Jonas Oreland <jonas@mysql.com>
+    branch nick: telco-6.2
+    timestamp: Wed 2009-10-07 09:32:39 +0200
+    message:
+      ndb - use high (and lo) node id's in mtr
+        to catch disasters like bug-47844
+------------------------------------------------------------
+revno: 3090
+committer: Martin Zaun <martin.zaun@sun.com>
+branch nick: ndb-6.3
+timestamp: Tue 2009-10-06 19:41:41 -0700
+message:
+  Merged from ndb-6.2 to ndb-6.3
+    ------------------------------------------------------------
+    revno: 2572.66.8
+    committer: Martin Zaun <martin.zaun@sun.com>
+    branch nick: ndb-6.2
+    timestamp: Tue 2009-10-06 19:21:54 -0700
+    message:
+      ndb - bug44798 - fixed unnecessary non-const overloaded member functions causing Java name clashes.
+------------------------------------------------------------
+revno: 3089
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Tue 2009-10-06 16:11:14 +0200
+message:
+  merge 62 to 63
+    ------------------------------------------------------------
+    revno: 2572.66.7
+    committer: Jonas Oreland <jonas@mysql.com>
+    branch nick: telco-6.2
+    timestamp: Tue 2009-10-06 15:29:45 +0200
+    message:
+      ndb - bug#47816 - handle api-fail-req with nodeid > 49
+    ------------------------------------------------------------
+    revno: 2572.66.6
+    committer: Jonas Oreland <jonas@mysql.com>
+    branch nick: telco-6.2
+    timestamp: Tue 2009-10-06 15:10:55 +0200
+    message:
+      ndb - fix bad backport of bug-47782
+------------------------------------------------------------
+revno: 3088
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-6.3
+timestamp: Tue 2009-10-06 16:10:05 +0200
+message:
+  ndb - merge 6.3.27a
+    ------------------------------------------------------------
+    revno: 3071.1.2
+    tags: mysql-5.1.37-ndb-6.3.27a, clone-mysql-5.1.37-ndb-6.3.27a-src-build
+    committer: Jonas Oreland <jonas@mysql.com>
+    branch nick: 6.3.27
+    timestamp: Tue 2009-10-06 16:08:36 +0200
+    message:
+      ndb - dump version to 6.3.27a

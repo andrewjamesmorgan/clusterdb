@@ -1,0 +1,622 @@
+------------------------------------------------------------
+revno: 3630
+tags: clone-mysql-5.1.44-ndb-7.1.4b-src-build
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: 7.1.4
+timestamp: Wed 2010-06-09 11:49:52 +0200
+message:
+  ndb - 7.1.4b
+------------------------------------------------------------
+revno: 3629 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: 7.1.4
+timestamp: Wed 2010-06-09 11:29:49 +0200
+message:
+  ndb - merge 7.0.15b
+------------------------------------------------------------
+revno: 3628
+tags: mysql-5.1.44-ndb-7.1.4a, clone-mysql-5.1.44-ndb-7.1.4a-src-build
+committer: jonas@mysql.com
+branch nick: mysql-5.1-telco-7.1.4
+timestamp: Tue 2010-06-08 23:00:20 +0200
+message:
+  ndb - 7.1.4a
+------------------------------------------------------------
+revno: 3627 [merge]
+committer: jonas@mysql.com
+branch nick: mysql-5.1-telco-7.1.4
+timestamp: Tue 2010-06-08 22:58:31 +0200
+message:
+  ndb - merge 7.0.15a into 7.1.4
+------------------------------------------------------------
+revno: 3626 [merge]
+tags: mysql-5.1.44-ndb-7.1.4, clone-mysql-5.1.44-ndb-7.1.4-src-build
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Thu 2010-05-27 14:40:36 +0200
+message:
+  ndb - merge 70 to 71
+------------------------------------------------------------
+revno: 3625 [merge]
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 7.1
+timestamp: Wed 2010-05-26 12:50:03 +0200
+message:
+  Merge 7.0 -> 7.1
+------------------------------------------------------------
+revno: 3624 [merge]
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 7.1
+timestamp: Wed 2010-05-26 11:55:37 +0200
+message:
+  Merge 7.0 -> 7.1
+------------------------------------------------------------
+revno: 3623 [merge]
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 7.1
+timestamp: Wed 2010-05-26 11:14:22 +0200
+message:
+  Merge 7.0 -> 7.1
+------------------------------------------------------------
+revno: 3622 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Tue 2010-05-25 14:14:54 +0200
+message:
+  ndb - merge 70 to 71
+------------------------------------------------------------
+revno: 3621 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Mon 2010-05-24 17:10:52 +0200
+message:
+  ndb - merge 70 to 71
+------------------------------------------------------------
+revno: 3620 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Mon 2010-05-24 11:52:56 +0200
+message:
+  ndb - merge 70 to 71
+------------------------------------------------------------
+revno: 3619 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Mon 2010-05-24 10:59:28 +0200
+message:
+  ndb - merge 70 to 71
+------------------------------------------------------------
+revno: 3618 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Mon 2010-05-24 10:14:45 +0200
+message:
+  ndb - merge 70 to 71
+------------------------------------------------------------
+revno: 3617 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Mon 2010-05-24 10:05:34 +0200
+message:
+  ndb - merge 70 to 71
+------------------------------------------------------------
+revno: 3616 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Mon 2010-05-24 09:46:56 +0200
+message:
+  ndb - merge 70 to 71
+------------------------------------------------------------
+revno: 3615 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Sun 2010-05-23 21:13:45 +0200
+message:
+  ndb - merge 70 to 71
+------------------------------------------------------------
+revno: 3614
+committer: Jorgen Austvik <jorgen.austvik@sun.com>
+branch nick: 5.1-telco-7.1
+timestamp: Fri 2010-05-21 14:33:32 +0200
+message:
+  Experiment to find root cause of windows PB2 crashes
+------------------------------------------------------------
+revno: 3613
+committer: Bernd Ocklin <bernhard.ocklin@sun.com>
+branch nick: 71w
+timestamp: Fri 2010-05-21 11:41:59 +0200
+message:
+  add cluster configure options to cmake
+------------------------------------------------------------
+revno: 3612
+committer: Jorgen Austvik <jorgen.austvik@sun.com>
+branch nick: 5.1-telco-7.1
+timestamp: Thu 2010-05-20 14:06:43 +0200
+message:
+  Experiment: disable rpl_ndb_typeconv_strict on windows to see what happens in PB2
+------------------------------------------------------------
+revno: 3611
+committer: Bernd Ocklin <bernhard.ocklin@sun.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Thu 2010-05-20 13:40:06 +0200
+message:
+  adopt java path finding to trd java path spagetti
+------------------------------------------------------------
+revno: 3610 [merge]
+committer: Frazer Clement <frazer@mysql.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Wed 2010-05-19 19:38:52 +0100
+message:
+  Merge 7.0->7.1
+------------------------------------------------------------
+revno: 3609 [merge]
+committer: Frazer Clement <frazer@mysql.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Wed 2010-05-19 17:47:10 +0100
+message:
+  Merge 7.0->7.1
+------------------------------------------------------------
+revno: 3608 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Mon 2010-05-17 08:59:22 +0200
+message:
+  merge 70 to 71
+------------------------------------------------------------
+revno: 3607 [merge]
+committer: Jorgen Austvik <jorgen.austvik@sun.com>
+branch nick: 5.1-telco-7.1
+timestamp: Fri 2010-05-14 10:23:13 +0200
+message:
+  merge from 7.0
+------------------------------------------------------------
+revno: 3606 [merge]
+committer: Jorgen Austvik <jorgen.austvik@sun.com>
+branch nick: 5.1-telco-7.1
+timestamp: Wed 2010-05-12 16:00:57 +0200
+message:
+  merge from 7.0
+------------------------------------------------------------
+revno: 3605 [merge]
+committer: Frazer Clement <frazer@mysql.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Wed 2010-05-12 14:14:50 +0100
+message:
+  Merge 7.0->7.1
+------------------------------------------------------------
+revno: 3604 [merge]
+committer: Frazer Clement <frazer@mysql.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Wed 2010-05-12 13:13:47 +0100
+message:
+  Merge 7.0->7.1
+------------------------------------------------------------
+revno: 3603 [merge]
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 7.1
+timestamp: Wed 2010-05-12 09:57:32 +0200
+message:
+  Merge 7.0 -> 7.1
+------------------------------------------------------------
+revno: 3602
+committer: Bernd Ocklin <bernhard.ocklin@sun.com>
+branch nick: 71
+timestamp: Tue 2010-05-11 09:44:25 +0200
+message:
+  add win error insert option for release builds
+------------------------------------------------------------
+revno: 3601 [merge]
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 7.1
+timestamp: Mon 2010-05-10 09:58:40 +0200
+message:
+  Merge 7.0 -> 7.1
+------------------------------------------------------------
+revno: 3600 [merge]
+committer: Martin Skold <Martin.Skold@mysql.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Mon 2010-05-10 08:27:07 +0200
+message:
+  Merge
+------------------------------------------------------------
+revno: 3599 [merge]
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 7.1
+timestamp: Fri 2010-05-07 15:33:28 +0200
+message:
+  Merge 7.0 -> 7.1
+------------------------------------------------------------
+revno: 3598 [merge]
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 7.1
+timestamp: Fri 2010-05-07 15:12:51 +0200
+message:
+  Merge 7.0 -> 7.1
+------------------------------------------------------------
+revno: 3597
+committer: Bernd Ocklin <bernhard.ocklin@sun.com>
+branch nick: 71j
+timestamp: Thu 2010-05-06 15:51:24 +0200
+message:
+  yet another try to make have_java.inc more robust
+------------------------------------------------------------
+revno: 3596 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Thu 2010-05-06 14:38:25 +0200
+message:
+  merge 71-main
+------------------------------------------------------------
+revno: 3595 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Thu 2010-05-06 14:33:53 +0200
+message:
+  merge 70 to 71
+------------------------------------------------------------
+revno: 3594 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Thu 2010-05-06 12:16:30 +0200
+message:
+  merge 70 to 71
+------------------------------------------------------------
+revno: 3593 [merge]
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 7.1
+timestamp: Wed 2010-05-05 11:32:40 +0200
+message:
+  Merge 7.0 -> 7.1
+------------------------------------------------------------
+revno: 3592 [merge]
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 7.1
+timestamp: Tue 2010-05-04 16:51:30 +0200
+message:
+  Merge 7.0 -> 7.1
+------------------------------------------------------------
+revno: 3591 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Tue 2010-05-04 15:21:23 +0200
+message:
+  merge 70 to 71
+------------------------------------------------------------
+revno: 3590 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Mon 2010-05-03 13:53:00 +0200
+message:
+  merge 70 to 71
+------------------------------------------------------------
+revno: 3589 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Mon 2010-05-03 06:53:26 +0200
+message:
+  merge 70 to 71
+------------------------------------------------------------
+revno: 3588 [merge]
+committer: Frazer Clement <frazer@mysql.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Fri 2010-04-30 14:01:54 +0100
+message:
+  Merge 7.0->7.1
+------------------------------------------------------------
+revno: 3587 [merge]
+committer: Frazer Clement <frazer@mysql.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Fri 2010-04-30 13:31:16 +0100
+message:
+  Merge 7.0->7.1
+------------------------------------------------------------
+revno: 3586 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Fri 2010-04-30 11:49:45 +0200
+message:
+  merge 70 to 71
+------------------------------------------------------------
+revno: 3585 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Fri 2010-04-30 11:18:40 +0200
+message:
+  merge 70 to 71
+------------------------------------------------------------
+revno: 3584 [merge]
+committer: Frazer Clement <frazer@mysql.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Thu 2010-04-29 17:03:05 +0100
+message:
+  Merge 7.0->7.1
+------------------------------------------------------------
+revno: 3583
+committer: Bernd Ocklin <bernhard.ocklin@sun.com>
+branch nick: 71j
+timestamp: Thu 2010-04-29 15:17:34 +0200
+message:
+  add clusterj files
+------------------------------------------------------------
+revno: 3582
+committer: Bernd Ocklin <bernhard.ocklin@sun.com>
+branch nick: 71j
+timestamp: Thu 2010-04-29 13:52:07 +0200
+message:
+  clusterj revno 273
+------------------------------------------------------------
+revno: 3581 [merge]
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 7.1
+timestamp: Thu 2010-04-29 09:36:21 +0200
+message:
+  Merge 7.0 -> 7.1
+------------------------------------------------------------
+revno: 3580 [merge]
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 7.1
+timestamp: Wed 2010-04-28 15:58:10 +0200
+message:
+  Merge 7.0 -> 7.1
+------------------------------------------------------------
+revno: 3579 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Wed 2010-04-28 14:22:57 +0200
+message:
+  merge 70 to 71
+------------------------------------------------------------
+revno: 3578 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Wed 2010-04-28 12:36:36 +0200
+message:
+  merge 70 to 71
+------------------------------------------------------------
+revno: 3577 [merge]
+committer: Jorgen Austvik <jorgen.austvik@sun.com>
+branch nick: 5.1-telco-7.1
+timestamp: Wed 2010-04-28 10:12:18 +0200
+message:
+  Merge ATRT on Windows/Cygwin from 7.0
+------------------------------------------------------------
+revno: 3576 [merge]
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 7.1
+timestamp: Tue 2010-04-27 19:47:23 +0200
+message:
+  Merge 7.0 -> 7.1
+------------------------------------------------------------
+revno: 3575
+committer: Bernd Ocklin <bernhard.ocklin@sun.com>
+branch nick: 71
+timestamp: Tue 2010-04-27 14:45:23 +0200
+message:
+  make java 1.5 default target independend of javac version (autoconf/automake)
+------------------------------------------------------------
+revno: 3574 [merge]
+committer: Martin Skold <Martin.Skold@mysql.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Tue 2010-04-27 14:27:12 +0200
+message:
+  Merge
+------------------------------------------------------------
+revno: 3573 [merge]
+committer: Martin Skold <Martin.Skold@mysql.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Tue 2010-04-27 14:25:03 +0200
+message:
+  Merge
+------------------------------------------------------------
+revno: 3572 [merge]
+committer: Martin Skold <Martin.Skold@mysql.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Tue 2010-04-27 13:38:02 +0200
+message:
+  Merge
+------------------------------------------------------------
+revno: 3571 [merge]
+committer: Martin Skold <Martin.Skold@mysql.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Tue 2010-04-27 12:39:40 +0200
+message:
+  Merge
+------------------------------------------------------------
+revno: 3570 [merge]
+committer: Martin Zaun <martin.zaun@sun.com>
+branch nick: ndb-7.1
+timestamp: Mon 2010-04-19 07:33:43 +0200
+message:
+  merge
+------------------------------------------------------------
+revno: 3569 [merge]
+committer: Martin Zaun <martin.zaun@sun.com>
+branch nick: ndb-7.1
+timestamp: Sun 2010-04-18 23:58:14 +0200
+message:
+  merge
+------------------------------------------------------------
+revno: 3568 [merge]
+committer: Martin Zaun <martin.zaun@sun.com>
+branch nick: ndb-7.1
+timestamp: Sun 2010-04-18 19:42:46 +0200
+message:
+  merge
+------------------------------------------------------------
+revno: 3567 [merge]
+committer: Martin Skold <Martin.Skold@mysql.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Fri 2010-04-16 14:54:18 +0200
+message:
+  Merge
+------------------------------------------------------------
+revno: 3566 [merge]
+committer: Jorgen Austvik <jorgen.austvik@sun.com>
+branch nick: 5.1-telco-7.1
+timestamp: Fri 2010-04-16 14:28:28 +0200
+message:
+  merge ATRT Windows changes
+------------------------------------------------------------
+revno: 3565 [merge]
+committer: Martin Skold <Martin.Skold@mysql.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Fri 2010-04-16 10:59:48 +0200
+message:
+  Merge
+------------------------------------------------------------
+revno: 3564 [merge]
+committer: Martin Skold <Martin.Skold@mysql.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Fri 2010-04-16 10:56:42 +0200
+message:
+  Merge
+------------------------------------------------------------
+revno: 3563 [merge]
+committer: Martin Zaun <martin.zaun@sun.com>
+branch nick: ndb-7.1-arrayfix
+timestamp: Thu 2010-04-15 15:55:43 -0700
+message:
+  merge
+------------------------------------------------------------
+revno: 3562 [merge]
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 7.1
+timestamp: Thu 2010-04-15 15:11:10 +0200
+message:
+  Merge 7.0 -> 7.1
+------------------------------------------------------------
+revno: 3561 [merge]
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 7.1
+timestamp: Wed 2010-04-14 11:32:14 +0200
+message:
+  Merge 7.0 -> 7.1
+------------------------------------------------------------
+revno: 3560 [merge]
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 7.1
+timestamp: Fri 2010-04-09 10:55:32 +0200
+message:
+  Merge 7.0 -> 7.1
+------------------------------------------------------------
+revno: 3559 [merge]
+committer: Frazer Clement <frazer@mysql.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Thu 2010-04-08 17:46:08 +0100
+message:
+  Merge 7.0->7.1
+------------------------------------------------------------
+revno: 3558 [merge]
+committer: Martin Zaun <martin.zaun@sun.com>
+branch nick: ndb-7.1
+timestamp: Tue 2010-04-06 10:34:06 -0700
+message:
+  merge from ndb-7.1-dev
+------------------------------------------------------------
+revno: 3557 [merge]
+committer: Martin Zaun <martin.zaun@sun.com>
+branch nick: ndb-7.1
+timestamp: Tue 2010-04-06 10:18:42 -0700
+message:
+  merge from ndb-7.1-dev
+------------------------------------------------------------
+revno: 3556 [merge]
+committer: Martin Zaun <martin.zaun@sun.com>
+branch nick: ndb-7.1
+timestamp: Tue 2010-04-06 04:57:43 -0700
+message:
+  ndbjtie - merge from ndb-7.1-arraywrapper to ndb-7.1
+------------------------------------------------------------
+revno: 3555 [merge]
+committer: Martin Zaun <martin.zaun@sun.com>
+branch nick: ndb-7.1
+timestamp: Mon 2010-04-05 20:35:43 -0700
+message:
+  merge
+------------------------------------------------------------
+revno: 3554 [merge]
+committer: Magnus Bl?udd <magnus.blaudd@sun.com>
+branch nick: 7.1
+timestamp: Thu 2010-04-01 17:28:45 +0200
+message:
+  Merge 7.0 -> 7.1
+------------------------------------------------------------
+revno: 3553 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Thu 2010-04-01 07:25:04 +0200
+message:
+  merge 70 to 71
+------------------------------------------------------------
+revno: 3552 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Wed 2010-03-31 09:51:20 +0200
+message:
+  merge 70 to 71
+------------------------------------------------------------
+revno: 3551 [merge]
+committer: Jorgen Austvik <jorgen.austvik@sun.com>
+branch nick: 5.1-telco-7.1
+timestamp: Tue 2010-03-30 08:43:19 +0200
+message:
+  merge from 7.0
+------------------------------------------------------------
+revno: 3550 [merge]
+committer: Jorgen Austvik <jorgen.austvik@sun.com>
+branch nick: 5.1-telco-7.1
+timestamp: Mon 2010-03-29 16:16:57 +0200
+message:
+  merge windows fix
+------------------------------------------------------------
+revno: 3549 [merge]
+committer: Jorgen Austvik <jorgen.austvik@sun.com>
+branch nick: 5.1-telco-7.1
+timestamp: Mon 2010-03-29 14:32:27 +0200
+message:
+  merge gcc compile fix
+------------------------------------------------------------
+revno: 3548 [merge]
+committer: Jorgen Austvik <jorgen.austvik@sun.com>
+branch nick: 5.1-telco-7.1
+timestamp: Mon 2010-03-29 14:07:03 +0200
+message:
+  merge unit tests for bitmask.bitNOT from 7.0
+------------------------------------------------------------
+revno: 3547 [merge]
+committer: Jorgen Austvik <jorgen.austvik@sun.com>
+branch nick: 5.1-telco-7.1
+timestamp: Mon 2010-03-29 13:44:57 +0200
+message:
+  bug 52323: ndb_waiter --wait-nodes merged from 7.0
+------------------------------------------------------------
+revno: 3546 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Fri 2010-03-26 14:43:32 +0100
+message:
+  merge 70 to 71
+------------------------------------------------------------
+revno: 3545 [merge]
+committer: Jonas Oreland <jonas@mysql.com>
+branch nick: telco-7.1
+timestamp: Fri 2010-03-26 12:59:02 +0100
+message:
+  merge 70 to 71
+------------------------------------------------------------
+revno: 3544
+committer: Bernd Ocklin <bernhard.ocklin@sun.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Fri 2010-03-26 12:49:32 +0100
+message:
+  version bump to 7.1.4
+------------------------------------------------------------
+revno: 3543
+tags: mysql-5.1.44-ndb-7.1.3
+committer: Bernd Ocklin <bernhard.ocklin@sun.com>
+branch nick: mysql-5.1-telco-7.1
+timestamp: Fri 2010-03-26 12:48:18 +0100
+message:
+  correct version to 7.1.3
+------------------------------------------------------------
+Use --include-merges or -n0 to see merged revisions.

@@ -1,0 +1,24 @@
+dn: dc=clusterdb,dc=com
+dc: clusterdb
+objectClass: dcObject
+objectClass: organization
+description: HLR operator
+o: GSM PlC
+
+dn: clusterdbsubid=12,dc=clusterdb,dc=com
+objectclass: clusterdbhlrrecord
+clusterdbsubid: 12
+clusterdbimsi: 456123123456789
+clusterdbmsisdn: 611231234512345
+clusterdbvlrnumber: 611230000000000
+clusterdbsmscnumber: 611230000000001
+clusterdbsmscount: 2
+
+dn: clusterdbsubid=97,dc=clusterdb,dc=com
+objectclass: clusterdbhlrrecord
+clusterdbsubid: 97
+clusterdbimsi: 456123123456788
+clusterdbmsisdn: 611231234512344
+clusterdbvlrnumber: 611230000000000
+clusterdbsmscnumber: 611230000000001
+clusterdbsmscount: 0
