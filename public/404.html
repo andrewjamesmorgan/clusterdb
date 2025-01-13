@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; URL=/new-page" />
+    <script>
+      // Redirect mapping
+      const redirects = {
+        "/contact.html": "/#/contact"
+      };
+
+      const redirect = redirects[window.location.pathname];
+      if (redirect) {
+        window.location.replace(redirect);
+      } else {
+        // If no match, send to home or a fallback page
+        window.location.replace("/");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
