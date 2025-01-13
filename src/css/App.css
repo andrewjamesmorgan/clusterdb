@@ -91,9 +91,23 @@ div.week-weather {
 }
 
 #footer-contact {
+  text-align: left;
   min-width: 300px;
-  max-width: 300px;
-  margin-top: 18px;
+  max-width: 900px;
+}
+
+#footer-sponsor {
+  min-width: 300px;
+  max-width: 500px;
+  margin-top: 0; /* Less vertical space before the list */
+}
+
+#footer-sponsor ul {
+  margin-top: -20px;
+}
+
+#footer-sponsor li {
+  text-align: left; /* Left-align list items */
 }
 
 #footer-current-weather {
@@ -553,15 +567,6 @@ table.price-table tbody {
     background-color: var(--light-two);
     padding-left: 5px;
     padding-right: 5px;
-  }
-
-  table.price-table {
-    width: calc(100% - 40px);
-    text-align: left;
-    border-collapse: collapse;
-    margin: 20px;
-    margin-right: 20px;
-    font-size: 1em;
   }
 }
 
