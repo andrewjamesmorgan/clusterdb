@@ -24,11 +24,13 @@ export default function Header() {
         <Link to="/" 
           onClick={hideBurgerMenu}
           className={pathName === "/home" || pathName === "/" ? "active" : "not-active"}>Home</Link>
-        <Link to="/contact"
+        <a href="https://clusterdb.com/legacy/" target="_blank" rel="noopener noreferrer"
+          className="not-active">Legacy content</a>        <Link to="/contact"
           onClick={hideBurgerMenu}
           className={pathName === "/contact" ? "active" : "not-active"}>Contact me</Link>
-        <a href="https://clusterdb.com/legacy/" target="_blank" rel="noopener noreferrer"
-          className="not-active">Legacy content</a>
+        <Link to="/about"
+          onClick={hideBurgerMenu}
+          className={pathName === "/about" ? "active" : "not-active"}>About me</Link>
         {/* eslint-disable-next-line */}
         <a href="#" className="icon" onClick={selectMenu}>
           <i className="fa fa-bars"></i>
