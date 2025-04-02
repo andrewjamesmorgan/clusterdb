@@ -10,7 +10,7 @@ export default function VersionValidationCell({action}) {
 
   return (
     <InfoBox 
-        imageSrc="../../images/posts/version-validation.png"
+        imageSrc="../../images/posts/version-validation.jpg"
         alt="Software developer sat at a terminal, a man in a suit is approaching him with mew requirements on a sheet of paper"
         action={action}
         route="https://medium.com/mongodb/using-mongodb-schema-validation-with-the-schema-versioning-pattern-f51ce63ff376"

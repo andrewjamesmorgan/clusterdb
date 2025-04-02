@@ -9,7 +9,7 @@ export default function London24QuizCell({action}) {
 
   return (
     <InfoBox 
-        imageSrc="../../images/posts/London24-pop-quiz.png"
+        imageSrc="../../images/posts/London24-pop-quiz.jpg"
         alt="An instructror pointing to a whiteboard with a complex diagram. Stedents have their hands up, keen to answer"
         action={action}
         route="https://www.youtube.com/watch?v=TqBoVw-L1Zk&list=PL4RCxklHWZ9t_3OlFNg15K5bPJ1CMAZJO&index=38"

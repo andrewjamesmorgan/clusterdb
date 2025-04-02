@@ -10,7 +10,7 @@ export default function WhenCacheCell({action}) {
 
   return (
     <InfoBox 
-        imageSrc="../../images/posts/when-to-cache.png"
+        imageSrc="../../images/posts/when-to-cache.jpg"
         alt="Software architect staring at a whiteboard that shows a software architecture that includes an application server accessing a Redis cache, which in turn is connected to a MongoDB database"
         action={action}
         route="https://medium.com/mongodb/when-should-you-use-a-cache-with-mongodb-db0040d9c12c"

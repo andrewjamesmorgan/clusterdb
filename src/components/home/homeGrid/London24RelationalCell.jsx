@@ -12,7 +12,7 @@ export default function London24RelationalCell({action}) {
 
   return (
     <InfoBox 
-        imageSrc="../../images/posts/London24-relational.png"
+        imageSrc="../../images/posts/London24-relational.jpg"
         alt="Oracle train falling apart as it races along the tracks. MongoDB superhero is flying in to save the day"
         action={action}
         route="https://www.youtube.com/watch?v=cfg9G8PwoWM&list=PL4RCxklHWZ9t_3OlFNg15K5bPJ1CMAZJO&index=49"

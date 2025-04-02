@@ -9,7 +9,7 @@ export default function NYC24Cell({action}) {
 
   return (
     <InfoBox 
-        imageSrc="../../images/posts/nyc-24.png"
+        imageSrc="../../images/posts/nyc-24.jpg"
         alt="Slide displaying the title and head shots of Andrew Morgan (MongoDB) and Antoine Speller (Wells Fargo)"
         action={action}
         route="https://youtu.be/nFwgfvTuHfk?list=PL4RCxklHWZ9tkmf5ewhA10nKz8u6d4c6r&t=0"

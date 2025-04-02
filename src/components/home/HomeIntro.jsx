@@ -3,7 +3,7 @@ export default function HomeIntro() {
     <>
       <div id='home-intro' className='banner-image-text'>
         <img
-          src="../../images/clusterdb-wide.png"
+          src="../../images/clusterdb-wide.jpg"
           alt=""
           className='full-width-image'
         />

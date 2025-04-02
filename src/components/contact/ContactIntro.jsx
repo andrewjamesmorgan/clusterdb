@@ -4,7 +4,7 @@ export default function ContactIntro() {
       <div id='contact-intro' className='banner-image-text'>
         <h1>Get in touch</h1>
         <img
-          src="../../images/contact/maidenhead-post-box.jpeg"
+          src="../../images/contact/maidenhead-post-box.jpg"
           alt="Traditional, red, British postbox. Set on grass, with a wooden fence and trees behind it"
           className='full-width-image'
         />

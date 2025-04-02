@@ -30,7 +30,7 @@ export default function ContactHead() {
           property="og:description"
           content="Abut Andrew Morgan – Senior Staff Developer Advocate at MongoDB. Formerly Director of Product Management at Oracle."
         />
-        <meta property="og:image" content="https://clusterdb.com/images/clusterdb-OG.png" />
+        <meta property="og:image" content="https://clusterdb.com/images/clusterdb-OG.jpg" />
         <meta property="og:url" content="https://clusterdb.com/#/contact" /> 
         <meta property="og:locale" content="en_GB" />
 

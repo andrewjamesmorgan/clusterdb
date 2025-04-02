@@ -10,7 +10,7 @@ export default function SampleDRCell({action}) {
 
   return (
     <InfoBox 
-        imageSrc="../../images/posts/property-dr.png"
+        imageSrc="../../images/posts/property-dr.jpg"
         alt="2 developers in a meeting room. One is pointing to a whiteboard with a complex diagram. The other is watching intently"
         action={action}
         route="https://vimeo.com/1035984271#t=3m25s"

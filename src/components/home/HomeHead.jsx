@@ -30,7 +30,7 @@ export default function HomeHead() {
           property="og:description"
           content="ClusterDB — Andrew Morgan on databases"
         />
-        <meta property="og:image" content="https://clusterdb.com/images/clusterdb-OG.png" />
+        <meta property="og:image" content="https://clusterdb.com/images/clusterdb-OG.jpg" />
         <meta property="og:url" content="https://clusterdb.com" /> 
         <meta property="og:locale" content="en_GB" />
 

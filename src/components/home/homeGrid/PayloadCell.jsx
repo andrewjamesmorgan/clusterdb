@@ -10,7 +10,7 @@ export default function PayloadCell({action}) {
 
   return (
     <InfoBox 
-        imageSrc="../../images/posts/payload.png"
+        imageSrc="../../images/posts/payload.jpg"
         alt="4 sets of drawers. Each set has a label such as socks or green shirts. Some of the drawers are partially open, with the relevent types of clothes overflowing"
         action={action}
         route="https://medium.com/mongodb/process-vs-payload-fields-efficiently-querying-semi-structured-mongodb-documents-a4e736c7b866"
