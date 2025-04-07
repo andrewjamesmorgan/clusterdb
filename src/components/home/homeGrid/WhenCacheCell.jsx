@@ -19,4 +19,4 @@ export default function WhenCacheCell({action}) {
         centerY={40}
     />
   );
-}
+} 

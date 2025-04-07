@@ -17,4 +17,4 @@ export default function VersionValidationCell({action}) {
         body={body}
     />
   );
-}
+} 

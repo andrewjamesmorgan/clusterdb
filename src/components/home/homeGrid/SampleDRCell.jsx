@@ -18,5 +18,5 @@ export default function SampleDRCell({action}) {
         centerX={60}
         centerY={50}
     />
-  );
+  ); 
 }
