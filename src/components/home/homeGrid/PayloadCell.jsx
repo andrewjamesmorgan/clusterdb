@@ -15,6 +15,8 @@ export default function PayloadCell({action}) {
         action={action}
         route="https://medium.com/mongodb/process-vs-payload-fields-efficiently-querying-semi-structured-mongodb-documents-a4e736c7b866"
         body={body}
+        centerX={1}
+        centerY={50}
     />
   );
 }

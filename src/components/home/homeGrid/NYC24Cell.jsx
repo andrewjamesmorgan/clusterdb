@@ -14,6 +14,8 @@ export default function NYC24Cell({action}) {
         action={action}
         route="https://youtu.be/nFwgfvTuHfk?list=PL4RCxklHWZ9tkmf5ewhA10nKz8u6d4c6r&t=0"
         body={body}
+        centerX={30}
+        centerY={20}
     />
   );
 }

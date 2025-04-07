@@ -15,6 +15,8 @@ export default function SampleDRCell({action}) {
         action={action}
         route="https://vimeo.com/1035984271#t=3m25s"
         body={body}
+        centerX={60}
+        centerY={50}
     />
   );
 }

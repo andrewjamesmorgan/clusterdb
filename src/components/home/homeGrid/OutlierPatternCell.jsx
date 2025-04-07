@@ -14,6 +14,8 @@ export default function OutlierPatternCell({action}) {
         action={action}
         route="https://medium.com/mongodb/the-exceptions-that-break-the-rule-using-the-outlier-pattern-in-mongodb-9674fc7cc097"
         body={body}
+        centerX={50}
+        centerY={20}
     />
   );
 }

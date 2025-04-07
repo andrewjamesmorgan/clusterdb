@@ -17,6 +17,8 @@ export default function London24RelationalCell({action}) {
         action={action}
         route="https://www.youtube.com/watch?v=cfg9G8PwoWM&list=PL4RCxklHWZ9t_3OlFNg15K5bPJ1CMAZJO&index=49"
         body={body}
+        centerX={40}
+        centerY={40}
     />
   );
 }

@@ -15,6 +15,8 @@ export default function WhenCacheCell({action}) {
         action={action}
         route="https://medium.com/mongodb/when-should-you-use-a-cache-with-mongodb-db0040d9c12c"
         body={body}
+        centerX={30}
+        centerY={40}
     />
   );
 }

@@ -14,6 +14,8 @@ export default function London24QuizCell({action}) {
         action={action}
         route="https://www.youtube.com/watch?v=TqBoVw-L1Zk&list=PL4RCxklHWZ9t_3OlFNg15K5bPJ1CMAZJO&index=38"
         body={body}
+        centerX={55}
+        centerY={10}
     />
   );
 }
