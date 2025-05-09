@@ -6,11 +6,13 @@ import London24QuizCell from "./homeGrid/London24QuizCell";
 import SampleDRCell from "./homeGrid/SampleDRCell";
 import WhenCacheCell from "./homeGrid/WhenCacheCell";
 import OutlierPatternCell from "./homeGrid/OutlierPatternCell";
+import TinyDocs from "./homeGrid/TinyDocuments";
 
 export default function HomeGrid({action}) {
   return (
   <>
     <div className='responsive-grid'>
+      <TinyDocs action={action} />
       <OutlierPatternCell action={action} />
       <WhenCacheCell action={action} />
     </div>
