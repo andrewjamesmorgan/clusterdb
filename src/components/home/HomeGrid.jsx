@@ -7,10 +7,14 @@ import SampleDRCell from "./homeGrid/SampleDRCell";
 import WhenCacheCell from "./homeGrid/WhenCacheCell";
 import OutlierPatternCell from "./homeGrid/OutlierPatternCell";
 import TinyDocs from "./homeGrid/TinyDocuments";
+import ArbitrarySearchCell from "./homeGrid/ArbitrarySearchCell";
 
 export default function HomeGrid({action}) {
   return (
   <>
+    <div className='responsive-grid'>
+      <ArbitrarySearchCell action={action} />
+    </div>
     <div className='responsive-grid'>
       <TinyDocs action={action} />
       <OutlierPatternCell action={action} />
