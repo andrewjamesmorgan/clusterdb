@@ -8,11 +8,13 @@ import WhenCacheCell from "./homeGrid/WhenCacheCell";
 import OutlierPatternCell from "./homeGrid/OutlierPatternCell";
 import TinyDocs from "./homeGrid/TinyDocuments";
 import ArbitrarySearchCell from "./homeGrid/ArbitrarySearchCell";
+import ObjectIndexCell from "./homeGrid/ObjectIndexCell";
 
 export default function HomeGrid({action}) {
   return (
   <>
     <div className='responsive-grid'>
+      <ObjectIndexCell action={action} />
       <ArbitrarySearchCell action={action} />
     </div>
     <div className='responsive-grid'>
