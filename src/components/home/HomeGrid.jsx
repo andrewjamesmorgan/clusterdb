@@ -9,11 +9,13 @@ import OutlierPatternCell from "./homeGrid/OutlierPatternCell";
 import TinyDocs from "./homeGrid/TinyDocuments";
 import ArbitrarySearchCell from "./homeGrid/ArbitrarySearchCell";
 import ObjectIndexCell from "./homeGrid/ObjectIndexCell";
+import FieldNamesCell from "./homeGrid/FileNamesCell";
 
 export default function HomeGrid({action}) {
   return (
   <>
     <div className='responsive-grid'>
+      <FieldNamesCell action={action} />
       <ObjectIndexCell action={action} />
       <ArbitrarySearchCell action={action} />
     </div>
