@@ -2,7 +2,7 @@ import InfoBox from '../../InfoBox';
 
 export default function ObjectIndexCell ({action}) {
   const body = (<>
-    <h3>Searching MongoDB by Arbitrary Combinations of Fields</h3>
+    <h3>Embedded Objects and Other Index Gotchas</h3>
     <p>
       In a recent design review, the customer's application was in production, but performance had taken a nosedive as data volumes grew. It turned out that the issue was down to how they were indexing the embedded objects in their documents. This article explains why their indexes were causing problems, and how they could be fixed.
     </p>
