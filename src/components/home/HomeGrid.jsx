@@ -11,11 +11,14 @@ import ArbitrarySearchCell from "./homeGrid/ArbitrarySearchCell";
 import ObjectIndexCell from "./homeGrid/ObjectIndexCell";
 import FieldNamesCell from "./homeGrid/FileNamesCell";
 import MovieRecommendationCell from "./homeGrid/MovieRecommendationCell";
+import London2026 from "./homeGrid/London2026";
 
 export default function HomeGrid({action}) {
   return (
   <>
     <div className='responsive-grid'>
+      <London2026 action={action} />
+
       <MovieRecommendationCell action={action} />
     </div>
     <div className='responsive-grid'>
